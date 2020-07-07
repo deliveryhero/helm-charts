@@ -1,0 +1,48 @@
+podLabels:
+  env:
+  rps_region:
+  team: infra
+  tribe: rps
+  squad: infra
+  platform: rps
+
+image:
+  repository: "banzaicloud/spot-termination-exporter"
+  tag: "0.0.1"
+  imagePullPolicy: IfNotPresent
+
+prometheus:
+  scrape: "true"
+  metricsPath: "/metrics"
+
+metadataEndpoint: "http://169.254.169.254/latest/meta-data/"
+
+port: 9189
+
+logLevel: "debug"
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 120m
+  limits:
+    memory: 256Mi
+    cpu: 120m
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 120
+  timeoutSeconds: 5
+  failureThreshold: 6
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+    httpHeaders:
+  initialDelaySeconds: 30
+  timeoutSeconds: 3
+  periodSeconds: 5
+
+nodeSelector:
+  kubernetes.io/lifecycle: spot

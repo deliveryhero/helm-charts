@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "prometheus-spot-termination-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-spot-termination-exporter.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "prometheus-spot-termination-exporter.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+{{ include "prometheus-spot-termination-exporter.labels" . | indent 10 }}
+{{- if .Values.podLabels }}
+{{ toYaml .Values.podLabels | indent 10 }}
+{{- end }}
+      annotations:
+        prometheus.io/scrape: "{{ .Values.prometheus.scrape }}"
+        prometheus.io/port: "{{ .Values.port }}"
+        prometheus.io/path: "{{ .Values.prometheus.metricsPath }}"
+
+    spec:
+      containers:
+      - name: spot-termination-exporter
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.imagePullPolicy | quote }}
+        command:
+        - "/bin/sh"
+        - "-ecx"
+        - |
+          spot-termination-exporter \
+          --bind-addr :{{ .Values.port }} \
+          --metrics-path {{ .Values.prometheus.metricsPath }} \
+          --metadata-endpoint {{ .Values.metadataEndpoint }} \
+          --log-level {{ .Values.logLevel }}
+        ports:
+        - name: http
+          containerPort: {{ .Values.port }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.httpGet.path }}
+            port: {{ .Values.livenessProbe.httpGet.port }}
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.readinessProbe.httpGet.path }}
+            port: {{ .Values.readinessProbe.httpGet.path }}
+            httpHeaders: {{ .Values.readinessProbe.httpGet.httpHeaders }}
+          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
