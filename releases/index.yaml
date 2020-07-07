@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  prometheus-spot-termination-exporter:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-07-07T11:05:25.311188-03:00"
+    description: Prometheus spot termination exporter
+    digest: eda42b872e67fae54bd3698c0d7fdef440d54b6b22e8efc3916944f48fe54e59
+    name: prometheus-spot-termination-exporter
+    urls:
+    - prometheus-spot-termination-exporter-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-07-07T11:05:25.310837-03:00"
