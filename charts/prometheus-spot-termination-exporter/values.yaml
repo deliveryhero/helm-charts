@@ -1,11 +1,3 @@
-podLabels:
-  env:
-  rps_region:
-  team: infra
-  tribe: rps
-  squad: infra
-  platform: rps
-
 image:
   repository: "banzaicloud/spot-termination-exporter"
   tag: "0.0.1"
