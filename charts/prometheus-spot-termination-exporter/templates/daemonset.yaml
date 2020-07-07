@@ -55,7 +55,7 @@ spec:
         readinessProbe:
           httpGet:
             path: {{ .Values.readinessProbe.httpGet.path }}
-            port: {{ .Values.readinessProbe.httpGet.path }}
+            port: {{ .Values.readinessProbe.httpGet.port }}
             httpHeaders: {{ .Values.readinessProbe.httpGet.httpHeaders }}
           initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
