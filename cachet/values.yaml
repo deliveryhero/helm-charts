@@ -1,0 +1,77 @@
+# Default values for cachet.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: cachethq/docker
+  tag: latest
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+labels:
+  type: infra
+
+ingress:
+  enabled: false
+  annotations: {}
+  host:
+    name: cachet.example.com
+    path: /
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# creates cachet database via posgres-controller
+database:
+  create: true
+  host: cachet-db.example.com
+  port: 5432
+  name: cachet
+  username: cachet
+  instance_id: shared
+  driver: pssql
+
+env:
+  public:
+    # Application environments
+    APP_DEBUG: false
+    APP_LOG: errorlog
+    DOCKER: true
+    CACHE_DRIVER: database
+    SESSION_DRIVER: database
+    QUEUE_DRIVER: database
+    CACHET_EMOJI: false
+    CACHET_BEACON: false
+    # Email find them here  https://docs.cachethq.io/docs/configuring-mail
+    MAIL_DRIVER: smtp
+    MAIL_HOST: null
+    MAIL_PORT: null
+
+    MAIL_NAME: null
+    MAIL_ENCRYPTION: tls
+
+  #  Should be places in an encrypted secrets file.
+  private:
+    # generate a new one
+    APP_KEY: aHR0cDovLzEyNy4wLjAuMTo5MDkza2FrZm1rYWttZmFrbWttZgo=
+    DB_PASSWORD: ""
+    MAIL_USERNAME: ""
+    MAIL_PASSWORD: ""
+    MAIL_ADDRESS: ""
