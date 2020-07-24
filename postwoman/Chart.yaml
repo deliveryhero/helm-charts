@@ -1,0 +1,4 @@
+name: postwoman
+version: 0.1
+description: "Web alternative to Postman - Helps you create requests faster, saving precious time on development"
+apiVersion: v1

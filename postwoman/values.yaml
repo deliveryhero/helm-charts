@@ -1,0 +1,22 @@
+env: test
+team: infra
+
+deployment:
+  image:
+    repository: liyasthomas/postwoman
+    tag: latest
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 256Mi
+
+ingress:
+  ui:
+    host: "example.com"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
