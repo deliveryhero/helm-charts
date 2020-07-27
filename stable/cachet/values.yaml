@@ -70,7 +70,7 @@ env:
   #  Should be places in an encrypted secrets file.
   private:
     # generate a new one
-    APP_KEY: aHR0cDovLzEyNy4wLjAuMTo5MDkza2FrZm1rYWttZmFrbWttZgo=
+    APP_KEY: ""
     DB_PASSWORD: ""
     MAIL_USERNAME: ""
     MAIL_PASSWORD: ""
