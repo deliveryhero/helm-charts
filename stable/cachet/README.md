@@ -3,22 +3,25 @@
 [Cachet](https://cachethq.io/) is an open source status page system.
 
 ## Installing the Chart
-
+Add delivery hero public chart repo.
+```console
+$ helm repo add deliveryhero https://charts.deliveryhero.io/
+$ helm repo update
+```
+Simple install
+```console
+$ $ helm install deliveryhero/cachet
+```
 To install the chart with the release name `my-release`:
 
 ```console
-<!-- add delivery hero  repo -->
-$ helm repo add deliveryhero https://charts.deliveryhero.io/
-<!-- simple install -->
-$ helm install deliveryhero/cachet
-<!-- install with release name -->
 $ helm install --name my-release deliveryhero/cachet
-
-<!-- install with set values -->
-
-$ helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
 ```
-
+Install with values
+```console
+$ helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
+$ helm install --name my-release deliveryhero/cachet -f values.yaml
+```
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-release` deployment:
@@ -55,7 +58,7 @@ The following table lists the configurable parameters of the cachet chart and it
 |`database.port`            | Database port                           | `5432`                 |          |
 |`database.name`            | Database name                           | `cachet`               |          |
 |`database.username`        | Database username                       | `cachet`               |          |
-|``database.instance_id`    | Database instance Id                    | `nil`                  |          |
+|`database.instance_id`     | Database instance Id                    | `nil`                  |          |
 |`database.driver`          | Database driver                         | `pssql`                |          |
 |`env.public`               | Public environment variables            | `{}`                   | `yes`    |
 |`env.private`              | Private environment variables           | `{}`                   | `yes`    |

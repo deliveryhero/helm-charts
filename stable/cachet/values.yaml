@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: cachethq/docker
-  tag: latest
+  tag:  "2.3.15"
   pullPolicy: Always
 
 nameOverride: ""
