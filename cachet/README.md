@@ -7,8 +7,16 @@
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install stable/cachet
-$ helm install --name my-release stable/cachet
+<!-- add delivery hero  repo -->
+$ helm repo add deliveryhero https://charts.deliveryhero.io/
+<!-- simple install -->
+$ helm install deliveryhero/cachet
+<!-- install with release name -->
+$ helm install --name my-release deliveryhero/cachet
+
+<!-- install with set values -->
+
+$ helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
 ```
 
 ## Uninstalling the Chart
