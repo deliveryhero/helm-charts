@@ -23,7 +23,7 @@ ingress:
   enabled: false
   annotations: {}
   host:
-    name: cachet.example.com
+    name: nil
     path: /
   tls: []
   #  - secretName: chart-example-tls
@@ -40,7 +40,7 @@ resources:
 
 # creates cachet database via posgres-controller
 database:
-  create: true
+  create: false
   host: cachet-db.example.com
   port: 5432
   name: cachet
