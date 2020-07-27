@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: liyasthomas/postwoman
-  tag: latest
+  tag: v1.9.7
   pullPolicy: IfNotPresent
 
 nameOverride: ""
