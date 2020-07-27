@@ -14,3 +14,4 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "postwoman.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "postwoman.extra_labels" . | indent 4 }}

@@ -45,12 +45,10 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Create the name of the service account to use
+Extra labels
 */}}
-{{- define "postwoman.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "postwoman.fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
+{{- define "postwoman.extra_labels" -}}
+{{- if .Values.extra_labels }}
+{{ toYaml .Values.extra_labels }}
+{{- end }}
 {{- end -}}

@@ -33,3 +33,7 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
+
+#extra_labels:
+  #app: "postwoman"
+  #env: "staging"

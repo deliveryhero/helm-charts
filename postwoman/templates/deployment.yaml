@@ -4,17 +4,20 @@ metadata:
   name: {{ include "postwoman.fullname" . }}
   labels:
 {{ include "postwoman.labels" . | indent 4 }}
+{{ include "postwoman.extra_labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "postwoman.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "postwoman.extra_labels" . | indent 6 }}
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "postwoman.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "postwoman.extra_labels" . | indent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
