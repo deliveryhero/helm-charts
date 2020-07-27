@@ -1,4 +1,5 @@
-name: postwoman
-version: 0.1
-description: "Web alternative to Postman - Helps you create requests faster, saving precious time on development"
 apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for Kubernetes
+name: postwoman
+version: 0.1.0

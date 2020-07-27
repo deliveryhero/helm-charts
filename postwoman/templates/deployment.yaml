@@ -1,27 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "resource_name" . }}
+  name: {{ include "postwoman.fullname" . }}
   labels:
-    {{- include "labels" . | indent 4 }}
+{{ include "postwoman.labels" . | indent 4 }}
 spec:
-  replicas: 1
-  revisionHistoryLimit: 10
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "labels" . | indent 6 }}
+      app.kubernetes.io/name: {{ include "postwoman.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        {{- include "labels" . | indent 8 }}
+        app.kubernetes.io/name: {{ include "postwoman.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        - name: "app"
-          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 3000 
+              containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
-          resources: 
-            {{- toYaml .Values.deployment.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
