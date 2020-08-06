@@ -1,4 +1,3 @@
-
 replicaCount: 1
 
 image:
@@ -26,7 +25,7 @@ ingress:
 
   tls: []
 
-resources: 
+resources:
   limits:
     cpu: 100m
     memory: 128Mi
@@ -34,6 +33,6 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-#extra_labels:
-  #app: "postwoman"
-  #env: "staging"
+# extra_labels:
+#   app: "postwoman"
+#   env: "staging"

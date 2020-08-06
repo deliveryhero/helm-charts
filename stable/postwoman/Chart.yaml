@@ -1,5 +1,9 @@
 apiVersion: v1
 appVersion: "v1.9.7"
-description: A Helm chart for Kubernetes
+description: A free, fast and beautiful API request builder
 name: postwoman
-version: 0.1.0
+version: 0.2.0
+home: https://github.com/postwoman-io/postwoman
+maintainers:
+- name: javad-hajiani
+  email: no-reply@deliveryhero.com
