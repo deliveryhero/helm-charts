@@ -1,0 +1,15 @@
+# Uses "ct" from https://github.com/helm/chart-testing
+# Will lint and test install of any chart in stable that has changes compared 
+# to master
+name: Lint
+on: [push, pull_request]
+jobs:
+  build:
+    name: Lint changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint
+        uses: quay.io/helmpack/chart-testing:v3.0.0
+        run: ct lint-and-install --chart-dirs stable
