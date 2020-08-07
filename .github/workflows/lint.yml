@@ -18,9 +18,10 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@v1.0.0
         with:
-          command: lint --chart-dirs stable
+          command: lint
+          config: ci/ct.yaml
 
-      - name: Create kind cluster
+      - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.0.0-alpha.3
         # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'
@@ -28,4 +29,5 @@ jobs:
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0
         with:
-          command: install --chart-dirs stable
+          command: install
+          config: ci/ct.yaml
