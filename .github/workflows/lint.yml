@@ -29,5 +29,5 @@ jobs:
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0
         with:
-          command: install --chart-dirs stable
+          command: install
           config: ci/ct.yaml
