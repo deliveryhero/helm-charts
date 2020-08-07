@@ -3,7 +3,7 @@ appVersion: "2.3.15"
 description: The open source status page system
 name: cachet
 version: 1.1.0
-home: https://cachethq.io/
-maintainers:
-- name: nyambati
-  email: no-reply@deliveryhero.com
+# home: https://cachethq.io/
+# maintainers:
+# - name: nyambati
+#   email: no-reply@deliveryhero.com
