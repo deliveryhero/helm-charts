@@ -17,11 +17,9 @@ jobs:
       - name: Run chart-testing (lint)
         id: lint
         uses: helm/chart-testing-action@v1.0.0
-        env:
-          CT_CHART_DIRS: stable
         with:
           command: lint
-          # config: ci/ct.yaml
+          config: ci/ct.yaml
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0-alpha.3
