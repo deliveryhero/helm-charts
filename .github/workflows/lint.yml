@@ -30,3 +30,4 @@ jobs:
         uses: helm/chart-testing-action@v1.0.0
         with:
           command: install --chart-dirs stable
+          config: ci/ct.yaml
