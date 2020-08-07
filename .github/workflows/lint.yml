@@ -1,11 +1,11 @@
 # Uses "ct" from https://github.com/helm/chart-testing
 # Will lint and test install of any chart in stable that has changes compared
 # to master
-name: Lint
+name: Helm Chart Testing
 on: [push, pull_request]
 jobs:
   build:
-    name: Helm Chart Testing
+    name: lint, install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
