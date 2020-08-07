@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Lint
-        uses: quay.io/helmpack/chart-testing:v3.0.0
+      - name: Helm Chart Testing
+        uses: helm/chart-testing-action@v1.0.0
         env:
           CT_CHART_DIRS: stable
           CT_LINT_AND_INSTALL: ""
