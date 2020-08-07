@@ -21,7 +21,7 @@ jobs:
           command: lint
           config: ci/ct.yaml
 
-      - name: Create kind cluster
+      - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.0.0-alpha.3
         # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'

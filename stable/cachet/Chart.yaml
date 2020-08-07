@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: "2.3.15"
 description: The open source status page system
 name: cachet
-version: 1.2.0
+version: 1.1.0
 home: https://cachethq.io/
 maintainers:
 - name: nyambati

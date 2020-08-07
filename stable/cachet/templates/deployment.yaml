@@ -10,7 +10,6 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "cachet.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
-      label: asd
   template:
     metadata:
       labels:
