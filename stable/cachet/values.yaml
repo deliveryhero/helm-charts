@@ -53,6 +53,7 @@ env:
     # Application environments
     APP_DEBUG: false
     APP_LOG: errorlog
+    DB_DRIVER: pgsql
     DOCKER: true
     CACHE_DRIVER: database
     SESSION_DRIVER: database
@@ -67,11 +68,10 @@ env:
     MAIL_NAME: null
     MAIL_ENCRYPTION: tls
 
-  #  Should be places in an encrypted secrets file.
+  # Update all with your own values
   private:
-    # generate a new one
-    APP_KEY: ""
-    DB_PASSWORD: ""
-    MAIL_USERNAME: ""
-    MAIL_PASSWORD: ""
-    MAIL_ADDRESS: ""
+    APP_KEY: _
+    DB_PASSWORD: _
+    MAIL_USERNAME: _
+    MAIL_PASSWORD: _
+    MAIL_ADDRESS: _
