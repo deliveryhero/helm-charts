@@ -1,2 +1,4 @@
 chart-dirs:
   - stable
+chart-repos:
+  - stable=https://kubernetes-charts.storage.googleapis.com
