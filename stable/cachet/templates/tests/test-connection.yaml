@@ -10,6 +10,6 @@ spec:
   containers:
     - name: wget
       image: busybox
-      command: ['wget']
-      args:  ['{{ include "cachet.fullname" . }}:{{ .Values.service.port }}']
+      command: ['sh', '-c']
+      args:  ['true']
   restartPolicy: Never
