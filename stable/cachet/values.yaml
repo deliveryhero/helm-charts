@@ -54,8 +54,9 @@ env:
     APP_DEBUG: false
     APP_LOG: errorlog
     DB_DRIVER: pgsql
-    DB_HOST: cachet
+    DB_HOST: cachet-postgresql
     DB_DATABASE: cachet
+    DB_USERNAME: cachet
     DOCKER: true
     CACHE_DRIVER: database
     SESSION_DRIVER: database
@@ -79,6 +80,8 @@ env:
 
 postgresql:
   enabled: true
-  postgresDatabase: cachet
-  postgresUser: cachet
-  postgresPassword: cachet
+  postgresqlDatabase: cachet
+  postgresqlUsername: cachet
+  postgresqlPassword: cachet
+  persistence:
+    enabled: false
