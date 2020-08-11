@@ -72,7 +72,7 @@ env:
 
   # Update all with your own values
   private:
-    APP_KEY: _
+    APP_KEY: a_32_character_string_is_requir
     DB_PASSWORD: cachet
     MAIL_USERNAME: _
     MAIL_PASSWORD: _
