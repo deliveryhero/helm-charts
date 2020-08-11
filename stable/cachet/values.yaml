@@ -79,6 +79,7 @@ env:
     MAIL_ADDRESS: _
 
 postgresql:
+  nameOverride: cachet-postgresql
   enabled: true
   postgresqlDatabase: cachet
   postgresqlUsername: cachet
