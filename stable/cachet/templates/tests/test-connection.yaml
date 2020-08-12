@@ -11,5 +11,6 @@ spec:
     - name: wget
       image: busybox
       command: ['sh', '-c']
-      args:  ['true']
+      args:
+        - sleep 20 && wget '{{ include "cachet.fullname" . }}:{{ .Values.service.port }}/api/v1/ping'
   restartPolicy: Never
