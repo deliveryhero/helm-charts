@@ -11,4 +11,4 @@ jobs:
       uses: avto-dev/markdown-lint@v1.3.1
       with:
         args: '**/*.md'
-        config: '/ci/markdown-lint.yaml'
+        config: 'ci/markdown-lint.yaml'
