@@ -1,17 +1,21 @@
-# Helm chart for Cachet status system
+# cachet
 
-[Cachet](https://cachethq.io/) is an open source status page system.
+![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
-## Installing the Chart
+The open source status page system
 
-Add delivery hero public chart repo.
+**Homepage:** <https://cachethq.io/>
+
+## How to install this chart
+
+Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
+helm repo add deliveryhero https://charts.deliveryhero.io
 helm repo update
 ```
 
-A simple install:
+A simple install with default values:
 
 ```console
 helm install deliveryhero/cachet
@@ -23,52 +27,75 @@ To install the chart with the release name `my-release`:
 helm install --name my-release deliveryhero/cachet
 ```
 
-To install with values:
+To install with some set values:
 
 ```console
-helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
+helm install --name my-release deliveryhero/cachet --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```
 helm install --name my-release deliveryhero/cachet -f values.yaml
 ```
 
-## Uninstalling the Chart
+## Requirements
 
-To uninstall/delete the `my-release` deployment:
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | postgresql | 9.1.4 |
 
-```console
-helm delete --purge my-release
-```
+## Values
 
-The command removes nearly all the Kubernetes components associated with the
-chart and deletes the release.
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| database.create | bool | `false` |  |
+| database.driver | string | `"pssql"` |  |
+| database.host | string | `"cachet-db.example.com"` |  |
+| database.instance_id | string | `"shared"` |  |
+| database.name | string | `"cachet"` |  |
+| database.port | int | `5432` |  |
+| database.username | string | `"cachet"` |  |
+| env.private.APP_KEY | string | `""` |  |
+| env.private.DB_PASSWORD | string | `""` |  |
+| env.private.MAIL_ADDRESS | string | `""` |  |
+| env.private.MAIL_PASSWORD | string | `""` |  |
+| env.private.MAIL_USERNAME | string | `""` |  |
+| env.public.APP_DEBUG | bool | `false` |  |
+| env.public.APP_LOG | string | `"errorlog"` |  |
+| env.public.CACHET_BEACON | bool | `false` |  |
+| env.public.CACHET_EMOJI | bool | `false` |  |
+| env.public.CACHE_DRIVER | string | `"database"` |  |
+| env.public.DB_DRIVER | string | `"pgsql"` |  |
+| env.public.DOCKER | bool | `true` |  |
+| env.public.MAIL_DRIVER | string | `"smtp"` |  |
+| env.public.MAIL_ENCRYPTION | string | `"tls"` |  |
+| env.public.MAIL_HOST | string | `""` |  |
+| env.public.MAIL_NAME | string | `""` |  |
+| env.public.MAIL_PORT | int | `25` |  |
+| env.public.QUEUE_DRIVER | string | `"database"` |  |
+| env.public.SESSION_DRIVER | string | `"database"` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"Always"` |  |
+| image.repository | string | `"cachethq/docker"` |  |
+| image.tag | string | `"2.3.15"` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.host.name | string | `"nil"` |  |
+| ingress.host.path | string | `"/"` |  |
+| ingress.tls | list | `[]` |  |
+| labels.type | string | `"infra"` |  |
+| nameOverride | string | `""` |  |
+| replicaCount | int | `1` |  |
+| resources.limits.cpu | string | `"100m"` |  |
+| resources.limits.memory | string | `"128Mi"` |  |
+| resources.requests.cpu | string | `"100m"` |  |
+| resources.requests.memory | string | `"128Mi"` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
 
-## Configuration
+## Maintainers
 
-The following table lists the configurable parameters of the cachet chart and its default values.
-
-| Parameter                 | Description                             | Default                | Required |
-|:------------------------- |:--------------------------------------- | :--------------------- |:-------- |
-|`image.repostitory`        | Image repository                        | `cachethq/docker`      | `yes`    |
-|`image.tag`                | Image tag                               | `latest`               | `yes`    |
-|`image.pullPolicy`         | Image pull policy                       | `IfNotPresent`         |          |
-|`service.type`             | Service Type                            | `ClusterIP`            | `yes`    |
-|`service.port`             | The port the service will be exposed on | `80`                   | `yes`    |
-|`ingress.enabled`          | Enables ingress object                  | `false`                |          |
-|`ingress.annotations`      | Required ingress annotations            | `{}`                   |          |
-|`ingress.tls`              | TLS secres used by ingress              | `[]`                   |          |
-|`host.name`                | Name of host attached to ingress        | `nil`                  |          |
-|`host.path`                | Path used to route to backed service    | `/`                    |          |
-|`resources.limits.cpu`     | Allowed CPU limits                      | `100m`                 |          |
-|`resources.limits.memory`  | Allowed Memory limits                   | `128Mi`                |          |
-|`resources.requests.cpu`   | Allowed CPU requests                    | `100m`                 |          |
-|`resources.requests.memory`| Allowed memory requests                 | `128Mi`                |          |
-|`database.create`          | Create database for cachet              | `false`                |          |
-|`database.host`            | Database host                           | `nil`                  |          |
-|`database.port`            | Database port                           | `5432`                 |          |
-|`database.name`            | Database name                           | `cachet`               |          |
-|`database.username`        | Database username                       | `cachet`               |          |
-|`database.instance_id`     | Database instance Id                    | `nil`                  |          |
-|`database.driver`          | Database driver                         | `pssql`                |          |
-|`env.public`               | Public environment variables            | `{}`                   | `yes`    |
-|`env.private`              | Private environment variables           | `{}`                   | `yes`    |
-
-> Note: All private environment variables should be encrypted if they are versioned alongside your infrastructure. Refer to installation [documentation](https://docs.cachethq.io/docs/installing-cachet) for all the required configuration environment variables
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | no-reply@deliveryhero.com |  |

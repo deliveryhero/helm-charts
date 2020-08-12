@@ -1,17 +1,21 @@
-# Helm chart for Postwoman
+# postwoman
 
-[Postwoman](https://postwoman.io/) A free, fast and beautiful API request builder.
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
 
-## Installing the Chart
+A free, fast and beautiful API request builder
 
-Add delivery hero public chart repo.
+**Homepage:** <https://github.com/postwoman-io/postwoman>
+
+## How to install this chart
+
+Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
+helm repo add deliveryhero https://charts.deliveryhero.io
 helm repo update
 ```
 
-A simple install:
+A simple install with default values:
 
 ```console
 helm install deliveryhero/postwoman
@@ -23,42 +27,43 @@ To install the chart with the release name `my-release`:
 helm install --name my-release deliveryhero/postwoman
 ```
 
-To install with values:
+To install with some set values:
 
 ```console
-helm install --name my-release deliveryhero/postwoman --set ingress.enabled=true
+helm install --name my-release deliveryhero/postwoman --set values_key1=value1 --set values_key2=value2
 ```
 
-## Uninstalling the Chart
+To install with custom values file:
 
-To uninstall/delete the `my-release` deployment:
-
-```console
-helm delete --purge my-release
+```
+helm install --name my-release deliveryhero/postwoman -f values.yaml
 ```
 
-The command removes nearly all the Kubernetes components associated with the
-chart and deletes the release.
+## Values
 
-## Configuration
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"liyasthomas/postwoman"` |  |
+| image.tag | string | `"v1.9.7"` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| ingress.hosts[0].paths[0] | string | `"/"` |  |
+| ingress.tls | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| replicaCount | int | `1` |  |
+| resources.limits.cpu | string | `"100m"` |  |
+| resources.limits.memory | string | `"128Mi"` |  |
+| resources.requests.cpu | string | `"100m"` |  |
+| resources.requests.memory | string | `"128Mi"` |  |
+| service.containerPort | int | `3000` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
 
-The following table lists the configurable parameters of the postwoman chart and its default values.
+## Maintainers
 
-| Parameter                 | Description                                        | Default                | Required |
-|:------------------------- |:-------------------------------------------------- |:---------------------- |:-------- |
-|`replicaCount`             | Number of replicas                                 | `1`                    | `yes`    |
-|`image.repostitory`        | Image repository                                   | `liyasthomas/postwoman`| `yes`    |
-|`image.tag`                | Image tag                                          | `v1.9.7`               | `yes`    |
-|`image.pullPolicy`         | Image pull policy                                  | `IfNotPresent`         |          |
-|`service.type`             | Service Type                                       | `ClusterIP`            | `yes`    |
-|`service.port`             | The port the service will be exposed on            | `80`                   | `yes`    |
-|`service.containerPort`    | The targetPort the service will forward request on | `3000`                 | `yes`    |
-|`ingress.enabled`          | Enables ingress object                             | `false`                |          |
-|`ingress.annotations`      | Required ingress annotations                       | `{}`                   |          |
-|`ingress.tls`              | TLS secres used by ingress                         | `[]`                   |          |
-|`ingress.hosts`            | Name of host attached to ingress                   | `example.local`        |          |
-|`resources.limits.cpu`     | Allowed CPU limits                                 | `100m`                 |          |
-|`resources.limits.memory`  | Allowed Memory limits                              | `128Mi`                |          |
-|`resources.requests.cpu`   | Allowed CPU requests                               | `100m`                 |          |
-|`resources.requests.memory`| Allowed memory requests                            | `128Mi`                |          |
-|`extra_labels`             | The custom labels if you need                      | `{}`                   |          |
+| Name | Email | Url |
+| ---- | ------ | --- |
+| javad-hajiani | no-reply@deliveryhero.com |  |
