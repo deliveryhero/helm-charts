@@ -4,10 +4,9 @@ jobs:
   lint-changelog:
     name: Lint changelog file
     runs-on: ubuntu-latest
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-  helm-docs:
     container:
       image: jnorwood/helm-docs:v0.14.0
       options: --template-file=../../ci/README.md.gotmpl
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
