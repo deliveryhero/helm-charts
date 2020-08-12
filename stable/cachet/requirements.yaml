@@ -1,5 +1,6 @@
 dependencies:
-  - name: postgresql
-    version: 8.6.4
-    repository: https://kubernetes-charts.storage.googleapis.com/
-    condition: postgresql.enabled
+- name: bitnami/postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.1.4
+  alias: postgresql
+  condition: postgresql.enabled
