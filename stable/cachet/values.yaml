@@ -54,9 +54,6 @@ env:
     APP_DEBUG: false
     APP_LOG: errorlog
     DB_DRIVER: pgsql
-    DB_HOST: cachet-postgresql
-    DB_DATABASE: cachet
-    DB_USERNAME: cachet
     DOCKER: true
     CACHE_DRIVER: database
     SESSION_DRIVER: database
@@ -72,8 +69,8 @@ env:
 
   # Update all with your own values
   private:
-    APP_KEY: 32_character_string_is_require
-    DB_PASSWORD: cachet
-    MAIL_USERNAME: _
-    MAIL_PASSWORD: _
-    MAIL_ADDRESS: _
+    APP_KEY: ""
+    DB_PASSWORD: ""
+    MAIL_USERNAME: ""
+    MAIL_PASSWORD: ""
+    MAIL_ADDRESS: ""
