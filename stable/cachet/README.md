@@ -11,7 +11,7 @@ helm repo add deliveryhero https://charts.deliveryhero.io/
 helm repo update
 ```
 
-Simple install
+A simple install:
 
 ```console
 helm install deliveryhero/cachet
@@ -23,7 +23,7 @@ To install the chart with the release name `my-release`:
 helm install --name my-release deliveryhero/cachet
 ```
 
-Install with values
+To install with values:
 
 ```console
 helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
@@ -35,7 +35,7 @@ helm install --name my-release deliveryhero/cachet -f values.yaml
 To uninstall/delete the `my-release` deployment:
 
 ```console
-$ helm delete --purge my-release
+helm delete --purge my-release
 ```
 
 The command removes nearly all the Kubernetes components associated with the
