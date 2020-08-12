@@ -77,12 +77,3 @@ env:
     MAIL_USERNAME: _
     MAIL_PASSWORD: _
     MAIL_ADDRESS: _
-
-postgresql:
-  fullnameOverride: cachet-postgresql
-  enabled: true
-  postgresqlDatabase: cachet
-  postgresqlUsername: cachet
-  postgresqlPassword: cachet
-  persistence:
-    enabled: false
