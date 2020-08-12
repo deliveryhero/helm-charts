@@ -12,5 +12,5 @@ spec:
       image: busybox
       command: ['sh', '-c']
       args:
-        - sleep 20 && wget '{{ include "cachet.fullname" . }}:{{ .Values.service.port }}/api/v1/ping'
+        - sleep 40 && wget '{{ include "cachet.fullname" . }}:{{ .Values.service.port }}/api/v1/ping'
   restartPolicy: Never
