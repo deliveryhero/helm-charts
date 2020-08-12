@@ -1,0 +1,21 @@
+env:
+  public:
+    DB_HOST: cachet-postgresql
+    DB_DATABASE: cachet
+    DB_USERNAME: cachet
+
+  private:
+    APP_KEY: 32_character_string_is_require
+    DB_PASSWORD: cachet
+    MAIL_USERNAME: _
+    MAIL_PASSWORD: _
+    MAIL_ADDRESS: _
+
+postgresql:
+  enabled: true
+  fullnameOverride: cachet-postgresql
+  postgresqlDatabase: cachet
+  postgresqlUsername: cachet
+  postgresqlPassword: cachet
+  persistence:
+    enabled: false
