@@ -3,31 +3,39 @@
 [Cachet](https://cachethq.io/) is an open source status page system.
 
 ## Installing the Chart
+
 Add delivery hero public chart repo.
+
 ```console
-$ helm repo add deliveryhero https://charts.deliveryhero.io/
-$ helm repo update
+helm repo add deliveryhero https://charts.deliveryhero.io/
+helm repo update
 ```
-Simple install
+
+A simple install:
+
 ```console
-$ $ helm install deliveryhero/cachet
+helm install deliveryhero/cachet
 ```
+
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install --name my-release deliveryhero/cachet
+helm install --name my-release deliveryhero/cachet
 ```
-Install with values
+
+To install with values:
+
 ```console
-$ helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
-$ helm install --name my-release deliveryhero/cachet -f values.yaml
+helm install --name my-release deliveryhero/cachet --set ingress.enabled=true
+helm install --name my-release deliveryhero/cachet -f values.yaml
 ```
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-release` deployment:
 
 ```console
-$ helm delete --purge my-release
+helm delete --purge my-release
 ```
 
 The command removes nearly all the Kubernetes components associated with the

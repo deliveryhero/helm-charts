@@ -4,19 +4,29 @@
 
 ## Installing the Chart
 
+Add delivery hero public chart repo.
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+helm repo update
+```
+
+A simple install:
+
+```console
+helm install deliveryhero/postwoman
+```
+
 To install the chart with the release name `my-release`:
 
 ```console
-<!-- add delivery hero  repo -->
-$ helm repo add deliveryhero https://charts.deliveryhero.io/
-<!-- simple install -->
-$ helm install deliveryhero/postwoman
-<!-- install with release name -->
-$ helm install --name my-release deliveryhero/postwoman
+helm install --name my-release deliveryhero/postwoman
+```
 
-<!-- install with set values -->
+To install with values:
 
-$ helm install --name my-release deliveryhero/postwoman --set ingress.enabled=true
+```console
+helm install --name my-release deliveryhero/postwoman --set ingress.enabled=true
 ```
 
 ## Uninstalling the Chart
@@ -24,7 +34,7 @@ $ helm install --name my-release deliveryhero/postwoman --set ingress.enabled=tr
 To uninstall/delete the `my-release` deployment:
 
 ```console
-$ helm delete --purge my-release
+helm delete --purge my-release
 ```
 
 The command removes nearly all the Kubernetes components associated with the
@@ -52,4 +62,3 @@ The following table lists the configurable parameters of the postwoman chart and
 |`resources.requests.cpu`   | Allowed CPU requests                               | `100m`                 |          |
 |`resources.requests.memory`| Allowed memory requests                            | `128Mi`                |          |
 |`extra_labels`             | The custom labels if you need                      | `{}`                   |          |
-
