@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jnorwood/helm-docs:v0.14.0
-      options: ci/test.sh
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      run: echo "one two three"
