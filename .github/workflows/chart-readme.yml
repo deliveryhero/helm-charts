@@ -10,12 +10,4 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
     - name: run my stuff
-      run: |
-        echo "one"
-        ls -l
-        echo "two"
-        pwd
-        echo "three"
-        echo "$GITHUB_WORKSPACE"
-        echo "four"
-        ls -l "$GITHUB_WORKSPACE"
+      run: sh ci/check-all-chart-readme.sh
