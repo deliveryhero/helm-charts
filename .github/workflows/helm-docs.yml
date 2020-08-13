@@ -1,13 +1,13 @@
-name: Chart README.md check
+name: Helm docs
 on: [push, pull_request]
 jobs:
   lint-changelog:
-    name: Lint changelog file
+    name: Check all docs
     runs-on: ubuntu-latest
     container:
       image: jnorwood/helm-docs:v0.14.0
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-    - name: run my stuff
+    - name: Check all charts README.md
       run: sh ci/check-all-chart-readme.sh

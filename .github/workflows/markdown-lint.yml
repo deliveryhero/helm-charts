@@ -2,12 +2,12 @@ name: Markdown Lint
 on: [push, pull_request]
 jobs:
   lint-changelog:
-    name: Lint changelog file
+    name: Lint all markdown files
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    - name: Markdown Linting Action
+    - name: Run lint
       uses: avto-dev/markdown-lint@v1.3.1
       with:
         args: '**/*.md'
