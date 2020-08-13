@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jnorwood/helm-docs:v0.14.0
-      options: --entrypoint="ci/test.sh"
+      options: ci/test.sh
     steps:
     - name: Check out code
       uses: actions/checkout@v2
