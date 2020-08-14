@@ -1,8 +1,5 @@
-# Uses "ct" from https://github.com/helm/chart-testing
-# Will lint and test install of any chart in stable that has changes compared
-# to master
-name: Helm Chart Testing
-on: [push, pull_request]
+name: Chart Testing
+on: [pull_request]
 jobs:
   build:
     name: lint, install
@@ -23,7 +20,6 @@ jobs:
 
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.0.0-alpha.3
-        # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'
 
       - name: Run chart-testing (install)

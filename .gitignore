@@ -1,2 +1,3 @@
 stable/*/charts
 tmpcharts
+.helm-docs-md5sum*
