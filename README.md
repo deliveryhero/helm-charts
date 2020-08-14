@@ -6,7 +6,7 @@ Public [Helm](https://helm.sh/) repository for charts we use at [Delivery Hero](
 
 You can add the repository using the name `deliveryhero` with a simple command.
 
-```
+```console
 helm repo add deliveryhero https://charts.deliveryhero.com/public
 ```
 
@@ -24,6 +24,6 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 
 To ensure a chart `README.md` is templated correctly use docker:
 
-```
+```console
 docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:latest --template-file=../../ci/README.md.gotmpl
 ```
