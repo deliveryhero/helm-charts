@@ -18,7 +18,7 @@ Contributions are welcome ❤️
 
 This repository has multiple Github Actions to ensure quality is high, these include:
 
-- [chart-testing](hhttps://github.com/helm/chart-testing): lint and install tests
+- [chart-testing](https://github.com/helm/chart-testing): lint and install tests
 - [markdown-lint](https://github.com/avto-dev/markdown-lint): lint all markdown files
 - [helm-docs](https://github.com/norwoodj/helm-docs): check all chart `README.md` have all values documented
 
