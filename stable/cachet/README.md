@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -35,7 +35,7 @@ helm install --name my-release deliveryhero/cachet --set values_key1=value1 --se
 
 To install with custom values file:
 
-```
+```console
 helm install --name my-release deliveryhero/cachet -f values.yaml
 ```
 

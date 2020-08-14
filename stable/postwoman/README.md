@@ -1,6 +1,6 @@
 # postwoman
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
 
 A free, fast and beautiful API request builder
 
@@ -35,7 +35,7 @@ helm install --name my-release deliveryhero/postwoman --set values_key1=value1 -
 
 To install with custom values file:
 
-```
+```console
 helm install --name my-release deliveryhero/postwoman -f values.yaml
 ```
 
