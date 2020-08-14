@@ -1,5 +1,5 @@
 name: Chart Testing
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   build:
     name: lint, install
