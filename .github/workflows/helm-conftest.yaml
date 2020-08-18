@@ -2,6 +2,7 @@ name: Helm conftest
 on: [pull_request]
 jobs:
   check-charts:
+    name: Check all charts
     runs-on: ubuntu-latest
     container:
       image: instrumenta/conftest:v0.20.0
