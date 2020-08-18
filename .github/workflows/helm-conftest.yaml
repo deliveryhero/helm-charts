@@ -5,7 +5,7 @@ jobs:
     name: Check all charts
     runs-on: ubuntu-latest
     container:
-      image: instrumenta/conftest:v0.20.0
+      image: instrumenta/helm-conftest:latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
