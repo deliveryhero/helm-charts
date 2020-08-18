@@ -1,0 +1,12 @@
+name: Helm conftest
+on: [pull_request]
+jobs:
+  check-charts:
+    runs-on: ubuntu-latest
+    container:
+      image: instrumenta/conftest:v0.20.0
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Validate all charts
+        run: sh ci/helm-conftest.sh
