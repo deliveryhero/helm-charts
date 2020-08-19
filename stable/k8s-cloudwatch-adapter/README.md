@@ -11,8 +11,7 @@ An implementation of the Kubernetes Custom Metrics API and External Metrics API 
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io
-helm repo update
+helm repo add deliveryhero https://charts.deliveryhero.com/public
 ```
 
 A simple install with default values:
@@ -24,19 +23,19 @@ helm install deliveryhero/k8s-cloudwatch-adapter
 To install the chart with the release name `my-release`:
 
 ```console
-helm install --name my-release deliveryhero/k8s-cloudwatch-adapter
+helm install my-release deliveryhero/k8s-cloudwatch-adapter
 ```
 
 To install with some set values:
 
 ```console
-helm install --name my-release deliveryhero/k8s-cloudwatch-adapter --set values_key1=value1 --set values_key2=value2
+helm install my-release deliveryhero/k8s-cloudwatch-adapter --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install --name my-release deliveryhero/k8s-cloudwatch-adapter -f values.yaml
+helm install my-release deliveryhero/k8s-cloudwatch-adapter -f values.yaml
 ```
 
 ## Values

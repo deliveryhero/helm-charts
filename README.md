@@ -17,6 +17,7 @@ helm install my-release deliveryhero/<chart>
 ## Chart list
 
 - [cachet](stable/cachet)
+- [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
 - [postwoman](stable/postwoman)
 - [prometheus-spot-termination-exporter](stable/prometheus-spot-termination-exporter)
 
