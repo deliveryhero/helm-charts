@@ -1,0 +1,49 @@
+adapter:
+  args:
+    cert-dir: /tmp
+    secure-port: 6443
+    logtostderr: true
+    v: 2
+
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+  tag: "v0.9.0"
+  repository: chankh/k8s-cloudwatch-adapter
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  annotations: {}
+
+
+podSecurityContext:
+  fsGroup: 65534
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
