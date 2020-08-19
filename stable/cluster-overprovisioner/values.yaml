@@ -27,17 +27,17 @@ nameOverride: ""
 fullnameOverride: ""
 
 deployments:
-   - name: default
-     annotations: {}
-     replicaCount: 3
-     nodeSelector: {}
-     resources:
-       limits:
-         cpu: 1000m
-         memory: 1000Mi
-       requests:
-         cpu: 1000m
-         memory: 1000Mi
-     tolerations: []
-     affinity: {}
-     labels: {}
+  - name: default
+    annotations: {}
+    replicaCount: 3
+    nodeSelector: {}
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1000Mi
+      requests:
+        cpu: 1000m
+        memory: 1000Mi
+    tolerations: []
+    affinity: {}
+    labels: {}
