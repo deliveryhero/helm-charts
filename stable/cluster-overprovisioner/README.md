@@ -26,7 +26,7 @@ Installs a deployment that overprovisions the cluster
 | deployments | list | {} | Define optional additional deployments - A default deployment is included by default |
 | deployments[0].affinity | object | `{}` | Default Deployment - Map of node/pod affinities |
 | deployments[0].annotations | object | `{}` | Default Deployment - Annotations to add to the deployment |
-| deployments[0].labels | object | `{}` | 	Default Deployment - Optional labels tolerations |
+| deployments[0].labels | object | `{}` | Default Deployment - Optional labels tolerations |
 | deployments[0].name | string | `"default"` | Default Deployment - Name for additional deployments (will be added as label cluster-over-provisioner-name, so you can match it with affinity rules) |
 | deployments[0].nodeSelector | object | `{}` | Default Deployment - Node labels for pod assignment |
 | deployments[0].replicaCount | int | `3` | Default Deployment - Number of replicas |

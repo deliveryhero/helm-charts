@@ -65,5 +65,5 @@ deployments:
     tolerations: []
     # deployments[0].affinity -- Default Deployment - Map of node/pod affinities
     affinity: {}
-    # deployments[0].labels -- 	Default Deployment - Optional labels tolerations
+    # deployments[0].labels -- Default Deployment - Optional labels tolerations
     labels: {}
