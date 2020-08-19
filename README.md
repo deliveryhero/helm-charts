@@ -1,10 +1,10 @@
 # Helm Charts @ Delivery Hero
 
-[![](img/dh-logo-resized.png)](#)  ❤️ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![](img/helm-boat-resized.png)](#)
+[![Delivery Hero](img/dh-logo-resized.png)](#)  ❤️ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![Helm](img/helm-boat-resized.png)](#)
 
 [Delivery Hero](https://www.deliveryhero.com/) are big fans of Kubernetes and use [Helm](https://helm.sh/) extensively. Here we have collected a few charts that are used across our organisation.
 
-## TLDR;
+## TLDR
 
 ```console
 helm repo add deliveryhero https://charts.deliveryhero.com/public
