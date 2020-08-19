@@ -39,5 +39,7 @@ Return the appropriate apiVersion for PriorityClass.
 {{- print "v1alpha1" -}}
 {{- else if semverCompare ">=1.11-0" .Capabilities.KubeVersion.GitVersion -}}
 {{- print "v1beta1" -}}
+{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- print "v1" -}}
 {{- end -}}
 {{- end -}}
