@@ -30,3 +30,9 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 - [markdown-lint](https://github.com/avto-dev/markdown-lint): lint all markdown files
 - [helm-docs](https://github.com/norwoodj/helm-docs): check all chart `README.md` have all values documented
 - [helm-conftest](https://github.com/instrumenta/helm-conftest): Ensures standard labels are present
+
+To generate chart `README.md` files from the [template](ci/README.md.gotmpl), run this:
+
+```console
+docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:latest --template-file=../../ci/README.md.gotmpl
+```
