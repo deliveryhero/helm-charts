@@ -12,7 +12,7 @@ helm search repo deliveryhero
 helm install my-release deliveryhero/<chart>
 ```
 
-[![](img/add-repo.gif)](#)
+[![adding deliveryhero chart repo](img/add-repo.gif)](#)
 
 ## Chart list
 
