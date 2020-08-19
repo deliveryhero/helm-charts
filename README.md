@@ -1,16 +1,24 @@
-# Helm chart repository @ Delivery Hero
+# Helm Charts @ Delivery Hero
 
-Public [Helm](https://helm.sh/) repository for charts we use at [Delivery Hero](https://www.deliveryhero.com/).
+[![](img/dh-logo-resized.png)](#)  ❤️ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![](img/helm-boat-resized.png)](#)
 
-## Adding the repository
+[Delivery Hero](https://www.deliveryhero.com/) are big fans of Kubernetes and use [Helm](https://helm.sh/) extensively. Here we have collected a few charts that are used across our organisation.
 
-You can add the repository using the name `deliveryhero` with a simple command.
+## TLDR;
 
 ```console
 helm repo add deliveryhero https://charts.deliveryhero.com/public
+helm search repo deliveryhero
+helm install my-release deliveryhero/<chart>
 ```
 
-Of course you may choose a different name here.
+[![](img/add-repo.gif)](#)
+
+## Chart list
+
+- [cachet](stable/cachet)
+- [postwoman](stable/postwoman)
+- [prometheus-spot-termination-exporter](stable/prometheus-spot-termination-exporter)
 
 ## Contributing
 
@@ -21,9 +29,4 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 - [chart-testing](https://github.com/helm/chart-testing): lint and install tests
 - [markdown-lint](https://github.com/avto-dev/markdown-lint): lint all markdown files
 - [helm-docs](https://github.com/norwoodj/helm-docs): check all chart `README.md` have all values documented
-
-To ensure a chart `README.md` is templated correctly use docker:
-
-```console
-docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:latest --template-file=../../ci/README.md.gotmpl
-```
+- [helm-conftest](https://github.com/instrumenta/helm-conftest): Ensures standard labels are present
