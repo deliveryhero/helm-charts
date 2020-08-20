@@ -5,7 +5,6 @@ set -euo pipefail
 alias conftest=/root/.helm/plugins/helm-conftest/bin/conftest
 helm repo remove local
 
-echo -n "$(helm version)"
 for chart in $(find stable -maxdepth 1 -mindepth 1); do
   echo -n "helm-conftest running for chart: ${chart}..."
   # Remove any dependencies as we are not going to test them
