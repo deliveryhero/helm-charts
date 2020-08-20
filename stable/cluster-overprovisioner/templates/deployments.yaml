@@ -20,7 +20,7 @@ metadata:
   name: "{{ $fullname }}-{{ .name }}"
   labels:
     {{- $commonLabels | nindent 4 }}
-    cluster-overprovisioner-deployment: {{ .name }}
+    app.cluster-overprovisioner/deployment: {{ .name }}
 spec:
   strategy:
     type: Recreate
@@ -28,7 +28,7 @@ spec:
   selector:
     matchLabels:
       {{- $matchLabels | nindent 6 }}
-      cluster-overprovisioner-deployment: {{ .name }}
+      app.cluster-overprovisioner/deployment: {{ .name }}
   template:
     metadata:
     {{- with .annotations }}
@@ -37,7 +37,7 @@ spec:
     {{- end }}
       labels:
         {{- $commonLabels | nindent 8 }}
-        cluster-overprovisioner-deployment: {{ .name }}
+        app.cluster-overprovisioner/deployment: {{ .name }}
     {{- with .labels }}
         {{- toYaml . | nindent 8 }}
     {{- end }}
