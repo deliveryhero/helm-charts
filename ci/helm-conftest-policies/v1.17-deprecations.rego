@@ -1,6 +1,11 @@
 package main
 
+ignored_charts := {
+    "cluster-overprovisioner"
+}
+
 deny[msg] {
+  not ignored_charts
   input.apiVersion == "v1"
   input.kind == "List"
   obj := input.items[_]
@@ -8,6 +13,7 @@ deny[msg] {
 }
 
 deny[msg] {
+  not ignored_charts
   input.apiVersion != "v1"
   input.kind != "List"
   msg := _deny
@@ -17,6 +23,7 @@ deny[msg] {
 
 # PriorityClass resources will no longer be served from scheduling.k8s.io/v1beta1 and scheduling.k8s.io/v1alpha1 in v1.17.
 _deny = msg {
+  not ignored_charts
   apis := ["scheduling.k8s.io/v1beta1", "scheduling.k8s.io/v1alpha1"]
   input.apiVersion == apis[_]
   input.kind == "PriorityClass"
