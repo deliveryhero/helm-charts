@@ -1,9 +1,5 @@
 package main
 
-ignored_charts := {
-    "cluster-overprovisioner"
-}
-
 deny[msg] {
   not ignored_charts
   input.apiVersion == "v1"
