@@ -6,3 +6,6 @@ MD013: false
 
 # No bare URLs
 MD034: false
+
+# Disable No empty links as it is used to disable image links that Github markdown creates automatically
+MD042: false

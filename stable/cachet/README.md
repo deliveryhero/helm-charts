@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -11,8 +11,7 @@ The open source status page system
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io
-helm repo update
+helm repo add deliveryhero https://charts.deliveryhero.io/public
 ```
 
 A simple install with default values:
@@ -24,19 +23,19 @@ helm install deliveryhero/cachet
 To install the chart with the release name `my-release`:
 
 ```console
-helm install --name my-release deliveryhero/cachet
+helm install my-release deliveryhero/cachet
 ```
 
 To install with some set values:
 
 ```console
-helm install --name my-release deliveryhero/cachet --set values_key1=value1 --set values_key2=value2
+helm install my-release deliveryhero/cachet --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install --name my-release deliveryhero/cachet -f values.yaml
+helm install my-release deliveryhero/cachet -f values.yaml
 ```
 
 ## Requirements
