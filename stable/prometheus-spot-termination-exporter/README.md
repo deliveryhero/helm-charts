@@ -11,7 +11,7 @@ Spot instance termination exporter for Prometheus
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.com/public
+helm repo add deliveryhero https://charts.deliveryhero.io/public
 ```
 
 A simple install with default values:
