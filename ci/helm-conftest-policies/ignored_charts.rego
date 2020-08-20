@@ -1,5 +1,5 @@
 package main
 
-ignored_charts := {
+ignored_charts_deprecations := {
     "cluster-overprovisioner"
 }

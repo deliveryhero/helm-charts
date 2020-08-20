@@ -43,3 +43,24 @@ Return the appropriate apiVersion for PriorityClass.
 {{- print "scheduling.k8s.io/v1alpha1" -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Common labels
+*/}}
+{{- define "cluster-overprovisioner.labels" -}}
+app.kubernetes.io/name: {{ include "cluster-overprovisioner.name" . }}
+helm.sh/chart: {{ include "cluster-overprovisioner.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end -}}
+
+{{/*
+Common labels
+*/}}
+{{- define "cluster-overprovisioner.matchLabels" -}}
+app.kubernetes.io/name: {{ include "cluster-overprovisioner.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}

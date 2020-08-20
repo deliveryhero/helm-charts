@@ -4,10 +4,7 @@ kind: PriorityClass
 metadata:
   name: {{ .Values.priorityClassDefault.name }}
   labels:
-    app.kubernetes.io/name: {{ include "cluster-overprovisioner.name" . }}
-    helm.sh/chart: {{ include "cluster-overprovisioner.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "cluster-overprovisioner.labels" . | nindent 4 }}
 value: {{ .Values.priorityClassDefault.value }}
 globalDefault: true
 description: "Default priority class for all pods"

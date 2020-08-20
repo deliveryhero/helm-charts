@@ -3,6 +3,8 @@
 {{- $fullname :=  include "cluster-overprovisioner.fullname" . -}}
 {{- $name :=  include "cluster-overprovisioner.name" . -}}
 {{- $chart :=  include "cluster-overprovisioner.chart" . -}}
+{{- $commonLabels :=  include "cluster-overprovisioner.labels" . -}}
+{{- $matchLabels :=  include "cluster-overprovisioner.matchLabels" . -}}
 {{- $chartName := .Chart.Name }}
 {{- $podSecurityContext := .Values.podSecurityContext }}
 {{- $priorityClassName := .Values.priorityClassOverprovision.name }}
@@ -17,20 +19,15 @@ kind: Deployment
 metadata:
   name: "{{ $fullname }}-{{ .name }}"
   labels:
-    app.kubernetes.io/name: {{ $name }}
-    cluster-overprovisioner-name: {{ .name }}
-    helm.sh/chart: {{ $chart }}
-    app.kubernetes.io/instance: {{ $relName }}
-    app.kubernetes.io/managed-by: {{ $relService }}
+    {{- $commonLabels | nindent 4 }}
 spec:
   strategy:
     type: Recreate
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ $name }}
-      cluster-overprovisioner-name: {{ .name }}
-      app.kubernetes.io/instance: {{ $relName }}
+      {{- $matchLabels | nindent 6 }}
+      cluster-overprovisioner-deployment: {{ .name }}
   template:
     metadata:
     {{- with .annotations }}
@@ -38,9 +35,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        app.kubernetes.io/name: {{ $name }}
-        cluster-overprovisioner-name: {{ .name }}
-        app.kubernetes.io/instance: {{ $relName }}
+        {{- $commonLabels | nindent 8 }}
     {{- with .labels }}
         {{- toYaml . | nindent 8 }}
     {{- end }}
