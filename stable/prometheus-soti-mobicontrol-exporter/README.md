@@ -4,6 +4,8 @@
 
 A Helm chart a prometheus exporter for SOTI MobiControl metrics
 
+**Homepage:** <https://github.com/max-rocket-internet/soti-mobicontrol-exporter>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -79,3 +81,8 @@ helm install my-release deliveryhero/prometheus-soti-mobicontrol-exporter -f val
 | sotiApi.username | string | `"<change-me>"` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
