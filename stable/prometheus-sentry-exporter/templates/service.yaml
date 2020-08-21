@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
   - protocol: TCP
-    port: {{ .Values.deployment.port }}
-    targetPort: {{ .Values.deployment.port }}
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.port }}
   selector:
     app.kubernetes.io/name: {{ include "prometheus-sentry-exporter.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

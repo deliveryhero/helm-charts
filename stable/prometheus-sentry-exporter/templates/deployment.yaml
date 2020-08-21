@@ -20,7 +20,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ template "prometheus-sentry-exporter.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -44,20 +43,20 @@ spec:
           {{- end }}
           livenessProbe:
             tcpSocket:
-              port: {{ .Values.deployment.port }}
+              port: {{ .Values.service.port }}
             initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 10
             failureThreshold: 3
           readinessProbe:
             tcpSocket:
-              port: {{ .Values.deployment.port }}
+              port: {{ .Values.service.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 10
           ports:
             - name: http
-              containerPort: {{ .Values.deployment.port }}
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
