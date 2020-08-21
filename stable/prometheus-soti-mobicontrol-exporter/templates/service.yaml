@@ -1,0 +1,18 @@
+{{- if .Values.service.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "prometheus-soti-mobicontrol-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-soti-mobicontrol-exporter.labels" . | indent 4 }}
+  annotations:
+{{- toYaml .Values.service.annotations | nindent 8 }}
+spec:
+  ports:
+    - port: 80
+      targetPort: 9571
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ include "prometheus-soti-mobicontrol-exporter.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
