@@ -17,9 +17,18 @@ helm install my-release deliveryhero/<chart>
 ## Chart list
 
 - [cachet](stable/cachet)
+- [cluster-overprovisioner](stable/cluster-overprovisioner)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
 - [postwoman](stable/postwoman)
+- [prometheus-aws-costs-exporter](stable/prometheus-aws-costs-exporter)
+- [prometheus-aws-health-exporter](stable/prometheus-aws-health-exporter)
+- [prometheus-darksky-exporter](stable/prometheus-darksky-exporter)
+- [prometheus-k8s-events-exporter](stable/prometheus-k8s-events-exporter)
+- [prometheus-new-relic-exporter](stable/prometheus-new-relic-exporter)
+- [prometheus-sentry-exporter](stable/prometheus-sentry-exporter)
+- [prometheus-soti-mobicontrol-exporter](stable/prometheus-soti-mobicontrol-exporter)
 - [prometheus-spot-termination-exporter](stable/prometheus-spot-termination-exporter)
+- [prometheus-statsd-exporter](stable/prometheus-statsd-exporter)
 
 ## Contributing
 
