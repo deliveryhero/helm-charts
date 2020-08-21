@@ -1,0 +1,21 @@
+defaults:
+  timer_type: histogram
+  buckets: [.005, .01, .025, .05, .1, .25, .5, 1, 2.5 ]
+  match_type: glob
+  glob_disable_ordering: false
+  ttl: 0 # metrics do not expire
+
+mappings:
+- match: test.dispatcher.*.*.*
+  name: "dispatcher_events_total"
+  labels:
+    processor: "$1"
+    action: "$2"
+    outcome: "$3"
+    job: "test_dispatcher"
+- match: *.signup.*.*
+  name: "signup_events_total"
+  labels:
+    provider: "$2"
+    outcome: "$3"
+    job: "${1}_server"
