@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "prometheus-statsd-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-statsd-exporter.labels" . | indent 4 }}
+data:
+{{ (.Files.Glob "config/statsd_mapping.yml").AsConfig | indent 2 }}
