@@ -30,11 +30,11 @@ spec:
             - {{ . | quote }}
             {{- end }}
           {{- end }}
-          {{- if .Values.env }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.env }}
           env:
             {{- range $key, $value := .Values.environment }}
             - name: {{ $key }}
