@@ -1,0 +1,46 @@
+# Default values for prometheus-sentry-exporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+environment:
+  SENTRY_HOST: your sentry endpoint
+
+replicaCount: 1
+
+image:
+  repository: ujamii/prometheus-sentry-exporter
+  tag: "0.5.0"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
+  requests:
+    cpu: 200m
+    memory: 200Mi
+  limits:
+    cpu: 200m
+    memory: 200Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
