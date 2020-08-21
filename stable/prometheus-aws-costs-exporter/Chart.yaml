@@ -1,0 +1,9 @@
+apiVersion: v1
+appVersion: "1.0"
+description: Exporter for AWS Cost Explorer daily costs
+name: prometheus-aws-costs-exporter
+version: 0.1.0
+home: https://github.com/nachomillangarcia/prometheus_aws_cost_exporter
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com
