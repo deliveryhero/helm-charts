@@ -18,7 +18,7 @@ jobs:
       - name: Helm init
         run: helm init --client-only
       - name: Install Helm Push plugin
-        run: helm plugin install https://github.com/chartmuseum/helm-push.git
+        run: helm plugin install https://github.com/chartmuseum/helm-push
       - name: Adding DH repository
         run: helm repo add deliveryhero https://charts.deliveryhero.io/public
       - name: Push charts to DH repository
