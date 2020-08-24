@@ -1,0 +1,26 @@
+name: Push Chart
+on:
+  push:
+    branches:
+      # - master
+      - push_chart_action
+    paths:
+      - 'stable/**'
+jobs:
+  push:
+    name: Push to Chartmuseum
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
+
+      - name: Helm Package
+        uses: Flydiverny/helm-package-action@0.1.0
+        with:
+          args: ./stable
+
+      - name: test
+        run: ls -la
