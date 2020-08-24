@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Helm init
+        run: helm init --client-only
       - name: Update requirements
         run: for chart in stable/*; do helm dependencies update $chart && helm package $chart; done
       - name: List
