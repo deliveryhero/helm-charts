@@ -2,10 +2,9 @@ name: Push Chart
 on:
   push:
     branches:
-      # - master
-      - push_chart_action
-    # paths:
-    #   - 'stable/**'
+      - master
+    paths:
+      - 'stable/**'
 jobs:
   push:
     name: Push to Chartmuseum
