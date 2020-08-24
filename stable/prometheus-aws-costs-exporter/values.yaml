@@ -1,0 +1,52 @@
+# Default values for prometheus-aws-costs-exporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+args:
+  - --host
+  - 0.0.0.0
+
+environment:
+  METRIC_TODAY_DAILY_COSTS: yes
+  METRIC_YESTERDAY_DAILY_COSTS: yes
+  METRIC_TODAY_DAILY_USAGE: yes
+  METRIC_TODAY_DAILY_USAGE_NORM: yes
+
+image:
+  repository: nachomillangarcia/prometheus_aws_cost_exporter
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+  limits:
+    memory: 128Mi
+    cpu: 300m
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

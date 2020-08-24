@@ -1,0 +1,9 @@
+apiVersion: v1
+appVersion: "1.0"
+description: Prometheus exporter for New Relic data. Requires a New Relic account.
+name: prometheus-new-relic-exporter
+version: 0.1.0
+home: https://github.com/jfindley/newrelic_exporter
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com

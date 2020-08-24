@@ -1,0 +1,63 @@
+{{ range .Values.city }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "prometheus-darksky-exporter.fullname" $ }}-{{ . | replace ", " "-" | replace " " "-" | lower }}
+  labels:
+    app: {{ template "prometheus-darksky-exporter.name" $ }}
+    chart: {{ template "prometheus-darksky-exporter.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  replicas: {{ $.Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "prometheus-darksky-exporter.name" $ }}
+      release: {{ $.Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "prometheus-darksky-exporter.name" $ }}
+        release: {{ $.Release.Name }}
+        city: {{ . | replace ", " "-" | replace " " "-" | lower }}
+      annotations:
+        prometheus.io/scrape: "{{ $.Values.prometheus }}"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "{{ $.Values.config.port }}"
+    spec:
+      serviceAccountName: {{ template "prometheus-darksky-exporter.serviceAccountName" $ }}
+      containers:
+        - name: {{ template "prometheus-darksky-exporter.fullname" $ }}-{{ . | replace ", " "-" | replace " " "-" | lower }}
+          env:
+          - name: CITY
+            value: {{ . | quote }}
+          - name: INTERVAL
+            value: {{ $.Values.config.interval }}
+          - name: APIKEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "prometheus-darksky-exporter.fullname" $ }}
+                key: apikey
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ $.Values.config.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: http
+          resources:
+            requests:
+              cpu: {{ $.Values.resources.requests.cpu }}
+              memory: {{ $.Values.resources.requests.memory }}
+            limits:
+              cpu: {{ $.Values.resources.limits.cpu }}
+              memory: {{ $.Values.resources.limits.memory }}
+---
+{{end}}

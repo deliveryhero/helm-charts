@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: billykwooten/darksky-exporter
+  tag: v0.0.4
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  name: http
+  labels: {}
+  annotations: {}
+
+resources:
+  limits:
+    cpu: 50m
+    memory: 50Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
+
+rbac:
+  create: true
+  pspEnabled: true
+serviceAccount:
+  create: true
+  name:
+
+config:
+  port: 9091
+  interval: 10m
+
+prometheus: true

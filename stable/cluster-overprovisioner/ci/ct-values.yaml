@@ -1,0 +1,18 @@
+deployments:
+  - name: ci-one
+    annotations: {}
+    replicaCount: 1
+    nodeSelector: {}
+    resources: {}
+    tolerations: []
+    affinity: {}
+    labels: {}
+
+  - name: ci-two
+    annotations: {}
+    replicaCount: 0
+    nodeSelector: {}
+    resources: {}
+    tolerations: []
+    affinity: {}
+    labels: {}

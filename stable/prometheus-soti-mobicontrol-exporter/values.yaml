@@ -1,0 +1,74 @@
+# Every key in this this map must be set
+sotiApi:
+  client_id: <change-me>
+  client_secret: <change-me>
+  username: <change-me>
+  password: <change-me>
+  mobicontrol_host: <change-me>
+  apiPageSize: 1000
+  apiConcurrency: 50
+
+logLevel: INFO
+
+image:
+  repository: maxrocketinternet/soti-mobicontrol-exporter
+  tag: 0.6
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+
+resources: {}
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+podReadinessProbe:
+  httpGet:
+    path: /healthz
+    port: 9571
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podLivenessProbe:
+  httpGet:
+    path: /healthz
+    port: 9571
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9571"
+
+service:
+  create: false
+  # Enusre podAnnotations is set to {} before adding service.annotations
+  # annotations:
+  #   prometheus.io_scrape: "true"
+  #   prometheus.io/path: "/metrics"
+  #   prometheus.io/port: "9571"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pod_labels: {}
