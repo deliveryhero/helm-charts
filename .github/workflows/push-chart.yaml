@@ -23,4 +23,4 @@ jobs:
           args: ./stable
 
       - name: test
-        run: ls -la
+        run: for f in *.tgz; do echo "$f chart packaged"; done
