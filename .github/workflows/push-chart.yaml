@@ -10,17 +10,12 @@ jobs:
   push:
     name: Push to Chartmuseum
     runs-on: ubuntu-latest
+    container:
+      image: alpine/helm:2.16.9
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
-
-      - name: Helm Package
-        uses: Flydiverny/helm-package-action@0.1.0
-        with:
-          args: ./stable
-
-      - name: test
-        run: for f in *.tgz; do echo "$f chart packaged"; done
+      - name: Update requirements
+        run: for chart in stable/*; do helm dependencies update $chart && helm package $chart; done
+      - name: List
+        run: for chart in *.tgz; do echo "$chart packaged"; done
