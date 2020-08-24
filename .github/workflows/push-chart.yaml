@@ -17,7 +17,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Helm init
         run: helm init --client-only
-      - name: Update requirements
-        run: for chart in stable/*; do helm dependencies update $chart && helm package $chart; done
-      - name: List
-        run: for chart in *.tgz; do echo "$chart packaged"; done
+      - name: Install Helm Push plugin
+        run: helm plugin install https://github.com/chartmuseum/helm-push.git
+      - name: Adding DH repository
+        run: helm repo add deliveryhero http://charts.deliveryhero.io/public
+      - name: Push charts to DH repository
+        env:
+          HELM_REPO_USERNAME: ${{ secrets.CHARTMUSEUM_USER }}
+          HELM_REPO_PASSWORD: ${{ secrets.CHARTMUSEUM_PASS }}
+        run: for chart in stable/*; do helm dependencies update $chart && helm push $chart deliveryhero; done
