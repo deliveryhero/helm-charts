@@ -39,7 +39,7 @@ spec:
         - name: http
           containerPort: {{ .Values.port }}
         resources:
-{{- toYaml .Values.resources | indent 10 }}
+{{ toYaml .Values.resources | indent 10 }}
         livenessProbe:
           httpGet:
             path: {{ .Values.livenessProbe.httpGet.path }}
