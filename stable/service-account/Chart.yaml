@@ -1,0 +1,11 @@
+name: service-account
+version: 1.0
+description: |
+  Creates a ServiceAccount, ClusterRoleBinding and a ClusterRole with some provided rules.
+
+  This is useful when used with [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
+apiVersion: v1
+home: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com
