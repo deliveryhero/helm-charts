@@ -1,0 +1,71 @@
+# rds-downscaler
+
+![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+
+A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.
+
+It will filter RDS instances/clusters by tag key and value.
+
+**Homepage:** <https://github.com/deliveryhero/helm-charts>
+
+## How to install this chart
+
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/public
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/rds-downscaler
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/rds-downscaler
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/rds-downscaler --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/rds-downscaler -f values.yaml
+```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"python"` |  |
+| image.tag | string | `"3.7.0-alpine3.8"` |  |
+| imagePullSecrets | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| podLabels | object | `{}` |  |
+| resources.limits.cpu | string | `"500m"` |  |
+| resources.limits.memory | string | `"128Mi"` |  |
+| resources.requests.cpu | string | `"10m"` |  |
+| resources.requests.memory | string | `"128Mi"` |  |
+| schedule | object | `{"hour":"20","minute":"00"}` | Cron schedule of the downscale job |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |
+| tag | object | `{"key":"environment","value":"staging"}` | AWS tag used to find RDS instances/clusters |
+| tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | max.williams@deliveryhero.com |  |
