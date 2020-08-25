@@ -1,0 +1,27 @@
+name: Push Chart
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'stable/**'
+jobs:
+  push:
+    name: Push to Chartmuseum
+    runs-on: ubuntu-latest
+    container:
+      image: alpine/helm:3.3.0
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install git
+        run: apk add --no-cache git
+      - name: Install Helm Push plugin
+        run: helm plugin install https://github.com/chartmuseum/helm-push
+      - name: Adding DH repository
+        run: helm repo add deliveryhero https://charts.deliveryhero.io/public
+      - name: Push charts to DH repository
+        env:
+          HELM_REPO_USERNAME: ${{ secrets.CHARTMUSEUM_USER }}
+          HELM_REPO_PASSWORD: ${{ secrets.CHARTMUSEUM_PASS }}
+        run: for chart in stable/*; do helm dependencies update $chart && helm push $chart deliveryhero; done

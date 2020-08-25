@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: "2.0"
+description: |
+  Reverse proxy for AWS S3 with basic authentication.
+
+  See here for configuration via environment variables: https://github.com/pottava/aws-s3-proxy#usage
+name: aws-s3-proxy
+home: https://github.com/pottava/aws-s3-proxy
+version: 0.1.0
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com
