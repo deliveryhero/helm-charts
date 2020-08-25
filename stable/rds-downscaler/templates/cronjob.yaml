@@ -45,7 +45,7 @@ spec:
                 value: {{ $value | quote }}
     {{- end }}
               resources:
-                {{- toYaml .Values.resources | nindent 14 }}
+                {{- toYaml .Values.resources | nindent 16 }}
               volumeMounts:
               - mountPath: /config
                 name: config

@@ -25,7 +25,6 @@ resources:
     cpu: 500m
     memory: 128Mi
 
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
