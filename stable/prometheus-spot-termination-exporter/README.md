@@ -6,11 +6,33 @@ Spot instance termination exporter for Prometheus
 
 **Homepage:** <https://github.com/banzaicloud/spot-termination-exporter>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| sietevecesmal | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/public
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/prometheus-spot-termination-exporter
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/prometheus-spot-termination-exporter
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/prometheus-spot-termination-exporter --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
 
 ## Values
 
@@ -37,3 +59,9 @@ Spot instance termination exporter for Prometheus
 | readinessProbe.periodSeconds | int | `5` |  |
 | readinessProbe.timeoutSeconds | int | `3` |  |
 | resources | object | `{}` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| sietevecesmal | no-reply@deliveryhero.com |  |
