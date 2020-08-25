@@ -70,3 +70,8 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `1000` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| hjacobs | no-reply@zalando.com |  |
