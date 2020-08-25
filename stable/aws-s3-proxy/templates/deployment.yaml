@@ -30,6 +30,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          - name: HEALTHCHECK_PATH
+            value: /health
           {{- range $key, $value := .Values.deployment.env }}
           - name: {{ $key }}
             value: {{ $value | quote }}
@@ -40,11 +42,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
