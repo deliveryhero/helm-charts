@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: io1-20
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "false"
+  labels:
+    kubernetes.io/cluster-service: "true"
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: io1
+  iopsPerGB: "20"
+  encrypted: "true"
