@@ -1,0 +1,43 @@
+# tag -- AWS tag used to find RDS instances/clusters
+tag:
+  # key -- The tag name
+  key: environment
+  # value -- The tag value
+  value: staging
+
+image:
+  repository: python
+  tag: 3.7.0-alpine3.8
+  pullPolicy: IfNotPresent
+
+# schedule -- Cron schedule of the downscale job
+schedule:
+  # minute -- Cron schedule minute of the downscale job
+  minute: "00"
+  # hour -- Cron schedule hour of the downscale job
+  hour: "20"
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 128Mi
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  annotations: {}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+nodeSelector: {}
+tolerations: []
+affinity: {}
+podLabels: {}
