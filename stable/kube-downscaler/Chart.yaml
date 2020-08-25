@@ -1,0 +1,11 @@
+name: kube-downscaler
+apiVersion: v1
+version: 0.1.0
+appVersion: 0.5.1
+description:  Scale down Kubernetes deployments after work hours
+keywords:
+- k8s pods scheduler
+- scheduled lifecycle
+sources:
+- https://github.com/hjacobs/kube-downscaler
+home: https://github.com/hjacobs/kube-downscaler
