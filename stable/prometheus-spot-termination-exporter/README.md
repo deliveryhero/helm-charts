@@ -34,6 +34,10 @@ helm install my-release deliveryhero/prometheus-spot-termination-exporter --set 
 
 To install with custom values file:
 
+```console
+helm install my-release deliveryhero/prometheus-spot-termination-exporter -f values.yaml
+```
+
 ## Values
 
 | Key | Type | Default | Description |
