@@ -38,6 +38,12 @@ To install with custom values file:
 helm install my-release deliveryhero/priority-class -f values.yaml
 ```
 
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| PriorityClasses | list | `[{"name":"high","value":1000},{"name":"medium","value":100},{"name":"low","value":10}]` | A list of PriorityClass to create |
+
 ## Maintainers
 
 | Name | Email | Url |
