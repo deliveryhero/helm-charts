@@ -1,8 +1,0 @@
-apiVersion: scheduling.k8s.io/v1
-kind: PriorityClass
-description: A high priority class to be used for important pods
-metadata:
-  name: high
-  labels:
-{{ include "priority-class.labels" . | indent 4 }}
-value: 1000

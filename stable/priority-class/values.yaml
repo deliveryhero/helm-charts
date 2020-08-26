@@ -1,0 +1,8 @@
+# PriorityClasses -- A list of PriorityClass to create
+PriorityClasses:
+  - name: high
+    value: 1000
+  - name: medium
+    value: 100
+  - name: low
+    value: 10
