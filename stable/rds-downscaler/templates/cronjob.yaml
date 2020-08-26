@@ -1,0 +1,67 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "rds-downscaler.fullname" . }}
+  labels:
+{{ include "rds-downscaler.labels" . | indent 4 }}
+spec:
+  schedule: "{{ .Values.schedule.minute }} {{ .Values.schedule.hour }} * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 10
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          annotations:
+            checksum/config1: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+          labels:
+            app.kubernetes.io/name: {{ include "rds-downscaler.name" . }}
+            app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- if .Values.podLabels }}
+    {{ toYaml .Values.podLabels | indent 10 }}
+    {{- end }}
+        spec:
+          serviceAccount: {{ .Values.service_account_name }}
+          serviceAccountName: {{ .Values.service_account_name }}
+          restartPolicy: Never
+        {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 8 }}
+        {{- end }}
+          containers:
+            - name: app
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              command: ["sh", "/config/docker-entrypoint.sh"]
+              args: ["/usr/local/bin/python", "-u", "/config/run.py"]
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+              - name: TAG_KEY
+                value: {{ .Values.tag.key }}
+              - name: TAG_VALUES
+                value: {{ .Values.tag.values }}
+    {{- range $key, $value := .Values.environment }}
+              - name: {{ $key }}
+                value: {{ $value | quote }}
+    {{- end }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+              volumeMounts:
+              - mountPath: /config
+                name: config
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+        {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
+          volumes:
+          - name: config
+            configMap:
+              name: {{ include "rds-downscaler.fullname" . }}

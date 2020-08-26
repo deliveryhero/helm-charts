@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  labels:
+{{ include "service-account.labels" . | indent 4 }}
+  name: {{ template "service-account.fullname" . }}
+rules:
+{{ toYaml .Values.clusterRoleRules | indent 2 }}
