@@ -1,0 +1,66 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ include "net-exporter.fullname" . }}
+  labels:
+    {{- include "net-exporter.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "net-exporter.selectorLabels" . | nindent 6 }}
+  ingress:
+  - ports:
+    - port: {{ .Values.service.port }}
+      protocol: TCP
+    from:
+    - podSelector:
+        matchLabels:
+          {{- include "net-exporter.selectorLabels" . | nindent 10 }}
+    - podSelector:
+        matchLabels:
+          app: prometheus
+    {{ $privateSubnets := list "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" }}
+    {{ range $index, $privateSubnet := $privateSubnets }}
+    - ipBlock:
+        cidr: {{ $privateSubnet }}
+    {{ end }}
+  egress:
+  - ports:
+    - port: {{ .Values.service.port }}
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          {{- include "net-exporter.selectorLabels" . | nindent 10 }}
+  - ports:
+    - port: {{ .Values.dns.port }}
+      protocol: UDP
+    - port: {{ .Values.dns.port }}
+      protocol: TCP
+    # legacy part kept for compatibility
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          k8s-app: {{ .Values.dns.label }}
+      namespaceSelector:
+        matchLabels:
+          name: kube-system
+  - ports:
+    - port: 443
+      protocol: TCP
+    # legacy part kept for compatibility
+    - port: 6443
+      protocol: TCP
+    to:
+    {{ $privateSubnets := list "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" }}
+    {{ range $index, $privateSubnet := $privateSubnets }}
+    - ipBlock:
+        cidr: {{ $privateSubnet }}
+    {{ end }}
+  policyTypes:
+  - Ingress
+  - Egress

@@ -1,0 +1,57 @@
+timeout: 10s
+
+dns:
+  port: 1053
+  label: coredns
+
+replicaCount: 3
+
+image:
+  repository: quay.io/giantswarm/net-exporter
+  pullPolicy: IfNotPresent
+  tag: 9ce103b9d6ba1fb3c22c296f226a0a87af8148f1
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    memory: 75Mi
+    cpu: 10m
+  limits:
+    memory: 75Mi
+
+nodeSelector: {}
+
+tolerations:
+  - operator: "Exists"
+
+affinity: {}
