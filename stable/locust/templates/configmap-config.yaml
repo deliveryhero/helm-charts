@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "locust.fullname" . }}-config
+  labels:
+{{ include "locust.labels" . | indent 4 }}
+data:
+  docker-entrypoint.sh: |
+    #!/bin/sh
+
+    set -eu
+
+    {{- if .Values.loadtest.pip_packages }}
+    pip install --user {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}
+    {{- end }}
+
+    exec /usr/local/bin/locust "$@"

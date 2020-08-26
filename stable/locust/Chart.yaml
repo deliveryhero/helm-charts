@@ -1,0 +1,14 @@
+apiVersion: v1
+name: locust
+version: 0.0.1
+appVersion: 1.2.1
+home: https://github.com/locustio/locust
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com
+description: |
+  A chart to install Locust, a scalable user load testing tool written in Python.
+
+  This chart will setup everything required to run a full distributed locust environment with any amount of workers.
+
+  This chart will also create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
