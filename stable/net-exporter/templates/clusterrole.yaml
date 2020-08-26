@@ -31,18 +31,3 @@ rules:
   - {{ include "net-exporter.fullname" . }}
   verbs:
   - "use"
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ include "net-exporter.fullname" . }}
-  labels:
-    {{- include "net-exporter.labels" . | nindent 4 }}
-subjects:
-- kind: ServiceAccount
-  name: {{ include "net-exporter.fullname" . }}
-  namespace: {{ .Values.namespace }}
-roleRef:
-  kind: ClusterRole
-  name: {{ include "net-exporter.fullname" . }}
-  apiGroup: rbac.authorization.k8s.io
