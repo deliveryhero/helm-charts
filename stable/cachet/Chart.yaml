@@ -2,8 +2,11 @@ apiVersion: v1
 appVersion: "2.3.15"
 description: The open source status page system
 name: cachet
-version: 1.2.3
+version: 1.2.4
 home: https://cachethq.io/
+sources:
+  - https://github.com/CachetHQ/Docker
+  - https://github.com/CachetHQ/Cachet
 maintainers:
 - name: nyambati
   email: no-reply@deliveryhero.com

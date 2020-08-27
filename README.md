@@ -46,3 +46,7 @@ All chart `README.md` files are generated from a template. This ensures all valu
 ```console
 docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:latest --template-file=../../ci/README.md.gotmpl
 ```
+
+## License
+
+Contents of this repository and any charts without a specific license are licensed under the Apache-2.0 License. Some charts may have their own respective license at `<chart>/LICENSE`. When adding a new chart to this repository and the chart is copied from another repository then include the license from the source if is not Apache-2.0 and include a link to the source under the `sources` section in `<chart>/Chart.yaml`.

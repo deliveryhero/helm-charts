@@ -4,6 +4,8 @@ description: StatsD to Prometheus metrics exporter
 name: prometheus-statsd-exporter
 version: 0.1.0
 home: https://github.com/prometheus/statsd_exporter
+sources:
+  - https://github.com/prometheus/statsd_exporter
 maintainers:
 - name: max-rocket-internet
   email: no-reply@deliveryhero.com
