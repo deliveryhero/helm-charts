@@ -1,0 +1,61 @@
+## Default values for kube-downscaler.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+## How many kube-downscaler pods should run in deployment
+replicaCount: 1
+name: kube-downscaler
+debug:
+  enable: false
+
+## Namespace where kube-downscaler is going to be deployed.
+# namespace:
+  ## Deployment will query all namespaces if left empty:
+#  active_in:
+## How frequently kube-downscaler should query applications uptime, unit is in seconds.
+
+## Default is 1 minute.
+interval: 60
+
+rbac:
+  ## If true, create & use RBAC resources
+  create: true
+  ## Ignored if rbac.create is true
+  serviceAccountName: default
+
+image:
+  repository: hjacobs/kube-downscaler
+  tag: 19.10.1
+  pullPolicy: IfNotPresent
+  args: []
+    # --default-uptime="Mon-Fri 07:30-20:30 Europe/Berlin"
+
+resources:
+  limits:
+    cpu: 50m
+    memory: 200Mi
+  requests:
+    cpu: 50m
+    memory: 200Mi
+
+securityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+  ## Allow the DaemonSet to schedule on tainted nodes (requires Kubernetes >= 1.6)
+  # tolerations: []
+
+  ## Allow the DaemonSet to schedule on selected nodes
+  # Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  # nodeSelector: {}
+
+  ## Allow the DaemonSet to schedule ussing affinity rules
+  # Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  # affinity: {}
+
+extraLabels: {}
+
+deployment:
+  environment:
+    DEFAULT_UPTIME: "Mon-Fri 07:00-20:00 Europe/Berlin"

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "kube-downscaler.fullname" . }}
+  labels:
+    type: deployment
+    app: {{ template "kube-downscaler.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+    {{- if .Values.extraLabels }}
+      {{- toYaml .Values.extraLabels | nindent 4 }}
+    {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "kube-downscaler.fullname" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "kube-downscaler.fullname" . }}
+        release: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-downscaler.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+      containers:
+      - name: {{ template "kube-downscaler.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        env:
+{{- range $key, $value := .Values.deployment.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
+        args:
+        - --interval={{ .Values.interval }}
+        {{- if .Values.namespace }}
+        {{- if .Values.namespace.active_in }}
+        - --namespace={{ .Values.namespace.active_in }}
+        {{- end }}
+        {{- end }}
+        {{- if .Values.debug.enable }}
+        - --debug
+        {{- end }}
+        {{- with .Values.image.args }}
+{{ toYaml . | indent 8 }}
+        {{- end }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
