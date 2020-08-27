@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "locust.fullname" . }}
+  labels:
+{{ include "locust.labels" . | indent 4 }}
+    component: "master"
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - name: master-p1
+    port: 5557
+    protocol: TCP
+    targetPort: 5557
+  - name: master-p2
+    port: 5558
+    protocol: TCP
+    targetPort: 5558
+  - name: master-p3
+    port: 8089
+    protocol: TCP
+    targetPort: 8089
+  selector:
+    component: master
+    {{- include "locust.selectorLabels" . | nindent 4 }}

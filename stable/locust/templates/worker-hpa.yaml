@@ -1,0 +1,21 @@
+{{- if .Values.worker.hpa.enabled }}
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ template "locust.fullname" . }}
+  labels:
+{{ include "locust.labels" . | indent 4 }}
+    component: "worker"
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    apiVersion: apps/v1
+    name: {{ template "locust.fullname" . }}-worker
+  minReplicas: {{ .Values.worker.hpa.minReplicas }}
+  maxReplicas: {{ .Values.worker.hpa.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ .Values.worker.hpa.targetCPUUtilizationPercentage }}
+{{- end }}

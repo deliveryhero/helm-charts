@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "locust.fullname" . }}-master
+  labels:
+    component: master
+{{ include "locust.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+      component: master
+      {{- include "locust.selectorLabels" . | nindent 6 }}
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust.yaml") . | sha256sum }}
+        checksum/config-config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+      labels:
+        component: master
+        {{- include "locust.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        command: ["sh", "/config/docker-entrypoint.sh"]
+        args:
+          - --master
+          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_filename }}
+          - --host={{ .Values.loadtest.locust_host }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+{{ toYaml .Values.master.resources | indent 10 }}
+        volumeMounts:
+          - name: locustfile
+            mountPath: /mnt/locust
+          - name: lib
+            mountPath: /mnt/locust/lib
+          - name: config
+            mountPath: /config
+        env:
+          - name: LOCUST_HOST
+            value: "{{ .Values.loadtest.locust_host }}"
+{{- range $key, $value := .Values.loadtest.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
+{{- range $key, $value := .Values.loadtest.environment_secret }}
+          - name: {{ $key }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "locust.fullname" $ }}
+                key: {{ $key }}
+{{- end }}
+        ports:
+          - containerPort: 8089
+            name: loc-master-web
+            protocol: TCP
+          - containerPort: 5557
+            name: loc-master-p1
+            protocol: TCP
+          - containerPort: 5558
+            name: loc-master-p2
+            protocol: TCP
+        livenessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /
+            port: 8089
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /
+            port: 8089
+      restartPolicy: Always
+      volumes:
+        - name: lib
+          configMap:
+            name: {{ template "locust.fullname" . }}-lib
+        - name: locustfile
+          configMap:
+            name: {{ template "locust.fullname" . }}-locustfile
+        - name: config
+          configMap:
+            name: {{ template "locust.fullname" . }}-config
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

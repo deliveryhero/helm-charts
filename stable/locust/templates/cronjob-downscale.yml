@@ -1,0 +1,37 @@
+{{- if .Values.downscale.enabled }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "locust.fullname" . }}-downscale
+  labels:
+{{ include "locust.labels" . | indent 4 }}
+spec:
+  schedule: "{{ .Values.downscale.minute }} {{ .Values.downscale.hour }} * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 10
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+{{ include "locust.labels" . | indent 12 }}
+        spec:
+          serviceAccountName: {{ template "locust.fullname" . }}
+          restartPolicy: Never
+          containers:
+            - name: downscale-worker
+              image: {{ .Values.downscale.image }}
+              args:
+                - "scale"
+                - "--replicas"
+                - "0"
+                - "deploy/{{ template "locust.fullname" . }}-worker"
+            - name: downscale-master
+              image: {{ .Values.downscale.image }}
+              args:
+                - "scale"
+                - "--replicas"
+                - "0"
+                - "deploy/{{ template "locust.fullname" . }}-master"
+{{- end }}

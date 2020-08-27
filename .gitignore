@@ -1,3 +1,18 @@
 stable/*/charts
 tmpcharts
 .helm-docs-md5sum*
+
+# python files
+*.pyc
+__pycache__
+
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/
