@@ -38,6 +38,10 @@ To install with custom values file:
 helm install my-release deliveryhero/prometheus-statsd-exporter -f values.yaml
 ```
 
+## Source Code
+
+* <https://github.com/prometheus/statsd_exporter>
+
 ## Values
 
 | Key | Type | Default | Description |

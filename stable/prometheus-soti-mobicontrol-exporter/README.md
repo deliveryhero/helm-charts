@@ -1,6 +1,6 @@
 # prometheus-soti-mobicontrol-exporter
 
-![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square) ![AppVersion: 0.6](https://img.shields.io/badge/AppVersion-0.6-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 0.6](https://img.shields.io/badge/AppVersion-0.6-informational?style=flat-square)
 
 A Helm chart a prometheus exporter for SOTI MobiControl metrics
 
@@ -37,6 +37,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/prometheus-soti-mobicontrol-exporter -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/max-rocket-internet/soti-mobicontrol-exporter>
 
 ## Values
 
