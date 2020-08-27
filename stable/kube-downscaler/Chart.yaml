@@ -10,5 +10,5 @@ sources:
 - https://github.com/hjacobs/kube-downscaler
 home: https://github.com/hjacobs/kube-downscaler
 maintainers:
-- name: hjacobs
-  email: no-reply@zalando.com
+- name: Henning Jacobs
+  url: https://github.com/hjacobs

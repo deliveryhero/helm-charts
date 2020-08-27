@@ -74,4 +74,4 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| hjacobs | no-reply@zalando.com |  |
+| Henning Jacobs |  | https://github.com/hjacobs |
