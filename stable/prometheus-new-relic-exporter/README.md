@@ -1,6 +1,6 @@
 # prometheus-new-relic-exporter
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Prometheus exporter for New Relic data. Requires a New Relic account.
 
@@ -37,6 +37,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/prometheus-new-relic-exporter -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/jfindley/newrelic_exporter>
 
 ## Values
 

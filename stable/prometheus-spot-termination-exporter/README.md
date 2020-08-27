@@ -1,6 +1,6 @@
 # prometheus-spot-termination-exporter
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Spot instance termination exporter for Prometheus
 
@@ -38,6 +38,10 @@ To install with custom values file:
 helm install my-release deliveryhero/prometheus-spot-termination-exporter -f values.yaml
 ```
 
+## Source Code
+
+* <https://github.com/banzaicloud/spot-termination-exporter>
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -62,10 +66,7 @@ helm install my-release deliveryhero/prometheus-spot-termination-exporter -f val
 | readinessProbe.initialDelaySeconds | int | `30` |  |
 | readinessProbe.periodSeconds | int | `5` |  |
 | readinessProbe.timeoutSeconds | int | `3` |  |
-| resources.limits.cpu | string | `"120m"` |  |
-| resources.limits.memory | string | `"256Mi"` |  |
-| resources.requests.cpu | string | `"120m"` |  |
-| resources.requests.memory | string | `"256Mi"` |  |
+| resources | object | `{}` |  |
 
 ## Maintainers
 

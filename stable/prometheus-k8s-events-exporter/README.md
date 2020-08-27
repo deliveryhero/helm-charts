@@ -1,6 +1,6 @@
 # prometheus-k8s-events-exporter
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 Exporter for kubernetes events
 
@@ -37,6 +37,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/prometheus-k8s-events-exporter -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/caicloud/event_exporter>
 
 ## Values
 

@@ -12,9 +12,9 @@ spec:
   template:
     metadata:
       labels:
-{{ include "prometheus-spot-termination-exporter.labels" . | indent 10 }}
+{{ include "prometheus-spot-termination-exporter.labels" . | indent 8 }}
 {{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels | indent 10 }}
+{{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations:
         prometheus.io/scrape: "{{ .Values.prometheus.scrape }}"
@@ -39,12 +39,7 @@ spec:
         - name: http
           containerPort: {{ .Values.port }}
         resources:
-          requests:
-            cpu: {{ .Values.resources.requests.cpu }}
-            memory: {{ .Values.resources.requests.memory }}
-          limits:
-            cpu: {{ .Values.resources.limits.cpu }}
-            memory: {{ .Values.resources.limits.memory }}
+{{ toYaml .Values.resources | indent 10 }}
         livenessProbe:
           httpGet:
             path: {{ .Values.livenessProbe.httpGet.path }}
