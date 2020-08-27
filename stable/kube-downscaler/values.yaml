@@ -54,12 +54,7 @@ securityContext:
   # Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
   # affinity: {}
 
-extraLabels:
-  dh_region: eu01
-  dh_env: stg
-  dh_app: kube-downscaler
-  dh_tribe: vendor
-  dh_squad: infra
+extraLabels: {}
 
 deployment:
   environment:

@@ -48,11 +48,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 |-----|------|---------|-------------|
 | debug.enable | bool | `false` |  |
 | deployment.environment.DEFAULT_UPTIME | string | `"Mon-Fri 07:00-20:00 Europe/Berlin"` |  |
-| extraLabels.dh_app | string | `"kube-downscaler"` |  |
-| extraLabels.dh_env | string | `"stg"` |  |
-| extraLabels.dh_region | string | `"eu01"` |  |
-| extraLabels.dh_squad | string | `"infra"` |  |
-| extraLabels.dh_tribe | string | `"vendor"` |  |
+| extraLabels | object | `{}` |  |
 | image.args | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"hjacobs/kube-downscaler"` |  |
