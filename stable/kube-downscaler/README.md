@@ -74,4 +74,4 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Henning Jacobs |  | https://github.com/hjacobs |
+| hjacobs |  | https://github.com/hjacobs |
