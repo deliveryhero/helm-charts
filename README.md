@@ -16,10 +16,14 @@ helm install my-release deliveryhero/<chart>
 
 ## Chart list
 
+- [aws-s3-proxy](stable/aws-s3-proxy)
+- [aws-storage-class](stable/aws-storage-class)
 - [cachet](stable/cachet)
 - [cluster-overprovisioner](stable/cluster-overprovisioner)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
+- [kube-downscaler](stable/kube-downscaler)
 - [postwoman](stable/postwoman)
+- [priority-class](stable/priority-class)
 - [prometheus-aws-costs-exporter](stable/prometheus-aws-costs-exporter)
 - [prometheus-aws-health-exporter](stable/prometheus-aws-health-exporter)
 - [prometheus-darksky-exporter](stable/prometheus-darksky-exporter)
@@ -29,6 +33,8 @@ helm install my-release deliveryhero/<chart>
 - [prometheus-soti-mobicontrol-exporter](stable/prometheus-soti-mobicontrol-exporter)
 - [prometheus-spot-termination-exporter](stable/prometheus-spot-termination-exporter)
 - [prometheus-statsd-exporter](stable/prometheus-statsd-exporter)
+- [rds-downscaler](stable/rds-downscaler)
+- [service-account](stable/service-account)
 
 ## Contributing
 
