@@ -65,7 +65,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install loadtest.environment -- environment variables used in the load test |
-| master.resources | object | `{"limits":{"cpu":"2000m","memory":"1024Mi"},"requests":{"cpu":"1000m","memory":"1024Mi"}}` | resources for the locust master |
+| master.resources | object | `{}` | resources for the locust master |
 | nameOverride | string | `""` |  |
 | podSecurityContext | object | `{}` |  |
 | securityContext | object | `{}` |  |
@@ -77,7 +77,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.hpa.minReplicas | int | `1` |  |
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.replicas | int | `1` |  |
-| worker.resources | object | `{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"500m","memory":"256Mi"}}` | resources for the locust worker |
+| worker.resources | object | `{}` | resources for the locust worker |
 
 ## Maintainers
 

@@ -23,13 +23,13 @@ service:
 
 master:
   # master.resources -- resources for the locust master
-  resources:
-    limits:
-      cpu: 2000m
-      memory: 1024Mi
-    requests:
-      cpu: 1000m
-      memory: 1024Mi
+  resources: {}
+    # limits:
+    #   cpu: 2000m
+    #   memory: 1024Mi
+    # requests:
+    #   cpu: 1000m
+    #   memory: 1024Mi
 
 downscale:
   # downscale.enable -- settings to downscale locust pods using a cronjob
@@ -45,14 +45,14 @@ worker:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 40
-  resources:
-    # worker.resources -- resources for the locust worker
-    limits:
-      cpu: 500m
-      memory: 256Mi
-    requests:
-      cpu: 500m
-      memory: 256Mi
+  # worker.resources -- resources for the locust worker
+  resources: {}
+    # limits:
+    #   cpu: 500m
+    #   memory: 256Mi
+    # requests:
+    #   cpu: 500m
+    #   memory: 256Mi
 
 nameOverride: ""
 fullnameOverride: ""
