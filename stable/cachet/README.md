@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.4](https://img.shields.io/badge/Version-1.2.4-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -37,6 +37,11 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/cachet -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/CachetHQ/Docker>
+* <https://github.com/CachetHQ/Cachet>
 
 ## Requirements
 
