@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: "0.5"
 description: A controller for managing PostgreSQL databases, roles and more
 name: postgres-controller
-version: 1.1
+version: "1.1"
 home: https://github.com/max-rocket-internet/postgres-controller
 sources:
   - https://github.com/max-rocket-internet/postgres-controller
