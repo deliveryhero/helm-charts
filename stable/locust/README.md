@@ -10,14 +10,14 @@ This chart will also create configmaps for storing the locust files in Kubernete
 
 By default it will install using an example locustfile and lib from [stable/locust/locustfiles/example](https://github.com/deliveryhero/helm-charts/tree/master/stable/locust/locustfiles/example). When you want to provide your own locustfile, you will need to create 2 configmaps using the structure from that example:
 
-```
+```console
 kubectl create configmap my-loadtest-locustfile --from-file path/to/your/main.py
 kubectl create configmap my-loadtest-lib --from-file path/to/your/lib/
 ```
 
 And then install the chart passing the names of those configmaps as values:
 
-```
+```console
 helm install locust deliveryhero/locust \
   --set loadtest.name=my-loadtest \
   --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
