@@ -53,6 +53,7 @@ helm install my-release deliveryhero/newrelic-controller -f values.yaml
 | image.tag | float | `0.8` |  |
 | log_level | string | `"info"` |  |
 | nameOverride | string | `""` |  |
+| new_relic_api_key | string | `"your_key_here"` | Your New Relic API key |
 | nodeSelector | object | `{}` |  |
 | rbac.create | bool | `true` |  |
 | replicaCount | int | `1` |  |
