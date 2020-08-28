@@ -1,8 +1,12 @@
 loadtest:
   # loadtest.name -- a name used for resources and settings in this load test
   name: example
-  # loadtest.locust_filename -- the name of the locustfile
-  locust_filename: main.py
+  # loadtest.locust_locustfile -- the name of the locustfile
+  locust_locustfile: main.py
+  # loadtest.locust_locustfile_configmap -- name of a configmap containing your locustfile
+  locust_locustfile_configmap: ""
+  # loadtest.locust_lib_configmap -- name of a configmap containing your lib
+  locust_lib_configmap: ""
   # loadtest.locust_host -- the host you will load test
   locust_host: https://www.google.com
   pip_packages: []
@@ -13,7 +17,7 @@ loadtest:
 
 image:
   repository: locustio/locust
-  tag: 1.2.1
+  tag: 1.2.3
   pullPolicy: IfNotPresent
 
 service:
