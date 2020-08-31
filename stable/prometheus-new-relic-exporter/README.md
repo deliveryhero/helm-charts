@@ -1,6 +1,6 @@
 # prometheus-new-relic-exporter
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Prometheus exporter for New Relic data. Requires a New Relic account.
 
@@ -11,7 +11,7 @@ Prometheus exporter for New Relic data. Requires a New Relic account.
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
 A simple install with default values:

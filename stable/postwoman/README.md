@@ -1,6 +1,6 @@
 # postwoman
 
-![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
+![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
 
 A free, fast and beautiful API request builder
 
@@ -11,7 +11,7 @@ A free, fast and beautiful API request builder
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
 A simple install with default values:
