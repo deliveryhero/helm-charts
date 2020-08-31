@@ -1,6 +1,6 @@
 # aws-storage-class
 
-![Version: 0.1](https://img.shields.io/badge/Version-0.1-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square)
 
 Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/storage-class/aws/default.yaml
 
