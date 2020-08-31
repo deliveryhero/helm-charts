@@ -1,0 +1,11 @@
+apiVersion: v1
+appVersion: "0.8"
+description: A controller for managing New Relic settings
+name: newrelic-controller
+version: "1.0"
+home: https://github.com/max-rocket-internet/newrelic-controller
+sources:
+  - https://github.com/max-rocket-internet/newrelic-controller
+maintainers:
+- name: max-rocket-internet
+  email: no-reply@deliveryhero.com
