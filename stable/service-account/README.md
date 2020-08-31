@@ -1,6 +1,6 @@
 # service-account
 
-![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square)
 
 Creates a ServiceAccount, ClusterRoleBinding and a ClusterRole with some provided rules.
 
@@ -13,7 +13,7 @@ This is useful when used with [IAM roles for service accounts](https://docs.aws.
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
 A simple install with default values:
