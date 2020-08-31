@@ -6,11 +6,37 @@ StatsD to Prometheus metrics exporter
 
 **Homepage:** <https://github.com/prometheus/statsd_exporter>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/prometheus-statsd-exporter
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/prometheus-statsd-exporter
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/prometheus-statsd-exporter --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/prometheus-statsd-exporter -f values.yaml
+```
 
 ## Source Code
 
@@ -36,3 +62,9 @@ StatsD to Prometheus metrics exporter
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |

@@ -6,11 +6,37 @@ Exporter for AWS Cost Explorer daily costs
 
 **Homepage:** <https://github.com/nachomillangarcia/prometheus_aws_cost_exporter>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/prometheus-aws-costs-exporter
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/prometheus-aws-costs-exporter
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/prometheus-aws-costs-exporter --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/prometheus-aws-costs-exporter -f values.yaml
+```
 
 ## Source Code
 
@@ -43,3 +69,9 @@ Exporter for AWS Cost Explorer daily costs
 | securityContext | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |

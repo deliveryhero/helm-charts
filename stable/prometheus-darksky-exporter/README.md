@@ -6,11 +6,37 @@ A Helm chart to export Dark Sky results
 
 **Homepage:** <https://github.com/billykwooten/darksky-exporter>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/prometheus-darksky-exporter
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/prometheus-darksky-exporter
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/prometheus-darksky-exporter --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/prometheus-darksky-exporter -f values.yaml
+```
 
 ## Source Code
 
@@ -39,3 +65,9 @@ A Helm chart to export Dark Sky results
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |

@@ -6,11 +6,37 @@ Exporter for kubernetes events
 
 **Homepage:** <https://github.com/caicloud/event_exporter>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/prometheus-k8s-events-exporter
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/prometheus-k8s-events-exporter
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/prometheus-k8s-events-exporter --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/prometheus-k8s-events-exporter -f values.yaml
+```
 
 ## Source Code
 
@@ -47,3 +73,9 @@ Exporter for kubernetes events
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |

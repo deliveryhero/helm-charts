@@ -10,11 +10,37 @@ This chart will also create configmaps for storing the locust files in Kubernete
 
 **Homepage:** <https://github.com/locustio/locust>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/locust
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/locust
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/locust --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/locust -f values.yaml
+```
 
 ## Values
 
@@ -52,3 +78,9 @@ This chart will also create configmaps for storing the locust files in Kubernete
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |

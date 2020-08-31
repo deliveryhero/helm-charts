@@ -6,11 +6,37 @@ Scale down Kubernetes deployments after work hours
 
 **Homepage:** <https://github.com/hjacobs/kube-downscaler>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| hjacobs |  | https://github.com/hjacobs |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/kube-downscaler
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/kube-downscaler
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/kube-downscaler --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/kube-downscaler -f values.yaml
+```
 
 ## Source Code
 
@@ -39,3 +65,9 @@ Scale down Kubernetes deployments after work hours
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `1000` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| hjacobs |  | https://github.com/hjacobs |
