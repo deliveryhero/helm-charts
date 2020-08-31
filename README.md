@@ -7,7 +7,7 @@
 ## TLDR
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 helm search repo deliveryhero
 helm install my-release deliveryhero/<chart>
 ```
