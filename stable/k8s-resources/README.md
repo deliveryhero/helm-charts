@@ -23,7 +23,7 @@ Every resource type can have custom labels, annotations or a `fullnameOverride` 
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
 A simple install with default values:
