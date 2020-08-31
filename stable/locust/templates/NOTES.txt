@@ -1,4 +1,6 @@
-To access the locust master UI:
+
+## To access the locust master UI
+
 
 {{- if .Values.ingress.enabled }}
 {{- range $host := .Values.ingress.hosts }}
@@ -16,6 +18,9 @@ To access the locust master UI:
   export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "locust2.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
   echo http://$SERVICE_IP:{{ .Values.service.port }}
 {{- else if contains "ClusterIP" .Values.service.type }}
-  Run this command:  kubectl --namespace {{ .Release.Namespace }} port-forward service/{{ include "locust.fullname" . }} 8089:8089
-  Then open http://localhost:8089 in a browser
+Run this command:
+
+  kubectl --namespace {{ .Release.Namespace }} port-forward service/{{ include "locust.fullname" . }} 8089:8089
+
+Then open in a browser: http://localhost:8089
 {{- end }}
