@@ -1,0 +1,58 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pgdatabases.postgresql.org
+  labels:
+    app: {{ template "postgres-controller.name" . }}
+    chart: {{ template "postgres-controller.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    app.kubernetes.io/name: {{ include "postgres-controller.name" . }}
+    helm.sh/chart: {{ include "postgres-controller.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  group: postgresql.org
+{{- if semverCompare ">=1.11" .Capabilities.KubeVersion.GitVersion }}
+  versions:
+    - name: v1
+      served: true
+      storage: true
+{{- else }}
+  version: v1
+{{- end }}
+  scope: Namespaced
+  names:
+    plural: pgdatabases
+    singular: pgdatabase
+    kind: PostgresDatabase
+    shortNames:
+    - pgdb
+  additionalPrinterColumns:
+  - name: DBNAME
+    type: string
+    description: The name of the database
+    JSONPath: .spec.dbName
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          required:
+          - dbName
+          - dbRoleName
+          - dbRolePassword
+          properties:
+            dbName:
+              type: string
+            dbRoleName:
+              type: string
+            dbRolePassword:
+              type: string
+            dbInstanceId:
+              type: string
+            dbExtensions:
+              type: array
+              items:
+                type: string
+            extraSQL:
+              type: string
