@@ -48,7 +48,7 @@ Secrets: []
   #   b64Keys:
   #     key1: value1
   #   keys:
-  #     key2: value2
+  #     key2: key2: dmFsdWUyCg==
 
 # Services -- A list Service to create
 Services: []
@@ -80,3 +80,7 @@ HorizontalPodAutoscalers: []
   #   minReplicas: 1
   #   maxReplicas: 100
   #   targetCPUUtilizationPercentage: 80
+  #   scaleTargetRef:
+  #     apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: my-deployment
