@@ -1,0 +1,45 @@
+# Controller configuration
+# Contains list of Postgres instances. Should have at least a `default` instance
+
+config:
+  postgres_instances:
+    default:
+      host: hostname
+      user: postgres
+      password: postgres
+      port: 5432
+    # another-instance:
+    #   host: hostname2
+    #   user: postgres
+    #   password: postgres
+    #   port: 5432
+
+log_level: 'info'
+
+replicaCount: 1
+
+image:
+  repository: maxrocketinternet/postgres-controller
+  tag: 0.5
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+rbac:
+  create: true
+
+serviceAccount:
+  # Specifies whether a ServiceAccount should be created
+  create: true
+  # The name of the ServiceAccount to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:

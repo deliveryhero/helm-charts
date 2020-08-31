@@ -52,23 +52,26 @@ Create fully qualified configmap name.
 {{ end }}
 {{- end -}}
 
-{{- define "locust.loadtests" -}}
-{{- $processedDict := dict -}}
-{{- range $path, $bytes := .Files.Glob "locustfiles/**" }}
-{{- $name := base (dir $path) }}
-{{- if not (hasKey $processedDict $name) -}}
-{{ $_ := set $processedDict $name "true" }}
-{{-  if lt (len (splitList "/" $path)) 4 }}
-{{- $name }},
-{{- end }}
-{{- end }}
-{{- end }}
-{{- end -}}
-
 {{- define "locust.labels" -}}
 heritage: {{ .Release.Service | quote }}
 release: {{ .Release.Name | quote }}
 chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 app: locust
 loadtest: {{ .Values.loadtest.name }}
+{{- end -}}
+
+{{- define "locust.locustfile_configmap_name" -}}
+{{ if eq .Values.loadtest.locust_locustfile_configmap "" -}}
+{{ template "locust.fullname" . }}-locustfile
+{{- else -}}
+{{ printf .Values.loadtest.locust_locustfile_configmap -}}
+{{ end }}
+{{- end -}}
+
+{{- define "locust.lib_configmap_name" -}}
+{{ if eq .Values.loadtest.locust_lib_configmap "" -}}
+{{ template "locust.fullname" . }}-lib
+{{- else -}}
+{{- printf .Values.loadtest.locust_lib_configmap -}}
+{{ end }}
 {{- end -}}

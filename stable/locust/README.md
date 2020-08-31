@@ -1,12 +1,28 @@
 # locust
 
-![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![AppVersion: 1.2.1](https://img.shields.io/badge/AppVersion-1.2.1-informational?style=flat-square)
+![Version: 0.2](https://img.shields.io/badge/Version-0.2-informational?style=flat-square) ![AppVersion: 1.2.3](https://img.shields.io/badge/AppVersion-1.2.3-informational?style=flat-square)
 
-A chart to install Locust, a scalable user load testing tool written in Python.
+A chart to install Locust, a scalable load testing tool written in Python.
 
 This chart will setup everything required to run a full distributed locust environment with any amount of workers.
 
 This chart will also create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
+
+By default it will install using an example locustfile and lib from [stable/locust/locustfiles/example](https://github.com/deliveryhero/helm-charts/tree/master/stable/locust/locustfiles/example). When you want to provide your own locustfile, you will need to create 2 configmaps using the structure from that example:
+
+```console
+kubectl create configmap my-loadtest-locustfile --from-file path/to/your/main.py
+kubectl create configmap my-loadtest-lib --from-file path/to/your/lib/
+```
+
+And then install the chart passing the names of those configmaps as values:
+
+```console
+helm install locust deliveryhero/locust \
+  --set loadtest.name=my-loadtest \
+  --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
+  --set loadtest.locust_lib_configmap=my-loadtest-lib
+```
 
 **Homepage:** <https://github.com/locustio/locust>
 
@@ -53,7 +69,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"1.2.1"` |  |
+| image.tag | string | `"1.2.3"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
@@ -61,8 +77,10 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` |  |
-| loadtest.locust_filename | string | `"main.py"` | the name of the locustfile |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
+| loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
+| loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
+| loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install loadtest.environment -- environment variables used in the load test |
 | master.resources | object | `{}` | resources for the locust master |

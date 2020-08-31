@@ -1,0 +1,3 @@
+To verify that the newrelic-controller pods have started, run:
+
+  kubectl --namespace={{ .Release.Namespace }} get pods -l "app={{ template "newrelic-controller.name" . }},release={{ .Release.Name }}"

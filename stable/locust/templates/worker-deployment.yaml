@@ -19,7 +19,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust.yaml") . | sha256sum }}
+        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust-lib.yaml") . | sha256sum }}
+        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust-locustfile.yaml") . | sha256sum }}
         checksum/config-config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
       labels:
         component: worker
@@ -39,7 +40,7 @@ spec:
         command: ["sh", "/config/docker-entrypoint.sh"]
         args:
           - --worker
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_filename }}
+          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
           - --master-host={{ template "locust.fullname" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -71,10 +72,10 @@ spec:
       volumes:
         - name: lib
           configMap:
-            name: {{ template "locust.fullname" . }}-lib
+            name: {{ template "locust.lib_configmap_name" . }}
         - name: locustfile
           configMap:
-            name: {{ template "locust.fullname" . }}-locustfile
+            name: {{ template "locust.locustfile_configmap_name" . }}
         - name: config
           configMap:
             name: {{ template "locust.fullname" . }}-config
