@@ -1,0 +1,82 @@
+# nameOverride -- Override the name of resources
+nameOverride: ""
+# fullnameOverride -- Override the full name of resources
+fullnameOverride: ""
+
+# ConfigMaps -- A list ConfigMap to create
+ConfigMaps: []
+  # - name: example-cm
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   data:
+  #     key: value
+
+# CustomResources -- A list resources to create that are completely custom
+CustomResources: []
+  # - name: example-custom
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   apiVersion: postgresql.org/v1
+  #   kind: PostgresDatabase
+  #   spec: {}
+
+# Ingresses -- A list Ingress to create
+Ingresses: []
+  # - name: example-ingress
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   hosts:
+  #     - host: chart-example.local
+  #       paths:
+  #         - path: /api
+  #           serviceName: example-service
+  #           servicePort: 8080
+  #   tls:
+  #      - secretName: chart-example-tls
+  #        hosts:
+  #          - chart-example.local
+
+# Secrets -- A list Secret to create
+Secrets: []
+  # - name: example-secret
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   b64Keys:
+  #     key1: value1
+  #   keys:
+  #     key2: value2
+
+# Services -- A list Service to create
+Services: []
+  # - name: example-service
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   type: ClusterIP
+  #   selector:
+  #     key1: value1
+  #   ports:
+  #     - port: 80
+  #       targetPort: 8080
+  #       protocol: TCP
+
+# ServiceAccounts -- A list ServiceAccount to create
+ServiceAccounts: []
+  # - name: example-sa
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+
+# HorizontalPodAutoscalers -- A list HorizontalPodAutoscaler to create
+HorizontalPodAutoscalers: []
+  # - name: example-hpa
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   minReplicas: 1
+  #   maxReplicas: 100
+  #   targetCPUUtilizationPercentage: 80

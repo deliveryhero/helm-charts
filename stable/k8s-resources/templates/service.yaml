@@ -1,0 +1,23 @@
+{{- if .Values.Services -}}
+{{- range .Values.Services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
+  labels:
+    {{- include "k8s-resources.labels" $ | nindent 4 }}
+  {{- with .extraLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .type }}
+  ports:
+    {{- toYaml .ports | nindent 4 }}
+  selector:
+{{- toYaml .selector | nindent 4 }}
+{{- end }}
+{{- end }}
