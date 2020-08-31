@@ -8,37 +8,11 @@ This is useful when used with [IAM roles for service accounts](https://docs.aws.
 
 **Homepage:** <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/service-account
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/service-account
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/service-account --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/service-account -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
 
 ## Values
 
@@ -48,9 +22,3 @@ helm install my-release deliveryhero/service-account -f values.yaml
 | extraLabels | object | `{}` |  |
 | serviceAccountAnnotations | object | `{}` |  |
 | serviceAccountName | string | `nil` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |

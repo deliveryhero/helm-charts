@@ -8,37 +8,11 @@ It will filter RDS instances/clusters by tag key and value.
 
 **Homepage:** <https://github.com/deliveryhero/helm-charts>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/rds-downscaler
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/rds-downscaler
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/rds-downscaler --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/rds-downscaler -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | max.williams@deliveryhero.com |  |
 
 ## Values
 
@@ -63,9 +37,3 @@ helm install my-release deliveryhero/rds-downscaler -f values.yaml
 | serviceAccount.name | string | `""` |  |
 | tag | object | `{"key":"environment","value":"staging"}` | AWS tag used to find RDS instances/clusters |
 | tolerations | list | `[]` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |

@@ -6,37 +6,11 @@ Prometheus exporter for New Relic data. Requires a New Relic account.
 
 **Homepage:** <https://github.com/jfindley/newrelic_exporter>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/prometheus-new-relic-exporter
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/prometheus-new-relic-exporter
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/prometheus-new-relic-exporter --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/prometheus-new-relic-exporter -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
 
 ## Source Code
 
@@ -68,9 +42,3 @@ helm install my-release deliveryhero/prometheus-new-relic-exporter -f values.yam
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |

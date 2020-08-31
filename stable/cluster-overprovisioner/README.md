@@ -10,37 +10,12 @@ This approach is the [current recommended method to achieve overprovisioning](ht
 
 **Homepage:** <https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/cluster-overprovisioner
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/cluster-overprovisioner
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/cluster-overprovisioner --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | max.williams@deliveryhero.com |  |
+| mmingorance-dh | miguel.mingorance@deliveryhero.com |  |
 
 ## Source Code
 
@@ -75,10 +50,3 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | priorityClassDefault.value | int | `0` | Priority value of the default priorityClass |
 | priorityClassOverprovision.name | string | `"overprovisioning"` | Name of the overprovision priorityClass |
 | priorityClassOverprovision.value | int | `-1` | Priority value of the overprovision priorityClass |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |
-| mmingorance-dh | miguel.mingorance@deliveryhero.com |  |

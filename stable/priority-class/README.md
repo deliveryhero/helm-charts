@@ -6,46 +6,14 @@ A very simple chart that creates priority classes
 
 **Homepage:** <https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/priority-class
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/priority-class
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/priority-class --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/priority-class -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | PriorityClasses | list | `[{"name":"high","value":1000},{"name":"medium","value":100},{"name":"low","value":10}]` | A list of PriorityClass to create |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |

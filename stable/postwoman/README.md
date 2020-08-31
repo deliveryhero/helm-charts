@@ -6,37 +6,11 @@ A free, fast and beautiful API request builder
 
 **Homepage:** <https://github.com/postwoman-io/postwoman>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/postwoman
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/postwoman
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/postwoman --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/postwoman -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| javad-hajiani | no-reply@deliveryhero.com |  |
 
 ## Source Code
 
@@ -64,9 +38,3 @@ helm install my-release deliveryhero/postwoman -f values.yaml
 | service.containerPort | int | `3000` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| javad-hajiani | no-reply@deliveryhero.com |  |

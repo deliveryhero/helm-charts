@@ -6,37 +6,11 @@ An implementation of the Kubernetes Custom Metrics API and External Metrics API 
 
 **Homepage:** <https://github.com/awslabs/k8s-cloudwatch-adapter>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/k8s-cloudwatch-adapter
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/k8s-cloudwatch-adapter
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/k8s-cloudwatch-adapter --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/k8s-cloudwatch-adapter -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
 
 ## Source Code
 
@@ -68,9 +42,3 @@ helm install my-release deliveryhero/k8s-cloudwatch-adapter -f values.yaml
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
