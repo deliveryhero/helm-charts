@@ -11,7 +11,7 @@ A controller for managing PostgreSQL databases, roles and more
 Add Delivery Hero public chart repo:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/public
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
 A simple install with default values:
