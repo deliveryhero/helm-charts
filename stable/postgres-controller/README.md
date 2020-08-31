@@ -47,7 +47,10 @@ helm install my-release deliveryhero/postgres-controller -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| config.postgres_instances | string | `nil` |  |
+| config.postgres_instances.default.host | string | `"hostname"` |  |
+| config.postgres_instances.default.password | string | `"postgres"` |  |
+| config.postgres_instances.default.port | int | `5432` |  |
+| config.postgres_instances.default.user | string | `"postgres"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"maxrocketinternet/postgres-controller"` |  |

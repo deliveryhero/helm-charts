@@ -1,12 +1,18 @@
 # Controller configuration
 # Contains list of Postgres instances. Should have at least a `default` instance
+
 config:
   postgres_instances:
-    # default:
-      # host: ""
-      # user: ""
-      # password: ""
-      # port: 5432
+    default:
+      host: hostname
+      user: postgres
+      password: postgres
+      port: 5432
+    # another-instance:
+    #   host: hostname2
+    #   user: postgres
+    #   password: postgres
+    #   port: 5432
 
 log_level: 'info'
 
