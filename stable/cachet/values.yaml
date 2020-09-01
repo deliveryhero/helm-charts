@@ -16,14 +16,12 @@ service:
   type: ClusterIP
   port: 80
 
-labels:
-  type: infra
-
 ingress:
   enabled: false
   annotations: {}
   host: chart-example.local
   tls: []
+  path: /
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
@@ -61,6 +59,7 @@ env:
     # Email find them here  https://docs.cachethq.io/docs/configuring-mail
     MAIL_DRIVER: smtp
     MAIL_HOST: ""
+    MAIL_ADDRESS: ""
     MAIL_PORT: 25
     MAIL_NAME: ""
     MAIL_ENCRYPTION: tls
@@ -71,4 +70,6 @@ env:
     DB_PASSWORD: ""
     MAIL_USERNAME: ""
     MAIL_PASSWORD: ""
-    MAIL_ADDRESS: ""
+
+test:
+  enabled: true
