@@ -1,0 +1,61 @@
+ConfigMaps:
+  - name: example-cm
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    data:
+      key: value
+
+Ingresses:
+  - name: example-ingress
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    hosts:
+      - host: chart-example.local
+        paths:
+          - path: /api
+            serviceName: example-service
+            servicePort: 8080
+
+Secrets:
+  - name: example-secret
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    b64Keys:
+      key1: value1
+    keys:
+      key2: dmFsdWUyCg==
+
+Services:
+  - name: example-service
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    type: ClusterIP
+    selector:
+      key1: value1
+    ports:
+      - port: 80
+        targetPort: 8080
+        protocol: TCP
+
+ServiceAccounts:
+  - name: example-sa
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+
+HorizontalPodAutoscalers:
+  - name: example-hpa
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: my-deployment
