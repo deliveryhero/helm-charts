@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "postwoman.fullname" . }}
+  name: {{ include "hoppscotch.fullname" . }}
   labels:
-{{ include "postwoman.labels" . | indent 4 }}
+{{ include "hoppscotch.labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "postwoman.name" . }}
+    app.kubernetes.io/name: {{ include "hoppscotch.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
