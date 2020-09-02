@@ -20,17 +20,17 @@ spec:
   minReplicas: {{ .minReplicas }}
   maxReplicas: {{ .maxReplicas }}
   metrics:
-  {{- if .targetCPUUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: {{ .targetCPUUtilizationPercentage }}
-  {{- end }}
-  {{- if .targetMemoryUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: memory
-        targetAverageUtilization: {{ .targetMemoryUtilizationPercentage }}
-  {{- end }}
+{{- if .targetCPUUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: {{ .targetCPUUtilizationPercentage }}
+{{- end }}
+{{- if .targetMemoryUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: {{ .targetMemoryUtilizationPercentage }}
+{{- end }}
 {{- end }}
 {{- end }}

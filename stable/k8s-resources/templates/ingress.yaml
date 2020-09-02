@@ -17,25 +17,25 @@ metadata:
 spec:
   {{- if .tls }}
   tls:
-    {{- range .tls }}
-    - hosts:
-        {{- range .hosts }}
-        - {{ . | quote }}
-        {{- end }}
-      secretName: {{ .secretName }}
+  {{- range .tls }}
+  - hosts:
+    {{- range .hosts }}
+    - {{ . | quote }}
     {{- end }}
+  secretName: {{ .secretName }}
+  {{- end }}
   {{- end }}
   rules:
-    {{- range .hosts }}
-    - host: {{ .host | quote }}
-      http:
-        paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            backend:
-              serviceName: {{ .serviceName }}
-              servicePort: {{ .servicePort }}
-          {{- end }}
-    {{- end }}
+  {{- range .hosts }}
+  - host: {{ .host | quote }}
+    http:
+      paths:
+        {{- range .paths }}
+        - path: {{ .path }}
+          backend:
+            serviceName: {{ .serviceName }}
+            servicePort: {{ .servicePort }}
+        {{- end }}
+  {{- end }}
 {{- end }}
 {{- end }}
