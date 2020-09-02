@@ -3,6 +3,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
+  namespace: {{ default $.Release.Namespace .namespace }}
   name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
   labels:
     {{- include "k8s-resources.labels" $ | nindent 4 }}

@@ -1,6 +1,6 @@
 # k8s-resources
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
@@ -14,7 +14,7 @@ Currently supports:
 - Service
 - ServiceAccount
 
-Every resource type can have custom labels, annotations or a `fullnameOverride` set. See default `values.yaml` for examples.
+Every resource type can have custom labels, annotations or a `fullnameOverride` set. See default [values.yaml](https://github.com/deliveryhero/helm-charts/blob/master/stable/k8s-resources/values.yaml) for examples.
 
 **Homepage:** <https://github.com/deliveryhero/helm-charts>
 

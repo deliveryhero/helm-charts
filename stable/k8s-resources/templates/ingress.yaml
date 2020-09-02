@@ -3,6 +3,7 @@
 apiVersion: {{ default "networking.k8s.io/v1beta1" .apiVersion }}
 kind: Ingress
 metadata:
+  namespace: {{ default $.Release.Namespace .namespace }}
   name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
   labels:
     {{- include "k8s-resources.labels" $ | nindent 4 }}
