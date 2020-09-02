@@ -12,7 +12,7 @@ data:
   DB_DRIVER: {{ .Values.database.driver }}
   DB_PORT: {{ .Values.database.port | quote }}
   APP_ENV: {{ default "production" .Values.env.APP_ENV | quote }}
-  APP_URL: {{ .Values.ingress.host.name }}
+  APP_URL: {{ .Values.ingress.host }}
   {{- range $key, $value := .Values.env.public }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}

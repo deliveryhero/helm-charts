@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.5](https://img.shields.io/badge/Version-1.2.5-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.6](https://img.shields.io/badge/Version-1.2.6-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -62,7 +62,6 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | database.username | string | `"cachet"` |  |
 | env.private.APP_KEY | string | `""` |  |
 | env.private.DB_PASSWORD | string | `""` |  |
-| env.private.MAIL_ADDRESS | string | `""` |  |
 | env.private.MAIL_PASSWORD | string | `""` |  |
 | env.private.MAIL_USERNAME | string | `""` |  |
 | env.public.APP_DEBUG | bool | `false` |  |
@@ -72,6 +71,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | env.public.CACHE_DRIVER | string | `"database"` |  |
 | env.public.DB_DRIVER | string | `"pgsql"` |  |
 | env.public.DOCKER | bool | `true` |  |
+| env.public.MAIL_ADDRESS | string | `""` |  |
 | env.public.MAIL_DRIVER | string | `"smtp"` |  |
 | env.public.MAIL_ENCRYPTION | string | `"tls"` |  |
 | env.public.MAIL_HOST | string | `""` |  |
@@ -85,10 +85,9 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | image.tag | string | `"2.3.15"` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.host.name | string | `"nil"` |  |
-| ingress.host.path | string | `"/"` |  |
+| ingress.host | string | `"chart-example.local"` |  |
+| ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
-| labels.type | string | `"infra"` |  |
 | nameOverride | string | `""` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
@@ -97,6 +96,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | resources.requests.memory | string | `"128Mi"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
+| test.enabled | bool | `true` |  |
 
 ## Maintainers
 
