@@ -7,5 +7,4 @@
 ## Checklist
 
 - [ ] Title of the PR starts with chart name (e.g. `[stable/mychartname]`)
-- [ ] Variables are documented in the README.md
 - [ ] Github actions are passing
