@@ -3,6 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: {{ default $.Release.Namespace .namespace }}
   name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
   labels:
     {{- include "k8s-resources.labels" $ | nindent 4 }}
@@ -16,7 +17,7 @@ metadata:
 spec:
   type: {{ .type }}
   ports:
-    {{- toYaml .ports | nindent 4 }}
+    {{- toYaml .ports | nindent 2 }}
   selector:
 {{- toYaml .selector | nindent 4 }}
 {{- end }}
