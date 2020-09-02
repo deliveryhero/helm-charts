@@ -19,6 +19,6 @@ spec:
   ports:
     {{- toYaml .ports | nindent 2 }}
   selector:
-{{- toYaml .selector | nindent 2 }}
+{{- toYaml .selector | nindent 4 }}
 {{- end }}
 {{- end }}
