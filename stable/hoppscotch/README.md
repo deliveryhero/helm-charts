@@ -1,10 +1,10 @@
-# postwoman
+# hoppscotch
 
-![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
+![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
 
 A free, fast and beautiful API request builder
 
-**Homepage:** <https://github.com/postwoman-io/postwoman>
+**Homepage:** <https://github.com/hoppscotch/hoppscotch>
 
 ## How to install this chart
 
@@ -17,30 +17,30 @@ helm repo add deliveryhero https://charts.deliveryhero.io/
 A simple install with default values:
 
 ```console
-helm install deliveryhero/postwoman
+helm install deliveryhero/hoppscotch
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/postwoman
+helm install my-release deliveryhero/hoppscotch
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/postwoman --set values_key1=value1 --set values_key2=value2
+helm install my-release deliveryhero/hoppscotch --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/postwoman -f values.yaml
+helm install my-release deliveryhero/hoppscotch -f values.yaml
 ```
 
 ## Source Code
 
-* <https://github.com/postwoman-io/postwoman>
+* <https://github.com/hoppscotch/hoppscotch>
 
 ## Values
 
