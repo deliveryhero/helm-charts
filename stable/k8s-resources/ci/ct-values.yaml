@@ -3,8 +3,12 @@ ConfigMaps:
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
-    data:
+    kv_data:
       key: value
+    multiline_data:
+      key: |
+        line 1
+        line 2
 
 Ingresses:
   - name: example-ingress
@@ -27,6 +31,14 @@ Secrets:
       key1: value1
     keys:
       key2: dmFsdWUyCg==
+  - name: example-secret-2
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    b64Keys:
+      key1: value1
+    keys:
+      key2: dmFsdWUyCg==
 
 Services:
   - name: example-service
@@ -40,9 +52,24 @@ Services:
       - port: 80
         targetPort: 8080
         protocol: TCP
+  - name: example-service-2
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    type: ClusterIP
+    selector:
+      key2: value2
+    ports:
+      - port: 443
+        targetPort: 443
+        protocol: TCP
 
 ServiceAccounts:
   - name: example-sa
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+  - name: example-sa-2
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
