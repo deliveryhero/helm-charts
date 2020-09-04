@@ -9,8 +9,12 @@ ConfigMaps: []
   #   fullnameOverride: ""
   #   annotations: {}
   #   extraLabels: {}
-  #   data:
+  #   kv_data:
   #     key: value
+  #   multiline_data:
+  #     key: |
+  #       line 1
+  #       line 2
 
 # CustomResources -- A list resources to create that are completely custom
 CustomResources: []
