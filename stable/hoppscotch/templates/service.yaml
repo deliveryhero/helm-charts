@@ -4,6 +4,7 @@ metadata:
   name: {{ include "hoppscotch.fullname" . }}
   labels:
 {{ include "hoppscotch.labels" . | indent 4 }}
+{{ include "hoppscotch.extra_labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
