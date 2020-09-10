@@ -1,0 +1,81 @@
+# k8s-event-logger
+
+![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square) ![AppVersion: 1.5](https://img.shields.io/badge/AppVersion-1.5-informational?style=flat-square)
+
+This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
+
+https://github.com/max-rocket-internet/k8s-event-logger
+
+Events in Kubernetes log very important information. If are trying to understand what happened in the past then these events show clearly what your Kubernetes cluster was thinking and doing. Some examples:
+
+- Pod events like failed probes, crashes, scheduling related information like `TriggeredScaleUp` or `FailedScheduling`
+- HorizontalPodAutoscaler events like scaling up and down
+- Deployment events like scaling in and out of ReplicaSets
+- Ingress events like create and update
+
+The problem is that these events are simply API objects in Kubernetes and are only stored for about 1 hour. Without some way of storing these events, debugging a problem in the past very tricky.
+
+**Homepage:** <https://github.com/max-rocket-internet/k8s-event-logger>
+
+## How to install this chart
+
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/k8s-event-logger
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/k8s-event-logger
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/k8s-event-logger --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/k8s-event-logger -f values.yaml
+```
+
+## Source Code
+
+* <https://github.com/max-rocket-internet/k8s-event-logger>
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| env.CA_FILE | string | `"/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"` |  |
+| env.KUBERNETES_API_URL | string | `"https://172.20.0.1:443"` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"maxrocketinternet/k8s-event-logger"` |  |
+| image.tag | string | `"1.5"` |  |
+| imagePullSecrets | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| podLabels | object | `{}` |  |
+| resources.limits.cpu | string | `"100m"` |  |
+| resources.limits.memory | string | `"128Mi"` |  |
+| resources.requests.cpu | string | `"10m"` |  |
+| resources.requests.memory | string | `"32Mi"` |  |
+| tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | max.williams@deliveryhero.com |  |
