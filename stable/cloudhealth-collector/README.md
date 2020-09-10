@@ -54,6 +54,7 @@ helm install my-release deliveryhero/cloudhealth-collector -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | api_token | string | `"<change-me>"` |  |
+| cluster_name | string | `"your-cluster-name"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"cloudhealth/container-collector"` |  |

@@ -1,4 +1,5 @@
 api_token: <change-me>
+cluster_name: your-cluster-name
 
 replicaCount: 1
 
