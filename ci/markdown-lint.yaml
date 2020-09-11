@@ -9,3 +9,6 @@ MD034: false
 
 # Disable No empty links as it is used to disable image links that Github markdown creates automatically
 MD042: false
+
+# Allow lists with asterisks or dashes
+MD004: false

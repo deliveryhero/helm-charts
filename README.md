@@ -23,6 +23,7 @@ helm install my-release deliveryhero/<chart>
 - [cluster-overprovisioner](stable/cluster-overprovisioner)
 - [hoppscotch](stable/hoppscotch)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
+- [k8s-event-logger](stable/k8s-event-logger)
 - [k8s-resources](stable/k8s-resources)
 - [kube-downscaler](stable/kube-downscaler)
 - [locust](stable/locust)
