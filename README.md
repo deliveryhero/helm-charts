@@ -19,6 +19,7 @@ helm install my-release deliveryhero/<chart>
 - [aws-s3-proxy](stable/aws-s3-proxy)
 - [aws-storage-class](stable/aws-storage-class)
 - [cachet](stable/cachet)
+- [cloudhealth-collector](stable/cloudhealth-collector)
 - [cluster-overprovisioner](stable/cluster-overprovisioner)
 - [hoppscotch](stable/hoppscotch)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
