@@ -85,9 +85,6 @@ spec:
       volumeMounts:
       - mountPath: /home/toxiproxy
         name: working
-      - mountPath: /var/toxiproxy/lib/log4j2.xml
-        name: config
-        subPath: log4j2.xml
     volumes:
     - name: working
       emptyDir: {}
