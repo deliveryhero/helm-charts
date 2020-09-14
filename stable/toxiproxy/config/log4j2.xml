@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR" packages="com.vlkan.log4j2.logstash.layout" >
+    <Properties>
+        <Property name="logLevel">${sys:wm.logging.level:-${env.WM_LOGGING_LEVEL:-info}}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+			<LogstashLayout dateTimeFormatPattern="yyyy-MM-dd'T'HH:mm:ss.SSS"
+				eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"
+				prettyPrintEnabled="false"
+				stackTraceEnabled="true"
+				timeZoneId="UTC" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.ninecookies.wiremock.extensions" level="${logLevel}" />
+        <Root level="info">
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>
