@@ -14,7 +14,6 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
-{{- include "toxiproxy.selector.labels" . | indent 6 }}
   template:
     metadata:
       labels:

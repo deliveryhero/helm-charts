@@ -35,6 +35,10 @@ service:
   type: ClusterIP
   port: 80
 
+# minimal consumer configuration
+consumer:
+  name: example
+
 ingress:
   enabled: true
   annotations: {}
@@ -65,6 +69,10 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+# to disable automatic downscaling change to true
+downscaler:
+  disabled: false
 
 extraLabels: {}
 
