@@ -66,7 +66,7 @@ helm install my-release deliveryhero/weblate -f values.yaml
 | deployment.tag | string | `"4.2-1"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"true"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/proxy-body-size" | string | `"512m"` |  |
-| ingress.enabled | bool | `true` |  |
+| ingress.enabled | bool | `false` |  |
 | storage.data_path | string | `"/app/data"` |  |
 | storage.enabled | bool | `false` |  |
 | storage.fs_id | string | `"fs-xxxxx"` |  |

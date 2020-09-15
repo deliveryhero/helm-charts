@@ -6,9 +6,7 @@ metadata:
   name: {{ template "weblate.name" . }}
   labels:
 {{ include "weblate.labels" . | indent 4 }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels | indent 4 }}
-{{- end }}
+{{ include "weblate.extra_labels" . | indent 4 }}
   annotations:
     nginx.ingress.kubernetes.io/affinity: "cookie"
     nginx.ingress.kubernetes.io/session-cookie-name: "route"

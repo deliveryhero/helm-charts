@@ -27,7 +27,7 @@ database:
   create: true
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: 512m
