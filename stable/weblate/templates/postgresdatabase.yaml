@@ -1,0 +1,16 @@
+{{- if .Values.database.create -}}
+
+apiVersion: postgresql.org/v1
+kind: PostgresDatabase
+metadata:
+  name: {{ template "weblate.name" . }}
+  labels:
+{{ include "weblate.labels" . | indent 4 }}
+{{ include "weblate.extra_labels" . | indent 4 }}
+spec:
+  dbName: {{ .Values.database.db_name }}
+  dbRoleName: {{ .Values.database.role_name }}
+  dbRolePassword: {{ .Values.database.role_password }}
+  dbInstanceId: {{ .Values.database.db_instance }}
+
+{{- end -}}

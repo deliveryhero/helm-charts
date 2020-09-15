@@ -1,0 +1,22 @@
+{{- if .Values.storage.enabled }}
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efs-pv
+  labels:
+{{ include "weblate.labels" . | indent 4 }}
+{{ include "weblate.extra_labels" . | indent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.storage.size }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: {{ .Values.storage.fs_id }}
+
+{{- end }}

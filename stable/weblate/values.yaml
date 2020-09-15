@@ -1,0 +1,39 @@
+deployment:
+  replicas: 1
+  image: weblate/weblate
+  tag: 4.2-1
+  container_port: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  resources:
+    requests:
+      cpu: 300m
+      memory: 2048Mi
+    limits:
+      cpu: 500m
+      memory: 4096Mi
+  environment:
+    WEBLATE_DEBUG: False
+    WEBLATE_LOGLEVEL: WARNING
+    WEBLATE_SITE_TITLE: Weblate
+    WEBLATE_ADMIN_NAME: "Weblate Admin"
+    WEBLATE_ENABLE_HTTPS: True
+    SECURE_SSL_REDIRECT: True
+
+database:
+  create: true
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: 512m
+
+storage:
+  enabled: false
+  fs_id: fs-xxxxx
+  data_path: /app/data
+  size: 10Gi
