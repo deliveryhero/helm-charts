@@ -68,7 +68,7 @@ ingress:
 # Extra arguments that can be passed to the Docker image.
 args:
 
-environment: {}
+environment: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -50,6 +50,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | args | string | `nil` |  |
 | consumer.name | string | `"example"` |  |
 | deploymentAnnotations | object | `{}` |  |
+| environment | list | `[]` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -59,7 +60,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.hosts[0].paths[0] | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
