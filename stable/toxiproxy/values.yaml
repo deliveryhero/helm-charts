@@ -46,7 +46,7 @@ service:
     # - 8080
     # - 8081
 
-# minimal consumer configuration
+# Minimal consumer configuration. A 'consumer' is an instance of the application with its own settings and files. 
 consumer:
   name: example
 
@@ -81,9 +81,8 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-# to disable automatic downscaling change to true
-downscaler:
-  disabled: false
+
+deploymentAnnotations: {}
 
 extraLabels: {}
 

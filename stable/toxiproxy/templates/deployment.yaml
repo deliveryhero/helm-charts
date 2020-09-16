@@ -4,10 +4,10 @@ metadata:
   name: {{ include "toxiproxy.fullname" . }}
   labels:
 {{ include "toxiproxy.labels" . | indent 4 }}
-{{- if .Values.downscaler.disabled }}
-  annotations:
-    downscaler/exclude: "true"
-{{- end}}
+{{- with .Values.deploymentAnnotations }}
+annotations:
+  {{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
