@@ -62,53 +62,63 @@ spec:
             protocol: TCP
   {{- end }}
         livenessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
           httpGet:
-          path: /version
-          port: admin
+            path: /version
+            port: admin
         readinessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
           httpGet:
-          path: /version
-          port: admin
+            path: /version
+            port: admin
+
+{{- if .Values.environment }}
         env:
   {{- range $key, $value := .Values.environment }}
           - name: {{ $key }}
             value: {{ $value | quote }}
   {{- end }}
-
+{{- end}}
         args:
           - "-host"
-          - {{ .Values.service.listeningAddress }}
+          - "{{ .Values.service.listeningAddress }}"
           - "-port"
-          - {{ .Values.service.listeningPort }}
+          - "{{ .Values.service.listeningPort }}"
           - "-config"
           - {{ .Values.service.configJsonPath }}
   {{- range $key, $value := .Values.args }}
           - {{ $value | quote }}
   {{- end }}
-      volumeMounts:
-      - mountPath: /home/toxiproxy
-        name: working
-    volumes:
-    - name: working
-      emptyDir: {}
-    - name: proxies
-      configMap:
-        name: {{ template "toxiproxy.fullname" . }}-proxies
-    - name: config
-      configMap:
-        name: {{ template "toxiproxy.fullname" . }}-config
+        volumeMounts:
+        - mountPath: /home/toxiproxy
+          name: working
+      volumes:
+      - name: working
+        emptyDir: {}
+      - name: proxies
+        configMap:
+          name: {{ template "toxiproxy.fullname" . }}-proxies
+      - name: config
+        configMap:
+          name: {{ template "toxiproxy.fullname" . }}-config
 {{- if .Values.initVolume }}
 {{ toYaml .Values.initVolume | indent 6 }}
 {{- end}}
-{{- with .Values.nodeSelector }}
-    nodeSelector:
-{{- toYaml . | nindent 6 }}
-{{- end }}
-{{- with .Values.affinity }}
-affinity:
-{{- toYaml . | nindent 6 }}
-{{- end }}
-{{- with .Values.tolerations }}
-tolerations:
-{{- toYaml . | nindent 6 }}
-{{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -57,7 +57,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
-      paths: []
+      paths:
+        - /
 
   tls: []
   #  - secretName: chart-example-tls
@@ -66,6 +67,8 @@ ingress:
 
 # Extra arguments that can be passed to the Docker image.
 args:
+
+environment: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
