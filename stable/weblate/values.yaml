@@ -24,7 +24,7 @@ deployment:
     SECURE_SSL_REDIRECT: True
 
 database:
-  create: true
+  create: false
 
 ingress:
   enabled: false
