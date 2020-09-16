@@ -54,12 +54,29 @@ helm install my-release deliveryhero/weblate -f values.yaml
 |-----|------|---------|-------------|
 | database.create | bool | `false` |  |
 | deployment.container_port | int | `8080` |  |
+| deployment.environment.POSTGRES_DATABASE | string | `"weblate"` |  |
+| deployment.environment.POSTGRES_HOST | string | `"database.local"` |  |
+| deployment.environment.POSTGRES_PORT | int | `5432` |  |
+| deployment.environment.POSTGRES_USER | string | `"weblate"` |  |
+| deployment.environment.REDIS_HOST | string | `"cache.local"` |  |
+| deployment.environment.REDIS_PORT | int | `6379` |  |
 | deployment.environment.SECURE_SSL_REDIRECT | bool | `true` |  |
+| deployment.environment.WEBLATE_ADMIN_EMAIL | string | `"changeme@domain.com"` |  |
 | deployment.environment.WEBLATE_ADMIN_NAME | string | `"Weblate Admin"` |  |
+| deployment.environment.WEBLATE_ALLOWED_HOSTS | string | `"weblate.domain.com"` |  |
+| deployment.environment.WEBLATE_AUTHENTICATION_BACKENDS | string | `"social_core.backends.google.GoogleOAuth2,weblate.accounts.auth.WeblateUserBackend"` |  |
 | deployment.environment.WEBLATE_DEBUG | bool | `false` |  |
+| deployment.environment.WEBLATE_DEFAULT_FROM_EMAIL | string | `"changeme@domain.com"` |  |
+| deployment.environment.WEBLATE_EMAIL_HOST | string | `"changeme.domain.com"` |  |
+| deployment.environment.WEBLATE_EMAIL_PORT | int | `587` |  |
 | deployment.environment.WEBLATE_ENABLE_HTTPS | bool | `true` |  |
 | deployment.environment.WEBLATE_LOGLEVEL | string | `"WARNING"` |  |
+| deployment.environment.WEBLATE_REGISTRATION_ALLOW_BACKENDS | string | `"social_core.backends.google.GoogleOAuth2"` |  |
+| deployment.environment.WEBLATE_REGISTRATION_OPEN | int | `1` |  |
+| deployment.environment.WEBLATE_SERVER_EMAIL | string | `"changeme@domain.com"` |  |
+| deployment.environment.WEBLATE_SITE_DOMAIN | string | `"weblate.comain"` |  |
 | deployment.environment.WEBLATE_SITE_TITLE | string | `"Weblate"` |  |
+| deployment.environment.WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS | string | `"domain.com"` |  |
 | deployment.image | string | `"weblate/weblate"` |  |
 | deployment.replicas | int | `1` |  |
 | deployment.resources.limits.cpu | string | `"500m"` |  |
