@@ -39,6 +39,13 @@ deployment:
     WEBLATE_AUTHENTICATION_BACKENDS: social_core.backends.google.GoogleOAuth2,weblate.accounts.auth.WeblateUserBackend
     WEBLATE_ALLOWED_HOSTS: weblate.domain.com
     WEBLATE_SITE_DOMAIN: weblate.comain
+    POSTGRES_PASSWORD: changeme
+    WEBLATE_ADMIN_PASSWORD: changeme
+    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: changeme
+    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: changeme
+    WEBLATE_GOOGLE_ANALYTICS_ID: changeme
+    WEBLATE_EMAIL_HOST_USER: changeme
+    WEBLATE_EMAIL_HOST_PASSWORD: changeme
 
 database:
   create: false
