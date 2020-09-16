@@ -41,6 +41,7 @@ helm install my-release deliveryhero/<chart>
 - [prometheus-statsd-exporter](stable/prometheus-statsd-exporter)
 - [rds-downscaler](stable/rds-downscaler)
 - [service-account](stable/service-account)
+- [toxiproxy](stable/toxiproxy)
 
 ## Contributing
 
@@ -57,6 +58,14 @@ All chart `README.md` files are generated from a template. This ensures all valu
 
 ```console
 docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:latest --template-file=../../ci/README.md.gotmpl
+```
+
+To run `chart-testing` locally:
+
+```console
+brew install chart-testing
+pip3 install yamale
+ct lint --charts stable/<your chart>
 ```
 
 ## License
