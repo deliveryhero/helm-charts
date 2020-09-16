@@ -11,6 +11,12 @@ spec:
       targetPort: admin
       protocol: TCP
       name: admin
+{{- range $key, $value := .Values.service.proxies.ports }}    
+    - port: {{ $value }}
+      targetPort: {{ $value }}
+      protocol: TCP
+      name:  proxy
+{{- end }}
   selector:
     app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

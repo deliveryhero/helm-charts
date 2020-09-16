@@ -33,7 +33,18 @@ securityContext: {}
 
 service:
   type: ClusterIP
+  # Linked pair of internal and external ports in which the ToxiProxy API will be listening in. 
   port: 80
+  listeningPort: 8474
+  # This can be used to limit API access to certain IPs/Localhost/Everywhere. 
+  listeningAddress: 0.0.0.0
+  # Config file to create proxy rules on container startup. By default anything under ./consumers/<app>/* gets copied to this path. 
+  configJsonPath: /home/toxiproxy/proxies/config.json
+  # Container ports that will be used for incoming routing rules. 
+  proxies:
+    ports:
+    # - 8080
+    # - 8081
 
 # minimal consumer configuration
 consumer:

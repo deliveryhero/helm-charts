@@ -55,12 +55,12 @@ spec:
       image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
       imagePullPolicy: {{ .Values.image.pullPolicy }}
       ports:
-        - containerPort: 8474
+        - containerPort: {{ .Values.service.listeningPort }}
           name: admin
           protocol: TCP
-{{- range $key, $value := .Values.ports }}          
+{{- range $key, $value := .Values.service.proxies.ports }}          
         - containerPort: {{ $value }}
-          name: http
+          name: proxy
           protocol: TCP
 {{- end }}
       livenessProbe:
@@ -78,6 +78,10 @@ spec:
 {{- end }}
 
       args:
+        - "-host"
+        - {{ .Values.service.listeningAddress }}
+        - "-port"
+        - {{ .Values.service.listeningPort }}
 {{- range $key, $value := .Values.args }}
         - {{ $value | quote }}
 {{- end }}
