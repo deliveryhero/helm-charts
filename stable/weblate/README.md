@@ -52,7 +52,7 @@ helm install my-release deliveryhero/weblate -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| database.create | bool | `true` |  |
+| database.create | bool | `false` |  |
 | deployment.container_port | int | `8080` |  |
 | deployment.environment.SECURE_SSL_REDIRECT | bool | `true` |  |
 | deployment.environment.WEBLATE_ADMIN_NAME | string | `"Weblate Admin"` |  |
