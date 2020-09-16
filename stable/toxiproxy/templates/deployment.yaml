@@ -19,7 +19,7 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-{{- include "toxiproxy.labels" . | indent 8 }}
+{{ include "toxiproxy.labels" . | indent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
         checksum/consumers: {{ include (print $.Template.BasePath "/configmap-proxies.yaml") . | sha256sum }}
