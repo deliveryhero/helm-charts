@@ -2,5 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ template "toxiproxy.fullname" . }}-proxies
+  labels:
+{{ include "toxiproxy.labels" . | indent 4 }}
+{{- if .Values.downscaler.disabled }}
 data:
 {{ (.Files.Glob (printf "consumers/%s/proxies/*" .Values.consumer.name)).AsConfig | indent 2 }}
