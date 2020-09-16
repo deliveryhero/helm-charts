@@ -46,47 +46,45 @@ spec:
 {{- if .Values.initContainer }}
 {{ toYaml .Values.initContainer | indent 6 }}
 {{- end }}
-
       containers:
       - name: toxiproxy
-      resources:
-{{ toYaml .Values.resources | indent 10 }}
-      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-      imagePullPolicy: {{ .Values.image.pullPolicy }}
-      ports:
-        - containerPort: {{ .Values.service.listeningPort }}
-          name: admin
-          protocol: TCP
-{{- range $key, $value := .Values.service.proxies.ports }}
-        - containerPort: {{ $value }}
-          name: proxy
-          protocol: TCP
-{{- end }}
-      livenessProbe:
-        httpGet:
-        path: /version
-        port: admin
-      readinessProbe:
-        httpGet:
-        path: /version
-        port: admin
-      env:
-{{- range $key, $value := .Values.environment }}
-        - name: {{ $key }}
-          value: {{ $value | quote }}
-{{- end }}
+        resources:
+  {{ toYaml .Values.resources | indent 10 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - containerPort: {{ .Values.service.listeningPort }}
+            name: admin
+            protocol: TCP
+  {{- range $key, $value := .Values.service.proxies.ports }}
+          - containerPort: {{ $value }}
+            name: proxy
+            protocol: TCP
+  {{- end }}
+        livenessProbe:
+          httpGet:
+          path: /version
+          port: admin
+        readinessProbe:
+          httpGet:
+          path: /version
+          port: admin
+        env:
+  {{- range $key, $value := .Values.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+  {{- end }}
 
-      args:
-        - "-host"
-        - {{ .Values.service.listeningAddress }}
-        - "-port"
-        - {{ .Values.service.listeningPort }}
-        - "-config"
-        - {{ .Values.service.configJsonPath }}
-{{- range $key, $value := .Values.args }}
-        - {{ $value | quote }}
-{{- end }}
-
+        args:
+          - "-host"
+          - {{ .Values.service.listeningAddress }}
+          - "-port"
+          - {{ .Values.service.listeningPort }}
+          - "-config"
+          - {{ .Values.service.configJsonPath }}
+  {{- range $key, $value := .Values.args }}
+          - {{ $value | quote }}
+  {{- end }}
       volumeMounts:
       - mountPath: /home/toxiproxy
         name: working
