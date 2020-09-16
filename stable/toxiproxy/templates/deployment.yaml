@@ -1,0 +1,124 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "toxiproxy.fullname" . }}
+  labels:
+{{ include "toxiproxy.labels" . | indent 4 }}
+{{- with .Values.deploymentAnnotations }}
+  annotations:
+{{- toYaml . | nindent 4 }}
+{{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "toxiproxy.labels" . | indent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+        checksum/consumers: {{ include (print $.Template.BasePath "/configmap-proxies.yaml") . | sha256sum }}
+    spec:
+{{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{- toYaml . | nindent 8 }}
+{{- end }}
+      serviceAccountName: {{ template "toxiproxy.serviceAccountName" . }}
+      securityContext:
+{{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: copy-mappings
+        image: busybox:latest
+        command: ['sh', '/config/init.sh']
+        volumeMounts:
+        - mountPath: /working
+          name: working
+        - mountPath: /consumer/proxies
+          name: proxies
+        - mountPath: /config/init.sh
+          name: config
+          subPath: init.sh
+{{- if .Values.initContainer }}
+{{ toYaml .Values.initContainer | indent 6 }}
+{{- end }}
+      containers:
+      - name: toxiproxy
+        resources:
+  {{ toYaml .Values.resources | indent 10 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - containerPort: {{ .Values.service.listeningPort }}
+            name: admin
+            protocol: TCP
+  {{- range $key, $value := .Values.service.proxies.ports }}
+          - containerPort: {{ $value }}
+            name: proxy
+            protocol: TCP
+  {{- end }}
+        livenessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /version
+            port: admin
+        readinessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /version
+            port: admin
+
+{{- if .Values.environment }}
+        env:
+  {{- range $key, $value := .Values.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+  {{- end }}
+{{- end}}
+        args:
+          - "-host"
+          - "{{ .Values.service.listeningAddress }}"
+          - "-port"
+          - "{{ .Values.service.listeningPort }}"
+          - "-config"
+          - {{ .Values.service.configJsonPath }}
+  {{- range $key, $value := .Values.args }}
+          - {{ $value | quote }}
+  {{- end }}
+        volumeMounts:
+        - mountPath: /home/toxiproxy
+          name: working
+      volumes:
+      - name: working
+        emptyDir: {}
+      - name: proxies
+        configMap:
+          name: {{ template "toxiproxy.fullname" . }}-proxies
+      - name: config
+        configMap:
+          name: {{ template "toxiproxy.fullname" . }}-config
+{{- if .Values.initVolume }}
+{{ toYaml .Values.initVolume | indent 6 }}
+{{- end}}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
