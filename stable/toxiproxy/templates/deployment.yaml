@@ -31,7 +31,6 @@ spec:
       serviceAccountName: {{ template "toxiproxy.serviceAccountName" . }}
       securityContext:
 {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      
       initContainers:
       - name: copy-mappings
         image: busybox:latest
@@ -47,7 +46,7 @@ spec:
 {{- if .Values.initContainer }}
 {{ toYaml .Values.initContainer | indent 6 }}
 {{- end }}
-      
+
       containers:
       - name: toxiproxy
       resources:
@@ -58,7 +57,7 @@ spec:
         - containerPort: {{ .Values.service.listeningPort }}
           name: admin
           protocol: TCP
-{{- range $key, $value := .Values.service.proxies.ports }}          
+{{- range $key, $value := .Values.service.proxies.ports }}
         - containerPort: {{ $value }}
           name: proxy
           protocol: TCP
