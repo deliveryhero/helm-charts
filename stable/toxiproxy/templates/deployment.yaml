@@ -82,6 +82,8 @@ spec:
         - {{ .Values.service.listeningAddress }}
         - "-port"
         - {{ .Values.service.listeningPort }}
+        - "-config"
+        - {{ .Values.service.configJsonPath }}
 {{- range $key, $value := .Values.args }}
         - {{ $value | quote }}
 {{- end }}

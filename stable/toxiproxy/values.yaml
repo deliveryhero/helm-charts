@@ -64,10 +64,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# Extra arguments that can be passed to the Docker image. 
 args:
-  # Needs to be in two lines or will not be executed correctly
-  - "-config"
-  - "/home/toxiproxy/proxies/config.json"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

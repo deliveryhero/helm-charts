@@ -47,8 +47,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| args[0] | string | `"-config"` |  |
-| args[1] | string | `"/home/toxiproxy/proxies/config.json"` |  |
+| args | string | `nil` |  |
 | consumer.name | string | `"example"` |  |
 | deploymentAnnotations | object | `{}` |  |
 | extraLabels | object | `{}` |  |
