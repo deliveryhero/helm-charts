@@ -58,7 +58,7 @@ spec:
             protocol: TCP
   {{- range $key, $value := .Values.service.proxies.ports }}
           - containerPort: {{ $value }}
-            name: proxy
+            name: {{ $value }}-proxy
             protocol: TCP
   {{- end }}
         livenessProbe:

@@ -15,7 +15,7 @@ spec:
     - port: {{ $value }}
       targetPort: {{ $value }}
       protocol: TCP
-      name:  proxy
+      name: {{ $value }}-proxy
 {{- end }}
   selector:
     app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
