@@ -9,8 +9,8 @@ loadtest:
   locust_lib_configmap: ""
   # loadtest.locust_host -- the host you will load test
   locust_host: https://www.google.com
-  pip_packages: []
   # loadtest.pip_packages -- a list of extra python pip packages to install
+  pip_packages: []
   # loadtest.environment -- environment variables used in the load test
   environment: {}
     # VAR: VALUE
