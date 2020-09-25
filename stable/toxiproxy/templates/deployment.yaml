@@ -49,7 +49,7 @@ spec:
       containers:
       - name: toxiproxy
         resources:
-  {{ toYaml .Values.resources | indent 10 }}
+{{ toYaml .Values.resources | indent 10 }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
@@ -58,7 +58,7 @@ spec:
             protocol: TCP
   {{- range $key, $value := .Values.service.proxies.ports }}
           - containerPort: {{ $value }}
-            name: proxy
+            name: {{ $value }}-proxy
             protocol: TCP
   {{- end }}
         livenessProbe:
