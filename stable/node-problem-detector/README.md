@@ -1,76 +1,88 @@
-# Kubernetes Node Problem Detector
+# node-problem-detector
+
+![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-informational?style=flat-square) ![AppVersion: v0.8.1](https://img.shields.io/badge/AppVersion-v0.8.1-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
-## TL;DR;
+**Homepage:** <https://github.com/kubernetes/node-problem-detector>
+
+## How to install this chart
+
+Add Delivery Hero public chart repo:
 
 ```console
-$ helm install stable/node-problem-detector
+helm repo add deliveryhero https://charts.deliveryhero.io/
 ```
 
-## Prerequisites
-
-- Kubernetes 1.9+ with Beta APIs enabled
-
-## Installing the Chart
-
-To install the chart with the release name `my-release` and default configuration:
+A simple install with default values:
 
 ```console
-$ helm install my-release stable/node-problem-detector
+helm install deliveryhero/node-problem-detector
 ```
 
-To install the chart with the release name `my-release` and custom configuration with yaml a file in the kube-system namespace:
+To install the chart with the release name `my-release`:
 
 ```console
-$ helm install my-release stable/node-problem-detector --values values.yaml --namespace kube-system
+helm install my-release deliveryhero/node-problem-detector
 ```
 
-## Uninstalling the Chart
-
-To delete the chart:
+To install with some set values:
 
 ```console
-$ helm delete my-release
+helm install my-release deliveryhero/node-problem-detector --set values_key1=value1 --set values_key2=value2
 ```
 
-## Configuration
+To install with custom values file:
 
-Custom System log monitor config files can be created, see [here](https://github.com/kubernetes/node-problem-detector/tree/master/config) for examples.
+```console
+helm install my-release deliveryhero/node-problem-detector -f values.yaml
+```
 
-The following table lists the configurable parameters for this chart and their default values.
+## Source Code
 
-| Parameter                             | Description                                | Default                                                      |
-|---------------------------------------|--------------------------------------------|--------------------------------------------------------------|
-| `affinity`                            | Map of node/pod affinities                 | `{}`                                                         |
-| `annotations`                         | Optional daemonset annotations             | `{}`                                                         |
-| `fullnameOverride`                    | Override the fullname of the chart         | `nil`                                                        |
-| `image.pullPolicy`                    | Image pull policy                          | `IfNotPresent`                                               |
-| `image.repository`                    | Image                                      | `k8s.gcr.io/node-problem-detector`                           |
-| `image.tag`                           | Image tag                                  | `v0.8.1`                                                     |
-| `hostpath.logdir`                     | Log directory path on K8s host             | `/var/log`                                                   |
-| `nameOverride`                        | Override the name of the chart             | `nil`                                                        |
-| `rbac.create`                         | RBAC                                       | `true`                                                       |
-| `rbac.pspEnabled`                     | PodSecuritypolicy                          | `false`                                                      |
-| `hostNetwork`                         | Run pod on host network                    | `false`                                                      |
-| `priorityClassName`                   | Priority class name                        | `""`                                                         |
-| `securityContext`                     | Pod security context                       | `{privileged: true}`                                         |
-| `resources`                           | Pod resource requests and limits           | `{}`                                                         |
-| `settings.custom_monitor_definitions` | User-specified custom monitor definitions  | `{}`                                                         |
-| `settings.log_monitors`               | System log monitor config files            | `[/config/kernel-monitor.json, /config/docker-monitor.json]` |
-| `settings.custom_plugin_monitors`     | Custom plugin monitor config files         | `[]`                                                         |
-| `settings.prometheus_address`         | Prometheus exporter address                | `0.0.0.0`                                                    |
-| `settings.prometheus_port`            | Prometheus exporter port                   | `20257`                                                      |
-| `settings.heartBeatPeriod`            | Syncing interval with API server           | `5m0s`                                                       |
-| `serviceAccount.create`               | Whether a ServiceAccount should be created | `true`                                                       |
-| `serviceAccount.name`                 | Name of the ServiceAccount to create       | Generated value from template                                |
-| `tolerations`                         | Optional daemonset tolerations             | `[{effect: NoSchedule, operator: Exists}]`                   |
-| `nodeSelector`                        | Optional daemonset nodeSelector            | `{}`                                                         |
-| `env`                                 | Optional daemonset environment variables   | `[]`                                                         |
-| `labels`                              | Optional daemonset labels                  | `{}`                                                         |
-| `extraVolumes`                        | Optional daemonset volumes to add          | `[]`                                                         |
-| `extraVolumeMounts`                   | Optional daemonset volumeMounts to add     | `[]`                                                         |
-| `updateStrategy`                      | Manage the daemonset update strategy       | `RollingUpdate`                                              |
-| `maxUnavailable`                      | The max pods unavailable during an update  | `1`                                                          |
+* <https://github.com/kubernetes/node-problem-detector>
+* <https://kubernetes.io/docs/concepts/architecture/nodes/#condition>
 
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install` or provide a YAML file containing the values for the above parameters.
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| annotations | object | `{}` |  |
+| env | string | `nil` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
+| fullnameOverride | string | `""` |  |
+| hostNetwork | bool | `false` | Run pod on host network Flag to run Node Problem Detector on the host's network. This is typically not recommended, but may be useful for certain use cases. |
+| hostpath.logdir | string | `"/var/log/"` | Log directory path on K8s host |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"k8s.gcr.io/node-problem-detector"` |  |
+| image.tag | string | `"v0.8.1"` |  |
+| labels | object | `{}` |  |
+| maxUnavailable | int | `1` | The max pods unavailable during an update |
+| metrics.serviceMonitor.additionalLabels | object | `{}` |  |
+| metrics.serviceMonitor.enabled | bool | `false` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| priorityClassName | string | `""` |  |
+| rbac.create | bool | `true` |  |
+| rbac.pspEnabled | bool | `false` |  |
+| resources | object | `{}` |  |
+| securityContext.privileged | bool | `true` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `nil` |  |
+| settings.custom_monitor_definitions | object | `{}` | Custom plugin monitor config files |
+| settings.custom_plugin_monitors | list | `[]` |  |
+| settings.heartBeatPeriod | string | `"5m0s"` | Syncing interval with API server |
+| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json"]` | User-specified custom monitor definitions |
+| settings.prometheus_address | string | `"0.0.0.0"` | Prometheus exporter address |
+| settings.prometheus_port | int | `20257` | Prometheus exporter port |
+| tolerations[0].effect | string | `"NoSchedule"` |  |
+| tolerations[0].operator | string | `"Exists"` |  |
+| updateStrategy | string | `"RollingUpdate"` | Manage the daemonset update strategy |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
