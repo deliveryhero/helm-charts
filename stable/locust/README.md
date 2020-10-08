@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.2](https://img.shields.io/badge/Version-0.2-informational?style=flat-square) ![AppVersion: 1.2.3](https://img.shields.io/badge/AppVersion-1.2.3-informational?style=flat-square)
+![Version: 0.3](https://img.shields.io/badge/Version-0.3-informational?style=flat-square) ![AppVersion: 1.2.3](https://img.shields.io/badge/AppVersion-1.2.3-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -76,13 +76,13 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
-| loadtest.environment | object | `{}` |  |
+| loadtest.environment | object | `{}` | environment variables used in the load test |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
 | loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
-| loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install loadtest.environment -- environment variables used in the load test |
+| loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | master.resources | object | `{}` | resources for the locust master |
 | nameOverride | string | `""` |  |
 | podSecurityContext | object | `{}` |  |

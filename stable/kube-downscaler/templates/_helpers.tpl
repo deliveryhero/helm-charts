@@ -6,10 +6,6 @@ Expand the name of the chart.
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "imagePullSecret" }}
-{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
-{{- end }}
-
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
@@ -28,6 +24,13 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{/*
+Create chart name and version as used by the chart label.
+*/}}
+{{- define "kube-downscaler.chart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
 Return the appropriate apiVersion for RBAC APIs.
 */}}
 {{- define "rbac.apiVersion" -}}
@@ -36,4 +39,17 @@ Return the appropriate apiVersion for RBAC APIs.
 {{- else -}}
 "rbac.authorization.k8s.io/v1beta1"
 {{- end -}}
+{{- end -}}
+
+{{/*
+Common labels
+*/}}
+{{- define "kube-downscaler.labels" -}}
+app.kubernetes.io/name: {{ include "kube-downscaler.name" . }}
+helm.sh/chart: {{ include "kube-downscaler.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}

@@ -1,7 +1,7 @@
 apiVersion: v1
 name: toxiproxy
 description: A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
-version: "1.0"
+version: "1.1"
 appVersion: "2.1.2"
 home: https://github.com/Shopify/toxiproxy
 sources:
