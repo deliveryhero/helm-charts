@@ -28,6 +28,7 @@ helm install my-release deliveryhero/<chart>
 - [kube-downscaler](stable/kube-downscaler)
 - [locust](stable/locust)
 - [newrelic-controller](stable/newrelic-controller)
+- [node-problem-detector](stable/node-problem-detector)
 - [postgres-controller](stable/postgres-controller)
 - [priority-class](stable/priority-class)
 - [prometheus-aws-costs-exporter](stable/prometheus-aws-costs-exporter)

@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
+![Version: 0.2](https://img.shields.io/badge/Version-0.2-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -46,18 +46,30 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| affinity | object | `{}` |  |
 | debug.enable | bool | `false` |  |
 | deployment.environment.DEFAULT_UPTIME | string | `"Mon-Fri 07:00-20:00 Europe/Berlin"` |  |
 | extraLabels | object | `{}` |  |
+| fullnameOverride | string | `""` |  |
 | image.args | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"hjacobs/kube-downscaler"` |  |
 | image.tag | string | `"19.10.1"` |  |
+| imagePullSecrets | list | `[]` |  |
 | interval | int | `60` |  |
-| name | string | `"kube-downscaler"` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
 | rbac.create | bool | `true` |  |
 | rbac.serviceAccountName | string | `"default"` |  |
 | replicaCount | int | `1` |  |
+| resetAnnotationsCronjob.enabled | bool | `false` |  |
+| resetAnnotationsCronjob.image | string | `"bitnami/kubectl:latest"` |  |
+| resetAnnotationsCronjob.labelSelectors[0] | string | `"environment=staging"` |  |
+| resetAnnotationsCronjob.resources.limits.cpu | string | `"50m"` |  |
+| resetAnnotationsCronjob.resources.limits.memory | string | `"50Mi"` |  |
+| resetAnnotationsCronjob.resources.requests.cpu | string | `"50m"` |  |
+| resetAnnotationsCronjob.resources.requests.memory | string | `"50Mi"` |  |
+| resetAnnotationsCronjob.schedule | string | `"0 7 * * *"` |  |
 | resources.limits.cpu | string | `"50m"` |  |
 | resources.limits.memory | string | `"200Mi"` |  |
 | resources.requests.cpu | string | `"50m"` |  |
@@ -65,6 +77,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `1000` |  |
+| tolerations | list | `[]` |  |
 
 ## Maintainers
 

@@ -1,0 +1,53 @@
+{{- if .Values.resetAnnotationsCronjob.enabled -}}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "kube-downscaler.fullname" . }}-de-annotate
+  labels:
+{{ include "kube-downscaler.labels" . | indent 4 }}
+    {{- if .Values.extraLabels }}
+      {{- toYaml .Values.extraLabels | nindent 4 }}
+    {{- end }}
+spec:
+  schedule: "{{ .Values.resetAnnotationsCronjob.schedule }}"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: {{ include "kube-downscaler.name" . }}
+            app.kubernetes.io/instance: {{ .Release.Name }}
+        spec:
+        {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+          serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-downscaler.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+          restartPolicy: Never
+          containers:
+{{- range $index, $label := .Values.resetAnnotationsCronjob.labelSelectors }}
+            - name: remove-annotations-{{ $index }}
+              image: "{{ $.Values.resetAnnotationsCronjob.image }}"
+              command:
+                - "sh"
+                - "-c"
+              args: ["for d in $(kubectl get deployments -l {{ $label }} --no-headers -o custom-columns=':metadata.name'); do kubectl annotate deployment $d downscaler/exclude-; done"]
+              resources:
+                {{- toYaml $.Values.resources | nindent 16 }}
+{{- end }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+        {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
+{{- end }}
