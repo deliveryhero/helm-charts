@@ -20,3 +20,9 @@ redis:
   usePassword: false
   cluster:
     enabled: false
+  securityContext:
+    enabled: true
+    fsGroup: 2000
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 0
