@@ -61,3 +61,9 @@ storage:
   fs_id: fs-xxxxx
   data_path: /app/data
   size: 10Gi
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
