@@ -43,6 +43,7 @@ helm install my-release deliveryhero/<chart>
 - [rds-downscaler](stable/rds-downscaler)
 - [service-account](stable/service-account)
 - [toxiproxy](stable/toxiproxy)
+- [weblate](stable/weblate)
 
 ## Contributing
 

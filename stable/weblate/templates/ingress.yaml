@@ -1,0 +1,29 @@
+{{- if .Values.ingress.enabled }}
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "weblate.name" . }}
+  labels:
+{{ include "weblate.labels" . | indent 4 }}
+{{ include "weblate.extra_labels" . | indent 4 }}
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+{{- if .Values.ingress.annotations }}
+{{ toYaml .Values.ingress.annotations | indent 4 }}
+{{- end }}
+
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Values.ingress.service }}
+          servicePort: {{ .Values.ingress.port }}
+        path: {{ .Values.ingress.path }}
+
+{{- end }}

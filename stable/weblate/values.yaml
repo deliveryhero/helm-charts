@@ -1,0 +1,69 @@
+deployment:
+  replicas: 1
+  image: weblate/weblate
+  tag: 4.2-1
+  container_port: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  resources:
+    requests:
+      cpu: 300m
+      memory: 2048Mi
+    limits:
+      cpu: 500m
+      memory: 4096Mi
+  environment:
+    WEBLATE_DEBUG: False
+    WEBLATE_LOGLEVEL: WARNING
+    WEBLATE_SITE_TITLE: Weblate
+    WEBLATE_ADMIN_NAME: "Weblate Admin"
+    WEBLATE_ENABLE_HTTPS: True
+    SECURE_SSL_REDIRECT: True
+    WEBLATE_ADMIN_EMAIL: changeme@domain.com
+    WEBLATE_SERVER_EMAIL: changeme@domain.com
+    WEBLATE_DEFAULT_FROM_EMAIL: changeme@domain.com
+    WEBLATE_EMAIL_HOST: changeme.domain.com
+    WEBLATE_EMAIL_PORT: 587
+    POSTGRES_DATABASE: weblate
+    POSTGRES_USER: weblate
+    POSTGRES_HOST: database.local
+    POSTGRES_PORT: 5432
+    REDIS_HOST: cache.local
+    REDIS_PORT: 6379
+    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS: domain.com
+    WEBLATE_REGISTRATION_OPEN: 1
+    WEBLATE_REGISTRATION_ALLOW_BACKENDS: social_core.backends.google.GoogleOAuth2
+    WEBLATE_AUTHENTICATION_BACKENDS: social_core.backends.google.GoogleOAuth2,weblate.accounts.auth.WeblateUserBackend
+    WEBLATE_ALLOWED_HOSTS: weblate.domain.com
+    WEBLATE_SITE_DOMAIN: weblate.comain
+    POSTGRES_PASSWORD: changeme
+    WEBLATE_ADMIN_PASSWORD: changeme
+    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: changeme
+    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: changeme
+    WEBLATE_GOOGLE_ANALYTICS_ID: changeme
+    WEBLATE_EMAIL_HOST_USER: changeme
+    WEBLATE_EMAIL_HOST_PASSWORD: changeme
+
+database:
+  create: false
+
+ingress:
+  enabled: false
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: 512m
+
+storage:
+  enabled: false
+  fs_id: fs-xxxxx
+  data_path: /app/data
+  size: 10Gi
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false

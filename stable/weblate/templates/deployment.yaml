@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "weblate.fullname" . }}
+  labels:
+{{ include "weblate.labels" . | indent 4 }}
+{{ include "weblate.extra_labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "weblate.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: {{ .Values.deployment.strategy.type }}
+    rollingUpdate:
+      maxUnavailable: {{ .Values.deployment.strategy.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.deployment.strategy.rollingUpdate.maxSurge }}
+  template:
+    metadata:
+      labels:
+{{ include "weblate.labels" . | indent 8 }}
+{{ include "weblate.extra_labels" . | indent 8 }}
+      annotations:
+    spec:
+{{- if .Values.storage.enabled }}
+      initContainers:
+      - image: busybox:latest
+        name: init
+        command: ["sh", "-c", "chown -R 1000:1000 /data"]
+        volumeMounts:
+        - name: weblate-efs
+          mountPath: /data
+{{- end }}
+      containers:
+      - image:  {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+        name: {{ template "weblate.name" . }}
+        env:
+          {{- range $key, $val := .Values.deployment.environment }}
+          - name: {{ $key }}
+            value: {{ $val | quote}}
+          {{- end }}
+        ports:
+        - containerPort: {{ default 8080 .Values.deployment.container_port }}
+          protocol: TCP
+        resources:
+          requests:
+            cpu: {{ .Values.deployment.resources.requests.cpu }}
+            memory: {{ .Values.deployment.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.deployment.resources.limits.cpu }}
+            memory: {{ .Values.deployment.resources.limits.memory }}
+{{- if .Values.storage.enabled }}
+        volumeMounts:
+        - name: weblate-efs
+          mountPath: {{ .Values.storage.data_path }}
+      volumes:
+      - name: weblate-efs
+        persistentVolumeClaim:
+          claimName: efs-claim
+{{- end }}
