@@ -1,13 +1,7 @@
-deployment:
-  environment:
-    POSTGRES_HOST: weblate-postgres
-    REDIS_HOST: weblate-redis-master
-    POSTGRES_PASSWORD: weblate
-    POSTGRES_USER: postgres
-
 postgresql:
   enabled: true
   fullnameOverride: weblate-postgres
+  postgresqlHost: weblate-postgres
   postgresqlDatabase: weblate
   postgresqlUsername: postgres
   postgresqlPassword: weblate
@@ -18,6 +12,7 @@ redis:
   enabled: true
   fullnameOverride: weblate-redis
   usePassword: false
+  redisHost: weblate-redis-master
   cluster:
     enabled: false
   securityContext:

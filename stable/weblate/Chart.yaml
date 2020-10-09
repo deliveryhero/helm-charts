@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: "4.2-1"
 description: Free web-based translation management system.
 name: weblate
-version: 0.1.0
+version: 0.2.0
 home: https://weblate.org
 sources:
   - https://github.com/WeblateOrg/weblate
