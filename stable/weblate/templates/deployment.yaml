@@ -1,61 +1,155 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "weblate.fullname" . }}
+  name: {{ include "weblate.name" . }}
   labels:
 {{ include "weblate.labels" . | indent 4 }}
-{{ include "weblate.extra_labels" . | indent 4 }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
 spec:
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: {{ .Values.updateStrategy }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "weblate.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
-  strategy:
-    type: {{ .Values.deployment.strategy.type }}
-    rollingUpdate:
-      maxUnavailable: {{ .Values.deployment.strategy.rollingUpdate.maxUnavailable }}
-      maxSurge: {{ .Values.deployment.strategy.rollingUpdate.maxSurge }}
   template:
     metadata:
       labels:
 {{ include "weblate.labels" . | indent 8 }}
-{{ include "weblate.extra_labels" . | indent 8 }}
-      annotations:
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 8 }}
+{{- end }}
     spec:
-{{- if .Values.storage.enabled }}
       initContainers:
       - image: busybox:latest
         name: init
         command: ["sh", "-c", "chown -R 1000:1000 /data"]
         volumeMounts:
-        - name: weblate-efs
+        - name: weblate-data
           mountPath: /data
-{{- end }}
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ template "weblate.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-      - image:  {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
-        name: {{ template "weblate.name" . }}
-        env:
-          {{- range $key, $val := .Values.deployment.environment }}
-          - name: {{ $key }}
-            value: {{ $val | quote}}
-          {{- end }}
-        ports:
-        - containerPort: {{ default 8080 .Values.deployment.container_port }}
-          protocol: TCP
-        resources:
-          requests:
-            cpu: {{ .Values.deployment.resources.requests.cpu }}
-            memory: {{ .Values.deployment.resources.requests.memory }}
-          limits:
-            cpu: {{ .Values.deployment.resources.limits.cpu }}
-            memory: {{ .Values.deployment.resources.limits.memory }}
-{{- if .Values.storage.enabled }}
-        volumeMounts:
-        - name: weblate-efs
-          mountPath: {{ .Values.storage.data_path }}
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: POSTGRES_DATABASE
+              value: "{{ .Values.postgresql.postgresqlDatabase }}"
+            - name: POSTGRES_HOST
+              value: "{{ .Values.postgresql.postgresqlHost | default (include "weblate.postgresql.fullname" .) }}"
+            - name: POSTGRES_PORT
+              value: "{{ .Values.postgresql.service.port }}"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: postgresql-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: postgresql-password
+            - name: REDIS_HOST
+              value: "{{ .Values.redis.redisHost | default (include "weblate.redis.fullname" .) }}"
+            - name: REDIS_DB
+              value: "{{ .Values.redis.db }}"
+            - name: WEBLATE_ADMIN_EMAIL
+              value: "{{ .Values.adminEmail }}"
+            - name: WEBLATE_ADMIN_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: admin-user
+            - name: WEBLATE_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: admin-password
+            - name: WEBLATE_SITE_TITLE
+              value: "{{ .Values.siteTitle }}"
+            - name: WEBLATE_SITE_DOMAIN
+              value: "{{ .Values.siteDomain }}"
+            - name: WEBLATE_EMAIL_HOST
+              value: "{{ .Values.emailHost }}"
+            - name: WEBLATE_EMAIL_PORT
+              value: "{{ .Values.emailPort }}"
+            - name: WEBLATE_EMAIL_USE_TLS
+              value: "{{ .Values.emailTLS }}"
+            - name: WEBLATE_EMAIL_USE_SSL
+              value: "{{ .Values.emailSSL }}"
+            - name: WEBLATE_EMAIL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: email-user
+            - name: WEBLATE_EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "weblate.fullname" . }}
+                  key: email-password
+            - name: WEBLATE_SERVER_EMAIL
+              value: "{{ .Values.serverEmail }}"
+            - name: WEBLATE_DEFAULT_FROM_EMAIL
+              value: "{{ .Values.defaultFromEmail }}"
+            - name: WEBLATE_ALLOWED_HOSTS
+              value: "{{ .Values.allowedHosts }}"
+            - name: WEBLATE_DEBUG
+              value: "{{ .Values.debug }}"
+            {{- range $key, $value := .Values.extraConfig }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /healthz/
+              port: http
+            failureThreshold: 10
+            initialDelaySeconds: 90
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /healthz/
+              port: http
+            failureThreshold: 5
+            initialDelaySeconds: 90
+            periodSeconds: 30
+          volumeMounts:
+            - mountPath: {{ .Values.persistence.filestore_dir }}
+              name: weblate-data
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-      - name: weblate-efs
-        persistentVolumeClaim:
-          claimName: efs-claim
-{{- end }}
+        - name: weblate-data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ include "weblate.fullname" . }}
+        {{- else }}
+          emptyDir: {}
+        {{- end -}}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

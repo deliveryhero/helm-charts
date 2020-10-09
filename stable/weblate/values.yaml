@@ -1,69 +1,156 @@
-deployment:
-  replicas: 1
-  image: weblate/weblate
-  tag: 4.2-1
-  container_port: 8080
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
-  resources:
-    requests:
-      cpu: 300m
-      memory: 2048Mi
-    limits:
-      cpu: 500m
-      memory: 4096Mi
-  environment:
-    WEBLATE_DEBUG: False
-    WEBLATE_LOGLEVEL: WARNING
-    WEBLATE_SITE_TITLE: Weblate
-    WEBLATE_ADMIN_NAME: "Weblate Admin"
-    WEBLATE_ENABLE_HTTPS: True
-    SECURE_SSL_REDIRECT: True
-    WEBLATE_ADMIN_EMAIL: changeme@domain.com
-    WEBLATE_SERVER_EMAIL: changeme@domain.com
-    WEBLATE_DEFAULT_FROM_EMAIL: changeme@domain.com
-    WEBLATE_EMAIL_HOST: changeme.domain.com
-    WEBLATE_EMAIL_PORT: 587
-    POSTGRES_DATABASE: weblate
-    POSTGRES_USER: weblate
-    POSTGRES_HOST: database.local
-    POSTGRES_PORT: 5432
-    REDIS_HOST: cache.local
-    REDIS_PORT: 6379
-    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS: domain.com
-    WEBLATE_REGISTRATION_OPEN: 1
-    WEBLATE_REGISTRATION_ALLOW_BACKENDS: social_core.backends.google.GoogleOAuth2
-    WEBLATE_AUTHENTICATION_BACKENDS: social_core.backends.google.GoogleOAuth2,weblate.accounts.auth.WeblateUserBackend
-    WEBLATE_ALLOWED_HOSTS: weblate.domain.com
-    WEBLATE_SITE_DOMAIN: weblate.comain
-    POSTGRES_PASSWORD: changeme
-    WEBLATE_ADMIN_PASSWORD: changeme
-    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: changeme
-    WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: changeme
-    WEBLATE_GOOGLE_ANALYTICS_ID: changeme
-    WEBLATE_EMAIL_HOST_USER: changeme
-    WEBLATE_EMAIL_HOST_PASSWORD: changeme
+# Default values for weblate.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 
-database:
-  create: false
+replicaCount: 1
+
+image:
+  repository: weblate/weblate
+  tag: 4.2.2-1
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+updateStrategy: "Recreate"
+
+# adminEmail -- Email of Admin Account
+adminEmail: ""
+# adminUser -- Name of Admin Account
+adminUser: ""
+# adminPassword -- Password of Admin Account
+adminPassword: ""
+
+# siteTile -- Site title
+siteTitle: "Weblate"
+# siteDomain -- Site domain
+siteDomain: "chart-example.local"
+
+# emailHost -- Host for sending emails
+emailHost: ""
+# emailPort -- Port for sending emails
+emailPort: 587
+# emailTLS -- Use TLS when sending emails
+emailTLS: true
+# emailSSL -- Use SSL when sending emails
+emailSSL: true
+# emailUser -- User name for sending emails
+emailUser: ""
+# emailPassword -- Password for sending emails
+emailPassword: ""
+
+# serverEmail -- Sender for outgoing emails
+serverEmail: ""
+# defaultFromEmail -- From email for outgoing emails
+defaultFromEmail: ""
+# allowedHosts -- Hosts that are allowed to connect
+allowedHosts: "*"
+
+# debug -- Enable debugging
+debug: "0"
+
+# extraConfig -- Additional (environment) configs. See https://docs.weblate.org/en/latest/admin/install/docker.html#docker-environment
+extraConfig: {}
+
+# configOverride -- Config override. See https://docs.weblate.org/en/latest/admin/install/docker.html#custom-configuration-files
+configOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
 
 ingress:
   enabled: false
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/proxy-body-size: 512m
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
 
-storage:
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+persistence:
   enabled: false
-  fs_id: fs-xxxxx
-  data_path: /app/data
+
+  storageClass: "-"
+
+  accessMode: ReadWriteMany
   size: 10Gi
 
+  filestore_dir: /app/data
+
+  # EFS persistence configuration
+  efs:
+    enabled: false
+    fs_id:
+
+
+
+resources:
+  {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
 postgresql:
-  enabled: false
+  postgresqlPassword: "weblate"
+  postgresqlDatabase: "weblate"
+  service:
+    port: 5432
+  enabled: true
+  # postgresql.postgresqlHost -- External postgres database endpoint, to be
+  # used if `postgresql.enabled == false`
+  # @default -- `None`
+  postgresqlHost:
+
+# database creation flag
+database:
+  create: false
 
 redis:
-  enabled: false
+  password: "weblate"
+  db: 1
+  enabled: true
+  # redis.redisHost -- External redis database endpoint, to be
+  # used if `redis.enabled == false`
+  # @default -- `None`
+  redisHost:
+  cluster:
+    enabled: false
