@@ -1,15 +1,16 @@
-{{- if .Values.storage.enabled }}
-
+{{- if .Values.persistence.efs.enabled }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: efs-pv
   labels:
 {{ include "weblate.labels" . | indent 4 }}
-{{ include "weblate.extra_labels" . | indent 4 }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
 spec:
   capacity:
-    storage: {{ .Values.storage.size }}
+    storage: {{ .Values.persistence.size }}
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
@@ -17,6 +18,5 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: {{ .Values.storage.fs_id }}
-
+    volumeHandle: {{ .Values.persistence.efs.fs_id }}
 {{- end }}

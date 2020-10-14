@@ -45,10 +45,22 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Extra labels
+Create the name of the service account to use
 */}}
-{{- define "weblate.extra_labels" -}}
-{{- if .Values.extra_labels }}
-{{ toYaml .Values.extra_labels }}
-{{- end }}
+{{- define "weblate.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "weblate.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{- define "weblate.postgresql.fullname" -}}
+{{- $fullName := include "weblate.fullname" . -}}
+{{- printf "%s-%s" $fullName "postgresql" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "weblate.redis.fullname" -}}
+{{- $fullName := include "weblate.fullname" . -}}
+{{- printf "%s-%s-%s" $fullName "redis" "master" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
