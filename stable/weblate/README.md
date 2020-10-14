@@ -1,6 +1,6 @@
 # weblate
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2-1-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2-1-informational?style=flat-square)
 
 Free web-based translation management system.
 
@@ -53,57 +53,64 @@ helm install my-release deliveryhero/weblate -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| adminEmail | string | `""` | Email of Admin Account |
+| adminPassword | string | `""` | Password of Admin Account |
+| adminUser | string | `""` | Name of Admin Account |
+| affinity | object | `{}` |  |
+| allowedHosts | string | `"*"` | Hosts that are allowed to connect |
+| configOverride | string | `""` | Config override. See https://docs.weblate.org/en/latest/admin/install/docker.html#custom-configuration-files |
 | database.create | bool | `false` |  |
-| deployment.container_port | int | `8080` |  |
-| deployment.environment.POSTGRES_DATABASE | string | `"weblate"` |  |
-| deployment.environment.POSTGRES_HOST | string | `"database.local"` |  |
-| deployment.environment.POSTGRES_PASSWORD | string | `"changeme"` |  |
-| deployment.environment.POSTGRES_PORT | int | `5432` |  |
-| deployment.environment.POSTGRES_USER | string | `"weblate"` |  |
-| deployment.environment.REDIS_HOST | string | `"cache.local"` |  |
-| deployment.environment.REDIS_PORT | int | `6379` |  |
-| deployment.environment.SECURE_SSL_REDIRECT | bool | `true` |  |
-| deployment.environment.WEBLATE_ADMIN_EMAIL | string | `"changeme@domain.com"` |  |
-| deployment.environment.WEBLATE_ADMIN_NAME | string | `"Weblate Admin"` |  |
-| deployment.environment.WEBLATE_ADMIN_PASSWORD | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_ALLOWED_HOSTS | string | `"weblate.domain.com"` |  |
-| deployment.environment.WEBLATE_AUTHENTICATION_BACKENDS | string | `"social_core.backends.google.GoogleOAuth2,weblate.accounts.auth.WeblateUserBackend"` |  |
-| deployment.environment.WEBLATE_DEBUG | bool | `false` |  |
-| deployment.environment.WEBLATE_DEFAULT_FROM_EMAIL | string | `"changeme@domain.com"` |  |
-| deployment.environment.WEBLATE_EMAIL_HOST | string | `"changeme.domain.com"` |  |
-| deployment.environment.WEBLATE_EMAIL_HOST_PASSWORD | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_EMAIL_HOST_USER | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_EMAIL_PORT | int | `587` |  |
-| deployment.environment.WEBLATE_ENABLE_HTTPS | bool | `true` |  |
-| deployment.environment.WEBLATE_GOOGLE_ANALYTICS_ID | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_LOGLEVEL | string | `"WARNING"` |  |
-| deployment.environment.WEBLATE_REGISTRATION_ALLOW_BACKENDS | string | `"social_core.backends.google.GoogleOAuth2"` |  |
-| deployment.environment.WEBLATE_REGISTRATION_OPEN | int | `1` |  |
-| deployment.environment.WEBLATE_SERVER_EMAIL | string | `"changeme@domain.com"` |  |
-| deployment.environment.WEBLATE_SITE_DOMAIN | string | `"weblate.comain"` |  |
-| deployment.environment.WEBLATE_SITE_TITLE | string | `"Weblate"` |  |
-| deployment.environment.WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET | string | `"changeme"` |  |
-| deployment.environment.WEBLATE_SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS | string | `"domain.com"` |  |
-| deployment.image | string | `"weblate/weblate"` |  |
-| deployment.replicas | int | `1` |  |
-| deployment.resources.limits.cpu | string | `"500m"` |  |
-| deployment.resources.limits.memory | string | `"4096Mi"` |  |
-| deployment.resources.requests.cpu | string | `"300m"` |  |
-| deployment.resources.requests.memory | string | `"2048Mi"` |  |
-| deployment.strategy.rollingUpdate.maxSurge | int | `1` |  |
-| deployment.strategy.rollingUpdate.maxUnavailable | int | `0` |  |
-| deployment.strategy.type | string | `"RollingUpdate"` |  |
-| deployment.tag | string | `"4.2-1"` |  |
-| ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"true"` |  |
-| ingress.annotations."nginx.ingress.kubernetes.io/proxy-body-size" | string | `"512m"` |  |
+| debug | string | `"0"` | Enable debugging |
+| defaultFromEmail | string | `""` | From email for outgoing emails |
+| emailHost | string | `""` | Host for sending emails |
+| emailPassword | string | `""` | Password for sending emails |
+| emailPort | int | `587` | Port for sending emails |
+| emailSSL | bool | `true` | Use SSL when sending emails |
+| emailTLS | bool | `true` | Use TLS when sending emails |
+| emailUser | string | `""` | User name for sending emails |
+| extraConfig | object | `{}` | Additional (environment) configs. See https://docs.weblate.org/en/latest/admin/install/docker.html#docker-environment |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"weblate/weblate"` |  |
+| image.tag | string | `"4.2.2-1"` |  |
+| imagePullSecrets | list | `[]` |  |
+| ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| postgresql.enabled | bool | `false` |  |
-| redis.enabled | bool | `false` |  |
-| storage.data_path | string | `"/app/data"` |  |
-| storage.enabled | bool | `false` |  |
-| storage.fs_id | string | `"fs-xxxxx"` |  |
-| storage.size | string | `"10Gi"` |  |
+| ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.tls | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| persistence.accessMode | string | `"ReadWriteMany"` |  |
+| persistence.efs.enabled | bool | `false` |  |
+| persistence.efs.fs_id | string | `nil` |  |
+| persistence.enabled | bool | `false` |  |
+| persistence.filestore_dir | string | `"/app/data"` |  |
+| persistence.size | string | `"10Gi"` |  |
+| persistence.storageClass | string | `"-"` |  |
+| podSecurityContext.fsGroup | int | `1000` |  |
+| postgresql.enabled | bool | `true` |  |
+| postgresql.postgresqlDatabase | string | `"weblate"` |  |
+| postgresql.postgresqlHost | string | `None` | External postgres database endpoint, to be used if `postgresql.enabled == false` |
+| postgresql.postgresqlPassword | string | `"weblate"` |  |
+| postgresql.service.port | int | `5432` |  |
+| redis.cluster.enabled | bool | `false` |  |
+| redis.db | int | `1` |  |
+| redis.enabled | bool | `true` |  |
+| redis.password | string | `"weblate"` |  |
+| redis.redisHost | string | `None` | External redis database endpoint, to be used if `redis.enabled == false` |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| securityContext | object | `{}` |  |
+| serverEmail | string | `""` | Sender for outgoing emails |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `nil` |  |
+| siteDomain | string | `"chart-example.local"` | Site domain |
+| siteTitle | string | `"Weblate"` |  |
+| tolerations | list | `[]` |  |
+| updateStrategy | string | `"Recreate"` |  |
 
 ## Maintainers
 

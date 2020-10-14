@@ -4,13 +4,16 @@ metadata:
   name: {{ include "weblate.fullname" . }}
   labels:
 {{ include "weblate.labels" . | indent 4 }}
-{{ include "weblate.extra_labels" . | indent 4 }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
 spec:
+  type: {{ .Values.service.type }}
   ports:
-    - name: "80"
-      port: 80
+    - port: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
-      targetPort: {{ default 8080 .Values.deployment.container_port }}
+      name: http
   selector:
-    app.kubernetes.io/name: {{ include "weblate.name" . | quote}}
-    app.kubernetes.io/instance: {{ .Release.Name | quote}}
+    app.kubernetes.io/name: {{ include "weblate.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
