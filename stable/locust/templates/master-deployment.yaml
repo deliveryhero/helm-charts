@@ -16,9 +16,10 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust-lib.yaml") . | sha256sum }}
-        checksum/config-locust: {{ include (print $.Template.BasePath "/configmap-locust-locustfile.yaml") . | sha256sum }}
+        checksum/config-locust-lib: {{ include (print $.Template.BasePath "/configmap-locust-lib.yaml") . | sha256sum }}
+        checksum/config-locust-locustfile: {{ include (print $.Template.BasePath "/configmap-locust-locustfile.yaml") . | sha256sum }}
         checksum/config-config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+        checksum/config-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       labels:
         component: master
         {{- include "locust.selectorLabels" . | nindent 8 }}
