@@ -7,3 +7,5 @@ image:
   repository: aquasec/kube-bench
   tag: 0.1.0
   pullPolicy: IfNotPresent
+
+resources: {}

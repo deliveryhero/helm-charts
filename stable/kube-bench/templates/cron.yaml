@@ -9,11 +9,14 @@ spec:
       template:
         spec:
           hostPID: true
+          restartPolicy: Never
           containers:
             - name: kube-bench
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command: {{ template "cronjob.command" . }}
+              resources:
+{{ toYaml .Values.resources | indent 14 }}
               volumeMounts:
                 - name: var-lib-kubelet
                   mountPath: /var/lib/kubelet
@@ -24,7 +27,6 @@ spec:
                 - name: etc-kubernetes
                   mountPath: /etc/kubernetes
                   readOnly: true
-          restartPolicy: Never
           volumes:
             - name: var-lib-kubelet
               hostPath:
