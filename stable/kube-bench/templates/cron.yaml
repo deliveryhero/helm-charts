@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: kube-bench
 spec:
-  schedule: "{{ .Values.cronjob.schedule }}"
+  schedule: {{ quote .Values.cronjob.schedule }}
   jobTemplate:
     spec:
       template:
@@ -11,24 +11,19 @@ spec:
           hostPID: true
           containers:
             - name: kube-bench
-              image: aquasec/kube-bench:latest
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
               command: {{ template "cronjob.command" . }}
               volumeMounts:
                 - name: var-lib-kubelet
                   mountPath: /var/lib/kubelet
-{{- if eq "eks" .Values.provider -}}
-{{ printf "readOnly: true" | nindent 18 }}
-{{- end }}
+                  readOnly: true
                 - name: etc-systemd
                   mountPath: /etc/systemd
-{{- if eq "eks" .Values.provider -}}
-{{ printf "readOnly: true" | nindent 18 }}
-{{- end }}
+                  readOnly: true
                 - name: etc-kubernetes
                   mountPath: /etc/kubernetes
-{{- if eq "eks" .Values.provider -}}
-{{ printf "readOnly: true" | nindent 18 }}
-{{- end }}
+                  readOnly: true
           restartPolicy: Never
           volumes:
             - name: var-lib-kubelet
