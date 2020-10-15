@@ -1,6 +1,6 @@
 # prometheus-spot-termination-exporter
 
-![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.7](https://img.shields.io/badge/Version-0.2.7-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Spot instance termination exporter for Prometheus
 
@@ -56,7 +56,7 @@ helm install my-release deliveryhero/prometheus-spot-termination-exporter -f val
 | livenessProbe.timeoutSeconds | int | `5` |  |
 | logLevel | string | `"debug"` |  |
 | metadataEndpoint | string | `"http://169.254.169.254/latest/meta-data/"` |  |
-| nodeSelector."kubernetes.io/lifecycle" | string | `"spot"` |  |
+| nodeSelector."node.kubernetes.io/lifecycle" | string | `"spot"` |  |
 | port | int | `9189` |  |
 | prometheus.metricsPath | string | `"/metrics"` |  |
 | prometheus.scrape | string | `"true"` |  |

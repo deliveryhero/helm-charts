@@ -46,4 +46,4 @@ readinessProbe:
   periodSeconds: 5
 
 nodeSelector:
-  kubernetes.io/lifecycle: spot
+  node.kubernetes.io/lifecycle: spot
