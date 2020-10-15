@@ -16,7 +16,7 @@ spec:
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command: {{ template "cronjob.command" . }}
               resources:
-{{ toYaml .Values.resources | indent 14 }}
+              {{ toYaml .Values.resources | indent 14 }}
               volumeMounts:
                 - name: var-lib-kubelet
                   mountPath: /var/lib/kubelet
