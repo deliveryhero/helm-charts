@@ -62,6 +62,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| affinity | object | `{}` |  |
 | downscale.enabled | bool | `true` |  |
 | downscale.hour | int | `19` |  |
 | downscale.image | string | `"bitnami/kubectl:latest"` |  |
@@ -69,7 +70,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"1.2.3"` |  |
+| image.tag | string | `"1.3.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
@@ -85,11 +86,13 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | master.resources | object | `{}` | resources for the locust master |
 | nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.annotations | object | `{}` |  |
 | service.extraLabels | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
+| tolerations | list | `[]` |  |
 | worker.hpa.enabled | bool | `false` |  |
 | worker.hpa.maxReplicas | int | `100` |  |
 | worker.hpa.minReplicas | int | `1` |  |
