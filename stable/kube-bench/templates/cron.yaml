@@ -12,17 +12,23 @@ spec:
           containers:
             - name: kube-bench
               image: aquasec/kube-bench:latest
-              command:{{- if eq "gke" .Values.provider -}} ["kube-bench", "--benchmark", "gke-1.0", "run", "--targets", "node,policies,managedservices"] {{- else -}} ["kube-bench", "node", "--benchmark", "eks-1.0"] {{- end }}
+              command: {{ template "cronjob.command" . }}
               volumeMounts:
                 - name: var-lib-kubelet
                   mountPath: /var/lib/kubelet
-                  {{- if eq "eks" .Values.provider -}} {{ printf "readOnly: true" | nindent 18 }}  {{- end }}
+{{- if eq "eks" .Values.provider -}}
+{{ printf "readOnly: true" | nindent 18 }}
+{{- end }}
                 - name: etc-systemd
                   mountPath: /etc/systemd
-                  {{- if eq "eks" .Values.provider -}} {{ printf "readOnly: true" | nindent 18 }}  {{- end }}
+{{- if eq "eks" .Values.provider -}}
+{{ printf "readOnly: true" | nindent 18 }}
+{{- end }}
                 - name: etc-kubernetes
                   mountPath: /etc/kubernetes
-                  {{- if eq "eks" .Values.provider -}} {{ printf "readOnly: true" | nindent 18 }}  {{- end }}
+{{- if eq "eks" .Values.provider -}}
+{{ printf "readOnly: true" | nindent 18 }}
+{{- end }}
           restartPolicy: Never
           volumes:
             - name: var-lib-kubelet
