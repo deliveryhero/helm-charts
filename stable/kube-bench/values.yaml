@@ -1,7 +1,7 @@
 provider: eks
 
 cronjob:
-  schedule: "*/1 * * * *"
+  schedule: "0 0 1 * *"
 
 image:
   repository: aquasec/kube-bench
