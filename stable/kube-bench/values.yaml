@@ -1,0 +1,4 @@
+provider: eks
+
+cronjob:
+  schedule: "*/1 * * * *"
