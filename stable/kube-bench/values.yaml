@@ -9,3 +9,6 @@ image:
   pullPolicy: IfNotPresent
 
 resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}

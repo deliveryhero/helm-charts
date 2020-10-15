@@ -37,3 +37,15 @@ spec:
             - name: etc-kubernetes
               hostPath:
                 path: "/etc/kubernetes"
+    {{- with .Values.nodeSelector }}
+          nodeSelector:
+{{ toYaml . | indent 12 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+          affinity:
+{{ toYaml . | indent 12 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+          tolerations:
+{{ toYaml . | indent 12 }}
+    {{- end }}
