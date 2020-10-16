@@ -25,6 +25,7 @@ helm install my-release deliveryhero/<chart>
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
 - [k8s-event-logger](stable/k8s-event-logger)
 - [k8s-resources](stable/k8s-resources)
+- [kube-bench](stable/kube-bench)
 - [kube-downscaler](stable/kube-downscaler)
 - [locust](stable/locust)
 - [newrelic-controller](stable/newrelic-controller)
