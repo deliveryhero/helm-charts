@@ -22,7 +22,6 @@ spec:
 {{ include "toxiproxy.labels" . | indent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
-        checksum/consumers: {{ include (print $.Template.BasePath "/configmap-proxies.yaml") . | sha256sum }}
     spec:
 {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -102,8 +101,12 @@ spec:
       - name: working
         emptyDir: {}
       - name: proxies
+{{ if eq .Values.toxiproxyConfig "" }}
+        emptyDir: {}
+{{ else }}
         configMap:
-          name: {{ template "toxiproxy.fullname" . }}-proxies
+          name: {{ .Values.toxiproxyConfig }}
+{{ end }}
       - name: config
         configMap:
           name: {{ template "toxiproxy.fullname" . }}-config
