@@ -1,8 +1,23 @@
 # toxiproxy
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.2](https://img.shields.io/badge/Version-1.2-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
+
+By default the chart will install toxiproxy with blank configuration. You can add [toxics](https://github.com/Shopify/toxiproxy#toxics) to the running configuration using the [API](https://github.com/Shopify/toxiproxy#http-api).
+
+For large configurations it is easier to store your toxics in a JSON file, in a `ConfigMap` and pass this to the chart to be used by toxiproxy:
+
+```console
+kubectl create configmap my-toxiproxy-config --from-file path/to/your/toxiproxy.json
+```
+
+And then install the chart passing the name of the `ConfigMap` as a value:
+
+```console
+helm install locust deliveryhero/toxiproxy \
+  --set toxiproxyConfig=my-toxiproxy-config
+```
 
 **Homepage:** <https://github.com/Shopify/toxiproxy>
 
@@ -77,6 +92,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
 | tolerations | list | `[]` |  |
+| toxiproxyConfig | string | `""` |  |
 
 ## Maintainers
 

@@ -102,8 +102,12 @@ spec:
       - name: working
         emptyDir: {}
       - name: proxies
+{{ if eq .Values.toxiproxyConfig "" -}}
+        emptyDir: {}
+{{ else -}}
         configMap:
-          name: {{ template "toxiproxy.fullname" . }}-proxies
+          name: {{ .Values.toxiproxyConfig }}
+{{ end -}}
       - name: config
         configMap:
           name: {{ template "toxiproxy.fullname" . }}-config
