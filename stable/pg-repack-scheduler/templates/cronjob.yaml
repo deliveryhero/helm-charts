@@ -1,0 +1,76 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "pg-repack-scheduler.fullname" . }}
+  labels:
+{{ include "pg-repack-scheduler.labels" . | indent 4 }}
+spec:
+  suspend: {{ .Values.schedule.suspend }}
+  schedule: "{{ .Values.schedule.minute }} {{ .Values.schedule.hour }} * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 60
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: {{ include "pg-repack-scheduler.name" . }}
+            app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- if .Values.podLabels }}
+    {{ toYaml .Values.podLabels | indent 10 }}
+    {{- end }}
+        spec:
+          serviceAccount: {{ .Values.service_account_name }}
+          serviceAccountName: {{ .Values.service_account_name }}
+          restartPolicy: Never
+        {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 8 }}
+        {{- end }}
+          containers:
+            - name: app
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              args:
+                - bash
+                - /run_pg_repack.sh
+                - "{{ .Values.pg_repack_run_settings.objectlisttype }}"
+                - "{{ .Values.pg_repack_run_settings.objectlist_sql }}"
+                - "{{ .Values.pg_repack_run_settings.cleanup }}"
+                - "{{ .Values.pg_repack_run_settings.detailed_logging }}"
+                - "{{ .Values.pg_repack_run_settings.parallel_job }}"
+                - "{{ .Values.pg_repack_run_settings.install_maint_objects }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+              - name: PGUSER
+                value: "{{ .Values.db_settings.user }}"
+              - name: PGHOST
+                value: "{{ .Values.db_settings.host }}"
+              - name: PGDATABASE
+                value: "{{ .Values.db_settings.database }}"
+              - name: PGPASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ include "pg-repack-scheduler.fullname" . }}
+                    key: db_password
+{{ if .Values.environment }}
+    {{- range $key, $value := .Values.environment }}
+              - name: {{ $key }}
+                value: {{ $value | quote }}
+    {{- end }}
+{{- end }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+        {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+        {{- end }}
