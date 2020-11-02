@@ -5,7 +5,7 @@ cronjob:
 
 image:
   repository: aquasec/kube-bench
-  tag: 0.1.0
+  tag: latest
   pullPolicy: IfNotPresent
 
 resources: {}
