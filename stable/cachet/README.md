@@ -79,6 +79,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | env.public.MAIL_PORT | int | `25` |  |
 | env.public.QUEUE_DRIVER | string | `"database"` |  |
 | env.public.SESSION_DRIVER | string | `"database"` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"cachethq/docker"` |  |
@@ -89,7 +90,6 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
-| podLabels | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |

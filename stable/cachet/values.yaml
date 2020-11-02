@@ -74,4 +74,4 @@ env:
 test:
   enabled: true
 
-podLabels: {}
+extraLabels: {}
