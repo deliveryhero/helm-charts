@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.6](https://img.shields.io/badge/Version-1.2.6-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.7](https://img.shields.io/badge/Version-1.2.7-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -89,6 +89,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
+| podLabels | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
