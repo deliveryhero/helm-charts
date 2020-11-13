@@ -21,9 +21,9 @@ spec:
   - 'downwardAPI'
   - 'persistentVolumeClaim'
   - 'hostPath'
-  hostNetwork: false
+  hostNetwork: {{ .Values.hostNetwork }}
   hostIPC: false
-  hostPID: false
+  hostPID: {{ .Values.hostPID }}
   runAsUser:
     rule: 'RunAsAny'
   seLinux:
