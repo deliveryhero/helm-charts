@@ -31,3 +31,4 @@ config:
   interval: 10m
 
 prometheus: true
+extraLabels: {}

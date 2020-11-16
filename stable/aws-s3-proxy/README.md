@@ -1,6 +1,6 @@
 # aws-s3-proxy
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
 Reverse proxy for AWS S3 with basic authentication.
 
@@ -47,6 +47,7 @@ helm install my-release deliveryhero/aws-s3-proxy -f values.yaml
 | affinity | object | `{}` |  |
 | deployment.env.AWS_REGION | string | `"eu-west-1"` |  |
 | deployment.env.AWS_S3_BUCKET | string | `"your-s3-bucket"` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"pottava/s3-proxy"` |  |
