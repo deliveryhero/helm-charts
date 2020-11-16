@@ -1,6 +1,6 @@
 # prometheus-aws-costs-exporter
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Exporter for AWS Cost Explorer daily costs
 
@@ -53,6 +53,7 @@ helm install my-release deliveryhero/prometheus-aws-costs-exporter -f values.yam
 | environment.METRIC_TODAY_DAILY_USAGE | bool | `true` |  |
 | environment.METRIC_TODAY_DAILY_USAGE_NORM | bool | `true` |  |
 | environment.METRIC_YESTERDAY_DAILY_COSTS | bool | `true` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"nachomillangarcia/prometheus_aws_cost_exporter"` |  |

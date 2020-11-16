@@ -8,6 +8,7 @@ metadata:
     chart: {{ template "prometheus-darksky-exporter.chart" $ }}
     release: {{ $.Release.Name }}
     heritage: {{ $.Release.Service }}
+{{ include  "prometheus-darksky-exporter.labels" . | indent 4 }}
 spec:
   replicas: {{ $.Values.replicaCount }}
   selector:
