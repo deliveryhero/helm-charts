@@ -42,6 +42,6 @@ Create the name of the service account to use
 {{- end -}}
 {{- end -}}
 
-{{- define "prometheus-darksky-exporter.labels "-}}
+{{- define "prometheus-darksky-exporter.labels" -}}
 {{ toYaml .Values.extraLabels }}
 {{- end -}}
