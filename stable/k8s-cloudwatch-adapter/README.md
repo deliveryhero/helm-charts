@@ -1,6 +1,6 @@
 # k8s-cloudwatch-adapter
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
 
 An implementation of the Kubernetes Custom Metrics API and External Metrics API for AWS CloudWatch metrics. This adapter allows you to scale your Kubernetes deployment using the Horizontal Pod Autoscaler (HPA) with metrics from AWS CloudWatch.
 
@@ -51,6 +51,7 @@ helm install my-release deliveryhero/k8s-cloudwatch-adapter -f values.yaml
 | adapter.args.secure-port | int | `6443` |  |
 | adapter.args.v | int | `2` |  |
 | affinity | object | `{}` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"chankh/k8s-cloudwatch-adapter"` |  |

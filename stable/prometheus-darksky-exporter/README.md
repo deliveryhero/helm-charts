@@ -1,6 +1,6 @@
 # prometheus-darksky-exporter
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: v0.0.4](https://img.shields.io/badge/AppVersion-v0.0.4-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: v0.0.4](https://img.shields.io/badge/AppVersion-v0.0.4-informational?style=flat-square)
 
 A Helm chart to export Dark Sky results
 
@@ -48,6 +48,7 @@ helm install my-release deliveryhero/prometheus-darksky-exporter -f values.yaml
 |-----|------|---------|-------------|
 | config.interval | string | `"10m"` |  |
 | config.port | int | `9091` |  |
+| extraLabels | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"billykwooten/darksky-exporter"` |  |
 | image.tag | string | `"v0.0.4"` |  |
