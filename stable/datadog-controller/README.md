@@ -70,6 +70,7 @@ helm install my-release deliveryhero/datadog-controller -f values.yaml
 | datadog.client_api_key | string | `"put_your_api_key_here"` | Your Datadog API key, you can get/create one at https://app.datadoghq.eu/account/settings#api |
 | datadog.client_app_key | string | `"put_your_app_key_here"` | Your Datadog API key, you can get/create one at https://app.datadoghq.eu/account/settings#api |
 | datadog.host | string | `"datadoghq.eu"` | The datadog host. Usually datadoghq.eu or datadoghq.com |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"maxrocketinternet/datadog-controller"` |  |

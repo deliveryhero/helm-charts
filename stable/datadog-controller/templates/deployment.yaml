@@ -11,12 +11,16 @@ spec:
       {{- include "datadog-controller.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-    {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+        checksum/config-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+{{- if .Values.podAnnotations }}
+{{- toYaml .Values.podAnnotations | nindent 8 }}
+{{- end }}
       labels:
         {{- include "datadog-controller.selectorLabels" . | nindent 8 }}
+{{- if .Values.extraLabels }}
+{{ toYaml .Values.extraLabels | indent 8 }}
+{{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -38,16 +42,22 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: DD_CLIENT_API_KEY
-              value: "{{ .Values.datadog.client_api_key }}"
-            - name: DATADOG_HOST
-              value: "{{ .Values.datadog.host }}"
-            - name: DD_CLIENT_APP_KEY
-              value: "{{ .Values.datadog.client_app_key }}"
-  {{- range $key, $value := .Values.controller.environment }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
-  {{- end }}
+          - name: DD_CLIENT_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "datadog-controller.fullname" . }}
+                key: DD_CLIENT_API_KEY
+          - name: DD_CLIENT_APP_KEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "datadog-controller.fullname" . }}
+                key: DD_CLIENT_APP_KEY
+          - name: DATADOG_HOST
+            value: "{{ .Values.datadog.host }}"
+{{- range $key, $value := .Values.controller.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
           ports:
             - name: http
               containerPort: 80
