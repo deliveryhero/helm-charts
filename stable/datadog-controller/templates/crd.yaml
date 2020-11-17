@@ -1,0 +1,208 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.5
+  creationTimestamp: null
+  name: datadogmonitors.datadoghq.com
+spec:
+  group: datadoghq.com
+  names:
+    kind: DatadogMonitor
+    listKind: DatadogMonitorList
+    plural: datadogmonitors
+    singular: datadogmonitor
+  scope: Namespaced
+  additionalPrinterColumns:
+  - name: Status
+    type: string
+    description: The status of the monitor
+    JSONPath: .status.status
+  - name: Id
+    type: string
+    description: The ID in Datadog
+    JSONPath: .status.id
+  - name: Url
+    type: string
+    description: The monitor URL in Datadog
+    JSONPath: .status.url
+  validation:
+    openAPIV3Schema:
+      description: DatadogMonitor is the Schema for the datadogmonitors API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          properties:
+            id:
+              description: ID of this monitor.
+              format: int64
+              type: integer
+            message:
+              description: A message to include with notifications for this monitor.
+              type: string
+            multi:
+              description: Whether or not the monitor is broken down on different
+                groups.
+              type: boolean
+            name:
+              description: The monitor name.
+              type: string
+            options:
+              properties:
+                escalation_message:
+                  type: string
+                evaluation_delay:
+                  description: Time (in seconds) to delay evaluation, as a non-negative
+                    integer. For example, if the value is set to `300` (5min), the
+                    timeframe is set to `last_5m` and the time is 7:00, the monitor
+                    evaluates data from 6:50 to 6:55. This is useful for AWS CloudWatch
+                    and other backfilled metrics to ensure the monitor always has
+                    data during evaluation.
+                  format: int64
+                  type: integer
+                include_tags:
+                  description: A Boolean indicating whether notifications from this
+                    monitor automatically inserts its triggering tags into the title.  **Examples**
+                    - If `True`, `[Triggered on {host:h1}] Monitor Title` - If `False`,
+                    `[Triggered] Monitor Title`
+                  type: boolean
+                locked:
+                  description: Whether or not the monitor is locked (only editable
+                    by creator and admins).
+                  type: boolean
+                min_failure_duration:
+                  description: How long the test should be in failure before alerting
+                    (integer, number of seconds, max 7200).
+                  format: int64
+                  type: integer
+                min_location_failed:
+                  description: The minimum number of locations in failure at the same
+                    time during at least one moment in the `min_failure_duration`
+                    period (`min_location_failed` and `min_failure_duration` are part
+                    of the advanced alerting rules - integer, >= 1).
+                  format: int64
+                  type: integer
+                new_host_delay:
+                  description: Time (in seconds) to allow a host to boot and applications
+                    to fully start before starting the evaluation of monitor results.
+                    Should be a non negative integer.
+                  format: int64
+                  type: integer
+                no_data_timeframe:
+                  description: The number of minutes before a monitor notifies after
+                    data stops reporting. Datadog recommends at least 2x the monitor
+                    timeframe for metric alerts or 2 minutes for service checks. If
+                    omitted, 2x the evaluation timeframe is used for metric alerts,
+                    and 24 hours is used for service checks.
+                  format: int64
+                  type: integer
+                notify_audit:
+                  description: A Boolean indicating whether tagged users is notified
+                    on changes to this monitor.
+                  type: boolean
+                notify_no_data:
+                  description: A Boolean indicating whether this monitor notifies
+                    when data stops reporting.
+                  type: boolean
+                renotify_interval:
+                  description: The number of minutes after the last notification before
+                    a monitor re-notifies on the current status. It only re-notifies
+                    if it’s not resolved.
+                  format: int64
+                  type: integer
+                require_full_window:
+                  description: A Boolean indicating whether this monitor needs a full
+                    window of data before it’s evaluated. We highly recommend you
+                    set this to `false` for sparse metrics, otherwise some evaluations
+                    are skipped. Default is false.
+                  type: boolean
+                thresholds:
+                  properties:
+                    critical:
+                      description: The monitor `CRITICAL` threshold.
+                      type: number
+                    critical_recovery:
+                      description: The monitor `CRITICAL` recovery threshold.
+                      type: number
+                    ok:
+                      description: The monitor `OK` threshold.
+                      type: number
+                    unknown:
+                      description: The monitor UNKNOWN threshold.
+                      type: number
+                    warning:
+                      description: The monitor `WARNING` threshold.
+                      type: number
+                    warning_recovery:
+                      description: The monitor `WARNING` recovery threshold.
+                      type: number
+                  type: object
+                timeout_h:
+                  description: The number of hours of the monitor not reporting data
+                    before it automatically resolves from a triggered state.
+                  format: int64
+                  type: integer
+              type: object
+            priority:
+              description: Integer from 1 (high) to 5 (low) indicating alert severity.
+              format: int64
+              type: integer
+            query:
+              description: The monitor query.
+              type: string
+            tags:
+              description: Tags associated to your monitor.
+              items:
+                type: string
+              type: array
+            type:
+              description: 'The Type of monitor it is. Must be one of: "composite",
+                "event alert", "log alert", "metric alert", "process alert", "query
+                alert", "rum alert", "service check", "synthetics alert", "trace-analytics
+                alert", "slo alert"'
+              type: string
+          required:
+          - message
+          - name
+          - query
+          type: object
+        status:
+          properties:
+            id:
+              description: The monitor ID in Datadog
+              format: int64
+              type: integer
+            observed_generation:
+              description: The last applied generation. Used to distinguish
+              format: int64
+              type: integer
+            status:
+              description: Is the monitor created in Datadog
+              type: string
+            url:
+              description: The monitor URL in Datadog
+              type: string
+          type: object
+      type: object
+  version: v1beta1
+  versions:
+  - name: v1beta1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

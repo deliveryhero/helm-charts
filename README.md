@@ -21,6 +21,7 @@ helm install my-release deliveryhero/<chart>
 - [cachet](stable/cachet)
 - [cloudhealth-collector](stable/cloudhealth-collector)
 - [cluster-overprovisioner](stable/cluster-overprovisioner)
+- [datadog-controller](stable/datadog-controller)
 - [hoppscotch](stable/hoppscotch)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
 - [k8s-event-logger](stable/k8s-event-logger)
