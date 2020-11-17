@@ -47,3 +47,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+extraLabels: {}
