@@ -30,6 +30,7 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: {{ template "locust.fullname" . }}-master
       containers:
       - name: {{ .Chart.Name }}
         securityContext:
