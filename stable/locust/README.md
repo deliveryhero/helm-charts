@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.7](https://img.shields.io/badge/Version-0.7-informational?style=flat-square) ![AppVersion: 1.3.0](https://img.shields.io/badge/AppVersion-1.3.0-informational?style=flat-square)
+![Version: 0.8](https://img.shields.io/badge/Version-0.8-informational?style=flat-square) ![AppVersion: 1.3.0](https://img.shields.io/badge/AppVersion-1.3.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -85,6 +85,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | master.resources | object | `{}` | resources for the locust master |
+| master.serviceAccountAnnotations | object | `{}` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -99,6 +100,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
+| worker.serviceAccountAnnotations | object | `{}` |  |
 
 ## Maintainers
 
