@@ -35,13 +35,21 @@ spec:
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        command: ["sh", "/config/docker-entrypoint.sh"]
+        image: "{{ if .Values.master.image }}{{ .Values.master.image }}{{ else }}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ end }}"
+{{- with .Values.master.command }}
+        command:
+        {{- toYaml . | nindent 8 }}
+{{- end }}
+{{- if .Values.master.args }}
+        args:
+        {{- toYaml .Values.master.args | nindent 8 }}
+{{ else if .Values.master.args_include_default }}
         args:
           - --master
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
+          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_filename }}
           - --host={{ .Values.loadtest.locust_host }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+          - --loglevel=DEBUG
+{{- end }}
         resources:
 {{ toYaml .Values.master.resources | indent 10 }}
         volumeMounts:

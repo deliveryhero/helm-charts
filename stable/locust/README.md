@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.8](https://img.shields.io/badge/Version-0.8-informational?style=flat-square) ![AppVersion: 1.3.0](https://img.shields.io/badge/AppVersion-1.3.0-informational?style=flat-square)
+![Version: 0.9](https://img.shields.io/badge/Version-0.9-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -71,7 +71,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"1.3.0"` |  |
+| image.tag | string | `"1.4.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
@@ -84,6 +84,10 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
+| master.args_include_default | bool | `true` | Whether to include default command args |
+| master.command[0] | string | `"sh"` |  |
+| master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
+| master.image | string | `""` | A custom docker image including tag |
 | master.resources | object | `{}` | resources for the locust master |
 | master.serviceAccountAnnotations | object | `{}` |  |
 | nameOverride | string | `""` |  |
@@ -94,10 +98,14 @@ helm install my-release deliveryhero/locust -f values.yaml
 | service.extraLabels | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
+| worker.args_include_default | bool | `true` | Whether to include default command args |
+| worker.command[0] | string | `"sh"` |  |
+| worker.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | worker.hpa.enabled | bool | `false` |  |
 | worker.hpa.maxReplicas | int | `100` |  |
 | worker.hpa.minReplicas | int | `1` |  |
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
+| worker.image | string | `""` | A custom docker image including tag |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.serviceAccountAnnotations | object | `{}` |  |
