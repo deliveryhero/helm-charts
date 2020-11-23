@@ -88,6 +88,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.command[0] | string | `"sh"` |  |
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | master.image | string | `""` | A custom docker image including tag |
+| master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.resources | object | `{}` | resources for the locust master |
 | master.serviceAccountAnnotations | object | `{}` |  |
 | nameOverride | string | `""` |  |
@@ -106,6 +107,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.hpa.minReplicas | int | `1` |  |
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.image | string | `""` | A custom docker image including tag |
+| worker.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.serviceAccountAnnotations | object | `{}` |  |

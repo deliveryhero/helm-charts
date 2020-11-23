@@ -28,6 +28,8 @@ service:
 master:
   # master.image -- A custom docker image including tag
   image: ""
+  # master.logLevel -- Log level. Can be INFO or DEBUG
+  logLevel: INFO
   # master.resources -- resources for the locust master
   resources: {}
     # limits:
@@ -53,6 +55,8 @@ downscale:
 worker:
   # worker.image -- A custom docker image including tag
   image: ""
+  # worker.logLevel -- Log level. Can be INFO or DEBUG
+  logLevel: INFO
   replicas: 1
   hpa:
     enabled: false

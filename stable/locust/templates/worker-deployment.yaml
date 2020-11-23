@@ -49,9 +49,10 @@ spec:
 {{ else if .Values.worker.args_include_default }}
         args:
           - --worker
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_filename }}
+          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
           - --master-host={{ template "locust.fullname" . }}
+          - --loglevel={{ .Values.worker.logLevel }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
