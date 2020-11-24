@@ -38,13 +38,22 @@ spec:
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        command: ["sh", "/config/docker-entrypoint.sh"]
+        image: "{{ if .Values.worker.image }}{{ .Values.worker.image }}{{ else }}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ end }}"
+{{- with .Values.worker.command }}
+        command:
+        {{- toYaml . | nindent 8 }}
+{{- end }}
+{{- if .Values.worker.args }}
+        args:
+        {{- toYaml .Values.worker.args | nindent 8 }}
+{{ else if .Values.worker.args_include_default }}
         args:
           - --worker
           - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
           - --master-host={{ template "locust.fullname" . }}
+          - --loglevel={{ .Values.worker.logLevel }}
+{{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.worker.resources | indent 10 }}
@@ -58,6 +67,10 @@ spec:
         env:
           - name: LOCUST_HOST
             value: "{{ .Values.loadtest.locust_host }}"
+          - name: LOCUST_MASTER_HOST
+            value: "{{ template "locust.fullname" . }}"
+          - name: LOCUST_MASTER_PORT
+            value: "5557"
 {{- range $key, $value := .Values.loadtest.environment }}
           - name: {{ $key }}
             value: {{ $value | quote }}
@@ -69,7 +82,6 @@ spec:
                 name: {{ template "locust.fullname" $ }}
                 key: {{ $key }}
 {{- end }}
-
       restartPolicy: Always
       volumes:
         - name: lib

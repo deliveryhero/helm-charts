@@ -17,7 +17,7 @@ loadtest:
 
 image:
   repository: locustio/locust
-  tag: 1.3.0
+  tag: 1.4.1
   pullPolicy: IfNotPresent
 
 service:
@@ -26,6 +26,10 @@ service:
   extraLabels: {}
 
 master:
+  # master.image -- A custom docker image including tag
+  image: ""
+  # master.logLevel -- Log level. Can be INFO or DEBUG
+  logLevel: INFO
   # master.resources -- resources for the locust master
   resources: {}
     # limits:
@@ -35,6 +39,11 @@ master:
     #   cpu: 1000m
     #   memory: 1024Mi
   serviceAccountAnnotations: {}
+  # master.args_include_default -- Whether to include default command args
+  args_include_default: true
+  command:
+    - sh
+    - /config/docker-entrypoint.sh
 
 downscale:
   # downscale.enable -- settings to downscale locust pods using a cronjob
@@ -44,6 +53,10 @@ downscale:
   minute: 00
 
 worker:
+  # worker.image -- A custom docker image including tag
+  image: ""
+  # worker.logLevel -- Log level. Can be INFO or DEBUG
+  logLevel: INFO
   replicas: 1
   hpa:
     enabled: false
@@ -59,6 +72,11 @@ worker:
     #   cpu: 500m
     #   memory: 256Mi
   serviceAccountAnnotations: {}
+  # worker.args_include_default -- Whether to include default command args
+  args_include_default: true
+  command:
+    - sh
+    - /config/docker-entrypoint.sh
 
 nameOverride: ""
 fullnameOverride: ""
