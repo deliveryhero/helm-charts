@@ -5,6 +5,10 @@ metadata:
   labels:
 {{ include "locust.labels" . | indent 4 }}
     component: "master"
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
