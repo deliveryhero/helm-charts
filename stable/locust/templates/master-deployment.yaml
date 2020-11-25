@@ -30,16 +30,26 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: {{ template "locust.fullname" . }}-master
       containers:
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        command: ["sh", "/config/docker-entrypoint.sh"]
+        image: "{{ if .Values.master.image }}{{ .Values.master.image }}{{ else }}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ end }}"
+{{- with .Values.master.command }}
+        command:
+        {{- toYaml . | nindent 8 }}
+{{- end }}
+{{- if .Values.master.args }}
+        args:
+        {{- toYaml .Values.master.args | nindent 8 }}
+{{ else if .Values.master.args_include_default }}
         args:
           - --master
           - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
+          - --loglevel={{ .Values.master.logLevel }}
+{{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.master.resources | indent 10 }}
