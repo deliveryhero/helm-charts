@@ -11,8 +11,10 @@ spec:
       component: master
       {{- include "locust.selectorLabels" . | nindent 6 }}
   replicas: 1
+{{- with .Values.master.strategy }}
   strategy:
-    type: RollingUpdate
+{{ toYaml . | trim | indent 4 }}
+{{- end }}
   template:
     metadata:
       annotations:

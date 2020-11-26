@@ -11,11 +11,10 @@ spec:
       component: worker
       {{- include "locust.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.worker.replicas }}
+{{- with .Values.worker.strategy }}
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100
-      maxSurge: 50%
+{{ toYaml . | trim | indent 4 }}
+{{- end }}
   template:
     metadata:
       annotations:
