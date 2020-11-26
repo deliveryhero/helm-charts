@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.6](https://img.shields.io/badge/Version-1.2.6-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.2.7](https://img.shields.io/badge/Version-1.2.7-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -79,6 +79,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | env.public.MAIL_PORT | int | `25` |  |
 | env.public.QUEUE_DRIVER | string | `"database"` |  |
 | env.public.SESSION_DRIVER | string | `"database"` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"cachethq/docker"` |  |
