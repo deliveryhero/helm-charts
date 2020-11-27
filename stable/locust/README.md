@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.3](https://img.shields.io/badge/Version-0.9.3-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
+![Version: 0.9.4](https://img.shields.io/badge/Version-0.9.4-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -91,6 +91,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.resources | object | `{}` | resources for the locust master |
 | master.serviceAccountAnnotations | object | `{}` |  |
+| master.strategy.type | string | `"RollingUpdate"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -111,6 +112,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.serviceAccountAnnotations | object | `{}` |  |
+| worker.strategy.type | string | `"RollingUpdate"` |  |
 
 ## Maintainers
 

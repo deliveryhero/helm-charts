@@ -44,6 +44,8 @@ master:
   command:
     - sh
     - /config/docker-entrypoint.sh
+  strategy:
+    type: RollingUpdate
 
 downscale:
   # downscale.enable -- settings to downscale locust pods using a cronjob
@@ -77,6 +79,8 @@ worker:
   command:
     - sh
     - /config/docker-entrypoint.sh
+  strategy:
+    type: RollingUpdate
 
 nameOverride: ""
 fullnameOverride: ""
