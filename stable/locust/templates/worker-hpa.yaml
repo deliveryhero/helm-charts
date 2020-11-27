@@ -13,9 +13,5 @@ spec:
     name: {{ template "locust.fullname" . }}-worker
   minReplicas: {{ .Values.worker.hpa.minReplicas }}
   maxReplicas: {{ .Values.worker.hpa.maxReplicas }}
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: {{ .Values.worker.hpa.targetCPUUtilizationPercentage }}
+  targetCPUUtilizationPercentage: {{ .Values.worker.hpa.targetCPUUtilizationPercentage }}
 {{- end }}
