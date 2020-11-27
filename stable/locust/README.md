@@ -91,7 +91,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.resources | object | `{}` | resources for the locust master |
 | master.serviceAccountAnnotations | object | `{}` |  |
-| master.strategy | object | `{}` |  |
+| master.strategy.type | string | `"RollingUpdate"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -112,7 +112,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.serviceAccountAnnotations | object | `{}` |  |
-| worker.strategy | object | `{}` |  |
+| worker.strategy.type | string | `"RollingUpdate"` |  |
 
 ## Maintainers
 
