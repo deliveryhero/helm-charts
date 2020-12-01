@@ -1,3 +1,19 @@
+CronJobs: []
+  - name: example-cronjob
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    extraLabels:
+      app: my-app
+    schedule: 00 19 * * *
+    containers:
+      - name: my-container
+        image: ubuntu:bionic
+        args:
+          - "sh"
+          - "-c"
+          - "'echo yes'"
+
 ConfigMaps:
   - name: example-cm
     fullnameOverride: ""

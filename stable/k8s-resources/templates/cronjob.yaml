@@ -1,0 +1,43 @@
+{{- if .Values.CronJobs -}}
+{{- range .Values.CronJobs }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+{{- if .namespace }}
+  namespace: {{ .namespace }}
+{{- end }}
+  name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
+  labels:
+    {{- include "k8s-resources.labels" $ | nindent 4 }}
+  {{- with .extraLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  suspend: {{ default .suspend "false" }}
+  schedule: {{ .schedule }}
+  concurrencyPolicy: {{ default .concurrencyPolicy "Forbid" }}
+  startingDeadlineSeconds: {{ default .startingDeadlineSeconds 120 }}
+  jobTemplate:
+    spec:
+      backoffLimit: {{ default .backoffLimit 6 }}
+      template:
+        metadata:
+          labels:
+            {{- include "k8s-resources.labels" $ | nindent 12 }}
+            {{- with .extraLabels }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+        spec:
+          serviceAccountName: {{ default .serviceAccountName "null" }}
+          restartPolicy: {{ default .restartPolicy "Never" }}
+          containers:
+            {{- with .containers }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+---
+{{- end }}
+{{- end }}
