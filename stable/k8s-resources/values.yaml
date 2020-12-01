@@ -3,6 +3,20 @@ nameOverride: ""
 # fullnameOverride -- Override the full name of resources
 fullnameOverride: ""
 
+# CronJobs -- A list CronJobs to create
+CronJobs: []
+  # - name: example-cronjob
+  #   extraLabels:
+  #     app: my-app
+  #   schedule: 00 19 * * *
+  #   containers:
+  #     - name: my-container
+  #       image: ubuntu:bionic
+  #       args:
+  #         - "sh"
+  #         - "-c"
+  #         - "'echo yes'"
+
 # ConfigMaps -- A list ConfigMap to create
 ConfigMaps: []
   # - name: example-cm
