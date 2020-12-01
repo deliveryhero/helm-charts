@@ -1,0 +1,48 @@
+# pg_repack_settings -- Settings used by pg_repack
+pg_repack_run_settings:
+  objectlisttype: "query"
+  type: "T"
+  cleanup: "true"
+  detailed_logging: "true"
+  parallel_job: 4
+  objectlist_sql: select schemaname||'.'||tablename from pg_catalog.pg_tables where schemaname = 'public'
+  install_maint_objects: "true"
+
+db_settings:
+  host: my-db-host.domain.com
+  user: postgres
+  database: my-db
+  password: CHANGE_ME
+
+# environment -- Any environment variables
+environment: {}
+
+image:
+  repository: maxrocketinternet/pg-repack-scheduler
+  tag: "0.1"
+  pullPolicy: IfNotPresent
+
+# schedule -- Cron schedule of the downscale job
+schedule:
+  # schedule.suspend -- Whether to suspend (disable) the cronjob
+  suspend: true
+  # schedule.minute -- Cron schedule minute of the downscale job
+  minute: "00"
+  # schedule.hour -- Cron schedule hour of the downscale job
+  hour: "04"
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 128Mi
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+nodeSelector: {}
+tolerations: []
+affinity: {}
+podLabels: {}

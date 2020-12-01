@@ -1,0 +1,36 @@
+FROM alpine:3.8
+
+RUN set -ex && \
+    apk add --no-cache \
+    bash \
+    unzip \
+    make \
+    postgresql-client \
+    postgresql-dev \
+    build-base \
+    zlib-dev && \
+    wget http://api.pgxn.org/dist/pg_repack/1.4.4/pg_repack-1.4.4.zip && \
+    unzip pg_repack-1.4.4.zip && \
+    cd pg_repack-1.4.4 && \
+    make && \
+    make install
+    
+RUN wget http://api.pgxn.org/dist/pg_repack/1.4.3/pg_repack-1.4.3.zip && \
+    unzip pg_repack-1.4.3.zip && \
+    cd pg_repack-1.4.3 && \
+    make && \
+    make install
+
+RUN mkdir SQL
+
+ENV PGOPTIONS '-c statement_timeout=0 -c idle_in_transaction_session_timeout=0 -c maintenance_work_mem=4GB'
+
+
+COPY ./entrypoint.sh ./
+COPY  SQL ./SQL/
+COPY ./run_pg_repack.sh ./
+
+RUN chmod +x run_pg_repack.sh
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
