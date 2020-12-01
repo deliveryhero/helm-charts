@@ -21,6 +21,10 @@ metadata:
   labels:
     {{- $commonLabels | nindent 4 }}
     app.cluster-overprovisioner/deployment: {{ .name }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
 spec:
   strategy:
     type: Recreate
@@ -31,7 +35,7 @@ spec:
       app.cluster-overprovisioner/deployment: {{ .name }}
   template:
     metadata:
-    {{- with .annotations }}
+    {{- with .podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
