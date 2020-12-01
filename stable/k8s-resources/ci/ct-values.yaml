@@ -2,7 +2,6 @@ CronJobs: []
   - name: example-cronjob
     fullnameOverride: ""
     annotations: {}
-    extraLabels: {}
     extraLabels:
       app: my-app
     schedule: 00 19 * * *
