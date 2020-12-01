@@ -10,12 +10,37 @@ This approach is the [current recommended method to achieve overprovisioning](ht
 
 **Homepage:** <https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |
-| mmingorance-dh | miguel.mingorance@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/cluster-overprovisioner
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/cluster-overprovisioner
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/cluster-overprovisioner --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
+```
 
 ## Source Code
 
@@ -30,10 +55,10 @@ This approach is the [current recommended method to achieve overprovisioning](ht
 | deployments | list | {} | Define optional additional deployments - A default deployment is included by default |
 | deployments[0].affinity | object | `{}` | Default Deployment - Map of node/pod affinities |
 | deployments[0].annotations | object | `{}` | Default Deployment - Annotations to add to the deployment |
+| deployments[0].podAnnotations | object | `{}` | Default Deployment - Annotations for pods in the deployment |
 | deployments[0].labels | object | `{}` | Default Deployment - Optional labels tolerations |
 | deployments[0].name | string | `"default"` | Default Deployment - Name for additional deployments (will be added as label cluster-over-provisioner-name, so you can match it with affinity rules) |
 | deployments[0].nodeSelector | object | `{}` | Default Deployment - Node labels for pod assignment |
-| deployments[0].podAnnotations | object | `{}` | Default Deployment - Annotations to add to the pods |
 | deployments[0].replicaCount | int | `3` | Default Deployment - Number of replicas |
 | deployments[0].resources.limits.cpu | string | `"1000m"` | Default Deployment - CPU limit for the overprovision pods |
 | deployments[0].resources.limits.memory | string | `"1000Mi"` | Default Deployment - Memory limit for the overprovision pods |
@@ -51,3 +76,10 @@ This approach is the [current recommended method to achieve overprovisioning](ht
 | priorityClassDefault.value | int | `0` | Priority value of the default priorityClass |
 | priorityClassOverprovision.name | string | `"overprovisioning"` | Name of the overprovision priorityClass |
 | priorityClassOverprovision.value | int | `-1` | Priority value of the overprovision priorityClass |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | max.williams@deliveryhero.com |  |
+| mmingorance-dh | miguel.mingorance@deliveryhero.com |  |
