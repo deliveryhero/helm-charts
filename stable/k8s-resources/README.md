@@ -1,11 +1,12 @@
 # k8s-resources
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
 Currently supports:
 
+- CronJob
 - ConfigMap
 - Custom resources from CustomResourceDefinition
 - HorizontalPodAutoscaler
@@ -55,6 +56,7 @@ helm install my-release deliveryhero/k8s-resources -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | ConfigMaps | list | `[]` | A list ConfigMap to create |
+| CronJobs | list | `[]` | A list CronJobs to create |
 | CustomResources | list | `[]` | A list resources to create that are completely custom |
 | HorizontalPodAutoscalers | list | `[]` | A list HorizontalPodAutoscaler to create |
 | Ingresses | list | `[]` | A list Ingress to create |
