@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.4](https://img.shields.io/badge/Version-0.9.4-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
+![Version: 0.9.5](https://img.shields.io/badge/Version-0.9.5-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -63,10 +63,6 @@ helm install my-release deliveryhero/locust -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| downscale.enabled | bool | `true` |  |
-| downscale.hour | int | `19` |  |
-| downscale.image | string | `"bitnami/kubectl:latest"` |  |
-| downscale.minute | int | `0` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
