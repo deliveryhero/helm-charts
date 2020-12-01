@@ -46,6 +46,8 @@ deployments:
   - name: default
     # deployments[0].annotations -- Default Deployment - Annotations to add to the deployment
     annotations: {}
+     # deployments[0].podAnnotations -- Default Deployment - Annotations to add to the pods
+    podAnnotations: {}
     # deployments[0].replicaCount -- Default Deployment - Number of replicas
     replicaCount: 3
     # deployments[0].nodeSelector -- Default Deployment - Node labels for pod assignment
