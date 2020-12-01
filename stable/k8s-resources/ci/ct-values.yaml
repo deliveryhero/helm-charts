@@ -1,4 +1,4 @@
-CronJobs: []
+CronJobs:
   - name: example-cronjob
     fullnameOverride: ""
     annotations: {}
