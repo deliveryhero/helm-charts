@@ -80,8 +80,6 @@ helm install my-release deliveryhero/labelsmanager-controller -f values.yaml
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `80` |  |
-| service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
