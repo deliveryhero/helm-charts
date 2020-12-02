@@ -1,0 +1,35 @@
+apiVersion: v2
+name: labelsmanager-controller
+description: |
+    This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) that injects required default labels into pods on creation.
+
+    Here's an example `Labels` resource:
+
+    ```yaml
+    apiVersion: labels.deliveryhero.com/v1beta1
+    kind: Labels
+    metadata:
+    name: labels-sample
+    spec:
+    priority: 1 # labels with highest priority takes precendence
+    labels:
+        country: DE
+        env: stg
+        region: eu
+
+    ```
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+home: https://github.com/deliveryhero/labelsmanager-controller
+maintainers:
+- name: nyambati
+  email: thomas.nyambati@deliveryhero.com
+engine: gotpl
+icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
+keywords:
+- monitoring
+- labels
+- controller
+sources:
+- https://github.com/deliveryhero/labelsmanager-controller
