@@ -15,6 +15,10 @@ controller:
   # controller.overwrite -- Overwrite any similar label on the pod.
   overwrite: false
 
+podLabels:
+  enabled: false
+  labels: {}
+
 image:
   repository: thomasnyambati/labelsmanager-controller
   pullPolicy: IfNotPresent
