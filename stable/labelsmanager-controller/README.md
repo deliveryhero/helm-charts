@@ -10,13 +10,13 @@ Here's an example `Labels` resource:
 apiVersion: labels.deliveryhero.com/v1beta1
 kind: Labels
 metadata:
-name: labels-sample
+    name: labels-sample
 spec:
-priority: 1 # labels with highest priority takes precendence
-labels:
-    country: DE
-    env: stg
-    region: eu
+    priority: 1 # labels with highest priority takes precendence
+    labels:
+        country: DE
+        env: stg
+        region: eu
 
 ```
 

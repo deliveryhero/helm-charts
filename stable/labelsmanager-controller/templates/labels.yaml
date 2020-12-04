@@ -1,0 +1,14 @@
+{{- if .Values.podLabels.enabled -}}
+apiVersion: labels.deliveryhero.com/v1beta1
+kind: Labels
+metadata:
+  name: {{ include "labelsmanager-controller.fullname" . }}
+  labels:
+    {{- include "labelsmanager-controller.labels" . | nindent 4 }}
+spec:
+  priority: {{ default 0 .Values.podLabels.priority }}
+  labels:
+{{- if .Values.podLabels.labels }}
+{{ toYaml .Values.podLabels.labels | indent 4 }}
+{{- end }}
+{{- end -}}
