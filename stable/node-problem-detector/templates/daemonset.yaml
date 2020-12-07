@@ -39,6 +39,7 @@ spec:
 {{- end }}
     spec:
       serviceAccountName: {{ template "node-problem-detector.serviceAccountName" . }}
+      imagePullSecrets: {{ .Values.imagePullSecrets }}
       hostNetwork: {{ .Values.hostNetwork }}
       hostPID: {{ .Values.hostPID }}
       terminationGracePeriodSeconds: 30

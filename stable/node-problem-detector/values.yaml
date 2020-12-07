@@ -53,6 +53,8 @@ image:
   tag: v0.8.5
   pullPolicy: IfNotPresent
 
+imagePullSecrets: []
+
 nameOverride: ""
 fullnameOverride: ""
 
