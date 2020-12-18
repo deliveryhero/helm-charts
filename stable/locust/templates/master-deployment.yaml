@@ -62,8 +62,8 @@ spec:
             mountPath: /mnt/locust/lib
           - name: config
             mountPath: /config
-{{- if .Values.configMaps }}
-{{- range $key, $value := .Values.configMaps }}
+{{- if .Values.extraConfigMaps }}
+{{- range $key, $value := .Values.extraConfigMaps }}
           - name: {{ $key }}
             mountPath: {{ $value }}
 {{- end }}
