@@ -102,6 +102,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+configMaps: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
