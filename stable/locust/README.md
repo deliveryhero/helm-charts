@@ -63,7 +63,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| configMaps | object | `{}` | Config Maps to be mounted |
+| extraConfigMaps | object | `{}` | Config Maps to be mounted |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
