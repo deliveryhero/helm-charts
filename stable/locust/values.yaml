@@ -102,6 +102,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# extraConfigMaps -- Any extra configmaps to mount for the master and worker. Can be used for extra python packages
+extraConfigMaps: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}

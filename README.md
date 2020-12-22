@@ -16,6 +16,8 @@ helm install my-release deliveryhero/<chart>
 
 ## Chart list
 
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/deliveryhero)](https://artifacthub.io/packages/search?repo=deliveryhero)
+
 - [aws-s3-proxy](stable/aws-s3-proxy)
 - [aws-storage-class](stable/aws-storage-class)
 - [cachet](stable/cachet)

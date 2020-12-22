@@ -62,6 +62,12 @@ spec:
             mountPath: /mnt/locust/lib
           - name: config
             mountPath: /config
+{{- if .Values.extraConfigMaps }}
+{{- range $key, $value := .Values.extraConfigMaps }}
+          - name: {{ $key }}
+            mountPath: {{ $value }}
+{{- end }}
+{{- end}}
         env:
           - name: LOCUST_HOST
             value: "{{ .Values.loadtest.locust_host }}"
