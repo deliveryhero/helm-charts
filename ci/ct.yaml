@@ -1,5 +1,5 @@
 chart-dirs:
   - stable
 chart-repos:
-  - stable=https://kubernetes-charts.storage.googleapis.com
+  - stable=https://charts.helm.sh/stable
   - bitnami=https://charts.bitnami.com/bitnami
