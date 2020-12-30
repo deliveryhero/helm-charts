@@ -1,0 +1,18 @@
+{{- if .Values.frontend.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ include "toxiproxy.fullname" . }}-frontend"
+  labels:
+{{ include "toxiproxy_frontend.labels" . | indent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: ui
+      protocol: TCP
+      name: ui
+  selector:
+    app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
