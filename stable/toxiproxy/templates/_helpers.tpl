@@ -47,6 +47,19 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 {{- end -}}
 
+{{- define "toxiproxy_frontend.labels" -}}
+app.kubernetes.io/name: {{ include "toxiproxy.name" . }}-frontend
+helm.sh/chart: {{ include "toxiproxy.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- range $key, $value := .Values.extraLabels }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end -}}
+
 {{/*
 Create the name of the service account to use
 */}}
