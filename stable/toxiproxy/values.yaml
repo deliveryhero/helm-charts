@@ -7,6 +7,14 @@ image:
   tag: 2.1.4
   pullPolicy: IfNotPresent
 
+frontend:
+  repository: buckle/toxiproxy-frontend
+  # Whether we want to deploy the charts for the frontend or not
+  enabled: false
+  resources: {}
+  # Frontend host address to access it
+  host: 
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
