@@ -251,3 +251,13 @@ auth:
   newRelicRestApiKey: r
   travisciAuthToken: fake-travis-ci-auth-token
   pagerdutyToken: h
+
+# creates cachet database via posgres-controller
+database:
+  create: false
+  host: backstage-db.example.com
+  port: 5432
+  name: backstage
+  username: backstage
+  instance_id: shared
+  driver: pssql

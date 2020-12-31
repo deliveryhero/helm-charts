@@ -1,6 +1,6 @@
 # backstage
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1-alpha.23-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1-alpha.23-informational?style=flat-square)
 
 A Helm chart for Backstage
 
@@ -42,12 +42,6 @@ helm install my-release deliveryhero/backstage -f values.yaml
 
 * <https://github.com/backstage/backstage>
 * <https://github.com/spotify/lighthouse-audit-service>
-
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 9.4.1 |
 
 ## Values
 
@@ -142,6 +136,13 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | backend.replicaCount | int | `1` |  |
 | backend.resources.limits.memory | string | `"1024Mi"` |  |
 | backend.resources.requests.memory | string | `"512Mi"` |  |
+| database.create | bool | `false` |  |
+| database.driver | string | `"pssql"` |  |
+| database.host | string | `"backstage-db.example.com"` |  |
+| database.instance_id | string | `"shared"` |  |
+| database.name | string | `"backstage"` |  |
+| database.port | int | `5432` |  |
+| database.username | string | `"backstage"` |  |
 | frontend.containerPort | int | `80` |  |
 | frontend.enabled | bool | `true` |  |
 | frontend.image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -185,4 +186,4 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | Name | Email | Url |
 | ---- | ------ | --- |
 | javad-hajiani | no-reply@deliveryhero.com |  |
-| nyambati | thomas.nyambati@deliveryhero.com |  |
+| nyambati | no-reply@deliveryhero.com |  |
