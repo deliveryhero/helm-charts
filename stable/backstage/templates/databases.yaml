@@ -2,9 +2,7 @@
 apiVersion: postgresql.org/v1
 kind: PostgresDatabase
 metadata:
-  name: {{ template "cachet.fullname" . }}
-  labels:
-{{ include "cachet.labels" . | indent 4 }}
+  name: {{ include "backstage.fullname" . }}
 spec:
   dbName: {{ .Values.database.name }}
   dbRoleName: {{ .Values.database.username }}
