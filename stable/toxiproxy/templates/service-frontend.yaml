@@ -16,4 +16,5 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+    component: frontend
 {{- end }}
