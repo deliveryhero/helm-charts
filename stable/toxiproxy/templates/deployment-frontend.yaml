@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: "{{ include "toxiproxy.fullname" . }}-frontend"
   labels:
+    component: frontend
 {{ include "toxiproxy.labels" . | indent 4 }}
 {{- with .Values.deploymentAnnotations }}
   annotations:
