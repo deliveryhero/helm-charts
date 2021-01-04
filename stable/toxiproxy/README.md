@@ -69,7 +69,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | environment | list | `[]` |  |
 | extraLabels | object | `{}` |  |
 | frontend.enabled | bool | `false` |  |
-| frontend.host | string | `nil` |  |
+| frontend.host | string | `"chart-example-ui.local"` |  |
 | frontend.repository | string | `"buckle/toxiproxy-frontend"` |  |
 | frontend.resources | object | `{}` |  |
 | fullnameOverride | string | `""` |  |

@@ -13,7 +13,7 @@ frontend:
   enabled: false
   resources: {}
   # Frontend host address to access it
-  host:
+  host: chart-example-ui.local
 
 imagePullSecrets: []
 nameOverride: ""
