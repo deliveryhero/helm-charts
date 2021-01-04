@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: "{{ include "toxiproxy.fullname" . }}-frontend"
   labels:
-{{ include "toxiproxy_frontend.labels" . | indent 4 }}
+{{ include "toxiproxy.labels" . | indent 4 }}
 {{- with .Values.deploymentAnnotations }}
   annotations:
 {{- toYaml . | nindent 4 }}
@@ -15,11 +15,13 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+      component: frontend
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        component: frontend
 {{ include "toxiproxy.labels" . | indent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}

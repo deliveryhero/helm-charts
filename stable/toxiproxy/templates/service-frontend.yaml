@@ -4,7 +4,8 @@ kind: Service
 metadata:
   name: "{{ include "toxiproxy.fullname" . }}-frontend"
   labels:
-{{ include "toxiproxy_frontend.labels" . | indent 4 }}
+    component: frontend
+{{ include "toxiproxy.labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
