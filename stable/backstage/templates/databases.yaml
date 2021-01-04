@@ -1,0 +1,11 @@
+{{- if .Values.database.create -}}
+apiVersion: postgresql.org/v1
+kind: PostgresDatabase
+metadata:
+  name: {{ include "backstage.fullname" . }}
+spec:
+  dbName: {{ .Values.database.name }}
+  dbRoleName: {{ .Values.database.username }}
+  dbRolePassword: {{ .Values.database.password }}
+  dbInstanceId: {{ .Values.database.instance_id }}
+{{- end -}}
