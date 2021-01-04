@@ -1,0 +1,85 @@
+{{- if .Values.frontend.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "toxiproxy.fullname" . }}-frontend"
+  labels:
+    component: frontend
+{{ include "toxiproxy.labels" . | indent 4 }}
+{{- with .Values.deploymentAnnotations }}
+  annotations:
+{{- toYaml . | nindent 4 }}
+{{- end }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        component: frontend
+{{ include "toxiproxy.labels" . | indent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+    spec:
+{{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{- toYaml . | nindent 8 }}
+{{- end }}
+      serviceAccountName: {{ template "toxiproxy.serviceAccountName" . }}
+      securityContext:
+{{- toYaml .Values.podSecurityContext | nindent 8 }}
+{{- if .Values.initContainer }}
+{{ toYaml .Values.initContainer | indent 6 }}
+{{- end }}
+      containers:
+      - name: toxiproxy-frontend
+        resources:
+{{ toYaml .Values.frontend.resources | indent 10 }}
+        image: "{{ .Values.frontend.repository }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - containerPort: 8080
+            name: ui
+            protocol: TCP
+        livenessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /
+            port: ui
+        readinessProbe:
+          periodSeconds: 30
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          failureThreshold: 2
+          httpGet:
+            path: /
+            port: ui
+        env:
+          - name: TOXIPROXY_URL
+            value: "http://{{ .Release.Name }}"
+  {{- range $key, $value := .Values.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+  {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}
