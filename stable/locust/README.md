@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.7](https://img.shields.io/badge/Version-0.9.7-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
+![Version: 0.9.8](https://img.shields.io/badge/Version-0.9.8-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -86,6 +86,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | master.image | string | `""` | A custom docker image including tag |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
+| master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
 | master.resources | object | `{}` | resources for the locust master |
 | master.serviceAccountAnnotations | object | `{}` |  |
 | master.strategy.type | string | `"RollingUpdate"` |  |
