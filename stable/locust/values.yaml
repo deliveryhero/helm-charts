@@ -46,6 +46,9 @@ master:
     - /config/docker-entrypoint.sh
   strategy:
     type: RollingUpdate
+  # master.pdb.enabled -- Whether to create a PodDisruptionBudget for the master pod
+  pdb:
+    enabled: false
 
 worker:
   # worker.image -- A custom docker image including tag
