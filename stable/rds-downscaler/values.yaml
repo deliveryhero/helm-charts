@@ -5,6 +5,9 @@ tag:
   # value -- The tag value
   value: staging
 
+# instanceIdentifier -- AWS rds instance identifier
+instanceIdentifier: ""
+
 image:
   repository: python
   tag: 3.7.0-alpine3.8

@@ -40,6 +40,8 @@ spec:
                 value: {{ .Values.tag.key }}
               - name: TAG_VALUES
                 value: {{ .Values.tag.values }}
+              - name: INSTANCE_IDENTIFIER
+                value: {{ .Values.instanceIdentifier }}
     {{- range $key, $value := .Values.environment }}
               - name: {{ $key }}
                 value: {{ $value | quote }}
