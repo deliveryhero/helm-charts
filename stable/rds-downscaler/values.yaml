@@ -1,9 +1,9 @@
 # tag -- AWS tag used to find RDS instances/clusters
 tag:
   # key -- The tag name
-  key: environment
+  key: ""
   # value -- The tag value
-  value: staging
+  values: ""
 
 # instanceIdentifier -- AWS RDS instance identifier
 instanceIdentifier: ""
