@@ -36,12 +36,18 @@ spec:
               args: ["/usr/local/bin/python", "-u", "/config/run.py"]
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               env:
+              {{- if .Values.tag.key }}
               - name: TAG_KEY
                 value: {{ .Values.tag.key }}
+              {{- end }}
+              {{- if .Values.tag.values }}
               - name: TAG_VALUES
                 value: {{ .Values.tag.values }}
+              {{- end }}
+              {{- if .Values.instanceIdentifier }}
               - name: INSTANCE_IDENTIFIER
                 value: {{ .Values.instanceIdentifier }}
+              {{- end }}
     {{- range $key, $value := .Values.environment }}
               - name: {{ $key }}
                 value: {{ $value | quote }}

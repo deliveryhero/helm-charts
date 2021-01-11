@@ -1,6 +1,6 @@
 # rds-downscaler
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.
 
@@ -62,7 +62,7 @@ helm install my-release deliveryhero/rds-downscaler -f values.yaml
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| tag | object | `{"key":"environment","value":"staging"}` | AWS tag used to find RDS instances/clusters |
+| tag | object | `{"key":"","values":""}` | AWS tag used to find RDS instances/clusters |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
