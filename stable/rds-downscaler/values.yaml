@@ -5,7 +5,7 @@ tag:
   # value -- The tag value
   value: staging
 
-# instanceIdentifier -- AWS rds instance identifier
+# instanceIdentifier -- AWS RDS instance identifier
 instanceIdentifier: ""
 
 image:

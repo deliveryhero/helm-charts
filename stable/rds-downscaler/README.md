@@ -50,7 +50,7 @@ helm install my-release deliveryhero/rds-downscaler -f values.yaml
 | image.repository | string | `"python"` |  |
 | image.tag | string | `"3.7.0-alpine3.8"` |  |
 | imagePullSecrets | list | `[]` |  |
-| instanceIdentifier | string | `""` | AWS rds instance identifier |
+| instanceIdentifier | string | `""` | AWS RDS instance identifier |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podLabels | object | `{}` |  |
