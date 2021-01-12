@@ -1,10 +1,10 @@
 # rds-downscaler
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.
 
-It will filter RDS instances/clusters by tag key and value or a particular instance specified with rds instance identifier.
+It will filter RDS instances/clusters by tag key and value or a particular cluster specified with cluster identifier.
 
 **Homepage:** <https://github.com/deliveryhero/helm-charts>
 
@@ -45,12 +45,12 @@ helm install my-release deliveryhero/rds-downscaler -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| clusterIdentifiers | string | `""` | A comma separated string with RDS Aurora Cluster Identifiers |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"python"` |  |
 | image.tag | string | `"3.7.0-alpine3.8"` |  |
 | imagePullSecrets | list | `[]` |  |
-| instanceIdentifier | string | `""` | AWS RDS instance identifier |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podLabels | object | `{}` |  |

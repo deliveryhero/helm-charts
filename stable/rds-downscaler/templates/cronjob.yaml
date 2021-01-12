@@ -44,9 +44,9 @@ spec:
               - name: TAG_VALUES
                 value: {{ .Values.tag.values }}
               {{- end }}
-              {{- if .Values.instanceIdentifier }}
-              - name: INSTANCE_IDENTIFIER
-                value: {{ .Values.instanceIdentifier }}
+              {{- if .Values.clusterIdentifiers }}
+              - name: CLUSTER_IDENTIFIERS
+                value: {{ .Values.clusterIdentifiers }}
               {{- end }}
     {{- range $key, $value := .Values.environment }}
               - name: {{ $key }}

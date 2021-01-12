@@ -33,26 +33,19 @@ else:
             print('Failed to stop instance {0}: {1}'.format(instance['DBInstanceIdentifier'], e))
 
 try:
-    instance_identifier = os.environ['INSTANCE_IDENTIFIER']
+    cluster_identifiers = os.environ['CLUSTER_IDENTIFIERS']
 except KeyError:
-    print('Environment variable INSTANCE_NAME not set')
+    print('Environment variable CLUSTER_IDENTIFIERS not set')
 else:
-    not_found = True
-    for instance in client.describe_db_instances()['DBInstances']:
-        if instance['DBInstanceIdentifier'] == instance_identifier:
-            not_found = False
-            if instance['DBInstanceStatus'] != 'available':
-                print('Skipping instance, not available: {0}'.format(instance['DBInstanceIdentifier']))
+    clusters = cluster_identifiers.split(',')
+    for cluster in client.describe_db_clusters()['DBClusters']:
+        if cluster['DBClusterIdentifier'] in clusters:
+            if cluster['Status'] != 'available':
+                print('Skipping instance, not available: {0}'.format(cluster['DBClusterIdentifier']))
                 continue
 
-            print('Stopping instance {0}'.format(instance['DBInstanceIdentifier']))
+            print('Stopping instance {0}'.format(cluster['DBClusterIdentifier']))
             try:
-                if instance['StorageType'] == 'aurora':
-                    client.stop_db_cluster(DBClusterIdentifier=instance['DBClusterIdentifier'])
-                else:
-                    client.stop_db_instance(DBInstanceIdentifier=instance['DBInstanceIdentifier'])
+                client.stop_db_cluster(DBClusterIdentifier=cluster['DBClusterIdentifier'])
             except Exception as e:
-                print('Failed to stop instance {0}: {1}'.format(instance['DBInstanceIdentifier'], e))
-
-    if not_found:
-        print('No DB found with instance identifier: {0}'.format(instance_identifier))
+                print('Failed to stop cluster {0}: {1}'.format(cluster['DBClusterIdentifier'], e))
