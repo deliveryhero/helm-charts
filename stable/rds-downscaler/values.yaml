@@ -5,8 +5,8 @@ tag:
   # value -- The tag value
   values: ""
 
-# instanceIdentifier -- AWS RDS instance identifier
-instanceIdentifier: ""
+# clusterIdentifiers -- A comma separated string with RDS Aurora Cluster Identifiers
+clusterIdentifiers: ""
 
 image:
   repository: python
