@@ -14,6 +14,8 @@ loadtest:
   # loadtest.environment -- environment variables used in the load test
   environment: {}
     # VAR: VALUE
+  # loadtest.headless -- whether to run locust with headless settings
+  headless: false
 
 image:
   repository: locustio/locust

@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.8](https://img.shields.io/badge/Version-0.9.8-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
+![Version: 0.9.9](https://img.shields.io/badge/Version-0.9.9-informational?style=flat-square) ![AppVersion: 1.4.1](https://img.shields.io/badge/AppVersion-1.4.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -75,6 +75,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test |
+| loadtest.headless | bool | `false` | whether to run locust with headless settings |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
