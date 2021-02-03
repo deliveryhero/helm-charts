@@ -78,6 +78,10 @@ spec:
           - name: {{ $key }}
             value: {{ $value | quote }}
 {{- end }}
+{{- range $key, $value := .Values.master.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
 {{- range $key, $value := .Values.loadtest.environment_secret }}
           - name: {{ $key }}
             valueFrom:
