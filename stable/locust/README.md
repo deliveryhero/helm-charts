@@ -74,7 +74,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.tls | list | `[]` |  |
-| loadtest.environment | object | `{}` | environment variables used in the load test |
+| loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
@@ -82,9 +82,11 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
+| master.args | list | `[]` | Any extra command args for the master |
 | master.args_include_default | bool | `true` | Whether to include default command args |
 | master.command[0] | string | `"sh"` |  |
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
+| master.environment | object | `{}` | environment variables for the master |
 | master.image | string | `""` | A custom docker image including tag |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
@@ -99,9 +101,11 @@ helm install my-release deliveryhero/locust -f values.yaml
 | service.extraLabels | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
+| worker.args | list | `[]` | Any extra command args for the workers |
 | worker.args_include_default | bool | `true` | Whether to include default command args |
 | worker.command[0] | string | `"sh"` |  |
 | worker.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
+| worker.environment | object | `{}` | environment variables for the workers |
 | worker.hpa.enabled | bool | `false` |  |
 | worker.hpa.maxReplicas | int | `100` |  |
 | worker.hpa.minReplicas | int | `1` |  |
