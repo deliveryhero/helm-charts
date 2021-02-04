@@ -51,6 +51,9 @@ spec:
           - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
           - --loglevel={{ .Values.master.logLevel }}
+{{- if .Values.loadtest.headless }}
+          - --headless
+{{- end }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
@@ -75,6 +78,10 @@ spec:
           - name: {{ $key }}
             value: {{ $value | quote }}
 {{- end }}
+{{- range $key, $value := .Values.master.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
 {{- range $key, $value := .Values.loadtest.environment_secret }}
           - name: {{ $key }}
             valueFrom:
@@ -92,22 +99,19 @@ spec:
           - containerPort: 5558
             name: loc-master-p2
             protocol: TCP
-        livenessProbe:
-          periodSeconds: 30
-          initialDelaySeconds: 10
-          timeoutSeconds: 30
-          failureThreshold: 2
-          httpGet:
-            path: /
-            port: 8089
         readinessProbe:
           initialDelaySeconds: 5
           periodSeconds: 30
           timeoutSeconds: 30
           failureThreshold: 2
+{{- if .Values.loadtest.headless }}
+          tcpSocket:
+            port: 5557
+{{ else }}
           httpGet:
             path: /
             port: 8089
+{{- end }}
       restartPolicy: Always
       volumes:
         - name: lib

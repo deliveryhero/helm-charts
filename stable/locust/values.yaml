@@ -11,9 +11,11 @@ loadtest:
   locust_host: https://www.google.com
   # loadtest.pip_packages -- a list of extra python pip packages to install
   pip_packages: []
-  # loadtest.environment -- environment variables used in the load test
+  # loadtest.environment -- environment variables used in the load test for both master and workers
   environment: {}
     # VAR: VALUE
+  # loadtest.headless -- whether to run locust with headless settings
+  headless: false
 
 image:
   repository: locustio/locust
@@ -39,8 +41,12 @@ master:
     #   cpu: 1000m
     #   memory: 1024Mi
   serviceAccountAnnotations: {}
+  # master.environment -- environment variables for the master
+  environment: {}
   # master.args_include_default -- Whether to include default command args
   args_include_default: true
+  # master.args -- Any extra command args for the master
+  args: []
   command:
     - sh
     - /config/docker-entrypoint.sh
@@ -70,8 +76,12 @@ worker:
     #   cpu: 500m
     #   memory: 256Mi
   serviceAccountAnnotations: {}
+  # worker.environment -- environment variables for the workers
+  environment: {}
   # worker.args_include_default -- Whether to include default command args
   args_include_default: true
+  # worker.args -- Any extra command args for the workers
+  args: []
   command:
     - sh
     - /config/docker-entrypoint.sh

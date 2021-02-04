@@ -76,6 +76,10 @@ spec:
             value: "{{ template "locust.fullname" . }}"
           - name: LOCUST_MASTER_PORT
             value: "5557"
+{{- range $key, $value := .Values.worker.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
 {{- range $key, $value := .Values.loadtest.environment }}
           - name: {{ $key }}
             value: {{ $value | quote }}
