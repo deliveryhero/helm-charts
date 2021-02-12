@@ -2,12 +2,11 @@ replicaCount: 1
 
 image:
   repository: liyasthomas/postwoman
-  tag: v1.9.7
+  tag: v1.9.9
   pullPolicy: IfNotPresent
 
 nameOverride: ""
 fullnameOverride: ""
-
 
 service:
   type: ClusterIP
@@ -22,7 +21,6 @@ ingress:
   hosts:
     - host: chart-example.local
       paths: ["/"]
-
   tls: []
 
 resources:

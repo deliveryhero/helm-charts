@@ -1,6 +1,6 @@
 # hoppscotch
 
-![Version: 0.2.7](https://img.shields.io/badge/Version-0.2.7-informational?style=flat-square) ![AppVersion: v1.9.7](https://img.shields.io/badge/AppVersion-v1.9.7-informational?style=flat-square)
+![Version: 0.2.8](https://img.shields.io/badge/Version-0.2.8-informational?style=flat-square) ![AppVersion: v1.9.9](https://img.shields.io/badge/AppVersion-v1.9.9-informational?style=flat-square)
 
 A free, fast and beautiful API request builder
 
@@ -49,7 +49,7 @@ helm install my-release deliveryhero/hoppscotch -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"liyasthomas/postwoman"` |  |
-| image.tag | string | `"v1.9.7"` |  |
+| image.tag | string | `"v1.9.9"` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |

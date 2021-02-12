@@ -28,11 +28,11 @@ spec:
   - host: {{ .host | quote }}
     http:
       paths:
-      {{- range .paths }}
-      - path: {{ .path }}
-        backend:
-          serviceName: {{ .backend.serviceName }}
-          servicePort: {{ .backend.servicePort }}
-      {{- end }}
+        {{- range .paths }}
+        - path: {{ . }}
+          backend:
+            serviceName: {{ $fullName }}
+            servicePort: {{ $svcPort }}
+        {{- end }}
   {{- end }}
 {{- end }}
