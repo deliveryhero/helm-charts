@@ -36,6 +36,7 @@ exporter:
   listenAddress: 0.0.0.0
   # -- SQS queue url
   queueUrl: ""
+# -- Additional environment variables
 env: {}
 # -- Additional labels to be added to all resources
 extraLabels: {}

@@ -47,7 +47,7 @@ helm install my-release deliveryhero/aws-events-exporter -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| env | object | `{}` |  |
+| env | object | `{}` | Additional environment variables |
 | exporter.listenAddress | string | `"0.0.0.0"` | Exporter listening address |
 | exporter.port | int | `9090` | Exporter port |
 | exporter.queueUrl | string | `""` | SQS queue url |
