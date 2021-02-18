@@ -49,6 +49,8 @@ helm install my-release deliveryhero/<chart>
 - [service-account](stable/service-account)
 - [toxiproxy](stable/toxiproxy)
 - [weblate](stable/weblate)
+- [labelsmanager-controller](stable/labelsmanager-controller)
+- [aws-events-exporter](stable/aws-events-exporter)
 
 ## Contributing
 
