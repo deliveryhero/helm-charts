@@ -4,6 +4,8 @@
 
 This helm chart exports aws events to prometheus via aws SQS service
 
+**Homepage:** <https://github.com/deliveryhero/aws-events-exporter>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
