@@ -1,0 +1,41 @@
+# Default values for aws-events-exporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicas: 1
+
+image:
+  repository: thomasnyambati/aws-events-exporter
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: 1.0.0
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+# -- service account to be used by the containers
+serviceAccountName: ""
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+exporter:
+  # -- Exporter port
+  port: 9090
+  # -- Exporter listening address
+  listenAddress: 0.0.0.0
+  # -- SQS queue url
+  queueUrl: ""
+env: {}
+# -- Additional labels to be added to all resources
+extraLabels: {}

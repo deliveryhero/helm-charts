@@ -1,0 +1,11 @@
+apiVersion: v2
+name: aws-events-exporter
+description: "This helm chart exports aws events to prometheus via aws SQS service"
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+sources:
+  - https://github.com/deliveryhero/aws-events-exporter
+maintainers:
+- name: nyambati
+  email: no-reply@deliveryhero.com
