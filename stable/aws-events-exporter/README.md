@@ -50,7 +50,7 @@ helm install my-release deliveryhero/aws-events-exporter -f values.yaml
 | env | object | `{}` | Additional environment variables |
 | exporter.listenAddress | string | `"0.0.0.0"` | Exporter listening address |
 | exporter.port | int | `9090` | Exporter port |
-| exporter.queueUrl | string | `""` | SQS queue url |
+| exporter.queueUrl | string | `nil` | SQS queue url |
 | extraLabels | object | `{}` | Additional labels to be added to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -59,12 +59,14 @@ helm install my-release deliveryhero/aws-events-exporter -f values.yaml
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
-| podAnnotations | object | `{}` |  |
+| podAnnotations."prometheus.io/path" | string | `"/metrics"` |  |
+| podAnnotations."prometheus.io/port" | string | `"9090"` |  |
+| podAnnotations."prometheus.io_scrape" | string | `"true"` |  |
 | podSecurityContext | object | `{}` |  |
 | replicas | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.type | string | `"ClusterIP"` |  |
+| service.create | bool | `false` |  |
 | serviceAccountName | string | `""` | service account to be used by the containers |
 | tolerations | list | `[]` |  |
 

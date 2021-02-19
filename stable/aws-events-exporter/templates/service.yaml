@@ -1,3 +1,4 @@
+{{- if .Values.service.create }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,3 +13,4 @@ spec:
       name: http
   selector:
     {{- include "aws-events-exporter.selectorLabels" . | nindent 4 }}
+{{- end }}
