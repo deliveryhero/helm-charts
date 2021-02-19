@@ -15,14 +15,23 @@ nameOverride: ""
 fullnameOverride: ""
 # serviceAccountName -- service account to be used by the containers
 serviceAccountName: ""
-podAnnotations: {}
+
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9090"
+
+service:
+  create: false
+  # Enusre podAnnotations is set to {} before adding service.annotations
+  # annotations:
+  #   prometheus.io_scrape: "true"
+  #   prometheus.io/path: "/metrics"
+  #   prometheus.io/port: "9090"
 
 podSecurityContext: {}
 
 securityContext: {}
-
-service:
-  type: ClusterIP
 
 resources: {}
 nodeSelector: {}
@@ -35,7 +44,7 @@ exporter:
   # exporter.listenAddress -- Exporter listening address
   listenAddress: 0.0.0.0
   # exporter.queueUrl -- SQS queue url
-  queueUrl: ""
+  queueUrl:
 # env -- Additional environment variables
 env: {}
 # extraLabels -- Additional labels to be added to all resources

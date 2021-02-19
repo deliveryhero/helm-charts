@@ -5,9 +5,8 @@ metadata:
   labels:
     {{- include "aws-events-exporter.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.exporter.port }}
+    - port: 9090
       targetPort: http
       protocol: TCP
       name: http

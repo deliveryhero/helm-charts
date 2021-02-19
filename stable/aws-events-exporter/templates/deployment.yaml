@@ -36,7 +36,7 @@ spec:
           args:
             - --port={{ .Values.exporter.port }}
             - --listen-address={{ .Values.exporter.listenAddress }}
-            - --queue-url={{ .Values.exporter.queueUrl }}
+            - --queue-url={{ required "Missing required SQS queue URL" .Values.exporter.queueUrl }}
           env:
           {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
