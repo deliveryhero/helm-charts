@@ -13,7 +13,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-# -- service account to be used by the containers
+# serviceAccountName -- service account to be used by the containers
 serviceAccountName: ""
 podAnnotations: {}
 
@@ -30,13 +30,13 @@ tolerations: []
 affinity: {}
 
 exporter:
-  # -- Exporter port
+  # exporter.port -- Exporter port
   port: 9090
-  # -- Exporter listening address
+  # exporter.listenAddress -- Exporter listening address
   listenAddress: 0.0.0.0
-  # -- SQS queue url
+  # exporter.queueUrl -- SQS queue url
   queueUrl: ""
-# -- Additional environment variables
+# env -- Additional environment variables
 env: {}
-# -- Additional labels to be added to all resources
+# extraLabels -- Additional labels to be added to all resources
 extraLabels: {}
