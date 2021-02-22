@@ -1,1 +1,3 @@
 replicas: 0
+exporter:
+  queueUrl: "https://sqs.region.amazonaws.com/account_id/queue_name"
