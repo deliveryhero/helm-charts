@@ -19,7 +19,9 @@ helm install my-release deliveryhero/<chart>
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/deliveryhero)](https://artifacthub.io/packages/search?repo=deliveryhero)
 
 - [aws-s3-proxy](stable/aws-s3-proxy)
+- [aws-service-events-exporter](stable/aws-service-events-exporter)
 - [aws-storage-class](stable/aws-storage-class)
+- [backstage](stable/backstage)
 - [cachet](stable/cachet)
 - [cloudhealth-collector](stable/cloudhealth-collector)
 - [cluster-overprovisioner](stable/cluster-overprovisioner)
@@ -30,6 +32,7 @@ helm install my-release deliveryhero/<chart>
 - [k8s-resources](stable/k8s-resources)
 - [kube-bench](stable/kube-bench)
 - [kube-downscaler](stable/kube-downscaler)
+- [labelsmanager-controller](stable/labelsmanager-controller)
 - [locust](stable/locust)
 - [newrelic-controller](stable/newrelic-controller)
 - [node-problem-detector](stable/node-problem-detector)

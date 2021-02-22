@@ -1,0 +1,16 @@
+{{- if .Values.service.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "aws-service-events-exporter.fullname" . }}
+  labels:
+    {{- include "aws-service-events-exporter.labels" . | nindent 4 }}
+spec:
+  ports:
+    - port: 9090
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "aws-service-events-exporter.selectorLabels" . | nindent 4 }}
+{{- end }}
