@@ -1,0 +1,18 @@
+apiVersion: v2
+name: aws-service-events-exporter
+description: |
+  This helm chart exports aws service events to prometheus via aws SQS queue, this include:
+
+  - [RDS events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+  - [Elasticache events](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ECEvents.Viewing.html)
+
+
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+home: https://github.com/deliveryhero/aws-service-events-exporter
+sources:
+  - https://github.com/deliveryhero/aws-service-events-exporter
+maintainers:
+- name: nyambati
+  email: no-reply@deliveryhero.com
