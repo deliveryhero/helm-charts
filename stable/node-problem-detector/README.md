@@ -1,42 +1,16 @@
 # node-problem-detector
 
-![Version: 1.8.6](https://img.shields.io/badge/Version-1.8.6-informational?style=flat-square) ![AppVersion: v0.8.5](https://img.shields.io/badge/AppVersion-v0.8.5-informational?style=flat-square)
+![Version: 1.8.7](https://img.shields.io/badge/Version-1.8.7-informational?style=flat-square) ![AppVersion: v0.8.7](https://img.shields.io/badge/AppVersion-v0.8.7-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
 **Homepage:** <https://github.com/kubernetes/node-problem-detector>
 
-## How to install this chart
+## Maintainers
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
-A simple install with default values:
-
-```console
-helm install deliveryhero/node-problem-detector
-```
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release deliveryhero/node-problem-detector
-```
-
-To install with some set values:
-
-```console
-helm install my-release deliveryhero/node-problem-detector --set values_key1=value1 --set values_key2=value2
-```
-
-To install with custom values file:
-
-```console
-helm install my-release deliveryhero/node-problem-detector -f values.yaml
-```
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
 
 ## Source Code
 
@@ -58,7 +32,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | hostpath.logdir | string | `"/var/log/"` | Log directory path on K8s host |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"k8s.gcr.io/node-problem-detector/node-problem-detector"` |  |
-| image.tag | string | `"v0.8.5"` |  |
+| image.tag | string | `"v0.8.7"` |  |
 | imagePullSecrets | list | `[]` |  |
 | labels | object | `{}` |  |
 | maxUnavailable | int | `1` | The max pods unavailable during an update |
@@ -82,9 +56,3 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | tolerations[0].effect | string | `"NoSchedule"` |  |
 | tolerations[0].operator | string | `"Exists"` |  |
 | updateStrategy | string | `"RollingUpdate"` | Manage the daemonset update strategy |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
