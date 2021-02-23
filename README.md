@@ -43,6 +43,7 @@ helm install my-release deliveryhero/<chart>
 - [prometheus-aws-health-exporter](stable/prometheus-aws-health-exporter)
 - [prometheus-darksky-exporter](stable/prometheus-darksky-exporter)
 - [prometheus-k8s-events-exporter](stable/prometheus-k8s-events-exporter)
+- [prometheus-new-relic-app-exporter](stable/prometheus-new-relic-app-exporter)
 - [prometheus-new-relic-exporter](stable/prometheus-new-relic-exporter)
 - [prometheus-sentry-exporter](stable/prometheus-sentry-exporter)
 - [prometheus-soti-mobicontrol-exporter](stable/prometheus-soti-mobicontrol-exporter)

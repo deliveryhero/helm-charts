@@ -1,0 +1,68 @@
+
+# new_relic_application -- the name of the name in New Relic
+new_relic_application: my-app
+# new_relic_api_key -- the New Relic API key
+new_relic_api_key: <change-me>
+
+replicaCount: 1
+
+image:
+  repository: maxrocketinternet/new-relic-app-exporter
+  tag: "0.1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: false
+
+resources: {}
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+podReadinessProbe:
+  tcpSocket:
+    port: 9000
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podLivenessProbe:
+  tcpSocket:
+    port: 9000
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9000"
+
+service:
+  create: false
+  # Enusre podAnnotations is set to {} before adding service.annotations
+  # annotations:
+  #   prometheus.io_scrape: "true"
+  #   prometheus.io/path: "/metrics"
+  #   prometheus.io/port: "9000"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pod_labels: {}
