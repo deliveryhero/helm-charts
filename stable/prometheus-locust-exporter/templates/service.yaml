@@ -1,0 +1,18 @@
+{{- if .Values.service.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "prometheus-locust-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-locust-exporter.labels" . | indent 4 }}
+  annotations:
+{{- toYaml .Values.service.annotations | nindent 8 }}
+spec:
+  ports:
+    - port: 80
+      targetPort: 9646
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ include "prometheus-locust-exporter.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
