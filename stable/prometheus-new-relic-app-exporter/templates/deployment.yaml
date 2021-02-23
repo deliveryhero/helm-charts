@@ -8,7 +8,7 @@ metadata:
 {{ toYaml .Values.labels | indent 4 }}
 {{- end }}
 spec:
-  replicas: {{ .Values.replicaCount}}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "prometheus-new-relic-app-exporter.name" . }}
@@ -22,6 +22,7 @@ spec:
 {{ toYaml .Values.pod_labels | indent 8 }}
 {{- end }}
       annotations:
+        checksum/config-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
 {{- toYaml .Values.podAnnotations | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}

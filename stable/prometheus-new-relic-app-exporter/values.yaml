@@ -1,4 +1,3 @@
-
 # new_relic_application -- the name of the name in New Relic
 new_relic_application: my-app
 # new_relic_api_key -- the New Relic API key
