@@ -47,6 +47,9 @@ helm install my-release deliveryhero/prometheus-cloudflare-exporter -f values.ya
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| cloudflare.auth_email | string | `"Change ME>"` |  |
+| cloudflare.auth_key | string | `"<Change ME>"` |  |
+| cloudflare.zone | string | `"<Change ME>"` |  |
 | env | object | `{}` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
@@ -64,7 +67,7 @@ helm install my-release deliveryhero/prometheus-cloudflare-exporter -f values.ya
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.type | string | `"ClusterIP"` |  |
+| service.create | bool | `false` |  |
 | serviceAccountName | string | `""` | service account to be used by the containers |
 | tolerations | list | `[]` |  |
 
