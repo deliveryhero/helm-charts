@@ -7,13 +7,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - name: backend
-      port: 9125
-      targetPort: 9125
-      protocol: TCP
-    - name: frontend
-      port: 9102
-      targetPort: 9102
+    - port: 80
+      targetPort: 9199
       protocol: TCP
   selector:
     app.kubernetes.io/name: {{ include "prometheus-cloudflare-exporter.name" . }}

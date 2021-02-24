@@ -56,13 +56,16 @@ helm install my-release deliveryhero/prometheus-cloudflare-exporter -f values.ya
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations."prometheus.io/path" | string | `"/metrics"` |  |
+| podAnnotations."prometheus.io/port" | string | `"9199"` |  |
+| podAnnotations."prometheus.io_scrape" | string | `"true"` |  |
+| podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
-| serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  |
+| serviceAccountName | string | `""` | service account to be used by the containers |
 | tolerations | list | `[]` |  |
 
 ## Maintainers

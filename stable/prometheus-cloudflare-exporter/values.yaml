@@ -13,12 +13,8 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+# serviceAccountName -- service account to be used by the containers
+serviceAccountName: ""
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -52,6 +48,12 @@ tolerations: []
 
 affinity: {}
 extraLabels: {}
+podLabels: {}
 
+# The environment variables of the deployment to use.
 env: {}
-  # The environment variables of the deployment to use.
+
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9199"
