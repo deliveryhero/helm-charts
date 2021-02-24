@@ -39,7 +39,7 @@ podAnnotations:
 
 service:
   create: false
-  #type: ClusterIP
+  # type: ClusterIP
   # Enusre podAnnotations is set to {} before adding service.annotations
   # annotations:
   #   prometheus.io_scrape: "true"
