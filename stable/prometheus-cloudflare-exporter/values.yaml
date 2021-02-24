@@ -1,6 +1,11 @@
-# Default values for prometheus-statsd-exporter.
+# Default values for prometheus-cloudflare-exporter.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+cloudflare:
+  auth_key: "<Change ME>"
+  auth_email: "Change ME>"
+  zone: "<Change ME>"
 
 replicaCount: 1
 
@@ -26,9 +31,20 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+  #
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9199"
 
 service:
-  type: ClusterIP
+  create: false
+  #type: ClusterIP
+  # Enusre podAnnotations is set to {} before adding service.annotations
+  # annotations:
+  #   prometheus.io_scrape: "true"
+  #   prometheus.io/path: "/metrics"
+  #   prometheus.io/port: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -52,8 +68,3 @@ podLabels: {}
 
 # The environment variables of the deployment to use.
 env: {}
-
-podAnnotations:
-  prometheus.io_scrape: "true"
-  prometheus.io/path: "/metrics"
-  prometheus.io/port: "9199"

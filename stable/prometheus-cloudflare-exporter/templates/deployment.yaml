@@ -37,6 +37,15 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: AUTH_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "prometheus-cloudflare-exporter.fullname" . }}
+                  key: auth_key
+            - name: AUTH_EMAIL
+              value: "{{ .Values.cloudflare.auth_email }}"
+            - name: ZONE
+              value: "{{ .Values.cloudflare.zone }}"
           {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: {{ $value | quote }}
