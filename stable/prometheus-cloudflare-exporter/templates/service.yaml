@@ -1,0 +1,19 @@
+{{- if .Values.service.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "prometheus-cloudflare-exporter.fullname" . }}
+  labels:
+    {{ include "prometheus-cloudflare-exporter.labels" . | indent 4 }}
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 8 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 9199
+      targetPort: 9199
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ include "prometheus-cloudflare-exporter.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

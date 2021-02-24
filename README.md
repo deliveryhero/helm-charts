@@ -49,6 +49,7 @@ helm install my-release deliveryhero/<chart>
 - [prometheus-soti-mobicontrol-exporter](stable/prometheus-soti-mobicontrol-exporter)
 - [prometheus-spot-termination-exporter](stable/prometheus-spot-termination-exporter)
 - [prometheus-statsd-exporter](stable/prometheus-statsd-exporter)
+- [prometheus-cloudflare-exporter](stable/prometheus-cloudflare-exporter)
 - [rds-downscaler](stable/rds-downscaler)
 - [service-account](stable/service-account)
 - [toxiproxy](stable/toxiproxy)
