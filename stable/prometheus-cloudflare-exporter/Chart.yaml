@@ -1,0 +1,11 @@
+apiVersion: v1
+appVersion: 1.2.0
+description: Cloudflare metrics exporter
+name: prometheus-cloudflare-exporter
+version: 0.0.1
+home: https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
+sources:
+  - https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
+maintainers:
+- name: javad-hajiani
+  email: no-reply@deliveryhero.com
