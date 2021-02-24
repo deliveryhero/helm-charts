@@ -1,0 +1,75 @@
+# Every key in this this map must be set
+config:
+  # config.locust_uri -- the locust endpoint
+  locust_uri: http://localhost:8089
+  # config.locust_timeout -- timeout when getting metrics from locust
+  locust_timeout: "5s"
+  # config.web_listen_address -- the address to listen on for metric serving
+  web_listen_address: ":9646"
+  # config.web_telemetry_path -- the path
+  web_telemetry_path: /metrics
+  # config.log_level -- the log level
+  log_level: info
+
+image:
+  repository: containersol/locust_exporter
+  tag: v0.3.0
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: false
+
+resources: {}
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+podReadinessProbe:
+  httpGet:
+    path: /healthz
+    port: 9646
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podLivenessProbe:
+  httpGet:
+    path: /healthz
+    port: 9646
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 2
+
+podAnnotations:
+  prometheus.io_scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9646"
+
+service:
+  create: false
+  # Enusre podAnnotations is set to {} before adding service.annotations
+  # annotations:
+  #   prometheus.io_scrape: "true"
+  #   prometheus.io/path: "/metrics"
+  #   prometheus.io/port: "9646"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pod_labels: {}
