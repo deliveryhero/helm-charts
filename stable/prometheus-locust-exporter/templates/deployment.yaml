@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus-locust-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-locust-exporter.labels" . | indent 4 }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "prometheus-locust-exporter.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "prometheus-locust-exporter.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Values.pod_labels }}
+{{ toYaml .Values.pod_labels | indent 8 }}
+{{- end }}
+      annotations:
+{{- toYaml .Values.podAnnotations | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - --web.listen-address={{ .Values.config.web_listen_address }}
+            - --web.telemetry-path={{ .Values.config.web_telemetry_path }}
+            - --locust.uri={{ .Values.config.locust_uri }}
+            - --locust.timeout={{ .Values.config.locust_timeout }}
+            - --log.level={{ .Values.config.log_level }}
+          livenessProbe:
+            {{- toYaml .Values.podLivenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.podReadinessProbe | nindent 12 }}
+          ports:
+            - name: prometheus
+              containerPort: 9646
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
