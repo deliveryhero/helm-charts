@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus-new-relic-app-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-new-relic-app-exporter.labels" . | indent 4 }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "prometheus-new-relic-app-exporter.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "prometheus-new-relic-app-exporter.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Values.pod_labels }}
+{{ toYaml .Values.pod_labels | indent 8 }}
+{{- end }}
+      annotations:
+        checksum/config-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+{{- toYaml .Values.podAnnotations | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: NEW_RELIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "prometheus-new-relic-app-exporter.fullname" . }}
+                  key: new_relic_api_key
+            - name: NEW_RELIC_APPLICATION
+              value: "{{ .Values.new_relic_application }}"
+          livenessProbe:
+            {{- toYaml .Values.podLivenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.podReadinessProbe | nindent 12 }}
+          ports:
+            - name: prometheus
+              containerPort: 9000
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
