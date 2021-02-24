@@ -66,7 +66,7 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 - [helm-docs](https://github.com/norwoodj/helm-docs): check all chart `README.md` have all values documented
 - [helm-conftest](https://github.com/instrumenta/helm-conftest): Ensures standard labels are present
 
-All chart `README.md` files are generated from a template. This ensures all values are documented and that formatting is consistent. See [here](https://github.com/norwoodj/helm-docs#valuesyaml-metadata) about how the table of values is producted and how to add descriptions to your chart values. To generate chart `README.md` files from the [template](ci/README.md.gotmpl), run this:
+All chart `README.md` files are generated from a template. This ensures all values are documented and that formatting is consistent. See [here](https://github.com/norwoodj/helm-docs#valuesyaml-metadata) about how the table of values is producted and how to add descriptions to your chart values. To generate chart `README.md` files from the [template](ci/README.md.gotmpl), run this from root of this repo:
 
 ```console
 docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:v0.14.0 --template-file=../../ci/README.md.gotmpl
