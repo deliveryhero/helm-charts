@@ -6,11 +6,37 @@ This chart installs a [node-problem-detector](https://github.com/kubernetes/node
 
 **Homepage:** <https://github.com/kubernetes/node-problem-detector>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/node-problem-detector
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/node-problem-detector
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/node-problem-detector --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/node-problem-detector -f values.yaml
+```
 
 ## Source Code
 
@@ -56,3 +82,9 @@ This chart installs a [node-problem-detector](https://github.com/kubernetes/node
 | tolerations[0].effect | string | `"NoSchedule"` |  |
 | tolerations[0].operator | string | `"Exists"` |  |
 | updateStrategy | string | `"RollingUpdate"` | Manage the daemonset update strategy |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | no-reply@deliveryhero.com |  |
