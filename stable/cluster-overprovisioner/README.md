@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -76,6 +76,10 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | priorityClassDefault.value | int | `0` | Priority value of the default priorityClass |
 | priorityClassOverprovision.name | string | `"overprovisioning"` | Name of the overprovision priorityClass |
 | priorityClassOverprovision.value | int | `-1` | Priority value of the overprovision priorityClass |
+| serviceAccount.annotations | object | `{}` | Additional Service Account annotations |
+| serviceAccount.automountServiceAccountToken | bool | `true` | Automount API credentials for a Service Account |
+| serviceAccount.create | bool | `true` | Determine whether a Service Account should be created or it should reuse an exiting one |
+| serviceAccount.name | string | `nil` | The name of the ServiceAccount to use. If not set and create is `true`, a name is generated using the fullname template |
 
 ## Maintainers
 
