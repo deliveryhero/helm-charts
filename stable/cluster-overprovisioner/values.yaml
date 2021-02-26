@@ -69,3 +69,15 @@ deployments:
     affinity: {}
     # deployments[0].labels -- Default Deployment - Optional labels tolerations
     labels: {}
+
+serviceAccount:
+  create: true
+  ## Service Account for pods
+  ##
+  name:
+  ## Annotations for the Service Account
+  ##
+  annotations: {}
+  ## Automount API credentials for a service account.
+  ##
+  automountServiceAccountToken: true

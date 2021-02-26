@@ -46,6 +46,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
     spec:
+      serviceAccountName: {{ template "cluster-overprovisioner.serviceAccountName" . }}
       priorityClassName: {{ $priorityClassName }}
       securityContext:
         {{- toYaml $podSecurityContext | nindent 8 }}
