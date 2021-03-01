@@ -1,6 +1,6 @@
 # prometheus-locust-exporter
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: v0.4.1](https://img.shields.io/badge/AppVersion-v0.4.1-informational?style=flat-square)
 
 A Helm chart a prometheus exporter locust load test metrics
 
@@ -55,7 +55,7 @@ helm install my-release deliveryhero/prometheus-locust-exporter -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"containersol/locust_exporter"` |  |
-| image.tag | string | `"v0.3.0"` |  |
+| image.tag | string | `"v0.4.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |

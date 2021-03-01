@@ -13,7 +13,7 @@ config:
 
 image:
   repository: containersol/locust_exporter
-  tag: v0.3.0
+  tag: v0.4.1
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
