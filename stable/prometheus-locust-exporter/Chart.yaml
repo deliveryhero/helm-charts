@@ -6,7 +6,6 @@ version: 1.0.1
 home: https://github.com/ContainerSolutions/locust_exporter
 sources:
   - https://github.com/ContainerSolutions/locust_exporter
-
 maintainers:
 - name: max-rocket-internet
   email: no-reply@deliveryhero.com
