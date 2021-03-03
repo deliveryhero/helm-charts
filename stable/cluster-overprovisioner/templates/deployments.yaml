@@ -12,6 +12,7 @@
 {{- $imageTag := .Values.image.tag }}
 {{- $pullPolicy := .Values.image.pullPolicy }}
 {{- $imagePullSecrets := .Values.image.pullSecrets }}
+{{- $serviceAccountName := include "cluster-overprovisioner.serviceAccountName" . -}}
 
 {{ range .Values.deployments }}
 apiVersion: apps/v1
@@ -46,6 +47,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
     spec:
+      serviceAccountName: {{ $serviceAccountName }}
       priorityClassName: {{ $priorityClassName }}
       securityContext:
         {{- toYaml $podSecurityContext | nindent 8 }}
