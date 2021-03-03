@@ -64,3 +64,14 @@ Common labels
 app.kubernetes.io/name: {{ include "cluster-overprovisioner.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
+
+{{/*
+Return the cluster-overprovisioner service account name
+*/}}
+{{- define "cluster-overprovisioner.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "cluster-overprovisioner.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
