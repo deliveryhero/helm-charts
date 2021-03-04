@@ -81,6 +81,12 @@ pip3 install yamale
 ct lint --charts stable/<your chart>
 ```
 
+To run markdown-lint locally, run this from root of this repo:
+
+```console
+docker run --rm -v "$PWD:/helm-charts" avtodev/markdown-lint:v1.5.0 --config /helm-charts/ci/markdown-lint.yaml /helm-charts/**/*.md
+```
+
 ## License
 
 Contents of this repository and any charts without a specific license are licensed under the Apache-2.0 License. Some charts may have their own respective license at `<chart>/LICENSE`. When adding a new chart to this repository and the chart is copied from another repository then include the license from the source if is not Apache-2.0 and include a link to the source under the `sources` section in `<chart>/Chart.yaml`.
