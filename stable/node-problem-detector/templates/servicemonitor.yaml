@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     {{- if .Values.metrics.serviceMonitor.additionalLabels }}
-{{ toYaml .Values.metrics.serviceMonitor.additionalLabels | indent 4 }}
+    {{- toYaml .Values.metrics.serviceMonitor.additionalLabels | nindent 4 }}
     {{- end }}
   namespace: {{ .Release.Namespace }}
 spec:
