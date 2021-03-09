@@ -65,7 +65,7 @@ Return the appropriate apiVersion for podSecurityPolicy.
   Concat npd.config.* to make node-problem-detector CLI args more readable
 */}}
 {{- define "npd.cli.args" -}}
-{{ include "npd.config.systemLogMonitor" . }}{{ include "npd.config.customPluginMonitor" . }}{{ include "npd.config.prometheus" . }}{{ include "npd.config.k8sExporter" . }}
+{{ include "npd.config.systemLogMonitor" . }} {{ include "npd.config.customPluginMonitor" . }} {{ include "npd.config.prometheus" . }} {{ include "npd.config.k8sExporter" . }}
 {{- end -}}
 
 {{- define "npd.config.systemLogMonitor" -}}
@@ -78,7 +78,7 @@ Return the appropriate apiVersion for podSecurityPolicy.
 
 {{- define "npd.config.customPluginMonitor" -}}
 {{- if .Values.settings.custom_plugin_monitors -}}
---config.custom-plugin-monitors=
+--config.custom-plugin-monitor=
 {{- range $index, $monitor := .Values.settings.custom_plugin_monitors -}}
   {{- if ne $index 0 -}},{{- end -}}
   {{- $monitor -}}
@@ -87,7 +87,7 @@ Return the appropriate apiVersion for podSecurityPolicy.
 {{- end -}}
 
 {{- define "npd.config.prometheus" -}}
-{{- printf "--prometheus-address=%s --prometheus-port=%.0f " .Values.settings.prometheus_address .Values.settings.prometheus_port -}}
+{{- printf "--prometheus-address=%s --prometheus-port=%.0f" .Values.settings.prometheus_address .Values.settings.prometheus_port -}}
 {{- end -}}
 
 {{- define "npd.config.k8sExporter" -}}
