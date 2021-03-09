@@ -47,7 +47,7 @@ settings:
 logDir:
   # logDir.host -- log directory on k8s host
   host: /var/log/
-  # logDir.pod -- log directory on pod (volume mount), use logDir.host if empty
+  # logDir.pod -- log directory in pod (volume mount), use logDir.host if empty
   pod: ""
 
 image:
