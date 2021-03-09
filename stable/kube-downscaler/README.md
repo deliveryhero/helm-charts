@@ -1,10 +1,10 @@
 # kube-downscaler
 
-![Version: 0.2](https://img.shields.io/badge/Version-0.2-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
+![Version: 0.3](https://img.shields.io/badge/Version-0.3-informational?style=flat-square) ![AppVersion: 21.2.0](https://img.shields.io/badge/AppVersion-21.2.0-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
-**Homepage:** <https://github.com/hjacobs/kube-downscaler>
+**Homepage:** <https://codeberg.org/hjacobs/kube-downscaler>
 
 ## How to install this chart
 
@@ -40,7 +40,8 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 ## Source Code
 
-* <https://github.com/hjacobs/kube-downscaler>
+* <https://github.com/deliveryhero/helm-charts>
+* <https://codeberg.org/hjacobs/kube-downscaler>
 
 ## Values
 
@@ -54,7 +55,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | image.args | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"hjacobs/kube-downscaler"` |  |
-| image.tag | string | `"19.10.1"` |  |
+| image.tag | string | `"21.2.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | interval | int | `60` |  |
 | nameOverride | string | `""` |  |
@@ -83,4 +84,4 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| hjacobs |  | https://github.com/hjacobs |
+| hjacobs |  | https://codeberg.org/hjacobs |
