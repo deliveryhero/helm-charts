@@ -18,9 +18,11 @@ rules:
 - apiGroups:
   - extensions
   - apps
+  - autoscaling
   resources:
   - deployments
   - statefulsets
+  - horizontalpodautoscalers
   verbs:
   - get
   - watch

@@ -21,7 +21,7 @@ rbac:
 
 image:
   repository: hjacobs/kube-downscaler
-  tag: 19.10.1
+  tag: 21.2.0
   pullPolicy: IfNotPresent
   args: []
     # --default-uptime="Mon-Fri 07:30-20:30 Europe/Berlin"
