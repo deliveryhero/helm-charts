@@ -13,10 +13,10 @@ metadata:
 spec:
   updateStrategy:
     type: {{ .Values.updateStrategy }}
-{{- if eq .Values.updateStrategy "RollingUpdate"}}
+    {{- if eq .Values.updateStrategy "RollingUpdate"}}
     rollingUpdate:
       maxUnavailable: {{ .Values.maxUnavailable }}
-{{- end}}
+    {{- end}}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
@@ -34,9 +34,9 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/custom-config-configmap.yaml") . | sha256sum }}
         scheduler.alpha.kubernetes.io/critical-pod: ''
-{{- if .Values.annotations }}
-{{ toYaml .Values.annotations | indent 8 }}
-{{- end }}
+        {{- if .Values.annotations }}
+        {{- toYaml .Values.annotations | nindent 8 }}
+        {{- end }}
     spec:
       serviceAccountName: {{ template "node-problem-detector.serviceAccountName" . }}
       {{- if .Values.imagePullSecrets }}
@@ -65,9 +65,9 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-{{- if .Values.env }}
-{{ toYaml .Values.env | indent 12 }}
-{{- end }}
+          {{- if .Values.env }}
+          {{- toYaml .Values.env | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: log
               mountPath: {{ .Values.hostpath.logdir }}
@@ -77,26 +77,26 @@ spec:
             - name: custom-config
               mountPath: /custom-config
               readOnly: true
-{{- if .Values.extraVolumeMounts }}
-{{ toYaml .Values.extraVolumeMounts | indent 12 }}
-{{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+          {{- end }}
           ports:
             - containerPort: {{ .Values.settings.prometheus_port }}
               name: exporter
           resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.affinity }}
+          {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.affinity }}
       affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
       tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-{{- if .Values.nodeSelector }}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-{{- end }}
+      {{- toYaml .Values.nodeSelector | nindent 8 }}
+      {{- end }}
       volumes:
         - name: log
           hostPath:
@@ -108,6 +108,6 @@ spec:
         - name: custom-config
           configMap:
             name: {{ include "node-problem-detector.customConfig" . }}
-{{- if .Values.extraVolumes }}
-{{ toYaml .Values.extraVolumes | indent 8 }}
-{{- end }}
+      {{- if .Values.extraVolumes }}
+      {{- toYaml .Values.extraVolumes | nindent 8 }}
+      {{- end }}
