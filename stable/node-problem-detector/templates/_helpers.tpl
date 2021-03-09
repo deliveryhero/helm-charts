@@ -59,3 +59,37 @@ Return the appropriate apiVersion for podSecurityPolicy.
 {{- print "extensions/v1beta1" -}}
 {{- end -}}
 {{- end -}}
+
+
+{{/*
+  Concat npd.config.* to make node-problem-detector CLI args more readable
+*/}}
+{{- define "npd.cli.args" -}}
+{{ include "npd.config.systemLogMonitor" . }}{{ include "npd.config.customPluginMonitor" . }}{{ include "npd.config.prometheus" . }}{{ include "npd.config.k8sExporter" . }}
+{{- end -}}
+
+{{- define "npd.config.systemLogMonitor" -}}
+--config.system-log-monitor=
+{{- range $index, $monitor := .Values.settings.log_monitors -}}
+  {{- if ne $index 0 -}},{{- end -}}
+  {{- $monitor -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "npd.config.customPluginMonitor" -}}
+{{- if .Values.settings.custom_plugin_monitors -}}
+--confgi.custom-plugin-monitors=
+{{- range $index, $monitor := .Values.settings.custom_plugin_monitors -}}
+  {{- if ne $index 0 -}},{{- end -}}
+  {{- $monitor -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "npd.config.prometheus" -}}
+{{- printf "--prometheus-address=%s --prometheus-port=%.0f " .Values.settings.prometheus_address .Values.settings.prometheus_port -}}
+{{- end -}}
+
+{{- define "npd.config.k8sExporter" -}}
+--k8s-exporter-heartbeat-period={{ .Values.settings.heartBeatPeriod }}
+{{- end -}}
