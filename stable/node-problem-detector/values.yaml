@@ -44,9 +44,11 @@ settings:
   # settings.heartBeatPeriod -- Syncing interval with API server
   heartBeatPeriod: 5m0s
 
-hostpath:
-  # hostpath.logdir -- Log directory path on K8s host
-  logdir: /var/log/
+logDir:
+  # logDir.host -- log directory on k8s host
+  host: /var/log/
+  # logDir.pod -- log directory on pod (volume mount), use logDir.host if empty
+  pod: ""
 
 image:
   repository: k8s.gcr.io/node-problem-detector/node-problem-detector

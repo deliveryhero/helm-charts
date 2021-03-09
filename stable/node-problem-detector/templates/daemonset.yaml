@@ -70,7 +70,7 @@ spec:
           {{- end }}
           volumeMounts:
             - name: log
-              mountPath: {{ .Values.hostpath.logdir }}
+              mountPath: {{ default (default "/var/log/" .Values.logDir.host) .Values.logDir.pod }}
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
@@ -100,7 +100,7 @@ spec:
       volumes:
         - name: log
           hostPath:
-            path: {{ .Values.hostpath.logdir }}
+            path: {{ default "/var/log/" .Values.logDir.host }}
         - name: localtime
           hostPath:
             path: /etc/localtime
