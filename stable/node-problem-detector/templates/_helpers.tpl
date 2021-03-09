@@ -78,7 +78,7 @@ Return the appropriate apiVersion for podSecurityPolicy.
 
 {{- define "npd.config.customPluginMonitor" -}}
 {{- if .Values.settings.custom_plugin_monitors -}}
---confgi.custom-plugin-monitors=
+--config.custom-plugin-monitors=
 {{- range $index, $monitor := .Values.settings.custom_plugin_monitors -}}
   {{- if ne $index 0 -}},{{- end -}}
   {{- $monitor -}}
