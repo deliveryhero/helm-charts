@@ -81,7 +81,7 @@ pip3 install yamale
 ct lint --charts stable/<your chart>
 ```
 
-To run markdown-lint locally, run this from root of this repo:
+To run `markdown-lint` locally, run this from root of this repo:
 
 ```console
 docker run --rm -v "$PWD:/helm-charts" avtodev/markdown-lint:v1.5.0 --config /helm-charts/ci/markdown-lint.yaml /helm-charts/**/*.md
