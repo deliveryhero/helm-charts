@@ -77,7 +77,7 @@ To run `chart-testing` locally:
 
 ```console
 brew install chart-testing
-pip3 install yamale
+pip3 install yamale yamllint
 ct lint --charts stable/<your chart>
 ```
 
