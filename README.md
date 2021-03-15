@@ -101,6 +101,7 @@ All commands to be run from the root of this repo.
   brew tap instrumenta/instrumenta
   brew install conftest
   helm template stable/<chart> | conftest -p ci/helm-conftest-policies test - && echo "OK"
+  ```
 
 ## License
 
