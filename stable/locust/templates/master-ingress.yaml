@@ -30,7 +30,7 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          - path: /*
+          - path: {{ .path | quote }}
             backend:
               serviceName: {{ $fullName }}
               servicePort: 8089
