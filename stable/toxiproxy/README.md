@@ -1,6 +1,6 @@
 # toxiproxy
 
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
 
@@ -15,8 +15,7 @@ kubectl create configmap my-toxiproxy-config --from-file path/to/your/toxiproxy.
 And then install the chart passing the name of the `ConfigMap` as a value:
 
 ```console
-helm install locust deliveryhero/toxiproxy \
-  --set toxiproxyConfig=my-toxiproxy-config
+helm install toxiproxy deliveryhero/toxiproxy --set toxiproxyConfig=my-toxiproxy-config
 ```
 
 **Homepage:** <https://github.com/Shopify/toxiproxy>
