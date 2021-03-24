@@ -14,11 +14,10 @@ description: |
   And then install the chart passing the name of the `ConfigMap` as a value:
 
   ```console
-  helm install locust deliveryhero/toxiproxy \
-    --set toxiproxyConfig=my-toxiproxy-config
+  helm install toxiproxy deliveryhero/toxiproxy --set toxiproxyConfig=my-toxiproxy-config
   ```
 
-version: "1.3.0"
+version: "1.3.1"
 appVersion: "2.1.2"
 home: https://github.com/Shopify/toxiproxy
 sources:
