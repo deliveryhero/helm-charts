@@ -32,6 +32,7 @@ helm install my-release deliveryhero/<chart>
 - [k8s-resources](stable/k8s-resources)
 - [kube-bench](stable/kube-bench)
 - [kube-downscaler](stable/kube-downscaler)
+- [kubecost-reports-exporter](stable/kubecost-reports-exporter)
 - [labelsmanager-controller](stable/labelsmanager-controller)
 - [locust](stable/locust)
 - [newrelic-controller](stable/newrelic-controller)

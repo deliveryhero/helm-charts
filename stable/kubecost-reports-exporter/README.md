@@ -4,6 +4,8 @@
 
 Helm chart for exporting kubernetes cost reports to S3
 
+**Homepage:** <https://github.com/deliveryhero/dh-gcs-kubecost>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -36,6 +38,10 @@ To install with custom values file:
 helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 ```
 
+## Source Code
+
+* <https://github.com/deliveryhero/dh-gcs-kubecost>
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -64,3 +70,8 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | successfulJobsHistoryLimit | int | `1` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | thomas.nyambati@deliveryhero.com |  |
