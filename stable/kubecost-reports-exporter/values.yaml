@@ -1,0 +1,40 @@
+# Default values for kubecost-reports-exporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+schedule: '"0 * * * *"'
+restartPolicy: OnFailure
+successfulJobsHistoryLimit: 1
+
+image:
+  repository: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/deliveryhero/kubecost-reports-exporter
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccountName: ""
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+kubecost:
+  # kubecost.logLevel -- exporter log level.
+  logLevel: info
+  # kubecost.clusterName -- Name of the cluster
+  clusterName:
+  # kubecost.bucketName -- S3 Bucket name for reports export
+  bucketName: kubecost-reports-exporter
+  # kubecost.analyzerEndpoint -- kubecost analyzer endpoint
+  analyzerEndpoint: "http://kubecost-cost-analyzer:9090"
+  # kubecost.aggregatedCostUrl -- Url for aggregated cost report
+  aggregatedCostUrl: "/model/aggregatedCostModel?window=1d&aggregation=namespace"
+  # kubecost.nonAggregatedCostUrl -- Url for non-aggregated cost report
+  nonAggregatedCostUrl: "/model/costDataModel?timeWindow=1d&offset=1d"
+
+# env -- Extra environment variables
+env: {}

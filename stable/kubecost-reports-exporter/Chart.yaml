@@ -1,0 +1,16 @@
+apiVersion: v2
+name: kubecost-reports-exporter
+description: Helm chart for exporting kubernetes cost reports to S3
+home: https://www.kubecost.com
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+- name: nyambati
+  email: thomas.nyambati@deliveryhero.com
+engine: gotpl
+keywords:
+- kubecost
+- exporter
+sources:
+- https://www.kubecost.com
