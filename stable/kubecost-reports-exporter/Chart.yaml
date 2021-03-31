@@ -1,7 +1,7 @@
 apiVersion: v2
 name: kubecost-reports-exporter
 description: Helm chart for exporting kubernetes cost reports to S3
-home: https://github.com/deliveryhero/dh-gcs-kubecost
+home: https://www.kubecost.com
 type: application
 version: 1.0.0
 appVersion: "1.0.0"
@@ -13,4 +13,4 @@ keywords:
 - kubecost
 - exporter
 sources:
-- https://github.com/deliveryhero/dh-gcs-kubecost
+- https://www.kubecost.com

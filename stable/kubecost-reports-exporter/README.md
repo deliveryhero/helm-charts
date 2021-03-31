@@ -4,7 +4,7 @@
 
 Helm chart for exporting kubernetes cost reports to S3
 
-**Homepage:** <https://github.com/deliveryhero/dh-gcs-kubecost>
+**Homepage:** <https://www.kubecost.com>
 
 ## How to install this chart
 
@@ -40,7 +40,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 
 ## Source Code
 
-* <https://github.com/deliveryhero/dh-gcs-kubecost>
+* <https://www.kubecost.com>
 
 ## Values
 
@@ -49,7 +49,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | affinity | object | `{}` |  |
 | env | object | `{}` | Extra environment variables |
 | fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"Always"` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"940776968316.dkr.ecr.eu-west-1.amazonaws.com/deliveryhero/kubecost-reports-exporter"` |  |
 | imagePullSecrets | list | `[]` |  |
 | kubecost.aggregatedCostUrl | string | `"/model/aggregatedCostModel?window=1d&aggregation=namespace"` | Url for aggregated cost report |
