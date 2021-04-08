@@ -1,4 +1,3 @@
-{{- if .Values.superset.celery.enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,13 +5,15 @@ metadata:
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
+  {{ if .Values.superset.autoscaling.enabled}}
   replicas: 1
+  {{ end }}
   selector:
     matchLabels:
-      {{- include "superset.celery.selectorLabels" . | nindent 6 }}
+      {{- include "superset.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.superset.celery.podAnnotations }}
+      {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -20,24 +21,18 @@ spec:
         force-reload: {{ randAlphaNum 5 | quote }}
       {{ end }}
       labels:
-        {{- include "superset.celery.selectorLabels" . | nindent 8 }}
+        {{- include "superset.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ .Values.serviceAccountName }}
       securityContext:
-      # Needed in order to allow pip install to work in bootstrap
         runAsUser: 0
       containers:
-        - name: {{ .Chart.Name }}-celery-beat
-          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+        - name: {{ .Chart.Name }}-worker
+          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - "/bin/sh"
             - "-c"
-            - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery beat --app=superset.tasks.celery_app:app --pidfile /tmp/celerybeat.pid --schedule /tmp/celerybeat-schedule"
+            - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}
@@ -50,16 +45,16 @@ spec:
               mountPath: {{ .Values.superset.configMountPath | quote }}
               readOnly: true
           resources:
-            {{- toYaml .Values.superset.celery.resources | nindent 12 }}
-      {{- with .Values.superset.celery.nodeSelector }}
+            {{- toYaml .Values.superset.worker.resources | nindent 12 }}
+      {{- with .Values.superset.worker.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.superset.celery.affinity }}
+      {{- with .Values.superset.worker.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.superset.celery.tolerations }}
+      {{- with .Values.superset.worker.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -67,4 +62,3 @@ spec:
         - name: {{ include "superset.fullname" . }}
           configMap:
             name: {{ include "superset.fullname" . }}
-{{- end -}}

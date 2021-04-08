@@ -81,3 +81,9 @@ superset:
     nodeSelector: {}
     tolerations: []
     affinity: {}
+  worker:
+    podAnnotations: {}
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
