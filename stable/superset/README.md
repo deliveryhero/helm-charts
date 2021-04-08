@@ -63,10 +63,14 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.admin.username | string | `"admin"` |  |
 | superset.affinity | object | `{}` |  |
 | superset.autoscaling.enabled | bool | `false` |  |
-| superset.autoscaling.maxReplicas | int | `100` |  |
+| superset.autoscaling.maxReplicas | int | `10` |  |
 | superset.autoscaling.minReplicas | int | `1` |  |
 | superset.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.celery.affinity | object | `{}` |  |
+| superset.celery.autoscaling.enabled | bool | `false` |  |
+| superset.celery.autoscaling.maxReplicas | int | `10` |  |
+| superset.celery.autoscaling.minReplicas | int | `1` |  |
+| superset.celery.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.celery.enabled | bool | `true` |  |
 | superset.celery.forceReload | bool | `false` |  |
 | superset.celery.nodeSelector | object | `{}` |  |
@@ -89,8 +93,12 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.resources | object | `{}` |  |
 | superset.tolerations | list | `[]` |  |
 | superset.worker.affinity | object | `{}` |  |
+| superset.worker.autoscaling.enabled | bool | `false` |  |
+| superset.worker.autoscaling.maxReplicas | int | `10` |  |
+| superset.worker.autoscaling.minReplicas | int | `1` |  |
 | superset.worker.nodeSelector | object | `{}` |  |
 | superset.worker.podAnnotations | object | `{}` |  |
 | superset.worker.resources | object | `{}` |  |
+| superset.worker.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.worker.tolerations | list | `[]` |  |
 
