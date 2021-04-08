@@ -1,0 +1,66 @@
+{{- if .Values.superset.celery.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "superset.fullname" . }}
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "superset.celery.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.superset.celery.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{ if .Values.forceReload }}
+        force-reload: {{ randAlphaNum 5 | quote }}
+      {{ end }}
+      labels:
+        {{- include "superset.celery.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccountName }}
+      securityContext:
+      # Needed in order to allow pip install to work in bootstrap
+        runAsUser: 0
+      containers:
+        - name: {{ .Chart.Name }}-celery-beat
+          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "/bin/sh"
+            - "-c"
+            - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery beat --app=superset.tasks.celery_app:app --pidfile /tmp/celerybeat.pid --schedule /tmp/celerybeat-schedule"
+          env:
+            - name: "SUPERSET_PORT"
+              value: {{ .Values.superset.celery.containerPort | quote}}
+          volumeMounts:
+            - name: {{ include "superset.fullname" . }}
+              mountPath: {{ .Values.superset.configMountPath | quote }}
+              readOnly: true
+          resources:
+            {{- toYaml .Values.superset.celery.resources | nindent 12 }}
+      {{- with .Values.superset.celery.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.celery.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.celery.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: {{ include "superset.fullname" . }}
+          configMap:
+            name: {{ include "superset.fullname" . }}
+{{- end -}}
