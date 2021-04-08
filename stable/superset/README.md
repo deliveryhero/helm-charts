@@ -1,8 +1,10 @@
 # superset
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for Apache Superset
+
+**Homepage:** <https://superset.apache.org/>
 
 ## How to install this chart
 
@@ -35,6 +37,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/superset -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/apache/superset>
 
 ## Values
 
@@ -102,3 +108,8 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.worker.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.worker.tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | thomas.nyambati@deliveryhero.com |  |
