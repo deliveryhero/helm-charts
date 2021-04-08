@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "superset.fullname" . }}
+  name: {{ include "superset.fullname" . }}-celery
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
@@ -31,7 +31,7 @@ spec:
       # Needed in order to allow pip install to work in bootstrap
         runAsUser: 0
       containers:
-        - name: {{ .Chart.Name }}-celery-beat
+        - name: {{ .Chart.Name }}-celery
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:

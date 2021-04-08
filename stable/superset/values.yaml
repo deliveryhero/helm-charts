@@ -53,10 +53,16 @@ superset:
   autoscaling:
     enabled: false
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 10
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
   celery:
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 80
+      # targetMemoryUtilizationPercentage: 80
     enabled: true
     forceReload: false
     podAnnotations: {}
@@ -65,6 +71,11 @@ superset:
     tolerations: []
     affinity: {}
   worker:
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
     podAnnotations: {}
     resources: {}
     nodeSelector: {}

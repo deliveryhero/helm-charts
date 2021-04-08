@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "superset.fullname" . }}
+  name: {{ include "superset.fullname" . }}-worker
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
