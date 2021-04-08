@@ -58,4 +58,4 @@ data:
       key_prefix='superset_results'
     )
 
-{{.Values.superset.configFile | indent 4 }}
+{{ .Values.superset.configFile | indent 4 }}
