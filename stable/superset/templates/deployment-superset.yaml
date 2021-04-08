@@ -5,9 +5,9 @@ metadata:
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
-  {{ if .Values.superset.autoscaling.enabled}}
-  replicas: 1
-  {{ end }}
+  {{- if not .Values.superset.autoscaling.enabled }}
+  replicas: {{ .Values.superset.replicas }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "superset.selectorLabels" . | nindent 6 }}
@@ -46,7 +46,7 @@ spec:
               readOnly: true
           ports:
             - name: http
-              containerPort: {{ .Values.superset.containerPort | quote}}
+              containerPort: {{ .Values.superset.containerPort }}
               protocol: TCP
           readinessProbe:
             httpGet:

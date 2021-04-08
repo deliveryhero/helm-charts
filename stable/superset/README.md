@@ -53,12 +53,11 @@ helm install my-release deliveryhero/superset -f values.yaml
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `true` |  |
+| ingress.enabled | bool | `false` |  |
 | ingress.host | string | `nil` |  |
 | ingress.tls | list | `[]` |  |
-| job.enabled | bool | `true` |  |
+| job.enabled | bool | `false` |  |
 | nameOverride | string | `""` |  |
-| replicas | int | `1` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccountName | string | `nil` |  |
@@ -77,10 +76,11 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.celery.autoscaling.maxReplicas | int | `10` |  |
 | superset.celery.autoscaling.minReplicas | int | `1` |  |
 | superset.celery.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| superset.celery.enabled | bool | `true` |  |
+| superset.celery.enabled | bool | `false` |  |
 | superset.celery.forceReload | bool | `false` |  |
 | superset.celery.nodeSelector | object | `{}` |  |
 | superset.celery.podAnnotations | object | `{}` |  |
+| superset.celery.replicas | int | `1` |  |
 | superset.celery.resources | object | `{}` |  |
 | superset.celery.tolerations | list | `[]` |  |
 | superset.configFile | string | `""` |  |
@@ -96,6 +96,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.redis.cacheDbIndex | int | `0` |  |
 | superset.redis.host | string | `nil` |  |
 | superset.redis.port | int | `6379` |  |
+| superset.replicas | int | `1` |  |
 | superset.resources | object | `{}` |  |
 | superset.tolerations | list | `[]` |  |
 | superset.worker.affinity | object | `{}` |  |
@@ -104,6 +105,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.worker.autoscaling.minReplicas | int | `1` |  |
 | superset.worker.nodeSelector | object | `{}` |  |
 | superset.worker.podAnnotations | object | `{}` |  |
+| superset.worker.replicas | int | `1` |  |
 | superset.worker.resources | object | `{}` |  |
 | superset.worker.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.worker.tolerations | list | `[]` |  |

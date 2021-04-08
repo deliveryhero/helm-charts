@@ -5,9 +5,9 @@ metadata:
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
-  {{ if .Values.superset.autoscaling.enabled}}
-  replicas: 1
-  {{ end }}
+  {{- if not .Values.superset.worker.autoscaling.enabled}}
+  replicas: {{ .Values.superset.worker.replicas }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "superset.selectorLabels" . | nindent 6 }}

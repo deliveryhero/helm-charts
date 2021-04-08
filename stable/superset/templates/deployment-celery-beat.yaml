@@ -6,7 +6,9 @@ metadata:
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  {{- if not .Values.superset.celery.autoscaling.enabled }}
+  replicas: {{ .Values.superset.celery.replicas }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "superset.celery.selectorLabels" . | nindent 6 }}
