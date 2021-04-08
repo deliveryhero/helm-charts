@@ -24,6 +24,12 @@ ingress:
   tls: []
 
 superset:
+  admin:
+    username: admin
+    firstName: superset
+    lastName: admin
+    email: admin@superset.com
+    password: admin
   configMountPath: "/app/pythonpath"
   containerPort: 8088
   autoscaling:
