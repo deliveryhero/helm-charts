@@ -23,6 +23,8 @@ ingress:
   host:
   tls: []
 
+job:
+  enabled: true
 superset:
   redis:
     host:
