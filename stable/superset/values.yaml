@@ -24,6 +24,37 @@ ingress:
   tls: []
 
 superset:
+  redis:
+    host:
+    port: 6379
+    brokerDbIndex: 1
+    cacheDbIndex: 0
+
+  database:
+    host:
+    port: 5432
+    name:
+    user:
+    password:
+  configFile: |
+    # from flask_appbuilder.security.manager import AUTH_DB
+    # AUTH_TYPE = AUTH_OAUTH
+    # OAUTH_PROVIDERS = [
+    #     {
+    #         "name": "google",
+    #         "icon": "fa-google",
+    #         "token_key": "access_token",
+    #         "remote_app": {
+    #             "client_id": os.environ.get("GOOGLE_KEY"),
+    #             "client_secret": os.environ.get("GOOGLE_SECRET"),
+    #             "api_base_url": "https://www.googleapis.com/oauth2/v2/",
+    #             "client_kwargs": {"scope": "email profile"},
+    #             "request_token_url": None,
+    #             "access_token_url": "https://accounts.google.com/o/oauth2/token",
+    #             "authorize_url": "https://accounts.google.com/o/oauth2/auth",
+    #         },
+    #     }
+    # ]
   admin:
     username: admin
     firstName: superset
@@ -32,17 +63,16 @@ superset:
     password: admin
   configMountPath: "/app/pythonpath"
   containerPort: 8088
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
   autoscaling:
     enabled: false
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
-  resources: {}
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
-
   celery:
     enabled: true
     forceReload: false

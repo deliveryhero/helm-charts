@@ -28,18 +28,18 @@ data:
         return os.getenv(key, default)
     MAPBOX_API_KEY = env('MAPBOX_API_KEY', '')
     CACHE_CONFIG = {
-          'CACHE_TYPE': 'redis',
-          'CACHE_DEFAULT_TIMEOUT': 300,
-          'CACHE_KEY_PREFIX': 'superset_',
-          'CACHE_REDIS_HOST': env('REDIS_HOST'),
-          'CACHE_REDIS_PORT': env('REDIS_PORT'),
-          'CACHE_REDIS_DB': env('REDIS_CACHE_DB', 1),
-          'CACHE_REDIS_URL': f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/{env('REDIS_CACHE_DB', 1)}"
+      'CACHE_TYPE': 'redis',
+      'CACHE_DEFAULT_TIMEOUT': 300,
+      'CACHE_KEY_PREFIX': 'superset_',
+      'CACHE_REDIS_HOST': {{ .Values.superset.redis.host }},
+      'CACHE_REDIS_PORT': {{ .Values.superset.redis.port }},
+      'CACHE_REDIS_DB': {{ .Values.superset.redis.cacheDbIndex }},
+      'CACHE_REDIS_URL': f"redis://{{.Values.superset.redis.host}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.cacheDbIndex}}"
     }
     DATA_CACHE_CONFIG = CACHE_CONFIG
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{env('DB_USER')}:{env('DB_PASS')}@{env('DB_HOST')}:{env('DB_PORT')}/{env('DB_NAME')}"
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{{.Values.superset.database.user}}:{{.Values.superset.database.password}}@{{.Values.superset.database.host}}:{{.Values.superset.database.port}}/{{.Values.superset.database.name}}"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SECRET_KEY = env('SECRET_KEY', 'ZEdocGMwbFRZVk5GUTFKRlZGOHhNak0wQ2c9PQoZEdocGMwbFRZVk5GUTFKRlZGOHhNak')
+    SECRET_KEY = env('SECRET_KEY', '{{ randAlphaNum 40  }}')
     # Flask-WTF flag for CSRF
     WTF_CSRF_ENABLED = True
     # Add endpoints that need to be exempt from CSRF protection
@@ -47,32 +47,15 @@ data:
     # A CSRF token that expires in 1 year
     WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
     class CeleryConfig(object):
-      BROKER_URL = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/{env('REDIS_BROKER_DB', 0)}"
+      BROKER_URL = f"redis://{{ .Values.superset.redis.host }}:{{ .Values.superset.redis.port }}/{{ .Values.superset.redis.brokerDbIndex }}"
       CELERY_IMPORTS = ('superset.sql_lab', )
-      CELERY_RESULT_BACKEND = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/{env('REDIS_BROKER_DB', 0)}"
+      CELERY_RESULT_BACKEND = f"redis://{{ .Values.superset.redis.host }}:{{ .Values.superset.redis.port }}/{{ .Values.superset.redis.brokerDbIndex }}"
       CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
     CELERY_CONFIG = CeleryConfig
     RESULTS_BACKEND = RedisCache(
-          host=env('REDIS_HOST'),
-          port=env('REDIS_PORT'),
-          key_prefix='superset_results'
+      host={{ .Values.superset.redis.host }},
+      port={{ .Values.superset.redis.port }},
+      key_prefix='superset_results'
     )
-  #  from flask_appbuilder.security.manager import AUTH_DB
-  #  AUTH_TYPE = AUTH_OAUTH
 
-  #  OAUTH_PROVIDERS = [
-  #      {
-  #          "name": "google",
-  #          "icon": "fa-google",
-  #          "token_key": "access_token",
-  #          "remote_app": {
-  #              "client_id": os.environ.get("GOOGLE_KEY"),
-  #              "client_secret": os.environ.get("GOOGLE_SECRET"),
-  #              "api_base_url": "https://www.googleapis.com/oauth2/v2/",
-  #              "client_kwargs": {"scope": "email profile"},
-  #              "request_token_url": None,
-  #              "access_token_url": "https://accounts.google.com/o/oauth2/token",
-  #              "authorize_url": "https://accounts.google.com/o/oauth2/auth",
-  #          },
-  #      }
-  #  ]
+{{.Values.superset.configFile | indent 4 }}

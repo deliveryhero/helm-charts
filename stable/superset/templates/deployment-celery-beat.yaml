@@ -41,6 +41,10 @@ spec:
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.celery.containerPort | quote}}
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
           volumeMounts:
             - name: {{ include "superset.fullname" . }}
               mountPath: {{ .Values.superset.configMountPath | quote }}
