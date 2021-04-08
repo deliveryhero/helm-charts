@@ -17,13 +17,13 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
   host:
   tls: []
 
 job:
-  enabled: true
+  enabled: false
 superset:
   redis:
     host:
@@ -63,7 +63,7 @@ superset:
       maxReplicas: 10
       targetCPUUtilizationPercentage: 80
       # targetMemoryUtilizationPercentage: 80
-    enabled: true
+    enabled: false
     forceReload: false
     podAnnotations: {}
     resources: {}
