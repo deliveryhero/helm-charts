@@ -95,6 +95,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.redis.brokerDbIndex | int | `1` |  |
 | superset.redis.cacheDbIndex | int | `0` |  |
 | superset.redis.host | string | `nil` |  |
+| superset.redis.password | string | `""` |  |
 | superset.redis.port | int | `6379` |  |
 | superset.replicas | int | `1` |  |
 | superset.resources | object | `{}` |  |

@@ -40,8 +40,10 @@ spec:
             - celery
             - beat
             - --app=superset.tasks.celery_app:app
-            - --pidfile /tmp/celerybeat.pid
-            - --schedule /tmp/celerybeat-schedule"
+            - --pidfile
+            - /tmp/celerybeat.pid
+            - --schedule
+            - /tmp/celerybeat-schedule
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}

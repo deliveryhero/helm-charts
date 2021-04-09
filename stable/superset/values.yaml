@@ -26,6 +26,7 @@ job:
 superset:
   replicas: 1
   redis:
+    password: ""
     host:
     port: 6379
     brokerDbIndex: 1
