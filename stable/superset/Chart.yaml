@@ -1,0 +1,16 @@
+apiVersion: v2
+name: superset
+description: A Helm chart for Apache Superset
+type: application
+version: 1.0.0
+home: https://superset.apache.org/
+appVersion: ""
+maintainers:
+- name: nyambati
+  email: thomas.nyambati@deliveryhero.com
+engine: gotpl
+keywords:
+- apache
+- supertest
+sources:
+- https://github.com/apache/superset

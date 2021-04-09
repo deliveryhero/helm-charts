@@ -1,0 +1,36 @@
+{{ if .Values.superset.database.init }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "superset.fullname" . }}-init-db
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook-weight": "1"
+spec:
+  template:
+    metadata:
+      name: {{ include "superset.fullname" . }}-init-db
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+      - name: {{ .Chart.Name }}-init-db
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+          - name: {{ include "superset.fullname" . }}
+            mountPath: {{ .Values.superset.configMountPath | quote }}
+            readOnly: true
+        command:
+          - "/bin/sh"
+          - "-c"
+          - "superset db upgrade && superset init"
+      volumes:
+        - name: {{ include "superset.fullname" . }}
+          configMap:
+            name: {{ include "superset.fullname" . }}
+      restartPolicy: Never
+{{ end }}

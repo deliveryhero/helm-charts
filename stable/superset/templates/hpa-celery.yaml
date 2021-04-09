@@ -1,0 +1,28 @@
+{{- if .Values.superset.celery.autoscaling.enabled }}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "superset.fullname" . }}-celery
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "superset.fullname" . }}-celery
+  minReplicas: {{ .Values.superset.celery.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.superset.celery.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.superset.celery.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ .Values.superset.celery.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if .Values.superset.celery.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: {{ .Values.superset.celery.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+{{- end }}

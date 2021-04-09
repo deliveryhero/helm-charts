@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "superset.fullname" . }}
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.superset.autoscaling.enabled }}
+  replicas: {{ .Values.superset.replicas }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "superset.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{ if .Values.forceReload }}
+        force-reload: {{ randAlphaNum 5 | quote }}
+      {{ end }}
+      labels:
+        {{- include "superset.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: "SUPERSET_PORT"
+              value: {{ .Values.superset.containerPort | quote}}
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: {{ include "superset.fullname" . }}
+              mountPath: {{ .Values.superset.configMountPath | quote }}
+              readOnly: true
+          ports:
+            - name: http
+              containerPort: {{ .Values.superset.containerPort }}
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 3
+            successThreshold: 2
+            failureThreshold: 6
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 6
+            timeoutSeconds: 5
+          resources:
+            {{- toYaml .Values.superset.resources | nindent 12 }}
+      {{- with .Values.superset.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: {{ include "superset.fullname" . }}
+          configMap:
+            name: {{ include "superset.fullname" . }}

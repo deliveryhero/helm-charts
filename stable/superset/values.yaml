@@ -1,0 +1,85 @@
+# Default values for superset.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: apache/superset
+  pullPolicy: IfNotPresent
+  tag: latest
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccountName:
+extraLabels: {}
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  host:
+  tls: []
+
+superset:
+  replicas: 1
+  redis:
+    password: ""
+    host: ""
+    port: 6379
+    brokerDbIndex: 1
+    cacheDbIndex: 0
+  database:
+    init: false
+    host: ""
+    port: 5432
+    name: ""
+    user: ""
+    password: ""
+  configFile: ""
+  admin:
+    create: false
+    username: admin
+    firstName: superset
+    lastName: admin
+    email: admin@superset.com
+    password: admin
+  configMountPath: "/app/pythonpath"
+  containerPort: 8088
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+  celery:
+    replicas: 1
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
+    enabled: false
+    forceReload: false
+    podAnnotations: {}
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  worker:
+    replicas: 1
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    podAnnotations: {}
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}

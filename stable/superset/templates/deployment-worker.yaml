@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "superset.fullname" . }}-worker
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.superset.worker.autoscaling.enabled}}
+  replicas: {{ .Values.superset.worker.replicas }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "superset.worker.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{ if .Values.forceReload }}
+        force-reload: {{ randAlphaNum 5 | quote }}
+      {{ end }}
+      labels:
+        {{- include "superset.worker.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: {{ .Chart.Name }}-worker
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "celery"
+            - "--app=superset.tasks.celery_app:app"
+            - "worker"
+            # - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
+          env:
+            - name: "SUPERSET_PORT"
+              value: {{ .Values.superset.containerPort | quote}}
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: {{ include "superset.fullname" . }}
+              mountPath: {{ .Values.superset.configMountPath | quote }}
+              readOnly: true
+          resources:
+            {{- toYaml .Values.superset.worker.resources | nindent 12 }}
+      {{- with .Values.superset.worker.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.worker.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.superset.worker.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: {{ include "superset.fullname" . }}
+          configMap:
+            name: {{ include "superset.fullname" . }}

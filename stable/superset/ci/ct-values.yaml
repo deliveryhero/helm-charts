@@ -1,0 +1,6 @@
+superset:
+  replicas: 0
+  worker:
+    replicas: 0
+  celery:
+    replicas: 0
