@@ -54,6 +54,7 @@ helm install my-release deliveryhero/<chart>
 - [prometheus-statsd-exporter](stable/prometheus-statsd-exporter)
 - [rds-downscaler](stable/rds-downscaler)
 - [service-account](stable/service-account)
+- [superset](stable/superset)
 - [toxiproxy](stable/toxiproxy)
 - [weblate](stable/weblate)
 

@@ -60,6 +60,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccountName | string | `nil` |  |
+| superset.admin.create | bool | `false` |  |
 | superset.admin.email | string | `"admin@superset.com"` |  |
 | superset.admin.firstName | string | `"superset"` |  |
 | superset.admin.lastName | string | `"admin"` |  |
@@ -88,6 +89,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.configMountPath | string | `"/app/pythonpath"` |  |
 | superset.containerPort | int | `8088` |  |
 | superset.database.host | string | `""` |  |
+| superset.database.init | bool | `false` |  |
 | superset.database.name | string | `""` |  |
 | superset.database.password | string | `""` |  |
 | superset.database.port | int | `5432` |  |
