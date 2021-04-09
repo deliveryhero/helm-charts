@@ -21,22 +21,20 @@ ingress:
   host:
   tls: []
 
-job:
-  enabled: false
 superset:
   replicas: 1
   redis:
     password: ""
-    host:
+    host: ""
     port: 6379
     brokerDbIndex: 1
     cacheDbIndex: 0
   database:
-    host:
+    host: ""
     port: 5432
-    name:
-    user:
-    password:
+    name: ""
+    user: ""
+    password: ""
   configFile: ""
   admin:
     username: admin
@@ -55,7 +53,7 @@ superset:
     minReplicas: 1
     maxReplicas: 10
     targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
   celery:
     replicas: 1
     autoscaling:
@@ -63,7 +61,7 @@ superset:
       minReplicas: 1
       maxReplicas: 10
       targetCPUUtilizationPercentage: 80
-      # targetMemoryUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
     enabled: false
     forceReload: false
     podAnnotations: {}

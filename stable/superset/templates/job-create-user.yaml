@@ -1,4 +1,3 @@
-{{- if .Values.job.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -43,4 +42,3 @@ spec:
           configMap:
             name: {{ include "superset.fullname" . }}
       restartPolicy: Never
-{{- end }}
