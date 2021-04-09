@@ -1,0 +1,13 @@
+{{- if .Values.superset.database.create -}}
+apiVersion: postgresql.org/v1
+kind: PostgresDatabase
+metadata:
+  name: {{ include "superset.fullname" . }}
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+spec:
+  dbName: {{ .Values.superset.database.name }}
+  dbRoleName: {{ .Values.superset.database.username }}
+  dbRolePassword: {{ .Values.superset.database.password }}
+  dbInstanceId: {{ .Values.superset.database.instanceID }}
+{{- end -}}
