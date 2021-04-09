@@ -34,12 +34,14 @@ spec:
         runAsUser: 0
       containers:
         - name: {{ .Chart.Name }}-celery
-          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - "/bin/sh"
-            - "-c"
-            - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery beat --app=superset.tasks.celery_app:app --pidfile /tmp/celerybeat.pid --schedule /tmp/celerybeat-schedule"
+            - celery
+            - beat
+            - --app=superset.tasks.celery_app:app
+            - --pidfile /tmp/celerybeat.pid
+            - --schedule /tmp/celerybeat-schedule"
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}

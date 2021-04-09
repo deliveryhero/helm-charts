@@ -8,6 +8,7 @@ metadata:
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook-weight": "1"
 spec:
   template:
     metadata:
@@ -17,7 +18,7 @@ spec:
         runAsUser: 0
       containers:
       - name: {{ .Chart.Name }}-init-db
-        image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
           - name: {{ include "superset.fullname" . }}
@@ -26,7 +27,7 @@ spec:
         command:
           - "/bin/sh"
           - "-c"
-          - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; . {{ .Values.superset.configMountPath }}/superset_init.sh"
+          - "superset db upgrade && superset init"
       volumes:
         - name: {{ include "superset.fullname" . }}
           configMap:

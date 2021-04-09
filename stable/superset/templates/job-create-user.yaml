@@ -1,0 +1,46 @@
+{{- if .Values.job.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "superset.fullname" . }}-create-user
+  labels:
+    {{- include "superset.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook-weight": "2"
+spec:
+  template:
+    metadata:
+      name: {{ include "superset.fullname" . }}-create-user
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+      - name: {{ .Chart.Name }}-create-user
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+          - name: {{ include "superset.fullname" . }}
+            mountPath: {{ .Values.superset.configMountPath | quote }}
+            readOnly: true
+        command:
+          - superset
+          - fab
+          - create-admin
+          - --username
+          - {{ required "Missing adminstrator username" .Values.superset.admin.username }}
+          - --firstname
+          - {{ required "Missing adminstrator firstname"  .Values.superset.admin.firstName}}
+          - --lastname
+          - {{ required "Missing adminstrator lastname" .Values.superset.admin.lastName }}
+          - --email
+          - {{ required "Missing adminstrator email" .Values.superset.admin.email }}
+          - --password
+          - {{ required "Missing adminstrator password" .Values.superset.admin.password }}
+      volumes:
+        - name: {{ include "superset.fullname" . }}
+          configMap:
+            name: {{ include "superset.fullname" . }}
+      restartPolicy: Never
+{{- end }}
