@@ -30,11 +30,13 @@ superset:
     brokerDbIndex: 1
     cacheDbIndex: 0
   database:
-    init: false
-    host: ""
+    init: true
+    create: false
+    instanceID: ""
+    hostname: ""
     port: 5432
     name: ""
-    user: ""
+    username: ""
     password: ""
   configFile: ""
   admin:
