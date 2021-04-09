@@ -57,3 +57,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/name: {{ include "superset.name" . }}-celery-beat
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{- define "superset.worker.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "superset.name" . }}-worker
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

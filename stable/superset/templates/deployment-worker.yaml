@@ -10,7 +10,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "superset.selectorLabels" . | nindent 6 }}
+      {{- include "superset.worker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,7 +21,7 @@ spec:
         force-reload: {{ randAlphaNum 5 | quote }}
       {{ end }}
       labels:
-        {{- include "superset.selectorLabels" . | nindent 8 }}
+        {{- include "superset.labels" . | nindent 8 }}
     spec:
       securityContext:
         runAsUser: 0
