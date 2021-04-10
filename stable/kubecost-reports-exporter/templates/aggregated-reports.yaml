@@ -28,6 +28,7 @@ spec:
           - name: {{ .Chart.Name }}-aggregated
             securityContext:
               {{- toYaml .Values.securityContext | nindent 14 }}
+            serviceAccountName: {{ .Values.serviceAccountName }}
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
             args:
