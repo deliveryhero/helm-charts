@@ -25,16 +25,18 @@ superset:
   replicas: 1
   redis:
     password: ""
-    host: ""
+    hostname: ""
     port: 6379
     brokerDbIndex: 1
     cacheDbIndex: 0
   database:
-    init: false
-    host: ""
+    init: true
+    create: false
+    instanceID: ""
+    hostname: ""
     port: 5432
     name: ""
-    user: ""
+    username: ""
     password: ""
   configFile: ""
   admin:

@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -88,16 +88,18 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.configFile | string | `""` |  |
 | superset.configMountPath | string | `"/app/pythonpath"` |  |
 | superset.containerPort | int | `8088` |  |
-| superset.database.host | string | `""` |  |
-| superset.database.init | bool | `false` |  |
+| superset.database.create | bool | `false` |  |
+| superset.database.hostname | string | `""` |  |
+| superset.database.init | bool | `true` |  |
+| superset.database.instanceID | string | `""` |  |
 | superset.database.name | string | `""` |  |
 | superset.database.password | string | `""` |  |
 | superset.database.port | int | `5432` |  |
-| superset.database.user | string | `""` |  |
+| superset.database.username | string | `""` |  |
 | superset.nodeSelector | object | `{}` |  |
 | superset.redis.brokerDbIndex | int | `1` |  |
 | superset.redis.cacheDbIndex | int | `0` |  |
-| superset.redis.host | string | `""` |  |
+| superset.redis.hostname | string | `""` |  |
 | superset.redis.password | string | `""` |  |
 | superset.redis.port | int | `6379` |  |
 | superset.replicas | int | `1` |  |

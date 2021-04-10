@@ -33,7 +33,6 @@ spec:
             - "celery"
             - "--app=superset.tasks.celery_app:app"
             - "worker"
-            # - ". {{ .Values.superset.configMountPath }}/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}

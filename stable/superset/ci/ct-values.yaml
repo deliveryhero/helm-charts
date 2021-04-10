@@ -4,3 +4,5 @@ superset:
     replicas: 0
   celery:
     replicas: 0
+  database:
+    init: false
