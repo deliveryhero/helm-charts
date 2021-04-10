@@ -18,14 +18,14 @@ data:
       'CACHE_TYPE': 'redis',
       'CACHE_DEFAULT_TIMEOUT': 300,
       'CACHE_KEY_PREFIX': 'superset_',
-      'CACHE_REDIS_HOST': {{ .Values.superset.redis.host | quote }},
+      'CACHE_REDIS_HOST': {{ .Values.superset.redis.hostname | quote }},
       'CACHE_REDIS_PORT': {{ .Values.superset.redis.port | quote}},
       'CACHE_REDIS_DB': {{ .Values.superset.redis.cacheDbIndex | quote }},
-      'CACHE_REDIS_URL': f"redis://:{{.Values.superset.redis.password}}@{{.Values.superset.redis.host}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.cacheDbIndex}}"
+      'CACHE_REDIS_URL': f"redis://:{{.Values.superset.redis.password}}@{{.Values.superset.redis.hostname}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.cacheDbIndex}}"
     }
 
     DATA_CACHE_CONFIG = CACHE_CONFIG
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{{.Values.superset.database.user}}:{{.Values.superset.database.password}}@{{.Values.superset.database.host}}:{{.Values.superset.database.port}}/{{.Values.superset.database.name}}"
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{{.Values.superset.database.username}}:{{.Values.superset.database.password}}@{{.Values.superset.database.hostname}}:{{.Values.superset.database.port}}/{{.Values.superset.database.name}}"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SECRET_KEY = env('SECRET_KEY', {{ randAlphaNum 40 | quote }})
     # Flask-WTF flag for CSRF
@@ -36,15 +36,15 @@ data:
     WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
 
     class CeleryConfig(object):
-      BROKER_URL = f"redis://:{{.Values.superset.redis.password}}@{{ .Values.superset.redis.host }}:{{ .Values.superset.redis.port }}/{{ .Values.superset.redis.brokerDbIndex }}"
+      BROKER_URL = f"redis://:{{.Values.superset.redis.password}}@{{.Values.superset.redis.hostname}}:{{ .Values.superset.redis.port }}/{{.Values.superset.redis.brokerDbIndex}}"
       CELERY_IMPORTS = ('superset.sql_lab', )
-      CELERY_RESULT_BACKEND = f"redis://{{ .Values.superset.redis.host }}:{{ .Values.superset.redis.port }}/{{ .Values.superset.redis.brokerDbIndex }}"
+      CELERY_RESULT_BACKEND = f"redis://{{.Values.superset.redis.hostname}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.brokerDbIndex}}"
       CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
 
     CELERY_CONFIG = CeleryConfig
 
     RESULTS_BACKEND = RedisCache(
-      host={{ .Values.superset.redis.host | quote }},
+      host={{ .Values.superset.redis.hostname | quote }},
       port={{ .Values.superset.redis.port | quote }},
       key_prefix='superset_results'
     )
