@@ -8,7 +8,7 @@ metadata:
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": "before-hook-creation"
-    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-weight": "2"
 spec:
   template:
     metadata:
@@ -25,9 +25,8 @@ spec:
             mountPath: {{ .Values.superset.configMountPath | quote }}
             readOnly: true
         command:
-          - "/bin/sh"
-          - "-c"
-          - "superset db upgrade && superset init"
+          - superset
+          - init
       volumes:
         - name: {{ include "superset.fullname" . }}
           configMap:

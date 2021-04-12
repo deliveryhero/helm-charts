@@ -1,23 +1,23 @@
-{{ if .Values.superset.admin.create }}
+{{ if .Values.superset.database.init }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "superset.fullname" . }}-create-user
+  name: {{ include "superset.fullname" . }}-db-upgrade
   labels:
     {{- include "superset.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": "before-hook-creation"
-    "helm.sh/hook-weight": "3"
+    "helm.sh/hook-weight": "1"
 spec:
   template:
     metadata:
-      name: {{ include "superset.fullname" . }}-create-user
+      name: {{ include "superset.fullname" . }}-db-upgrade
     spec:
       securityContext:
         runAsUser: 0
       containers:
-      - name: {{ .Chart.Name }}-create-user
+      - name: {{ .Chart.Name }}-db-upgrade
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
@@ -26,18 +26,8 @@ spec:
             readOnly: true
         command:
           - superset
-          - fab
-          - create-admin
-          - --username
-          - {{ required "Missing adminstrator username" .Values.superset.admin.username }}
-          - --firstname
-          - {{ required "Missing adminstrator firstname"  .Values.superset.admin.firstName}}
-          - --lastname
-          - {{ required "Missing adminstrator lastname" .Values.superset.admin.lastName }}
-          - --email
-          - {{ required "Missing adminstrator email" .Values.superset.admin.email }}
-          - --password
-          - {{ required "Missing adminstrator password" .Values.superset.admin.password }}
+          - db
+          - upgrade
       volumes:
         - name: {{ include "superset.fullname" . }}
           configMap:

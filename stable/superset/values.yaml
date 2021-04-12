@@ -22,6 +22,10 @@ ingress:
   tls: []
 
 superset:
+  oidc:
+    enabled: false
+    config: ""
+
   replicas: 1
   redis:
     password: ""
@@ -38,7 +42,7 @@ superset:
     name: ""
     username: ""
     password: ""
-  configFile: ""
+  extraConfig: ""
   admin:
     create: false
     username: admin

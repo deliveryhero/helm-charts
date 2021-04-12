@@ -5,9 +5,18 @@ metadata:
   labels:
     {{- include "superset.labels" . | nindent 4 }}
 data:
+  {{- if .Values.superset.oidc.enabled}}
+  oidc_client_secrets.json: |-
+{{ .Values.superset.oidc.client_secrets | indent 4 }}
+  {{- end}}
+
   superset_config.py: |-
     import os
     from cachelib.redis import RedisCache
+    {{- if .Values.superset.oidc.enabled}}
+    from flask_appbuilder.security.manager import AUTH_OID
+    from fab_oidc.security import SupersetOIDCSecurityManager
+    {{- end}}
 
     def env(key, default=None):
         return os.getenv(key, default)
@@ -49,4 +58,5 @@ data:
       key_prefix='superset_results'
     )
 
-{{ .Values.superset.configFile | indent 4 }}
+{{ .Values.superset.oidc.config | indent 4 }}
+{{ .Values.superset.extraConfig | indent 4 }}
