@@ -18,7 +18,11 @@ service:
 ingress:
   enabled: false
   annotations: {}
-  host:
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
   tls: []
 
 superset:
