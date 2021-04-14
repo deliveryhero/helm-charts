@@ -21,7 +21,8 @@ image:
   # image.repository -- Image repository
   repository: k8s.gcr.io/pause
   # image.tag -- Image tag
-  tag: 3.1
+  # @default -- `.Chart.AppVersion`
+  tag: ""
   # image.pullPolicy -- Container pull policy
   pullPolicy: IfNotPresent
 

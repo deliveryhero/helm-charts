@@ -9,7 +9,7 @@
 {{- $podSecurityContext := .Values.podSecurityContext }}
 {{- $priorityClassName := .Values.priorityClassOverprovision.name }}
 {{- $repository := .Values.image.repository }}
-{{- $imageTag := .Values.image.tag }}
+{{- $imageTag := default .Chart.AppVersion .Values.image.tag }}
 {{- $pullPolicy := .Values.image.pullPolicy }}
 {{- $imagePullSecrets := .Values.image.pullSecrets }}
 {{- $serviceAccountName := include "cluster-overprovisioner.serviceAccountName" . -}}
