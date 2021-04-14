@@ -1,6 +1,6 @@
 # kubecost-reports-exporter
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 Helm chart for exporting kubernetes cost reports to S3
 
@@ -65,7 +65,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | podSecurityContext | object | `{}` |  |
 | resources | object | `{}` |  |
 | restartPolicy | string | `"OnFailure"` |  |
-| schedule | string | `"\"0 * * * *\""` |  |
+| schedule | string | `"0 * * * *"` |  |
 | securityContext | object | `{}` |  |
 | serviceAccountName | string | `""` |  |
 | successfulJobsHistoryLimit | int | `1` |  |
