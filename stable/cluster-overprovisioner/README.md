@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.6.1](https://img.shields.io/badge/Version-0.6.1-informational?style=flat-square) ![AppVersion: 3.1](https://img.shields.io/badge/AppVersion-3.1-informational?style=flat-square)
+![Version: 0.6.2](https://img.shields.io/badge/Version-0.6.2-informational?style=flat-square) ![AppVersion: 3.1](https://img.shields.io/badge/AppVersion-3.1-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -52,7 +52,7 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| deployments | list | {} | Define optional additional deployments - A default deployment is included by default |
+| deployments | list | [] | Define optional additional deployments - A default deployment is included by default |
 | deployments[0].affinity | object | `{}` | Default Deployment - Map of node/pod affinities |
 | deployments[0].annotations | object | `{}` | Default Deployment - Annotations to add to the deployment |
 | deployments[0].labels | object | `{}` | Default Deployment - Optional labels tolerations |

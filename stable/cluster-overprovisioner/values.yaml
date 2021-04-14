@@ -41,7 +41,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 # deployments -- Define optional additional deployments - A default deployment is included by default
-# @default -- {}
+# @default -- []
 deployments:
   # deployments[0].name -- Default Deployment - Name for additional deployments (will be added as label cluster-over-provisioner-name, so you can match it with affinity rules)
   - name: default
