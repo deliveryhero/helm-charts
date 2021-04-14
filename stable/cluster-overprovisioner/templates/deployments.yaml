@@ -15,6 +15,7 @@
 {{- $serviceAccountName := include "cluster-overprovisioner.serviceAccountName" . -}}
 
 {{- range .Values.deployments }}
+{{- $deploymentName := .name }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -22,7 +23,7 @@ metadata:
   name: "{{ $fullname }}-{{ .name }}"
   labels:
     {{- $commonLabels | nindent 4 }}
-    app.cluster-overprovisioner/deployment: {{ .name }}
+    app.cluster-overprovisioner/deployment: {{ $deploymentName }}
   {{- with .annotations }}
   annotations:
     {{- toYaml . | nindent 8 }}
@@ -34,7 +35,7 @@ spec:
   selector:
     matchLabels:
       {{- $matchLabels | nindent 6 }}
-      app.cluster-overprovisioner/deployment: {{ .name }}
+      app.cluster-overprovisioner/deployment: {{ $deploymentName }}
   template:
     metadata:
     {{- with .podAnnotations }}
@@ -43,7 +44,7 @@ spec:
     {{- end }}
       labels:
         {{- $commonLabels | nindent 8 }}
-        app.cluster-overprovisioner/deployment: {{ .name }}
+        app.cluster-overprovisioner/deployment: {{ $deploymentName }}
     {{- with .labels }}
         {{- toYaml . | nindent 8 }}
     {{- end }}
@@ -75,5 +76,15 @@ spec:
     {{- with .tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .topologySpreadConstraints }}
+      topologySpreadConstraints:
+      {{- range . }}
+        - labelSelector:
+            matchLabels:
+              {{- $matchLabels | nindent 6 }}
+              app.cluster-overprovisioner/deployment: {{ $deploymentName }}
+          {{- toYaml . | nindent 10 }}
+      {{- end }}
     {{- end }}
 {{- end }}

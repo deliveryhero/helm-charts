@@ -70,6 +70,14 @@ deployments:
     affinity: {}
     # deployments[0].labels -- Default Deployment - Optional labels tolerations
     labels: {}
+    # deployments[0].topologySpreadConstraints -- Default Deployment - Optional topology spread constraints
+    topologySpreadConstraints: []
+      # - maxSkew: 1
+      #   topologyKey: failure-domain.beta.kubernetes.io/zone
+      #   whenUnsatisfiable: DoNotSchedule
+      # - maxSkew: 1
+      #   topologyKey: kubernetes.io/hostname
+      #   whenUnsatisfiable: ScheduleAnyway
 
 serviceAccount:
   # serviceAccount.create -- Determine whether a Service Account should be created or it should reuse an exiting one

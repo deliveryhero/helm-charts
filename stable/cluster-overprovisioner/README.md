@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.6.2](https://img.shields.io/badge/Version-0.6.2-informational?style=flat-square) ![AppVersion: 3.1](https://img.shields.io/badge/AppVersion-3.1-informational?style=flat-square)
+![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat-square) ![AppVersion: 3.1](https://img.shields.io/badge/AppVersion-3.1-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -65,6 +65,7 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | deployments[0].resources.requests.cpu | string | `"1000m"` | Default Deployment - CPU requested for the overprovision pods |
 | deployments[0].resources.requests.memory | string | `"1000Mi"` | Default Deployment - Memory requested for the overprovision pods |
 | deployments[0].tolerations | list | `[]` | Default Deployment - Optional deployment tolerations |
+| deployments[0].topologySpreadConstraints | list | `[]` | Default Deployment - Optional topology spread constraints |
 | fullnameOverride | string | `""` | Override the fullname of the chart |
 | image.pullPolicy | string | `"IfNotPresent"` | Container pull policy |
 | image.repository | string | `"k8s.gcr.io/pause"` | Image repository |
