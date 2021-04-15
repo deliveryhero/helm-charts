@@ -29,13 +29,13 @@ data:
       'CACHE_REDIS_HOST': {{ .Values.superset.redis.hostname | quote }},
       'CACHE_REDIS_PORT': {{ .Values.superset.redis.port | quote}},
       'CACHE_REDIS_DB': {{ .Values.superset.redis.cacheDbIndex | quote }},
-      'CACHE_REDIS_URL': f"redis://:{env('REDIS_PASSWORD')}@{{.Values.superset.redis.hostname}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.cacheDbIndex}}"
+      'CACHE_REDIS_URL': f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.cacheDbIndex}}"
     }
 
     DATA_CACHE_CONFIG = CACHE_CONFIG
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{env('DB_USERNAME')}:{env('DB_PASSWORD')}@{{.Values.superset.database.hostname}}:{{.Values.superset.database.port}}/{{.Values.superset.database.name}}"
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{env('DB_USERNAME')}:{env('DB_PASSWORD')}@{{ include "superset.database.uri" . }}"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SECRET_KEY = env('SECRET_KEY', {{ randAlphaNum 40 | quote }})
+    SECRET_KEY = env('SECRET_KEY', 'w3xHRhuaiYuntExj6fBBHSWAqtd7UWmY9nI4sRIh')
     # Flask-WTF flag for CSRF
     WTF_CSRF_ENABLED = True
     # Add endpoints that need to be exempt from CSRF protection
@@ -44,9 +44,9 @@ data:
     WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
 
     class CeleryConfig(object):
-      BROKER_URL = f"redis://:{env('REDIS_PASSWORD')}@{{.Values.superset.redis.hostname}}:{{ .Values.superset.redis.port }}/{{.Values.superset.redis.brokerDbIndex}}"
+      BROKER_URL = f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.brokerDbIndex}}"
       CELERY_IMPORTS = ('superset.sql_lab', )
-      CELERY_RESULT_BACKEND = f"redis://:{env('REDIS_PASSWORD')}@{{.Values.superset.redis.hostname}}:{{.Values.superset.redis.port}}/{{.Values.superset.redis.brokerDbIndex}}"
+      CELERY_RESULT_BACKEND = f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.brokerDbIndex}}"
       CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
 
     CELERY_CONFIG = CeleryConfig
