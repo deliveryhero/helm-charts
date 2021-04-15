@@ -29,7 +29,7 @@ superset:
   oidc:
     enabled: false
     config: ""
-
+    imports: ""
   replicas: 1
   redis:
     password: ""
@@ -55,6 +55,7 @@ superset:
     email: admin@superset.com
     password: admin
   configMountPath: "/app/pythonpath"
+  podAnnotations: {}
   containerPort: 8088
   resources: {}
   nodeSelector: {}
@@ -74,7 +75,7 @@ superset:
       maxReplicas: 10
       targetCPUUtilizationPercentage: 80
       targetMemoryUtilizationPercentage: 80
-    enabled: false
+    enabled: true
     forceReload: false
     podAnnotations: {}
     resources: {}

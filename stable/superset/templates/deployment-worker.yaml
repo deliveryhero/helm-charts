@@ -13,13 +13,11 @@ spec:
       {{- include "superset.worker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{ if .Values.forceReload }}
-        force-reload: {{ randAlphaNum 5 | quote }}
-      {{ end }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- with .Values.superset.worker.podAnnotations }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
       labels:
         {{- include "superset.worker.selectorLabels" . | nindent 8 }}
     spec:
@@ -33,6 +31,9 @@ spec:
             - "celery"
             - "--app=superset.tasks.celery_app:app"
             - "worker"
+          envFrom:
+            - secretRef:
+                name: {{ include "superset.fullname" . }}
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}
