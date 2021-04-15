@@ -35,7 +35,7 @@ data:
     DATA_CACHE_CONFIG = CACHE_CONFIG
     SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{env('DB_USERNAME')}:{env('DB_PASSWORD')}@{{ include "superset.database.uri" . }}"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SECRET_KEY = env('SECRET_KEY', 'w3xHRhuaiYuntExj6fBBHSWAqtd7UWmY9nI4sRIh')
+    SECRET_KEY = env('SECRET_KEY', '')
     # Flask-WTF flag for CSRF
     WTF_CSRF_ENABLED = True
     # Add endpoints that need to be exempt from CSRF protection
