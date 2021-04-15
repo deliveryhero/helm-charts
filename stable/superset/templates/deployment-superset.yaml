@@ -14,11 +14,10 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
-        {{- toYaml .Values.superset.worker.podAnnotations| nindent 8 }}
-        {{- if .Values.forceReload }}
-        force-reload: {{ randAlphaNum 5 | quote }}
-        {{- end }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum  | quote }}
+        {{- with .Values.superset.worker.podAnnotations }}
+          {{- toYaml .| nindent 8 }}
+        {{- end}}
       labels:
         {{- include "superset.selectorLabels" . | nindent 8 }}
     spec:
@@ -28,6 +27,9 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "superset.fullname" . }}
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.superset.containerPort | quote}}

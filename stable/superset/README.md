@@ -79,7 +79,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.celery.autoscaling.minReplicas | int | `1` |  |
 | superset.celery.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.celery.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
-| superset.celery.enabled | bool | `false` |  |
+| superset.celery.enabled | bool | `true` |  |
 | superset.celery.forceReload | bool | `false` |  |
 | superset.celery.nodeSelector | object | `{}` |  |
 | superset.celery.podAnnotations | object | `{}` |  |

@@ -24,6 +24,9 @@ spec:
           - name: {{ include "superset.fullname" . }}
             mountPath: {{ .Values.superset.configMountPath | quote }}
             readOnly: true
+        envFrom:
+          - secretRef:
+              name: {{ include "superset.fullname" . }}
         command:
           - superset
           - db

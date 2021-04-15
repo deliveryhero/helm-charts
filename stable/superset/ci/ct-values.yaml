@@ -4,5 +4,10 @@ superset:
     replicas: 0
   celery:
     replicas: 0
+  redis:
+    hostname: redis-master
   database:
-    init: false
+    init: true
+    create: false
+    username: postgres
+    password: PFeL4TILQQ

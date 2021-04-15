@@ -75,7 +75,7 @@ superset:
       maxReplicas: 10
       targetCPUUtilizationPercentage: 80
       targetMemoryUtilizationPercentage: 80
-    enabled: false
+    enabled: true
     forceReload: false
     podAnnotations: {}
     resources: {}
