@@ -14,13 +14,12 @@ spec:
       {{- include "superset.celery.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.superset.celery.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{ if .Values.forceReload }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- toYaml .Values.superset.worker.podAnnotations| nindent 8 }}
+        {{- if .Values.forceReload }}
         force-reload: {{ randAlphaNum 5 | quote }}
-      {{ end }}
+        {{- end }}
       labels:
         {{- include "superset.celery.selectorLabels" . | nindent 8 }}
     spec:

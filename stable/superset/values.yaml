@@ -55,6 +55,7 @@ superset:
     email: admin@superset.com
     password: admin
   configMountPath: "/app/pythonpath"
+  podAnnotations: {}
   containerPort: 8088
   resources: {}
   nodeSelector: {}
