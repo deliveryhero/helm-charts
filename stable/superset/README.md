@@ -100,6 +100,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.nodeSelector | object | `{}` |  |
 | superset.oidc.config | string | `""` |  |
 | superset.oidc.enabled | bool | `false` |  |
+| superset.oidc.imports | string | `""` |  |
 | superset.podAnnotations | object | `{}` |  |
 | superset.redis.brokerDbIndex | int | `1` |  |
 | superset.redis.cacheDbIndex | int | `0` |  |
