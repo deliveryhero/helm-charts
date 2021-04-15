@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "kubecost-reports-exporter.labels" . | nindent 4 }}
 spec:
-  schedule: {{ .Values.schedule }}
+  schedule: {{ .Values.schedule | quote }}
   successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
   concurrencyPolicy: {{ .Values.concurrencyPolicy }}
   jobTemplate:
@@ -49,5 +49,5 @@ spec:
               - name: KUBECOST_ENDPOINT
                 value: {{ required "Kubecost analyzer endpoint is a required value" .Values.kubecost.analyzerEndpoint | quote }}
               - name: KUBECOST_URL
-                value: {{ required "Kubecost reports url is a required value" .Values.kubecost.nonAggregatedCostUrl  | quote }}
+                value: {{ required "Kubecost reports url is a required value" .Values.kubecost.aggregatedCostUrl  | quote }}
           restartPolicy: {{ .Values.restartPolicy }}

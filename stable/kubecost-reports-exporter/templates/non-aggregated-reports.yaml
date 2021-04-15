@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "kubecost-reports-exporter.labels" . | nindent 4 }}
 spec:
-  schedule: {{ .Values.schedule }}
+  schedule: {{ .Values.schedule | quote }}
   successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
   concurrencyPolicy: {{ .Values.concurrencyPolicy }}
   jobTemplate:
