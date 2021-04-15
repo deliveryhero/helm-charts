@@ -29,7 +29,7 @@ superset:
   oidc:
     enabled: false
     config: ""
-
+    imports: ""
   replicas: 1
   redis:
     password: ""
