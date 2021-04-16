@@ -62,3 +62,15 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/name: {{ include "superset.name" . }}-worker
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{- define "superset.redis.uri" -}}
+{{ if .Values.superset.redis.password}}
+{{- printf "%s@%s:%v" "{env('REDIS_PASSWORD')}" .Values.superset.redis.hostname .Values.superset.redis.port}}
+{{- else }}
+{{- printf "%s:%v" .Values.superset.redis.hostname .Values.superset.redis.port}}
+{{- end }}
+{{- end }}
+
+{{- define "superset.database.uri" -}}
+{{- printf "%s:%v/%s" .Values.superset.database.hostname .Values.superset.database.port .Values.superset.database.name }}
+{{- end }}
