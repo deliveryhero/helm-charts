@@ -83,6 +83,8 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
+| loadtest.tags | string | `""` | whether to run locust with --tags [TAG [TAG ...]] options, so only tasks with any matching tags will be executed |
+| loadtest.excludeTags | string | `""` | whether to run locust with --exclude-tags [TAG [TAG ...]] options, so only tasks with no matching tags will be executed |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.args_include_default | bool | `true` | Whether to include default command args |
 | master.command[0] | string | `"sh"` |  |
