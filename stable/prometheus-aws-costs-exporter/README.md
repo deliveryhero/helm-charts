@@ -49,10 +49,10 @@ helm install my-release deliveryhero/prometheus-aws-costs-exporter -f values.yam
 | affinity | object | `{}` |  |
 | args[0] | string | `"--host"` |  |
 | args[1] | string | `"0.0.0.0"` |  |
-| environment.METRIC_TODAY_DAILY_COSTS | bool | `true` |  |
-| environment.METRIC_TODAY_DAILY_USAGE | bool | `true` |  |
-| environment.METRIC_TODAY_DAILY_USAGE_NORM | bool | `true` |  |
-| environment.METRIC_YESTERDAY_DAILY_COSTS | bool | `true` |  |
+| environment.METRIC_TODAY_DAILY_COSTS | string | `"yes"` |  |
+| environment.METRIC_TODAY_DAILY_USAGE | string | `"yes"` |  |
+| environment.METRIC_TODAY_DAILY_USAGE_NORM | string | `"yes"` |  |
+| environment.METRIC_YESTERDAY_DAILY_COSTS | string | `"yes"` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
