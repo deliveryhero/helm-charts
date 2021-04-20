@@ -18,7 +18,7 @@ data:
   {{- end }}
 
     def env(key, default=None):
-        return os.getenv(key, default)
+      return os.getenv(key, default)
 
     MAPBOX_API_KEY = env('MAPBOX_API_KEY', '')
 
@@ -61,3 +61,6 @@ data:
   {{ .Values.superset.oidc.config | nindent 4 }}
 {{- end }}
 {{ .Values.superset.extraConfig | nindent 4 }}
+{{- if .Values.extraConfigmapData}}
+{{- toYaml .Values.extraConfigmapData | nindent 2 }}
+{{- end }}
