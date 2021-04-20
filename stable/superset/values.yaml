@@ -94,3 +94,5 @@ superset:
     nodeSelector: {}
     tolerations: []
     affinity: {}
+
+extraConfigmapData: {}
