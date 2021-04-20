@@ -61,4 +61,6 @@ data:
   {{ .Values.superset.oidc.config | nindent 4 }}
 {{- end }}
 {{ .Values.superset.extraConfig | nindent 4 }}
-{{ toYaml .Values.extraConfigmapData | nindent 2 }}
+{{- if .Values.extraConfigmapData}}
+{{- toYaml .Values.extraConfigmapData | nindent 2 }}
+{{- end }}
