@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.11](https://img.shields.io/badge/Version-0.9.11-informational?style=flat-square) ![AppVersion: 1.4.3](https://img.shields.io/badge/AppVersion-1.4.3-informational?style=flat-square)
+![Version: 0.9.12](https://img.shields.io/badge/Version-0.9.12-informational?style=flat-square) ![AppVersion: 1.4.3](https://img.shields.io/badge/AppVersion-1.4.3-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -76,6 +76,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
+| loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
@@ -83,8 +84,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
-| loadtest.tags | string | `""` | whether to run locust with --tags [TAG [TAG ...]] options, so only tasks with any matching tags will be executed |
-| loadtest.excludeTags | string | `""` | whether to run locust with --exclude-tags [TAG [TAG ...]] options, so only tasks with no matching tags will be executed |
+| loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.args_include_default | bool | `true` | Whether to include default command args |
 | master.command[0] | string | `"sh"` |  |
