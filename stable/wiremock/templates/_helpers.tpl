@@ -57,7 +57,6 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 heritage: {{ .Release.Service | quote }}
 release: {{ .Release.Name | quote }}
 chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-app: {{ .Chart.Name | quote }}
 consumer: {{ .Values.consumer.name | quote }}
 {{- if .Values.extraLabels }}
 {{toYaml .Values.extraLabels }}
