@@ -155,6 +155,8 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | resources.limits.memory | string | `"3Gi"` |  |
 | resources.requests.cpu | int | `1` |  |
 | resources.requests.memory | string | `"3Gi"` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
 | strategy.type | string | `"RollingUpdate"` |  |
 | tolerations | list | `[]` |  |
 

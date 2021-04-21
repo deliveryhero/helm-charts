@@ -15,7 +15,7 @@ data:
     
     cp -L /config/status.json /working/mappings/status.json
     
-    for mount_path in $(env | grep WIREMOCK_MAPPINGS | cut -d'=' -f2)
+    for mount_path in $(env | grep '^WMSTUBS' | cut -d'=' -f2)
     do
       cp -rL "${mount_path}/mappings" /working
       cp -rL "${mount_path}/__files" /working

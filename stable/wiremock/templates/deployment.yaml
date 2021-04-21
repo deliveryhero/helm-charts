@@ -35,7 +35,7 @@ spec:
 {{- if .Values.consumer.stubs }}
         env:
 {{- range $key, $value := .Values.consumer.stubs }}
-        - name: {{ upper $key | replace "-" "_" }}
+        - name: "WMSTUBS_{{ upper $key | replace "-" "_" }}"
           value: {{ $value }}
 {{- end }}
 {{- end }}
