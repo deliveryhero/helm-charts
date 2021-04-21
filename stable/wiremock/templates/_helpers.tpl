@@ -40,7 +40,6 @@ Selector labels
 {{- define "wiremock.selector.labels" -}}
 app.kubernetes.io/name: {{ include "wiremock.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-app: {{ .Chart.Name | quote }}
 consumer: {{ .Values.consumer.name | quote }}
 {{- end }}
 
