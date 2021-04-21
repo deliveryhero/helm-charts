@@ -1,0 +1,148 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "wiremock.fullname" . }}
+  labels:
+{{ include "wiremock.labels" . | indent 4 }}
+{{- with .Values.deploymentAnnotations }}
+  annotations:
+{{- toYaml . | indent 4 }}
+{{- end}}
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+{{ include "wiremock.selector.labels" . | indent 6 }}
+  replicas: {{ .Values.replicas }}
+{{- with .Values.strategy }}
+  strategy:
+{{ toYaml . | trim | indent 4 }}
+{{- end }}
+  template:
+    metadata:
+      labels:
+{{ include "wiremock.labels" . | indent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+    spec:
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | indent 8 }}
+      {{- end }}
+      initContainers:
+      - name: copy-stubs
+        image: busybox:latest
+{{- if .Values.consumer.stubs }}
+        env:
+{{- range $key, $value := .Values.consumer.stubs }}
+        - name: "WMSTUBS_{{ upper $key | replace "-" "_" }}"
+          value: {{ $value }}
+{{- end }}
+{{- end }}
+        command: ['sh', '/config/init.sh']
+        volumeMounts:
+        - mountPath: /working
+          name: working
+        - mountPath: /config/init.sh
+          name: config
+          subPath: init.sh
+        - mountPath: /config/status.json
+          name: config
+          subPath: status.json
+{{- range $key, $value := .Values.consumer.stubs }}
+        - name: {{ $key }}-mappings
+          mountPath: {{ $value }}/mappings
+        - name: {{ $key }}-files
+          mountPath: {{ $value }}/__files
+{{- end }}
+{{- with .Values.consumer.initContainer }}
+{{ toYaml . | indent 6 }}
+{{- end }}
+      containers:
+      - name: wiremock
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - containerPort: 8080
+          - containerPort: 7091
+        env:
+          - name: JAVA_OPTS
+            value: "-Xms{{ .Values.java.xms }} -Xmx{{ .Values.java.xmx}} -XX:MaxMetaspaceSize={{ .Values.java.mms}} -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=127.0.0.1"
+{{- range $key, $value := .Values.consumer.environment }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+{{- end }}
+
+{{- if .Values.consumer.args_include_default }}
+        args:
+          - --disable-banner
+          - --no-request-journal
+          - --container-threads=300
+          - --async-response-enabled
+          - --async-response-threads=300
+          - --global-response-templating
+{{- else }}
+        args:
+{{- end }}
+{{- range $key, $value := .Values.consumer.args }}
+          - {{ $value | quote }}
+{{- end }}
+
+{{- if .Values.probes.readiness }}
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+{{- end }}
+
+{{- if .Values.probes.liveness }}
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 80
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 2
+{{- end }}
+
+        volumeMounts:
+        - mountPath: /home/wiremock
+          name: working
+        - mountPath: /var/wiremock/lib/log4j2.xml
+          name: config
+          subPath: log4j2.xml
+      volumes:
+      - name: working
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: {{ template "wiremock.fullname" . }}-config
+{{- range $key, $value := .Values.consumer.stubs }}
+      - name: {{ $key }}-mappings
+        configMap:
+          name: {{ $key }}-mappings
+      - name: {{ $key }}-files
+        configMap:
+          name: {{ $key }}-files
+{{- end }}
+{{- with .Values.consumer.initVolume }}
+{{ toYaml . | indent 6 }}
+{{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

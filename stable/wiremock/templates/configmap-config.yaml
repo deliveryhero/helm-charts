@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "wiremock.fullname" . }}-config
+  labels:
+{{ include "wiremock.labels" . | indent 4 }}
+data:
+  init.sh: |
+    #!/bin/sh
+    
+    set -eu
+    
+    mkdir -p /working/mappings
+    mkdir -p /working/__files
+    
+    cp -L /config/status.json /working/mappings/status.json
+    
+    for mount_path in $(env | grep '^WMSTUBS' | cut -d'=' -f2)
+    do
+      cp -rL "${mount_path}/mappings" /working
+      cp -rL "${mount_path}/__files" /working
+    done
+  status.json: |
+    // provides the status endpoint for k8s readyness and liveness probes
+    {
+      "request" : {
+        "url" : "/status",
+        "method" : "GET"
+      },
+      "response" : {
+        "status" : "200",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "jsonBody": {
+          "status": "ok"
+        }
+      }
+    }
+  log4j2.xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Configuration status="ERROR">
+        <Properties>
+            <Property name="logLevel">${sys:wm.logging.level:-${env.WM_LOGGING_LEVEL:-info}}</Property>
+        </Properties>
+        <Appenders>
+            <Console name="console" target="SYSTEM_OUT">
+    			<PatternLayout pattern="%d{HH:mm:ss,SSS} %-5p [%mdc{RQID}] [%c{1}] %mdc{CTP}%mdc{EIID}%mdc{ESID}%mdc{EOID}%mdc{CID}- %m%n" />
+            </Console>
+        </Appenders>
+        <Loggers>
+            <Logger name="com.ninecookies.wiremock.extensions" level="${logLevel}" />
+            <Root level="info">
+                <AppenderRef ref="console" />
+            </Root>
+        </Loggers>
+    </Configuration>
