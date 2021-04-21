@@ -77,11 +77,37 @@ consumer:
 
 **Homepage:** <http://wiremock.org/>
 
-## Maintainers
+## How to install this chart
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| mshero | no-reply@deliveryhero.com |  |
+Add Delivery Hero public chart repo:
+
+```console
+helm repo add deliveryhero https://charts.deliveryhero.io/
+```
+
+A simple install with default values:
+
+```console
+helm install deliveryhero/wiremock
+```
+
+To install the chart with the release name `my-release`:
+
+```console
+helm install my-release deliveryhero/wiremock
+```
+
+To install with some set values:
+
+```console
+helm install my-release deliveryhero/wiremock --set values_key1=value1 --set values_key2=value2
+```
+
+To install with custom values file:
+
+```console
+helm install my-release deliveryhero/wiremock -f values.yaml
+```
 
 ## Source Code
 
@@ -95,8 +121,7 @@ consumer:
 | affinity | object | `{}` |  |
 | consumer.args | list | `[]` | custom WireMock startup arguments. |
 | consumer.args_include_default | bool | `true` | whether WireMock arguments for performance test setup should be included |
-| consumer.environment | object | `{}` | environment variables used in this WireMock |
-| consumer.hostname | string | `"wm.example.com"` | the public host name for this WireMock |
+| consumer.environment | object | `{}` |  |
 | consumer.initContainer | list | `[]` | support for stubs with large files using binary container with zip archive. |
 | consumer.initVolume | list | `[]` | custom extra volume for the initialization container providing the zip archive. |
 | consumer.name | string | `"example"` | a name used for resources and settings in this WireMock |
@@ -112,6 +137,12 @@ consumer:
 | image.pullSecrets | list | `[]` |  |
 | image.repository | string | `"rodolpheche/wiremock"` |  |
 | image.tag | string | `"2.26.0"` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.block_admin | bool | `true` | Whether to create an Ingress configuration snippet to block access to the admin API (recommended) |
+| ingress.enabled | bool | `false` | whether to create an Ingress |
+| ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| ingress.hosts[0].paths[0] | string | `"/"` |  |
+| ingress.tls | list | `[]` |  |
 | java.mms | string | `"256M"` |  |
 | java.xms | string | `"2G"` |  |
 | java.xmx | string | `"2G"` |  |
@@ -126,3 +157,9 @@ consumer:
 | resources.requests.memory | string | `"3Gi"` |  |
 | strategy.type | string | `"RollingUpdate"` |  |
 | tolerations | list | `[]` |  |
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| mshero | no-reply@deliveryhero.com |  |
