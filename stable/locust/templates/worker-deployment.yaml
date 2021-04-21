@@ -52,6 +52,12 @@ spec:
           - --host={{ .Values.loadtest.locust_host }}
           - --master-host={{ template "locust.fullname" . }}
           - --loglevel={{ .Values.worker.logLevel }}
+{{- if .Values.loadtest.tags }}
+          - --tags {{ .Values.loadtest.tags }}
+{{- end }}
+{{- if .Values.loadtest.excludeTags }}
+          - --exclude-tags {{ .Values.loadtest.excludeTags }}
+{{- end }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:

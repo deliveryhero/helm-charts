@@ -16,6 +16,10 @@ loadtest:
     # VAR: VALUE
   # loadtest.headless -- whether to run locust with headless settings
   headless: false
+  # loadtest.tags -- whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed
+  tags: ""
+  # loadtest.excludeTags -- whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed
+  excludeTags: ""
 
 image:
   repository: locustio/locust
