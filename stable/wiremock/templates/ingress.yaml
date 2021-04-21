@@ -11,14 +11,18 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "wiremock.labels" . | nindent 4 }}
+{{- if or .Values.ingress.block_admin .Values.ingress.annotations }}
   annotations:
-{{- if .Values.ingress.block_admin -}}
+{{- if .Values.ingress.annotations }}
+    {{- toYaml .Values.ingress.annotations | nindent 4 }}
+{{- end }}
+{{- if .Values.ingress.block_admin }}
     nginx.ingress.kubernetes.io/configuration-snippet: |-
       location /__admin {
         deny all;
       }
 {{- end }}
-    {{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:

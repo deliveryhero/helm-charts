@@ -15,6 +15,10 @@ consumer:
   # consumer.initVolume -- custom extra volume for the initialization container providing the zip archive.
   initVolume: []
 
+service:
+  type: ClusterIP
+  port: 80
+
 ingress:
   # ingress.enabled -- whether to create an Ingress
   enabled: false
