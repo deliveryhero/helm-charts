@@ -1,6 +1,6 @@
 # prometheus-aws-costs-exporter
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Exporter for AWS Cost Explorer daily costs
 
@@ -49,10 +49,10 @@ helm install my-release deliveryhero/prometheus-aws-costs-exporter -f values.yam
 | affinity | object | `{}` |  |
 | args[0] | string | `"--host"` |  |
 | args[1] | string | `"0.0.0.0"` |  |
-| environment.METRIC_TODAY_DAILY_COSTS | bool | `true` |  |
-| environment.METRIC_TODAY_DAILY_USAGE | bool | `true` |  |
-| environment.METRIC_TODAY_DAILY_USAGE_NORM | bool | `true` |  |
-| environment.METRIC_YESTERDAY_DAILY_COSTS | bool | `true` |  |
+| environment.METRIC_TODAY_DAILY_COSTS | string | `"yes"` |  |
+| environment.METRIC_TODAY_DAILY_USAGE | string | `"yes"` |  |
+| environment.METRIC_TODAY_DAILY_USAGE_NORM | string | `"yes"` |  |
+| environment.METRIC_YESTERDAY_DAILY_COSTS | string | `"yes"` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
