@@ -1,0 +1,16 @@
+{{- if .Values.hpa.enabled -}}
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ template "wiremock.fullname" . }}
+  labels:
+{{ include "wiremock.labels" . | indent 4 }}
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    apiVersion: apps/v1
+    name: {{ template "wiremock.fullname" . }}
+  minReplicas: {{ .Values.hpa.minpods }}
+  maxReplicas: {{ .Values.hpa.maxpods }}
+  targetCPUUtilizationPercentage: {{ .Values.hpa.cputhreshold }}
+{{- end }}

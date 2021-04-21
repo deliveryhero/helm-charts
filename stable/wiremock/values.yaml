@@ -1,0 +1,62 @@
+consumer:
+  # consumer.name -- a name used for resources and settings in this WireMock
+  name: example
+  # consumer.hostname -- the public host name for this WireMock
+  hostname: wm.example.com
+  # consumer.environment -- environment variables used in this WireMock
+  environment: {}
+    # WM_LOGGING_LEVEL: INFO
+  # consumer.args_include_default -- whether WireMock arguments for performance test setup should be included
+  args_include_default: true
+  # consumer.args -- custom WireMock startup arguments.
+  args: []
+  # consumer.stubs -- `ConfigMap`s with WireMock stubs `mappings` and/or `__files` folders.
+  stubs: {}
+  # consumer.initContainer -- support for stubs with large files using binary container with zip archive.
+  initContainer: []
+  # consumer.initVolume -- custom extra volume for the initialization container providing the zip archive.
+  initVolume: []
+
+
+nameOverride: ""
+fullnameOverride: ""
+deploymentAnnotations: {}
+extraLabels: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+replicas: 1
+strategy:
+  type: RollingUpdate
+
+image:
+  repository: rodolpheche/wiremock
+  tag: 2.26.0
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+resources:
+  requests:
+    cpu: 1
+    memory: 3Gi
+  limits:
+    cpu: 2  # double cpu to avoid throttling and slow pod startup
+    memory: 3Gi
+
+# JVM memory configuration according to configured resources and thread count
+# See https://github.com/cloudfoundry/java-buildpack-memory-calculator
+java:
+  xms: 2G
+  xmx: 2G
+  mms: 256M
+
+probes:
+  readiness: true
+  liveness: true
+
+hpa:
+  enabled: true
+  minpods: 1
+  maxpods: 40
+  cputhreshold: 40
