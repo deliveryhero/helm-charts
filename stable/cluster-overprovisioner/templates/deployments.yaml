@@ -82,7 +82,7 @@ spec:
       {{- range . }}
         - labelSelector:
             matchLabels:
-              {{- $matchLabels | nindent 6 }}
+              {{- $matchLabels | nindent 14 }}
               app.cluster-overprovisioner/deployment: {{ $deploymentName }}
           {{- toYaml . | nindent 10 }}
       {{- end }}
