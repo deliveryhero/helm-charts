@@ -6,7 +6,7 @@ metadata:
 {{ include "wiremock.labels" . | indent 4 }}
 {{- with .Values.deploymentAnnotations }}
   annotations:
-{{- toYaml . | indent 4 }}
+{{ toYaml . | trim | indent 4 }}
 {{- end}}
 spec:
   revisionHistoryLimit: 1
@@ -24,6 +24,9 @@ spec:
 {{ include "wiremock.labels" . | indent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+{{- with .Values.podAnnotations }}
+{{ toYaml . | trim | indent 8 }}
+{{- end}}
     spec:
       {{- with .Values.image.pullSecrets }}
       imagePullSecrets:

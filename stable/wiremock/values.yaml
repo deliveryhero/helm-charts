@@ -41,6 +41,7 @@ ingress:
 nameOverride: ""
 fullnameOverride: ""
 deploymentAnnotations: {}
+podAnnotations: {}
 extraLabels: {}
 nodeSelector: {}
 tolerations: []
