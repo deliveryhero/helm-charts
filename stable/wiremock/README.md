@@ -148,6 +148,7 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | java.xmx | string | `"2G"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
 | probes.liveness | bool | `true` |  |
 | probes.readiness | bool | `true` |  |
 | replicas | int | `1` |  |
