@@ -18,5 +18,5 @@ spec:
       name: {{ $value }}-proxy
 {{- end }}
   selector:
-    app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    component: main
+{{ include "toxiproxy.selector.labels" . | indent 4 }}
