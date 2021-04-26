@@ -19,6 +19,10 @@ service:
   type: ClusterIP
   port: 80
 
+# pdb.enabled -- Whether to create a PodDisruptionBudget
+pdb:
+  enabled: false
+
 ingress:
   # ingress.enabled -- whether to create an Ingress
   enabled: false
