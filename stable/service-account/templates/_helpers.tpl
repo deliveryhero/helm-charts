@@ -37,7 +37,7 @@ Common labels
 {{- define "service-account.labels" -}}
 {{- if .Values.extraLabels -}}
 {{ toYaml .Values.extraLabels }}
-{{- end -}}
+{{- end }}
 app.kubernetes.io/name: {{ include "service-account.name" . }}
 helm.sh/chart: {{ include "service-account.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
