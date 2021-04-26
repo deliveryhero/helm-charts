@@ -26,7 +26,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
-# 
+# pdb.enabled -- Whether to create a PodDisruptionBudget
 pdb:
   enabled: false
 
