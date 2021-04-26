@@ -83,7 +83,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
-| pdb.enabled | bool | `false` |  |
+| pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
