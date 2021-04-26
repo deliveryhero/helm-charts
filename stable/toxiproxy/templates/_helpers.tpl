@@ -37,7 +37,6 @@ Selector labels
 {{- define "toxiproxy.selector.labels" -}}
 app.kubernetes.io/name: {{ include "toxiproxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-consumer: {{ .Values.consumer.name | quote }}
 {{- end }}
 
 {{/*
