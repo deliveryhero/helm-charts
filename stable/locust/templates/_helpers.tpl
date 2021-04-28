@@ -57,7 +57,7 @@ heritage: {{ .Release.Service | quote }}
 release: {{ .Release.Name | quote }}
 chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 app: locust
-loadtest: {{ .Values.loadtest.name }}
+load_test: {{ .Values.loadtest.name }}
 {{- if .Values.extraLabels }}
 {{ toYaml .Values.extraLabels }}
 {{- end }}
