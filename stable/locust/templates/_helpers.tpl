@@ -38,7 +38,7 @@ Selector labels
 {{- define "locust.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "locust.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-loadtest: {{ .Values.loadtest.name }}
+load_test: {{ .Values.loadtest.name }}
 {{- end }}
 
 {{/*
