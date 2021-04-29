@@ -108,6 +108,13 @@ spec:
         - name: config
           configMap:
             name: {{ template "locust.fullname" . }}-config
+{{- if .Values.extraConfigMaps }}
+{{- range $key, $value := .Values.extraConfigMaps }}
+        - name: {{ $key }}
+          configMap:
+            name: {{ $key }}
+{{- end }}
+{{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
