@@ -1,9 +1,10 @@
 #!/bin/sh
 
-set -euo pipefail
-
-alias conftest=/root/.helm/plugins/helm-conftest/bin/conftest
-helm repo remove local
+if [[ ! -z "${GITHUB_RUN_ID}" ]]; then
+  alias conftest=/root/.helm/plugins/helm-conftest/bin/conftest
+  helm repo remove local
+  set -euo pipefail
+fi
 
 for chart in $(find stable -maxdepth 1 -mindepth 1); do
   echo -n "helm-conftest running for chart: ${chart}..."
