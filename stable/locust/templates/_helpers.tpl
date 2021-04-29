@@ -21,15 +21,15 @@ Expand the name of the chart.
 {{- end -}}
 
 {{- define "locust.master-svc" -}}
-{{- printf "%s-%s" .Release.Name "master-svc" | trunc 63 -}}
+{{- printf "%s-%s" (.Release.Name | trunc 52 | trimSuffix "-") "master-svc" -}}
 {{- end -}}
 
 {{- define "locust.master" -}}
-{{- printf "%s-%s" .Release.Name "master" | trunc 63 -}}
+{{- printf "%s-%s" (.Release.Name | trunc 56 | trimSuffix "-") "master" -}}
 {{- end -}}
 
 {{- define "locust.worker" -}}
-{{- printf "%s-%s" .Release.Name "worker" | trunc 63 -}}
+{{- printf "%s-%s" (.Release.Name | trunc 56 | trimSuffix "-") "worker" -}}
 {{- end -}}
 
 {{/*
