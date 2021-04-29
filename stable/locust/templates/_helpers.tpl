@@ -52,19 +52,7 @@ Create fully qualified configmap name.
 {{ end }}
 {{- end -}}
 
-{{/*
-Create chart name and version as used by the chart label.
-*/}}
-{{- define "locust.chart" -}}
-{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
 {{- define "locust.labels" -}}
-helm.sh/chart: {{ include "locust.chart" . }}
-app.kubernetes.io/name: {{ include "locust.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
 heritage: {{ .Release.Service | quote }}
 release: {{ .Release.Name | quote }}
 chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
