@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.16](https://img.shields.io/badge/Version-0.9.16-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
+![Version: 0.9.17](https://img.shields.io/badge/Version-0.9.17-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
