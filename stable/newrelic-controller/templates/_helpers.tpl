@@ -32,15 +32,18 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{/* Generate basic labels */}}
-{{- define "newrelic-controller.labels" }}
-app: {{ template "newrelic-controller.name" . }}
-heritage: {{.Release.Service }}
-release: {{.Release.Name }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{/*
+Common labels
+*/}}
+{{- define "newrelic-controller.labels" -}}
+app.kubernetes.io/name: {{ include "newrelic-controller.name" . }}
+helm.sh/chart: {{ include "newrelic-controller.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end -}}
 
 {{/* Create the name of the service account to use */}}
 {{- define "newrelic-controller.serviceAccountName" -}}

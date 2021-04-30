@@ -3,14 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "newrelic-controller.fullname" . }}
   labels:
-    app: {{ template "newrelic-controller.name" . }}
-    chart: {{ template "newrelic-controller.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    app.kubernetes.io/name: {{ include "newrelic-controller.name" . }}
-    helm.sh/chart: {{ include "newrelic-controller.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "newrelic-controller.labels" . | indent 4 }}
 {{- if .Values.labels }}
 {{ toYaml .Values.labels | indent 4 }}
 {{- end }}
@@ -25,8 +18,6 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "newrelic-controller.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-        app: {{ template "newrelic-controller.name" . }}
-        release: {{ .Release.Name }}
 {{- if .Values.pod_labels }}
 {{ toYaml .Values.pod_labels | indent 8 }}
 {{- end }}
