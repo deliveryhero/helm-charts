@@ -2,23 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "backstage.fullname" . }}-frontend
-
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.frontend.replicaCount }}
-
   selector:
     matchLabels:
-      app: backstage
-      component: frontend
-
+      app.kubernetes.io/name: {{ include "backstage.name" . }}-app
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       annotations:
         ad.datadoghq.com/backstage.logs: '[{"source":"backstage","service":"frontend"}]'
       labels:
-        app: backstage
-        component: frontend
-
+        app.kubernetes.io/name: {{ include "backstage.name" . }}-app
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- if .Values.dockerRegistrySecretName }}
       imagePullSecrets:
@@ -49,15 +47,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "frontend.serviceName" . }}
-
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 spec:
   ports:
     - port: 80
       targetPort: {{ .Values.frontend.containerPort }}
-
   selector:
     app: backstage
     component: frontend
-
   type: ClusterIP
 {{- end }}

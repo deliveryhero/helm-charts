@@ -3,15 +3,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "backstage.fullname" . }}-lighthouse
-
 spec:
   replicas: {{ .Values.lighthouse.replicaCount }}
-
   selector:
     matchLabels:
       app: backstage
       component: lighthouse-audit-service
-
   template:
     metadata:
       annotations:
@@ -19,7 +16,6 @@ spec:
       labels:
         app: backstage
         component: lighthouse-audit-service
-
     spec:
       {{- if .Values.dockerRegistrySecretName }}
       imagePullSecrets:
@@ -55,15 +51,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "lighthouse.serviceName" . }}
-
 spec:
   ports:
     - port: 80
       targetPort: {{ .Values.lighthouse.containerPort }}
-
   selector:
     app: backstage
     component: lighthouse-audit-service
-
   type: ClusterIP
 {{- end }}

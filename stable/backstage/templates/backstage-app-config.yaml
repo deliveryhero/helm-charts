@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "backstage.fullname" . }}-app-config
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 data:
 {{ include "backstage.appConfigFilename" . | indent 2 }}: |
 {{ tpl (.Files.Get "files/app-config.development.yaml.tpl") . | indent 4 }}
@@ -10,6 +12,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "backstage.fullname" . }}-app-env
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 data:
   APP_CONFIG_app_baseUrl: {{ .Values.appConfig.app.baseUrl | quote | quote }}
   APP_CONFIG_app_title: {{ .Values.appConfig.app.title | quote | quote }}
@@ -25,4 +29,3 @@ data:
   APP_CONFIG_auth_providers_gitlab_development_appOrigin: {{ .Values.appConfig.auth.providers.gitlab.development.appOrigin | quote | quote }}
   APP_CONFIG_auth_providers_okta_development_appOrigin: {{ .Values.appConfig.auth.providers.okta.development.appOrigin | quote | quote }}
   APP_CONFIG_auth_providers_oauth2_development_appOrigin: {{ .Values.appConfig.auth.providers.oauth2.development.appOrigin | quote | quote }}
-

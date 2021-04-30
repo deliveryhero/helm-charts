@@ -1,6 +1,6 @@
 # postgres-controller
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 0.5](https://img.shields.io/badge/AppVersion-0.5-informational?style=flat-square)
+![Version: 1.2](https://img.shields.io/badge/Version-1.2-informational?style=flat-square) ![AppVersion: 0.5](https://img.shields.io/badge/AppVersion-0.5-informational?style=flat-square)
 
 A controller for managing PostgreSQL databases, roles and more
 

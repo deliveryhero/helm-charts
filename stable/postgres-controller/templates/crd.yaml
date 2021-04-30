@@ -3,14 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: pgdatabases.postgresql.org
   labels:
-    app: {{ template "postgres-controller.name" . }}
-    chart: {{ template "postgres-controller.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    app.kubernetes.io/name: {{ include "postgres-controller.name" . }}
-    helm.sh/chart: {{ include "postgres-controller.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "postgres-controller.labels" . | nindent 4 }}
 spec:
   group: postgresql.org
 {{- if semverCompare ">=1.11" .Capabilities.KubeVersion.GitVersion }}

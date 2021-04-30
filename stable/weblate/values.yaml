@@ -130,6 +130,7 @@ affinity: {}
 postgresql:
   postgresqlPassword: "weblate"
   postgresqlDatabase: "weblate"
+  postgresqlUsername: "weblate"
   service:
     port: 5432
   enabled: true

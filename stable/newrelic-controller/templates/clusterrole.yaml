@@ -3,14 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    app: {{ template "newrelic-controller.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
-    app.kubernetes.io/name: {{ include "newrelic-controller.name" . }}
-    helm.sh/chart: {{ include "newrelic-controller.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "newrelic-controller.labels" . | indent 4 }}
   name: {{ template "newrelic-controller.fullname" . }}
 rules:
   - apiGroups: ["newrelic.com"]

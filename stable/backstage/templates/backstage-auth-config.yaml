@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "backstage.fullname" . }}-auth
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 data:
   AUTH_GOOGLE_CLIENT_ID: {{ .Values.auth.google.clientId }}
   AUTH_GITHUB_CLIENT_ID: {{ .Values.auth.github.clientId }}
@@ -18,4 +20,3 @@ data:
   AUTH_AUTH0_DOMAIN: {{ .Values.auth.auth0.domain }}
   AUTH_MICROSOFT_CLIENT_ID: {{ .Values.auth.microsoft.clientId }}
   AUTH_MICROSOFT_TENANT_ID: {{ .Values.auth.microsoft.tenantId }}
-

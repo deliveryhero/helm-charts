@@ -27,7 +27,7 @@ kubecost:
   # kubecost.logLevel -- exporter log level.
   logLevel: info
   # kubecost.clusterName -- Name of the cluster
-  clusterName:
+  clusterName: change_me
   # kubecost.bucketName -- S3 Bucket name for reports export
   bucketName: kubecost-reports-exporter
   # kubecost.analyzerEndpoint -- kubecost analyzer endpoint

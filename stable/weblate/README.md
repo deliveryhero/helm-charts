@@ -1,6 +1,6 @@
 # weblate
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
 
 Free web-based translation management system.
 
@@ -93,6 +93,7 @@ helm install my-release deliveryhero/weblate -f values.yaml
 | postgresql.postgresqlDatabase | string | `"weblate"` |  |
 | postgresql.postgresqlHost | string | `None` | External postgres database endpoint, to be used if `postgresql.enabled == false` |
 | postgresql.postgresqlPassword | string | `"weblate"` |  |
+| postgresql.postgresqlUsername | string | `"weblate"` |  |
 | postgresql.service.port | int | `5432` |  |
 | redis.cluster.enabled | bool | `false` |  |
 | redis.db | int | `1` |  |

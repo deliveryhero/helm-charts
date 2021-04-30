@@ -12,7 +12,7 @@ frontend:
   containerPort: 80
   resources:
     requests:
-      memory: 128Mi
+      memory: 256Mi
     limits:
       memory: 256Mi
 
@@ -28,7 +28,7 @@ backend:
   containerPort: 7000
   resources:
     requests:
-      memory: 512Mi
+      memory: 1024Mi
     limits:
       memory: 1024Mi
 
@@ -42,7 +42,7 @@ lighthouse:
   containerPort: 3003
   resources:
     requests:
-      memory: 128Mi
+      memory: 256Mi
     limits:
       memory: 256Mi
   database:
