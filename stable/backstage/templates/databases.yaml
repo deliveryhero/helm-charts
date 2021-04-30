@@ -3,6 +3,8 @@ apiVersion: postgresql.org/v1
 kind: PostgresDatabase
 metadata:
   name: {{ include "backstage.fullname" . }}
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 spec:
   dbName: {{ .Values.database.name }}
   dbRoleName: {{ .Values.database.username }}

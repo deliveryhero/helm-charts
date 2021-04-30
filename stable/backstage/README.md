@@ -1,6 +1,6 @@
 # backstage
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
 
 A Helm chart for Backstage
 
@@ -135,7 +135,7 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | backend.nodeEnv | string | `"development"` |  |
 | backend.replicaCount | int | `1` |  |
 | backend.resources.limits.memory | string | `"1024Mi"` |  |
-| backend.resources.requests.memory | string | `"512Mi"` |  |
+| backend.resources.requests.memory | string | `"1024Mi"` |  |
 | database.create | bool | `false` |  |
 | database.driver | string | `"pssql"` |  |
 | database.host | string | `"backstage-db.example.com"` |  |
@@ -150,7 +150,7 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | frontend.image.tag | string | `"test1"` |  |
 | frontend.replicaCount | int | `1` |  |
 | frontend.resources.limits.memory | string | `"256Mi"` |  |
-| frontend.resources.requests.memory | string | `"128Mi"` |  |
+| frontend.resources.requests.memory | string | `"256Mi"` |  |
 | fullnameOverride | string | `""` |  |
 | global.postgresql.caFilename | string | `"ca.crt"` |  |
 | global.postgresql.postgresqlUsername | string | `"backend-user"` |  |
@@ -170,7 +170,7 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | lighthouse.image.tag | string | `"latest"` |  |
 | lighthouse.replicaCount | int | `1` |  |
 | lighthouse.resources.limits.memory | string | `"256Mi"` |  |
-| lighthouse.resources.requests.memory | string | `"128Mi"` |  |
+| lighthouse.resources.requests.memory | string | `"256Mi"` |  |
 | nameOverride | string | `""` |  |
 | postgresql.enabled | bool | `false` |  |
 | postgresql.initdbScriptsSecret | string | `"backstage-postgresql-initdb"` |  |

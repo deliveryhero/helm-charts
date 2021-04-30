@@ -31,6 +31,19 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/*
+Common labels
+*/}}
+{{- define "backstage.labels" -}}
+app.kubernetes.io/name: {{ include "backstage.name" . }}
+helm.sh/chart: {{ include "backstage.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end -}}
+
+{{/*
 Common App labels
 */}}
 {{- define "backstage.app.labels" -}}

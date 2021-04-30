@@ -2,23 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "backstage.fullname" . }}-backend
-
+  labels:
+    {{- include "backstage.backend.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.backend.replicaCount }}
-
   selector:
     matchLabels:
-      app: backstage
-      component: backend
-
+      app.kubernetes.io/name: {{ include "backstage.name" . }}-backend
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       annotations:
         ad.datadoghq.com/backstage.logs: '[{"source":"backstage","service":"backend"}]'
       labels:
-        app: backstage
-        component: backend
-
+        app.kubernetes.io/name: {{ include "backstage.name" . }}-backend
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- if .Values.dockerRegistrySecretName }}
       imagePullSecrets:
@@ -32,7 +30,6 @@ spec:
             - containerPort: {{ .Values.backend.containerPort }}
           resources:
           {{- toYaml .Values.backend.resources | nindent 12 }}
-
           envFrom:
             - secretRef:
                 name: {{ include "backstage.fullname" . }}-backend
@@ -48,11 +45,10 @@ spec:
                 secretKeyRef:
                   name: {{ include "backend.postgresql.passwordSecret" .}}
                   key: postgresql-password
-          volumeMounts:  
+          volumeMounts:
             - name: app-config
               mountPath: {{ printf "/usr/src/app/%s" (include "backstage.appConfigFilename" .) }}
               subPath: {{ include "backstage.appConfigFilename" . }}
-
       volumes:
         - name: app-config
           configMap:
@@ -64,15 +60,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "backend.serviceName" . }}
-
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
 spec:
   ports:
     - port: 80
       targetPort: {{ .Values.backend.containerPort }}
-
   selector:
     app: backstage
     component: backend
-
   type: ClusterIP
 {{- end }}

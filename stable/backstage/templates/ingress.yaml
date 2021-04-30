@@ -5,6 +5,8 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "backstage.fullname" . }}-ingress
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
   annotations:
     {{- if .Values.issuer.email }}
     cert-manager.io/cluster-issuer: {{ .Values.issuer.clusterIssuer }}
@@ -23,7 +25,6 @@ spec:
         - {{ $frontendUrl.host }}
         - {{ $backendUrl.host }}
         - {{ $lighthouseUrl.host }}
-
   rules:
     - host: {{ $frontendUrl.host }}
       http:
@@ -65,6 +66,8 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "backstage.fullname" . }}-ingress-lighthouse
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
   annotations:
     {{- if .Values.issuer.email }}
     cert-manager.io/cluster-issuer: {{ .Values.issuer.clusterIssuer }}
