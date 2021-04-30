@@ -36,7 +36,6 @@ Common labels
 */}}
 {{- define "cachet.labels" -}}
 app.kubernetes.io/name: {{ include "cachet.name" . }}
-helm.sh/chart: {{ include "cachet.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
