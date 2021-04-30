@@ -125,4 +125,5 @@ extraConfigMaps: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
+# extraLabels -- Any extra labels to apply to all resources
 extraLabels: {}

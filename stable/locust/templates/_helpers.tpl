@@ -20,6 +20,13 @@ Expand the name of the chart.
 {{- end -}}
 {{- end -}}
 
+{{/*
+Create chart name and version as used by the chart label.
+*/}}
+{{- define "locust.chart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
 {{- define "locust.master-svc" -}}
 {{- printf "%s-%s" (.Release.Name | trunc 52 | trimSuffix "-") "master-svc" -}}
 {{- end -}}
@@ -52,16 +59,20 @@ Create fully qualified configmap name.
 {{ end }}
 {{- end -}}
 
+{{/*
+Common labels
+*/}}
 {{- define "locust.labels" -}}
-heritage: {{ .Release.Service | quote }}
-release: {{ .Release.Name | quote }}
-chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-app: locust
-load_test: {{ .Values.loadtest.name }}
-{{- if .Values.extraLabels }}
-{{ toYaml .Values.extraLabels }}
+helm.sh/chart: {{ include "locust.chart" . }}
+{{ include "locust.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-{{- end -}}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- range $key, $value := .Values.extraLabels }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
 
 {{- define "locust.locustfile_configmap_name" -}}
 {{ if eq .Values.loadtest.locust_locustfile_configmap "" -}}
