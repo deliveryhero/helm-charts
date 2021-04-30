@@ -5,9 +5,7 @@ import data.kubernetes
 name = input.metadata.name
 
 required_labels {
-    input.metadata.labels["app.kubernetes.io/name"]
     input.metadata.labels["helm.sh/chart"]
-    input.metadata.labels["app.kubernetes.io/instance"]
     input.metadata.labels["app.kubernetes.io/version"]
     input.metadata.labels["app.kubernetes.io/managed-by"]
 }
