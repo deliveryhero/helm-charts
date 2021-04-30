@@ -44,7 +44,7 @@ exporter:
   # exporter.listenAddress -- Exporter listening address
   listenAddress: 0.0.0.0
   # exporter.queueUrl -- SQS queue url
-  queueUrl:
+  queueUrl: change_me
 # env -- Additional environment variables
 env: {}
 # extraLabels -- Additional labels to be added to all resources

@@ -1,6 +1,6 @@
 # aws-service-events-exporter
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This helm chart exports aws service events to prometheus via aws SQS queue, this include:
 
@@ -53,7 +53,7 @@ helm install my-release deliveryhero/aws-service-events-exporter -f values.yaml
 | env | object | `{}` | Additional environment variables |
 | exporter.listenAddress | string | `"0.0.0.0"` | Exporter listening address |
 | exporter.port | int | `9090` | Exporter port |
-| exporter.queueUrl | string | `nil` | SQS queue url |
+| exporter.queueUrl | string | `"change_me"` | SQS queue url |
 | extraLabels | object | `{}` | Additional labels to be added to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
