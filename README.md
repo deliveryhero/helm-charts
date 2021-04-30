@@ -102,7 +102,7 @@ All commands to be run from the root of this repo.
   ```console
   brew tap instrumenta/instrumenta
   brew install conftest
-  helm template stable/<chart> | conftest -p ci/helm-conftest-policies test - && echo "OK"
+  sh ci/helm-conftest.sh
   ```
 
 ## License
