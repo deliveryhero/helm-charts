@@ -32,14 +32,24 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{/* Generate basic labels */}}
-{{- define "postgres-controller.labels" }}
-app: {{ template "postgres-controller.name" . }}
-heritage: {{.Release.Service }}
-release: {{.Release.Name }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{/*
+Common labels
+*/}}
+{{- define "postgres-controller.labels" -}}
+helm.sh/chart: {{ include "postgres-controller.chart" . }}
+{{ include "postgres-controller.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "postgres-controller.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "postgres-controller.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/* Create the name of the service account to use */}}

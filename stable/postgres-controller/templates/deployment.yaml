@@ -3,14 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "postgres-controller.fullname" . }}
   labels:
-    app: {{ template "postgres-controller.name" . }}
-    chart: {{ template "postgres-controller.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    app.kubernetes.io/name: {{ include "postgres-controller.name" . }}
-    helm.sh/chart: {{ include "postgres-controller.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "postgres-controller.labels" . | nindent 4 }}
 {{- if .Values.labels }}
 {{ toYaml .Values.labels | indent 4 }}
 {{- end }}
@@ -18,8 +11,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "postgres-controller.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- include "postgres-controller.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
