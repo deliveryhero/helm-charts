@@ -4,7 +4,6 @@ kind: PodDisruptionBudget
 metadata:
   name: {{ template "toxiproxy.fullname" . }}
   labels:
-    component: master
 {{ include "toxiproxy.labels" . | indent 4 }}
 spec:
   maxUnavailable: 0
