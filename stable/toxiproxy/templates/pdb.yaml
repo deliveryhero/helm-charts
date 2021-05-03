@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ template "toxiproxy.fullname" . }}-master
+  name: {{ template "toxiproxy.fullname" . }}
   labels:
     component: master
 {{ include "toxiproxy.labels" . | indent 4 }}
