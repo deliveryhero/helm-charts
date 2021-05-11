@@ -14,6 +14,9 @@ loadtest:
   # loadtest.environment -- environment variables used in the load test for both master and workers
   environment: {}
     # VAR: VALUE
+  # loadtest.environment_secret -- environment variables used in the load test for both master and workers, stored as secrets
+  environment_secret: {}
+    # VAR: VALUE
   # loadtest.headless -- whether to run locust with headless settings
   headless: false
   # loadtest.tags -- whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed
