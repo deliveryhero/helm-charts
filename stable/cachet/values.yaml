@@ -9,6 +9,8 @@ image:
   tag: "2.3.15"
   pullPolicy: Always
 
+imagePullSecrets: []
+
 nameOverride: ""
 fullnameOverride: ""
 
