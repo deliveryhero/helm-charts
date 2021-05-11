@@ -94,11 +94,13 @@ All commands to be run from the root of this repo.
   To generate chart `README.md` files from the [template](ci/README.md.gotmpl):
 
 Linux
+
   ```console
   docker run --rm -v "$PWD:/helm-docs" jnorwood/helm-docs:v1.5.0 --template-files ./ci/README.md.gotmpl
   ```
 
 Windows (PowerShell)
+
   ```console
   docker run --rm -v ${PWD}:/helm-docs jnorwood/helm-docs:v1.5.0 --template-files ./ci/README.md.gotmpl
   ```
