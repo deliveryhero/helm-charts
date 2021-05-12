@@ -89,6 +89,13 @@ spec:
                 name: {{ template "locust.fullname" $ }}
                 key: {{ $key }}
 {{- end }}
+{{- range $key, $value := .Values.loadtest.environment_external_secret }}
+          - name: {{ $value }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ $key }}
+                key: {{ $value }}
+{{- end }}
         ports:
           - containerPort: 8089
             name: loc-master-web

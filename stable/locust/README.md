@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.18](https://img.shields.io/badge/Version-0.9.18-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
+![Version: 0.9.19](https://img.shields.io/badge/Version-0.9.19-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -76,6 +76,8 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
+| loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart |
+| loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
 | loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
