@@ -25,7 +25,7 @@ spec:
           {{- end }}
           securityContext:
             {{- toYaml .Values.podSecurityContext | nindent 12 }}
-          serviceAccountName: {{ .Values.serviceAccountName }}
+          serviceAccountName: {{ include "kubecost-reports-exporter.serviceAccountName" . }}
           containers:
           - name: {{ .Chart.Name }}-non-aggregated
             securityContext:
