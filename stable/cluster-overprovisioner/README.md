@@ -58,6 +58,7 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | deployments[0].labels | object | `{}` | Default Deployment - Optional labels tolerations |
 | deployments[0].name | string | `"default"` | Default Deployment - Name for additional deployments (will be added as label cluster-over-provisioner-name, so you can match it with affinity rules) |
 | deployments[0].nodeSelector | object | `{}` | Default Deployment - Node labels for pod assignment |
+| deployments[0].pdb | object | `{}` | Default Deployment - Optional PodDisruptionBudget |
 | deployments[0].podAnnotations | object | `{}` | Default Deployment - Annotations to add to the pods |
 | deployments[0].replicaCount | int | `3` | Default Deployment - Number of replicas |
 | deployments[0].resources.limits.cpu | string | `"1000m"` | Default Deployment - CPU limit for the overprovision pods |
@@ -66,7 +67,6 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | deployments[0].resources.requests.memory | string | `"1000Mi"` | Default Deployment - Memory requested for the overprovision pods |
 | deployments[0].tolerations | list | `[]` | Default Deployment - Optional deployment tolerations |
 | deployments[0].topologySpreadConstraints | list | `[]` | Default Deployment - Optional topology spread constraints |
-| deployments[0].pdb | object | `{}` | Default Deployment - Optional PodDisruptionBudget |
 | fullnameOverride | string | `""` | Override the fullname of the chart |
 | image.pullPolicy | string | `"IfNotPresent"` | Container pull policy |
 | image.repository | string | `"k8s.gcr.io/pause"` | Image repository |
