@@ -78,6 +78,8 @@ deployments:
       # - maxSkew: 1
       #   topologyKey: kubernetes.io/hostname
       #   whenUnsatisfiable: ScheduleAnyway
+    # deployments[0].pdb -- Default Deployment - Optional PodDisruptionBudget
+    pdb: {}
 
 serviceAccount:
   # serviceAccount.create -- Determine whether a Service Account should be created or it should reuse an exiting one

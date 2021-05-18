@@ -66,6 +66,7 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 | deployments[0].resources.requests.memory | string | `"1000Mi"` | Default Deployment - Memory requested for the overprovision pods |
 | deployments[0].tolerations | list | `[]` | Default Deployment - Optional deployment tolerations |
 | deployments[0].topologySpreadConstraints | list | `[]` | Default Deployment - Optional topology spread constraints |
+| deployments[0].pdb | object | `{}` | Default Deployment - Optional PodDisruptionBudget |
 | fullnameOverride | string | `""` | Override the fullname of the chart |
 | image.pullPolicy | string | `"IfNotPresent"` | Container pull policy |
 | image.repository | string | `"k8s.gcr.io/pause"` | Image repository |
