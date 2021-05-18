@@ -68,7 +68,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | schedule | string | `"0 * * * *"` |  |
 | securityContext | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.enabled | bool | `false` |  |
+| serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `""` |  |
 | successfulJobsHistoryLimit | int | `1` |  |
 | tolerations | list | `[]` |  |
