@@ -49,3 +49,8 @@ exporter:
 env: {}
 # extraLabels -- Additional labels to be added to all resources
 extraLabels: {}
+
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}

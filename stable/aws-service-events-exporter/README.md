@@ -1,6 +1,6 @@
 # aws-service-events-exporter
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This helm chart exports aws service events to prometheus via aws SQS queue, this include:
 
@@ -70,6 +70,9 @@ helm install my-release deliveryhero/aws-service-events-exporter -f values.yaml
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.create | bool | `false` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `false` |  |
+| serviceAccount.name | string | `""` |  |
 | serviceAccountName | string | `""` | service account to be used by the containers |
 | tolerations | list | `[]` |  |
 
