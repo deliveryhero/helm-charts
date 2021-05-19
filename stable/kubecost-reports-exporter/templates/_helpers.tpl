@@ -52,3 +52,11 @@ Selector labels
 app.kubernetes.io/name: {{ include "kubecost-reports-exporter.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{- define "kubecost-reports-exporter.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "kubecost-reports-exporter.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
