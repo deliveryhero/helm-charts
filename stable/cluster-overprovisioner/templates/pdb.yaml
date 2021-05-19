@@ -1,0 +1,22 @@
+{{- $fullname :=  include "cluster-overprovisioner.fullname" . -}}
+{{- $commonLabels :=  include "cluster-overprovisioner.labels" . -}}
+{{- $matchLabels :=  include "cluster-overprovisioner.matchLabels" . -}}
+
+{{- range .Values.deployments }}
+{{- $deploymentName := .name }}
+{{- if .pdb }}
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: "{{ $fullname }}-{{ $deploymentName }}"
+  labels:
+{{- $commonLabels | nindent 4 }}
+spec:
+{{ toYaml .pdb | indent 2 }}
+  selector:
+    matchLabels:
+      {{- $matchLabels | nindent 6 }}
+      app.cluster-overprovisioner/deployment: {{ $deploymentName }}
+{{- end }}
+{{- end }}
