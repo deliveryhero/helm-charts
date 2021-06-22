@@ -8,7 +8,7 @@ successfulJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
 
 image:
-  repository: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/deliveryhero/kubecost-reports-exporter
+  repository: thomasnyambati/kubecost-reports-exporter
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

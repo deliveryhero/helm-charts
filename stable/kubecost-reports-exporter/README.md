@@ -1,6 +1,6 @@
 # kubecost-reports-exporter
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 Helm chart for exporting kubernetes cost reports to S3
 
@@ -51,7 +51,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | env | object | `{}` | Extra environment variables |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"940776968316.dkr.ecr.eu-west-1.amazonaws.com/deliveryhero/kubecost-reports-exporter"` |  |
+| image.repository | string | `"thomasnyambati/kubecost-reports-exporter"` |  |
 | imagePullSecrets | list | `[]` |  |
 | kubecost.aggregatedCostUrl | string | `"/model/aggregatedCostModel?window=1d&aggregation=namespace"` | Url for aggregated cost report |
 | kubecost.analyzerEndpoint | string | `"http://kubecost-cost-analyzer:9090"` | kubecost analyzer endpoint |
