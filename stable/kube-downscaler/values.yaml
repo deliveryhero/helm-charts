@@ -3,6 +3,7 @@ replicaCount: 1
 
 debug:
   enable: false
+
 events:
   enable: true
 
