@@ -49,7 +49,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | debug.enable | bool | `false` |  |
-| events.enable | bool | `false` |  |
+| events.enable | bool | `true` |  |
 | deployment.environment.DEFAULT_UPTIME | string | `"Mon-Fri 07:00-20:00 Europe/Berlin"` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
