@@ -36,4 +36,15 @@ rules:
   verbs:
   - get
   - list
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - get
+  - create
+  - watch
+  - list
+  - update
+  - patch
 {{- end -}}
