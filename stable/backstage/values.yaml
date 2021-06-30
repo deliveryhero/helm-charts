@@ -58,8 +58,7 @@ nameOverride: ''
 fullnameOverride: ''
 
 ingress:
-  annotations:
-    kubernetes.io/ingress.class: nginx
+  annotations: {}
 
 issuer:
   email:
