@@ -1,6 +1,6 @@
-{{- $frontendUrl := urlParse Values.appConfig.app.baseUrl}}
-{{- $backendUrl := urlParse Values.appConfig.backend.baseUrl}}
-{{- $lighthouseUrl := urlParse Values.appConfig.lighthouse.baseUrl}}
+{{- $frontendUrl := urlParse .Values.appConfig.app.baseUrl}}
+{{- $backendUrl := urlParse .Values.appConfig.backend.baseUrl}}
+{{- $lighthouseUrl := urlParse .Values.appConfig.lighthouse.baseUrl}}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
