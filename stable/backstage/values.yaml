@@ -58,7 +58,8 @@ nameOverride: ''
 fullnameOverride: ''
 
 ingress:
-  annotations: {}
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
 issuer:
   email:
