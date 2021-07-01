@@ -8,6 +8,8 @@ spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
     matchLabels:
+      app: backstage
+      component: frontend
       app.kubernetes.io/name: {{ include "backstage.name" . }}-app
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
@@ -15,6 +17,8 @@ spec:
       annotations:
         ad.datadoghq.com/backstage.logs: '[{"source":"backstage","service":"frontend"}]'
       labels:
+        app: backstage
+        component: frontend
         app.kubernetes.io/name: {{ include "backstage.name" . }}-app
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
