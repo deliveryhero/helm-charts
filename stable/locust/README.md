@@ -76,7 +76,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | ingress.hosts[0].path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
-| loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `locust-aws-credentials: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]` |
+| loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]` |
 | loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
 | loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
