@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.9.19](https://img.shields.io/badge/Version-0.9.19-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
+![Version: 0.1.20](https://img.shields.io/badge/Version-0.1.20-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -89,6 +89,9 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.args_include_default | bool | `true` | Whether to include default command args |
+| master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
+| master.auth.password | string | `""` |  |
+| master.auth.username | string | `""` |  |
 | master.command[0] | string | `"sh"` |  |
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | master.environment | object | `{}` | environment variables for the master |
