@@ -65,6 +65,11 @@ master:
   # master.pdb.enabled -- Whether to create a PodDisruptionBudget for the master pod
   pdb:
     enabled: false
+  # master.auth.enabled -- When enabled, UI basic auth will be enforced with the given username and password
+  auth:
+    enabled: false
+    username: ""
+    password: ""
 
 worker:
   # worker.image -- A custom docker image including tag
