@@ -57,7 +57,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | hostPID | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"k8s.gcr.io/node-problem-detector/node-problem-detector"` |  |
-| image.tag | string | `"v0.8.8"` |  |
+| image.tag | string | `"v0.8.9"` |  |
 | imagePullSecrets | list | `[]` |  |
 | labels | object | `{}` |  |
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
