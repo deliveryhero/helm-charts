@@ -25,7 +25,7 @@ ingress:
   tls: []
   path: /
   # -- Set ingressClass for Ingress when needed
-  ingressClassName: ingressClass
+  # ingressClassName: ingressClass
 
   #  - secretName: chart-example-tls
   #    hosts:
