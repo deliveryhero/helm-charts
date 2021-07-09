@@ -1,14 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-# Check if we are running in Github actions and apply some required changes
-if [[ ! -z "${GITHUB_RUN_ID}" ]]; then
-  alias conftest=/root/.helm/plugins/helm-conftest/bin/conftest
-  helm repo remove local
-  set -euo pipefail
-fi
+set -euo pipefail
 
 # Check if we are running in docker and ensure we have Helm3 if so
 if [ -f "/.dockerenv" ]; then
+  CONFTEST="/root/.helm/plugins/helm-conftest/bin/conftest"
   if helm version --client --short | grep -q 'v2.14'; then
     echo "Running in docker but Helm version 2 found, will install Helm 3..."
     export VERIFY_CHECKSUM=false
@@ -20,6 +16,8 @@ if [ -f "/.dockerenv" ]; then
     echo "Helm version now installed: "
     helm version
   fi
+else
+  CONFTEST=$(which conftest)
 fi
 
 for chart in $(find stable -maxdepth 1 -mindepth 1); do
@@ -28,5 +26,5 @@ for chart in $(find stable -maxdepth 1 -mindepth 1); do
   # Remove any dependencies as we are not going to test them
   rm -f "${chart}/requirements.yaml"
   rm -rf "${chart}/charts"
-  helm template "${chart}" | conftest -p ci/helm-conftest-policies test -
+  helm template "${chart}" | $CONFTEST -p ci/helm-conftest-policies test -
 done
