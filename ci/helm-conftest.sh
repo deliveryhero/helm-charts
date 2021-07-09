@@ -16,6 +16,7 @@ if [ -f "/.dockerenv" ]; then
     chmod 700 get_helm.sh
     ./get_helm.sh --version "v3.6.2"
     rm -f /usr/bin/helm
+    alias helm="/usr/local/bin/helm"
     echo "Helm version now installed: "
     helm version
   fi
