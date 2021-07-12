@@ -10,4 +10,4 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Validate all charts
-        run: sh ci/helm-conftest.sh
+        run: bash ci/helm-conftest.sh
