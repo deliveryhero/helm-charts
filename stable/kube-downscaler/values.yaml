@@ -4,6 +4,9 @@ replicaCount: 1
 debug:
   enable: false
 
+events:
+  enable: true
+
 ## Namespace where kube-downscaler is going to be deployed.
 # namespace:
   ## Deployment will query all namespaces if left empty:
