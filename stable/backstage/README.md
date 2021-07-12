@@ -1,6 +1,6 @@
 # backstage
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
+![Version: 0.1.12](https://img.shields.io/badge/Version-0.1.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
 
 A Helm chart for Backstage
 
@@ -154,7 +154,7 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | fullnameOverride | string | `""` |  |
 | global.postgresql.caFilename | string | `"ca.crt"` |  |
 | global.postgresql.postgresqlUsername | string | `"backend-user"` |  |
-| ingress.annotations."kubernetes.io/ingress.class" | string | `"nginx"` |  |
+| ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"false"` |  |
 | issuer.clusterIssuer | string | `"letsencrypt-staging"` |  |
 | issuer.email | string | `nil` |  |
 | lighthouse.containerPort | int | `3003` |  |
