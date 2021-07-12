@@ -29,8 +29,10 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         env:
 {{- range $key, $value := .Values.deployment.environment }}
+         {{- if $value }}
           - name: {{ $key }}
             value: {{ $value | quote }}
+         {{- end }}
 {{- end }}
         args:
         - --interval={{ .Values.interval }}
@@ -41,6 +43,9 @@ spec:
         {{- end }}
         {{- if .Values.debug.enable }}
         - --debug
+        {{- end }}
+        {{- if .Values.events.enable }}
+        - --enable-events
         {{- end }}
         {{- with .Values.image.args }}
 {{ toYaml . | indent 8 }}
