@@ -15,6 +15,10 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "prometheus-sentry-exporter.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
