@@ -52,7 +52,7 @@ logDir:
 
 image:
   repository: k8s.gcr.io/node-problem-detector/node-problem-detector
-  tag: v0.8.8
+  tag: v0.8.9
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
