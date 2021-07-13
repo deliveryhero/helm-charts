@@ -53,6 +53,9 @@ spec:
           - --loglevel={{ .Values.master.logLevel }}
 {{- if .Values.loadtest.headless }}
           - --headless
+{{- if .Values.master.auth.enabled }}
+          - --web-auth={{ cat .Values.master.auth.username ":" .Values.master.auth.password }}
+{{- end }}
 {{- end }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -120,6 +123,11 @@ spec:
           httpGet:
             path: /
             port: 8089
+{{- if .Values.master.auth.enabled }}
+            httpHeaders:
+                - name: Authorization
+                  value: Basic {{ b64enc cat .Values.master.auth.username ":" .Values.master.auth.password }}}
+{{- end }}
 {{- end }}
       restartPolicy: Always
       volumes:
