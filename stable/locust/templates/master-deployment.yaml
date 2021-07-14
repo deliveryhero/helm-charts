@@ -124,7 +124,7 @@ spec:
 {{- if .Values.master.auth.enabled }}
             httpHeaders:
                 - name: Authorization
-                  value: Basic {{ b64enc cat .Values.master.auth.username ":" .Values.master.auth.password }}}
+                  value: Basic {{ cat .Values.master.auth.username ":" .Values.master.auth.password | b64enc }}
 {{- end }}
 {{- end }}
       restartPolicy: Always
