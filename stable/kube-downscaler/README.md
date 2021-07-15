@@ -61,6 +61,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | interval | int | `60` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
 | rbac.create | bool | `true` |  |
 | rbac.serviceAccountName | string | `"default"` |  |
 | replicaCount | int | `1` |  |

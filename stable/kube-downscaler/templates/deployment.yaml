@@ -18,6 +18,10 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "kube-downscaler.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- if .Values.podAnnotations }}
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
+    {{- end }}
     spec:
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-downscaler.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
     {{- with .Values.imagePullSecrets }}

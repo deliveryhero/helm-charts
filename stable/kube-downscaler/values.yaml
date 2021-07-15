@@ -44,6 +44,8 @@ securityContext:
 
 extraLabels: {}
 
+podAnnotations: {}
+
 deployment:
   environment:
     DEFAULT_UPTIME: "Mon-Fri 07:00-20:00 Europe/Berlin"
