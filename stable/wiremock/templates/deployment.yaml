@@ -34,7 +34,7 @@ spec:
       {{- end }}
       initContainers:
       - name: copy-stubs
-        image: busybox:latest
+        image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
 {{- if .Values.consumer.stubs }}
         env:
 {{- range $key, $value := .Values.consumer.stubs }}
