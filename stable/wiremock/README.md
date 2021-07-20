@@ -1,6 +1,6 @@
 # wiremock
 
-![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
+![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
 
 A service virtualization tool (some call it mock server) for testing purposes.
 
@@ -143,6 +143,8 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths[0] | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
+| init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
+| init.image.tag | string | `"latest"` | the docker image tag for the init container image |
 | java.mms | string | `"256M"` |  |
 | java.xms | string | `"2G"` |  |
 | java.xmx | string | `"2G"` |  |
