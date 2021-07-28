@@ -1,0 +1,19 @@
+apiVersion: v2
+name: mlflow
+description: A Helm chart for MLflow
+type: application
+version: 1.0.0
+home: https://www.mlflow.org/
+appVersion: "latest"
+maintainers:
+- name: mkuhn
+  email: magdalena.kuhn@deliveryhero.com
+  url: https://github.com/lena-kuhn
+engine: gotpl
+keywords:
+- mlflow
+- mlops
+- datascience
+- machinelearning
+sources:
+- https://github.com/mlflow

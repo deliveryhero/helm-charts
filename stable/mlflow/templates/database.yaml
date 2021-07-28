@@ -1,0 +1,11 @@
+apiVersion: postgresql.org/v1
+kind: PostgresDatabase
+metadata:
+  name: {{ include "mlflow.fullname" . }}
+  labels:
+    {{- include "mlflow.labels" . | nindent 4 }}
+spec:
+  dbName: {{ .Values.mlflow.postgres.name }}
+  dbRoleName: {{ .Values.mlflow.postgres.username }}
+  dbRolePassword: {{ .Values.mlflow.postgres.password }}
+  dbInstanceId: {{ .Values.mlflow.postgres.instanceID }}
