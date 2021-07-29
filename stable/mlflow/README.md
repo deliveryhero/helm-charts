@@ -44,7 +44,6 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 ## Values
 
-# TODO: adjust values!!
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | extraConfigmapData | object | `{}` |  |
@@ -54,43 +53,34 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | image.repository | string | `"larribas/mlflow"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
-| ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
+| ingress.annotations | object | `{}` |  |
 | ingress.hosts[0] | string | `"chart-example.local"` |  |
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-| serviceAccountName | string | `nil` |  |
-| mlflow.admin.create | bool | `false` |  |
-| mlflow.admin.email | string | `"admin@mlflow.com"` |  |
-| mlflow.admin.firstName | string | `"mlflow"` |  |
-| mlflow.admin.lastName | string | `"admin"` |  |
-| mlflow.admin.password | string | `"admin"` |  |
-| mlflow.admin.username | string | `"admin"` |  |
 | mlflow.affinity | object | `{}` |  |
 | mlflow.autoscaling.enabled | bool | `false` |  |
-| mlflow.autoscaling.maxReplicas | int | `10` |  |
 | mlflow.autoscaling.minReplicas | int | `1` |  |
+| mlflow.autoscaling.maxReplicas | int | `10` |  |
 | mlflow.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | mlflow.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
 | mlflow.configMountPath | string | `"/app/pythonpath"` |  |
 | mlflow.containerPort | int | `8088` |  |
-| mlflow.postgres.hostname | string | `""` |  |
-| mlflow.postgres.init | bool | `true` |  |
+| mlflow.postgres.create | bool | `true` |  |
 | mlflow.postgres.instanceID | string | `""` |  |
-| mlflow.postgres.name | string | `""` |  |
+| mlflow.postgres.hostname | string | `""` |  |
 | mlflow.postgres.port | int | `5432` |  |
-| mlflow.postgres.database | string | `""` |  |
-| mlflow.postgres.username | string | `""` |  |
+| mlflow.postgres.database | string | `"mlflow"` |  |
+| mlflow.postgres.user | string | `""` |  |
 | mlflow.postgres.password | string | `""` |  |
 | mlflow.extraConfig | string | `""` |  |
 | mlflow.nodeSelector | object | `{}` |  |
 | mlflow.oidc.config | string | `""` |  |
 | mlflow.oidc.enabled | bool | `false` |  |
 | mlflow.oidc.imports | string | `""` |  |
-| mlflow.podAnnotations | object | `{}` |  |
 | mlflow.replicas | int | `1` |  |
 | mlflow.resources | object | `{}` |  |
 | mlflow.tolerations | list | `[]` |  |

@@ -26,18 +26,11 @@ spec:
               "mlflow",
               "server",
               "--host", "0.0.0.0",
-              "--backend-store-uri", "postgresql+psycopg2://{{ include "mlflow.postgres.uri" . }}?user={{ .Values.mlflow.postgres.username }}&password={{ .Values.mlflow.postgres.password }}"
+              "--backend-store-uri", "postgresql+psycopg2://{{ include "mlflow.postgres.uri" . }}?user={{ .Values.mlflow.postgres.user }}&password={{ .Values.mlflow.postgres.password }}"
           ]
           envFrom:
             - secretRef:
                 name: {{ include "mlflow.fullname" . }}
-          env:
-            - name: "MLFLOW_PORT"
-              value: {{ .Values.mlflow.containerPort | quote}}
-            {{- range $key, $value := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
-            {{- end }}
           volumeMounts:
             - name: "{{ include "mlflow.fullname" . }}-backend"
               mountPath: {{ .Values.mlflow.configMountPath | quote }}

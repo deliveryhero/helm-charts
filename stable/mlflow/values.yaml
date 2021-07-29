@@ -9,7 +9,6 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-serviceAccountName:
 extraLabels: {}
 service:
   type: ClusterIP
@@ -32,17 +31,15 @@ mlflow:
     imports: ""
   replicas: 1
   postgres:
-    init: true
+    create: true
     instanceID: ""
     hostname: ""
     port: 5432
-    name: ""
     database: mlflow
-    username: ""
+    user: ""
     password: ""
   extraConfig: ""
   configMountPath: "/app/pythonpath"
-  podAnnotations: {}
   containerPort: 8088
   resources: {}
   nodeSelector: {}

@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "mlflow.labels" . | nindent 4 }}
 spec:
-  dbName: {{ .Values.mlflow.postgres.name }}
-  dbRoleName: {{ .Values.mlflow.postgres.username }}
+  dbName: {{ .Values.mlflow.postgres.database }}
+  dbRoleName: {{ .Values.mlflow.postgres.user }}
   dbRolePassword: {{ .Values.mlflow.postgres.password }}
   dbInstanceId: {{ .Values.mlflow.postgres.instanceID }}

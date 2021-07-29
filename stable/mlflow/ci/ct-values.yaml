@@ -1,0 +1,6 @@
+mlflow:
+  replicas: 0
+  postgres:
+    init: false
+    user: postgres
+    password: postgres
