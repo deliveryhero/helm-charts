@@ -31,7 +31,7 @@ spec:
 {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
       - name: copy-mappings
-        image: busybox:latest
+        image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
         command: ['sh', '/config/init.sh']
         volumeMounts:
         - mountPath: /working

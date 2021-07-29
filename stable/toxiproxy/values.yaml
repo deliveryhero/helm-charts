@@ -7,6 +7,13 @@ image:
   tag: 2.1.4
   pullPolicy: IfNotPresent
 
+init:
+  image:
+    # init.image.repository -- the docker repository and image to be used for the init container.
+    repository: busybox
+    # init.image.tag -- the docker image tag for the init container image
+    tag: latest
+
 frontend:
   repository: buckle/toxiproxy-frontend
   # Whether we want to deploy the charts for the frontend or not

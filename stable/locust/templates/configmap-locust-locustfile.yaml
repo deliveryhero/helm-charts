@@ -6,5 +6,5 @@ metadata:
   labels:
 {{ include "locust.labels" . | indent 4 }}
 data:
-{{ ($.Files.Glob (printf "locustfiles/%s/main.py" .Values.loadtest.name)).AsConfig | indent 2 }}
+{{ ($.Files.Glob (printf "locustfiles/%s/%s" .Values.loadtest.name .Values.loadtest.locust_locustfile)).AsConfig | indent 2 }}
 {{- end }}
