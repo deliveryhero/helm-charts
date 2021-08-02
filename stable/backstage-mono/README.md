@@ -4,6 +4,8 @@
 
 A Helm chart for simple backstage deployment. This chart deploys a single pod for both backstage frontend and backend.
 
+**Homepage:** <https://github.com/backstage/backstage>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -59,3 +61,8 @@ helm install my-release deliveryhero/backstage-mono -f values.yaml
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Ankit Goel | no-reply@deliveryhero.com |  |
