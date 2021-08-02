@@ -46,7 +46,7 @@ helm install my-release deliveryhero/backstage-mono -f values.yaml
 | fullnameOverride | string | `""` |  |
 | google.clientId | string | `"google_client_id"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"backstageimage"` |  |
+| image.repository | string | `"goelankit/backstage_app:0.0.1"` |  |
 | image.tag | string | `"0.0.1"` |  |
 | ingress.enabled | bool | `false` |  |
 | nameOverride | string | `""` |  |
