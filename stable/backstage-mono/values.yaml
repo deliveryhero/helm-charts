@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: backstageimage
+  repository: goelankit/backstage_app:0.0.1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.0.1"
