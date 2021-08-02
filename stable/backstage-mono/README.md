@@ -58,4 +58,3 @@ helm install my-release deliveryhero/backstage-mono -f values.yaml
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
-
