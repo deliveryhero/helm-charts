@@ -31,7 +31,7 @@ mlflow:
     imports: ""
   replicas: 1
   postgres:
-    create: true
+    databaseEnabled: true
     instanceID: ""
     hostname: ""
     port: 5432

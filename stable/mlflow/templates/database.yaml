@@ -1,3 +1,4 @@
+{{ if .Values.mlflow.postgres.databaseEnabled }}
 apiVersion: postgresql.org/v1
 kind: PostgresDatabase
 metadata:
@@ -9,3 +10,4 @@ spec:
   dbRoleName: {{ .Values.mlflow.postgres.user }}
   dbRolePassword: {{ .Values.mlflow.postgres.password }}
   dbInstanceId: {{ .Values.mlflow.postgres.instanceID }}
+{{ end }}
