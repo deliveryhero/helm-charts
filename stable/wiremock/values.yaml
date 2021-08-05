@@ -61,6 +61,13 @@ image:
   pullPolicy: IfNotPresent
   pullSecrets: []
 
+init:
+  image:
+    # init.image.repository -- the docker repository and image to be used for the init container.
+    repository: busybox
+    # init.image.tag -- the docker image tag for the init container image
+    tag: latest
+
 resources:
   requests:
     cpu: 1

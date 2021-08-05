@@ -1,6 +1,6 @@
 # toxiproxy
 
-![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.3.5](https://img.shields.io/badge/Version-1.3.5-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
 
@@ -81,6 +81,8 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths[0] | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
+| init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
+| init.image.tag | string | `"latest"` | the docker image tag for the init container image |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget |
