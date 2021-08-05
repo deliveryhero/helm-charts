@@ -74,6 +74,9 @@ spec:
             mountPath: {{ $value }}
 {{- end }}
 {{- end}}
+{{- if .Values.loadtest.mount_external_secret }}
+{{- include "locust.external_secret.volumemount" . | nindent 10 }}
+{{- end}}
         env:
           - name: LOCUST_HOST
             value: "{{ .Values.loadtest.locust_host }}"
@@ -146,6 +149,9 @@ spec:
           configMap:
             name: {{ $key }}
 {{- end }}
+{{- end }}
+{{- if .Values.loadtest.mount_external_secret }}
+{{- include "locust.external_secret.volume" . | nindent 8 }}
 {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
