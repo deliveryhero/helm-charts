@@ -73,7 +73,7 @@ spec:
           - name: {{ $key }}
             mountPath: {{ $value }}
 {{- end }}
-{{- end}}
+{{- end }}
 {{- if .Values.loadtest.mount_external_secret }}
 {{- include "locust.external_secret.volumemount" . | nindent 10 }}
 {{- end}}
