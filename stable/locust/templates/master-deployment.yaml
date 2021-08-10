@@ -48,7 +48,7 @@ spec:
 {{ else if .Values.master.args_include_default }}
         args:
           - --master
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
+          - --locustfile={{ if .Values.loadtest.root_path }}{{ .Values.loadtest.root_path }}{{ else }}/mnt/locust{{ end }}/{{ .Values.loadtest.locust_locustfile }}
           - --host={{ .Values.loadtest.locust_host }}
           - --loglevel={{ .Values.master.logLevel }}
 {{- if .Values.loadtest.headless }}

@@ -9,6 +9,8 @@ loadtest:
   locust_lib_configmap: ""
   # loadtest.locust_host -- the host you will load test
   locust_host: https://www.google.com
+  # loadtest.root_path -- the root path to the locustfile. Configure if using a custom image with embedded locustfile NOT using configmaps. Defaults to "/mnt/locust" if empty.
+  root_path: ""
   # loadtest.pip_packages -- a list of extra python pip packages to install
   pip_packages: []
   # loadtest.environment -- environment variables used in the load test for both master and workers
