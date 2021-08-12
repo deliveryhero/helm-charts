@@ -17,9 +17,9 @@ spec:
       {{- end }}
       labels:
         {{- include "aws-service-events-exporter.selectorLabels" . | nindent 8 }}
-        {{- if .Values.extraLabels }}
-          {{ toYaml .Values.extraLabels | indent 8 }}
-        {{- end }}
+      {{- if .Values.extraLabels }}
+        {{ toYaml .Values.extraLabels | nindent 8 }}
+      {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
