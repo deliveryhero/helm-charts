@@ -8,7 +8,7 @@ description: |
 
 
 type: application
-version: 1.0.3
+version: 1.0.4
 appVersion: "1.0.0"
 home: https://github.com/deliveryhero/aws-service-events-exporter
 sources:
