@@ -67,3 +67,5 @@ tolerations: []
 affinity: {}
 
 extraLabels: {}
+
+development_mode: true
