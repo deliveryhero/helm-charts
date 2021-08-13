@@ -13,5 +13,5 @@ home: https://github.com/danielfm/aws-limits-exporter
 sources:
   - https://github.com/danielfm/aws-limits-exporter
 maintainers:
-- name: hajiani
+- name: javad-hajiani
   email: no-reply@deliveryhero.com
