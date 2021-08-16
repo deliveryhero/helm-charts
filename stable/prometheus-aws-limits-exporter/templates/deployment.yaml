@@ -1,14 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "aws-service-events-exporter.fullname" . }}
+  name: {{ include "prometheus-aws-limits-exporter.fullname" . }}
   labels:
-    {{- include "aws-service-events-exporter.labels" . | nindent 4 }}
+    {{- include "prometheus-aws-limits-exporter.labels" . | nindent 4 }}
+    {{- if .Values.extraLabels }}
+      {{ toYaml .Values.extraLabels | nindent 4 }}
+    {{- end }}
 spec:
-  replicas: {{ .Values.replicas }}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
-      {{- include "aws-service-events-exporter.selectorLabels" . | nindent 6 }}
+      {{- include "prometheus-aws-limits-exporter.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,16 +21,16 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "aws-service-events-exporter.selectorLabels" . | nindent 8 }}
-      {{- if .Values.extraLabels }}
-        {{ toYaml .Values.extraLabels | nindent 8 }}
-      {{- end }}
+        {{- include "prometheus-aws-limits-exporter.selectorLabels" . | nindent 8 }}
+        {{- if .Values.extraLabels }}
+          {{ toYaml .Values.extraLabels | nindent 8 }}
+        {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "aws-service-events-exporter.serviceAccountName" . }}
+      serviceAccountName: {{ include "prometheus-aws-limits-exporter.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,28 +38,27 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:
-            - --port={{ .Values.exporter.port }}
-            - --listen-address={{ .Values.exporter.listenAddress }}
-            - --queue-url={{ required "Missing required SQS queue URL" .Values.exporter.queueUrl }}
-          env:
-          {{- range $key, $value := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
+          {{- if .Values.development_mode }}
+          command: [ "/bin/sh", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
           {{- end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.exporter.port }}
+              containerPort: 8080
               protocol: TCP
+          {{- if not .Values.development_mode }}
           livenessProbe:
             httpGet:
               path: /metrics
-              port: http
+              port: 8080
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /metrics
-              port: http
+              port: 8080
+            timeoutSeconds: 10
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
