@@ -41,6 +41,7 @@ helm install my-release deliveryhero/<chart>
 - [postgres-controller](stable/postgres-controller)
 - [priority-class](stable/priority-class)
 - [prometheus-aws-costs-exporter](stable/prometheus-aws-costs-exporter)
+- [prometheus-aws-limits-exporter](stable/prometheus-aws-limits-exporter)
 - [prometheus-aws-health-exporter](stable/prometheus-aws-health-exporter)
 - [prometheus-cloudflare-exporter](stable/prometheus-cloudflare-exporter)
 - [prometheus-k8s-events-exporter](stable/prometheus-k8s-events-exporter)

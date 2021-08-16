@@ -1,3 +1,4 @@
+{{- $relNamespace := .Release.Namespace -}}
 {{- $fullname :=  include "cluster-overprovisioner.fullname" . -}}
 {{- $commonLabels :=  include "cluster-overprovisioner.labels" . -}}
 {{- $matchLabels :=  include "cluster-overprovisioner.matchLabels" . -}}
@@ -10,6 +11,7 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   name: "{{ $fullname }}-{{ $deploymentName }}"
+  namespace: {{ $relNamespace }}
   labels:
 {{- $commonLabels | nindent 4 }}
 spec:

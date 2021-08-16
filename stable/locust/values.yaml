@@ -56,10 +56,10 @@ master:
     #   cpu: 1000m
     #   memory: 1024Mi
   serviceAccountAnnotations: {}
+  # master.envs_include_default -- Whether to include default environment variables
+  envs_include_default: true
   # master.environment -- environment variables for the master
   environment: {}
-  # master.args_include_default -- Whether to include default command args
-  args_include_default: true
   # master.args -- Any extra command args for the master
   args: []
   command:
@@ -96,10 +96,10 @@ worker:
     #   cpu: 500m
     #   memory: 256Mi
   serviceAccountAnnotations: {}
+  # worker.envs_include_default -- Whether to include default environment variables
+  envs_include_default: true
   # worker.environment -- environment variables for the workers
   environment: {}
-  # worker.args_include_default -- Whether to include default command args
-  args_include_default: true
   # worker.args -- Any extra command args for the workers
   args: []
   command:

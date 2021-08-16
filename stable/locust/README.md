@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.19.24](https://img.shields.io/badge/Version-0.19.24-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
+![Version: 0.19.25](https://img.shields.io/badge/Version-0.19.25-informational?style=flat-square) ![AppVersion: 1.4.4](https://img.shields.io/badge/AppVersion-1.4.4-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -89,13 +89,13 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
 | master.args | list | `[]` | Any extra command args for the master |
-| master.args_include_default | bool | `true` | Whether to include default command args |
 | master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
 | master.auth.password | string | `""` |  |
 | master.auth.username | string | `""` |  |
 | master.command[0] | string | `"sh"` |  |
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | master.environment | object | `{}` | environment variables for the master |
+| master.envs_include_default | bool | `true` | Whether to include default environment variables |
 | master.image | string | `""` | A custom docker image including tag |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
@@ -111,10 +111,10 @@ helm install my-release deliveryhero/locust -f values.yaml
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 | worker.args | list | `[]` | Any extra command args for the workers |
-| worker.args_include_default | bool | `true` | Whether to include default command args |
 | worker.command[0] | string | `"sh"` |  |
 | worker.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
 | worker.environment | object | `{}` | environment variables for the workers |
+| worker.envs_include_default | bool | `true` | Whether to include default environment variables |
 | worker.hpa.enabled | bool | `false` |  |
 | worker.hpa.maxReplicas | int | `100` |  |
 | worker.hpa.minReplicas | int | `1` |  |

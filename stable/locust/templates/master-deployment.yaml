@@ -42,21 +42,16 @@ spec:
         command:
         {{- toYaml . | nindent 8 }}
 {{- end }}
-{{- if .Values.master.args }}
-        args:
-        {{- toYaml .Values.master.args | nindent 8 }}
-{{ else if .Values.master.args_include_default }}
         args:
           - --master
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
-          - --host={{ .Values.loadtest.locust_host }}
-          - --loglevel={{ .Values.master.logLevel }}
+{{- if .Values.master.args }}
+        {{- toYaml .Values.master.args | nindent 8 }}
+{{- end }}
 {{- if .Values.loadtest.headless }}
           - --headless
+{{- end }}
 {{- if .Values.master.auth.enabled }}
           - --web-auth={{ cat .Values.master.auth.username ":" .Values.master.auth.password }}
-{{- end }}
-{{- end }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
@@ -77,9 +72,16 @@ spec:
 {{- if .Values.loadtest.mount_external_secret }}
 {{- include "locust.external_secret.volumemount" . | nindent 10 }}
 {{- end}}
+{{- if or .Values.master.envs_include_default .Values.loadtest.environment .Values.master.environment .Values.loadtest.environment_secret .Values.loadtest.environment_external_secret }}
         env:
+{{- if .Values.master.envs_include_default }}
           - name: LOCUST_HOST
             value: "{{ .Values.loadtest.locust_host }}"
+          - name: LOCUST_LOGLEVEL
+            value: "{{ .Values.master.logLevel }}"
+          - name: LOCUST_LOCUSTFILE
+            value: "/mnt/locust/{{ .Values.loadtest.locust_locustfile }}"
+{{- end }}
 {{- range $key, $value := .Values.loadtest.environment }}
           - name: {{ $key }}
             value: {{ $value | quote }}
@@ -102,6 +104,7 @@ spec:
               secretKeyRef:
                 name: {{ $key }}
                 key: {{ $value }}
+{{- end }}
 {{- end }}
 {{- end }}
         ports:
