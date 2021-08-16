@@ -50,11 +50,11 @@ spec:
           {{- if not .Values.development_mode }}
           livenessProbe:
             httpGet:
-              path: /metrics
+              path: /
               port: 8080
           readinessProbe:
             httpGet:
-              path: /metrics
+              path: /
               port: 8080
           {{- end }}
           resources:
