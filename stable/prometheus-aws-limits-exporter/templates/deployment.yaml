@@ -50,12 +50,14 @@ spec:
           {{- if not .Values.development_mode }}
           livenessProbe:
             httpGet:
-              path: /
+              path: /metrics
               port: 8080
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
-              path: /
+              path: /metrics
               port: 8080
+            timeoutSeconds: 10
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
