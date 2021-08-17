@@ -17,6 +17,9 @@ spec:
       {{- end }}
       labels:
         {{- include "backstage-mono.selectorLabels" . | nindent 8 }}
+        {{- if .Values.extraLabels }}
+          {{ toYaml .Values.extraLabels | nindent 8 }}
+        {{- end }}
     spec:
       serviceAccountName: {{ template "backstage-mono.fullname" . }}
       containers:
