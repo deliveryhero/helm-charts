@@ -4,12 +4,12 @@ metadata:
   name: {{ include "mlflow.fullname" . }}
   labels:
     {{- include "mlflow.labels" . | nindent 4 }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "mlflow.staging.eu.usehurrier.com"
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
     {{- include "mlflow.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.service.type }}
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}

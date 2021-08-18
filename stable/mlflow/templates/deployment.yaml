@@ -26,19 +26,13 @@ spec:
               "mlflow",
               "server",
               "--host", "0.0.0.0",
-              "--backend-store-uri", "postgresql+psycopg2://{{ include "mlflow.postgres.uri" . }}?user={{ .Values.mlflow.postgres.user }}&password={{ .Values.mlflow.postgres.password }}"
+              "--port", "{{ .Values.mlflow.port }}",
+              "--default-artifact-root", "{{ .Values.mlflow.s3.path }}",
+              "--backend-store-uri", "{{ include "mlflow.database.uri" . }}"
           ]
-          envFrom:
-            - secretRef:
-                name: {{ include "mlflow.fullname" . }}
-          volumeMounts:
-            - name: "{{ include "mlflow.fullname" . }}-backend"
-              mountPath: {{ .Values.mlflow.configMountPath | quote }}
-              readOnly: true
           ports:
             - name: http
-              containerPort: {{ .Values.mlflow.containerPort }}
-              protocol: TCP
+              containerPort: {{ .Values.service.port }}
           readinessProbe:
             httpGet:
               path: /
@@ -52,8 +46,8 @@ spec:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 20
-            periodSeconds: 3
+            initialDelaySeconds: 600
+            periodSeconds: 5
             successThreshold: 1
             failureThreshold: 6
             timeoutSeconds: 5

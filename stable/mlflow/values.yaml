@@ -6,41 +6,46 @@ image:
   repository: larribas/mlflow
   pullPolicy: IfNotPresent
   tag: latest
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 extraLabels: {}
+
 service:
   type: ClusterIP
   port: 80
 
-ingress:
-  enabled: false
+serviceAccount:
+  create: false
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+
+ingress:
+  enabled: true
   path: /
-  hosts:
-    - chart-example.local
-  tls: []
+  hosts: []
+
+#  enabled: false
+#  annotations: {}
+#    # kubernetes.io/ingress.class: nginx
+#    # kubernetes.io/tls-acme: "true"
+#  path: /
+#  hosts:
+#    - chart-example.local
+#  tls: []
 
 mlflow:
-  oidc:
-    enabled: false
-    config: ""
-    imports: ""
+  port: 8080
   replicas: 1
-  postgres:
-    databaseEnabled: true
-    instanceID: ""
-    hostname: ""
+  s3:
+    path: "s3://mlflow"
+  database:
+    name: mlflow
+    password: "mlflow"
+    username: "mlflow"
+    hostname: "mlflow"
     port: 5432
-    database: mlflow
-    user: ""
-    password: ""
-  extraConfig: ""
-  configMountPath: "/app/pythonpath"
-  containerPort: 8088
+
   resources: {}
   nodeSelector: {}
   tolerations: []
@@ -51,5 +56,3 @@ mlflow:
     maxReplicas: 10
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
-
-extraConfigmapData: {}

@@ -68,8 +68,8 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | mlflow.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | mlflow.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
 | mlflow.configMountPath | string | `"/app/pythonpath"` |  |
-| mlflow.containerPort | int | `8088` |  |
-| mlflow.postgres.databaseEnabled | bool | `true` |  |
+| mlflow.s3.path | string | `""` | |
+| mlflow.postgres.databaseEnabled | bool | `false` |  |
 | mlflow.postgres.instanceID | string | `""` |  |
 | mlflow.postgres.hostname | string | `""` |  |
 | mlflow.postgres.port | int | `5432` |  |

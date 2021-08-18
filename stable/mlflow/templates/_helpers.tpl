@@ -56,6 +56,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Database uri
 */}}
-{{- define "mlflow.postgres.uri" -}}
-{{- printf "%s:%v/%s" .Values.mlflow.postgres.hostname .Values.mlflow.postgres.port .Values.mlflow.postgres.name }}
+{{- define "mlflow.database.uri" -}}
+{{- printf "postgresql+psycopg2://%s:%s@%s:%v/%s" .Values.mlflow.database.username .Values.mlflow.database.password .Values.mlflow.database.hostname .Values.mlflow.database.port .Values.mlflow.database.name }}
 {{- end }}
