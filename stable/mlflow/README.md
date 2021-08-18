@@ -1,8 +1,8 @@
-# MLflow
+# mlflow
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
-A Helm chart for setting up a MLflow tracking server with a PostgreSQL as backend store
+A Helm chart for MLflow
 
 **Homepage:** <https://www.mlflow.org/>
 
@@ -46,47 +46,39 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| extraConfigmapData | object | `{}` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"larribas/mlflow"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.hosts[0] | string | `"chart-example.local"` |  |
+| ingress.enabled | bool | `true` |  |
+| ingress.hosts | list | `[]` |  |
 | ingress.path | string | `"/"` |  |
-| ingress.tls | list | `[]` |  |
+| mlflow.affinity | object | `{}` |  |
+| mlflow.autoscaling.enabled | bool | `false` |  |
+| mlflow.autoscaling.maxReplicas | int | `10` |  |
+| mlflow.autoscaling.minReplicas | int | `1` |  |
+| mlflow.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| mlflow.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
+| mlflow.database.hostname | string | `"mlflow"` |  |
+| mlflow.database.name | string | `"mlflow"` |  |
+| mlflow.database.password | string | `"mlflow"` |  |
+| mlflow.database.port | int | `5432` |  |
+| mlflow.database.username | string | `"mlflow"` |  |
+| mlflow.nodeSelector | object | `{}` |  |
+| mlflow.replicas | int | `1` |  |
+| mlflow.resources | object | `{}` |  |
+| mlflow.s3.path | string | `"s3://mlflow"` |  |
+| mlflow.tolerations | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-| mlflow.affinity | object | `{}` |  |
-| mlflow.autoscaling.enabled | bool | `false` |  |
-| mlflow.autoscaling.minReplicas | int | `1` |  |
-| mlflow.autoscaling.maxReplicas | int | `10` |  |
-| mlflow.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| mlflow.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
-| mlflow.configMountPath | string | `"/app/pythonpath"` |  |
-| mlflow.s3.path | string | `""` | |
-| mlflow.postgres.databaseEnabled | bool | `false` |  |
-| mlflow.postgres.instanceID | string | `""` |  |
-| mlflow.postgres.hostname | string | `""` |  |
-| mlflow.postgres.port | int | `5432` |  |
-| mlflow.postgres.database | string | `"mlflow"` |  |
-| mlflow.postgres.user | string | `""` |  |
-| mlflow.postgres.password | string | `""` |  |
-| mlflow.extraConfig | string | `""` |  |
-| mlflow.nodeSelector | object | `{}` |  |
-| mlflow.oidc.config | string | `""` |  |
-| mlflow.oidc.enabled | bool | `false` |  |
-| mlflow.oidc.imports | string | `""` |  |
-| mlflow.replicas | int | `1` |  |
-| mlflow.resources | object | `{}` |  |
-| mlflow.tolerations | list | `[]` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `false` |  |
 
 ## Maintainers
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mkuhn | magdalena.kuhn@deliveryhero.com |  |
+| mkuhn | magdalena.kuhn@deliveryhero.com | https://github.com/lena-kuhn |

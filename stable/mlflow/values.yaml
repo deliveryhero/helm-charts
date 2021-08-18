@@ -35,7 +35,6 @@ ingress:
 #  tls: []
 
 mlflow:
-  port: 8080
   replicas: 1
   s3:
     path: "s3://mlflow"
