@@ -1,4 +1,5 @@
 {{- $relName := .Release.Name -}}
+{{- $relNamespace := .Release.Namespace -}}
 {{- $relService := .Release.Service -}}
 {{- $fullname :=  include "cluster-overprovisioner.fullname" . -}}
 {{- $name :=  include "cluster-overprovisioner.name" . -}}
@@ -21,6 +22,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ $fullname }}-{{ .name }}"
+  namespace: {{ $relNamespace }}
   labels:
     {{- $commonLabels | nindent 4 }}
     app.cluster-overprovisioner/deployment: {{ $deploymentName }}

@@ -89,3 +89,26 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- printf .Values.loadtest.locust_lib_configmap -}}
 {{ end }}
 {{- end -}}
+
+{{/* Generate external secret volume */}}
+{{- define "locust.external_secret.volume" -}}
+- name: external-secrets
+  projected:
+    sources:
+{{- range $key, $values := .Values.loadtest.mount_external_secret.files }}
+{{- range $value := $values }}
+      - secret:
+          name: {{ $key }}
+          items:
+            - key: {{ $value }}
+              path: {{ $value }}
+{{- end }}
+{{- end }}
+{{- end -}}
+
+{{/* Generate external secret volumemount */}}
+{{- define "locust.external_secret.volumemount" -}}
+- name: external-secrets
+  mountPath: {{ .Values.loadtest.mount_external_secret.mountPath }}
+  readOnly: true
+{{- end -}}
