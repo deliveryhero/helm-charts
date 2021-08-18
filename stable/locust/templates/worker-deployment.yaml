@@ -45,7 +45,7 @@ spec:
         args:
           - --worker
 {{- if .Values.worker.args }}
-        {{- toYaml .Values.worker.args | nindent 8 }}
+          {{- toYaml .Values.worker.args | nindent 10 }}
 {{- end }}
 {{- if .Values.loadtest.tags }}
           - --tags {{ .Values.loadtest.tags }}
