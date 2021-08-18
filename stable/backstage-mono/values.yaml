@@ -37,3 +37,6 @@ postgres:
 
 google:
   clientId: "google_client_id"
+
+# extraLabels -- Any extra labels to apply to all resources
+extraLabels: {}
