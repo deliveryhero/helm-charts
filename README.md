@@ -35,6 +35,7 @@ helm install my-release deliveryhero/<chart>
 - [kubecost-reports-exporter](stable/kubecost-reports-exporter)
 - [labelsmanager-controller](stable/labelsmanager-controller)
 - [locust](stable/locust)
+- [mlflow](stable/mlflow)
 - [newrelic-controller](stable/newrelic-controller)
 - [node-problem-detector](stable/node-problem-detector)
 - [pg-repack-scheduler](stable/pg-repack-scheduler)
