@@ -17,9 +17,14 @@ loadtest:
   # loadtest.environment_secret -- environment variables used in the load test for both master and workers, stored as secrets
   environment_secret: {}
     # VAR: VALUE
-  # loadtest.environment_external_secret -- environment variables used in the load test for both master and workers, stored in secrets created outside this chart
+  # loadtest.environment_external_secret -- environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]`
   environment_external_secret: {}
     # SECRET_NAME: VAR
+  # loadtest.mount_external_secret -- additional mount used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `mountPath: yourMountLocation, files: { secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY] }`
+  mount_external_secret: {}
+    # mountPath: yourMountLocation
+    # files:
+      # secret_name: var
   # loadtest.headless -- whether to run locust with headless settings
   headless: false
   # loadtest.tags -- whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed
@@ -29,7 +34,7 @@ loadtest:
 
 image:
   repository: locustio/locust
-  tag: 1.4.4
+  tag: 2.1.0
   pullPolicy: IfNotPresent
 
 service:
@@ -51,10 +56,10 @@ master:
     #   cpu: 1000m
     #   memory: 1024Mi
   serviceAccountAnnotations: {}
+  # master.envs_include_default -- Whether to include default environment variables
+  envs_include_default: true
   # master.environment -- environment variables for the master
   environment: {}
-  # master.args_include_default -- Whether to include default command args
-  args_include_default: true
   # master.args -- Any extra command args for the master
   args: []
   command:
@@ -91,10 +96,10 @@ worker:
     #   cpu: 500m
     #   memory: 256Mi
   serviceAccountAnnotations: {}
+  # worker.envs_include_default -- Whether to include default environment variables
+  envs_include_default: true
   # worker.environment -- environment variables for the workers
   environment: {}
-  # worker.args_include_default -- Whether to include default command args
-  args_include_default: true
   # worker.args -- Any extra command args for the workers
   args: []
   command:

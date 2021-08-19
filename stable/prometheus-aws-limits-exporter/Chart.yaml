@@ -1,0 +1,17 @@
+apiVersion: v2
+name: prometheus-aws-limits-exporter
+description: |
+  This helmchart provides a Prometheus metrics endpoint that exposes AWS usage and limits as reported by the AWS Trusted Advisor API.
+
+type: application
+
+version: 0.1.3
+
+appVersion: "0.4.0"
+
+home: https://github.com/danielfm/aws-limits-exporter
+sources:
+  - https://github.com/danielfm/aws-limits-exporter
+maintainers:
+- name: javad-hajiani
+  email: no-reply@deliveryhero.com

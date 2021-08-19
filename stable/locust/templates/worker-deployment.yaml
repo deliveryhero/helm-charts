@@ -42,22 +42,16 @@ spec:
         command:
         {{- toYaml . | nindent 8 }}
 {{- end }}
-{{- if .Values.worker.args }}
-        args:
-        {{- toYaml .Values.worker.args | nindent 8 }}
-{{ else if .Values.worker.args_include_default }}
         args:
           - --worker
-          - --locustfile=/mnt/locust/{{ .Values.loadtest.locust_locustfile }}
-          - --host={{ .Values.loadtest.locust_host }}
-          - --master-host={{ template "locust.fullname" . }}
-          - --loglevel={{ .Values.worker.logLevel }}
+{{- if .Values.worker.args }}
+        {{- toYaml .Values.worker.args | nindent 8 }}
+{{- end }}
 {{- if .Values.loadtest.tags }}
           - --tags {{ .Values.loadtest.tags }}
 {{- end }}
 {{- if .Values.loadtest.excludeTags }}
           - --exclude-tags {{ .Values.loadtest.excludeTags }}
-{{- end }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
@@ -75,13 +69,23 @@ spec:
             mountPath: {{ $value }}
 {{- end }}
 {{- end}}
+{{- if .Values.loadtest.mount_external_secret }}
+{{- include "locust.external_secret.volumemount" . | nindent 10 }}
+{{- end}}
+{{- if or .Values.worker.envs_include_default .Values.loadtest.environment .Values.worker.environment .Values.loadtest.environment_secret .Values.loadtest.environment_external_secret }}
         env:
+{{- if .Values.worker.envs_include_default }}
           - name: LOCUST_HOST
             value: "{{ .Values.loadtest.locust_host }}"
-          - name: LOCUST_MASTER_HOST
+          - name: LOCUST_MASTER_NODE_HOST
             value: "{{ template "locust.fullname" . }}"
-          - name: LOCUST_MASTER_PORT
+          - name: LOCUST_MASTER_NODE_PORT
             value: "5557"
+          - name: LOCUST_LOGLEVEL
+            value: "{{ .Values.worker.logLevel }}"
+          - name: LOCUST_LOCUSTFILE
+            value: "/mnt/locust/{{ .Values.loadtest.locust_locustfile }}"
+{{- end }}
 {{- range $key, $value := .Values.worker.environment }}
           - name: {{ $key }}
             value: {{ $value | quote }}
@@ -97,12 +101,15 @@ spec:
                 name: {{ template "locust.fullname" $ }}
                 key: {{ $key }}
 {{- end }}
-{{- range $key, $value := .Values.loadtest.environment_external_secret }}
+{{- range $key, $values := .Values.loadtest.environment_external_secret }}
+{{- range $value := $values }}
           - name: {{ $value }}
             valueFrom:
               secretKeyRef:
                 name: {{ $key }}
                 key: {{ $value }}
+{{- end }}
+{{- end }}
 {{- end }}
       restartPolicy: Always
       volumes:
@@ -121,6 +128,9 @@ spec:
           configMap:
             name: {{ $key }}
 {{- end }}
+{{- end }}
+{{- if .Values.loadtest.mount_external_secret }}
+{{- include "locust.external_secret.volume" . | nindent 8 }}
 {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
