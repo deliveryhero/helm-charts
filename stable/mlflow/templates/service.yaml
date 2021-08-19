@@ -4,8 +4,6 @@ metadata:
   name: {{ include "mlflow.fullname" . }}
   labels:
     {{- include "mlflow.labels" . | nindent 4 }}
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: "mlflow.staging.eu.usehurrier.com"
 spec:
   selector:
     {{- include "mlflow.selectorLabels" . | nindent 4 }}
