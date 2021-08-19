@@ -5,7 +5,7 @@
 image:
   repository: larribas/mlflow
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: "1.9.1"
 
 imagePullSecrets: []
 nameOverride: ""
