@@ -2,7 +2,10 @@
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
-A Helm chart for MLflow
+A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
+
+This Helm chart is using Postgresql as backend and S3 as artifact store.
+Contributions for other backends and artifacts store are welcome.
 
 **Homepage:** <https://www.mlflow.org/>
 
@@ -52,7 +55,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | image.repository | string | `"larribas/mlflow"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
-| ingress.enabled | bool | `true` |  |
+| ingress.enabled | bool | `false` |  |
 | ingress.hosts | list | `[]` |  |
 | ingress.path | string | `"/"` |  |
 | mlflow.affinity | object | `{}` |  |

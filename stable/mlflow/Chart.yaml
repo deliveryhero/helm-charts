@@ -1,9 +1,14 @@
 apiVersion: v2
 name: mlflow
-description: A Helm chart for MLflow
+description: |
+  A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
+
+  This Helm chart is using Postgresql as backend and S3 as artifact store.
+  Contributions for other backends and artifacts store are welcome.
 type: application
 version: 1.0.0
 home: https://www.mlflow.org/
+icon: https://www.mlflow.org/docs/latest/_static/MLflow-logo-final-black.png
 appVersion: "latest"
 maintainers:
 - name: mkuhn
