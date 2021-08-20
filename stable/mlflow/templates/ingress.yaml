@@ -1,0 +1,27 @@
+{{ if .Values.ingress.enabled -}}
+{{- $fullName := include "mlflow.fullname" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "mlflow.labels" . | nindent 4 }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  rules:
+  {{- range .Values.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: {{ $.Values.ingress.path }}
+            pathType: Prefix
+            backend:
+              service: 
+                name: {{ $fullName }}
+                port: 
+                  number: {{ $.Values.service.port }}
+  {{- end }}
+{{- end }}
