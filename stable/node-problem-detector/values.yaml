@@ -97,6 +97,7 @@ affinity: {}
 nodeSelector: {}
 
 metrics:
+  enabled: false
   serviceMonitor:
     enabled: false
     additionalLabels: {}
