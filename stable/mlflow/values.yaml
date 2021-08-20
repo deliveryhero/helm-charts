@@ -1,0 +1,48 @@
+# Default values for mlflow.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: larribas/mlflow
+  pullPolicy: IfNotPresent
+  tag: "1.9.1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+extraLabels: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+serviceAccount:
+  create: false
+  annotations: {}
+
+ingress:
+  enabled: false
+  path: /
+  hosts: []
+
+mlflow:
+  replicas: 1
+  s3:
+    path: "s3://mlflow"
+  database:
+    name: mlflow
+    password: "mlflow"
+    username: "mlflow"
+    hostname: "mlflow"
+    port: 5432
+
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
