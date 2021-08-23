@@ -78,7 +78,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `false` | Specifies whether a service account should be created |
+| serviceAccount.create | bool | `false` | Specifies whether a service account should be created. If true, mlflow.fullname template is used as name. |
 
 ## Maintainers
 
