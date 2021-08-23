@@ -17,6 +17,7 @@ service:
   port: 80
 
 serviceAccount:
+  # serviceAccount.create -- Specifies whether a service account should be created. If true, mlflow.fullname template is used as name.
   create: false
   annotations: {}
 
