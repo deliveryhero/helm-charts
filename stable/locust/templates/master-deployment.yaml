@@ -18,6 +18,9 @@ spec:
   template:
     metadata:
       annotations:
+      {{- with .Values.master.annotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
         checksum/config-locust-lib: {{ include (print $.Template.BasePath "/configmap-locust-lib.yaml") . | sha256sum }}
         checksum/config-locust-locustfile: {{ include (print $.Template.BasePath "/configmap-locust-locustfile.yaml") . | sha256sum }}
         checksum/config-config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
