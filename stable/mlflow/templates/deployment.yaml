@@ -31,7 +31,7 @@ spec:
           ]
           ports:
             - name: http
-              containerPort: {{ .Values.deployment.port }}
+              containerPort: {{ .Values.service.targetPort }}
           readinessProbe:
             httpGet:
               path: /

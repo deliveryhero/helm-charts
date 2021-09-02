@@ -49,7 +49,6 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| deployment.port | int | `5000` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
