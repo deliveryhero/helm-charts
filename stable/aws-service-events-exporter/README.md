@@ -1,6 +1,6 @@
 # aws-service-events-exporter
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This helm chart exports aws service events to prometheus via aws SQS queue, this include:
 
@@ -57,7 +57,7 @@ helm install my-release deliveryhero/aws-service-events-exporter -f values.yaml
 | extraLabels | object | `{}` | Additional labels to be added to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"940776968316.dkr.ecr.eu-west-1.amazonaws.com/dockerhub-mirror/aws-service-events-exporter"` |  |
+| image.repository | string | `"thomasnyambati/aws-service-events-exporter"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |

@@ -5,7 +5,7 @@
 replicas: 1
 
 image:
-  repository: 940776968316.dkr.ecr.eu-west-1.amazonaws.com/dockerhub-mirror/aws-service-events-exporter
+  repository: thomasnyambati/aws-service-events-exporter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   # tag: v1.2
