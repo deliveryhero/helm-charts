@@ -49,6 +49,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| deployment.port | int | `5000` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -75,7 +76,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | mlflow.s3.path | string | `"s3://mlflow"` |  |
 | mlflow.tolerations | list | `[]` |  |
 | nameOverride | string | `""` |  |
-| service.port | int | `80` |  |
+| service.port | int | `5000` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` | Specifies whether a service account should be created. If true, mlflow.fullname template is used as name. |
