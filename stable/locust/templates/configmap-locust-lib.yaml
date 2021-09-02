@@ -1,8 +1,8 @@
-{{- if eq .Values.loadtest.locust_lib_configmap "" }}
+{{- if ne .Values.loadtest.locust_lib_configmap "" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "locust.fullname" . }}-lib
+  name: {{ .Values.loadtest.locust_lib_configmap }}
   labels:
 {{ include "locust.labels" . | indent 4 }}
 data:
