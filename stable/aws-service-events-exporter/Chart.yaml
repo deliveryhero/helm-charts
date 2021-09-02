@@ -8,11 +8,13 @@ description: |
 
 
 type: application
-version: 1.0.4
-appVersion: "1.0.0"
+version: 1.0.5
+appVersion: "1.2"
 home: https://github.com/deliveryhero/aws-service-events-exporter
 sources:
   - https://github.com/deliveryhero/aws-service-events-exporter
 maintainers:
 - name: nyambati
+  email: no-reply@deliveryhero.com
+- name: javad-hajiani
   email: no-reply@deliveryhero.com
