@@ -10,4 +10,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - name: http
-      port: {{ .Values.service.port }}
+      port: 80
+      protocol: TCP
+      targetPort: {{ .Values.service.port }}
+

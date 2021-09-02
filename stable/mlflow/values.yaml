@@ -14,7 +14,10 @@ extraLabels: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5000
+
+deployment:
+  port: 5000
 
 serviceAccount:
   # serviceAccount.create -- Specifies whether a service account should be created. If true, mlflow.fullname template is used as name.

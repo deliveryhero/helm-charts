@@ -1,6 +1,6 @@
 # mlflow
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
 
@@ -49,6 +49,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| deployment.port | int | `5000` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -75,7 +76,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | mlflow.s3.path | string | `"s3://mlflow"` |  |
 | mlflow.tolerations | list | `[]` |  |
 | nameOverride | string | `""` |  |
-| service.port | int | `80` |  |
+| service.port | int | `5000` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` | Specifies whether a service account should be created. If true, mlflow.fullname template is used as name. |
