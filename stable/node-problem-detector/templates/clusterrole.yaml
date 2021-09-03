@@ -18,6 +18,18 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - configmaps
+  verbs:
+  - mount
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - mount
+- apiGroups:
+  - ""
+  resources:
   - nodes/status
   verbs:
   - patch
