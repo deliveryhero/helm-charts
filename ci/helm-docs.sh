@@ -2,29 +2,35 @@
 
 set -eu
 
-rm -f .helm-docs-md5sum-before .helm-docs-md5sum-after
+rm -rf .stable
 
-# Get md5sum of all README.md files before running helm-docs
-md5sum stable/*/README.md > .helm-docs-md5sum-before
+ALL_CHARTS=$(ls stable)
+
+# Create a copy of each README.md files before running helm-docs
+for chart in $ALL_CHARTS; do
+  mkdir -p .stable/$chart
+  cp stable/$chart/README.md .stable/$chart/README.md
+done
 
 # Run helm-docs to generate all README.md files from the template
-helm-docs --template-files ./ci/README.md.gotmpl
+helm-docs --log-level warning --template-files ./ci/README.md.gotmpl
 
-# Get md5sum of all README.md files after running helm-docs
-md5sum stable/*/README.md > .helm-docs-md5sum-after
+# Check all README.md files for changes after running helm-docs
+set +e
+for chart in $ALL_CHARTS; do
+  echo "Checking stable/$chart/README.md..."
+  diff -s stable/$chart/README.md .stable/$chart/README.md > /dev/null
+  if [ $? -eq 1 ]; then
+    echo "🔴 Error: file stable/$chart/README.md needs to be updated: "
+    diff stable/$chart/README.md .stable/$chart/README.md
+    echo "See main repo README.md for instructions"
+    rm -rf .stable
+    exit 1
+  fi
+done
 
-# Run diff to check for any changes that are missing
-CHANGED_FILES=$(diff .helm-docs-md5sum-before .helm-docs-md5sum-after | grep -v ++ | grep ^+ | awk '{print $2}')
+rm -rf .stable
 
-if [ -z "$CHANGED_FILES" ]; then
-  echo "✅ No changes detected"
-  exit 0
-else
-  echo "🔴 These README.md files need to be updated with helm-docs: "
-  echo "$CHANGED_FILES"
-  echo ""
-  echo "See main repo README.md for instructions"
-  exit 1
-fi
+echo "✅ All chart README.md files are up to date"
 
-exit 1
+exit 0
