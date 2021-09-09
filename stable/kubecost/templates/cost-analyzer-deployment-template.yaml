@@ -573,9 +573,11 @@ spec:
             {{- end }}
             {{- end }}
             {{- end }}
-            {{- if and (.Values.kubecostProductConfigs.clusterName) }}
+            {{- if .Values.kubecostProductConfigs }}
+            {{- if (.Values.kubecostProductConfigs.clusterName) }}
             - name: CLUSTER_ID
               value: {{ .Values.kubecostProductConfigs.clusterName }}
+            {{- end }}
             {{- end }}
             {{- if .Values.remoteWrite.postgres.installLocal }}
             - name: SQL_ADDRESS

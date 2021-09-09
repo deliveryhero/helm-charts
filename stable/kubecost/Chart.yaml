@@ -1,11 +1,13 @@
-
 apiVersion: v2
 appVersion: "1.86.0"
-description: A Helm chart that sets up Kubecost, Prometheus, and Grafana to monitor
-  cloud costs.
+description: A Helm chart that sets up Kubecost, Prometheus, and Grafana to monitor cloud costs.
 name: cost-analyzer
+home: https://www.kubecost.com
 version: 1.86.0
 annotations:
   "artifacthub.io/links": |
     - name: Homepage
       url: https://www.kubecost.com
+maintainers:
+- name: nyambati
+  email: no-reply@deliveryhero.com

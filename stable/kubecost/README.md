@@ -4,6 +4,8 @@
 
 A Helm chart that sets up Kubecost, Prometheus, and Grafana to monitor cloud costs.
 
+**Homepage:** <https://www.kubecost.com>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -118,6 +120,7 @@ helm install my-release deliveryhero/cost-analyzer -f values.yaml
 | kubecostModel.utcOffset | string | `"+00:00"` |  |
 | kubecostModel.warmCache | bool | `false` |  |
 | kubecostModel.warmSavingsCache | bool | `true` |  |
+| kubecostProductConfigs | string | `nil` |  |
 | kubecostToken | string | `nil` |  |
 | networkCosts.additionalLabels | object | `{}` |  |
 | networkCosts.affinity | object | `{}` |  |
@@ -203,3 +206,8 @@ helm install my-release deliveryhero/cost-analyzer -f values.yaml
 | systemProxy.noProxy | string | `""` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | no-reply@deliveryhero.com |  |

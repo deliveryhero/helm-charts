@@ -1,2 +1,4 @@
+persistentVolume:
+  enabled: false
 kubecostDeployment:
   replicas: 0

@@ -12,9 +12,9 @@ data:
 
     # Enable gzip encoding for content of the provided types of 50kb and higher.
     gzip on;
-    gzip_min_length 50000; 
+    gzip_min_length 50000;
     gzip_proxied expired no-cache no-store private auth;
-    gzip_types 
+    gzip_types
         application/atom+xml
         application/geo+json
         application/javascript
@@ -128,7 +128,7 @@ data:
             proxy_set_header  X-Real-IP  $remote_addr;
             proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
         }
-        
+
         location ~ ^/(turndown|cluster)/ {
 
             add_header 'Access-Control-Allow-Origin' '*' always;
@@ -141,7 +141,7 @@ data:
             auth_request /authrbac;
             {{- end }}
             {{- end }}
-            
+
             rewrite ^/(?:turndown|cluster)/(.*)$ /$1 break;
             proxy_pass http://clustercontroller;
             proxy_connect_timeout       180;
@@ -152,7 +152,7 @@ data:
             proxy_set_header Connection "";
             proxy_set_header X-Real-IP  $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        
+
 {{- else }}
             return 404;
 {{- end }}

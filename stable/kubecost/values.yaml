@@ -1,8 +1,10 @@
 global:
   # zone: cluster.local (use only if your DNS server doesn't live in the same zone as kubecost)
   prometheus:
-    enabled: true # If false, Prometheus will not be installed -- only actively supported on paid Kubecost plans
-    fqdn: http://cost-analyzer-prometheus-server.default.svc #example address of a prometheus to connect to. Include protocol (http:// or https://) Ignored if enabled: true
+    # If false, Prometheus will not be installed -- only actively supported on paid Kubecost plans
+    enabled: true
+    # example address of a prometheus to connect to. Include protocol (http:// or https://) Ignored if enabled: true
+    fqdn: http://cost-analyzer-prometheus-server.default.svc
     # insecureSkipVerify : false # If true, kubecost will not check the TLS cert of prometheus
     # queryServiceBasicAuthSecretName: dbsecret # kubectl create secret generic dbsecret -n kubecost --from-file=USERNAME --from-file=PASSWORD
     # queryServiceBearerTokenSecretName: dbsecret  # kubectl create secret generic mcdbsecret -n kubecost --from-file=TOKEN
@@ -16,10 +18,12 @@ global:
     # queryOffset: 3h # The offset to apply to all thanos queries in order to achieve syncronization on all cluster block stores
 
   grafana:
-    enabled: true # If false, Grafana will not be installed
-    domainName: cost-analyzer-grafana.default.svc #example grafana domain Ignored if enabled: true
-    scheme: "http" # http or https, for the domain name above.
-    proxy: true # If true, the kubecost frontend will route to your grafana through its service endpoint
+    # If false, Grafana will not be installed
+    enabled: true
+    # example grafana domain Ignored if enabled: true
+    domainName: cost-analyzer-grafana.default.svc
+    scheme: "http"
+    proxy: true
 
   notifications:
     # Kubecost alerting configuration
@@ -80,23 +84,26 @@ global:
         # - type: diagnostic          # Alerts when kubecost is is unable to compute costs - ie: Prometheus unreachable
         #   window: 10m
 
-    alertmanager: # Supply an alertmanager FQDN to receive notifications from the app.
-      enabled: false # If true, allow kubecost to write to your alertmanager
-      fqdn: http://cost-analyzer-prometheus-server.default.svc #example fqdn. Ignored if prometheus.enabled: true
+    # Supply an alertmanager FQDN to receive notifications from the app.
+    alertmanager:
+      # If true, allow kubecost to write to your alertmanager
+      enabled: false
+      # example fqdn. Ignored if prometheus.enabled: true
+      fqdn: http://cost-analyzer-prometheus-server.default.svc
 
   # Set saved report(s) accessible from reports.html
   # Ref: http://docs.kubecost.com/saved-reports
   savedReports:
-    enabled: false # If true, overwrites report parameters set through UI
+    enabled: false
     reports:
       - title: "Example Saved Report 0"
         window: "today"
         aggregateBy: "namespace"
         idle: "separate"
-        accumulate: false # daily resolution
+        accumulate: false
         filters:
           - property: "cluster"
-            value: "cluster-one,cluster*" # supports wildcard filtering and multiple comma separated values
+            value: "cluster-one,cluster*"
           - property: "namespace"
             value: "kubecost"
       - title: "Example Saved Report 1"
@@ -113,18 +120,18 @@ global:
         window: "2020-11-11T00:00:00Z,2020-12-09T23:59:59Z"
         aggregateBy: "service"
         idle: "hide"
-        accumulate: true # entire window resolution
-        filters: [] # if no filters, specify empty array
+        accumulate: true
+        filters: []
 
   # Set saved report(s) accessible from reports.html
   # Ref: http://docs.kubecost.com/saved-reports
   assetReports:
-    enabled: false # If true, overwrites report parameters set through UI
+    enabled: false
     reports:
     - title: "Example Asset Report 0"
       window: "today"
       aggregateBy: "type"
-      accumulate: false # daily resolution
+      accumulate: false
       filters:
         - property: "cluster"
           value: "cluster-one"
@@ -134,7 +141,7 @@ global:
   additionalLabels: {}
 
 # generated at http://kubecost.com/install, used for alerts tracking and free trials
-kubecostToken: # ""
+kubecostToken:
 
 # Advanced pipeline for custom prices, enterprise key required
 pricingCsv:
@@ -142,7 +149,7 @@ pricingCsv:
   location:
     provider: "AWS"
     region: "us-east-1"
-    URI: s3://kc-csv-test/pricing_schema.csv # a valid file URI
+    URI: s3://kc-csv-test/pricing_schema.csv
     csvAccessCredentials: pricing-schema-access-secret
 
 # SAML integration for user management and RBAC, enterprise key required
@@ -150,23 +157,23 @@ pricingCsv:
 saml:
   enabled: false
   secretName: "kubecost-authzero"
-  #metadataSecretName: "kubecost-authzero-metadata" # One of metadataSecretName or idpMetadataURL must be set. defaults to metadataURL if set
+  # metadataSecretName: "kubecost-authzero-metadata" # One of metadataSecretName or idpMetadataURL must be set. defaults to metadataURL if set
   idpMetadataURL: "https://dev-elu2z98r.auth0.com/samlp/metadata/c6nY4M37rBP0qSO1IYIqBPPyIPxLS8v2"
-  appRootURL: "http://localhost:9090" # sample URL
+  appRootURL: "http://localhost:9090"
   # audienceURI: "http://localhost:9090" # by convention, the same as the appRootURL, but any string uniquely identifying kubecost to your samp IDP. Optional if you follow the convention
   # nameIDFormat: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" If your SAML provider requires a specific nameid format
   rbac:
     enabled: false
     groups:
       - name: admin
-        enabled: false # if admin is disabled, all SAML users will be able to make configuration changes to the kubecost frontend
-        assertionName: "http://schemas.auth0.com/userType" # a SAML Assertion, one of whose elements has a value that matches on of the values in assertionValues
+        enabled: false
+        assertionName: "http://schemas.auth0.com/userType"
         assertionValues:
           - "admin"
           - "superusers"
       - name: readonly
-        enabled: false # if readonly is disabled, all users authorized on SAML will default to readonly
-        assertionName:  "http://schemas.auth0.com/userType"
+        enabled: false
+        assertionName: "http://schemas.auth0.com/userType"
         assertionvalues:
           - "readonly"
 
@@ -188,7 +195,7 @@ kubecostFrontend:
     requests:
       cpu: "10m"
       memory: "55Mi"
-    #limits:
+    # limits:
     #  cpu: "100m"
     #  memory: "256Mi"
 
@@ -198,7 +205,7 @@ kubecost:
     requests:
       cpu: "100m"
       memory: "55Mi"
-    #limits:
+    # limits:
     #  cpu: "100m"
     #  memory: "256Mi"
 
@@ -231,7 +238,7 @@ kubecostModel:
     requests:
       cpu: "200m"
       memory: "55Mi"
-    #limits:
+    # limits:
     #  cpu: "800m"
     #  memory: "256Mi"
 
@@ -241,7 +248,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  paths: ["/"] # There's no need to route specifically to the pods-- we have an nginx deployed that handles routing
+  paths: ["/"]
   hosts:
     - cost-analyzer.local
   tls: []
@@ -267,15 +274,15 @@ priority:
 # If true, enable creation of NetworkPolicy resources.
 networkPolicy:
   enabled: false
-  denyEgress: true # create a network policy that denies egress from kubecost
-  sameNamespace: true # Set to true if cost analyser and prometheus are on the same namespace
+  denyEgress: true
+  sameNamespace: true
 #  namespace: kubecost # Namespace where prometheus is installed
 
   # Cost-analyzer specific vars using the new template
   costAnalyzer:
-    enabled: false # If true, create a newtork policy for cost-analzyer
-    annotations: {} # annotations to be added to the network policy
-    additionalLabels: {} # additional labels to be added to the network policy
+    enabled: false
+    annotations: {}
+    additionalLabels: {}
     # Examples rules:
     # ingressRules:
     #   - selectors: # allow ingress from self on all ports
@@ -310,7 +317,7 @@ extraVolumeMounts: []
 persistentVolume:
   size: 32Gi
   dbSize: 32.0Gi
-  enabled: true # Note that setting this to false means configurations will be wiped out on pod restart.
+  enabled: true
   # storageClass: "-" #
   # existingClaim: kubecost-cost-analyzer # a claim in the same namespace as kubecost
 
@@ -329,11 +336,11 @@ remoteWrite:
     initImage: "gcr.io/kubecost1/sql-init"
     initImagePullPolicy: Always
     installLocal: true
-    remotePostgresAddress: "" # ignored if installing locally
+    remotePostgresAddress: ""
     persistentVolume:
       size: 200Gi
     auth:
-      password: admin # change me
+      password: admin
 
 ## Module for measuring network costs
 ## Ref: https://github.com/kubecost/docs/blob/master/network-allocation.md
@@ -355,7 +362,7 @@ networkCosts:
   # These must be identical due to network-costs being run on hostNetwork
   port: 3001
   resources: {}
-    #requests:
+    # requests:
     #  cpu: "50m"
     #  memory: "20Mi"
   config:
@@ -371,7 +378,7 @@ networkCosts:
         # IPv4 Link Local Address Space
         - "169.254.0.0/16"
         # Private Address Ranges in RFC-1918
-        - "10.0.0.0/8" # Remove this entry if using Multi-AZ Kubernetes
+        - "10.0.0.0/8"
         - "172.16.0.0/12"
         - "192.168.0.0/16"
 
@@ -448,15 +455,15 @@ prometheusRule:
 
 supportNFS: false
 # initChownDataImage ensures all Kubecost filepath permissions on PV or local storage are set up correctly.
-initChownDataImage: "busybox" # Supports a fully qualified Docker image, e.g. registry.hub.docker.com/library/busybox:latest
+initChownDataImage: "busybox"
 initChownData:
   resources: {}
-    #requests:
+    # requests:
     #  cpu: "50m"
     #  memory: "20Mi"
 
 serviceAccount:
-  create: true # Set this to false if you're bringing your own service account.
+  create: true
   annotations: {}
   # name: kc-test
 awsstore:
@@ -469,7 +476,7 @@ awsstore:
 # These configs can also be set from the Settings page in the Kubecost product UI
 # Values in this block override config changes in the Settings UI on pod restart
 #
-#kubecostProductConfigs:
+kubecostProductConfigs:
 # An optional list of cluster definitions that can be added for frontend access. The local
 # cluster is *always* included by default, so this list is for non-local clusters.
 # Ref: https://github.com/kubecost/docs/blob/master/multi-cluster.md
