@@ -1,0 +1,2 @@
+kubecostDeployment:
+  replicas: 0
