@@ -33,12 +33,14 @@ kubecost:
   clusterName: change_me
   # kubecost.bucketName -- S3 Bucket name for reports export
   bucketName: kubecost-reports-exporter
-  # kubecost.analyzerEndpoint -- kubecost analyzer endpoint
-  analyzerEndpoint: "http://kubecost-cost-analyzer:9090"
   # kubecost.aggregatedCostUrl -- Url for aggregated cost report
   aggregatedCostUrl: "/model/aggregatedCostModel?window=1d&aggregation=namespace"
   # kubecost.nonAggregatedCostUrl -- Url for non-aggregated cost report
   nonAggregatedCostUrl: "/model/costDataModel?timeWindow=1d&offset=1d"
-
+  clusters:
+      # kubecost.clusters.0.name -- kubecost cluster name
+    - name: default
+      # kubecost.clusters.endpoint -- kubecost analyzer endpoint
+      endpoint: "http://kubecost-cost-analyzer:9090"
 # env -- Extra environment variables
 env: {}
