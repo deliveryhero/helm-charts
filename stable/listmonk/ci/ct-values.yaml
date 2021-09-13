@@ -1,3 +1,4 @@
+replicaCount: 1
 database:
   host: listmonk-postgresql
   username: listmonk
