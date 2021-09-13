@@ -51,8 +51,13 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| env.private | object | `{}` |  |
-| env.public | object | `{}` |  |
+| database.create | bool | `false` |  |
+| database.host | string | `"listmonkdb.example.com"` |  |
+| database.name | string | `"listmonk"` |  |
+| database.password | string | `"CHANGEME"` |  |
+| database.username | string | `"listmonk"` |  |
+| env.private.LISTMONK_app__admin_password | string | `"CHANGEME"` |  |
+| env.public.LISTMONK_app__admin_username | string | `"admin"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"listmonk/listmonk"` |  |

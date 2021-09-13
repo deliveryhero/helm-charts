@@ -78,7 +78,16 @@ tolerations: []
 affinity: {}
 
 env:
-  private: {}
-  public: {}
+  private:
+    LISTMONK_app__admin_password: "CHANGEME"
+  public:
+    LISTMONK_app__admin_username: "admin"
 
 podLabels: {}
+
+database:
+  create: false
+  host: listmonkdb.example.com
+  name: listmonk
+  username: listmonk
+  password: "CHANGEME"

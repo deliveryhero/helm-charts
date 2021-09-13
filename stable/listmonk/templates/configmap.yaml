@@ -5,7 +5,10 @@ metadata:
   labels:
 {{ include "listmonk.labels" . | indent 4 }}
 data:
+  # database
+  LISTMONK_db__host: {{ .Values.database.host  }}
+  LISTMONK_db__user: {{ .Values.database.username  }}
+  LISTMONK_db__database: {{ .Values.database.name }}
   {{- range $key, $value := .Values.env.public }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}
-
