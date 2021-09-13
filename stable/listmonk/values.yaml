@@ -81,6 +81,7 @@ env:
   private:
     LISTMONK_app__admin_password: "CHANGEME"
   public:
+    LISTMONK_app__address: "0.0.0.0:9090"
     LISTMONK_app__admin_username: "admin"
 
 podLabels: {}

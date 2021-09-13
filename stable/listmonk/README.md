@@ -58,6 +58,7 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 | database.password | string | `"CHANGEME"` |  |
 | database.username | string | `"listmonk"` |  |
 | env.private.LISTMONK_app__admin_password | string | `"CHANGEME"` |  |
+| env.public.LISTMONK_app__address | string | `"0.0.0.0:9090"` |  |
 | env.public.LISTMONK_app__admin_username | string | `"admin"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
