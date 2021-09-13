@@ -53,6 +53,7 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | database.create | bool | `false` |  |
 | database.host | string | `"listmonkdb.example.com"` |  |
+| database.instance_id | string | `"shared"` |  |
 | database.name | string | `"listmonk"` |  |
 | database.password | string | `"CHANGEME"` |  |
 | database.username | string | `"listmonk"` |  |

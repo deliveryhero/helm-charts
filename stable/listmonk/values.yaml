@@ -91,3 +91,4 @@ database:
   name: listmonk
   username: listmonk
   password: "CHANGEME"
+  instance_id: "shared"
