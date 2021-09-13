@@ -1,0 +1,13 @@
+{{- if .Values.database.create -}}
+apiVersion: postgresql.org/v1
+kind: PostgresDatabase
+metadata:
+  name: {{ template "listmonk.fullname" . }}
+  labels:
+{{ include "listmonk.labels" . | indent 4 }}
+spec:
+  dbName: {{ .Values.database.name }}
+  dbRoleName: {{ .Values.database.username }}
+  dbRolePassword: {{ .Values.database.password }}
+  dbInstanceId: {{ .Values.database.instance_id }}
+{{- end -}}
