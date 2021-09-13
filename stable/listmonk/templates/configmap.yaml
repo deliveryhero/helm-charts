@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "listmonk.fullname" . }}
+  labels:
+{{ include "listmonk.labels" . | indent 4 }}
+data:
+  {{- range $key, $value := .Values.env.public }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+
