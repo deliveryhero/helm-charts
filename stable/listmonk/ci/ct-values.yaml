@@ -6,7 +6,7 @@ database:
   database: listmonk
 
 postgresql:
-  enabled: true
+  enable: true
   fullnameOverride: listmonk-postgresql
   postgresqlDatabase: listmonk
   postgresqlUsername: listmonk
