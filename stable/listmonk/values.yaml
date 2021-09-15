@@ -93,3 +93,6 @@ database:
   username: listmonk
   password: "CHANGEME"
   instance_id: "shared"
+
+postgresql:
+  enable: false
