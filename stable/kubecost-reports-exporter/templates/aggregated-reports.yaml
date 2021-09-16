@@ -49,7 +49,7 @@ spec:
               - name: BUCKET_NAME
                 value: {{ required " Aws s3 bucket name is required value"  $.Values.kubecost.bucketName | quote }}
               - name: CLUSTER_NAME
-                value: {{ required "Cluster name is a required value"  $.Values.kubecost.clusterName | quote }}
+                value: {{ .name | quote }}
               - name: REPORT_TYPE
                 value: "aggregated"
               - name: KUBECOST_ENDPOINT

@@ -6,7 +6,10 @@ import logging
 import os
 import sys
 import urllib.request
+import sentry_sdk
 
+from sentry_sdk.integrations.logging import LoggingIntegration
+from urllib.error import HTTPError, URLError
 from botocore.exceptions import ClientError
 from datetime import datetime
 
@@ -17,6 +20,16 @@ class KubecostReportsExporter:
         self.log_level = os.environ.get('LOG_LEVEL', 'debug')
         self.logger = self.set_log_level(self.log_level)
         self.parse_env_vars()
+        self.enable_sentry_logging()
+
+    def enable_sentry_logging(self):
+        sentry_logging = LoggingIntegration(
+            level=logging.INFO,        # Capture info and above as breadcrumbs
+            event_level=logging.ERROR  # Send errors as events
+        )
+
+        if self.sentry_dsn:
+            sentry_sdk.init(dsn=self.sentry_dsn, integrations=[sentry_logging])
 
     def set_log_level(self, log_level):
         levels = {
@@ -38,6 +51,7 @@ class KubecostReportsExporter:
         self.create_bucket = eval(os.environ.get("CREATE_BUCKET", 'False'))
         self.account_id = os.environ.get('ACCOUNT_CANONICAL_ID')
         self.tags = os.environ.get('TAGS', '')
+        self.sentry_dsn = os.environ.get('SENTRY_DSN')
 
         try:
             self.cluster_name = os.environ['CLUSTER_NAME']
@@ -77,14 +91,20 @@ class KubecostReportsExporter:
 
     def get_cost_report(self, url):
         try:
-            with urllib.request.urlopen(url) as f:
+            with urllib.request.urlopen(url, timeout=10) as f:
                 if f.getcode() != 200:
                     self.logger.error(
                         f"Error: Failed to reports from {self.cluster_name}")
                     sys.exit(1)
                 return f.read().decode('utf-8')
-        except Exception as e:
-            self.logger.error(f"Could not get cost report: '{str(e)}'")
+        except HTTPError as error:
+            self.logger.error(
+                'Data not retrieved because %s\nURL: %s', error, url)
+            sys.exit(1)
+        except URLError as error:
+            self.logger.error(
+                'Failed to retrive cost reports %s\nURL: %s', error, url)
+            sys.exit(1)
     # Uploading the JSON string to S3 bucket
 
     def upload_report_to_aws(self, bucket, s3_file_name, content, account_id):
