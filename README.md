@@ -59,6 +59,7 @@ helm install my-release deliveryhero/<chart>
 - [toxiproxy](stable/toxiproxy)
 - [weblate](stable/weblate)
 - [wiremock](stable/wiremock)
+- [listmonk](stable/listmonk)
 
 ## Contributing
 
