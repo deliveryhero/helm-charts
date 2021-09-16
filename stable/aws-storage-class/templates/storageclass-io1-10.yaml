@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: io1-10
   annotations:
-    storageclass.beta.kubernetes.io/is-default-class: "false"
+    storageclass.beta.kubernetes.io/is-default-class: {{ .Values.io1_10.default | quote }}
   labels:
     kubernetes.io/cluster-service: "true"
 provisioner: kubernetes.io/aws-ebs
@@ -11,3 +11,4 @@ parameters:
   type: io1
   iopsPerGB: "10"
   encrypted: "true"
+volumeBindingMode: {{ .Values.io1_10.volumeBindingMode }}

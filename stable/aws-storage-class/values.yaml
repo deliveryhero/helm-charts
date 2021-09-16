@@ -1,0 +1,9 @@
+gp2:
+  default: true
+  volumeBindingMode: WaitForFirstConsumer
+io1_10:
+  default: false
+  volumeBindingMode: WaitForFirstConsumer
+io1_20:
+  default: false
+  volumeBindingMode: WaitForFirstConsumer
