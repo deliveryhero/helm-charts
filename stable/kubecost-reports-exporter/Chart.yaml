@@ -3,8 +3,8 @@ name: kubecost-reports-exporter
 description: Helm chart for exporting kubernetes cost reports to S3
 home: https://www.kubecost.com
 type: application
-version: 1.0.8
-appVersion: "1.0.0"
+version: 1.0.9
+appVersion: "1.0.4"
 maintainers:
   - name: nyambati
     email: thomas.nyambati@deliveryhero.com
