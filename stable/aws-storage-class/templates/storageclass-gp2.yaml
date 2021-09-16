@@ -3,10 +3,11 @@ kind: StorageClass
 metadata:
   name: gp2
   annotations:
-    storageclass.beta.kubernetes.io/is-default-class: "true"
+    storageclass.beta.kubernetes.io/is-default-class: {{ .Values.gp2.default | quote }}
   labels:
     kubernetes.io/cluster-service: "true"
 provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
   encrypted: "true"
+volumeBindingMode: {{ .Values.gp2.volumeBindingMode }}
