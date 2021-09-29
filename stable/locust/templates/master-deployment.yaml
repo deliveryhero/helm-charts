@@ -54,7 +54,7 @@ spec:
           - --headless
 {{- end }}
 {{- if .Values.master.auth.enabled }}
-          - --web-auth={{ cat .Values.master.auth.username ":" .Values.master.auth.password }}
+          - --web-auth={{ .Values.master.auth.username }}:{{ .Values.master.auth.password }}
 {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
