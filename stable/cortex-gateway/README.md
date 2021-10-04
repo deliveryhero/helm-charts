@@ -4,6 +4,8 @@
 
 A Helm chart for cortex-gateway
 
+**Homepage:** <https://github.com/rewe-digital/cortex-gateway>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -65,3 +67,8 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | serviceAccount.name | string | `"cortex-gateway"` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| goelankitt | no-reply@deliveryhero.com |  |
