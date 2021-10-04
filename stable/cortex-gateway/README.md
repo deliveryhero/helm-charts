@@ -43,9 +43,9 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| args.distributorAddress | string | `"your_distributor_address"` |  |
+| args.distributorAddress | string | `"http://your_distributor_address"` |  |
 | args.jwtSecret | string | `"your_jwt_secret"` |  |
-| args.queryfrontendAddress | string | `"your_query_frontend_address"` |  |
+| args.queryfrontendAddress | string | `"http://your_query_frontend_address"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"goelankit/cortex-gateway"` |  |
