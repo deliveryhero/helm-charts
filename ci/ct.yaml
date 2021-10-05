@@ -1,3 +1,5 @@
+remote: origin
+target-branch: master
 chart-dirs:
   - stable
 chart-repos:
