@@ -17,11 +17,11 @@ jobs:
       - name: Install git
         run: apk add --no-cache git
       - name: Install Helm Push plugin
-        run: helm plugin install https://github.com/chartmuseum/helm-push
+        run: helm plugin install https://github.com/chartmuseum/helm-push --version=0.10.0
       - name: Adding DH repository
         run: helm repo add deliveryhero https://charts.deliveryhero.io/
       - name: Push charts to DH repository
         env:
           HELM_REPO_USERNAME: ${{ secrets.CHARTMUSEUM_USER }}
           HELM_REPO_PASSWORD: ${{ secrets.CHARTMUSEUM_PASS }}
-        run: for chart in stable/*; do helm dependencies update $chart && helm push $chart deliveryhero; done
+        run: for chart in stable/*; do helm dependencies update $chart && helm cm-push $chart deliveryhero; done
