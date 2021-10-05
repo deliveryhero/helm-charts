@@ -24,4 +24,4 @@ jobs:
         env:
           HELM_REPO_USERNAME: ${{ secrets.CHARTMUSEUM_USER }}
           HELM_REPO_PASSWORD: ${{ secrets.CHARTMUSEUM_PASS }}
-        run: for chart in stable/*; do helm dependencies update $chart && helm push $chart deliveryhero; done
+        run: for chart in stable/*; do helm dependencies update $chart && helm cm-push $chart deliveryhero; done
