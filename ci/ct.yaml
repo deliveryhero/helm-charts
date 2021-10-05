@@ -5,4 +5,3 @@ chart-dirs:
 chart-repos:
   - stable=https://charts.helm.sh/stable
   - bitnami=https://charts.bitnami.com/bitnami
-helm-extra-args: --timeout 600s
