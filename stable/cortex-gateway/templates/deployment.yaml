@@ -17,6 +17,9 @@ spec:
       {{- end }}
       labels:
         {{- include "cortex-gateway.selectorLabels" . | nindent 8 }}
+        {{- if .Values.extraLabels }}
+          {{ toYaml .Values.extraLabels | nindent 8 }}
+        {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

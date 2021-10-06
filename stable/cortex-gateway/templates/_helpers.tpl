@@ -39,8 +39,12 @@ helm.sh/chart: {{ include "cortex-gateway.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
+{{- range $key, $value := .Values.extraLabels }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
+
 
 {{/*
 Selector labels
