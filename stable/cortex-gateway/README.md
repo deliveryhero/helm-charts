@@ -1,6 +1,6 @@
 # cortex-gateway
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
 
 A Helm chart for cortex-gateway
 
@@ -46,7 +46,7 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | args.distributorAddress | string | `"http://your_distributor_address_here"` |  |
 | args.jwtSecret | string | `"your_jwt_secret"` |  |
 | args.queryfrontendAddress | string | `"http://your_query_frontend_address_here"` |  |
-| extraLabels | object | `{}` | Any extra labels to apply to all resources |
+| extraLabels | object | `{"dh_app":"cortex-gateway","dh_country":"none","dh_env":"production","dh_region":"eu","dh_squad":"foundation","dh_tribe":"logistics"}` | Any extra labels to apply to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"goelankit/cortex-gateway"` |  |
