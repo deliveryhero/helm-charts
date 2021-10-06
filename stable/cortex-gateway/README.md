@@ -46,7 +46,7 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | args.distributorAddress | string | `"http://your_distributor_address_here"` |  |
 | args.jwtSecret | string | `"your_jwt_secret"` |  |
 | args.queryfrontendAddress | string | `"http://your_query_frontend_address_here"` |  |
-| extraLabels | object | `{"dh_app":"cortex-gateway","dh_country":"none","dh_env":"production","dh_region":"eu","dh_squad":"foundation","dh_tribe":"logistics"}` | Any extra labels to apply to all resources |
+| extraLabels | object | `{}` | Any extra labels to apply to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"goelankit/cortex-gateway"` |  |
