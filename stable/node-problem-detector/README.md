@@ -50,6 +50,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
 | env | string | `nil` |  |
+| extraContainers | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
