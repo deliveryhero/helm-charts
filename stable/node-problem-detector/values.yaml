@@ -114,6 +114,8 @@ extraVolumes: []
 
 extraVolumeMounts: []
 
+extraContainers: []
+
 # updateStrategy -- Manage the daemonset update strategy
 updateStrategy: RollingUpdate
 # maxUnavailable -- The max pods unavailable during an update
