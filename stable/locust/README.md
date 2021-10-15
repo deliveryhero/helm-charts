@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.20.3](https://img.shields.io/badge/Version-0.20.3-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 0.21.0](https://img.shields.io/badge/Version-0.21.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -68,12 +68,14 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.1.0"` |  |
+| image.tag | string | `"2.4.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
+| ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].path | string | `"/"` |  |
+| ingress.hosts[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
 | loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]` |
