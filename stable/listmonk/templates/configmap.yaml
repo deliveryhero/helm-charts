@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: {{ include "listmonk.fullname" . }}
   labels:
+{{ include "listmonk.labels" . | indent 4 }}
   annotations:
     "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "-1"
-{{ include "listmonk.labels" . | indent 4 }}
 data:
   # database
   LISTMONK_db__host: {{ .Values.database.host  }}
