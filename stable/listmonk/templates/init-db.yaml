@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "listmonk.fullname" . }}
+  labels:
+    {{- include "listmonk.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      labels:
+        {{- include "listmonk.selectorLabels" . | nindent 8 }}
+        job: "init-db"
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: init-db
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        command: ["./listmonk", "--install", "--yes"]
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "listmonk.fullname" . }}
+          - secretRef:
+              name: {{ include "listmonk.fullname" . }}
