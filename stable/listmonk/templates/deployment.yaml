@@ -30,16 +30,6 @@ spec:
       serviceAccountName: {{ include "listmonk.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-        - name: init-db
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["./listmonk", "--install", "--yes"]
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-            - configMapRef:
-                name: {{ include "listmonk.fullname" . }}
-            - secretRef:
-                name: {{ include "listmonk.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

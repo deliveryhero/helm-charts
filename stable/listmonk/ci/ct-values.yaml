@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 0
 database:
   host: listmonk-postgresql
   username: listmonk
@@ -6,7 +6,7 @@ database:
   database: listmonk
 
 postgresql:
-  enable: true
+  enable: false
   fullnameOverride: listmonk-postgresql
   postgresqlDatabase: listmonk
   postgresqlUsername: listmonk
