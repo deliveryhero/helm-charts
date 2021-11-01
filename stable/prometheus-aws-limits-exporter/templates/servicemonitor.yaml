@@ -1,0 +1,15 @@
+{{- if .Values.serviceMonitor.create -}}
+apiVersion: "monitoring.coreos.com/v1"
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prometheus-aws-limits-exporter.fullname" . }}
+  labels:
+  {{- include "prometheus-aws-limits-exporter.labels" . | nindent 4 }}
+spec:
+  endpoints:
+    - path: /metrics
+      port: http
+  selector:
+    matchLabels:
+      {{- include "prometheus-aws-limits-exporter.selectorLabels" . | nindent 6 }}
+{{- end }}
