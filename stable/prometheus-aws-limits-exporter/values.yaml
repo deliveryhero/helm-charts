@@ -23,6 +23,11 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+serviceMonitor:
+  # Specifies wether a service monitor should be created
+  # Use this for prometheus-operator support
+  create: false
+
 podAnnotations: {}
 
 podSecurityContext: {}
