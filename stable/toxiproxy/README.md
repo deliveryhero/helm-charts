@@ -86,6 +86,7 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget |
+| podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

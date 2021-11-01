@@ -21,6 +21,9 @@ spec:
 {{ include "toxiproxy.labels" . | indent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap-config.yaml") . | sha256sum }}
+{{- with .Values.podAnnotations }}
+{{ toYaml . | trim | indent 8 }}
+{{- end}}
     spec:
 {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
