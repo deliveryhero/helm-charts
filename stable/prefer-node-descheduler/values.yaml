@@ -1,0 +1,67 @@
+# Default values for prefer-node-descheduler.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# replicaCount -- Number of replicas to run.
+replicaCount: 1
+
+
+image:
+  # image.repository -- The docker repository and image to be used.
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  # image.tag -- The image version to be used.
+  tag: ""
+
+# imagePullSecrets -- ImagePullSecrets to attach to the pods in order to download the image from a private registry.
+imagePullSecrets: []
+# nameOverride -- Override the name of the Chart.
+nameOverride: ""
+# fullnameOverride -- Override the fullname of the Chart.
+fullnameOverride: ""
+
+# extraLabels -- This section can be used to configure some extra labels that will be added to each Kubernetes object generated.
+extraLabels: {}
+
+serviceAccount:
+  # serviceAccount.create -- Specifies whether a service account should be created
+  create: true
+  # serviceAccount.annotations -- Annotations to add to the service account
+  annotations: {}
+  # serviceAccount.name -- The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# podAnnotations -- Extra annotations to add to the pods.
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# resources -- CPU/Memory requests and limits to set for the pod.
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

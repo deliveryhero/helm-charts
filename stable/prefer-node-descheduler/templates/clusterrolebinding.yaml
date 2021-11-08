@@ -1,0 +1,14 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "prefer-node-descheduler.fullname" . }}
+  labels:
+    {{- include "prefer-node-descheduler.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "prefer-node-descheduler.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "prefer-node-descheduler.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}

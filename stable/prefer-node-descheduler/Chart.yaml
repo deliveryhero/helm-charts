@@ -1,0 +1,15 @@
+apiVersion: v2
+name: prefer-node-descheduler
+version: 0.1.0
+appVersion: 1.0.0
+home: https://github.com/deliveryhero/prefer-node-descheduler
+maintainers:
+- name: mmingorance-dh
+  email: miguel.mingorance@deliveryhero.com
+description: |
+  A chart to install [Prefer-Node-Descheduler](https://github.com/deliveryhero/prefer-node-descheduler), a tool to
+  reschedule pods based on the `nodeAffinity` constraint `preferredDuringSchedulingIgnoredDuringExecution`.
+
+  This chart will setup everything required to run prefer-node-descheduler as a deployment in a Kubernetes cluster.
+
+  Further configuration can be passed as extra arguments.
