@@ -17,7 +17,7 @@ fullnameOverride: ""
 args:
   distributorAddress: "http://your_distributor_address_here"
   queryfrontendAddress: "http://your_query_frontend_address_here"
-  queryfrontendAddress: "http://your_ruler_address_here"
+  rulerAddress: "http://your_ruler_address_here"
   jwtSecret: "your_jwt_secret"
 
 serviceAccount:
