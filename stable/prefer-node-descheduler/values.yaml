@@ -24,6 +24,11 @@ fullnameOverride: ""
 # extraLabels -- This section can be used to configure some extra labels that will be added to each Kubernetes object generated.
 extraLabels: {}
 
+extraArgs: {}
+  # include-pods-with-local-storage: true
+  # include-pods-with-pvc: true
+  # log-level: error
+
 serviceAccount:
   # serviceAccount.create -- Specifies whether a service account should be created
   create: true
