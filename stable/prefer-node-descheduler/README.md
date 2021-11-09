@@ -48,6 +48,7 @@ helm install my-release deliveryhero/prefer-node-descheduler -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| extraArgs | object | `{}` |  |
 | extraLabels | object | `{}` | This section can be used to configure some extra labels that will be added to each Kubernetes object generated. |
 | fullnameOverride | string | `""` | Override the fullname of the Chart. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
