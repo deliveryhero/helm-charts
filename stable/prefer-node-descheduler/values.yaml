@@ -24,6 +24,7 @@ fullnameOverride: ""
 # extraLabels -- This section can be used to configure some extra labels that will be added to each Kubernetes object generated.
 extraLabels: {}
 
+# extraArgs -- Specifies extra configuration to include in prefer-node-descheduler
 extraArgs: {}
   # include-pods-with-local-storage: true
   # include-pods-with-pvc: true
