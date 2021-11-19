@@ -42,18 +42,22 @@ Secrets:
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
+    tplB64Keys:
+      key1: '{{ .Values.Secrets[0].name }}'
     b64Keys:
-      key1: value1
+      key2: value1
     keys:
-      key2: dmFsdWUyCg==
+      key3: dmFsdWUyCg==
   - name: example-secret-2
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
+    tplB64Keys:
+      key1: '{{ .Values.Secrets[0].name }}'
     b64Keys:
-      key1: value1
+      key2: value1
     keys:
-      key2: dmFsdWUyCg==
+      key3: dmFsdWUyCg==
 
 Services:
   - name: example-service
