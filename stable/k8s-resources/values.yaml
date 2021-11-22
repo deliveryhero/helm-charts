@@ -63,10 +63,12 @@ Secrets: []
   #   fullnameOverride: ""
   #   annotations: {}
   #   extraLabels: {}
+  #   tplB64Keys:
+  #     key1: '{{ print "https://%s:%s@%s" .Values.my.user .Values.my.pass .Values.my.host }}'
   #   b64Keys:
-  #     key1: value1
+  #     key2: value1
   #   keys:
-  #     key2: key2: dmFsdWUyCg==
+  #     key3: dmFsdWUyCg==
 
 # Services -- A list Service to create
 Services: []
