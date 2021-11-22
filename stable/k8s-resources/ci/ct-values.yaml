@@ -43,7 +43,7 @@ Secrets:
     annotations: {}
     extraLabels: {}
     tplB64Keys:
-      key1: '{{ .Values.Secrets[0].name }}'
+      key1: '{{ (index .Values.Secrets 0).name }}'
     b64Keys:
       key2: value1
     keys:
@@ -53,7 +53,7 @@ Secrets:
     annotations: {}
     extraLabels: {}
     tplB64Keys:
-      key1: '{{ .Values.Secrets[0].name }}'
+      key1: '{{ (index .Values.Secrets 0).name }}'
     b64Keys:
       key2: value1
     keys:
