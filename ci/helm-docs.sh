@@ -8,8 +8,8 @@ ALL_CHARTS=$(ls stable)
 
 # Create a copy of each README.md files before running helm-docs
 for chart in $ALL_CHARTS; do
-  mkdir -p .stable/$chart
-  cp stable/$chart/README.md .stable/$chart/README.md
+  mkdir -p ".stable/$chart"
+  cp "stable/$chart/README.md" ".stable/$chart/README.md"
 done
 
 # Run helm-docs to generate all README.md files from the template
@@ -19,10 +19,10 @@ helm-docs --log-level warning --template-files ./ci/README.md.gotmpl
 set +e
 for chart in $ALL_CHARTS; do
   echo "Checking stable/$chart/README.md..."
-  diff -s stable/$chart/README.md .stable/$chart/README.md > /dev/null
+  diff -s "stable/$chart/README.md" ".stable/$chart/README.md" > /dev/null
   if [ $? -eq 1 ]; then
     echo "🔴 Error: file stable/$chart/README.md needs to be updated: "
-    diff stable/$chart/README.md .stable/$chart/README.md
+    diff "stable/$chart/README.md" ".stable/$chart/README.md"
     echo "See main repo README.md for instructions"
     rm -rf .stable
     exit 1
