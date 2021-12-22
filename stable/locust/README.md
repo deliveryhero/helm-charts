@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.21.0](https://img.shields.io/badge/Version-0.21.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 0.21.1](https://img.shields.io/badge/Version-0.21.1-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -133,3 +133,4 @@ helm install my-release deliveryhero/locust -f values.yaml
 | Name | Email | Url |
 | ---- | ------ | --- |
 | max-rocket-internet | no-reply@deliveryhero.com |  |
+| Valerii Tatarin | bugaga1100@gmail.com |  |
