@@ -55,6 +55,7 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 | provider | string | `"eks"` |  |
 | resources | object | `{}` |  |
 | tolerations | list | `[]` |  |
+| concurrencyPolicy | string | `"Forbid"` |  |
 
 ## Maintainers
 
