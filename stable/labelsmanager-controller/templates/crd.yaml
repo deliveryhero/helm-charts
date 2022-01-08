@@ -24,8 +24,6 @@ spec:
     plural: labels
     singular: labels
   scope: Namespaced
-  subresources:
-    status: {}
   validation:
     openAPIV3Schema:
       description: Labels is the Schema for the labels API
@@ -61,9 +59,8 @@ spec:
               type: integer
           type: object
       type: object
-  version: v1beta1
   versions:
-  - name: v1beta1
+  - name: v1
     served: true
     storage: true
 status:
