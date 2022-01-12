@@ -7,8 +7,6 @@ icon: https://locust.io/static/img/logo.png
 maintainers:
 - name: max-rocket-internet
   email: no-reply@deliveryhero.com
-- name: Valerii Tatarin
-  email: bugaga1100@gmail.com
 description: |
   A chart to install Locust, a scalable load testing tool written in Python.
 
