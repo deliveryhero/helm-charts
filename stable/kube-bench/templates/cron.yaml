@@ -4,6 +4,7 @@ metadata:
   name: kube-bench
 spec:
   schedule: {{ quote .Values.cronjob.schedule }}
+  concurrencyPolicy: "{{ .Values.concurrencyPolicy }}"
   jobTemplate:
     spec:
       template:

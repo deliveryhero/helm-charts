@@ -12,3 +12,4 @@ resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
+concurrencyPolicy: Forbid
