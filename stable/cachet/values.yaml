@@ -41,12 +41,11 @@ resources:
 
 # creates cachet database via posgres-controller
 database:
-  create: false
   host: cachet-db.example.com
   port: 5432
   name: cachet
   username: cachet
-  instance_id: shared
+  password: ""
   driver: pssql
 
 env:
@@ -72,7 +71,6 @@ env:
   # Update all with your own values
   private:
     APP_KEY: ""
-    DB_PASSWORD: ""
     MAIL_USERNAME: ""
     MAIL_PASSWORD: ""
 
