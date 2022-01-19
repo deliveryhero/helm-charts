@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.2.9](https://img.shields.io/badge/Version-1.2.9-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -53,15 +53,13 @@ helm install my-release deliveryhero/cachet -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| database.create | bool | `false` |  |
 | database.driver | string | `"pssql"` |  |
 | database.host | string | `"cachet-db.example.com"` |  |
-| database.instance_id | string | `"shared"` |  |
 | database.name | string | `"cachet"` |  |
+| database.password | string | `""` |  |
 | database.port | int | `5432` |  |
 | database.username | string | `"cachet"` |  |
 | env.private.APP_KEY | string | `""` |  |
-| env.private.DB_PASSWORD | string | `""` |  |
 | env.private.MAIL_PASSWORD | string | `""` |  |
 | env.private.MAIL_USERNAME | string | `""` |  |
 | env.public.APP_DEBUG | bool | `false` |  |
