@@ -56,6 +56,8 @@ master:
     #   cpu: 1000m
     #   memory: 1024Mi
   serviceAccountAnnotations: {}
+  # master.deploymentAnnotations -- Annotations on the deployment for master
+  deploymentAnnotations: {}
   # master.envs_include_default -- Whether to include default environment variables
   envs_include_default: true
   # master.environment -- environment variables for the master
@@ -96,6 +98,8 @@ worker:
     #   cpu: 500m
     #   memory: 256Mi
   serviceAccountAnnotations: {}
+  # worker.deploymentAnnotations -- Annotations on the deployment for workers
+  deploymentAnnotations: {}
   # worker.envs_include_default -- Whether to include default environment variables
   envs_include_default: true
   # worker.environment -- environment variables for the workers

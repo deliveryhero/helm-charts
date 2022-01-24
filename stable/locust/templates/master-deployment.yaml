@@ -5,6 +5,10 @@ metadata:
   labels:
     component: master
 {{ include "locust.labels" . | indent 4 }}
+{{- with .Values.master.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   selector:
     matchLabels:

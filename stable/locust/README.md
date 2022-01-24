@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.21.1](https://img.shields.io/badge/Version-0.21.1-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 0.22.0](https://img.shields.io/badge/Version-0.22.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -96,6 +96,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.auth.username | string | `""` |  |
 | master.command[0] | string | `"sh"` |  |
 | master.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
+| master.deploymentAnnotations | object | `{}` | Annotations on the deployment for master |
 | master.environment | object | `{}` | environment variables for the master |
 | master.envs_include_default | bool | `true` | Whether to include default environment variables |
 | master.image | string | `""` | A custom docker image including tag |
@@ -115,6 +116,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.args | list | `[]` | Any extra command args for the workers |
 | worker.command[0] | string | `"sh"` |  |
 | worker.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
+| worker.deploymentAnnotations | object | `{}` | Annotations on the deployment for workers |
 | worker.environment | object | `{}` | environment variables for the workers |
 | worker.envs_include_default | bool | `true` | Whether to include default environment variables |
 | worker.hpa.enabled | bool | `false` |  |
