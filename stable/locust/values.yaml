@@ -77,6 +77,8 @@ master:
     enabled: false
     username: ""
     password: ""
+  # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
+  restartPolicy: Always
 
 worker:
   # worker.image -- A custom docker image including tag
@@ -111,6 +113,8 @@ worker:
     - /config/docker-entrypoint.sh
   strategy:
     type: RollingUpdate
+  # worker.restartPolicy -- worker pod's restartPolicy. Can be Always, OnFailure, or Never.
+  restartPolicy: Always
 
 nameOverride: ""
 fullnameOverride: ""

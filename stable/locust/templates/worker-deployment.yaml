@@ -118,7 +118,7 @@ spec:
 {{- end }}
 {{- end }}
 {{- end }}
-      restartPolicy: Always
+      restartPolicy: {{ .Values.worker.restartPolicy }}
       volumes:
         - name: lib
           configMap:

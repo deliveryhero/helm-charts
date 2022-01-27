@@ -142,7 +142,7 @@ spec:
                   value: Basic {{ printf "%s:%s" .Values.master.auth.username .Values.master.auth.password | b64enc }}
 {{- end }}
 {{- end }}
-      restartPolicy: Always
+      restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
         - name: lib
           configMap:
