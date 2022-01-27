@@ -4,6 +4,12 @@
 
 replicaCount: 1
 
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 10%
+    maxSurge: 25%
+
 image:
   repository: goelankit/cortex-gateway
   pullPolicy: IfNotPresent
