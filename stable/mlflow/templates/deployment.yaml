@@ -16,6 +16,7 @@ spec:
       labels:
         {{- include "mlflow.selectorLabels" . | nindent 8 }}
     spec:
+      {{ if .Values.serviceAccount.create }}serviceAccountName: {{ include "mlflow.fullname" . | quote }}{{ end }}
       securityContext:
         runAsUser: 0
       containers:
