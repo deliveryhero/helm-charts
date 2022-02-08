@@ -25,6 +25,10 @@ image:
   tag: ""
   # image.pullPolicy -- Container pull policy
   pullPolicy: IfNotPresent
+  # image.command -- Override container command
+  command: []
+  # image.args -- Override container args
+  args: []
 
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.

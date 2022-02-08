@@ -11,6 +11,8 @@
 {{- $priorityClassName := .Values.priorityClassOverprovision.name }}
 {{- $repository := .Values.image.repository }}
 {{- $imageTag := default .Chart.AppVersion .Values.image.tag }}
+{{- $imageCommand := .Values.image.command }}
+{{- $imageArgs := .Values.image.args }}
 {{- $pullPolicy := .Values.image.pullPolicy }}
 {{- $imagePullSecrets := .Values.image.pullSecrets }}
 {{- $serviceAccountName := include "cluster-overprovisioner.serviceAccountName" . -}}
@@ -61,6 +63,12 @@ spec:
           imagePullPolicy: {{ $pullPolicy }}
           resources:
             {{- toYaml .resources | nindent 12 }}
+          {{- with $imageCommand }}
+          command: {{ $imageCommand }}
+          {{- end }}
+          {{- with $imageArgs }}
+          args: {{ $imageArgs }}
+          {{- end }}
     {{- if $imagePullSecrets }}
       imagePullSecrets:
       {{- range $imagePullSecrets }}
