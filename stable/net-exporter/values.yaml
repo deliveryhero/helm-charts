@@ -38,3 +38,8 @@ NetExporter:
   DNSCheck:
     TCP:
       Disabled: false
+
+selector:
+  app: net-exporter
+
+additionalLabels: {}

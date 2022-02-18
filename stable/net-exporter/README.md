@@ -1,6 +1,6 @@
 # net-exporter
 
-![Version: 1.10.3](https://img.shields.io/badge/Version-1.10.3-informational?style=flat-square) ![AppVersion: 1.10.3](https://img.shields.io/badge/AppVersion-1.10.3-informational?style=flat-square)
+![Version: 1.10.4](https://img.shields.io/badge/Version-1.10.4-informational?style=flat-square) ![AppVersion: 1.10.3](https://img.shields.io/badge/AppVersion-1.10.3-informational?style=flat-square)
 
 Helm chart for net-exporter.
 
@@ -45,6 +45,7 @@ helm install my-release deliveryhero/net-exporter -f values.yaml
 | NetExporter.DNSCheck.TCP.Disabled | bool | `false` |  |
 | NetExporter.Hosts | string | `""` |  |
 | NetExporter.NTPServers | string | `""` |  |
+| additionalLabels | object | `{}` |  |
 | controlPlaneSubnets | list | `[]` |  |
 | daemonset.priorityClassName | string | `"system-node-critical"` |  |
 | dns.label | string | `"coredns"` |  |
@@ -60,6 +61,7 @@ helm install my-release deliveryhero/net-exporter -f values.yaml
 | kubectl.image.tag | string | `"1.18.8"` |  |
 | name | string | `"net-exporter"` |  |
 | port | int | `8000` |  |
+| selector.app | string | `"net-exporter"` |  |
 | serviceType | string | `"managed"` |  |
 | timeout | string | `"5s"` |  |
 | userID | int | `1000` |  |

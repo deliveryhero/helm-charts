@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: net-exporter
+  name: {{ .Values.name }}
   labels:
     {{- include "labels.common" . | nindent 4 }}
 rules:
@@ -11,7 +11,7 @@ rules:
   - services
   - endpoints
   resourceNames:
-  - net-exporter
+  - {{ .Values.name }}
   - {{ .Values.dns.service }}
   verbs:
   - get
@@ -44,14 +44,14 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: net-exporter
+  name: {{ .Values.name }}
   labels:
     {{- include "labels.common" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
-  name: net-exporter
+  name: {{ .Values.name }}
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
-  name: net-exporter
+  name: {{ .Values.name }}
   apiGroup: rbac.authorization.k8s.io
