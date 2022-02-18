@@ -1,7 +1,7 @@
 kind: DaemonSet
 apiVersion: apps/v1
 metadata:
-  name: net-exporter
+  name: {{ .Values.name }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "labels.common" . | nindent 4 }}
@@ -38,7 +38,7 @@ spec:
       ## In the TC, net-exporter runs on kube-system and so this is fine
       priorityClassName: {{ .Values.daemonset.priorityClassName }}
       containers:
-      - name: net-exporter
+      - name: {{ .Values.name }}
         image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         args:
           - "-namespace={{ .Release.Namespace }}"
@@ -73,7 +73,7 @@ spec:
             memory: 75Mi
           limits:
             memory: 150Mi
-      serviceAccountName: net-exporter
+      serviceAccountName: {{ .Values.name }}
       securityContext:
         runAsUser: {{ .Values.userID }}
         runAsGroup: {{ .Values.groupID }}
