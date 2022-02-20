@@ -54,12 +54,6 @@ spec:
 {{- if .Values.worker.args }}
           {{- toYaml .Values.worker.args | nindent 10 }}
 {{- end }}
-{{- if .Values.loadtest.tags }}
-          - --tags {{ .Values.loadtest.tags }}
-{{- end }}
-{{- if .Values.loadtest.excludeTags }}
-          - --exclude-tags {{ .Values.loadtest.excludeTags }}
-{{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.worker.resources | indent 10 }}
