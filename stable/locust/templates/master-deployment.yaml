@@ -60,6 +60,12 @@ spec:
 {{- if .Values.master.auth.enabled }}
           - --web-auth={{ .Values.master.auth.username }}:{{ .Values.master.auth.password }}
 {{- end }}
+{{- if .Values.loadtest.tags }}
+          - --tags {{ .Values.loadtest.tags }}
+{{- end }}
+{{- if .Values.loadtest.excludeTags }}
+          - --exclude-tags {{ .Values.loadtest.excludeTags }}
+{{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.master.resources | indent 10 }}
