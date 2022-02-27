@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.24.0](https://img.shields.io/badge/Version-0.24.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 0.25.0](https://img.shields.io/badge/Version-0.25.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -82,6 +82,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
 | loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
+| loadtest.locustCmd | string | `"/usr/local/bin/locust"` | The command to run Locust |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
 | loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
@@ -90,7 +91,6 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
-| loadtest.locustCmd | string | `"/usr/local/bin/locust"` | the command to run Locust                                                                                                                                                                                                                               |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
 | master.auth.password | string | `""` |  |
