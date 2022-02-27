@@ -14,4 +14,4 @@ data:
     pip install --user {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}
     {{- end }}
 
-    exec /usr/local/bin/locust $@
+    exec {{ .Values.loadtest.locustCmd }} $@

@@ -90,6 +90,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
+| loadtest.locustCmd | string | `"/usr/local/bin/locust"` | the command to run Locust                                                                                                                                                                                                                               |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
 | master.auth.password | string | `""` |  |
