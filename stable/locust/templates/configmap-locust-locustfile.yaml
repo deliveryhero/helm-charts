@@ -1,4 +1,4 @@
-{{- if eq .Values.loadtest.locust_locustfile_configmap "" }}
+{{- if eq .Values.loadtest.locust_locustfile_configmap "example" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
