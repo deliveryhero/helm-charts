@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "locust.fullname" . }}-locustfile
+  name: {{ .Values.loadtest.locust_locustfile_configmap }}
   labels:
 {{ include "locust.labels" . | indent 4 }}
 data:
