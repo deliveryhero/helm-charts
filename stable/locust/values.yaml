@@ -3,10 +3,12 @@ loadtest:
   name: example
   # loadtest.locust_locustfile -- the name of the locustfile
   locust_locustfile: main.py
-  # loadtest.locust_locustfile_configmap -- name of a configmap containing your locustfile
-  locust_locustfile_configmap: ""
-  # loadtest.locust_lib_configmap -- name of a configmap containing your lib
-  locust_lib_configmap: ""
+  # loadtest.locust_locustfile_path -- the path of the locustfile (without trailing backslash)
+  locust_locustfile_path: "/mnt/locust"
+  # loadtest.locust_locustfile_configmap -- name of a configmap containing your locustfile (default uses the example locustfile)
+  locust_locustfile_configmap: "example-locustfile"
+  # loadtest.locust_lib_configmap -- name of a configmap containing your lib (default uses the example lib)
+  locust_lib_configmap: "example-lib"
   # loadtest.locust_host -- the host you will load test
   locust_host: https://www.google.com
   # loadtest.pip_packages -- a list of extra python pip packages to install
