@@ -31,6 +31,8 @@ loadtest:
   tags: ""
   # loadtest.excludeTags -- whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed
   excludeTags: ""
+  # loadtest.locustCmd -- The command to run Locust
+  locustCmd: "/usr/local/bin/locust"
 
 image:
   repository: locustio/locust
