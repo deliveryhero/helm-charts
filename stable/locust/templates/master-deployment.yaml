@@ -157,12 +157,12 @@ spec:
         {{- if .Values.loadtest.locust_lib_configmap }}
         - name: lib
           configMap:
-            name: {{ template "locust.lib_configmap_name" . }}
+            name: {{ .Values.loadtest.locust_lib_configmap }}
         {{- end }}
-        {{- if .Values.loadtest.locust_locustfile_configmap}}
+        {{- if .Values.loadtest.locust_locustfile_configmap }}
         - name: locustfile
           configMap:
-            name: {{ template "locust.locustfile_configmap_name" . }}
+            name: {{ .Values.loadtest.locust_locustfile_configmap }}
         {{- end }}
         - name: config
           configMap:
