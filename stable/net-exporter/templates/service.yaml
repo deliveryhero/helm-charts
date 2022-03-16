@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+    giantswarm.io/monitoring: "true"
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/scheme: "http"
+spec:
+  ports:
+    - port: {{ .Values.port }}
+  selector:
+    {{- include "labels.selector" . | nindent 4 }}

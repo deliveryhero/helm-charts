@@ -1,0 +1,45 @@
+name: net-exporter
+serviceType: managed
+
+userID: 1000
+groupID: 1000
+
+port: 8000
+
+dns:
+  port: 1053
+  label: coredns
+  namespace: kube-system
+  service: coredns
+
+timeout: 5s
+
+image:
+  registry: docker.io
+  name: giantswarm/net-exporter
+  tag: "[[ .Version ]]"
+
+kubectl:
+  image:
+    registry: docker.io
+    name: giantswarm/docker-kubectl
+    tag: 1.18.8
+
+daemonset:
+  priorityClassName: system-node-critical
+
+# Control-plane subnets used to generate network policies
+# for managed applications.
+controlPlaneSubnets: []
+
+NetExporter:
+  Hosts: ""
+  NTPServers: ""
+  DNSCheck:
+    TCP:
+      Disabled: false
+
+selector:
+  app: net-exporter
+
+additionalLabels: {}

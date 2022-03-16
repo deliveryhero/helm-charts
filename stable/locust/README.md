@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.23.0](https://img.shields.io/badge/Version-0.23.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 0.26.0](https://img.shields.io/badge/Version-0.26.0-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -82,10 +82,12 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
 | loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
+| loadtest.locustCmd | string | `"/usr/local/bin/locust"` | The command to run Locust |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
-| loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib |
+| loadtest.locust_lib_configmap | string | `"example-lib"` | name of a configmap containing your lib (default uses the example lib) |
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
-| loadtest.locust_locustfile_configmap | string | `""` | name of a configmap containing your locustfile |
+| loadtest.locust_locustfile_configmap | string | `"example-locustfile"` | name of a configmap containing your locustfile (default uses the example locustfile) |
+| loadtest.locust_locustfile_path | string | `"/mnt/locust"` | the path of the locustfile (without trailing backslash) |
 | loadtest.mount_external_secret | object | `{}` | additional mount used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `mountPath: yourMountLocation, files: { secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY] }` |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |

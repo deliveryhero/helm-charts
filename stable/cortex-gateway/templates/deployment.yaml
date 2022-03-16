@@ -42,6 +42,7 @@ spec:
           - --gateway.distributor.address={{ .Values.args.distributorAddress }}
           - --gateway.query-frontend.address={{ .Values.args.queryfrontendAddress }}
           - --gateway.ruler.address={{ .Values.args.rulerAddress }}
+          - --gateway.alertmanager.address={{ .Values.args.alertmanagerAddress }}
           - --gateway.auth.jwt-secret={{ .Values.args.jwtSecret }}
           ports:
             - name: http

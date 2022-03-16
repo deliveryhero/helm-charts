@@ -1,0 +1,82 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      {{- include "labels.selector" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "labels.common" . | nindent 8 }}
+      annotations:
+        releaseRevision: {{ $.Release.Revision | quote }}
+    spec:
+      initContainers:
+      - name: label-kube-system-namespace
+        image: "{{ .Values.image.registry }}/{{ .Values.kubectl.image.name }}:{{ .Values.kubectl.image.tag }}"
+        args:
+        - label
+        - namespace
+        - kube-system
+        - name=kube-system
+        - --overwrite=true
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+      ## In our Control Plane net-exporter runs on monitoring ns
+      ## By design Kubernetes does not allow to run critical pods
+      ## having Priority Class like system-node-critical out of
+      ## the namespace kube-system
+      ##
+      ## In the TC, net-exporter runs on kube-system and so this is fine
+      priorityClassName: {{ .Values.daemonset.priorityClassName }}
+      containers:
+      - name: {{ .Values.name }}
+        image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        args:
+          - "-namespace={{ .Release.Namespace }}"
+          - "-timeout={{ .Values.timeout }}"
+          - "-dns-service={{ .Values.dns.service }}"
+          {{- if (.Values.NetExporter.Hosts) }}
+          - "-hosts={{ .Values.NetExporter.Hosts }}"
+          {{- end }}
+          {{- if (.Values.NetExporter.NTPServers) }}
+          - "-ntp-servers={{ .Values.NetExporter.NTPServers }}"
+          {{- end }}
+          {{- if (.Values.NetExporter.DNSCheck.TCP.Disabled) }}
+          - "-disable-dns-tcp-check={{ .Values.NetExporter.DNSCheck.TCP.Disabled }}"
+          {{- end }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+            scheme: HTTP
+          initialDelaySeconds: 5
+        resources:
+          # cpu limits removed so that throttling doesn't cause any unwanted
+          # side-effects to measurements.
+          requests:
+            cpu: 50m
+            memory: 75Mi
+          limits:
+            memory: 150Mi
+      serviceAccountName: {{ .Values.name }}
+      securityContext:
+        runAsUser: {{ .Values.userID }}
+        runAsGroup: {{ .Values.groupID }}
+      tolerations:
+      # Tolerate all taints for observability
+      - operator: "Exists"
