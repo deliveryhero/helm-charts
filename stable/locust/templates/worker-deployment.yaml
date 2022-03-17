@@ -14,7 +14,9 @@ spec:
     matchLabels:
       component: worker
       {{- include "locust.selectorLabels" . | nindent 6 }}
+{{- if not .Values.worker.hpa.enabled }}
   replicas: {{ .Values.worker.replicas }}
+{{- end }}
 {{- with .Values.worker.strategy }}
   strategy:
 {{ toYaml . | trim | indent 4 }}
