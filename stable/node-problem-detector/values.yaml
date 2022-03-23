@@ -101,6 +101,12 @@ metrics:
   serviceMonitor:
     enabled: false
     additionalLabels: {}
+  prometheusRule:
+    enabled: false
+    defaultRules:
+      create: true
+      disabled: []
+    additionalRules: []
 
 env:
 #  - name: FOO
