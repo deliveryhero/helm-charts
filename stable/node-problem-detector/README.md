@@ -64,6 +64,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
 | logDir.pod | string | `""` | log directory in pod (volume mount), use logDir.host if empty |
 | maxUnavailable | int | `1` | The max pods unavailable during an update |
+| metrics.annotations | object | `{}` |  |
 | metrics.enabled | bool | `false` |  |
 | metrics.prometheusRule.additionalRules | list | `[]` |  |
 | metrics.prometheusRule.defaultRules.create | bool | `true` |  |
