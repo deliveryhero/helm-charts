@@ -1,0 +1,13 @@
+{{- if .Values.PriorityClasses -}}
+{{- range .Values.PriorityClasses }}
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: {{ .name }}
+value: {{ .value }}
+preemptionPolicy: {{ .preemptionPolicy }}
+globalDefault: {{ .globalDefault}}
+description: {{ .description }}
+---
+{{- end }}
+{{- end }}
