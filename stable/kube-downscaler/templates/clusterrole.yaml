@@ -16,12 +16,19 @@ rules:
   - watch
   - list
 - apiGroups:
-  - extensions
   - apps
-  - autoscaling
   resources:
   - deployments
   - statefulsets
+  verbs:
+  - get
+  - watch
+  - list
+  - update
+  - patch
+- apiGroups:
+  - autoscaling
+  resources:
   - horizontalpodautoscalers
   verbs:
   - get
@@ -30,12 +37,25 @@ rules:
   - update
   - patch
 - apiGroups:
-  - ""
+  - batch
   resources:
-  - namespaces
+  - cronjobs
   verbs:
   - get
+  - watch
   - list
+  - update
+  - patch
+- apiGroups:
+  - zalando.org
+  resources:
+  - stacks
+  verbs:
+  - get
+  - watch
+  - list
+  - update
+  - patch
 - apiGroups:
   - ""
   resources:
