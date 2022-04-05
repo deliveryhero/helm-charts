@@ -60,14 +60,24 @@ spec:
 {{- if .Values.master.auth.enabled }}
           - --web-auth={{ .Values.master.auth.username }}:{{ .Values.master.auth.password }}
 {{- end }}
+{{- if .Values.loadtest.tags }}
+          - --tags {{ .Values.loadtest.tags }}
+{{- end }}
+{{- if .Values.loadtest.excludeTags }}
+          - --exclude-tags {{ .Values.loadtest.excludeTags }}
+{{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.master.resources | indent 10 }}
         volumeMounts:
+          {{- if .Values.loadtest.locust_locustfile_configmap}}
           - name: locustfile
-            mountPath: /mnt/locust
+            mountPath: "{{ .Values.loadtest.locust_locustfile_path }}"
+          {{- end }}
+          {{- if .Values.loadtest.locust_lib_configmap }}
           - name: lib
-            mountPath: /mnt/locust/lib
+            mountPath: "{{ .Values.loadtest.locust_locustfile_path }}/lib"
+          {{- end }}
           - name: config
             mountPath: /config
 {{- if .Values.extraConfigMaps }}
@@ -87,7 +97,7 @@ spec:
           - name: LOCUST_LOGLEVEL
             value: "{{ .Values.master.logLevel }}"
           - name: LOCUST_LOCUSTFILE
-            value: "/mnt/locust/{{ .Values.loadtest.locust_locustfile }}"
+            value: "{{ .Values.loadtest.locust_locustfile_path }}/{{ .Values.loadtest.locust_locustfile }}"
 {{- end }}
 {{- range $key, $value := .Values.loadtest.environment }}
           - name: {{ $key }}
@@ -144,12 +154,16 @@ spec:
 {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
+        {{- if .Values.loadtest.locust_lib_configmap }}
         - name: lib
           configMap:
-            name: {{ template "locust.lib_configmap_name" . }}
+            name: {{ .Values.loadtest.locust_lib_configmap }}
+        {{- end }}
+        {{- if .Values.loadtest.locust_locustfile_configmap }}
         - name: locustfile
           configMap:
-            name: {{ template "locust.locustfile_configmap_name" . }}
+            name: {{ .Values.loadtest.locust_locustfile_configmap }}
+        {{- end }}
         - name: config
           configMap:
             name: {{ template "locust.fullname" . }}-config

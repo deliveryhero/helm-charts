@@ -1,0 +1,181 @@
+{{- if and .Values.metrics.enabled .Values.metrics.prometheusRule.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ template "node-problem-detector.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
+    helm.sh/chart: {{ include "node-problem-detector.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  groups:
+    - name: {{ template "node-problem-detector.fullname" . }}.rules
+      rules:
+        {{- if .Values.metrics.prometheusRule.defaultRules.create }}
+        {{- if not (has "NodeProblemTaskHung" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemTaskHung
+          expr: increase(problem_counter{reason="TaskHung"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Task hung"
+            description: "Task hung in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemOOMKilling" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemOOMKilling
+          expr: increase(problem_counter{reason="OOMKilling"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Process Out-Of-Memory Killed"
+            description: "Process Out-Of-Memory Killed in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemUnregisterNetDevice" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemUnregisterNetDevice
+          expr: increase(problem_counter{reason="UnregisterNetDevice"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Unregister Network Device"
+            description: "Unable to unregister a network device in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemMemoryReadError" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemMemoryReadError
+          expr: increase(problem_counter{reason="MemoryReadError"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Memory Read Error"
+            description: "CE memory read error in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemKernelOops" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemKernelOops
+          expr: increase(problem_counter{reason="KernelOops"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Kernel oops"
+            description: "Kernel oops detected in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemIOError" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemIOError
+          expr: increase(problem_counter{reason="IOError"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Buffer I/O error"
+            description: "Buffer I/O error in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemFilesystemIsReadOnly" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemFilesystemIsReadOnly
+          expr: increase(problem_counter{reason="FilesystemIsReadOnly"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Filesystem is read only"
+            description: "Filesystem is read only in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemExt4Warning" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemExt4Warning
+          expr: increase(problem_counter{reason="Ext4Warning"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "EXT4-fs warning"
+            description: "EXT4-fs warning in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemExt4Error" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemExt4Error
+          expr: increase(problem_counter{reason="Ext4Error"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "EXT4-fs error"
+            description: "EXT4-fs error in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemDockerHung" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemDockerHung
+          expr: increase(problem_counter{reason="DockerHung"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Docker hung"
+            description: "Docker hung in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemDockerContainerStartupFailure" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemDockerContainerStartupFailure
+          expr: increase(problem_counter{reason="DockerContainerStartupFailure"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Docker container startup failure"
+            description: "Docker container startup failure in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemCorruptDockerOverlay2" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemCorruptDockerOverlay2
+          expr: increase(problem_counter{reason="CorruptDockerOverlay2"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Corrupt docker overlay2"
+            description: "Corrupt docker overlay2 in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemCorruptDockerImage" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemCorruptDockerImage
+          expr: increase(problem_counter{reason="CorruptDockerImage"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Corrupt docker image"
+            description: "Corrupt docker image in node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemGaugeCorruptDockerOverlay2" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemGaugeCorruptDockerOverlay2
+          expr: increase(problem_gauge{reason="CorruptDockerOverlay2",type="CorruptDockerOverlay2"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: critical
+          annotations:
+            summary: "Corrupt docker overlay2"
+            description: "Corrupt docker overlay2 is affecting node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemGaugeDockerHung" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemGaugeDockerHung
+          expr: increase(problem_gauge{reason="DockerHung",type="KernelDeadlock"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: critical
+          annotations:
+            summary: "Docker hung"
+            description: "Docker hung (Kernel deadlock) is affecting node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- if not (has "NodeProblemGaugeFilesystemIsReadOnly" .Values.metrics.prometheusRule.defaultRules.disabled | default false) }}
+        - alert: NodeProblemGaugeFilesystemIsReadOnly
+          expr: increase(problem_gauge{reason="FilesystemIsReadOnly",type="ReadonlyFilesystem"}[2m]) > 0
+          for: 1s
+          labels:
+            severity: critical
+          annotations:
+            summary: "Filesystem is read only"
+            description: "Read only filesystem is affecting node {{`{{`}} $labels.node {{`}}`}}"
+        {{- end }}
+        {{- end }}
+        {{- if .Values.metrics.prometheusRule.additionalRules }}
+{{- toYaml .Values.metrics.prometheusRule.additionalRules | nindent 8 }}
+        {{- end }}
+{{- end }}
