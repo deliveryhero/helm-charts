@@ -52,6 +52,7 @@ class KubecostReportsExporter:
         self.account_id = os.environ.get('ACCOUNT_CANONICAL_ID')
         self.tags = os.environ.get('TAGS', '')
         self.sentry_dsn = os.environ.get('SENTRY_DSN')
+        self.request_timeout = int(os.environ.get('REQUEST_TIMEOUT', '3000'))
 
         try:
             self.cluster_name = os.environ['CLUSTER_NAME']
@@ -91,7 +92,7 @@ class KubecostReportsExporter:
 
     def get_cost_report(self, url):
         try:
-            with urllib.request.urlopen(url, timeout=10) as f:
+            with urllib.request.urlopen(url, timeout=self.request_timeout) as f:
                 if f.getcode() != 200:
                     self.logger.error(
                         f"Error: Failed to reports from {self.cluster_name}")
