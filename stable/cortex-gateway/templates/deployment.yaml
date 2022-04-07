@@ -44,6 +44,9 @@ spec:
           - --gateway.ruler.address={{ .Values.args.rulerAddress }}
           - --gateway.alertmanager.address={{ .Values.args.alertmanagerAddress }}
           - --gateway.auth.jwt-secret={{ .Values.args.jwtSecret }}
+          - --gateway.auth.tenant-name={{ .Values.args.tenantName }}
+          - --gateway.auth.jwt-extra-headers={{ .Values.args.jwtExtraHeaders }}
+          - --gateway.auth.tenant-id-claim={{ .Values.args.tenantIdClaim }}
           ports:
             - name: http
               containerPort: 80
