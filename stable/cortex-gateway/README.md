@@ -46,7 +46,7 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | args.alertmanagerAddress | string | `"http://your_alertmanager_address_here"` |  |
 | args.distributorAddress | string | `"http://your_distributor_address_here"` |  |
 | args.jwtExtraHeaders | string | `""` |  |
-| args.jwtSecret | string | `""` |  |
+| args.jwtSecret | string | `"your_jwt_secret"` |  |
 | args.queryfrontendAddress | string | `"http://your_query_frontend_address_here"` |  |
 | args.rulerAddress | string | `"http://your_ruler_address_here"` |  |
 | args.tenantIdClaim | string | `""` |  |
