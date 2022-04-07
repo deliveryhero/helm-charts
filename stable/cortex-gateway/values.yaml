@@ -26,6 +26,9 @@ args:
   rulerAddress: "http://your_ruler_address_here"
   alertmanagerAddress: "http://your_alertmanager_address_here"
   jwtSecret: "your_jwt_secret"
+  tenantName: ""
+  jwtExtraHeaders: ""
+  tenantIdClaim: ""
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -1,6 +1,6 @@
 # cortex-gateway
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.5](https://img.shields.io/badge/AppVersion-1.0.5-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.1.0](https://img.shields.io/badge/AppVersion-v1.1.0-informational?style=flat-square)
 
 A Helm chart for cortex-gateway
 
@@ -45,9 +45,12 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 | affinity | object | `{}` |  |
 | args.alertmanagerAddress | string | `"http://your_alertmanager_address_here"` |  |
 | args.distributorAddress | string | `"http://your_distributor_address_here"` |  |
+| args.jwtExtraHeaders | string | `""` |  |
 | args.jwtSecret | string | `"your_jwt_secret"` |  |
 | args.queryfrontendAddress | string | `"http://your_query_frontend_address_here"` |  |
 | args.rulerAddress | string | `"http://your_ruler_address_here"` |  |
+| args.tenantIdClaim | string | `""` |  |
+| args.tenantName | string | `""` |  |
 | extraLabels | object | `{}` | Any extra labels to apply to all resources |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
