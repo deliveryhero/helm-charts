@@ -1,3 +1,7 @@
+# containerSecurityContext -- Container security context object
+containerSecurityContext: {}
+  # allowPrivilegeEscalation: false
+
 # podSecurityContext -- Pod security context object
 podSecurityContext: {}
   # fsGroup: 2000
