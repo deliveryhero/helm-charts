@@ -107,6 +107,7 @@ metrics:
     defaultRules:
       create: true
       disabled: []
+    additionalLabels: {}
     additionalRules: []
 
 env:
