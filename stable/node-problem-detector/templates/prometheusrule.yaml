@@ -8,6 +8,9 @@ metadata:
     helm.sh/chart: {{ include "node-problem-detector.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- if .Values.metrics.prometheusRule.additionalLabels }}
+    {{- toYaml .Values.metrics.prometheusRule.additionalLabels | nindent 4 }}
+    {{- end }}
   namespace: {{ .Release.Namespace }}
 spec:
   groups:
