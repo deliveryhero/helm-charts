@@ -1,6 +1,6 @@
 # listmonk
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
 
 A Helm chart for listmonk application
 
@@ -57,6 +57,7 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 | database.instance_id | string | `"shared"` |  |
 | database.name | string | `"listmonk"` |  |
 | database.password | string | `"CHANGEME"` |  |
+| database.upgrade | bool | `false` |  |
 | database.username | string | `"listmonk"` |  |
 | env.private.LISTMONK_app__admin_password | string | `"CHANGEME"` |  |
 | env.public.LISTMONK_app__address | string | `"0.0.0.0:9090"` |  |
