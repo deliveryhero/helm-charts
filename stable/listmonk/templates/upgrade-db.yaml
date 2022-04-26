@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "listmonk.fullname" . }}
+  name: {{ include "listmonk.fullname" . }}-upgrade
   labels:
     {{- include "listmonk.labels" . | nindent 4 }}
   annotations:
