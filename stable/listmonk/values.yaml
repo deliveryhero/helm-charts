@@ -89,6 +89,7 @@ podLabels: {}
 database:
   create: false
   init: false
+  upgrade: false
   host: listmonkdb.example.com
   name: listmonk
   username: listmonk
