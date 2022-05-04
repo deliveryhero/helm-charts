@@ -73,4 +73,12 @@ affinity: {}
 
 extraLabels: {}
 
-development_mode: true
+readinessProbe:
+  Enabled: true
+  path: /-/healthy
+  port: 8080
+
+livenessProbe:
+  Enabled: true
+  path: /-/healthy
+  port: 8080
