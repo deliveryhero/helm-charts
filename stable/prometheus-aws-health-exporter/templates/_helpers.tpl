@@ -46,3 +46,13 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{ toYaml .Values.extraLabels }}
 {{- end }}
 {{- end -}}
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "prometheus-aws-health-exporter.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}

@@ -1,6 +1,6 @@
 # prometheus-aws-health-exporter
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 AWS Health API Exporter for Prometheus
 
@@ -55,6 +55,7 @@ helm install my-release deliveryhero/prometheus-aws-health-exporter -f values.ya
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
@@ -64,6 +65,8 @@ helm install my-release deliveryhero/prometheus-aws-health-exporter -f values.ya
 | securityContext | object | `{}` |  |
 | service.port | int | `9383` |  |
 | service.type | string | `"ClusterIP"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers

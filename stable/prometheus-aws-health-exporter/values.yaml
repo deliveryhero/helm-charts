@@ -42,3 +42,8 @@ tolerations: []
 
 affinity: {}
 extraLabels: {}
+
+podAnnotations: {}
+serviceAccount:
+  create: true
+  annotations: {}

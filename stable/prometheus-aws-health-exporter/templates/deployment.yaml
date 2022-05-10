@@ -12,6 +12,10 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
         app.kubernetes.io/name: {{ include "prometheus-aws-health-exporter.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
@@ -22,6 +26,7 @@ spec:
     {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: {{ include "serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
