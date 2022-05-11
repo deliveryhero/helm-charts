@@ -1,6 +1,6 @@
 # prometheus-aws-health-exporter
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 AWS Health API Exporter for Prometheus
 
@@ -56,6 +56,7 @@ helm install my-release deliveryhero/prometheus-aws-health-exporter -f values.ya
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
+| podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
@@ -74,3 +75,4 @@ helm install my-release deliveryhero/prometheus-aws-health-exporter -f values.ya
 | Name | Email | Url |
 | ---- | ------ | --- |
 | max-rocket-internet | no-reply@deliveryhero.com |  |
+| javad-hajiani | no-reply@deliveryhero.com |  |

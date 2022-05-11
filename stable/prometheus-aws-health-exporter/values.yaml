@@ -47,3 +47,5 @@ podAnnotations: {}
 serviceAccount:
   create: true
   annotations: {}
+
+podLabels: {}
