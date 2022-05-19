@@ -13,8 +13,4 @@ description: |
  The local caching agent will query kube-dns service for cache misses of cluster hostnames ("cluster.local" suffix by default).[docs](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/)
 
  This helm chart works for both Kube-proxy setups (iptables or ipvs).
-
-  ```console
-  helm install -n kube-system node-local-dns deliveryhero/node-local-dns
-  ```
 version: 0.1.0
