@@ -3,7 +3,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.21.1"
 
-#Internal k8s internal domain
+# Internal k8s internal domain
 pillar_dns_domain: "cluster.local"
 
 # Main coredns service (kube-dns) ip, used on iptables-mode.

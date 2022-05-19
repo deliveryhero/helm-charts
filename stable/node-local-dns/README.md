@@ -1,15 +1,12 @@
 # node-local-dns
 
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square)
+
 A chart to install node-local-dns.
-
 NodeLocal DNSCache improves Cluster DNS performance by running a DNS caching agent on cluster nodes as a DaemonSet.
-
 In today's architecture, Pods in 'ClusterFirst' DNS mode reach out to a kube-dns serviceIP for DNS queries.
-
 This is translated to a kube-dns/CoreDNS endpoint via iptables rules added by kube-proxy.
-
 With this new architecture, Pods will reach out to the DNS caching agent running on the same node, thereby avoiding iptables DNAT rules and connection tracking.
-
 The local caching agent will query kube-dns service for cache misses of cluster hostnames ("cluster.local" suffix by default).[docs](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/)
 
 This helm chart works for both Kube-proxy setups (iptables or ipvs).
@@ -17,8 +14,6 @@ This helm chart works for both Kube-proxy setups (iptables or ipvs).
  ```console
  helm install -n kube-system node-local-dns deliveryhero/node-local-dns
  ```
-
-**Homepage:** <https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/>
 
 ## How to install this chart
 
@@ -56,20 +51,20 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| fullnameOverride | string | `""` |  |
 | image.repository | string | `"k8s.gcr.io/dns/k8s-dns-node-cache"` |  |
 | image.tag | string | `"1.21.1"` |  |
-| pillar_dns_domain | string | `"cluster.local"` | Internal k8s internal domain |
-| pillar_dns_server | string | `"172.20.0.10"` | Main coredns service (kube-dns) ip, used on iptables-mode |
-| pillar_local_dns | string | `"169.254.20.25"` | Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide |
 | nameOverride | string | `""` |  |
+| pillar_dns_domain | string | `"cluster.local"` |  |
+| pillar_dns_server | string | `"172.20.0.10"` |  |
+| pillar_local_dns | string | `"169.254.20.25"` |  |
+| podAnnotations | object | `{}` |  |
+| serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.annotations | object | `{}` | Any extra annotations to apply |
 | serviceAccount.name | string | `""` |  |
-| podAnnotations | object | `{}` | Any extra annotations to apply |
-
 
 ## Maintainers
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Gabriel Ferreira | no-reply@deliveryhero.com |  |
+| gabrieladt | no-reply@deliveryhero.com |  |

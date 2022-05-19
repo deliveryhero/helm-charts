@@ -1,7 +1,7 @@
 apiVersion: v2
 name: node-local-dns
 maintainers:
-- name: Gabriel Ferreira
+- name: gabrieladt
   email: no-reply@deliveryhero.com
 icon: https://miro.medium.com/max/641/1*q3vcbyVXcvaRnFLEQEHrXw.png
 description: |
