@@ -11,7 +11,7 @@ data:
     set -eu
 
     {{- if .Values.loadtest.pip_packages }}
-    pip install --user {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}
+    pip install {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}
     {{- end }}
 
     exec {{ .Values.loadtest.locustCmd }} $@
