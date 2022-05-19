@@ -1,0 +1,27 @@
+image:
+  repository: k8s.gcr.io/dns/k8s-dns-node-cache
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.21.1"
+
+# Internal k8s internal domain
+pillar_dns_domain: "cluster.local"
+
+# Main coredns service (kube-dns) ip, used on iptables-mode.
+pillar_dns_server: "172.20.0.10"
+
+# Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
+pillar_local_dns: "169.254.20.25"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created.
+  create: true
+  # Annotations to add to the service account.
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template.
+  name: ""
+
+podAnnotations: {}
