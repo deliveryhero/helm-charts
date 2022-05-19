@@ -68,7 +68,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.4.0"` |  |
+| image.tag | string | `"2.8.6"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
