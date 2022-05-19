@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "node-local-dns.fullname" . }}
+  namespace: kube-system
+  labels:
+    {{- include "node-local-dns.labels" . | nindent 4 }}
+spec:
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 10%
+  selector:
+    matchLabels:
+      k8s-app: {{ include "node-local-dns.name" . }}
+  template:
+    metadata:
+      labels:
+        k8s-app: {{ include "node-local-dns.name" . }}
+      annotations:
+        prometheus.io/port: "9253"
+        prometheus.io/scrape: "true"
+    spec:
+      priorityClassName: system-node-critical
+      serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
+      hostNetwork: true
+      dnsPolicy: Default  # Don't use cluster DNS.
+      tolerations:
+      - key: "CriticalAddonsOnly"
+        operator: "Exists"
+      - effect: "NoExecute"
+        operator: "Exists"
+      - effect: "NoSchedule"
+        operator: "Exists"
+      containers:
+      - name: node-cache
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+          requests:
+            cpu: 25m
+            memory: 5Mi
+        args: [ "-localip", "{{ .Values.pillar_local_dns }},{{ .Values.pillar_dns_server }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 53
+          name: dns
+          protocol: UDP
+        - containerPort: 53
+          name: dns-tcp
+          protocol: TCP
+        - containerPort: 9253
+          name: metrics
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            host: {{ .Values.pillar_local_dns }}
+            path: /health
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+        volumeMounts:
+        - mountPath: /run/xtables.lock
+          name: xtables-lock
+          readOnly: false
+        - name: config-volume
+          mountPath: /etc/coredns
+        - name: kube-dns-config
+          mountPath: /etc/kube-dns
+      volumes:
+      - name: xtables-lock
+        hostPath:
+          path: /run/xtables.lock
+          type: FileOrCreate
+      - name: kube-dns-config
+        configMap:
+          name: {{ include "node-local-dns.fullname" . }}
+          optional: true
+      - name: config-volume
+        configMap:
+          name: {{ include "node-local-dns.fullname" . }}
+          items:
+            - key: Corefile
+              path: Corefile.base
