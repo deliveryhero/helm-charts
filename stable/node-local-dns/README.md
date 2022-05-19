@@ -3,17 +3,14 @@
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square)
 
 A chart to install node-local-dns.
+
 NodeLocal DNSCache improves Cluster DNS performance by running a DNS caching agent on cluster nodes as a DaemonSet.
-In today's architecture, Pods in 'ClusterFirst' DNS mode reach out to a kube-dns serviceIP for DNS queries.
-This is translated to a kube-dns/CoreDNS endpoint via iptables rules added by kube-proxy.
-With this new architecture, Pods will reach out to the DNS caching agent running on the same node, thereby avoiding iptables DNAT rules and connection tracking.
-The local caching agent will query kube-dns service for cache misses of cluster hostnames ("cluster.local" suffix by default).[docs](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/)
 
-This helm chart works for both Kube-proxy setups (iptables or ipvs).
+In today's architecture, Pods in 'ClusterFirst' DNS mode reach out to a kube-dns serviceIP for DNS queries. This is translated to a kube-dns/CoreDNS endpoint via iptables rules added by kube-proxy. With this new architecture, Pods will reach out to the DNS caching agent running on the same node, thereby avoiding iptables DNAT rules and connection tracking. The local caching agent will query kube-dns service for cache misses of cluster hostnames ("cluster.local" suffix by default).
 
- ```console
- helm install -n kube-system node-local-dns deliveryhero/node-local-dns
- ```
+Further documentation is [here](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/)
+
+This helm chart works for both kube-proxy setups (iptables or ipvs).
 
 ## How to install this chart
 
