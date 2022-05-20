@@ -34,11 +34,11 @@ loadtest:
   # loadtest.excludeTags -- whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed
   excludeTags: ""
   # loadtest.locustCmd -- The command to run Locust
-  locustCmd: "/usr/local/bin/locust"
+  locustCmd: "/opt/venv/bin/locust"
 
 image:
   repository: locustio/locust
-  tag: 2.4.0
+  tag: 2.8.6
   pullPolicy: IfNotPresent
 
 service:
