@@ -1,4 +1,10 @@
 api_token: <change-me>
+  
+# `existingSecret` is an optional reference to an existing secret containing the api_token
+existingSecret:
+  secretName: ""
+  tokenKey: ""
+
 cluster_name: your-cluster-name
 
 replicaCount: 1

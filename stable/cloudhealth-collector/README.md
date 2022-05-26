@@ -1,6 +1,6 @@
 # cloudhealth-collector
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 957](https://img.shields.io/badge/AppVersion-957-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 957](https://img.shields.io/badge/AppVersion-957-informational?style=flat-square)
 
 Deploys a k8s pod to collect data and generate reports based or resources usages, costs and other possibilities. Please check more about it on: https://www.cloudhealthtech.com/solutions/containers
 
@@ -55,6 +55,8 @@ helm install my-release deliveryhero/cloudhealth-collector -f values.yaml
 | affinity | object | `{}` |  |
 | api_token | string | `"<change-me>"` |  |
 | cluster_name | string | `"your-cluster-name"` |  |
+| existingSecret.secretName | string | `""` |  |
+| existingSecret.tokenKey | string | `""` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
