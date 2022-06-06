@@ -69,6 +69,13 @@ Secrets: []
   #     key2: value1
   #   keys:
   #     key3: dmFsdWUyCg==
+  # - name: container-registry
+  #   type: kubernetes.io/dockerconfigjson
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   tplB64Keys:
+  #     .dockerconfigjson: '{{ printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .registry (printf "%s:%s" .username .password | b64enc) }}'
 
 # Services -- A list Service to create
 Services: []
