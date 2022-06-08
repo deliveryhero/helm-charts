@@ -33,7 +33,7 @@ spec:
             {{- end }}
           {{- with .jobAnnotations }}
           annotations:
-            {{- toYaml . | nindent 4 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
         spec:
           serviceAccountName: {{ .serviceAccountName | default "null" }}
