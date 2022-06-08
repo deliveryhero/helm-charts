@@ -31,6 +31,10 @@ spec:
             {{- with .extraLabels }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
+          {{- with .job_annotations }}
+          annotations:
+            {{- toYaml . | nindent 4 }}
+          {{- end }}
         spec:
           serviceAccountName: {{ .serviceAccountName | default "null" }}
           restartPolicy: {{ .restartPolicy | default "Never" }}
