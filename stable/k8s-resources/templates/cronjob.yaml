@@ -17,13 +17,13 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  suspend: {{ default .suspend "false" }}
+  suspend: {{ .suspend | default "false" }}
   schedule: {{ .schedule }}
-  concurrencyPolicy: {{ default .concurrencyPolicy "Forbid" }}
-  startingDeadlineSeconds: {{ default .startingDeadlineSeconds 120 }}
+  concurrencyPolicy: {{ .concurrencyPolicy | default "Forbid" }}
+  startingDeadlineSeconds: {{ .startingDeadlineSeconds | default 120 }}
   jobTemplate:
     spec:
-      backoffLimit: {{ default .backoffLimit 6 }}
+      backoffLimit: {{ .backoffLimit | default 6 }}
       template:
         metadata:
           labels:
@@ -32,8 +32,8 @@ spec:
               {{- toYaml . | nindent 12 }}
             {{- end }}
         spec:
-          serviceAccountName: {{ default .serviceAccountName "null" }}
-          restartPolicy: {{ default .restartPolicy "Never" }}
+          serviceAccountName: {{ .serviceAccountName | default "null" }}
+          restartPolicy: {{ .restartPolicy | default "Never" }}
           containers:
             {{- with .containers }}
               {{- toYaml . | nindent 12 }}
