@@ -31,7 +31,7 @@ spec:
             {{- with .extraLabels }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
-          {{- with .job_annotations }}
+          {{- with .jobAnnotations }}
           annotations:
             {{- toYaml . | nindent 4 }}
           {{- end }}
