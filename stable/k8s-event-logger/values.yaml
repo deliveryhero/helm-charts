@@ -1,6 +1,6 @@
 image:
   repository: maxrocketinternet/k8s-event-logger
-  tag: "1.5"
+  tag: "1.6"
   pullPolicy: IfNotPresent
 
 resources:
