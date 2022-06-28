@@ -13,7 +13,7 @@ Return the appropriate apiVersion for cronjob APIs.
 Return appropriate command given the provider
 */}}
 {{- define "cronjob.command" -}} 
-{{- if .Values.command (not (haskey .Values "command")) -}}
+{{- if .Values.cronjob.command (not (haskey .Values.cronjob "command")) -}}
 {{- if .Values.proivider (not (haskey .Values "provider")) -}}
 ["kube-bench"]
 {{- else if eq "gke" .Values.provider -}}
