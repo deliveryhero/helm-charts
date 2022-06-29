@@ -48,6 +48,7 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | concurrencyPolicy | string | `"Forbid"` |  |
+| cronjob.command | list | `[]` |  |
 | cronjob.schedule | string | `"0 0 1 * *"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"aquasec/kube-bench"` |  |
