@@ -71,6 +71,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 {{- end }}
 
-{{- define "superset.database.uri" -}}
+{{- define "superset.database.address" -}}
 {{- printf "%s:%v/%s" .Values.superset.database.hostname .Values.superset.database.port .Values.superset.database.name }}
 {{- end }}

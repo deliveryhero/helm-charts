@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.10](https://img.shields.io/badge/Version-1.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -90,6 +90,7 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.configMountPath | string | `"/app/pythonpath"` |  |
 | superset.containerPort | int | `8088` |  |
 | superset.database.create | bool | `false` |  |
+| superset.database.engine | string | `"postgresql+psycopg2"` |  |
 | superset.database.hostname | string | `""` |  |
 | superset.database.init | bool | `true` |  |
 | superset.database.instanceID | string | `""` |  |
@@ -105,7 +106,9 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.podAnnotations | object | `{}` |  |
 | superset.redis.brokerDbIndex | int | `1` |  |
 | superset.redis.cacheDbIndex | int | `0` |  |
+| superset.redis.default_timeout | int | `300` |  |
 | superset.redis.hostname | string | `""` |  |
+| superset.redis.key_prefix | string | `"superset_"` |  |
 | superset.redis.password | string | `""` |  |
 | superset.redis.port | int | `6379` |  |
 | superset.replicas | int | `1` |  |
