@@ -16,6 +16,7 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 5000
+  # service.loadBalancerSourceRanges -- Specifies source IP ranges which are allowed to access service with `LoadBalancer` type
   loadBalancerSourceRanges: []
 
 serviceAccount:
