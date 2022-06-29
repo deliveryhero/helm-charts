@@ -1,7 +1,0 @@
-master:
-  nodeSelector:
-    role: fake-services
-  tolerations: []
-  affinity: {}
-nodeSelector:
-  role: locust
