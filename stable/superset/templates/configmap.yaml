@@ -11,56 +11,14 @@ data:
   {{- end}}
 
   superset_config.py: |-
-    import os
-    from cachelib.redis import RedisCache
-  {{- if .Values.superset.oidc.enabled}}
-    {{ .Values.superset.oidc.imports | nindent 4 }}
-  {{- end }}
+    {{- include "superset_config_variables" . | nindent 4 }}
+    {{- .Files.Get "files/superset_config.py" | nindent 4  }}
+    {{- if .Values.superset.oidc.enabled }}
+      {{- .Values.superset.oidc.imports | nindent 4 }}
+      {{- .Values.superset.oidc.config | nindent 4 }}
+    {{ end }}
+    {{- .Values.superset.extraConfig | nindent 4 }}
 
-    def env(key, default=None):
-      return os.getenv(key, default)
-
-    MAPBOX_API_KEY = env('MAPBOX_API_KEY', '')
-
-    CACHE_CONFIG = {
-      'CACHE_TYPE': 'redis',
-      'CACHE_DEFAULT_TIMEOUT': 300,
-      'CACHE_KEY_PREFIX': 'superset_',
-      'CACHE_REDIS_HOST': {{ .Values.superset.redis.hostname | quote }},
-      'CACHE_REDIS_PORT': {{ .Values.superset.redis.port | quote}},
-      'CACHE_REDIS_DB': {{ .Values.superset.redis.cacheDbIndex | quote }},
-      'CACHE_REDIS_URL': f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.cacheDbIndex}}"
-    }
-
-    DATA_CACHE_CONFIG = CACHE_CONFIG
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{env('DB_USERNAME')}:{env('DB_PASSWORD')}@{{ include "superset.database.uri" . }}"
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SECRET_KEY = env('SECRET_KEY', '')
-    # Flask-WTF flag for CSRF
-    WTF_CSRF_ENABLED = True
-    # Add endpoints that need to be exempt from CSRF protection
-    WTF_CSRF_EXEMPT_LIST = []
-    # A CSRF token that expires in 1 year
-    WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
-
-    class CeleryConfig(object):
-      BROKER_URL = f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.brokerDbIndex}}"
-      CELERY_IMPORTS = ('superset.sql_lab', )
-      CELERY_RESULT_BACKEND = f"redis://{{ include "superset.redis.uri" . }}/{{.Values.superset.redis.brokerDbIndex}}"
-      CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
-
-    CELERY_CONFIG = CeleryConfig
-
-    RESULTS_BACKEND = RedisCache(
-      host={{ .Values.superset.redis.hostname | quote }},
-      port={{ .Values.superset.redis.port | quote }},
-      key_prefix='superset_results'
-    )
-
-{{- if .Values.superset.oidc.enabled}}
-  {{ .Values.superset.oidc.config | nindent 4 }}
-{{- end }}
-{{ .Values.superset.extraConfig | nindent 4 }}
-{{- if .Values.extraConfigmapData}}
-{{- toYaml .Values.extraConfigmapData | nindent 2 }}
-{{- end }}
+  {{- if .Values.extraConfigmapData }}
+    {{- toYaml .Values.extraConfigmapData | nindent 2 }}
+  {{ end }}
