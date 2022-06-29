@@ -32,12 +32,15 @@ superset:
     imports: ""
   replicas: 1
   redis:
+    default_timeout: 300
+    key_prefix: superset_
     password: ""
     hostname: ""
     port: 6379
     brokerDbIndex: 1
     cacheDbIndex: 0
   database:
+    engine: "postgresql+psycopg2"
     init: true
     create: false
     instanceID: ""
