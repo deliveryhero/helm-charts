@@ -83,6 +83,9 @@ master:
     password: ""
   # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
 
 worker:
   # worker.image -- A custom docker image including tag
