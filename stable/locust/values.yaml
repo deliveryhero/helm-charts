@@ -83,8 +83,11 @@ master:
     password: ""
   # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
+  # master.nodeSelector -- Overwrites nodeSelector from global
   nodeSelector: {}
+  # master.tolerations -- Overwrites tolerations from global
   tolerations: []
+  # master.affinity -- Overwrites affinity from global
   affinity: {}
 
 worker:

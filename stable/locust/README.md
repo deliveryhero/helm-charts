@@ -92,7 +92,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
-| master.affinity | object | `{}` |  |
+| master.affinity | object | `{}` | Overwrites affinity from global |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
 | master.auth.password | string | `""` |  |
@@ -104,13 +104,13 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.envs_include_default | bool | `true` | Whether to include default environment variables |
 | master.image | string | `""` | A custom docker image including tag |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
-| master.nodeSelector | object | `{}` |  |
+| master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
 | master.resources | object | `{}` | resources for the locust master |
 | master.restartPolicy | string | `"Always"` | master pod's restartPolicy. Can be Always, OnFailure, or Never. |
 | master.serviceAccountAnnotations | object | `{}` |  |
 | master.strategy.type | string | `"RollingUpdate"` |  |
-| master.tolerations | list | `[]` |  |
+| master.tolerations | list | `[]` | Overwrites tolerations from global |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
