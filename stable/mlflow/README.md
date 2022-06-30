@@ -75,6 +75,7 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | mlflow.s3.path | string | `"s3://mlflow"` |  |
 | mlflow.tolerations | list | `[]` |  |
 | nameOverride | string | `""` |  |
+| service.annotations | object | `{}` |  |
 | service.loadBalancerSourceRanges | list | `[]` | Specifies source IP ranges which are allowed to access service with `LoadBalancer` type |
 | service.port | int | `80` |  |
 | service.targetPort | int | `5000` |  |
