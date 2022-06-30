@@ -30,6 +30,12 @@ superset:
     enabled: false
     config: ""
     imports: ""
+  oauth2:
+    okta:
+      enabled: false
+      default_self_registration_role: Gamma
+      token_key_name: access_token
+      default_admin_emails: []
   replicas: 1
   redis:
     default_timeout: 300
