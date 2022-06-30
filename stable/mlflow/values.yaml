@@ -16,6 +16,9 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 5000
+  annotations: {}
+  # service.loadBalancerSourceRanges -- Specifies source IP ranges which are allowed to access service with `LoadBalancer` type
+  loadBalancerSourceRanges: []
 
 serviceAccount:
   # serviceAccount.create -- Specifies whether a service account should be created. If true, mlflow.fullname template is used as name.
