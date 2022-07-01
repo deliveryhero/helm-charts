@@ -27,6 +27,7 @@ spec:
               "mlflow",
               "server",
               "--host", "0.0.0.0",
+              "--port", "{{ .Values.service.targetPort }}",
               "--default-artifact-root", "{{ .Values.mlflow.s3.path }}",
               "--backend-store-uri", '{{ include "mlflow.database.uri" . }}'
           ]
