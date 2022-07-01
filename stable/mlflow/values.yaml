@@ -19,6 +19,9 @@ service:
   annotations: {}
   # service.loadBalancerSourceRanges -- Specifies source IP ranges which are allowed to access service with `LoadBalancer` type
   loadBalancerSourceRanges: []
+  https:
+    enable: false
+    port: 443
 
 serviceAccount:
   # serviceAccount.create -- Specifies whether a service account should be created. If true, mlflow.fullname template is used as name.

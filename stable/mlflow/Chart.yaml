@@ -6,7 +6,7 @@ description: |
   This Helm chart is using Postgresql as backend and S3 as artifact store.
   Contributions for other backends and artifacts store are welcome.
 type: application
-version: 1.0.7
+version: 1.0.8
 home: https://www.mlflow.org/
 icon: https://www.mlflow.org/docs/latest/_static/MLflow-logo-final-black.png
 appVersion: "1.9.1"
