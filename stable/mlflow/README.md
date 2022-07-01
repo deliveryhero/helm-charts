@@ -1,6 +1,6 @@
 # mlflow
 
-![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
+![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
 
@@ -76,6 +76,8 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 | mlflow.tolerations | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | service.annotations | object | `{}` |  |
+| service.https.enable | bool | `false` |  |
+| service.https.port | int | `443` |  |
 | service.loadBalancerSourceRanges | list | `[]` | Specifies source IP ranges which are allowed to access service with `LoadBalancer` type |
 | service.port | int | `80` |  |
 | service.targetPort | int | `5000` |  |
