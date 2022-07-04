@@ -21,3 +21,10 @@ results_backend_host = cache_redis_host
 results_backend_port = cache_redis_port
 results_backend_key_prefix = "superset_results"
 {{ end }}
+
+
+{{- define "okta_variables" -}}
+default_self_registration_role = {{ .Values.superset.oauth2.okta.default_self_registration_role | quote }}
+provider_token_key_name = {{ .Values.superset.oauth2.okta.token_key_name | quote }}
+default_admin_emails = {{ toPrettyJson .Values.superset.oauth2.okta.default_admin_emails }}
+{{ end }}

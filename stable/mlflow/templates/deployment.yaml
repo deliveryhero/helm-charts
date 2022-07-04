@@ -27,15 +27,16 @@ spec:
               "mlflow",
               "server",
               "--host", "0.0.0.0",
+              "--port", "{{ .Values.service.targetPort }}",
               "--default-artifact-root", "{{ .Values.mlflow.s3.path }}",
-              "--backend-store-uri", "{{ include "mlflow.database.uri" . }}"
+              "--backend-store-uri", '{{ include "mlflow.database.uri" . }}'
           ]
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
             initialDelaySeconds: 20
             periodSeconds: 3
@@ -44,7 +45,7 @@ spec:
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
             initialDelaySeconds: 600
             periodSeconds: 5

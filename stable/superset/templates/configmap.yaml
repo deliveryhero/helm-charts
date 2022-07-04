@@ -16,6 +16,9 @@ data:
     {{- if .Values.superset.oidc.enabled }}
       {{- .Values.superset.oidc.imports | nindent 4 }}
       {{- .Values.superset.oidc.config | nindent 4 }}
+    {{- else if .Values.superset.oauth2.okta.enabled }}
+      {{- include "okta_variables" . | nindent 4 }}
+      {{- .Files.Get "files/okta.py" | nindent 4 }}
     {{ end }}
     {{- .Values.superset.extraConfig | nindent 4 }}
 
