@@ -1,6 +1,6 @@
 # kube-bench
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square)
 
 Helm chart to deploy run kube-bench as a cronjob on gke or eks.
 
@@ -48,6 +48,7 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | concurrencyPolicy | string | `"Forbid"` |  |
+| cronjob.command | list | `[]` |  |
 | cronjob.schedule | string | `"0 0 1 * *"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"aquasec/kube-bench"` |  |
