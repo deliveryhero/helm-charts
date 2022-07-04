@@ -1,11 +1,12 @@
 import os
+from typing import List
 
 from superset.security import SupersetSecurityManager
 from flask_appbuilder.security.manager import AUTH_OAUTH
 
 default_self_registration_role: str
 provider_token_key_name: str
-default_admin_emails: list[str]
+default_admin_emails: List[str]
 
 AUTH_TYPE = AUTH_OAUTH
 AUTH_USER_REGISTRATION = True
