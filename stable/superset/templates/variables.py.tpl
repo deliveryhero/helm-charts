@@ -24,8 +24,6 @@ results_backend_key_prefix = "superset_results"
 
 
 {{- define "okta_variables" -}}
-import os
-
 default_self_registration_role = {{ .Values.superset.oauth2.okta.default_self_registration_role | quote }}
 provider_token_key_name = {{ .Values.superset.oauth2.okta.token_key_name | quote }}
 default_admin_emails = {{ toPrettyJson .Values.superset.oauth2.okta.default_admin_emails }}
