@@ -26,6 +26,10 @@ ingress:
   tls: []
 
 superset:
+  # Is it behind a reverse proxy that serves https?
+  # Strictly accepts true or false, not yes or no.
+  # See: https://superset.apache.org/docs/installation/configuring-superset/#configuration-behind-a-load-balancer
+  enable_proxy_fix: true
   oidc:
     enabled: false
     config: ""
@@ -33,7 +37,6 @@ superset:
   oauth2:
     okta:
       enabled: false
-      default_self_registration_role: Gamma
       token_key_name: access_token
       default_admin_emails: []
   replicas: 1

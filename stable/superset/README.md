@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.0.12](https://img.shields.io/badge/Version-1.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.13](https://img.shields.io/badge/Version-1.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -98,10 +98,10 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.database.password | string | `""` |  |
 | superset.database.port | int | `5432` |  |
 | superset.database.username | string | `""` |  |
+| superset.enable_proxy_fix | bool | `true` |  |
 | superset.extraConfig | string | `""` |  |
 | superset.nodeSelector | object | `{}` |  |
 | superset.oauth2.okta.default_admin_emails | list | `[]` |  |
-| superset.oauth2.okta.default_self_registration_role | string | `"Gamma"` |  |
 | superset.oauth2.okta.enabled | bool | `false` |  |
 | superset.oauth2.okta.token_key_name | string | `"access_token"` |  |
 | superset.oidc.config | string | `""` |  |
