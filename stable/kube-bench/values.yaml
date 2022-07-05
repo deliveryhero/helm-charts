@@ -9,6 +9,12 @@ image:
   tag: 0.4.0
   pullPolicy: IfNotPresent
 
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+
 resources: {}
 nodeSelector: {}
 tolerations: []
