@@ -85,3 +85,8 @@ helm install my-release deliveryhero/metabase -f values.yaml
 | timeZone | string | `"UTC"` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | no-reply@deliveryhero.com |  |
