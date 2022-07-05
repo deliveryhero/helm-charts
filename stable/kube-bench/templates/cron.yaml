@@ -9,6 +9,9 @@ spec:
     spec:
       template:
         spec:
+          {{- if .Values.serviceAccount.create }}
+          serviceAccountName: kube-bench
+          {{- end }}
           hostPID: true
           restartPolicy: Never
           containers:
