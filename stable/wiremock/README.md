@@ -1,6 +1,6 @@
 # wiremock
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
 
 A service virtualization tool (some call it mock server) for testing purposes.
 
@@ -139,9 +139,11 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | image.tag | string | `"2.26.0"` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.block_admin | bool | `true` | Whether to create an Ingress configuration snippet to block access to the admin API (recommended) |
+| ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` | whether to create an Ingress |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths[0] | string | `"/"` |  |
+| ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
 | init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
 | init.image.tag | string | `"latest"` | the docker image tag for the init container image |
