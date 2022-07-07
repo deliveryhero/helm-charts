@@ -28,7 +28,6 @@ ingress:
   enabled: false
   # ingress.block_admin -- Whether to create an Ingress configuration snippet to block access to the admin API (recommended)
   block_admin: true
-  # 
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
