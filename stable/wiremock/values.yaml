@@ -24,19 +24,17 @@ pdb:
   enabled: false
 
 ingress:
-  # ingress.enabled -- whether to create an Ingress
   enabled: false
-  # ingress.block_admin -- Whether to create an Ingress configuration snippet to block access to the admin API (recommended)
-  block_admin: true
+  className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/ingress.class: nginx-public
     # kubernetes.io/tls-acme: "true"
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   hosts:
     - host: chart-example.local
       paths:
-        - /
+        - path: /
+          pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
