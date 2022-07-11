@@ -1,0 +1,55 @@
+{{ $fullname := include "dregsy.fullname" . }}
+{{ $labels := include "dregsy.labels" . }}
+{{ $serviceAccountName := include "dregsy.serviceAccountName" . }}
+
+{{- if .Values.dregsy.cron.enabled }}
+{{- range .Values.dregsy.config.tasks }}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ $fullname  }}-{{ .name }}
+  labels:
+    {{- $labels | nindent 4 }}
+spec:
+  schedule: {{ $.Values.dregsy.cron.schedule | quote }}
+  successfulJobsHistoryLimit: {{ $.Values.dregsy.cron.successfulJobsHistoryLimit }}
+  concurrencyPolicy: {{ $.Values.dregsy.cron.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          {{- with $.Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels:
+            {{- $labels | nindent 12 }}
+        spec:
+          {{- with $.Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          securityContext:
+            {{- toYaml $.Values.podSecurityContext | nindent 12 }}
+          serviceAccountName: {{ $serviceAccountName }}
+          containers:
+            - name: {{ $.Chart.Name }}
+              securityContext:
+                {{- toYaml $.Values.securityContext | nindent 16 }}
+              image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              command: ['dregsy', '-config=/config/config.yaml']
+              resources:
+                {{- toYaml $.Values.resources | nindent 16 }}
+              volumeMounts:
+                - name: {{ $fullname }}
+                  mountPath: /config
+                  readOnly: true
+          volumes:
+            - name: {{ $fullname }}
+              secret:
+                secretName: {{ $fullname }}
+          restartPolicy: {{ $.Values.dregsy.cron.restartPolicy }}
+{{- end }}
+{{- end }}

@@ -55,71 +55,78 @@ tolerations: []
 
 affinity: {}
 
-config:
-  # relay type, either 'skopeo' or 'docker'
-  relay: skopeo
+dregsy:
+  cron:
+    enabled: false
+    schedule: "@daily"
+    restartPolicy: OnFailure
+    successfulJobsHistoryLimit: 1
+    concurrencyPolicy: Forbid
+  config:
+    # relay type, either 'skopeo' or 'docker'
+    relay: skopeo
 
-  # relay config sections
-  skopeo:
-    # path to the skopeo binary; defaults to 'skopeo', in which case it needs to
-    # be in PATH
-    binary: skopeo
-    # directory under which to look for client certs & keys, as well as CA certs
-    # (see note below)
-    certs-dir: /etc/skopeo/certs.d
+    # relay config sections
+    skopeo:
+      # path to the skopeo binary; defaults to 'skopeo', in which case it needs to
+      # be in PATH
+      binary: skopeo
+      # directory under which to look for client certs & keys, as well as CA certs
+      # (see note below)
+      certs-dir: /etc/skopeo/certs.d
 
-  # settings for image matching (see below)
-  lister:
-    # maximum number of repositories to list, set to -1 for no limit, defaults to 100
-    maxItems: 100
-    # for how long a repository list will be re-used before retrieving again;
-    # specify as a Go duration value ('s', 'm', or 'h'), set to -1 for not caching,
-    # defaults to 1h
-    cacheDuration: 24h
+    # settings for image matching (see below)
+    lister:
+      # maximum number of repositories to list, set to -1 for no limit, defaults to 100
+      maxItems: 100
+      # for how long a repository list will be re-used before retrieving again;
+      # specify as a Go duration value ('s', 'm', or 'h'), set to -1 for not caching,
+      # defaults to 1h
+      cacheDuration: 24h
 
-  # list of sync tasks
-  tasks: []
+    # list of sync tasks
+    tasks:
 
-    # - name: task1 # required
+      # - name: task1 # required
 
-    #   # interval in seconds at which the task should be run; when omitted,
-    #   # the task is only run once at start-up
-    #   interval: 60
+      #   # interval in seconds at which the task should be run; when omitted,
+      #   # the task is only run once at start-up
+      #   interval: 60
 
-    #   # determines whether for this task, more verbose output should be
-    #   # produced; defaults to false when omitted
-    #   verbose: true
+      #   # determines whether for this task, more verbose output should be
+      #   # produced; defaults to false when omitted
+      #   verbose: true
 
-    #   # 'source' and 'target' are both required and describe the source and
-    #   # target registries for this task:
-    #   #  - 'registry' points to the server; required
-    #   #  - 'auth' contains the base64 encoded credentials for the registry
-    #   #    in JSON form {"username": "...", "password": "..."}
-    #   #  - 'auth-refresh' specifies an interval for automatic retrieval of
-    #   #    credentials; only for AWS ECR (see below)
-    #   #  - 'skip-tls-verify' determines whether to skip TLS verification for the
-    #   #    registry server (only for 'skopeo', see note below); defaults to false
-    #   source:
-    #     registry: source-registry.acme.com
-    #     auth: eyJ1c2VybmFtZSI6ICJhbGV4IiwgInBhc3N3b3JkIjogInNlY3JldCJ9Cg==
-    #   target:
-    #     registry: dest-registry.acme.com
-    #     auth: eyJ1c2VybmFtZSI6ICJhbGV4IiwgInBhc3N3b3JkIjogImFsc29zZWNyZXQifQo=
-    #     skip-tls-verify: true
+      #   # 'source' and 'target' are both required and describe the source and
+      #   # target registries for this task:
+      #   #  - 'registry' points to the server; required
+      #   #  - 'auth' contains the base64 encoded credentials for the registry
+      #   #    in JSON form {"username": "...", "password": "..."}
+      #   #  - 'auth-refresh' specifies an interval for automatic retrieval of
+      #   #    credentials; only for AWS ECR (see below)
+      #   #  - 'skip-tls-verify' determines whether to skip TLS verification for the
+      #   #    registry server (only for 'skopeo', see note below); defaults to false
+      #   source:
+      #     registry: source-registry.acme.com
+      #     auth: eyJ1c2VybmFtZSI6ICJhbGV4IiwgInBhc3N3b3JkIjogInNlY3JldCJ9Cg==
+      #   target:
+      #     registry: dest-registry.acme.com
+      #     auth: eyJ1c2VybmFtZSI6ICJhbGV4IiwgInBhc3N3b3JkIjogImFsc29zZWNyZXQifQo=
+      #     skip-tls-verify: true
 
-    #   # 'mappings' is a list of 'from':'to' pairs that define mappings of image
-    #   # paths in the source registry to paths in the destination:
-    #   #  - 'from' is required, while 'to' can be dropped if the path should remain
-    #   #     the same as 'from'.
-    #   #  - Regular expressions are supported in both fields (read on below for
-    #   #    more details).
-    #   #  - The tags being synced for a mapping can be limited by providing a 'tags'
-    #   #    list. This list may contain semver and regular expressions filters
-    #   #    (see below). When omitted, all image tags are synced.
-    #   #  - With 'platform', the image to sync from a multi-platform source image
-    #   #    can be selected (see below).
-    #   mappings:
-    #     - from: test/image
-    #       to: archive/test/image
-    #       tags: ['0.1.0', '0.1.1']
-    #     - from: test/another-image
+      #   # 'mappings' is a list of 'from':'to' pairs that define mappings of image
+      #   # paths in the source registry to paths in the destination:
+      #   #  - 'from' is required, while 'to' can be dropped if the path should remain
+      #   #     the same as 'from'.
+      #   #  - Regular expressions are supported in both fields (read on below for
+      #   #    more details).
+      #   #  - The tags being synced for a mapping can be limited by providing a 'tags'
+      #   #    list. This list may contain semver and regular expressions filters
+      #   #    (see below). When omitted, all image tags are synced.
+      #   #  - With 'platform', the image to sync from a multi-platform source image
+      #   #    can be selected (see below).
+      #   mappings:
+      #     - from: test/image
+      #       to: archive/test/image
+      #       tags: ['0.1.0', '0.1.1']
+      #     - from: test/another-image
