@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.5](https://img.shields.io/badge/Version-0.5-informational?style=flat-square) ![AppVersion: 22.2.0](https://img.shields.io/badge/AppVersion-22.2.0-informational?style=flat-square)
+![Version: 0.5.1](https://img.shields.io/badge/Version-0.5.1-informational?style=flat-square) ![AppVersion: 22.2.0](https://img.shields.io/badge/AppVersion-22.2.0-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -76,9 +76,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | resources.limits.memory | string | `"200Mi"` |  |
 | resources.requests.cpu | string | `"50m"` |  |
 | resources.requests.memory | string | `"200Mi"` |  |
-| securityContext.readOnlyRootFilesystem | bool | `true` |  |
-| securityContext.runAsNonRoot | bool | `true` |  |
-| securityContext.runAsUser | int | `1000` |  |
+| securityContext | object | `{}` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
