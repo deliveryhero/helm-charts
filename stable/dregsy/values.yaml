@@ -23,10 +23,12 @@ serviceAccount:
 podAnnotations: {}
 podLables: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -56,6 +58,10 @@ tolerations: []
 affinity: {}
 
 dregsy:
+  logLevel: info
+  logFormat: json
+  logForceColors: false
+  logMethods: false
   cron:
     enabled: false
     schedule: "@daily"
@@ -86,6 +92,7 @@ dregsy:
 
     # list of sync tasks
     tasks:
+      []
 
       # - name: task1 # required
 

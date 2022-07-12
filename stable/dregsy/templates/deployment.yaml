@@ -41,6 +41,9 @@ spec:
             - name: {{ include "dregsy.fullname" . }}
               mountPath: /config
               readOnly: true
+          envFrom:
+            - configMapRef:
+                name: {{ include "dregsy.fullname" . }}
       volumes:
         - name: {{ include "dregsy.fullname" . }}
           secret:

@@ -39,13 +39,16 @@ spec:
                 {{- toYaml $.Values.securityContext | nindent 16 }}
               image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
               imagePullPolicy: {{ $.Values.image.pullPolicy }}
-              command: ['dregsy', '-config=/config/config.yaml']
+              command: ['dregsy', '-config=/config/config.yaml', '-run={{ .name }}']
               resources:
                 {{- toYaml $.Values.resources | nindent 16 }}
               volumeMounts:
                 - name: {{ $fullname }}
                   mountPath: /config
                   readOnly: true
+              envFrom:
+                - configMapRef:
+                    name: {{ $fullname }}
           volumes:
             - name: {{ $fullname }}
               secret:

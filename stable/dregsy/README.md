@@ -57,12 +57,16 @@ helm install my-release deliveryhero/dregsy -f values.yaml
 | dregsy.config.relay | string | `"skopeo"` |  |
 | dregsy.config.skopeo.binary | string | `"skopeo"` |  |
 | dregsy.config.skopeo.certs-dir | string | `"/etc/skopeo/certs.d"` |  |
-| dregsy.config.tasks | string | `nil` |  |
+| dregsy.config.tasks | list | `[]` |  |
 | dregsy.cron.concurrencyPolicy | string | `"Forbid"` |  |
 | dregsy.cron.enabled | bool | `false` |  |
 | dregsy.cron.restartPolicy | string | `"OnFailure"` |  |
 | dregsy.cron.schedule | string | `"@daily"` |  |
 | dregsy.cron.successfulJobsHistoryLimit | int | `1` |  |
+| dregsy.logForceColors | bool | `false` |  |
+| dregsy.logFormat | string | `"json"` |  |
+| dregsy.logLevel | string | `"info"` |  |
+| dregsy.logMethods | bool | `false` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"xelalex/dregsy"` |  |
