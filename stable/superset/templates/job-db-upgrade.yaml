@@ -27,6 +27,11 @@ spec:
         envFrom:
           - secretRef:
               name: {{ include "superset.fullname" . }}
+        env:
+          {{- range $key, $value := .Values.env }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
         command:
           - superset
           - db
