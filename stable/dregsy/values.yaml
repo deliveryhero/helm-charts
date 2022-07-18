@@ -27,8 +27,7 @@ podSecurityContext:
   {}
   # fsGroup: 2000
 
-securityContext:
-  {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -36,13 +35,7 @@ securityContext:
   # runAsNonRoot: true
   # runAsUser: 1000
 
-resources:
-  requests:
-    cpu: 10m
-    memory: 32Mi
-  limits:
-    cpu: 10m
-    memory: 32Mi
+resources: {}
 
 autoscaling:
   enabled: false
@@ -91,8 +84,7 @@ dregsy:
       cacheDuration: 24h
 
     # list of sync tasks
-    tasks:
-      []
+    tasks: []
 
       # - name: task1 # required
 

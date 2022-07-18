@@ -1,6 +1,6 @@
 # dregsy
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.3](https://img.shields.io/badge/AppVersion-0.4.3-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.3](https://img.shields.io/badge/AppVersion-0.4.3-informational?style=flat-square)
 
 Dregsy lets you sync Docker images between registries, public or private through defined sync tasks can be invoked as one-off or periodic task.
 
@@ -77,10 +77,7 @@ helm install my-release deliveryhero/dregsy -f values.yaml
 | podAnnotations | object | `{}` |  |
 | podLables | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| resources.limits.cpu | string | `"10m"` |  |
-| resources.limits.memory | string | `"32Mi"` |  |
-| resources.requests.cpu | string | `"10m"` |  |
-| resources.requests.memory | string | `"32Mi"` |  |
+| resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
