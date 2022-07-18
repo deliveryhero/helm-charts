@@ -37,10 +37,10 @@ resources:
     cpu: 50m
     memory: 200Mi
 
-securityContext:
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+securityContext: {}
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 extraLabels: {}
 
