@@ -127,6 +127,7 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | consumer.name | string | `"example"` | a name used for resources and settings in this WireMock |
 | consumer.stubs | object | `{}` | `ConfigMap`s with WireMock stubs `mappings` and/or `__files` folders. |
 | deploymentAnnotations | object | `{}` |  |
+| serviceAnnotations | object | `{}` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | hpa.cputhreshold | int | `40` |  |
