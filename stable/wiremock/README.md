@@ -1,6 +1,6 @@
 # wiremock
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
 
 A service virtualization tool (some call it mock server) for testing purposes.
 
@@ -127,7 +127,6 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | consumer.name | string | `"example"` | a name used for resources and settings in this WireMock |
 | consumer.stubs | object | `{}` | `ConfigMap`s with WireMock stubs `mappings` and/or `__files` folders. |
 | deploymentAnnotations | object | `{}` |  |
-| serviceAnnotations | object | `{}` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | hpa.cputhreshold | int | `40` |  |
@@ -164,6 +163,7 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | resources.requests.memory | string | `"3Gi"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
+| serviceAnnotations | object | `{}` |  |
 | strategy.type | string | `"RollingUpdate"` |  |
 | tolerations | list | `[]` |  |
 
