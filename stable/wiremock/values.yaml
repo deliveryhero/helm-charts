@@ -46,6 +46,7 @@ ingress:
 nameOverride: ""
 fullnameOverride: ""
 deploymentAnnotations: {}
+serviceAnnotations: {}
 podAnnotations: {}
 extraLabels: {}
 nodeSelector: {}
