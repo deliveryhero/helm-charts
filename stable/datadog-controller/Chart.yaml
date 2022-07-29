@@ -18,9 +18,9 @@ description: |
     type: "query alert"
     message: Service my-service has a high error rate on env:stg
   ```
-version: "1.0"
+version: "1.1"
 appVersion: "0.1"
-home: https://github.com/deliveryhero/datadog-controller
+home: https://github.com/max-rocket-internet/datadog-controller
 maintainers:
 - name: max-rocket-internet
   email: max.williams@deliveryhero.com
@@ -31,4 +31,4 @@ keywords:
 - datadog
 - controller
 sources:
-- https://github.com/deliveryhero/datadog-controller
+- https://github.com/max-rocket-internet/datadog-controller
