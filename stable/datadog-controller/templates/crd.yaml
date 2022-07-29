@@ -17,7 +17,6 @@ spec:
     plural: datadogmonitors
     singular: datadogmonitor
   scope: Namespaced
-  version: v1beta1
   versions:
   - name: v1beta1
     served: true
@@ -26,15 +25,15 @@ spec:
     - name: Status
       type: string
       description: The status of the monitor
-      JSONPath: .status.status
+      jsonPath: .status.status
     - name: Id
       type: string
       description: The ID in Datadog
-      JSONPath: .status.id
+      jsonPath: .status.id
     - name: Url
       type: string
       description: The monitor URL in Datadog
-      JSONPath: .status.url
+      jsonPath: .status.url
     schema:
       openAPIV3Schema:
         description: DatadogMonitor is the Schema for the datadogmonitors API
