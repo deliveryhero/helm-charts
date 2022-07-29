@@ -1,6 +1,6 @@
 # datadog-controller
 
-![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square) ![AppVersion: 0.1](https://img.shields.io/badge/AppVersion-0.1-informational?style=flat-square)
+![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 0.1](https://img.shields.io/badge/AppVersion-0.1-informational?style=flat-square)
 
 This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) to allow [Datadog Monitors](https://docs.datadoghq.com/monitors/) to be created, updated or deleted from custom resources in Kubernetes.
 
@@ -20,7 +20,7 @@ spec:
   message: Service my-service has a high error rate on env:stg
 ```
 
-**Homepage:** <https://github.com/deliveryhero/datadog-controller>
+**Homepage:** <https://github.com/max-rocket-internet/datadog-controller>
 
 ## How to install this chart
 
@@ -56,7 +56,7 @@ helm install my-release deliveryhero/datadog-controller -f values.yaml
 
 ## Source Code
 
-* <https://github.com/deliveryhero/datadog-controller>
+* <https://github.com/max-rocket-internet/datadog-controller>
 
 ## Values
 
