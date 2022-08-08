@@ -24,7 +24,7 @@ rbac:
 
 image:
   repository: hjacobs/kube-downscaler
-  tag: 21.2.0
+  tag: "22.2.0"
   pullPolicy: IfNotPresent
   args: []
     # - --include-resources=deployments,cronjobs
