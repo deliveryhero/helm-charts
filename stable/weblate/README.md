@@ -1,6 +1,6 @@
 # weblate
 
-![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
 
 Free web-based translation management system.
 
@@ -46,7 +46,7 @@ helm install my-release deliveryhero/weblate -f values.yaml
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 9.1.4 |
+| https://charts.bitnami.com/bitnami | bitnami/postgresql | 9.1.4 |
 | https://charts.bitnami.com/bitnami | redis | 11.1.0 |
 
 ## Values

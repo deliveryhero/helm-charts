@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -47,7 +47,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 9.1.4 |
+| https://charts.bitnami.com/bitnami | bitnami/postgresql | 9.1.4 |
 
 ## Values
 
