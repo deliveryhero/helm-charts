@@ -90,6 +90,8 @@ Services: []
   #     - port: 80
   #       targetPort: 8080
   #       protocol: TCP
+  #   loadBalancerSourceRanges:
+  #    - 0.0.0.0/0
 
 # ServiceAccounts -- A list ServiceAccount to create
 ServiceAccounts: []

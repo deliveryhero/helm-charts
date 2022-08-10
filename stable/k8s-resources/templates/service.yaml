@@ -18,6 +18,10 @@ metadata:
   {{- end }}
 spec:
   type: {{ .type }}
+{{- if .loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+    {{- toYaml .loadBalancerSourceRanges | nindent 2 }}
+{{- end }}
   ports:
     {{- toYaml .ports | nindent 2 }}
   selector:
