@@ -47,7 +47,7 @@ helm install my-release deliveryhero/cachet -f values.yaml
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | bitnami/postgresql | 9.1.4 |
+| https://charts.bitnami.com/bitnami | postgresql | 11.6.26 |
 
 ## Values
 
