@@ -24,7 +24,8 @@ rbac:
 
 image:
   repository: hjacobs/kube-downscaler
-  tag: "22.2.0"
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
   pullPolicy: IfNotPresent
   args: []
     # - --include-resources=deployments,cronjobs

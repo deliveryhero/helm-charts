@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.5.2](https://img.shields.io/badge/Version-0.5.2-informational?style=flat-square) ![AppVersion: 22.2.0](https://img.shields.io/badge/AppVersion-22.2.0-informational?style=flat-square)
+![Version: 0.5.3](https://img.shields.io/badge/Version-0.5.3-informational?style=flat-square) ![AppVersion: 22.2.0](https://img.shields.io/badge/AppVersion-22.2.0-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -56,7 +56,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | image.args | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"hjacobs/kube-downscaler"` |  |
-| image.tag | string | `"22.2.0"` |  |
+| image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | interval | int | `60` |  |
 | nameOverride | string | `""` |  |
