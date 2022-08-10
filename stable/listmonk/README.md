@@ -42,12 +42,6 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 
 * <https://github.com/knadh/listmonk>
 
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 11.6.26 |
-
 ## Values
 
 | Key | Type | Default | Description |

@@ -31,9 +31,3 @@ sources:
 maintainers:
   - name: javad-hajiani
     email: no-reply@deliveryhero.com
-
-dependencies:
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.6.26
-  condition: postgresql.enable
