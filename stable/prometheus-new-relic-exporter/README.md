@@ -74,4 +74,4 @@ helm install my-release deliveryhero/prometheus-new-relic-exporter -f values.yam
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |

@@ -64,4 +64,4 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| gabrieladt | no-reply@deliveryhero.com |  |
+| gabrieladt | <no-reply@deliveryhero.com> |  |

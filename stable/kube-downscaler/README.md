@@ -83,4 +83,4 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| hjacobs |  | https://codeberg.org/hjacobs |
+| hjacobs |  | <https://codeberg.org/hjacobs> |

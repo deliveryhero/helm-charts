@@ -85,4 +85,4 @@ helm install my-release deliveryhero/pg-repack-scheduler -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |
+| max-rocket-internet | <max.williams@deliveryhero.com> |  |

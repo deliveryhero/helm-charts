@@ -66,4 +66,4 @@ helm install my-release deliveryhero/backstage-mono -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | no-reply@deliveryhero.com |  |
+| goelankitt | <no-reply@deliveryhero.com> |  |

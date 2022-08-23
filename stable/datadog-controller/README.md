@@ -95,4 +95,4 @@ helm install my-release deliveryhero/datadog-controller -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |
+| max-rocket-internet | <max.williams@deliveryhero.com> |  |

@@ -69,4 +69,4 @@ helm install my-release deliveryhero/hoppscotch -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | no-reply@deliveryhero.com |  |
+| javad-hajiani | <no-reply@deliveryhero.com> |  |

@@ -64,4 +64,4 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | no-reply@deliveryhero.com |  |
+| goelankitt | <no-reply@deliveryhero.com> |  |

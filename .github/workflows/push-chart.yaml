@@ -10,7 +10,7 @@ jobs:
     name: Push to Chartmuseum
     runs-on: ubuntu-latest
     container:
-      image: alpine/helm:3.3.0
+      image: alpine/helm:3.9.3
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2

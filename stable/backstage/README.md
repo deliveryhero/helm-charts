@@ -185,5 +185,5 @@ helm install my-release deliveryhero/backstage -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | no-reply@deliveryhero.com |  |
-| nyambati | no-reply@deliveryhero.com |  |
+| javad-hajiani | <no-reply@deliveryhero.com> |  |
+| nyambati | <no-reply@deliveryhero.com> |  |
