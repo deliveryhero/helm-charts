@@ -1,4 +1,5 @@
 postgresql:
+  postgresqlHost: weblate-postgres
   fullnameOverride: weblate-postgres
   global:
     postgresql:
