@@ -12,10 +12,13 @@ env:
     MAIL_ADDRESS: _
 
 postgresql:
-  enabled: true
   fullnameOverride: cachet-postgresql
-  postgresqlDatabase: cachet
-  postgresqlUsername: cachet
-  postgresqlPassword: cachet
-  persistence:
-    enabled: false
+  global:
+    postgresql:
+      auth:
+        username: cachet
+        password: cachet
+        database: cachet
+  primary:
+    persistence:
+      enabled: false
