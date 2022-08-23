@@ -1,7 +1,7 @@
 apiVersion: v1
 appVersion: "957"
 name: cloudhealth-collector
-version: 0.1.3
+version: 0.1.3.1
 description: |
   Deploys a k8s pod to collect data and generate reports based or resources usages, costs and other possibilities. Please check more about it on: https://www.cloudhealthtech.com/solutions/containers
 
