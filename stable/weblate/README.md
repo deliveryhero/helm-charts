@@ -117,4 +117,4 @@ helm install my-release deliveryhero/weblate -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| sietevecesmal | no-reply@deliveryhero.com |  |
+| sietevecesmal | <no-reply@deliveryhero.com> |  |

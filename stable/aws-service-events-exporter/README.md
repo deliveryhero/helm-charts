@@ -79,5 +79,5 @@ helm install my-release deliveryhero/aws-service-events-exporter -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | no-reply@deliveryhero.com |  |
-| javad-hajiani | no-reply@deliveryhero.com |  |
+| nyambati | <no-reply@deliveryhero.com> |  |
+| javad-hajiani | <no-reply@deliveryhero.com> |  |

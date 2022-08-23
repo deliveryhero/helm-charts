@@ -72,4 +72,4 @@ helm install my-release deliveryhero/prometheus-spot-termination-exporter -f val
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| sietevecesmal | no-reply@deliveryhero.com |  |
+| sietevecesmal | <no-reply@deliveryhero.com> |  |

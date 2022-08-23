@@ -91,5 +91,5 @@ helm install my-release deliveryhero/cluster-overprovisioner -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | max.williams@deliveryhero.com |  |
-| mmingorance-dh | miguel.mingorance@deliveryhero.com |  |
+| max-rocket-internet | <max.williams@deliveryhero.com> |  |
+| mmingorance-dh | <miguel.mingorance@deliveryhero.com> |  |

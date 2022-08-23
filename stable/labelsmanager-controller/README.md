@@ -88,4 +88,4 @@ helm install my-release deliveryhero/labelsmanager-controller -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | thomas.nyambati@deliveryhero.com |  |
+| nyambati | <thomas.nyambati@deliveryhero.com> |  |

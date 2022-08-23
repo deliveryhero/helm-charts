@@ -82,4 +82,4 @@ helm install my-release deliveryhero/prometheus-new-relic-app-exporter -f values
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |
