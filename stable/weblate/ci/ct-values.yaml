@@ -4,9 +4,8 @@ postgresql:
   global:
     postgresql:
       auth:
-        username: postgres
+        username: weblate
         password: weblate
-        postgresPassword: weblate
         database: weblate
   primary:
     persistence:
