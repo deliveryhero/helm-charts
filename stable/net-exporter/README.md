@@ -70,4 +70,4 @@ helm install my-release deliveryhero/net-exporter -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pciang |  | https://github.com/pciang |
+| pciang |  | <https://github.com/pciang> |

@@ -75,4 +75,4 @@ helm install my-release deliveryhero/prometheus-aws-costs-exporter -f values.yam
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |

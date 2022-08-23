@@ -171,4 +171,4 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mshero | no-reply@deliveryhero.com |  |
+| mshero | <no-reply@deliveryhero.com> |  |

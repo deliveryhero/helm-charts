@@ -75,4 +75,4 @@ helm install my-release deliveryhero/prometheus-cloudflare-exporter -f values.ya
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | no-reply@deliveryhero.com |  |
+| javad-hajiani | <no-reply@deliveryhero.com> |  |

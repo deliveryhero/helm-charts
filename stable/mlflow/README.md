@@ -89,4 +89,4 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mkuhn | magdalena.kuhn@deliveryhero.com | https://github.com/lena-kuhn |
+| mkuhn | <magdalena.kuhn@deliveryhero.com> | <https://github.com/lena-kuhn> |

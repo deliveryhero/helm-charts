@@ -103,4 +103,4 @@ helm install my-release deliveryhero/cachet -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | no-reply@deliveryhero.com |  |
+| nyambati | <no-reply@deliveryhero.com> |  |

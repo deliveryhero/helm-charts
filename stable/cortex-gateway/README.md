@@ -80,4 +80,4 @@ helm install my-release deliveryhero/cortex-gateway -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | no-reply@deliveryhero.com |  |
+| goelankitt | <no-reply@deliveryhero.com> |  |

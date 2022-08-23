@@ -106,4 +106,4 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nreymundo | no-reply@deliveryhero.com |  |
+| nreymundo | <no-reply@deliveryhero.com> |  |

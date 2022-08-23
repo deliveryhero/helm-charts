@@ -93,4 +93,4 @@ helm install my-release deliveryhero/listmonk -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | no-reply@deliveryhero.com |  |
+| javad-hajiani | <no-reply@deliveryhero.com> |  |

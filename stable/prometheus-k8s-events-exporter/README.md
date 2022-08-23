@@ -79,4 +79,4 @@ helm install my-release deliveryhero/prometheus-k8s-events-exporter -f values.ya
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |

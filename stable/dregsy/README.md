@@ -88,4 +88,4 @@ helm install my-release deliveryhero/dregsy -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | no-reply@deliveryhero.com |  |
+| nyambati | <no-reply@deliveryhero.com> |  |

@@ -75,4 +75,4 @@ helm install my-release deliveryhero/aws-s3-proxy -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |

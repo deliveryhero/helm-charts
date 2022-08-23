@@ -89,4 +89,4 @@ helm install my-release deliveryhero/prometheus-soti-mobicontrol-exporter -f val
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | no-reply@deliveryhero.com |  |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |
