@@ -13,5 +13,10 @@ postgresql:
 
 redis:
   fullnameOverride: weblate-redis
+  redisHost: weblate-redis-master
+  replica:
+    replicaCount: 1
+      persistence:
+        enabled: false
   auth:
     enabled: false
