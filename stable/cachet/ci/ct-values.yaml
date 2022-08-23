@@ -5,17 +5,20 @@ env:
     DB_USERNAME: cachet
 
   private:
-    APP_KEY: 32_character_string_is_require
+    APP_KEY: 32_character_string_is_required_
     DB_PASSWORD: cachet
     MAIL_USERNAME: _
     MAIL_PASSWORD: _
     MAIL_ADDRESS: _
 
 postgresql:
-  enabled: true
   fullnameOverride: cachet-postgresql
-  postgresqlDatabase: cachet
-  postgresqlUsername: cachet
-  postgresqlPassword: cachet
-  persistence:
-    enabled: false
+  global:
+    postgresql:
+      auth:
+        username: cachet
+        password: cachet
+        database: cachet
+  primary:
+    persistence:
+      enabled: false

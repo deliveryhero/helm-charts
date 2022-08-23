@@ -1,23 +1,22 @@
 postgresql:
-  enabled: true
-  fullnameOverride: weblate-postgres
   postgresqlHost: weblate-postgres
-  postgresqlDatabase: weblate
-  postgresqlUsername: postgres
-  postgresqlPassword: weblate
-  persistence:
-    enabled: false
+  fullnameOverride: weblate-postgres
+  global:
+    postgresql:
+      auth:
+        username: weblate
+        password: weblate
+        database: weblate
+  primary:
+    persistence:
+      enabled: false
 
 redis:
-  enabled: true
   fullnameOverride: weblate-redis
-  usePassword: false
   redisHost: weblate-redis-master
-  cluster:
+  replica:
+    replicaCount: 1
+    persistence:
+      enabled: false
+  auth:
     enabled: false
-  securityContext:
-    enabled: true
-    fsGroup: 2000
-  containerSecurityContext:
-    enabled: true
-    runAsUser: 0

@@ -1,6 +1,6 @@
 # kube-bench
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square)
 
 Helm chart to deploy run kube-bench as a cronjob on gke or eks.
 
