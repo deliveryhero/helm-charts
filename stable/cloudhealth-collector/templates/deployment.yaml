@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "cloudhealth-collector.labels" . | nindent 4 }}
   {{- with .Values.deploymentAnnotations }}
-    annotations:
-      {{- toYaml . | nindent 6 }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
 
 spec:
