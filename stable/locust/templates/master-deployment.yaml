@@ -14,7 +14,7 @@ spec:
     matchLabels:
       component: master
       {{- include "locust.selectorLabels" . | nindent 6 }}
-  replicas: 1
+  replicas: {{ .Values.master.replicas }}
 {{- with .Values.master.strategy }}
   strategy:
 {{ toYaml . | trim | indent 4 }}

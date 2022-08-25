@@ -51,6 +51,8 @@ master:
   image: ""
   # master.logLevel -- Log level. Can be INFO or DEBUG
   logLevel: INFO
+  # master.replicas -- Should be set to either 0 or 1.
+  replicas: 1
   # master.resources -- resources for the locust master
   resources: {}
     # limits:
