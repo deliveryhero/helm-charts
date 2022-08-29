@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.28.0](https://img.shields.io/badge/Version-0.28.0-informational?style=flat-square) ![AppVersion: 2.11.0](https://img.shields.io/badge/AppVersion-2.11.0-informational?style=flat-square)
+![Version: 0.29.0](https://img.shields.io/badge/Version-0.29.0-informational?style=flat-square) ![AppVersion: 2.11.0](https://img.shields.io/badge/AppVersion-2.11.0-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -106,6 +106,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
+| master.replicas | int | `1` | Should be set to either 0 or 1. |
 | master.resources | object | `{}` | resources for the locust master |
 | master.restartPolicy | string | `"Always"` | master pod's restartPolicy. Can be Always, OnFailure, or Never. |
 | master.serviceAccountAnnotations | object | `{}` |  |
