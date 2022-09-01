@@ -34,7 +34,6 @@ spec:
         {{- end}}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/custom-config-configmap.yaml") . | sha256sum }}
-        scheduler.alpha.kubernetes.io/critical-pod: ''
         {{- if .Values.annotations }}
         {{- toYaml .Values.annotations | nindent 8 }}
         {{- end }}
