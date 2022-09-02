@@ -70,7 +70,7 @@ rbac:
 hostNetwork: false
 hostPID: false
 
-priorityClassName: ""
+priorityClassName: system-node-critical
 
 securityContext:
   privileged: true
