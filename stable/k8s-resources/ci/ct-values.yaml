@@ -30,12 +30,17 @@ Ingresses:
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
-    hosts:
+    rules:
       - host: chart-example.local
-        paths:
-          - path: /api
-            serviceName: example-service
-            servicePort: 8080
+        http:
+          paths:
+            - path: /api
+              pathType: Prefix
+              backend:
+                service:
+                  name: example-service
+                  port:
+                    number: 8080
 
 Secrets:
   - name: example-secret

@@ -46,12 +46,19 @@ Ingresses: []
   #   fullnameOverride: ""
   #   annotations: {}
   #   extraLabels: {}
-  #   hosts:
+  #   defaultBackend: {}
+  #   ingressClassName: ""
+  #   rules:
   #     - host: chart-example.local
-  #       paths:
-  #         - path: /api
-  #           serviceName: example-service
-  #           servicePort: 8080
+  #       http:
+  #         paths:
+  #           - path: /api
+  #             pathType: Prefix
+  #             backend:
+  #               service:
+  #                 name: example-service
+  #                 port:
+  #                   name: http
   #   tls:
   #      - secretName: chart-example-tls
   #        hosts:
