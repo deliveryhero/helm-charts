@@ -110,3 +110,9 @@ HorizontalPodAutoscalers:
       apiVersion: apps/v1
       kind: Deployment
       name: my-deployment
+
+Namespaces:
+  - name: production
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}

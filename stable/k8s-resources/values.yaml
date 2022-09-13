@@ -127,3 +127,10 @@ PriorityClasses: []
   #   value: 1000
   #   description: "Priority for system critical"
   #   globalDefault: false
+
+# Namespaces -- A list Namespaces to create
+Namespaces: []
+  # - name: "production"
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
