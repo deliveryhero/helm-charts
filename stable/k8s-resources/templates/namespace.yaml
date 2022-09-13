@@ -1,0 +1,18 @@
+{{- if .Values.Namespaces -}}
+{{- range .Values.Namespaces }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
+  labels:
+    {{- include "k8s-resources.labels" $ | nindent 4 }}
+  {{- with .extraLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}

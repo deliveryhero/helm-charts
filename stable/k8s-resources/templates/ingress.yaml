@@ -1,6 +1,6 @@
 {{- if .Values.Ingresses -}}
 {{- range .Values.Ingresses }}
-apiVersion: {{ default "networking.k8s.io/v1beta1" .apiVersion }}
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
 {{- if .namespace }}
@@ -17,6 +17,13 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- with .defaultBackend }}
+  defaultBackend:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if .ingressClassName }}
+  ingressClassName: {{ .ingressClassName }}
+  {{- end }}
   {{- if .tls }}
   tls:
   {{- range .tls }}
@@ -24,20 +31,12 @@ spec:
     {{- range .hosts }}
     - {{ . | quote }}
     {{- end }}
-  secretName: {{ .secretName }}
+    secretName: {{ .secretName }}
   {{- end }}
   {{- end }}
+  {{- with .rules }}
   rules:
-  {{- range .hosts }}
-  - host: {{ .host | quote }}
-    http:
-      paths:
-      {{- range .paths }}
-      - path: {{ .path }}
-        backend:
-          serviceName: {{ .serviceName }}
-          servicePort: {{ .servicePort }}
-      {{- end }}
+    {{- toYaml . | nindent 2 }}
   {{- end }}
 ---
 {{- end }}

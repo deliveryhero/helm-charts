@@ -1,6 +1,6 @@
 # k8s-resources
 
-![Version: 0.5.5](https://img.shields.io/badge/Version-0.5.5-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.6.1](https://img.shields.io/badge/Version-0.6.1-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
@@ -11,6 +11,7 @@ Currently supports:
 - Custom resources from CustomResourceDefinition
 - HorizontalPodAutoscaler
 - Ingress
+- Namespace
 - Secret
 - Service
 - ServiceAccount
@@ -60,6 +61,7 @@ helm install my-release deliveryhero/k8s-resources -f values.yaml
 | CustomResources | list | `[]` | A list resources to create that are completely custom |
 | HorizontalPodAutoscalers | list | `[]` | A list HorizontalPodAutoscaler to create |
 | Ingresses | list | `[]` | A list Ingress to create |
+| Namespaces | list | `[]` | A list Namespaces to create |
 | PriorityClasses | list | `[]` | A list PriorityClasses to create |
 | Secrets | list | `[]` | A list Secret to create |
 | ServiceAccounts | list | `[]` | A list ServiceAccount to create |
