@@ -67,7 +67,7 @@ Return the appropriate apiVersion for podSecurityPolicy.
   Concat npd.config.* to make node-problem-detector CLI args more readable
 */}}
 {{- define "npd.cli.args" -}}
-{{ include "npd.config.systemLogMonitor" . }} {{ include "npd.config.customPluginMonitor" . }} {{ include "npd.config.prometheus" . }} {{ include "npd.config.k8sExporter" . }}
+{{ include "npd.config.systemLogMonitor" . }} {{ include "npd.config.customPluginMonitor" . }} {{ include "npd.config.prometheus" . }} {{ include "npd.config.k8sExporter" . }}  {{ include "npd.config.extraArgs" . }}
 {{- end -}}
 
 {{- define "npd.config.systemLogMonitor" -}}
@@ -94,4 +94,12 @@ Return the appropriate apiVersion for podSecurityPolicy.
 
 {{- define "npd.config.k8sExporter" -}}
 --k8s-exporter-heartbeat-period={{ .Values.settings.heartBeatPeriod }}
+{{- end -}}
+
+{{- define "npd.config.extraArgs" -}}
+{{- if .Values.settings.extraArgs -}}
+{{- range $index, $arg := .Values.settings.extraArgs -}}
+  {{- $arg -}}
+{{- end -}}
+{{- end -}}
 {{- end -}}

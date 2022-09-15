@@ -35,6 +35,10 @@ settings:
     # - /custom-config/docker-monitor-filelog.json
   custom_plugin_monitors: []
 
+  # Any extra arguments to append to node-problem-detector command
+  # - "--port 20526"
+  extraArgs: []
+
   # settings.prometheus_address -- Prometheus exporter address
   prometheus_address: 0.0.0.0
   # settings.prometheus_port -- Prometheus exporter port
