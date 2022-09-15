@@ -84,6 +84,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | serviceAccount.name | string | `nil` |  |
 | settings.custom_monitor_definitions | object | `{}` | Custom plugin monitor config files |
 | settings.custom_plugin_monitors | list | `[]` |  |
+| settings.extraArgs | list | `[]` |  |
 | settings.heartBeatPeriod | string | `"5m0s"` | Syncing interval with API server |
 | settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json"]` | User-specified custom monitor definitions |
 | settings.prometheus_address | string | `"0.0.0.0"` | Prometheus exporter address |
