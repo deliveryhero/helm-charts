@@ -62,6 +62,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | rbac.create | bool | `true` |  |
+| rbac.extraRules | list | `[]` |  |
 | rbac.serviceAccountName | string | `"default"` |  |
 | replicaCount | int | `1` |  |
 | resetAnnotationsCronjob.enabled | bool | `false` |  |
