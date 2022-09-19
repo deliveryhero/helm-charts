@@ -124,6 +124,12 @@ spec:
           - name: MB_SESSION_COOKIES
             value: {{ .Values.session.sessionCookies | quote }}
           {{- end }}
+          {{- if .Values.extraEnv }}
+          {{- range $key, $value := .Values.extraEnv }}
+          - name: {{ $key }}
+            value: {{ $value }}
+          {{- end }}
+          {{- end }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
           livenessProbe:
