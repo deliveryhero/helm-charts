@@ -46,22 +46,25 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 
 ## Values
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| fullnameOverride | string | `""` |  |
-| image.repository | string | `"k8s.gcr.io/dns/k8s-dns-node-cache"` |  |
-| image.tag | string | `"1.21.1"` |  |
-| nameOverride | string | `""` |  |
-| pillar_dns_domain | string | `"cluster.local"` |  |
-| pillar_dns_server | string | `"172.20.0.10"` |  |
-| pillar_local_dns | string | `"169.254.20.25"` |  |
-| podAnnotations | object | `{}` |  |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  |
+| Key                        | Type   | Default                               | Description |
+| -------------------------- | ------ | ------------------------------------- | ----------- |
+| fullnameOverride           | string | `""`                                  |             |
+| image.repository           | string | `"k8s.gcr.io/dns/k8s-dns-node-cache"` |             |
+| image.tag                  | string | `"1.21.1"`                            |             |
+| nameOverride               | string | `""`                                  |             |
+| resources.requests.cpu     | string | `"25m"`                               |             |
+| resources.requests.memory  | string | `"5Mi"`                               |             |
+| resources.limits           | object | `{}`                                  |             |
+| pillar_dns_domain          | string | `"cluster.local"`                     |             |
+| pillar_dns_server          | string | `"172.20.0.10"`                       |             |
+| pillar_local_dns           | string | `"169.254.20.25"`                     |             |
+| podAnnotations             | object | `{}`                                  |             |
+| serviceAccount.annotations | object | `{}`                                  |             |
+| serviceAccount.create      | bool   | `true`                                |             |
+| serviceAccount.name        | string | `""`                                  |             |
 
 ## Maintainers
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| gabrieladt | <no-reply@deliveryhero.com> |  |
+| Name       | Email                       | Url |
+| ---------- | --------------------------- | --- |
+| gabrieladt | <no-reply@deliveryhero.com> |     |
