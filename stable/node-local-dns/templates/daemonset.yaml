@@ -34,10 +34,10 @@ spec:
       containers:
       - name: node-cache
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        {{- with .Values.resources }}
         resources:
-          requests:
-            cpu: 25m
-            memory: 5Mi
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         args: [ "-localip", "{{ .Values.pillar_local_dns }},{{ .Values.pillar_dns_server }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
         securityContext:
           privileged: true

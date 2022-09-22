@@ -25,3 +25,9 @@ serviceAccount:
   name: ""
 
 podAnnotations: {}
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 5Mi
+  limits: {}
