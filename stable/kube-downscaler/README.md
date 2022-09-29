@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.5.7](https://img.shields.io/badge/Version-0.5.7-informational?style=flat-square) ![AppVersion: 22.7.1](https://img.shields.io/badge/AppVersion-22.7.1-informational?style=flat-square)
+![Version: 0.5.8](https://img.shields.io/badge/Version-0.5.8-informational?style=flat-square) ![AppVersion: 22.7.1](https://img.shields.io/badge/AppVersion-22.7.1-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -61,6 +61,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 | interval | int | `60` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| priorityClassName | string | `""` |  |
 | rbac.create | bool | `true` |  |
 | rbac.extraRules | list | `[]` |  |
 | rbac.serviceAccountName | string | `"default"` |  |
