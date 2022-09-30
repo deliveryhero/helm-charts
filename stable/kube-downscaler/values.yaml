@@ -84,3 +84,4 @@ fullnameOverride: ""
 nodeSelector: {}
 tolerations: []
 affinity: {}
+priorityClassName: ""
