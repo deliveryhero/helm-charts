@@ -47,7 +47,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Values.existingSecret.secretName | default (include "cloudhealth-collector.fullname" .) }}
-              key: {{ .Values.existingSecret.tokenKey |  default "api_key" }}
+              key: {{ .Values.existingSecret.tokenKey |  default "api_token" }}
         - name: CHT_CLUSTER_NAME
           value: {{ .Values.cluster_name }}
         - name: CHT_INTERVAL
