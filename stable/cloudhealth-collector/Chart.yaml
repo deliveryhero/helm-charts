@@ -1,7 +1,7 @@
 apiVersion: v1
 appVersion: "957"
 name: cloudhealth-collector
-version: 0.1.4
+version: 0.1.5
 description: |
   Deploys a k8s pod to collect data and generate reports based or resources usages, costs and other possibilities. Please check more about it on: https://www.cloudhealthtech.com/solutions/containers
 
@@ -14,5 +14,5 @@ home: https://github.com/deliveryhero/helm-charts
 sources:
   - https://s3.amazonaws.com/cloudhealth-public/containers/kubernetes-collector-pod-template.yaml
 maintainers:
-- name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  - name: max-rocket-internet
+    email: no-reply@deliveryhero.com

@@ -50,37 +50,38 @@ helm install my-release deliveryhero/cloudhealth-collector -f values.yaml
 
 ## Values
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| affinity | object | `{}` |  |
-| api_token | string | `"<change-me>"` |  |
-| cluster_name | string | `"your-cluster-name"` |  |
-| deploymentAnnotations | object | `{}` |  |
-| existingSecret.secretName | string | `""` |  |
-| existingSecret.tokenKey | string | `""` |  |
-| extraLabels | object | `{}` |  |
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"cloudhealth/container-collector"` |  |
-| image.tag | int | `957` |  |
-| imagePullSecrets | list | `[]` |  |
-| nameOverride | string | `""` |  |
-| nodeSelector | object | `{}` |  |
-| podAnnotations | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
-| replicaCount | int | `1` |  |
-| resources.limits.cpu | string | `"1000m"` |  |
-| resources.limits.memory | string | `"512Mi"` |  |
-| resources.requests.cpu | string | `"500m"` |  |
-| resources.requests.memory | string | `"512Mi"` |  |
-| securityContext | object | `{}` |  |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  |
-| tolerations | list | `[]` |  |
+| Key                        | Type   | Default                             | Description |
+| -------------------------- | ------ | ----------------------------------- | ----------- |
+| affinity                   | object | `{}`                                |             |
+| api_token                  | string | `"<change-me>"`                     |             |
+| cluster_name               | string | `"your-cluster-name"`               |             |
+| deploymentAnnotations      | object | `{}`                                |             |
+| existingSecret.secretName  | string | `""`                                |             |
+| existingSecret.tokenKey    | string | `""`                                |             |
+| extraLabels                | object | `{}`                                |             |
+| fullnameOverride           | string | `""`                                |             |
+| image.pullPolicy           | string | `"IfNotPresent"`                    |             |
+| image.repository           | string | `"cloudhealth/container-collector"` |             |
+| image.tag                  | int    | `957`                               |             |
+| imagePullSecrets           | list   | `[]`                                |             |
+| nameOverride               | string | `""`                                |             |
+| nodeSelector               | object | `{}`                                |             |
+| podAnnotations             | object | `{}`                                |             |
+| podSecurityContext         | object | `{}`                                |             |
+| replicaCount               | int    | `1`                                 |             |
+| resources.limits.cpu       | string | `"1000m"`                           |             |
+| resources.limits.memory    | string | `"512Mi"`                           |             |
+| resources.requests.cpu     | string | `"500m"`                            |             |
+| resources.requests.memory  | string | `"512Mi"`                           |             |
+| securityContext            | object | `{}`                                |             |
+| serviceAccount.annotations | object | `{}`                                |             |
+| serviceAccount.create      | bool   | `true`                              |             |
+| serviceAccount.name        | string | `""`                                |             |
+| tolerations                | list   | `[]`                                |             |
+| extraEnv                   | list   | `[]`                                |             |
 
 ## Maintainers
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| Name                | Email                       | Url |
+| ------------------- | --------------------------- | --- |
+| max-rocket-internet | <no-reply@deliveryhero.com> |     |
