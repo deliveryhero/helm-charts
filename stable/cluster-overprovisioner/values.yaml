@@ -1,11 +1,11 @@
 # containerSecurityContext -- Container security context object
 containerSecurityContext: {}
-  # allowPrivilegeEscalation: false
+# allowPrivilegeEscalation: false
 
 # podSecurityContext -- Pod security context object
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
-
 
 priorityClassOverprovision:
   # priorityClassOverprovision.name -- Name of the overprovision priorityClass
@@ -54,8 +54,9 @@ deployments:
   # deployments[0].name -- Default Deployment - Name for additional deployments (will be added as label cluster-over-provisioner-name, so you can match it with affinity rules)
   - name: default
     # deployments[0].annotations -- Default Deployment - Annotations to add to the deployment
-    annotations: {}
-     # deployments[0].podAnnotations -- Default Deployment - Annotations to add to the pods
+    annotations:
+      {}
+      # deployments[0].podAnnotations -- Default Deployment - Annotations to add to the pods
     podAnnotations: {}
     # deployments[0].replicaCount -- Default Deployment - Number of replicas
     replicaCount: 3
@@ -79,7 +80,8 @@ deployments:
     # deployments[0].labels -- Default Deployment - Optional labels tolerations
     labels: {}
     # deployments[0].topologySpreadConstraints -- Default Deployment - Optional topology spread constraints
-    topologySpreadConstraints: []
+    topologySpreadConstraints:
+      []
       # - maxSkew: 1
       #   topologyKey: failure-domain.beta.kubernetes.io/zone
       #   whenUnsatisfiable: DoNotSchedule
@@ -90,6 +92,7 @@ deployments:
     pdb: {}
     # deployments[0].schedulerName -- Default Deployment - Override the scheduler for overprovision pods
     schedulerName: ""
+    extraEnv: []
 
 serviceAccount:
   # serviceAccount.create -- Determine whether a Service Account should be created or it should reuse an exiting one
