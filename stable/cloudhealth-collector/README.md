@@ -1,6 +1,6 @@
 # cloudhealth-collector
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 957](https://img.shields.io/badge/AppVersion-957-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: 957](https://img.shields.io/badge/AppVersion-957-informational?style=flat-square)
 
 Deploys a k8s pod to collect data and generate reports based or resources usages, costs and other possibilities. Please check more about it on: https://www.cloudhealthtech.com/solutions/containers
 
@@ -50,38 +50,38 @@ helm install my-release deliveryhero/cloudhealth-collector -f values.yaml
 
 ## Values
 
-| Key                        | Type   | Default                             | Description |
-| -------------------------- | ------ | ----------------------------------- | ----------- |
-| affinity                   | object | `{}`                                |             |
-| api_token                  | string | `"<change-me>"`                     |             |
-| cluster_name               | string | `"your-cluster-name"`               |             |
-| deploymentAnnotations      | object | `{}`                                |             |
-| existingSecret.secretName  | string | `""`                                |             |
-| existingSecret.tokenKey    | string | `""`                                |             |
-| extraLabels                | object | `{}`                                |             |
-| fullnameOverride           | string | `""`                                |             |
-| image.pullPolicy           | string | `"IfNotPresent"`                    |             |
-| image.repository           | string | `"cloudhealth/container-collector"` |             |
-| image.tag                  | int    | `957`                               |             |
-| imagePullSecrets           | list   | `[]`                                |             |
-| nameOverride               | string | `""`                                |             |
-| nodeSelector               | object | `{}`                                |             |
-| podAnnotations             | object | `{}`                                |             |
-| podSecurityContext         | object | `{}`                                |             |
-| replicaCount               | int    | `1`                                 |             |
-| resources.limits.cpu       | string | `"1000m"`                           |             |
-| resources.limits.memory    | string | `"512Mi"`                           |             |
-| resources.requests.cpu     | string | `"500m"`                            |             |
-| resources.requests.memory  | string | `"512Mi"`                           |             |
-| securityContext            | object | `{}`                                |             |
-| serviceAccount.annotations | object | `{}`                                |             |
-| serviceAccount.create      | bool   | `true`                              |             |
-| serviceAccount.name        | string | `""`                                |             |
-| tolerations                | list   | `[]`                                |             |
-| extraEnv                   | list   | `[]`                                |             |
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| api_token | string | `"<change-me>"` |  |
+| cluster_name | string | `"your-cluster-name"` |  |
+| deploymentAnnotations | object | `{}` |  |
+| existingSecret.secretName | string | `""` |  |
+| existingSecret.tokenKey | string | `""` |  |
+| extraEnv | list | `[]` |  |
+| extraLabels | object | `{}` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"cloudhealth/container-collector"` |  |
+| image.tag | int | `957` |  |
+| imagePullSecrets | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
+| podSecurityContext | object | `{}` |  |
+| replicaCount | int | `1` |  |
+| resources.limits.cpu | string | `"1000m"` |  |
+| resources.limits.memory | string | `"512Mi"` |  |
+| resources.requests.cpu | string | `"500m"` |  |
+| resources.requests.memory | string | `"512Mi"` |  |
+| securityContext | object | `{}` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |
+| tolerations | list | `[]` |  |
 
 ## Maintainers
 
-| Name                | Email                       | Url |
-| ------------------- | --------------------------- | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |     |
+| Name | Email | Url |
+| ---- | ------ | --- |
+| max-rocket-internet | <no-reply@deliveryhero.com> |  |
