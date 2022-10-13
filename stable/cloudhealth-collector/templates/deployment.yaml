@@ -54,6 +54,9 @@ spec:
           value: "900"
         - name: CHT_JVM_MEM
           value: "-Xmx891M"
+        {{- with .Values.extraEnv }}
+          {{toYaml . | nindent 8 }}
+        {{- end }}          
       restartPolicy: Always
       {{- with .Values.nodeSelector }}
       nodeSelector:
