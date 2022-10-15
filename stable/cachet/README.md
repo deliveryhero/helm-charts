@@ -67,7 +67,6 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | env.public.CACHET_BEACON | bool | `false` |  |
 | env.public.CACHET_EMOJI | bool | `false` |  |
 | env.public.CACHE_DRIVER | string | `"database"` |  |
-| env.public.DB_DRIVER | string | `"pgsql"` |  |
 | env.public.DOCKER | bool | `true` |  |
 | env.public.MAIL_ADDRESS | string | `""` |  |
 | env.public.MAIL_DRIVER | string | `"smtp"` |  |

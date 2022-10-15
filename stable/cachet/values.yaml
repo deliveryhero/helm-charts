@@ -53,7 +53,6 @@ env:
     # Application environments
     APP_DEBUG: false
     APP_LOG: errorlog
-    DB_DRIVER: pgsql
     DOCKER: true
     CACHE_DRIVER: database
     SESSION_DRIVER: database
