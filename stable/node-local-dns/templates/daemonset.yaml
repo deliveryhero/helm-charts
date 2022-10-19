@@ -19,6 +19,9 @@ spec:
       annotations:
         prometheus.io/port: "9253"
         prometheus.io/scrape: "true"
+        {{- if .Values.podAnnotations }}
+          {{- toYaml .Values.podAnnotations | nindent 8 }}
+        {{- end }}
     spec:
       priorityClassName: system-node-critical
       serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
