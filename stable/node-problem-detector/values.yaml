@@ -101,7 +101,9 @@ affinity: {}
 nodeSelector: {}
 
 metrics:
+  # metrics.enabled -- Expose metrics in Prometheus format with default configuration.
   enabled: false
+  # metrics.annotations -- Override all default annotations when `metrics.enabled=true` with specified values.
   annotations: {}
   serviceMonitor:
     enabled: false
