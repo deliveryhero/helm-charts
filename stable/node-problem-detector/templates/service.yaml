@@ -9,9 +9,14 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app: {{ include "node-problem-detector.name" . }}
-  {{- if .Values.metrics.annotations }}
   annotations:
+  {{- if .Values.metrics.annotations }}
     {{- toYaml .Values.metrics.annotations | nindent 4 }}
+  {{- else }}
+    prometheus.io/scrape: "true"
+    prometheus.io/scheme: http
+    prometheus.io/port: "{{ .Values.settings.prometheus_port }}"
+    prometheus.io/path: /metrics
   {{- end }}
   namespace: {{ .Release.Namespace }}
 spec:
