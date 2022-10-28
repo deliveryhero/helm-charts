@@ -39,6 +39,17 @@ resources:
     cpu: 100m
     memory: 128Mi
 
+podSecurityContext: []
+  # seccompProfile: RuntimeDefault
+
+securityContext: []
+  # allowPrivilegeEscalation: false
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: false
+  # runAsUser: 12345
+
 # creates cachet database via posgres-controller
 database:
   host: cachet-db.example.com
