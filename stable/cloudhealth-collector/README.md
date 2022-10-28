@@ -60,6 +60,8 @@ helm install my-release deliveryhero/cloudhealth-collector -f values.yaml
 | existingSecret.tokenKey | string | `""` |  |
 | extraEnv | list | `[]` |  |
 | extraLabels | object | `{}` |  |
+| extraVolumes | list | `[]` |  |
+| extraVolumeMounts | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"cloudhealth/container-collector"` |  |
