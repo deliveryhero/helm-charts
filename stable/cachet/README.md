@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.3.2](https://img.shields.io/badge/Version-1.3.2-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -90,11 +90,13 @@ helm install my-release deliveryhero/cachet -f values.yaml
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
+| podSecurityContext | list | `[]` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"100m"` |  |
 | resources.requests.memory | string | `"128Mi"` |  |
+| securityContext | list | `[]` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | test.enabled | bool | `true` |  |
