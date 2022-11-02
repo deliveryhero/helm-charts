@@ -61,3 +61,7 @@ affinity: {}
 extraLabels: {}
 
 extraEnv: []
+
+extraVolumes: []
+
+extraVolumeMounts: []
