@@ -1,0 +1,14 @@
+{
+  "service":"HelloService",
+  "method":"SayHello",
+  "input":{
+    "matches":{
+      "name":"[\\s\\S]*"
+    }
+  },
+  "output":{
+    "data":{
+      "message":"Hello there!"
+    }
+  }
+}

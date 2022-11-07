@@ -1,0 +1,10 @@
+{{- if eq .Values.gripmock.stubs.configmap "example-stubs" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.gripmock.stubs.configmap }}
+  labels:
+{{ include "gripmock.labels" . | indent 4}}
+data:
+{{ (.Files.Glob "example/stubs/*").AsConfig | indent 2 }}
+{{- end }}

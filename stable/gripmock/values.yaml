@@ -1,0 +1,76 @@
+# Default values for gripmock.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# replicaCount -- Set the number of replicas in case hpa is not enabled
+replicaCount: 1
+
+# labels -- Any extra label to apply to all resources
+labels: {}
+
+image:
+  pullPolicy: IfNotPresent
+  # image.tag -- Overrides the image tag whose default is the chart appVersion.
+  tag: "1.10.1"
+
+gripmock:
+  proto:
+#   gripmock.proto.configmap -- The name of the configmap containing all your `.proto` files
+    configmap: example-protos
+#   gripmock.proto.path -- The path where your configmap containing the proto files will be mounted
+    path: /proto
+  stubs:
+#   gripmock.stubs.configmap -- The name of the configmap containing all the response definitions
+    configmap: example-stubs
+#   gripmock.stubs.path -- The path where your stubs configmap will be mounted
+    path: /stubs
+# gripmock.mock -- A list of `.proto` files that will be mocked based on the stubs.
+  mock:
+    - hello_service.proto
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+hpa:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
