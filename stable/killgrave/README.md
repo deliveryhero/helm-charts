@@ -54,11 +54,11 @@ helm install my-release deliveryhero/killgrave -f values.yaml
 | ingress.hosts | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | labels | object | `{}` | Any extra label to apply to all resources |
-| mock.imposters.configmap | string | `"imposters"` | The name of the configmap containing all your imposters |
+| mock.imposters.configmap | string | `"example-imposters"` | The name of the configmap containing all your imposters |
 | mock.imposters.path | string | `"/imposters"` | The mounting path for your imposters folder |
 | mock.killgrave.secure | bool | `false` | If killgrave server must be configured to run using TSL |
 | mock.killgrave.tag | string | `"latest"` | The image tag to use |
-| mock.schemas.configmap | string | `"http_mock_schemas"` | The name of the configmap containing your schemas folder. |
+| mock.schemas.configmap | string | `"example-schemas"` | The name of the configmap containing your schemas' folder. |
 | mock.schemas.path | string | `"/schemas"` | The mounting path for your schemas folder |
 | nameOverride | string | `""` | Set it in case you want to override the name of the deployment. By default it is set to `.Chart.Name` |
 | nodeSelector | object | `{}` |  |

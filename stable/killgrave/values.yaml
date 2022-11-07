@@ -19,12 +19,12 @@ resources: {}
 mock:
   imposters:
 #    mock.imposters.configmap -- The name of the configmap containing all your imposters
-    configmap: imposters
+    configmap: example-imposters
 #    mock.imposters.path -- The mounting path for your imposters folder
     path: /imposters
   schemas:
-#    mock.schemas.configmap -- The name of the configmap containing your schemas folder.
-    configmap: http_mock_schemas
+#    mock.schemas.configmap -- The name of the configmap containing your schemas' folder.
+    configmap: example-schemas
 #    mock.schemas.path -- The mounting path for your schemas folder
     path: /schemas
   killgrave:

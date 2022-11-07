@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "http_mock.name" . }}
+  name: {{ include "killgrave.name" . }}
   labels:
-    {{- include "http_mock.labels" . | nindent 4 }}
+    {{- include "killgrave.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "http_mock.name" . }}
+    name: {{ include "killgrave.name" . }}
   minReplicas: {{ .Values.hpa.minReplicas | default 1 }}
   maxReplicas: {{ .Values.hpa.maxReplicas | default 100 }}
   metrics:

@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "http_mock.name" . }}
+  name: {{ include "killgrave.name" . }}
   labels:
-    {{- include "http_mock.labels" . | nindent 4 }}
+    {{- include "killgrave.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.hpa.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "http_mock.selectorLabels" . | nindent 6 }}
+      {{- include "killgrave.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "http_mock.labels" . | nindent 8 }}
+        {{- include "killgrave.labels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ include "http_mock.image" . }}
+          image: {{ include "killgrave.image" . }}
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - mountPath: {{ include "http_mock.imposters_mouniting_path" . }}
+            - mountPath: {{ include "killgrave.imposters_mouniting_path" . }}
               name: imposters
             {{- if .Values.mock.schemas }}
             {{- if .Values.mock.schemas.configmap }}
@@ -31,7 +31,7 @@ spec:
             {{- end }}
           args:
             - -host=0.0.0.0
-            - -imposters={{ include "http_mock.imposters_mouniting_path" . }}
+            - -imposters={{ include "killgrave.imposters_mouniting_path" . }}
             - -secure={{ .Values.mock.killgrave.secure }}
           ports:
             - name: http
