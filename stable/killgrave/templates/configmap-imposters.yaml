@@ -1,0 +1,10 @@
+{{- if eq .Values.mock.imposters.configmap "example-imposters" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.mock.imposters.configmap }}
+  labels:
+{{ include "killgrave.labels" . | indent 4 }}
+data:
+{{ ($.Files.Glob "example/imposters/*").AsConfig | indent 2 }}
+{{- end }}

@@ -1,0 +1,16 @@
+[
+  {
+    "request": {
+      "endpoint": "/ping",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/plain"
+      },
+      "body": "pong",
+      "delay": "1ms"
+    }
+  }
+]
