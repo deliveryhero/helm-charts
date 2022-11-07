@@ -29,7 +29,7 @@ mock:
     path: /schemas
   killgrave:
 #    mock.killgrave.tag -- The image tag to use
-    tag: "latest"
+    tag: "0.4.1"
 #    mock.killgrave.secure -- If killgrave server must be configured to run using TSL
     secure: false
 

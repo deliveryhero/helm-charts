@@ -37,6 +37,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 
 {{/* Killgrave image */}}
 {{- define "killgrave.image" -}}
-{{- $tag := .Values.mock.killgrave.tag | default "latest" }}
+{{- $tag := .Values.mock.killgrave.tag | default "0.4.1" }}
 {{- printf "friendsofgo/killgrave:%s" $tag }}
 {{- end }}
