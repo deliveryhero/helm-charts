@@ -63,10 +63,7 @@ helm install my-release deliveryhero/killgrave -f values.yaml
 | nameOverride | string | `""` | Set it in case you want to override the name of the deployment. By default it is set to `.Chart.Name` |
 | nodeSelector | object | `{}` |  |
 | replicaCount | int | `1` | Set the number of replicas in case hpa is not enabled |
-| resources.limits.cpu | string | `"512m"` |  |
-| resources.limits.memory | string | `"512Mi"` |  |
-| resources.requests.cpu | string | `"512m"` |  |
-| resources.requests.memory | string | `"256Mi"` |  |
+| resources | object | `{}` |  |
 | service.targetPort | int | `8080` |  |
 | service.type | string | `"NodePort"` |  |
 | tolerations | list | `[]` |  |
@@ -75,4 +72,4 @@ helm install my-release deliveryhero/killgrave -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Marcelo Aplanalp | <marcelo.aplanalp@deliveryhero.com> |  |
+| MarceloAplanalp | <marcelo.aplanalp@deliveryhero.com> |  |

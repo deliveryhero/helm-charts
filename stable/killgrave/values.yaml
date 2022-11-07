@@ -14,13 +14,7 @@ hpa:
 #  hpa.targetMemoryUtilizationPercentage -- Set it to false in case you don't want to scale by memory consumption
   targetMemoryUtilizationPercentage: false
 
-resources:
-  limits:
-    cpu: 512m
-    memory: 512Mi
-  requests:
-    cpu: 512m
-    memory: 256Mi
+resources: {}
 
 mock:
   imposters:
