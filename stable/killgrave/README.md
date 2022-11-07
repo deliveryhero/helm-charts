@@ -1,6 +1,6 @@
 # killgrave
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.1](https://img.shields.io/badge/AppVersion-0.4.1-informational?style=flat-square)
 
 A chart to install [killgrave](https://github.com/friendsofgo/killgrave), a simulator for HTTP-based APIs.
 
@@ -57,7 +57,7 @@ helm install my-release deliveryhero/killgrave -f values.yaml
 | mock.imposters.configmap | string | `"example-imposters"` | The name of the configmap containing all your imposters |
 | mock.imposters.path | string | `"/imposters"` | The mounting path for your imposters folder |
 | mock.killgrave.secure | bool | `false` | If killgrave server must be configured to run using TSL |
-| mock.killgrave.tag | string | `"latest"` | The image tag to use |
+| mock.killgrave.tag | string | `"0.4.1"` | The image tag to use |
 | mock.schemas.configmap | string | `"example-schemas"` | The name of the configmap containing your schemas' folder. |
 | mock.schemas.path | string | `"/schemas"` | The mounting path for your schemas folder |
 | nameOverride | string | `""` | Set it in case you want to override the name of the deployment. By default it is set to `.Chart.Name` |
