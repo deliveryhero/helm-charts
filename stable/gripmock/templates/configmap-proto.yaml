@@ -1,0 +1,10 @@
+{{- if eq .Values.gripmock.proto.configmap "example-protos" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.gripmock.proto.configmap }}
+  labels:
+{{ include "gripmock.labels" . | indent 4}}
+data:
+{{ (.Files.Glob "example/proto/*").AsConfig | indent 2 }}
+{{- end }}

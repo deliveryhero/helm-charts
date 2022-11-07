@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+package com.deliveryhero.loadtest.examples.hello;
+
+option go_package = "com.deliveryhero/loadtest/examples/hello";
+
+service HelloService {
+  rpc sayHello(HelloRequest) returns (HelloResponse);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}

@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gripmock.fullname" . }}
+  labels:
+    {{- include "gripmock.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.hpa.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "gripmock.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "gripmock.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "tkpd/gripmock:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - -imports={{ .Values.gripmock.proto.path }}
+            - -stub={{ .Values.gripmock.stubs.path }}
+            {{- range $proto := .Values.gripmock.mock }}
+            - {{ $.Values.gripmock.proto.path }}/{{ $proto }}
+            {{- end }}
+          volumeMounts:
+            - mountPath: {{ .Values.gripmock.proto.path }}
+              name: proto
+            - mountPath: {{ .Values.gripmock.stubs.path }}
+              name: stubs
+          ports:
+            - name: http
+              containerPort: 4771
+              protocol: TCP
+            - name: grpc
+              containerPort: 4770
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: proto
+          configMap:
+            name: {{ .Values.gripmock.proto.configmap }}
+        - name: stubs
+          configMap:
+            name: {{ .Values.gripmock.stubs.configmap }}
