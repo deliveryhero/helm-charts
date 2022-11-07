@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "http_mock.name" . }}
+  labels:
+    {{- include "http_mock.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.hpa.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "http_mock.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "http_mock.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ include "http_mock.image" . }}
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: {{ include "http_mock.imposters_mouniting_path" . }}
+              name: imposters
+            {{- if .Values.mock.schemas }}
+            {{- if .Values.mock.schemas.configmap }}
+            - mountPath: {{ .Values.mock.schemas.path | default "/schemas" | quote }}
+              name: schemas
+            {{- end }}
+            {{- end }}
+          args:
+            - -host=0.0.0.0
+            - -imposters={{ include "http_mock.imposters_mouniting_path" . }}
+            - -secure={{ .Values.mock.killgrave.secure }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: imposters
+          configMap:
+            name: {{ .Values.mock.imposters.configmap }}
+        {{- if .Values.mock.schemas }}
+        {{- if .Values.mock.schemas.configmap }}
+        - name: schemas
+          configMap:
+            name: {{ .Values.mock.schemas.configmap }}
+        {{- end }}
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

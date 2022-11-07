@@ -1,0 +1,14 @@
+apiVersion: v2
+name: killgrave
+icon: https://avatars.githubusercontent.com/u/36798605?v=4&s=160
+
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+maintainers:
+  - name: Marcelo Aplanalp
+    email: marcelo.aplanalp@deliveryhero.com
+description: |
+  A chart to install [killgrave](https://github.com/friendsofgo/killgrave), a simulator for HTTP-based APIs.
+
+  In its more basic setup, this chart requires a `configmap` including all _imposters_ (the definition of a request-response pair)

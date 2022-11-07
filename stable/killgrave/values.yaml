@@ -1,0 +1,61 @@
+# nameOverride -- Set it in case you want to override the name of the deployment. By default it is set to `.Chart.Name`
+nameOverride: ""
+# labels -- Any extra label to apply to all resources
+labels: {}
+# replicaCount -- Set the number of replicas in case hpa is not enabled
+replicaCount: 1
+
+hpa:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+#  hpa.targetUtilizationPercentage -- Set it to false in case you don't want to scale by cpu consumption
+  targetCPUUtilizationPercentage: 80
+#  hpa.targetMemoryUtilizationPercentage -- Set it to false in case you don't want to scale by memory consumption
+  targetMemoryUtilizationPercentage: false
+
+resources:
+  limits:
+    cpu: 512m
+    memory: 512Mi
+  requests:
+    cpu: 512m
+    memory: 256Mi
+
+mock:
+  imposters:
+#    mock.imposters.configmap -- The name of the configmap containing all your imposters
+    configmap: imposters
+#    mock.imposters.path -- The mounting path for your imposters folder
+    path: /imposters
+  schemas:
+#    mock.schemas.configmap -- The name of the configmap containing your schemas folder.
+    configmap: http_mock_schemas
+#    mock.schemas.path -- The mounting path for your schemas folder
+    path: /schemas
+  killgrave:
+#    mock.killgrave.tag -- The image tag to use
+    tag: "latest"
+#    mock.killgrave.secure -- If killgrave server must be configured to run using TSL
+    secure: false
+
+affinity: {}
+tolerations: []
+nodeSelector: {}
+
+ingress:
+  enabled: false
+  className: ""
+  hosts: []
+#    - host: http-mock-example.local
+#      pathType: ImplementationSpecific
+#      paths:
+#        - path: /
+  tls: []
+#    - hosts: []
+#      secretName: chart-example-tsl
+  annotations: {}
+
+service:
+  type: NodePort
+  targetPort: 8080
