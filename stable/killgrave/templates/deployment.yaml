@@ -31,6 +31,7 @@ spec:
             {{- end }}
           args:
             - -host=0.0.0.0
+            - -port={{ .Values.service.port }}
             - -imposters={{ include "killgrave.imposters_mouniting_path" . }}
             - -secure={{ .Values.mock.killgrave.secure }}
           ports:

@@ -52,4 +52,4 @@ ingress:
 
 service:
   type: NodePort
-  targetPort: 8080
+  port: 8080
