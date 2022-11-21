@@ -64,7 +64,7 @@ helm install my-release deliveryhero/killgrave -f values.yaml
 | nodeSelector | object | `{}` |  |
 | replicaCount | int | `1` | Set the number of replicas in case hpa is not enabled |
 | resources | object | `{}` |  |
-| service.targetPort | int | `8080` |  |
+| service.port | int | `8080` |  |
 | service.type | string | `"NodePort"` |  |
 | tolerations | list | `[]` |  |
 
