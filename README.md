@@ -82,6 +82,18 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 
 All chart `README.md` files are generated from a template. This ensures all values are documented and that formatting is consistent. See [here](https://github.com/norwoodj/helm-docs#valuesyaml-metadata) about how the table of values is produced and how to add descriptions to your chart values.
 
+### Opening a PR
+
+Follow these steps:
+
+1. Fork this repo
+2. Make desired changes to the chart
+3. Bump the chart version
+4. Regenerate the chart `README.md`: `docker run --rm -v "${PWD}:/helm-docs" jnorwood/helm-docs:v1.11.0 --template-files ./ci/README.md.gotmpl`
+5. Commit and push changes
+6. Open 1 pull request per chart you want to change
+7. Set pull request title to `[stable/<chart name>]: <description>`
+
 ### Running CI tests locally
 
 All commands to be run from the root of this repo.
