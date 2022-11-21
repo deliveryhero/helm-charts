@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.5.9](https://img.shields.io/badge/Version-0.5.9-informational?style=flat-square) ![AppVersion: 22.7.1](https://img.shields.io/badge/AppVersion-22.7.1-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![AppVersion: 22.9.0](https://img.shields.io/badge/AppVersion-22.9.0-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -49,7 +49,7 @@ helm install my-release deliveryhero/kube-downscaler -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | debug.enable | bool | `false` |  |
-| deployment.environment.DEFAULT_UPTIME | string | `"Mon-Fri 07:00-20:00 Europe/Berlin"` |  |
+| deployment.environment | object | `{}` |  |
 | events.enable | bool | `true` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
