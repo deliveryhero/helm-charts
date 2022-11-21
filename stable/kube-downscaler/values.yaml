@@ -56,9 +56,12 @@ securityContext: {}
 
 extraLabels: {}
 
+# Set environment variables to override the default configuration
+# By default the uptime is "always"
+# More information here: https://codeberg.org/hjacobs/kube-downscaler#configuration
 deployment:
-  environment:
-    DEFAULT_UPTIME: "Mon-Fri 07:00-20:00 Europe/Berlin"
+  environment: {}
+    # DEFAULT_UPTIME: "Mon-Fri 07:00-20:00 Europe/Berlin"
 
 # This will periodically remove all annotations preventing downscaling
 # Sometimes people forget to remove the annotations and this can incur costs
