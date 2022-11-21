@@ -3,7 +3,7 @@ name: killgrave
 icon: https://avatars.githubusercontent.com/u/36798605?v=4&s=160
 
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: 0.4.1
 maintainers:
   - name: MarceloAplanalp

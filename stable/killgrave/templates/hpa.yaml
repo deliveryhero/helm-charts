@@ -13,7 +13,7 @@ spec:
   minReplicas: {{ .Values.hpa.minReplicas | default 1 }}
   maxReplicas: {{ .Values.hpa.maxReplicas | default 100 }}
   metrics:
-    {{- if ne .Values.hpa.targetCPUUtilizationPercentage false }}
+    {{- if .Values.hpa.targetCPUUtilizationPercentage }}
     - type: Resource
       resource:
         name: cpu
