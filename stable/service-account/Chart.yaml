@@ -1,5 +1,5 @@
 name: service-account
-version: "1.0.2"
+version: "1.1.0"
 description: |
   Creates a ServiceAccount, ClusterRoleBinding and a ClusterRole with some provided rules.
 
