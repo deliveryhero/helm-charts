@@ -1,6 +1,6 @@
 # aws-storage-class
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square)
 
 Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/storage-class/aws/default.yaml
 
@@ -44,6 +44,8 @@ helm install my-release deliveryhero/aws-storage-class -f values.yaml
 |-----|------|---------|-------------|
 | gp2.default | bool | `true` |  |
 | gp2.volumeBindingMode | string | `"WaitForFirstConsumer"` |  |
+| gp3.default | bool | `true` |  |
+| gp3.volumeBindingMode | string | `"WaitForFirstConsumer"` |  |
 | io1_10.default | bool | `false` |  |
 | io1_10.volumeBindingMode | string | `"WaitForFirstConsumer"` |  |
 | io1_20.default | bool | `false` |  |
