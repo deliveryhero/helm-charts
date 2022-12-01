@@ -1,8 +1,8 @@
 gp3:
-  default: true
+  default: false
   volumeBindingMode: WaitForFirstConsumer
 gp2:
-  default: false
+  default: true
   volumeBindingMode: WaitForFirstConsumer
 io1_10:
   default: false
