@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.1](https://img.shields.io/badge/Version-2.3.1-informational?style=flat-square) ![AppVersion: v0.8.12](https://img.shields.io/badge/AppVersion-v0.8.12-informational?style=flat-square)
+![Version: 2.3.2](https://img.shields.io/badge/Version-2.3.2-informational?style=flat-square) ![AppVersion: v0.8.12](https://img.shields.io/badge/AppVersion-v0.8.12-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -56,6 +56,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | fullnameOverride | string | `""` |  |
 | hostNetwork | bool | `false` | Run pod on host network Flag to run Node Problem Detector on the host's network. This is typically not recommended, but may be useful for certain use cases. |
 | hostPID | bool | `false` |  |
+| image.digest | string | `""` | the image digest. If given it takes precedence over a given tag. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"k8s.gcr.io/node-problem-detector/node-problem-detector"` |  |
 | image.tag | string | `"v0.8.12"` |  |
