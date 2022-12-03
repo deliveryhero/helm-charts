@@ -154,6 +154,7 @@ helm install my-release deliveryhero/backstage -f values.yaml
 | fullnameOverride | string | `""` |  |
 | global.postgresql.caFilename | string | `"ca.crt"` |  |
 | global.postgresql.postgresqlUsername | string | `"backend-user"` |  |
+| ingress.ingressClassName | string | `"nginx"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"false"` |  |
 | issuer.clusterIssuer | string | `"letsencrypt-staging"` |  |
 | issuer.email | string | `nil` |  |

@@ -1,7 +1,7 @@
 {{- $frontendUrl := urlParse .Values.appConfig.app.baseUrl}}
 {{- $backendUrl := urlParse .Values.appConfig.backend.baseUrl}}
 {{- $lighthouseUrl := urlParse .Values.appConfig.lighthouse.baseUrl}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "backstage.fullname" . }}-ingress
@@ -30,24 +30,33 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: {{ include "frontend.serviceName" . }}
-              servicePort: 80
+              service:
+                name: {{ include "frontend.serviceName" . }}
+                port:
+                  number: 80
           {{/* Route the backend inside the same hostname as the frontend when they are the same */}}
           {{- if eq $frontendUrl.host $backendUrl.host}}
           - path: /api
+            pathType: Prefix
             backend:
-              serviceName: {{ include "backend.serviceName" . }}
-              servicePort: 80
+              service:
+                name: {{ include "backend.serviceName" . }}
+                port:
+                  number: 80
           {{/* Route the backend through a different host */}}
           {{- else -}}
     - host: {{ $backendUrl.host }}
       http:
         paths:
           - path: {{ $backendUrl.path | default "/" }}
+            pathType: Prefix
             backend:
-              serviceName: {{ include "backend.serviceName" . }}
-              servicePort: 80
+              service:
+                name: {{ include "backend.serviceName" . }}
+                port:
+                  number: 80
          {{- end }}
 
 {{/* Route lighthouse through a different host */}}
@@ -56,13 +65,16 @@ spec:
       http:
         paths:
           - path: {{ $lighthouseUrl.path | default "/" }}
+            pathType: Prefix
             backend:
-              serviceName: {{ include "lighthouse.serviceName" . }}
-              servicePort: 80
+              service:
+                name: {{ include "lighthouse.serviceName" . }}
+                port:
+                  number: 80
 {{- else }}
 {{/* Route lighthouse by path with re-write rules when it is hosted under the same hostname */}}
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "backstage.fullname" . }}-ingress-lighthouse
@@ -87,7 +99,10 @@ spec:
       http:
         paths:
           - path: {{$lighthouseUrl.path}}(/|$)(.*)
+            pathType: Prefix
             backend:
-              serviceName: {{ include "lighthouse.serviceName" . }}
-              servicePort: 80
+              service:
+                name: {{ include "lighthouse.serviceName" . }}
+                port:
+                  number: 80
 {{- end }}
