@@ -1,6 +1,6 @@
 # k8s-event-logger
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
 
 This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
@@ -58,6 +58,7 @@ helm install my-release deliveryhero/k8s-event-logger -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| annotations | object | `{}` |  |
 | env.CA_FILE | string | `"/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"` |  |
 | env.KUBERNETES_API_URL | string | `"https://172.20.0.1:443"` |  |
 | fullnameOverride | string | `""` |  |
@@ -67,6 +68,7 @@ helm install my-release deliveryhero/k8s-event-logger -f values.yaml
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
