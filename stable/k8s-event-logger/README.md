@@ -1,6 +1,6 @@
 # k8s-event-logger
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
 
 This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
