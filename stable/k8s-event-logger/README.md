@@ -70,10 +70,13 @@ helm install my-release deliveryhero/k8s-event-logger -f values.yaml
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
+| podSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
+| podSecurityContext.runAsNonRoot | bool | `true` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"10m"` |  |
 | resources.requests.memory | string | `"128Mi"` |  |
+| securityContext | object | `{}` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
