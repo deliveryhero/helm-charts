@@ -4,6 +4,10 @@ metadata:
   name: {{ include "k8s-event-logger.fullname" . }}
   labels:
 {{ include "k8s-event-logger.labels" . | indent 4 }}
+{{- with .Values.annotations }}
+  annotations:
+{{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   replicas: 1
   selector:
@@ -12,6 +16,10 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+{{- with .Values.podAnnotations }}
+      annotations:
+{{- toYaml . | nindent 8 }}
+{{- end }}
       labels:
         app.kubernetes.io/name: {{ include "k8s-event-logger.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}

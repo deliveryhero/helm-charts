@@ -22,3 +22,5 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 podLabels: {}
+annotations: {}
+podAnnotations: {}
