@@ -67,6 +67,16 @@ rules:
   - update
   - patch
 - apiGroups:
+  - keda.sh
+  resources:
+  - scaledobjects
+  verbs:
+  - get
+  - watch
+  - list
+  - update
+  - patch
+- apiGroups:
   - ""
   resources:
   - events

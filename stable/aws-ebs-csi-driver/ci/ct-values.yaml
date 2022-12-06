@@ -1,0 +1,3 @@
+# Pod does not start without real API key
+controller:
+  replicaCount: 0
