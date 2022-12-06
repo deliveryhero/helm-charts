@@ -68,6 +68,8 @@ session: {}
   # maxSessionAge:
   # sessionCookies:
 
+extraContainers: []
+
 livenessProbe:
   initialDelaySeconds: 120
   timeoutSeconds: 30
