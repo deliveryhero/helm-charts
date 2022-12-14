@@ -1,6 +1,6 @@
 # metabase
 
-![Version: 0.13.4](https://img.shields.io/badge/Version-0.13.4-informational?style=flat-square) ![AppVersion: v0.43](https://img.shields.io/badge/AppVersion-v0.43-informational?style=flat-square)
+![Version: 0.13.5](https://img.shields.io/badge/Version-0.13.5-informational?style=flat-square) ![AppVersion: v0.43](https://img.shields.io/badge/AppVersion-v0.43-informational?style=flat-square)
 
 The easy, open source way for everyone in your company to ask questions and learn from data.
 
@@ -49,6 +49,7 @@ helm install my-release deliveryhero/metabase -f values.yaml
 | affinity | object | `{}` |  |
 | database.type | string | `"h2"` |  |
 | emojiLogging | bool | `true` |  |
+| extraContainers | list | `[]` |  |
 | extraEnv | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"metabase/metabase"` |  |

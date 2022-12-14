@@ -58,6 +58,7 @@ nameOverride: ''
 fullnameOverride: ''
 
 ingress:
+  ingressClassName: nginx
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 

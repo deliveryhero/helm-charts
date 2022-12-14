@@ -15,6 +15,11 @@ env:
   KUBERNETES_API_URL: https://172.20.0.1:443
   CA_FILE: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 
+securityContext: {}
+podSecurityContext:
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -22,3 +27,5 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 podLabels: {}
+annotations: {}
+podAnnotations: {}
