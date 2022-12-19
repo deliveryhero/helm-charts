@@ -76,7 +76,7 @@ spec:
           {{- with .extraEnv }}
           env:
             {{toYaml . | nindent 12 }}
-          {{- end }}   
+          {{- end }}
     {{- if $imagePullSecrets }}
       imagePullSecrets:
       {{- range $imagePullSecrets }}
