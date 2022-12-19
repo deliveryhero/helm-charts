@@ -98,6 +98,9 @@ worker:
   # worker.logLevel -- Log level. Can be INFO or DEBUG
   logLevel: INFO
   replicas: 1
+  # worker.pdb.enabled -- Whether to create a PodDisruptionBudget for the worker pods
+  pdb:
+    enabled: false
   hpa:
     enabled: false
     minReplicas: 1
