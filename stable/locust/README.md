@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.30.1](https://img.shields.io/badge/Version-0.30.1-informational?style=flat-square) ![AppVersion: 2.13.1](https://img.shields.io/badge/AppVersion-2.13.1-informational?style=flat-square)
+![Version: 0.31.0](https://img.shields.io/badge/Version-0.31.0-informational?style=flat-square) ![AppVersion: 2.13.1](https://img.shields.io/badge/AppVersion-2.13.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -132,6 +132,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.image | string | `""` | A custom docker image including tag |
 | worker.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
+| worker.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the worker pods |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.restartPolicy | string | `"Always"` | worker pod's restartPolicy. Can be Always, OnFailure, or Never. |
