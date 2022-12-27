@@ -1,0 +1,20 @@
+{{ range $k,$v:= .Values.storage_classes }}
+{{- $sc_name := $k }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ printf "%s" $sc_name }}
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: {{ default "false" .default | quote }}
+provisioner: {{ default "ebs.csi.aws.com" .provisioner  | quote }}
+parameters:
+  type: {{ .type | quote }}
+  encrypted: "true"
+{{ if eq "io1" .type | quote }}
+  iopsPerGB: {{ default "10" .iopsPerGB  | quote }}
+{{ end }}
+{{ if or (empty .provisioner) (eq "ebs.csi.aws.com" .provisioner | quote) }}
+reclaimPolicy: {{ default "Delete" .reclaimPolicy  | quote }}
+{{ end }}
+volumeBindingMode: {{ .volumeBindingMode }}
+{{ end }}
