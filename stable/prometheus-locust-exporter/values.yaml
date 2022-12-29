@@ -66,6 +66,11 @@ service:
   #   prometheus.io/path: "/metrics"
   #   prometheus.io/port: "9646"
 
+# https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
+serviceMonitor:
+  # Enusre that service is created
+  enabled: false
+
 nodeSelector: {}
 
 tolerations: []

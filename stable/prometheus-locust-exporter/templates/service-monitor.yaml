@@ -1,0 +1,17 @@
+{{- if and .Values.serviceMonitor.enabled .Values.service.create }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prometheus-locust-exporter.fullname" . }}
+  labels:
+{{ include "prometheus-locust-exporter.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+        app.kubernetes.io/name: {{ include "prometheus-locust-exporter.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s
+{{- end -}}
