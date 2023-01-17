@@ -1,10 +1,80 @@
+{{- if .Capabilities.APIVersions.Has "apiextensions.k8s.io/v1" }}
+apiVersion: apiextensions.k8s.io/v1
+{{- else }}
 apiVersion: apiextensions.k8s.io/v1beta1
+{{- end }}
 kind: CustomResourceDefinition
 metadata:
   name: externalmetrics.metrics.aws
 spec:
   group: metrics.aws
+  {{- if .Capabilities.APIVersions.Has "apiextensions.k8s.io/v1" }}
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            required:
+              - name
+              - queries
+            properties:
+              name:
+                type: string
+              roleArn:
+                type: string
+              region:
+                type: string
+              queries:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    expression:
+                      type: string
+                    id:
+                      type: string
+                    label:
+                      type: string
+                    metricStat:
+                      type: object
+                      properties:
+                        metric:
+                          type: object
+                          required:
+                            - metricName
+                          properties:
+                            dimensions:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                  - name
+                                  - value
+                                properties:
+                                  name:
+                                    type: string
+                                  value:
+                                    type: string
+                            metricName:
+                              type: string
+                            namespace:
+                              type: string
+                        period:
+                          type: integer
+                        stat:
+                          type: string
+                        unit:
+                          type: string
+                    returnData:
+                      type: boolean
+  {{- else }}
   version: v1alpha1
+  {{- end }}
   names:
     kind: ExternalMetric
     plural: externalmetrics
