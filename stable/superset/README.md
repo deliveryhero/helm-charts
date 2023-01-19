@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.0.14](https://img.shields.io/badge/Version-1.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.15](https://img.shields.io/badge/Version-1.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -133,4 +133,4 @@ helm install my-release deliveryhero/superset -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | <thomas.nyambati@deliveryhero.com> |  |
+| nyambati | thomas.nyambati@deliveryhero.com |  |
