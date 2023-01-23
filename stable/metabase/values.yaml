@@ -4,10 +4,11 @@
 # NOTE: Should remain 1
 replicaCount: 1
 podAnnotations: {}
-podLabels: {}
+podLabels: {}    # Attached directly to its pods
+extraLabels: {}  # Attached directly to its deployment
 image:
   repository: metabase/metabase
-  tag: v0.36.3
+  tag: v0.45.2
   pullPolicy: IfNotPresent
 
 ## String to fully override metabase.fullname template
@@ -18,6 +19,10 @@ image:
 listen:
   host: "0.0.0.0"
   port: 3000
+
+monitoring:
+  enabled: false
+  port: 9191
 ssl:
   # If you have an ssl certificate and would prefer to have Metabase run over HTTPS
   enabled: false
@@ -25,7 +30,7 @@ ssl:
   # keyStore: |-
   #   << JKS KEY STORE >>
   # keyStorePassword: storepass
-jetty:
+jetty: {}
 #  maxThreads: 254
 #  minThreads: 8
 #  maxQueued: -1
@@ -71,11 +76,13 @@ session: {}
 extraContainers: []
 
 livenessProbe:
+  path: /api/health
   initialDelaySeconds: 120
   timeoutSeconds: 30
   failureThreshold: 6
 
 readinessProbe:
+  path: /api/health
   initialDelaySeconds: 30
   timeoutSeconds: 3
   periodSeconds: 5
@@ -93,18 +100,18 @@ service:
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).
-  hosts:
+  hosts: []
     # - metabase.domain.com
   # The ingress path. Useful to host metabase on a subpath, such as `/metabase`.
   path: /
-  labels:
+  labels: {}
     # Used to add custom labels to the Ingress
     # Useful if for example you have multiple Ingress controllers and want your Ingress controllers to bind to specific Ingresses
     # traffic: internal
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  tls:
+  tls: []
     # Secrets must be manually created in the namespace.
     # - secretName: metabase-tls
     #   hosts:
