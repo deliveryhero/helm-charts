@@ -1,6 +1,6 @@
 # metabase
 
-![Version: 0.14.1](https://img.shields.io/badge/Version-0.14.1-informational?style=flat-square) ![AppVersion: v0.45.2](https://img.shields.io/badge/AppVersion-v0.45.2-informational?style=flat-square)
+![Version: 0.14.2](https://img.shields.io/badge/Version-0.14.2-informational?style=flat-square) ![AppVersion: v0.45.2](https://img.shields.io/badge/AppVersion-v0.45.2-informational?style=flat-square)
 
 The easy, open source way for everyone in your company to ask questions and learn from data.
 
@@ -58,6 +58,7 @@ helm install my-release deliveryhero/metabase -f values.yaml
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts | list | `[]` |  |
+| ingress.ingressClassName | string | `""` |  |
 | ingress.labels | object | `{}` |  |
 | ingress.path | string | `"/"` |  |
 | ingress.pathType | string | `"ImplementationSpecific"` |  |
