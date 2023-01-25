@@ -78,10 +78,10 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
-| ingress.enabled | bool | `true` |  |
+| ingress.enabled | bool | `false` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
 | init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
 | init.image.tag | string | `"latest"` | the docker image tag for the init container image |
