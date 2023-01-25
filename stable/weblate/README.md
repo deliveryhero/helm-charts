@@ -42,13 +42,6 @@ helm install my-release deliveryhero/weblate -f values.yaml
 
 * <https://github.com/WeblateOrg/weblate>
 
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 11.6.26 |
-| https://charts.bitnami.com/bitnami | redis | 17.0.10 |
-
 ## Values
 
 | Key | Type | Default | Description |
