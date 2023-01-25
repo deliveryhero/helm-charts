@@ -75,9 +75,11 @@ helm install my-release deliveryhero/weblate -f values.yaml
 | image.tag | string | `"4.2.2-1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
+| ingress.className | string | `""` |  |
+| ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
