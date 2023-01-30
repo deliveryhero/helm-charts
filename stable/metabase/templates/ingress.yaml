@@ -2,6 +2,7 @@
 {{- $serviceName := include "metabase.fullname" . -}}
 {{- $servicePort := .Values.service.externalPort -}}
 {{- $ingressPath := .Values.ingress.path -}}
+{{- $ingressPathType := .Values.ingress.pathType -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -17,13 +18,16 @@ metadata:
     {{ $key }}: {{ $value | quote }}
   {{- end }}
 spec:
+  {{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end }}
   rules:
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
         paths:
           - path: {{ $ingressPath }}
-            pathType: Prefix
+            pathType: {{ $ingressPathType }}
             backend:
               service:
                 name: {{ $serviceName }}
