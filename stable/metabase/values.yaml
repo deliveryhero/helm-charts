@@ -100,6 +100,7 @@ service:
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).
+  ingressClassName: ""
   hosts: []
     # - metabase.domain.com
   # The ingress path. Useful to host metabase on a subpath, such as `/metabase`.
