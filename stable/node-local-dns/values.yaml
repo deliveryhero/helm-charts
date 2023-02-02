@@ -31,3 +31,5 @@ resources:
     cpu: 25m
     memory: 5Mi
   limits: {}
+
+affinity: {}
