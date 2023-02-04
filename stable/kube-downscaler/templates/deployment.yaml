@@ -36,8 +36,8 @@ spec:
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
         {{- with .Values.deployment.environment }}
-        {{- range $key, $value := . }}
         env:
+        {{- range $key, $value := . }}
           {{- if $value }}
           - name: {{ $key }}
             value: {{ $value | quote }}
