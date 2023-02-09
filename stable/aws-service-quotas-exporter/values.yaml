@@ -1,0 +1,65 @@
+# Default values for aws-service-quotas-exporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicas: 1
+
+image:
+  repository: thoughtmachine/aws-service-quotas-exporter
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # serviceAccount.create -- Specifies whether a service account should be created
+  create: true
+  # serviceAccount.annotations -- Annotations to add to the service account
+  annotations: {}
+  # serviceAccount.name -- The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: 80
+    prometheus.io/scrape: true
+
+exporter:
+  # exporter.port -- The port the exporter metrics will be exposed on
+  port: 9090
+  # exporter.region -- Aws region quotas will be fetched from
+  region: eu-west-1
+  # exporter.includeAwsTags -- List of aws resource tags to include as labels
+  includeAwsTags: []
+
+resources:
+  requests:
+    cpu: "10m"
+    memory: "55Mi"
+  limits:
+    cpu: "10m"
+    memory: "55Mi"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
