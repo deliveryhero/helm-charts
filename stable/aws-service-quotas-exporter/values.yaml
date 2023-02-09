@@ -38,9 +38,9 @@ service:
   type: ClusterIP
   port: 80
   annotations:
-    prometheus.io/path: /metrics
-    prometheus.io/port: 80
-    prometheus.io/scrape: true
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "80"
+    prometheus.io/scrape: "true"
 
 exporter:
   # exporter.port -- The port the exporter metrics will be exposed on

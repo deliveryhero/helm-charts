@@ -65,8 +65,8 @@ helm install my-release deliveryhero/aws-service-quotas-exporter -f values.yaml
 | resources.requests.memory | string | `"55Mi"` |  |
 | securityContext | object | `{}` |  |
 | service.annotations."prometheus.io/path" | string | `"/metrics"` |  |
-| service.annotations."prometheus.io/port" | int | `80` |  |
-| service.annotations."prometheus.io/scrape" | bool | `true` |  |
+| service.annotations."prometheus.io/port" | string | `"80"` |  |
+| service.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
