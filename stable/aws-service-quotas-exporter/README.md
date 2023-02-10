@@ -1,6 +1,6 @@
 # aws-service-quotas-exporter
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.2](https://img.shields.io/badge/AppVersion-v1.3.2-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.2](https://img.shields.io/badge/AppVersion-v1.3.2-informational?style=flat-square)
 
 This exporter exports AWS service quotas and usage as Prometheus metrics
 
@@ -65,7 +65,7 @@ helm install my-release deliveryhero/aws-service-quotas-exporter -f values.yaml
 | resources.requests.memory | string | `"55Mi"` |  |
 | securityContext | object | `{}` |  |
 | service.annotations."prometheus.io/path" | string | `"/metrics"` |  |
-| service.annotations."prometheus.io/port" | string | `"80"` |  |
+| service.annotations."prometheus.io/port" | string | `"http"` |  |
 | service.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |

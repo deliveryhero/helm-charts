@@ -39,7 +39,7 @@ service:
   port: 80
   annotations:
     prometheus.io/path: "/metrics"
-    prometheus.io/port: "80"
+    prometheus.io/port: "http"
     prometheus.io/scrape: "true"
 
 exporter:
