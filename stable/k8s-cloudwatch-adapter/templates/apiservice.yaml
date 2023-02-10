@@ -8,7 +8,7 @@ metadata:
   name: v1beta1.external.metrics.k8s.io
 spec:
   service:
-    name: "{{ .Release.Name }}"
+    name: {{ include "k8s-cloudwatch-adapter.fullname" . }}
     namespace: "{{ .Release.Namespace }}"
   group: external.metrics.k8s.io
   version: v1beta1
