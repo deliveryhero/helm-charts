@@ -34,6 +34,10 @@ spec:
             value: {{ .Values.listen.host | quote }}
           - name: MB_JETTY_PORT
             value: {{ .Values.listen.port | quote }}
+          {{- if .Values.monitoring.enabled }}
+          - name: MB_PROMETHEUS_SERVER_PORT
+            value: {{ .Values.monitoring.port  | quote }}
+          {{- end }}
           {{- if .Values.ssl.enabled }}
           - name: MB_JETTY_SSL
             value: true
@@ -134,14 +138,14 @@ spec:
             - containerPort: {{ .Values.service.internalPort }}
           livenessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.livenessProbe.path }}
               port: {{ .Values.service.internalPort }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
           readinessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.readinessProbe.path }}
               port: {{ .Values.service.internalPort }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}

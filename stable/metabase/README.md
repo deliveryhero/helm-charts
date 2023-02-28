@@ -1,6 +1,6 @@
 # metabase
 
-![Version: 0.13.5](https://img.shields.io/badge/Version-0.13.5-informational?style=flat-square) ![AppVersion: v0.43](https://img.shields.io/badge/AppVersion-v0.43-informational?style=flat-square)
+![Version: 0.14.2](https://img.shields.io/badge/Version-0.14.2-informational?style=flat-square) ![AppVersion: v0.45.2](https://img.shields.io/badge/AppVersion-v0.45.2-informational?style=flat-square)
 
 The easy, open source way for everyone in your company to ask questions and learn from data.
 
@@ -51,27 +51,34 @@ helm install my-release deliveryhero/metabase -f values.yaml
 | emojiLogging | bool | `true` |  |
 | extraContainers | list | `[]` |  |
 | extraEnv | object | `{}` |  |
+| extraLabels | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"metabase/metabase"` |  |
-| image.tag | string | `"v0.36.3"` |  |
+| image.tag | string | `"v0.45.2"` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts | string | `nil` |  |
-| ingress.labels | string | `nil` |  |
+| ingress.hosts | list | `[]` |  |
+| ingress.ingressClassName | string | `""` |  |
+| ingress.labels | object | `{}` |  |
 | ingress.path | string | `"/"` |  |
-| ingress.tls | string | `nil` |  |
-| jetty | string | `nil` |  |
+| ingress.pathType | string | `"ImplementationSpecific"` |  |
+| ingress.tls | list | `[]` |  |
+| jetty | object | `{}` |  |
 | listen.host | string | `"0.0.0.0"` |  |
 | listen.port | int | `3000` |  |
 | livenessProbe.failureThreshold | int | `6` |  |
 | livenessProbe.initialDelaySeconds | int | `120` |  |
+| livenessProbe.path | string | `"/api/health"` |  |
 | livenessProbe.timeoutSeconds | int | `30` |  |
+| monitoring.enabled | bool | `false` |  |
+| monitoring.port | int | `9191` |  |
 | nodeSelector | object | `{}` |  |
 | password.complexity | string | `"normal"` |  |
 | password.length | int | `6` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | readinessProbe.initialDelaySeconds | int | `30` |  |
+| readinessProbe.path | string | `"/api/health"` |  |
 | readinessProbe.periodSeconds | int | `5` |  |
 | readinessProbe.timeoutSeconds | int | `3` |  |
 | replicaCount | int | `1` |  |

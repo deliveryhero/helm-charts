@@ -1,12 +1,28 @@
-gp3:
-  default: false
-  volumeBindingMode: WaitForFirstConsumer
-gp2:
-  default: true
-  volumeBindingMode: WaitForFirstConsumer
-io1_10:
-  default: false
-  volumeBindingMode: WaitForFirstConsumer
-io1_20:
-  default: false
-  volumeBindingMode: WaitForFirstConsumer
+storage_classes:
+  gp2:
+    default: false
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "kubernetes.io/aws-ebs"
+    type: "gp2"
+  ebs_gp2:
+    default: false
+    type: "gp2"
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "ebs.csi.aws.com"
+  ebs_gp3:
+    default: false
+    type: "gp3"
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "ebs.csi.aws.com"
+  ebs_io1_10:
+    default: false
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "ebs.csi.aws.com"
+    type: "io1"
+    reclaimPolicy: "Retain"
+  ebs_io1_20:
+    default: false
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "ebs.csi.aws.com"
+    type: "io1"
+    iopsPerGB: 20

@@ -9,7 +9,8 @@ metadata:
 {{- toYaml .Values.service.annotations | nindent 8 }}
 spec:
   ports:
-    - port: 80
+    - name: metrics
+      port: 80
       targetPort: 9646
       protocol: TCP
   selector:

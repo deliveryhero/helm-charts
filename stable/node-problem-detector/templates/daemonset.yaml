@@ -116,6 +116,7 @@ spec:
         - name: custom-config
           configMap:
             name: {{ include "node-problem-detector.customConfig" . }}
+            defaultMode: 493
       {{- if .Values.extraVolumes }}
       {{- toYaml .Values.extraVolumes | nindent 8 }}
       {{- end }}

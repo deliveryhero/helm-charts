@@ -1,0 +1,17 @@
+apiVersion: v2
+name: aws-service-quotas-exporter
+description: This exporter exports AWS service quotas and usage as Prometheus metrics
+home: https://github.com/thought-machine/aws-service-quotas-exporter
+type: application
+version: 0.1.1
+appVersion: "v1.3.2"
+maintainers:
+  - name: nyambati
+    email: no-reply@deliveryhero.com
+keywords:
+  - aws
+  - service
+  - quotas
+  - exporter
+sources:
+  - https://github.com/thought-machine/aws-service-quotas-exporter
