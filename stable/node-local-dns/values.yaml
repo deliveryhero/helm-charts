@@ -1,7 +1,7 @@
 image:
   repository: k8s.gcr.io/dns/k8s-dns-node-cache
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.21.1"
+  tag: "1.22.20"
 
 # Internal k8s internal domain
 pillar_dns_domain: "cluster.local"
@@ -29,7 +29,8 @@ podAnnotations: {}
 resources:
   requests:
     cpu: 25m
-    memory: 5Mi
-  limits: {}
+    memory: 128Mi
+  limits:
+    memory: 128Mi
 
 affinity: {}
