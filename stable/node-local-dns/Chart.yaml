@@ -1,7 +1,7 @@
 apiVersion: v2
 name: node-local-dns
 version: 0.2.3
-appVersion: 1.21.1
+appVersion: 1.22.20
 maintainers:
 - name: gabrieladt
   email: no-reply@deliveryhero.com
