@@ -21,6 +21,7 @@ helm install my-release deliveryhero/<chart>
 - [aws-ebs-csi-driver](stable/aws-ebs-csi-driver)
 - [aws-s3-proxy](stable/aws-s3-proxy)
 - [aws-service-events-exporter](stable/aws-service-events-exporter)
+- [aws-service-quotas-exporter](stable/aws-service-quotas-exporter)
 - [aws-storage-class](stable/aws-storage-class)
 - [backstage](stable/backstage)
 - [backstage-mono](stable/backstage-mono)

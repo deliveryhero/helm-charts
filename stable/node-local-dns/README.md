@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: 1.21.1](https://img.shields.io/badge/AppVersion-1.21.1-informational?style=flat-square)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -51,15 +51,15 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | affinity | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.repository | string | `"k8s.gcr.io/dns/k8s-dns-node-cache"` |  |
-| image.tag | string | `"1.21.1"` |  |
+| image.tag | string | `""` |  |
 | nameOverride | string | `""` |  |
 | pillar_dns_domain | string | `"cluster.local"` |  |
 | pillar_dns_server | string | `"172.20.0.10"` |  |
 | pillar_local_dns | string | `"169.254.20.25"` |  |
 | podAnnotations | object | `{}` |  |
-| resources.limits | object | `{}` |  |
+| resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"25m"` |  |
-| resources.requests.memory | string | `"5Mi"` |  |
+| resources.requests.memory | string | `"128Mi"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
