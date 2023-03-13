@@ -195,4 +195,4 @@ Kubernetes: `>=1.17.0-0`
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Kubernetes Authors |  | <https://github.com/kubernetes-sigs/aws-ebs-csi-driver/> |
+| Kubernetes Authors |  | <https://github.com/kubernetes-sigs/aws-ebs-csi-driver/graphs/contributors> |
