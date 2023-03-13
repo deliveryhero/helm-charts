@@ -18,8 +18,8 @@ sidecars:
     env: []
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/csi-provisioner
-      tag: "v3.1.0"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner
+      tag: "v3.4.0-eks-1-25-latest"
     logLevel: 2
     resources: {}
     # Tune leader lease election for csi-provisioner.
@@ -39,8 +39,8 @@ sidecars:
     env: []
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/csi-attacher
-      tag: "v3.4.0"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/external-attacher
+      tag: "v4.1.0-eks-1-25-latest"
     # Tune leader lease election for csi-attacher.
     # Leader election is on by default.
     leaderElection:
@@ -62,8 +62,8 @@ sidecars:
     env: []
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/csi-snapshotter
-      tag: "v6.0.1"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter
+      tag: "v6.2.1-eks-1-25-latest"
     logLevel: 2
     resources: {}
     securityContext:
@@ -72,8 +72,8 @@ sidecars:
   livenessProbe:
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/livenessprobe
-      tag: "v2.6.0"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe
+      tag: "v2.9.0-eks-1-25-latest"
     resources: {}
     securityContext:
       readOnlyRootFilesystem: true
@@ -82,8 +82,8 @@ sidecars:
     env: []
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/csi-resizer
-      tag: "v1.4.0"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/external-resizer
+      tag: "v1.7.0-eks-1-25-latest"
     logLevel: 2
     resources: {}
     securityContext:
@@ -93,8 +93,8 @@ sidecars:
     env: []
     image:
       pullPolicy: IfNotPresent
-      repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
-      tag: "v2.5.1"
+      repository: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar
+      tag: "v2.7.0-eks-1-25-latest"
     logLevel: 2
     resources: {}
     securityContext:
@@ -110,8 +110,9 @@ nameOverride:
 fullnameOverride:
 
 controller:
-  # If arbitrary args like "--aws-sdk-debug-log=true" need to be passed, use this value
   additionalArgs: []
+  sdkDebugLog: false
+  loggingFormat: text
   affinity:
     nodeAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
@@ -122,6 +123,17 @@ controller:
             operator: NotIn
             values:
             - fargate
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - ebs-csi-controller
+          topologyKey: kubernetes.io/hostname
+        weight: 100
   # The default filesystem type of the volume to provision when fstype is unspecified in the StorageClass.
   # If the default is not set and fstype is unset in the StorageClass, then no fstype will be set
   defaultFsType: ext4
@@ -164,27 +176,25 @@ controller:
   # region: us-east-1
   region:
   replicaCount: 2
-  updateStrategy: {}
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   # type: RollingUpdate
   # rollingUpdate:
   #   maxSurge: 0
   #   maxUnavailable: 1
-  resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # Note that you will need to set resource requests if you want the cluster autoscaler to
-  # scale your nodes when you increase/decrease the number of ebs-csi-controller replicas.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  resources:
+    requests:
+      cpu: 10m
+      memory: 40Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
   serviceAccount:
-    create: true    # A service account will be created for you if set to true. Set to false if you want to use your own.
-    name: ebs-csi-controller-sa     # Name of the service-account to be used/created.
+  # A service account will be created for you if set to true. Set to false if you want to use your own.
+    create: true
+    name: ebs-csi-controller-sa
     annotations: {}
   tolerations:
     - key: CriticalAddonsOnly
@@ -229,6 +239,7 @@ node:
   env: []
   envFrom: []
   kubeletPath: /var/lib/kubelet
+  loggingFormat: text
   logLevel: 2
   priorityClassName:
   affinity:
@@ -248,7 +259,13 @@ node:
   - operator: Exists
     effect: NoExecute
     tolerationSeconds: 300
-  resources: {}
+  resources:
+    requests:
+      cpu: 10m
+      memory: 40Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
   serviceAccount:
     create: true
     name: ebs-csi-node-sa
