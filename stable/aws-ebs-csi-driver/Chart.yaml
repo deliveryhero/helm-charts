@@ -13,4 +13,4 @@ keywords:
   - csi
 maintainers:
   - name: Kubernetes Authors
-    url: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/graphs/contributors
+    url: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/
