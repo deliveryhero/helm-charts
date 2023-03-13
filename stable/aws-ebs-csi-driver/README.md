@@ -79,10 +79,7 @@ Kubernetes: `>=1.17.0-0`
 | controller.priorityClassName | string | `"system-cluster-critical"` |  |
 | controller.region | string | `nil` | - region: us-east-1 |
 | controller.replicaCount | int | `2` |  |
-| controller.resources.limits.cpu | string | `"100m"` |  |
-| controller.resources.limits.memory | string | `"256Mi"` |  |
-| controller.resources.requests.cpu | string | `"10m"` |  |
-| controller.resources.requests.memory | string | `"40Mi"` |  |
+| controller.resources | object | `{}` |  |
 | controller.sdkDebugLog | bool | `false` |  |
 | controller.securityContext.fsGroup | int | `1000` |  |
 | controller.securityContext.runAsGroup | int | `1000` |  |
@@ -125,10 +122,7 @@ Kubernetes: `>=1.17.0-0`
 | node.podAnnotations | object | `{}` |  |
 | node.podLabels | object | `{}` |  |
 | node.priorityClassName | string | `nil` |  |
-| node.resources.limits.cpu | string | `"100m"` |  |
-| node.resources.limits.memory | string | `"256Mi"` |  |
-| node.resources.requests.cpu | string | `"10m"` |  |
-| node.resources.requests.memory | string | `"40Mi"` |  |
+| node.resources | object | `{}` |  |
 | node.securityContext.fsGroup | int | `0` |  |
 | node.securityContext.runAsGroup | int | `0` |  |
 | node.securityContext.runAsNonRoot | bool | `false` |  |
