@@ -1,3 +1,7 @@
+---
+nameOverride: ""
+fullnameOverride: ""
+
 provider: eks
 
 cronjob:
@@ -6,7 +10,7 @@ cronjob:
 
 image:
   repository: aquasec/kube-bench
-  tag: 0.4.0
+  tag: v0.6.12
   pullPolicy: IfNotPresent
 
 serviceAccount:
@@ -15,8 +19,30 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
 
+extraLabels: {}
 resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
 concurrencyPolicy: Forbid
+
+volumes:
+  - name: var-lib-kubelet
+    hostPath:
+      path: "/var/lib/kubelet"
+  - name: etc-systemd
+    hostPath:
+      path: "/etc/systemd"
+  - name: etc-kubernetes
+    hostPath:
+      path: "/etc/kubernetes"
+volumeMounts:
+  - name: var-lib-kubelet
+    mountPath: /var/lib/kubelet
+    readOnly: true
+  - name: etc-systemd
+    mountPath: /etc/systemd
+    readOnly: true
+  - name: etc-kubernetes
+    mountPath: /etc/kubernetes
+    readOnly: true
