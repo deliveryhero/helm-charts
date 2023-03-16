@@ -1,8 +1,8 @@
 # kube-bench
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![AppVersion: 0.6.12](https://img.shields.io/badge/AppVersion-0.6.12-informational?style=flat-square)
 
-Helm chart to deploy run kube-bench as a cronjob on gke or eks.
+Helm chart to deploy run kube-bench as a cronjob on aks, gke or eks.
 
 **Homepage:** <https://github.com/aquasecurity/kube-bench>
 
@@ -50,15 +50,33 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 | concurrencyPolicy | string | `"Forbid"` |  |
 | cronjob.command | list | `[]` |  |
 | cronjob.schedule | string | `"0 0 1 * *"` |  |
+| extraLabels | object | `{}` |  |
+| fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"aquasec/kube-bench"` |  |
-| image.tag | string | `"0.4.0"` |  |
+| image.tag | string | `"v0.6.12"` |  |
+| nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | provider | string | `"eks"` |  |
 | resources | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | tolerations | list | `[]` |  |
+| volumeMounts[0].mountPath | string | `"/var/lib/kubelet"` |  |
+| volumeMounts[0].name | string | `"var-lib-kubelet"` |  |
+| volumeMounts[0].readOnly | bool | `true` |  |
+| volumeMounts[1].mountPath | string | `"/etc/systemd"` |  |
+| volumeMounts[1].name | string | `"etc-systemd"` |  |
+| volumeMounts[1].readOnly | bool | `true` |  |
+| volumeMounts[2].mountPath | string | `"/etc/kubernetes"` |  |
+| volumeMounts[2].name | string | `"etc-kubernetes"` |  |
+| volumeMounts[2].readOnly | bool | `true` |  |
+| volumes[0].hostPath.path | string | `"/var/lib/kubelet"` |  |
+| volumes[0].name | string | `"var-lib-kubelet"` |  |
+| volumes[1].hostPath.path | string | `"/etc/systemd"` |  |
+| volumes[1].name | string | `"etc-systemd"` |  |
+| volumes[2].hostPath.path | string | `"/etc/kubernetes"` |  |
+| volumes[2].name | string | `"etc-kubernetes"` |  |
 
 ## Maintainers
 
