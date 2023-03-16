@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.1](https://img.shields.io/badge/Version-0.31.1-informational?style=flat-square) ![AppVersion: 2.13.1](https://img.shields.io/badge/AppVersion-2.13.1-informational?style=flat-square)
+![Version: 0.31.2](https://img.shields.io/badge/Version-0.31.2-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -68,7 +68,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.13.1"` |  |
+| image.tag | string | `"2.15.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
