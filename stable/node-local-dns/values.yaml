@@ -1,5 +1,5 @@
 image:
-  repository: k8s.gcr.io/dns/k8s-dns-node-cache
+  repository: registry.k8s.io/dns/k8s-dns-node-cache
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
