@@ -55,7 +55,7 @@ logDir:
   pod: ""
 
 image:
-  repository: k8s.gcr.io/node-problem-detector/node-problem-detector
+  repository: registry.k8s.io/node-problem-detector/node-problem-detector
   tag: v0.8.12
   # image.digest -- the image digest. If given it takes precedence over a given tag.
   digest: ""
