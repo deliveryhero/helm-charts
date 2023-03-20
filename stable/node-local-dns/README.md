@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -50,7 +50,7 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
-| image.repository | string | `"k8s.gcr.io/dns/k8s-dns-node-cache"` |  |
+| image.repository | string | `"registry.k8s.io/dns/k8s-dns-node-cache"` |  |
 | image.tag | string | `""` |  |
 | nameOverride | string | `""` |  |
 | pillar_dns_domain | string | `"cluster.local"` |  |
