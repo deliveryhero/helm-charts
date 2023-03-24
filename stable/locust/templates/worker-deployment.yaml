@@ -143,15 +143,36 @@ spec:
 {{- if .Values.loadtest.mount_external_secret }}
 {{- include "locust.external_secret.volume" . | nindent 8 }}
 {{- end }}
+{{- if .Values.worker.nodeSelector }}
+      {{- with .Values.worker.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{ else if .Values.nodeSelector }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{ end }}
+{{- if .Values.worker.affinity }}
+      {{- with .Values.worker.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{ else if .Values.affinity }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{ end }}
+{{- if .Values.worker.tolerations }}
+      {{- with .Values.worker.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{ else if .Values.tolerations }}
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{ end }}

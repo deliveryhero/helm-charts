@@ -130,6 +130,13 @@ worker:
     type: RollingUpdate
   # worker.restartPolicy -- worker pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
+  # worker.nodeSelector -- Overwrites nodeSelector from global
+  nodeSelector: {}
+  # worker.tolerations -- Overwrites tolerations from global
+  tolerations: []
+  # worker.affinity -- Overwrites affinity from global
+  affinity: {}
+
 
 nameOverride: ""
 fullnameOverride: ""
