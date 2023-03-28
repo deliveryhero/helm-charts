@@ -5,7 +5,7 @@
 {{- if .Values.dregsy.cron.enabled }}
 {{- range .Values.dregsy.config.tasks }}
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ $fullname  }}-{{ .name }}
@@ -14,6 +14,7 @@ metadata:
 spec:
   schedule: {{ $.Values.dregsy.cron.schedule | quote }}
   successfulJobsHistoryLimit: {{ $.Values.dregsy.cron.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ $.Values.dregsy.cron.failedJobsHistoryLimit }}
   concurrencyPolicy: {{ $.Values.dregsy.cron.concurrencyPolicy }}
   jobTemplate:
     spec:
