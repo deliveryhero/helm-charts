@@ -60,6 +60,7 @@ dregsy:
     schedule: "@daily"
     restartPolicy: OnFailure
     successfulJobsHistoryLimit: 1
+    failedJobsHistoryLimit: 0
     concurrencyPolicy: Forbid
   config:
     # relay type, either 'skopeo' or 'docker'
