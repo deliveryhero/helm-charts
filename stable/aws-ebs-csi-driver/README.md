@@ -1,6 +1,6 @@
 # aws-ebs-csi-driver
 
-![Version: 2.13.0](https://img.shields.io/badge/Version-2.13.0-informational?style=flat-square) ![AppVersion: 1.13.0](https://img.shields.io/badge/AppVersion-1.13.0-informational?style=flat-square)
+![Version: 2.17.1](https://img.shields.io/badge/Version-2.17.1-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
 A Helm chart for AWS EBS CSI Driver
 
@@ -55,6 +55,11 @@ Kubernetes: `>=1.17.0-0`
 | controller.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].preference.matchExpressions[0].operator | string | `"NotIn"` |  |
 | controller.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].preference.matchExpressions[0].values[0] | string | `"fargate"` |  |
 | controller.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].weight | int | `1` |  |
+| controller.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].podAffinityTerm.labelSelector.matchExpressions[0].key | string | `"app"` |  |
+| controller.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].podAffinityTerm.labelSelector.matchExpressions[0].operator | string | `"In"` |  |
+| controller.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].podAffinityTerm.labelSelector.matchExpressions[0].values[0] | string | `"ebs-csi-controller"` |  |
+| controller.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].podAffinityTerm.topologyKey | string | `"kubernetes.io/hostname"` |  |
+| controller.affinity.podAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].weight | int | `100` |  |
 | controller.containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
 | controller.containerSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
 | controller.defaultFsType | string | `"ext4"` |  |
@@ -67,6 +72,7 @@ Kubernetes: `>=1.17.0-0`
 | controller.initContainers | list | `[]` |  |
 | controller.k8sTagClusterId | string | `nil` | - ID of the Kubernetes cluster used for tagging provisioned EBS volumes (optional). |
 | controller.logLevel | int | `2` |  |
+| controller.loggingFormat | string | `"text"` |  |
 | controller.nodeSelector | object | `{}` |  |
 | controller.podAnnotations | object | `{}` |  |
 | controller.podLabels | object | `{}` |  |
@@ -74,6 +80,7 @@ Kubernetes: `>=1.17.0-0`
 | controller.region | string | `nil` | - region: us-east-1 |
 | controller.replicaCount | int | `2` |  |
 | controller.resources | object | `{}` |  |
+| controller.sdkDebugLog | bool | `false` |  |
 | controller.securityContext.fsGroup | int | `1000` |  |
 | controller.securityContext.runAsGroup | int | `1000` |  |
 | controller.securityContext.runAsNonRoot | bool | `true` |  |
@@ -89,7 +96,8 @@ Kubernetes: `>=1.17.0-0`
 | controller.tolerations[1].operator | string | `"Exists"` |  |
 | controller.tolerations[1].tolerationSeconds | int | `300` |  |
 | controller.topologySpreadConstraints | list | `[]` |  |
-| controller.updateStrategy | object | `{}` |  |
+| controller.updateStrategy.rollingUpdate.maxUnavailable | int | `1` |  |
+| controller.updateStrategy.type | string | `"RollingUpdate"` |  |
 | controller.volumeMounts | list | `[]` |  |
 | controller.volumes | list | `[]` |  |
 | customLabels | object | `{}` | Custom labels to add into metadata |
@@ -109,6 +117,7 @@ Kubernetes: `>=1.17.0-0`
 | node.envFrom | list | `[]` |  |
 | node.kubeletPath | string | `"/var/lib/kubelet"` |  |
 | node.logLevel | int | `2` |  |
+| node.loggingFormat | string | `"text"` |  |
 | node.nodeSelector | object | `{}` |  |
 | node.podAnnotations | object | `{}` |  |
 | node.podLabels | object | `{}` |  |
@@ -132,31 +141,31 @@ Kubernetes: `>=1.17.0-0`
 | proxy.no_proxy | string | `nil` |  |
 | sidecars.attacher.env | list | `[]` |  |
 | sidecars.attacher.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.attacher.image.repository | string | `"k8s.gcr.io/sig-storage/csi-attacher"` |  |
-| sidecars.attacher.image.tag | string | `"v3.4.0"` |  |
+| sidecars.attacher.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/external-attacher"` |  |
+| sidecars.attacher.image.tag | string | `"v4.1.0-eks-1-25-latest"` |  |
 | sidecars.attacher.leaderElection.enabled | bool | `true` |  |
 | sidecars.attacher.logLevel | int | `2` |  |
 | sidecars.attacher.resources | object | `{}` |  |
 | sidecars.attacher.securityContext.allowPrivilegeEscalation | bool | `false` |  |
 | sidecars.attacher.securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | sidecars.livenessProbe.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.livenessProbe.image.repository | string | `"k8s.gcr.io/sig-storage/livenessprobe"` |  |
-| sidecars.livenessProbe.image.tag | string | `"v2.6.0"` |  |
+| sidecars.livenessProbe.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe"` |  |
+| sidecars.livenessProbe.image.tag | string | `"v2.9.0-eks-1-25-latest"` |  |
 | sidecars.livenessProbe.resources | object | `{}` |  |
 | sidecars.livenessProbe.securityContext.allowPrivilegeEscalation | bool | `false` |  |
 | sidecars.livenessProbe.securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | sidecars.nodeDriverRegistrar.env | list | `[]` |  |
 | sidecars.nodeDriverRegistrar.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.nodeDriverRegistrar.image.repository | string | `"k8s.gcr.io/sig-storage/csi-node-driver-registrar"` |  |
-| sidecars.nodeDriverRegistrar.image.tag | string | `"v2.5.1"` |  |
+| sidecars.nodeDriverRegistrar.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar"` |  |
+| sidecars.nodeDriverRegistrar.image.tag | string | `"v2.7.0-eks-1-25-latest"` |  |
 | sidecars.nodeDriverRegistrar.logLevel | int | `2` |  |
 | sidecars.nodeDriverRegistrar.resources | object | `{}` |  |
 | sidecars.nodeDriverRegistrar.securityContext.allowPrivilegeEscalation | bool | `false` |  |
 | sidecars.nodeDriverRegistrar.securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | sidecars.provisioner.env | list | `[]` |  |
 | sidecars.provisioner.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.provisioner.image.repository | string | `"k8s.gcr.io/sig-storage/csi-provisioner"` |  |
-| sidecars.provisioner.image.tag | string | `"v3.1.0"` |  |
+| sidecars.provisioner.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner"` |  |
+| sidecars.provisioner.image.tag | string | `"v3.4.0-eks-1-25-latest"` |  |
 | sidecars.provisioner.leaderElection.enabled | bool | `true` |  |
 | sidecars.provisioner.logLevel | int | `2` |  |
 | sidecars.provisioner.resources | object | `{}` |  |
@@ -164,8 +173,8 @@ Kubernetes: `>=1.17.0-0`
 | sidecars.provisioner.securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | sidecars.resizer.env | list | `[]` |  |
 | sidecars.resizer.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.resizer.image.repository | string | `"k8s.gcr.io/sig-storage/csi-resizer"` |  |
-| sidecars.resizer.image.tag | string | `"v1.4.0"` |  |
+| sidecars.resizer.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/external-resizer"` |  |
+| sidecars.resizer.image.tag | string | `"v1.7.0-eks-1-25-latest"` |  |
 | sidecars.resizer.logLevel | int | `2` |  |
 | sidecars.resizer.resources | object | `{}` |  |
 | sidecars.resizer.securityContext.allowPrivilegeEscalation | bool | `false` |  |
@@ -173,8 +182,8 @@ Kubernetes: `>=1.17.0-0`
 | sidecars.snapshotter.env | list | `[]` |  |
 | sidecars.snapshotter.forceEnable | bool | `false` |  |
 | sidecars.snapshotter.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sidecars.snapshotter.image.repository | string | `"k8s.gcr.io/sig-storage/csi-snapshotter"` |  |
-| sidecars.snapshotter.image.tag | string | `"v6.0.1"` |  |
+| sidecars.snapshotter.image.repository | string | `"public.ecr.aws/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter"` |  |
+| sidecars.snapshotter.image.tag | string | `"v6.2.1-eks-1-25-latest"` |  |
 | sidecars.snapshotter.logLevel | int | `2` |  |
 | sidecars.snapshotter.resources | object | `{}` |  |
 | sidecars.snapshotter.securityContext.allowPrivilegeEscalation | bool | `false` |  |
@@ -186,5 +195,4 @@ Kubernetes: `>=1.17.0-0`
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| leakingtapan | <chengpan@amazon.com> |  |
-| krmichel |  | <https://github.com/krmichel> |
+| Kubernetes Authors |  | <https://github.com/kubernetes-sigs/aws-ebs-csi-driver/> |

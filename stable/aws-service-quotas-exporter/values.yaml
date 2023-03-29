@@ -23,10 +23,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -39,7 +41,7 @@ service:
   port: 80
   annotations:
     prometheus.io/path: "/metrics"
-    prometheus.io/port: "80"
+    prometheus.io/port: "http"
     prometheus.io/scrape: "true"
 
 exporter:
@@ -63,3 +65,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+extraLabels: {}

@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.1](https://img.shields.io/badge/Version-0.31.1-informational?style=flat-square) ![AppVersion: 2.13.1](https://img.shields.io/badge/AppVersion-2.13.1-informational?style=flat-square)
+![Version: 0.31.3](https://img.shields.io/badge/Version-0.31.3-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -68,7 +68,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.13.1"` |  |
+| image.tag | string | `"2.15.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -120,6 +120,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | service.extraLabels | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
+| worker.affinity | object | `{}` | Overwrites affinity from global |
 | worker.args | list | `[]` | Any extra command args for the workers |
 | worker.command[0] | string | `"sh"` |  |
 | worker.command[1] | string | `"/config/docker-entrypoint.sh"` |  |
@@ -132,12 +133,14 @@ helm install my-release deliveryhero/locust -f values.yaml
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.image | string | `""` | A custom docker image including tag |
 | worker.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
+| worker.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | worker.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the worker pods |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.restartPolicy | string | `"Always"` | worker pod's restartPolicy. Can be Always, OnFailure, or Never. |
 | worker.serviceAccountAnnotations | object | `{}` |  |
 | worker.strategy.type | string | `"RollingUpdate"` |  |
+| worker.tolerations | list | `[]` | Overwrites tolerations from global |
 
 ## Maintainers
 

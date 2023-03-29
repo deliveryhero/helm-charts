@@ -40,7 +40,7 @@ spec:
         operator: "Exists"
       containers:
       - name: node-cache
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         {{- with .Values.resources }}
         resources:
           {{- toYaml . | nindent 10 }}

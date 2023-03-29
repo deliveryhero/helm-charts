@@ -1,7 +1,7 @@
 apiVersion: v1
 name: locust
-version: "0.31.1"
-appVersion: 2.13.1
+version: "0.31.3"
+appVersion: 2.15.1
 home: https://github.com/locustio/locust
 icon: https://locust.io/static/img/logo.png
 maintainers:

@@ -1,6 +1,6 @@
 # aws-service-quotas-exporter
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.2](https://img.shields.io/badge/AppVersion-v1.3.2-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.2](https://img.shields.io/badge/AppVersion-v1.3.2-informational?style=flat-square)
 
 This exporter exports AWS service quotas and usage as Prometheus metrics
 
@@ -50,6 +50,7 @@ helm install my-release deliveryhero/aws-service-quotas-exporter -f values.yaml
 | exporter.includeAwsTags | list | `[]` | List of aws resource tags to include as labels |
 | exporter.port | int | `9090` | The port the exporter metrics will be exposed on |
 | exporter.region | string | `"eu-west-1"` | Aws region quotas will be fetched from |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"thoughtmachine/aws-service-quotas-exporter"` |  |
@@ -65,7 +66,7 @@ helm install my-release deliveryhero/aws-service-quotas-exporter -f values.yaml
 | resources.requests.memory | string | `"55Mi"` |  |
 | securityContext | object | `{}` |  |
 | service.annotations."prometheus.io/path" | string | `"/metrics"` |  |
-| service.annotations."prometheus.io/port" | string | `"80"` |  |
+| service.annotations."prometheus.io/port" | string | `"http"` |  |
 | service.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
