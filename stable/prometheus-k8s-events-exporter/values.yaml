@@ -67,3 +67,6 @@ tolerations: []
 
 affinity: {}
 extraLabels: {}
+
+#args:
+#  - --eventType=Warning
