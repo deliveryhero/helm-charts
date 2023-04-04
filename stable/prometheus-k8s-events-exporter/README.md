@@ -47,6 +47,7 @@ helm install my-release deliveryhero/prometheus-k8s-events-exporter -f values.ya
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| args | list | `[]` |  |
 | extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
