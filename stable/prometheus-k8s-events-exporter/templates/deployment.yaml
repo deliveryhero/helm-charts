@@ -50,9 +50,12 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 30
             timeoutSeconds: 2
-
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.args }}
+          args:
+            {{- toYaml .Values.args | nindent 12 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
