@@ -1,0 +1,23 @@
+{{- if .Values.dashboard.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "node-local-dns.fullname" . }}-dashboard
+  {{- if $.Values.dashboard.namespace }}
+  namespace: {{ $.Values.dashboard.namespace }}
+  {{- end }}
+  labels:
+    {{- include "node-local-dns.labels" . | nindent 4 }}
+    {{- if $.Values.dashboard.label }}
+    {{ $.Values.dashboard.label }}: "1"
+    {{- else }}
+    grafana_dashboard: "1"
+    {{- end }}
+  annotations:
+    {{- with $.Values.dashboard.annotations }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+data:
+  {{ include "node-local-dns.fullname" . }}-dashboard.json: |-
+    {{- .Files.Get "dashboard.json" | nindent 4 }}
+{{- end -}}

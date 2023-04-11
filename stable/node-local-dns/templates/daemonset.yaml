@@ -24,8 +24,10 @@ spec:
         {{- end }}
     spec:
       {{- if .Values.affinity }}
-      affinity:
-        {{- toYaml .Values.affinity | nindent 8 }}
+      affinity: {{- toYaml .Values.affinity | nindent 8 }}
+      {{- end }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
       {{- end }}
       priorityClassName: system-node-critical
       serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
@@ -42,10 +44,9 @@ spec:
       - name: node-cache
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         {{- with .Values.resources }}
-        resources:
-          {{- toYaml . | nindent 10 }}
+        resources: {{- toYaml . | nindent 10 }}
         {{- end }}
-        args: [ "-localip", "{{ .Values.pillar_local_dns }},{{ .Values.pillar_dns_server }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
+        args: [ "-localip", "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
         securityContext:
           privileged: true
         ports:
@@ -60,7 +61,7 @@ spec:
           protocol: TCP
         livenessProbe:
           httpGet:
-            host: {{ .Values.pillar_local_dns }}
+            host: {{ .Values.config.localDns }}
             path: /health
             port: 8080
           initialDelaySeconds: 60

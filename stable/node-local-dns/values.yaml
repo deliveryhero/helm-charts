@@ -3,14 +3,15 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-# Internal k8s internal domain
-pillar_dns_domain: "cluster.local"
+config:
+  # Internal k8s DNS domain
+  dnsDomain: "cluster.local"
 
-# Main coredns service (kube-dns) ip, used on iptables-mode.
-pillar_dns_server: "172.20.0.10"
+  # Main coredns service (kube-dns) ip, used on iptables-mode.
+  dnsServer: "172.20.0.10"
 
-# Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
-pillar_local_dns: "169.254.20.25"
+  # Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
+  localDns: "169.254.20.25"
 
 nameOverride: ""
 fullnameOverride: ""
@@ -26,6 +27,19 @@ serviceAccount:
 
 podAnnotations: {}
 
+# https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
+serviceMonitor:
+  # Ensure that servicemonitor is created
+  enabled: false
+
+dashboard:
+  enabled: false
+  # namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring"
+  namespace: kube-system
+  # label that grafana sidecar is configured to look for
+  label: grafana_dashboard
+  annotations: {}
+
 resources:
   requests:
     cpu: 25m
@@ -34,3 +48,6 @@ resources:
     memory: 128Mi
 
 affinity: {}
+
+# imagePullSecrets:
+# - name: "image-pull-secret"
