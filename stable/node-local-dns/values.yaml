@@ -32,6 +32,7 @@ serviceMonitor:
   # Ensure that servicemonitor is created
   enabled: false
 
+# https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dashboard:
   enabled: false
   # namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring"
@@ -49,5 +50,5 @@ resources:
 
 affinity: {}
 
-# imagePullSecrets:
+imagePullSecrets: []
 # - name: "image-pull-secret"

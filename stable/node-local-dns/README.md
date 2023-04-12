@@ -70,7 +70,6 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | serviceAccount.name | string | `""` |  |
 | serviceMonitor.enabled | bool | `false` |  |
 
-
 ## Maintainers
 
 | Name | Email | Url |
