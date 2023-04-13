@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -49,13 +49,18 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| config.dnsDomain | string | `"cluster.local"` |  |
+| config.dnsServer | string | `"172.20.0.10"` |  |
+| config.localDns | string | `"169.254.20.25"` |  |
+| dashboard.annotations | object | `{}` |  |
+| dashboard.enabled | bool | `false` |  |
+| dashboard.label | string | `"grafana_dashboard"` |  |
+| dashboard.namespace | string | `"kube-system"` |  |
 | fullnameOverride | string | `""` |  |
 | image.repository | string | `"registry.k8s.io/dns/k8s-dns-node-cache"` |  |
 | image.tag | string | `""` |  |
+| imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
-| pillar_dns_domain | string | `"cluster.local"` |  |
-| pillar_dns_server | string | `"172.20.0.10"` |  |
-| pillar_local_dns | string | `"169.254.20.25"` |  |
 | podAnnotations | object | `{}` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"25m"` |  |
@@ -63,6 +68,7 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| serviceMonitor.enabled | bool | `false` |  |
 
 ## Maintainers
 
