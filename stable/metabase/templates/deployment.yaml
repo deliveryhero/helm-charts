@@ -107,7 +107,7 @@ spec:
           {{- else }}
             {{- if .Values.log4jProperties }}
           - name: JAVA_OPTS
-            value: "-Dlog4j.configuration=file:/tmp/conf/log4j.properties"
+            value: "-Dlog4j.configurationFile=file:/tmp/conf/log4j.properties"
             {{- end }}
           {{- end }}
           {{- if .Values.pluginsDirectory }}
