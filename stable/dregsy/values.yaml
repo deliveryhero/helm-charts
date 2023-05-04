@@ -62,6 +62,7 @@ dregsy:
     successfulJobsHistoryLimit: 1
     failedJobsHistoryLimit: 0
     concurrencyPolicy: Forbid
+    affinity: {}
   config:
     # relay type, either 'skopeo' or 'docker'
     relay: skopeo

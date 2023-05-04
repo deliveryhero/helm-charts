@@ -55,5 +55,9 @@ spec:
               secret:
                 secretName: {{ $fullname }}
           restartPolicy: {{ $.Values.dregsy.cron.restartPolicy }}
+          {{- with $.Values.dregsy.cron.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
 {{- end }}
