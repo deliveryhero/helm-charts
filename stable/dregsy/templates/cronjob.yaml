@@ -57,7 +57,7 @@ spec:
           restartPolicy: {{ $.Values.dregsy.cron.restartPolicy }}
           {{- with $.Values.dregsy.cron.affinity }}
           affinity:
-            {{- toYaml . | nindent 8 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
 {{- end }}
 {{- end }}

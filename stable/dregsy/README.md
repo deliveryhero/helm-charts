@@ -1,6 +1,6 @@
 # dregsy
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.3](https://img.shields.io/badge/AppVersion-0.4.3-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.3](https://img.shields.io/badge/AppVersion-0.4.3-informational?style=flat-square)
 
 Dregsy lets you sync Docker images between registries, public or private through defined sync tasks can be invoked as one-off or periodic task.
 
@@ -58,6 +58,7 @@ helm install my-release deliveryhero/dregsy -f values.yaml
 | dregsy.config.skopeo.binary | string | `"skopeo"` |  |
 | dregsy.config.skopeo.certs-dir | string | `"/etc/skopeo/certs.d"` |  |
 | dregsy.config.tasks | list | `[]` |  |
+| dregsy.cron.affinity | object | `{}` |  |
 | dregsy.cron.concurrencyPolicy | string | `"Forbid"` |  |
 | dregsy.cron.enabled | bool | `false` |  |
 | dregsy.cron.failedJobsHistoryLimit | int | `0` |  |
