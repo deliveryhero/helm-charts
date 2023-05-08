@@ -31,7 +31,7 @@ spec:
         checksum/config-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       labels:
         component: master
-        {{- include "locust.selectorLabels" . | nindent 8 }}
+        {{- include "locust.labels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
