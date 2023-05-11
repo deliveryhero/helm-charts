@@ -27,10 +27,7 @@ spec:
         - name: {{ .Chart.Name }}-worker
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - "celery"
-            - "--app=superset.tasks.celery_app:app"
-            - "worker"
+          command: {{ toJson .Values.superset.worker.command }}
           envFrom:
             - secretRef:
                 name: {{ include "superset.fullname" . }}

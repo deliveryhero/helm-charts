@@ -80,6 +80,14 @@ superset:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
   celery:
+    command:
+      - celery
+      - --app=superset.tasks.celery_app:app
+      - beat
+      - --pidfile
+      - /tmp/celerybeat.pid
+      - --schedule
+      - /tmp/celerybeat-schedule
     replicas: 1
     autoscaling:
       enabled: false
@@ -95,6 +103,10 @@ superset:
     tolerations: []
     affinity: {}
   worker:
+    command:
+      - "celery"
+      - "--app=superset.tasks.celery_app:app"
+      - "worker"
     replicas: 1
     autoscaling:
       enabled: false

@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.0.15](https://img.shields.io/badge/Version-1.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -80,6 +80,13 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.celery.autoscaling.minReplicas | int | `1` |  |
 | superset.celery.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.celery.autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
+| superset.celery.command[0] | string | `"celery"` |  |
+| superset.celery.command[1] | string | `"--app=superset.tasks.celery_app:app"` |  |
+| superset.celery.command[2] | string | `"beat"` |  |
+| superset.celery.command[3] | string | `"--pidfile"` |  |
+| superset.celery.command[4] | string | `"/tmp/celerybeat.pid"` |  |
+| superset.celery.command[5] | string | `"--schedule"` |  |
+| superset.celery.command[6] | string | `"/tmp/celerybeat-schedule"` |  |
 | superset.celery.enabled | bool | `true` |  |
 | superset.celery.forceReload | bool | `false` |  |
 | superset.celery.nodeSelector | object | `{}` |  |
@@ -122,6 +129,9 @@ helm install my-release deliveryhero/superset -f values.yaml
 | superset.worker.autoscaling.enabled | bool | `false` |  |
 | superset.worker.autoscaling.maxReplicas | int | `10` |  |
 | superset.worker.autoscaling.minReplicas | int | `1` |  |
+| superset.worker.command[0] | string | `"celery"` |  |
+| superset.worker.command[1] | string | `"--app=superset.tasks.celery_app:app"` |  |
+| superset.worker.command[2] | string | `"worker"` |  |
 | superset.worker.nodeSelector | object | `{}` |  |
 | superset.worker.podAnnotations | object | `{}` |  |
 | superset.worker.replicas | int | `1` |  |
