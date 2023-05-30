@@ -11,6 +11,11 @@ spec:
     spec:
       backoffLimit: 0
       template:
+        {{- with .Values.podLabels }}
+        metadata:
+          labels:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
         spec:
           {{- if .Values.serviceAccount.create }}
           serviceAccountName: kube-bench
