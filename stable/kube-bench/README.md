@@ -1,6 +1,6 @@
 # kube-bench
 
-![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square) ![AppVersion: 0.6.14](https://img.shields.io/badge/AppVersion-0.6.14-informational?style=flat-square)
+![Version: 0.1.10](https://img.shields.io/badge/Version-0.1.10-informational?style=flat-square) ![AppVersion: 0.6.14](https://img.shields.io/badge/AppVersion-0.6.14-informational?style=flat-square)
 
 Helm chart to deploy run kube-bench as a cronjob on aks, gke or eks.
 
@@ -57,6 +57,7 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 | image.tag | string | `"v0.6.14"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podLabels | object | `{}` |  |
 | provider | string | `"eks"` |  |
 | resources | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
