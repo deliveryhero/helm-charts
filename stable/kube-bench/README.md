@@ -57,6 +57,7 @@ helm install my-release deliveryhero/kube-bench -f values.yaml
 | image.tag | string | `"v0.6.14"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podLabels | object | `{}` |  |
 | provider | string | `"eks"` |  |
 | resources | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
