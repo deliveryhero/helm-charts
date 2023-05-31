@@ -13,6 +13,9 @@ config:
   # Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
   localDns: "169.254.20.25"
 
+  # Port used for the health endpoint
+  healthPort: 8080
+
 nameOverride: ""
 fullnameOverride: ""
 

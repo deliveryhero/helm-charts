@@ -21,7 +21,7 @@ data:
                 force_tcp
         }
         prometheus :9253
-        health {{ .Values.config.localDns }}:8080
+        health {{ .Values.config.localDns }}:{{ .Values.config.healthPort }}
         }
     in-addr.arpa:53 {
         errors
