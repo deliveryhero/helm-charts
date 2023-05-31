@@ -63,7 +63,7 @@ spec:
           httpGet:
             host: {{ .Values.config.localDns }}
             path: /health
-            port: 8080
+            port: {{ .Values.config.healthPort }}
           initialDelaySeconds: 60
           timeoutSeconds: 5
         volumeMounts:
