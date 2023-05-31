@@ -1,0 +1,34 @@
+{{- if .Values.ScaledObjects -}}
+{{- range .Values.ScaledObjects }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name:  {{ if .fullnameOverride }}{{ .fullnameOverride }}{{ else }}{{ include "k8s-resources.fullname" $ }}-{{ .name }}{{ end }}
+spec:
+  scaleTargetRef:
+  {{- with .scaleTargetRef }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  pollingInterval:  {{ .pollingInterval | default 30 }}
+  cooldownPeriod:   {{ .cooldownPeriod | default 300 }}
+  idleReplicaCount: {{ .idleReplicaCount | default 0 }}
+  minReplicaCount:  {{ .minReplicaCount }}
+  maxReplicaCount:  {{ .maxReplicaCount }}
+  {{- if .fallback }}
+  fallback:
+  {{- with .fallback }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- end }}
+  {{- if .advanced }}
+  advanced:
+  {{- with .advanced }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- end }}
+  triggers:
+  {{- with .triggers }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}

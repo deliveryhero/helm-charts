@@ -134,3 +134,21 @@ Namespaces: []
   #   fullnameOverride: ""
   #   annotations: {}
   #   extraLabels: {}
+
+# ScaledObjects -- A list ScaledObjects to create
+ScaledObjects: []
+  # - name: querier-hpa
+  #   fullnameOverride: eu01-infra02-loki-querier
+  #   scaleTargetRef:
+  #     name: eu01-infra02-loki-querier
+  #   idleReplicaCount: 26
+  #   maxReplicaCount: 100
+  #   minReplicaCount: 26
+  #   triggers:
+  #     - metadata:
+  #         metricName: querier_autoscaling_metric
+  #         query: sum(max_over_time(cortex_query_scheduler_inflight_requests{dh_app="loki", dh_cluster="eu01-infra02", quantile="0.75"}[2m]))
+  #         serverAddress: http://metrics-no-auth.syslogistics.io/prometheus
+  #         cortexOrgID: logistics
+  #         threshold: "4"
+  #       type: prometheus
