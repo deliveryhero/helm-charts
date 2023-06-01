@@ -11,7 +11,7 @@ spec:
   {{- end }}
   pollingInterval:  {{ .pollingInterval | default 30 }}
   cooldownPeriod:   {{ .cooldownPeriod | default 300 }}
-  idleReplicaCount: {{ .idleReplicaCount | default 0 }}
+  idleReplicaCount: {{ .idleReplicaCount }}
   minReplicaCount:  {{ .minReplicaCount }}
   maxReplicaCount:  {{ .maxReplicaCount }}
   {{- if .fallback }}
