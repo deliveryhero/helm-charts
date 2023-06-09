@@ -1,4 +1,9 @@
 storage_classes:
+  gp2:
+    default: false
+    volumeBindingMode: WaitForFirstConsumer
+    provisioner: "kubernetes.io/aws-ebs"
+    type: "gp2"
   ebs_gp2:
     default: false
     type: "gp2"
