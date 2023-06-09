@@ -63,7 +63,6 @@ helm install my-release deliveryhero/aws-storage-class -f values.yaml
 | storage_classes.gp2.default | bool | `false` |  |
 | storage_classes.gp2.provisioner | string | `"kubernetes.io/aws-ebs"` |  |
 | storage_classes.gp2.type | string | `"gp2"` |  |
-| storage_classes.gp2.fsType | string | `"ext4"` |  |
 | storage_classes.gp2.volumeBindingMode | string | `"WaitForFirstConsumer"` |  |
 
 ## Maintainers
