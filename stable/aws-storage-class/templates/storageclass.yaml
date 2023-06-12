@@ -11,6 +11,9 @@ provisioner: {{ default "ebs.csi.aws.com" .provisioner  | quote }}
 parameters:
   type: {{ .type }}
   encrypted: "true"
+{{ if eq "gp2" .type }}
+  fsType: {{ default "ext4" .fsType  | quote }}
+{{ end }}
 {{ if eq "io1" .type }}
   iopsPerGB: {{ default "10" .iopsPerGB  | quote }}
 {{ end }}
