@@ -50,6 +50,9 @@ spec:
         {{- if .Values.namespace.active_in }}
         - --namespace={{ .Values.namespace.active_in }}
         {{- end }}
+        {{- if .Values.namespace.inactive_in }}
+        - --exclude-namespaces={{ .Values.namespace.inactive_in | join "," }}
+        {{- end }}
         {{- end }}
         {{- if .Values.debug.enable }}
         - --debug
