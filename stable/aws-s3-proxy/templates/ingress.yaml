@@ -18,6 +18,9 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end }}
 {{- if .Values.ingress.tls }}
   tls:
   {{- range .Values.ingress.tls }}
@@ -29,13 +32,13 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+  {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion }}
   {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
         {{- range .paths }}
-          - paht: {{ . }}
+          - path: {{ . }}
             pathType: Prefix
             backend:
               service:
@@ -44,7 +47,7 @@ spec:
                   number: {{ $svcPort }}
         {{- end }}
   {{- end }}
-  {{- else -}}
+  {{- else }}
   {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
