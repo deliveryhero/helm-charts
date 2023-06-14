@@ -46,7 +46,21 @@ spec:
         {{- with .Values.resources }}
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
-        args: [ "-localip", "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
+        args:
+        {{- range .Values.configArgs }}
+        - {{ . }}
+        {{- end }}
+        - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+        - "{{ include "node-local-dns.fullname" . }}-upstream"
+        {{- if .Values.config.skipTeardown }}
+        - -skipteardown={{ .Values.config.skipTeardown }}
+        {{- end }}
+        {{- if .Values.config.setupInterface }}
+        - -setupinterface={{ .Values.config.setupInterface }}
+        {{- end }}
+        {{- if .Values.config.setupIptables }}
+        - -setupiptables={{ .Values.config.setupIptables }}
+        {{- end }}
         securityContext:
           privileged: true
         ports:

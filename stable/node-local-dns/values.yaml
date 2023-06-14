@@ -16,6 +16,18 @@ config:
   # Port used for the health endpoint
   healthPort: 8080
 
+  skipTeardown: {}
+
+  setupInterface: {}
+
+  setupIptables: {}
+
+configArgs:
+  - "-localip"
+  - "-conf"
+  - "/etc/Corefile"
+  - "-upstreamsvc"
+
 nameOverride: ""
 fullnameOverride: ""
 
