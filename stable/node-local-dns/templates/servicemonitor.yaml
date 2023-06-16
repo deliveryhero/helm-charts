@@ -4,6 +4,10 @@ kind: ServiceMonitor
 metadata:
   name: {{ include "node-local-dns.fullname" . }}
   namespace: kube-system
+  {{- if .Values.serviceMonitor.labels }}
+  labels:
+  {{- toYaml .Values.serviceMonitor.labels | nindent 4 }}
+  {{- end }}
 spec:
   endpoints:
     - port: metrics
