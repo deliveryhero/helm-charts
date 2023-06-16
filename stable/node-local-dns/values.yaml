@@ -34,6 +34,7 @@ podAnnotations: {}
 serviceMonitor:
   # Ensure that servicemonitor is created
   enabled: false
+  labels: {}
 
 # https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dashboard:
