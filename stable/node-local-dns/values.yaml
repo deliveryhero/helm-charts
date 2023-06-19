@@ -16,11 +16,11 @@ config:
   # Port used for the health endpoint
   healthPort: 8080
 
-  skipTeardown: {}
-
   setupInterface: {}
 
   setupIptables: {}
+
+  skipTeardown: {}
 
 configArgs:
   - "-localip"
