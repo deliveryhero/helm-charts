@@ -1,10 +1,13 @@
 apiVersion: v2
 name: kubecost-reports-exporter
-description: Helm chart for exporting kubernetes cost reports to S3
+description: |
+  Helm chart for exporting kubernetes cost reports to AWS s3 bucket.
+  N/B We have updated chart to use V2 scripts using allocations and assets api.
+  if you are using old installation please use v1 chart
 home: https://www.kubecost.com
 type: application
-version: 1.1.0
-appVersion: "1.0.5"
+version: 2.0.0
+appVersion: "2.0.0"
 maintainers:
   - name: nyambati
     email: thomas.nyambati@deliveryhero.com
