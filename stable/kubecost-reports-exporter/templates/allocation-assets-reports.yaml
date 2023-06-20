@@ -1,12 +1,12 @@
 {{ $fullname := include "kubecost-reports-exporter.fullname" . }}
 {{ $labels := include "kubecost-reports-exporter.labels" . }}
 {{- range .Values.kubecost.clusters }}
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ trunc 49 .name  }}-cost-report
   labels:
-    kubecost.cluster:
+    kubecost.cluster: {{ .name }}
     {{- $labels | nindent 4 }}
 spec:
   schedule: {{ $.Values.schedule | quote }}
@@ -21,6 +21,7 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           labels:
+            kubecost.cluster: {{ .name }}
             {{- $labels  | nindent 12 }}
         spec:
           {{- with $.Values.imagePullSecrets }}
