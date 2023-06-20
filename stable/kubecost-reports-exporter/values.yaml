@@ -29,14 +29,14 @@ affinity: {}
 kubecost:
   # kubecost.logLevel -- exporter log level.
   logLevel: info
-  # kubecost.clusterName -- Name of the cluster
-  clusterName: change_me
   # kubecost.bucketName -- S3 Bucket name for reports export
   bucketName: kubecost-reports-exporter
-  # kubecost.aggregatedCostUrl -- Url for aggregated cost report
-  aggregatedCostUrl: "/model/aggregatedCostModel?window=1d&aggregation=namespace"
-  # kubecost.nonAggregatedCostUrl -- Url for non-aggregated cost report
-  nonAggregatedCostUrl: "/model/costDataModel?timeWindow=1d&offset=1d"
+  # kubecost.allocationCostUrl -- Url for allocation api cost reports
+  allocationCostUrl: "/model/allocation?window=15m&aggregate=pod"
+  # kubecost.assetsCostUrl -- Url for assets api cost reports
+  assetsCostUrl: "/model/assets?window=15m&filterCategories=Compute&filterTypes=Node&filterServices=Kubernetes"
+  # kubecost.diagnosticsUrl -- Url for prometheus diagnostics
+  diagnosticsUrl: "/diagnostics/prometheusMetrics"
   clusters:
       # kubecost.clusters.0.name -- kubecost cluster name
     - name: default
