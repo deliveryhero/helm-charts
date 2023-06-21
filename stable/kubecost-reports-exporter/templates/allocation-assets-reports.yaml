@@ -1,6 +1,8 @@
 {{ $fullname := include "kubecost-reports-exporter.fullname" . }}
 {{ $labels := include "kubecost-reports-exporter.labels" . }}
+
 {{- range .Values.kubecost.clusters }}
+---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
