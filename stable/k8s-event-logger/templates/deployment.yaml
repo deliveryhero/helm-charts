@@ -38,7 +38,7 @@ spec:
       serviceAccountName: {{ include "k8s-event-logger.fullname" . }}
       containers:
         - name: app
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- if .Values.podSecurityContext }}
           securityContext:

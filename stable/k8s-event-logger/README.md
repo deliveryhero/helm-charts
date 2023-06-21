@@ -1,6 +1,6 @@
 # k8s-event-logger
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 1.8](https://img.shields.io/badge/AppVersion-1.8-informational?style=flat-square)
+![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
 This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
@@ -64,14 +64,18 @@ helm install my-release deliveryhero/k8s-event-logger -f values.yaml
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"maxrocketinternet/k8s-event-logger"` |  |
-| image.tag | string | `"1.8"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
+| podSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
+| podSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | podSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
+| podSecurityContext.runAsGroup | int | `10001` |  |
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
+| podSecurityContext.runAsUser | int | `10001` |  |
+| podSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
 | resources.limits.cpu | string | `"100m"` |  |
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"10m"` |  |
