@@ -1,7 +1,7 @@
 apiVersion: v1
 name: node-problem-detector
-version: "2.3.4"
-appVersion: v0.8.12
+version: "2.3.5"
+appVersion: v0.8.13
 home: https://github.com/kubernetes/node-problem-detector
 description: |
   This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
