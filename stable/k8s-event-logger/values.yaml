@@ -1,6 +1,7 @@
 image:
   repository: maxrocketinternet/k8s-event-logger
-  tag: "1.8"
+  # Overrides the image tag whose default is the chart appVersion.
+  # tag: "2.0"
   pullPolicy: IfNotPresent
 
 resources:
@@ -19,6 +20,14 @@ securityContext: {}
 podSecurityContext:
   readOnlyRootFilesystem: true
   runAsNonRoot: true
+  runAsUser: 10001
+  runAsGroup: 10001
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  seccompProfile:
+    type: RuntimeDefault
 
 imagePullSecrets: []
 nameOverride: ""
