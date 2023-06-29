@@ -142,6 +142,11 @@ nameOverride: ""
 fullnameOverride: ""
 imagePullSecrets: []
 
+hostAliases: []
+  # - ip: "10.0.0.1"
+  #   hostnames:
+  #   - "example-host.com"
+
 podSecurityContext: {}
   # fsGroup: 2000
 
