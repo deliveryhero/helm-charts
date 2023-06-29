@@ -142,6 +142,7 @@ nameOverride: ""
 fullnameOverride: ""
 imagePullSecrets: []
 
+# hostAliases -- List of entries added to the /etc/hosts file on the pod to resolve custom hosts
 hostAliases: []
   # - ip: "10.0.0.1"
   #   hostnames:
