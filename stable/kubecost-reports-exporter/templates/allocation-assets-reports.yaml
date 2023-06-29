@@ -1,12 +1,12 @@
 {{ $fullname := include "kubecost-reports-exporter.fullname" . }}
 {{ $labels := include "kubecost-reports-exporter.labels" . }}
-{{ $serviceAccountName := include "kubecost-reports-exporter.serviceAccountName" . }}
+
 {{- range .Values.kubecost.clusters }}
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ trunc 49 .name  }}-aggregated
+  name: {{ trunc 49 .name  }}-cost-report
   labels:
     kubecost.cluster: {{ .name }}
     {{- $labels | nindent 4 }}
@@ -23,7 +23,8 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           labels:
-            {{- $labels | nindent 12 }}
+            kubecost.cluster: {{ .name }}
+            {{- $labels  | nindent 12 }}
         spec:
           {{- with $.Values.imagePullSecrets }}
           imagePullSecrets:
@@ -31,30 +32,30 @@ spec:
           {{- end }}
           securityContext:
             {{- toYaml $.Values.podSecurityContext | nindent 12 }}
-          serviceAccountName: {{ $serviceAccountName }}
+          serviceAccountName: {{ $.Values.serviceAccountName }}
           containers:
-          - name: {{ $.Chart.Name }}-aggregated
+          - name: {{ $.Chart.Name }}
             securityContext:
               {{- toYaml $.Values.securityContext | nindent 14 }}
             image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
             imagePullPolicy: {{ $.Values.image.pullPolicy }}
             args:
-              - cost-exporter
+              - cost-exporter-v2
             envFrom:
               - secretRef:
                   name: {{ $fullname }}
             env:
               - name: LOG_LEVEL
                 value: {{ $.Values.kubecost.logLevel | quote }}
-              - name: BUCKET_NAME
-                value: {{ required " Aws s3 bucket name is required value"  $.Values.kubecost.bucketName | quote }}
               - name: CLUSTER_NAME
-                value: {{ .name | quote }}
-              - name: REPORT_TYPE
-                value: "aggregated"
+                value: {{ required "Cluster name is a required value"  .name | quote }}
               - name: KUBECOST_ENDPOINT
-                value: {{ .endpoint | quote }}
-              - name: KUBECOST_URL
-                value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.aggregatedCostUrl  | quote }}
+                value: {{ required "Cost-model endpoint is a required value" .endpoint | quote }}
+              - name: KUBECOST_ALLOCATION_URL
+                value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.allocationCostUrl | quote }}
+              - name: KUBECOST_ASSETS_URL
+                value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.assetsCostUrl | quote }}
+              - name: KUBECOST_DIAGNOSTICS_URL
+                value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.diagnosticsUrl | quote }}
           restartPolicy: {{ $.Values.restartPolicy }}
 {{- end }}
