@@ -18,7 +18,7 @@ data:
         loop
         bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
         forward . __PILLAR__CLUSTER__DNS__ {
-                force_tcp
+                {{ .Values.config.commProtocol }}
         }
         prometheus :9253
         health {{ .Values.config.localDns }}:{{ .Values.config.healthPort }}
@@ -30,7 +30,7 @@ data:
         loop
         bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
         forward . __PILLAR__CLUSTER__DNS__ {
-                force_tcp
+                {{ .Values.config.commProtocol }}
         }
         prometheus :9253
         }
@@ -41,7 +41,7 @@ data:
         loop
         bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
         forward . __PILLAR__CLUSTER__DNS__ {
-                force_tcp
+                {{ .Values.config.commProtocol }}
         }
         prometheus :9253
         }
