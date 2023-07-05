@@ -42,6 +42,9 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       serviceAccountName: {{ template "locust.fullname" . }}-worker
+{{- if .Values.hostAliases }}
+      hostAliases: {{- .Values.hostAliases | toYaml | nindent 8 }}
+{{- end }}
       containers:
       - name: {{ .Chart.Name }}
         securityContext:
