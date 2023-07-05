@@ -33,6 +33,9 @@ serviceAccount:
 
 podAnnotations: {}
 
+securityContext:
+  privileged: true
+
 # https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
   # Ensure that servicemonitor is created
