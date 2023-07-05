@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -49,6 +49,7 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| config.commProtocol | string | `"force_tcp"` |  |
 | config.dnsDomain | string | `"cluster.local"` |  |
 | config.dnsServer | string | `"172.20.0.10"` |  |
 | config.healthPort | int | `8080` |  |
