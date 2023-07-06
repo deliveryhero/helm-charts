@@ -67,7 +67,7 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"25m"` |  |
 | resources.requests.memory | string | `"128Mi"` |  |
-| securityContext.privileged | bool | `true` |  |
+| securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
