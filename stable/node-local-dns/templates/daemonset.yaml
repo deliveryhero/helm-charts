@@ -48,7 +48,7 @@ spec:
         {{- end }}
         args: [ "-localip", "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
         securityContext:
-          privileged: true
+          {{- toYaml .Values.securityContext | nindent 10 }}
         ports:
         - containerPort: 53
           name: dns
