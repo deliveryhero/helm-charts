@@ -22,6 +22,23 @@ spec:
         prometheus.io/path: "{{ .Values.prometheus.metricsPath }}"
 
     spec:
+      volumes:
+      - name: node-data
+        emptyDir: {}
+      initContainers:
+      - name: init
+        image: scottcrossen/kube-node-labels:1.1.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: OUTPUT_DIR
+          value: /output
+        volumeMounts:
+        - name: node-data
+          mountPath: /output
       containers:
       - name: spot-termination-exporter
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -35,6 +52,7 @@ spec:
           --metrics-path {{ .Values.prometheus.metricsPath }} \
           --metadata-endpoint {{ .Values.metadataEndpoint }} \
           --log-level {{ .Values.logLevel }}
+          --extra-labels node_group=$(/node-data/labels.sh node-group)
         ports:
         - name: http
           containerPort: {{ .Values.port }}
@@ -55,6 +73,10 @@ spec:
           initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+
+        volumeMounts:
+        - name: node-data
+          mountPath: /node-data
     {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
