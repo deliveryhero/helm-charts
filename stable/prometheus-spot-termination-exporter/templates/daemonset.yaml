@@ -22,6 +22,7 @@ spec:
         prometheus.io/path: "{{ .Values.prometheus.metricsPath }}"
 
     spec:
+      serviceAccount: {{ include "prometheus-spot-termination-exporter.fullname" . }}
       volumes:
       - name: node-data
         emptyDir: {}
@@ -51,8 +52,8 @@ spec:
           --bind-addr :{{ .Values.port }} \
           --metrics-path {{ .Values.prometheus.metricsPath }} \
           --metadata-endpoint {{ .Values.metadataEndpoint }} \
-          --log-level {{ .Values.logLevel }}
-          --extra-labels node_group=$(/node-data/labels.sh node-group)
+          --log-level {{ .Values.logLevel }} \
+          --extra-labels node_group=$(/node-data/label.sh node-group)
         ports:
         - name: http
           containerPort: {{ .Values.port }}
