@@ -9,3 +9,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "prometheus-spot-termination-exporter.fullname" . }}
+    namespace: {{ .Release.Namespace }}
