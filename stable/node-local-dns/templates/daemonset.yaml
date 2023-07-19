@@ -16,9 +16,13 @@ spec:
     metadata:
       labels:
         k8s-app: {{ include "node-local-dns.name" . }}
+      {{- if or .Values.podAnnotations (not .Values.serviceMonitor.enabled) }}
       annotations:
+      {{- end }}
+        {{- if not .Values.serviceMonitor.enabled }}
         prometheus.io/port: "9253"
         prometheus.io/scrape: "true"
+        {{- end }}
         {{- if .Values.podAnnotations }}
           {{- toYaml .Values.podAnnotations | nindent 8 }}
         {{- end }}
