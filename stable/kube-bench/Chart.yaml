@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 0.6.15
+appVersion: 0.6.16
 description: "Helm chart to deploy run kube-bench as a cronjob on aks, gke or eks."
 name: kube-bench
-version: 0.1.11
+version: 0.1.12
 home: https://github.com/aquasecurity/kube-bench
 icon: https://raw.githubusercontent.com/aquasecurity/kube-bench/0d1bd2bbd95608957be024c12d03a0510325e5e2/docs/images/kube-bench.png
 sources:
