@@ -8,8 +8,11 @@ successfulJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
 
 image:
+  # image.repository -- The container image to use
   repository: thomasnyambati/kubecost-reports-exporter
   pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -32,7 +35,7 @@ kubecost:
   # kubecost.bucketName -- S3 Bucket name for reports export
   bucketName: kubecost-reports-exporter
   # kubecost.allocationCostUrl -- Url for allocation api cost reports
-  allocationCostUrl: "/model/allocation?window=15m&aggregate=pod"
+  allocationCostUrl: "/model/allocation?window=15m&aggregate=pod&includeAggregatedMetadata=true"
   # kubecost.assetsCostUrl -- Url for assets api cost reports
   assetsCostUrl: "/model/assets?window=15m&filterCategories=Compute&filterTypes=Node&filterServices=Kubernetes"
   # kubecost.diagnosticsUrl -- Url for prometheus diagnostics
