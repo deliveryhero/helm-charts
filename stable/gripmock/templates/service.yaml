@@ -11,5 +11,9 @@ spec:
       targetPort: 4770
       protocol: TCP
       name: grpc
+    - port: 4771
+      targetPort: 4771
+      protocol: TCP
+      name: stubs
   selector:
     {{- include "gripmock.selectorLabels" . | nindent 4 }}
