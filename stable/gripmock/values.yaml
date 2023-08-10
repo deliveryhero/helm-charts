@@ -45,6 +45,10 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+          port: 4770
+        - path: /
+          pathType: ImplementationSpecific
+          port: 4471
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

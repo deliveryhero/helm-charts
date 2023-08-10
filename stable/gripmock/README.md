@@ -1,6 +1,6 @@
 # gripmock
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
 
 A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock server for GRPC services. It uses `.proto` file(s) to generate the implementation of gRPC service(s) for you.
 
@@ -65,6 +65,10 @@ helm install my-release deliveryhero/gripmock -f values.yaml
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
+| ingress.hosts[0].paths[0].port | int | `4770` |  |
+| ingress.hosts[0].paths[1].path | string | `"/"` |  |
+| ingress.hosts[0].paths[1].pathType | string | `"ImplementationSpecific"` |  |
+| ingress.hosts[0].paths[1].port | int | `4471` |  |
 | ingress.tls | list | `[]` |  |
 | labels | object | `{}` | Any extra label to apply to all resources |
 | nameOverride | string | `""` |  |

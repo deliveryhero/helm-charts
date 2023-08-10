@@ -1,6 +1,6 @@
 # kubecost-reports-exporter
 
-![Version: 2.0.1](https://img.shields.io/badge/Version-2.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.2](https://img.shields.io/badge/Version-2.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for exporting kubernetes cost reports to AWS s3 bucket.
 N/B We have updated chart to use V2 scripts using allocations and assets api.
@@ -53,9 +53,10 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | env | object | `{}` | Extra environment variables |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"thomasnyambati/kubecost-reports-exporter"` |  |
+| image.repository | string | `"thomasnyambati/kubecost-reports-exporter"` | The container image to use |
+| image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
-| kubecost.allocationCostUrl | string | `"/model/allocation?window=15m&aggregate=pod"` | Url for allocation api cost reports |
+| kubecost.allocationCostUrl | string | `"/model/allocation?window=15m&aggregate=pod&includeAggregatedMetadata=true"` | Url for allocation api cost reports |
 | kubecost.assetsCostUrl | string | `"/model/assets?window=15m&filterCategories=Compute&filterTypes=Node&filterServices=Kubernetes"` | Url for assets api cost reports |
 | kubecost.bucketName | string | `"kubecost-reports-exporter"` | S3 Bucket name for reports export |
 | kubecost.clusters[0].endpoint | string | `"http://kubecost-cost-analyzer:9090"` |  |
