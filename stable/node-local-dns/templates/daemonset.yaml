@@ -50,7 +50,16 @@ spec:
         {{- with .Values.resources }}
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
-        args: [ "-localip", "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
+        args:
+          - "-localip"
+          - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+          - "-conf"
+          - "/etc/Corefile"
+          - "-upstreamsvc"
+          - "{{ include "node-local-dns.fullname" . }}-upstream"
+          - "-skipteardown={{ .Values.config.skipTeardown }}"
+          - "-setupinterface={{ .Values.config.setupInterface }}"
+          - "-setupiptables={{ .Values.config.setupIptables }}"
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
         ports:

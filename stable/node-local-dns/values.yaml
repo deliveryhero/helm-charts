@@ -19,6 +19,12 @@ config:
   # Port used for the health endpoint
   healthPort: 8080
 
+  setupInterface: false
+
+  setupIptables: false
+
+  skipTeardown: true
+
 nameOverride: ""
 fullnameOverride: ""
 

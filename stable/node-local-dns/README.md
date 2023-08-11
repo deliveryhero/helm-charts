@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
+![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![AppVersion: 1.22.20](https://img.shields.io/badge/AppVersion-1.22.20-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -54,6 +54,9 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | config.dnsServer | string | `"172.20.0.10"` |  |
 | config.healthPort | int | `8080` |  |
 | config.localDns | string | `"169.254.20.25"` |  |
+| config.setupInterface | bool | `false` |  |
+| config.setupIptables | bool | `false` |  |
+| config.skipTeardown | bool | `true` |  |
 | dashboard.annotations | object | `{}` |  |
 | dashboard.enabled | bool | `false` |  |
 | dashboard.label | string | `"grafana_dashboard"` |  |
