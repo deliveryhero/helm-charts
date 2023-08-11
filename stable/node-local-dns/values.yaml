@@ -25,12 +25,6 @@ config:
 
   skipTeardown: true
 
-  configArgs:
-    - "-localip"
-    - "-conf"
-    - "/etc/Corefile"
-    - "-upstreamsvc"
-
 nameOverride: ""
 fullnameOverride: ""
 

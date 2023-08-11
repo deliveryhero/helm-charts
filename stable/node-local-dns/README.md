@@ -50,17 +50,13 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | config.commProtocol | string | `"force_tcp"` |  |
-| config.configArgs[0] | string | `"-localip"` |  |
-| config.configArgs[1] | string | `"-conf"` |  |
-| config.configArgs[2] | string | `"/etc/Corefile"` |  |
-| config.configArgs[3] | string | `"-upstreamsvc"` |  |
 | config.dnsDomain | string | `"cluster.local"` |  |
 | config.dnsServer | string | `"172.20.0.10"` |  |
 | config.healthPort | int | `8080` |  |
 | config.localDns | string | `"169.254.20.25"` |  |
-| config.setupInterface | object | `{}` |  |
-| config.setupIptables | object | `{}` |  |
-| config.skipTeardown | object | `{}` |  |
+| config.setupInterface | bool | `false` |  |
+| config.setupIptables | bool | `false` |  |
+| config.skipTeardown | bool | `true` |  |
 | dashboard.annotations | object | `{}` |  |
 | dashboard.enabled | bool | `false` |  |
 | dashboard.label | string | `"grafana_dashboard"` |  |

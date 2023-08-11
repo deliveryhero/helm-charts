@@ -51,14 +51,15 @@ spec:
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
         args:
-        {{- range .Values.configArgs }}
-        - {{ . }}
-        {{- end }}
-        - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
-        - "{{ include "node-local-dns.fullname" . }}-upstream"
-        - -skipteardown={{ .Values.config.skipTeardown }}
-        - -setupinterface={{ .Values.config.setupInterface }}
-        - -setupiptables={{ .Values.config.setupIptables }}
+          - "-localip"
+          - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+          - "-conf"
+          - "/etc/Corefile"
+          - "-upstreamsvc"
+          - "{{ include "node-local-dns.fullname" . }}-upstream"
+          - "-skipteardown={{ .Values.config.skipTeardown }}"
+          - "-setupinterface={{ .Values.config.setupInterface }}"
+          - "-setupiptables={{ .Values.config.setupIptables }}"
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
         ports:
