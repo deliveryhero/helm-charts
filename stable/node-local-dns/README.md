@@ -50,6 +50,7 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | config.commProtocol | string | `"force_tcp"` |  |
+| config.customConfig | string | `""` |  |
 | config.dnsDomain | string | `"cluster.local"` |  |
 | config.dnsServer | string | `"172.20.0.10"` |  |
 | config.healthPort | int | `8080` |  |
