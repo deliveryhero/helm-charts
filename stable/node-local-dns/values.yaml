@@ -39,6 +39,12 @@ serviceAccount:
 
 podAnnotations: {}
 
+podLabels: {}
+
+daemonsetAnnotations: {}
+
+daemonsetLabels: {}
+
 securityContext:
   capabilities:
     add:
