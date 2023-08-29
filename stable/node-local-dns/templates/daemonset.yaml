@@ -61,8 +61,13 @@ spec:
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
         args:
+        {{- if .Values.config.setupIptables }}
           - "-localip"
           - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+        {{- else }}
+          - "-localip"
+          - "{{ .Values.config.localDns }}"
+        {{- end }}
           - "-conf"
           - "/etc/Corefile"
           - "-upstreamsvc"
