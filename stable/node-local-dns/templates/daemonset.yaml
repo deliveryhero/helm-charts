@@ -45,7 +45,7 @@ spec:
       {{- end }}
       priorityClassName: system-node-critical
       serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
-      hostNetwork: true
+      hostNetwork: {{ .Values.config.setupIptables }}
       dnsPolicy: Default  # Don't use cluster DNS.
       tolerations:
       - key: "CriticalAddonsOnly"
