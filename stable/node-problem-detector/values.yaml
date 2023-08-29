@@ -76,6 +76,10 @@ rbac:
 hostNetwork: false
 hostPID: false
 
+volume:
+  localtime:
+    type: "FileOrCreate"
+
 priorityClassName: system-node-critical
 
 securityContext:
