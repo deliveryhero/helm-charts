@@ -54,9 +54,9 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | config.dnsServer | string | `"172.20.0.10"` |  |
 | config.healthPort | int | `8080` |  |
 | config.localDns | string | `"169.254.20.25"` |  |
-| config.setupInterface | bool | `false` |  |
-| config.setupIptables | bool | `false` |  |
-| config.skipTeardown | bool | `true` |  |
+| config.setupInterface | bool | `true` |  |
+| config.setupIptables | bool | `true` |  |
+| config.skipTeardown | bool | `false` |  |
 | daemonsetAnnotations | object | `{}` |  |
 | daemonsetLabels | object | `{}` |  |
 | dashboard.annotations | object | `{}` |  |
