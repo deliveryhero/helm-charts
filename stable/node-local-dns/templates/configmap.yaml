@@ -28,7 +28,7 @@ data:
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind {{ .Values.config.localDns }} {{ ternary (printf "%s" .Values.config.dnsServer) "" .Values.config.setupIptables }}
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -39,7 +39,7 @@ data:
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind {{ .Values.config.localDns }} {{ ternary (printf "%s" .Values.config.dnsServer) "" .Values.config.setupIptables }}
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -50,7 +50,7 @@ data:
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind {{ .Values.config.localDns }} {{ ternary (printf "%s" .Values.config.dnsServer) "" .Values.config.setupIptables }}
         forward . __PILLAR__UPSTREAM__SERVERS__
         prometheus :9253
         }
