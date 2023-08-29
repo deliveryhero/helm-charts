@@ -112,7 +112,7 @@ spec:
         - name: localtime
           hostPath:
             path: /etc/localtime
-            type: "FileOrCreate"
+            type: {{ default "FileOrCreate" .Values.volume.localtime.type }}
         - name: custom-config
           configMap:
             name: {{ include "node-problem-detector.customConfig" . }}
