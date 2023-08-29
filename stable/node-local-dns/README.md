@@ -52,7 +52,6 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | config.commProtocol | string | `"force_tcp"` |  |
 | config.dnsDomain | string | `"cluster.local"` |  |
 | config.dnsServer | string | `"172.20.0.10"` |  |
-| config.healthPort | int | `8080` |  |
 | config.localDns | string | `"169.254.20.25"` |  |
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
