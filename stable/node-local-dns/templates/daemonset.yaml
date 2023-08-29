@@ -75,8 +75,10 @@ spec:
           - "-skipteardown={{ .Values.config.skipTeardown }}"
           - "-setupinterface={{ .Values.config.setupInterface }}"
           - "-setupiptables={{ .Values.config.setupIptables }}"
+        {{- if .Values.config.setupIptables }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
+        {{- end }}
         ports:
         - containerPort: 53
           name: dns
