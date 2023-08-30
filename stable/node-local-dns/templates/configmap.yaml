@@ -16,19 +16,19 @@ data:
         }
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind 0.0.0.0
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
         prometheus :9253
-        health {{ .Values.config.localDns }}:{{ .Values.config.healthPort }}
+        health
         }
     in-addr.arpa:53 {
         errors
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind 0.0.0.0
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -39,7 +39,7 @@ data:
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind 0.0.0.0
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -50,7 +50,7 @@ data:
         cache 30
         reload
         loop
-        bind {{ .Values.config.localDns }} {{ .Values.config.dnsServer }}
+        bind 0.0.0.0
         forward . __PILLAR__UPSTREAM__SERVERS__
         prometheus :9253
         }

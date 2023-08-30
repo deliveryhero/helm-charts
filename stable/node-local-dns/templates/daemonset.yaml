@@ -45,7 +45,7 @@ spec:
       {{- end }}
       priorityClassName: system-node-critical
       serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
-      hostNetwork: true
+      hostNetwork: {{ .Values.config.setupIptables }}
       dnsPolicy: Default  # Don't use cluster DNS.
       tolerations:
       - key: "CriticalAddonsOnly"
@@ -61,8 +61,13 @@ spec:
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
         args:
+        {{- if .Values.config.setupIptables }}
           - "-localip"
           - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+        {{- else }}
+          - "-localip"
+          - "{{ .Values.config.localDns }}"
+        {{- end }}
           - "-conf"
           - "/etc/Corefile"
           - "-upstreamsvc"
@@ -70,8 +75,10 @@ spec:
           - "-skipteardown={{ .Values.config.skipTeardown }}"
           - "-setupinterface={{ .Values.config.setupInterface }}"
           - "-setupiptables={{ .Values.config.setupIptables }}"
+        {{- if .Values.config.setupIptables }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
+        {{- end }}
         ports:
         - containerPort: 53
           name: dns
@@ -84,9 +91,8 @@ spec:
           protocol: TCP
         livenessProbe:
           httpGet:
-            host: {{ .Values.config.localDns }}
             path: /health
-            port: {{ .Values.config.healthPort }}
+            port: 8080
           initialDelaySeconds: 60
           timeoutSeconds: 5
         volumeMounts:

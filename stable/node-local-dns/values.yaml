@@ -16,14 +16,11 @@ config:
   # Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
-  # Port used for the health endpoint
-  healthPort: 8080
+  setupInterface: true
 
-  setupInterface: false
+  setupIptables: true
 
-  setupIptables: false
-
-  skipTeardown: true
+  skipTeardown: false
 
 nameOverride: ""
 fullnameOverride: ""
