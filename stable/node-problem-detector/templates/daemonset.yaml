@@ -3,10 +3,7 @@ kind: DaemonSet
 metadata:
   name: {{ include "node-problem-detector.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
-    helm.sh/chart: {{ include "node-problem-detector.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "node-problem-detector.labels" . | nindent 4 }}
     {{- range $key, $val := .Values.labels }}
     {{ $key }}: {{ $val | quote }}
     {{- end}}
@@ -20,14 +17,12 @@ spec:
     {{- end}}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- include "node-problem-detector.selectorLabels" . | nindent 6 }}
       app: {{ include "node-problem-detector.name" . }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- include "node-problem-detector.labels" . | nindent 8 }}
         app: {{ include "node-problem-detector.name" . }}
         {{- range $key, $val := .Values.labels }}
         {{ $key }}: {{ $val | quote }}

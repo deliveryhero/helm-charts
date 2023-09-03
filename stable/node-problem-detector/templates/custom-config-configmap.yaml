@@ -5,8 +5,5 @@ kind: ConfigMap
 metadata:
   name: {{ include "node-problem-detector.customConfig" . }}
   labels:
-    app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
-    helm.sh/chart: {{ include "node-problem-detector.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "node-problem-detector.labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace }}

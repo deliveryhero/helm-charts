@@ -85,6 +85,9 @@ priorityClassName: system-node-critical
 securityContext:
   privileged: true
 
+# -- Labels to be added to all other resources.
+additionalLabels: {}
+
 resources: {}
 
 annotations: {}

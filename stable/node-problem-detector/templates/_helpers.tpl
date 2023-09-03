@@ -32,6 +32,30 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{/*
+Common labels
+*/}}
+{{- define "node-problem-detector.labels" -}}
+helm.sh/chart: {{ include "node-problem-detector.chart" . }}
+{{ include "node-problem-detector.selectorLabels" . }}
+app.kubernetes.io/component: detector
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.additionalLabels }}
+{{ toYaml .Values.additionalLabels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "node-problem-detector.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "node-problem-detector.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
 {{/* Create the name of the service account to use */}}
 {{- define "node-problem-detector.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
