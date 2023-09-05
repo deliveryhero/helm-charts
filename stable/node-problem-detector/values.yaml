@@ -120,6 +120,7 @@ metrics:
       create: true
       disabled: []
     additionalLabels: {}
+    additionalRelabelings: []
     additionalRules: []
 
 env:
