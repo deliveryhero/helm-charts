@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.6](https://img.shields.io/badge/Version-2.3.6-informational?style=flat-square) ![AppVersion: v0.8.13](https://img.shields.io/badge/AppVersion-v0.8.13-informational?style=flat-square)
+![Version: 2.3.7](https://img.shields.io/badge/Version-2.3.7-informational?style=flat-square) ![AppVersion: v0.8.13](https://img.shields.io/badge/AppVersion-v0.8.13-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -68,6 +68,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | metrics.annotations | object | `{}` | Override all default annotations when `metrics.enabled=true` with specified values. |
 | metrics.enabled | bool | `false` | Expose metrics in Prometheus format with default configuration. |
 | metrics.prometheusRule.additionalLabels | object | `{}` |  |
+| metrics.prometheusRule.additionalRelabelings | list | `[]` |  |
 | metrics.prometheusRule.additionalRules | list | `[]` |  |
 | metrics.prometheusRule.defaultRules.create | bool | `true` |  |
 | metrics.prometheusRule.defaultRules.disabled | list | `[]` |  |

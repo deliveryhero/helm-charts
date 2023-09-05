@@ -32,4 +32,7 @@ spec:
       targetLabel: host_ip
       sourceLabels:
         - __meta_kubernetes_pod_host_ip
+    {{- if .Values.metrics.serviceMonitor.additionalRelabelings }}
+    {{- toYaml .Values.metrics.serviceMonitor.additionalRelabelings | nindent 4 }}
+    {{- end }}
 {{- end }}
