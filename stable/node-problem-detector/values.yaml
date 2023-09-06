@@ -114,13 +114,13 @@ metrics:
   serviceMonitor:
     enabled: false
     additionalLabels: {}
+    additionalRelabelings: []
   prometheusRule:
     enabled: false
     defaultRules:
       create: true
       disabled: []
     additionalLabels: {}
-    additionalRelabelings: []
     additionalRules: []
 
 env:
