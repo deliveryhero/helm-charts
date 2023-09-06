@@ -68,12 +68,12 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | metrics.annotations | object | `{}` | Override all default annotations when `metrics.enabled=true` with specified values. |
 | metrics.enabled | bool | `false` | Expose metrics in Prometheus format with default configuration. |
 | metrics.prometheusRule.additionalLabels | object | `{}` |  |
-| metrics.prometheusRule.additionalRelabelings | list | `[]` |  |
 | metrics.prometheusRule.additionalRules | list | `[]` |  |
 | metrics.prometheusRule.defaultRules.create | bool | `true` |  |
 | metrics.prometheusRule.defaultRules.disabled | list | `[]` |  |
 | metrics.prometheusRule.enabled | bool | `false` |  |
 | metrics.serviceMonitor.additionalLabels | object | `{}` |  |
+| metrics.serviceMonitor.additionalRelabelings | list | `[]` |  |
 | metrics.serviceMonitor.enabled | bool | `false` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
