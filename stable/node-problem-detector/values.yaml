@@ -115,13 +115,13 @@ metrics:
     enabled: false
     additionalLabels: {}
     additionalRelabelings: []
+    metricRelabelings: []
   prometheusRule:
     enabled: false
     defaultRules:
       create: true
       disabled: []
     additionalLabels: {}
-    additionalRelabelings: []
     additionalRules: []
 
 env:
