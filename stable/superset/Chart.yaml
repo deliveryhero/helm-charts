@@ -2,7 +2,7 @@ apiVersion: v2
 name: superset
 description: A Helm chart for Apache Superset
 type: application
-version: 1.1.0
+version: 1.1.1
 home: https://superset.apache.org/
 appVersion: "latest"
 maintainers:
