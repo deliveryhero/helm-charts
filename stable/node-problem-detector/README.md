@@ -83,6 +83,8 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | resources | object | `{}` |  |
 | securityContext.privileged | bool | `true` |  |
 | serviceAccount.create | bool | `true` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.labels | object | `{}` |  |
 | serviceAccount.name | string | `nil` |  |
 | settings.custom_monitor_definitions | object | `{}` | Custom plugin monitor config files |
 | settings.custom_plugin_monitors | list | `[]` |  |
