@@ -115,6 +115,7 @@ metrics:
     enabled: false
     additionalLabels: {}
     additionalRelabelings: []
+    metricRelabelings: []
   prometheusRule:
     enabled: false
     defaultRules:
