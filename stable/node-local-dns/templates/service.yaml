@@ -5,9 +5,11 @@ metadata:
   namespace: kube-system
   labels:
     {{- include "node-local-dns.labels" . | nindent 4 }}
+  {{- if not .Values.serviceMonitor.enabled }}
   annotations:
     prometheus.io/port: "9253"
     prometheus.io/scrape: "true"
+  {{- end }}
 spec:
   clusterIP: None
   ports:

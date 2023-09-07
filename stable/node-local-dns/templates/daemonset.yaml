@@ -3,8 +3,15 @@ kind: DaemonSet
 metadata:
   name: {{ include "node-local-dns.fullname" . }}
   namespace: kube-system
+  {{- with .Values.daemonsetAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   labels:
     {{- include "node-local-dns.labels" . | nindent 4 }}
+  {{- with .Values.daemonsetLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   updateStrategy:
     rollingUpdate:
@@ -15,10 +22,17 @@ spec:
   template:
     metadata:
       labels:
+      {{- if .Values.podLabels }}
+        {{- toYaml .Values.podLabels | nindent 8 }}
+      {{- end }}
         k8s-app: {{ include "node-local-dns.name" . }}
+      {{- if or .Values.podAnnotations (not .Values.serviceMonitor.enabled) }}
       annotations:
+      {{- end }}
+        {{- if not .Values.serviceMonitor.enabled }}
         prometheus.io/port: "9253"
         prometheus.io/scrape: "true"
+        {{- end }}
         {{- if .Values.podAnnotations }}
           {{- toYaml .Values.podAnnotations | nindent 8 }}
         {{- end }}
@@ -31,7 +45,7 @@ spec:
       {{- end }}
       priorityClassName: system-node-critical
       serviceAccountName: {{ include "node-local-dns.serviceAccountName" . }}
-      hostNetwork: true
+      hostNetwork: {{ .Values.config.setupIptables }}
       dnsPolicy: Default  # Don't use cluster DNS.
       tolerations:
       - key: "CriticalAddonsOnly"
@@ -46,9 +60,25 @@ spec:
         {{- with .Values.resources }}
         resources: {{- toYaml . | nindent 10 }}
         {{- end }}
-        args: [ "-localip", "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}", "-conf", "/etc/Corefile", "-upstreamsvc", "{{ include "node-local-dns.fullname" . }}-upstream" ]
+        args:
+        {{- if .Values.config.setupIptables }}
+          - "-localip"
+          - "{{ .Values.config.localDns }},{{ .Values.config.dnsServer }}"
+        {{- else }}
+          - "-localip"
+          - "{{ .Values.config.localDns }}"
+        {{- end }}
+          - "-conf"
+          - "/etc/Corefile"
+          - "-upstreamsvc"
+          - "{{ include "node-local-dns.fullname" . }}-upstream"
+          - "-skipteardown={{ .Values.config.skipTeardown }}"
+          - "-setupinterface={{ .Values.config.setupInterface }}"
+          - "-setupiptables={{ .Values.config.setupIptables }}"
+        {{- if .Values.config.setupIptables }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
+        {{- end }}
         ports:
         - containerPort: 53
           name: dns
@@ -61,9 +91,8 @@ spec:
           protocol: TCP
         livenessProbe:
           httpGet:
-            host: {{ .Values.config.localDns }}
             path: /health
-            port: {{ .Values.config.healthPort }}
+            port: 8080
           initialDelaySeconds: 60
           timeoutSeconds: 5
         volumeMounts:

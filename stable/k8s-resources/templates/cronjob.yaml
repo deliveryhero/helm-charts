@@ -1,6 +1,10 @@
 {{- if .Values.CronJobs -}}
 {{- range .Values.CronJobs }}
+{{- if semverCompare ">=1.24-0" $.Capabilities.KubeVersion.GitVersion -}}
+apiVersion: batch/v1
+{{- else -}}
 apiVersion: batch/v1beta1
+{{- end }}
 kind: CronJob
 metadata:
 {{- if .namespace }}

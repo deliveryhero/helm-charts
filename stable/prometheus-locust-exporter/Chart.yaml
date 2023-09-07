@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: "v0.4.1"
 description: A Helm chart a prometheus exporter locust load test metrics
 name: prometheus-locust-exporter
-version: 1.1.0
+version: 1.2.0
 home: https://github.com/ContainerSolutions/locust_exporter
 sources:
   - https://github.com/ContainerSolutions/locust_exporter

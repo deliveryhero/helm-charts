@@ -10,7 +10,7 @@ cronjob:
 
 image:
   repository: aquasec/kube-bench
-  tag: v0.6.15
+  tag: v0.6.17
   pullPolicy: IfNotPresent
 
 serviceAccount:
@@ -18,6 +18,14 @@ serviceAccount:
   create: false
   # Annotations to add to the service account
   annotations: {}
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+# runAsUser: 1000
 
 extraLabels: {}
 podLabels: {}

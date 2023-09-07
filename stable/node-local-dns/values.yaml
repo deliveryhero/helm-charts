@@ -16,8 +16,11 @@ config:
   # Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
-  # Port used for the health endpoint
-  healthPort: 8080
+  setupInterface: true
+
+  setupIptables: true
+
+  skipTeardown: false
 
 nameOverride: ""
 fullnameOverride: ""
@@ -33,6 +36,12 @@ serviceAccount:
 
 podAnnotations: {}
 
+podLabels: {}
+
+daemonsetAnnotations: {}
+
+daemonsetLabels: {}
+
 securityContext:
   capabilities:
     add:
@@ -40,7 +49,7 @@ securityContext:
 
 # https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
-  # Ensure that servicemonitor is created
+  # Ensure that servicemonitor is created, this will disable prometheus annotations
   enabled: false
   labels: {}
 
