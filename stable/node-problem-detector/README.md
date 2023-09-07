@@ -75,6 +75,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | metrics.serviceMonitor.additionalLabels | object | `{}` |  |
 | metrics.serviceMonitor.additionalRelabelings | list | `[]` |  |
 | metrics.serviceMonitor.enabled | bool | `false` |  |
+| metrics.serviceMonitor.metricRelabelings | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | priorityClassName | string | `"system-node-critical"` |  |
