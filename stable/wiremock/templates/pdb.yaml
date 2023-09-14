@@ -2,9 +2,8 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ template "wiremock.fullname" . }}-master
+  name: {{ template "wiremock.fullname" . }}
   labels:
-    component: master
 {{ include "wiremock.labels" . | indent 4 }}
 spec:
   maxUnavailable: 0
