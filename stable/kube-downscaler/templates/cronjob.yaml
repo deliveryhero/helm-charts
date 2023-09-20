@@ -1,5 +1,9 @@
 {{- if .Values.resetAnnotationsCronjob.enabled -}}
+{{- if .Capabilities.APIVersions.Has "batch/v1" -}}
+apiVersion: batch/v1
+{{- else -}}
 apiVersion: batch/v1beta1
+{{- end -}}
 kind: CronJob
 metadata:
   name: {{ template "kube-downscaler.fullname" . }}-de-annotate
