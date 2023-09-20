@@ -42,6 +42,17 @@ Return the appropriate apiVersion for RBAC APIs.
 {{- end -}}
 
 {{/*
+Return the appropriate apiVersion for Batch APIs.
+*/}}
+{{- define "batch.apiVersion" -}}
+{{- if semverCompare "^1.21-0" .Capabilities.KubeVersion.GitVersion -}}
+"batch/v1"
+{{- else -}}
+"batch/v1beta1"
+{{- end -}}
+{{- end -}}
+
+{{/*
 Common labels
 */}}
 {{- define "kube-downscaler.labels" -}}
