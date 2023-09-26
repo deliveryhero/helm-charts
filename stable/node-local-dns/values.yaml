@@ -73,3 +73,6 @@ affinity: {}
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
+
+prometheusScraping:
+  enabled: true
