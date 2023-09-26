@@ -8,9 +8,9 @@ metadata:
     {{- include "node-local-dns.labels" . | nindent 4 }}
 data:
   Corefile: |
-    {{ if .Values.config.customConfig }}
-      {{ tpl .Values.config.customConfig . }}
-    {{ else }}
+    {{- if .Values.config.customConfig -}}
+    {{- tpl .Values.config.customConfig . | nindent 4}}
+    {{- else }}
     {{ .Values.config.dnsDomain }}:53 {
         errors
         cache {
