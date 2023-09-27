@@ -22,6 +22,9 @@ config:
 
   skipTeardown: false
 
+  # Overrides the generated configuration with specified one.
+  customConfig: ""
+
 nameOverride: ""
 fullnameOverride: ""
 
