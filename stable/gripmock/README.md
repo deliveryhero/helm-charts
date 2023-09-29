@@ -1,6 +1,6 @@
 # gripmock
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
 
 A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock server for GRPC services. It uses `.proto` file(s) to generate the implementation of gRPC service(s) for you.
 
@@ -76,6 +76,7 @@ helm install my-release deliveryhero/gripmock -f values.yaml
 | podAnnotations | object | `{}` |  |
 | replicaCount | int | `1` | Set the number of replicas in case hpa is not enabled |
 | resources | object | `{}` |  |
+| service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
