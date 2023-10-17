@@ -19,7 +19,7 @@ data:
         }
         reload
         loop
-        bind 0.0.0.0
+        bind {{ .Values.config.localDns }} {{ .Values.config.dnsDomain }}
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -31,7 +31,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind {{ .Values.config.localDns }} {{ .Values.config.dnsDomain }}
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -42,7 +42,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind {{ .Values.config.localDns }} {{ .Values.config.dnsDomain }}
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
@@ -53,7 +53,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind {{ .Values.config.localDns }} {{ .Values.config.dnsDomain }}
         forward . __PILLAR__UPSTREAM__SERVERS__
         prometheus :9253
         }
