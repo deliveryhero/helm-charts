@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.0.2](https://img.shields.io/badge/Version-2.0.2-informational?style=flat-square) ![AppVersion: 1.22.23](https://img.shields.io/badge/AppVersion-1.22.23-informational?style=flat-square)
+![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ![AppVersion: 1.22.23](https://img.shields.io/badge/AppVersion-1.22.23-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
