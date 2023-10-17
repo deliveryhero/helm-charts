@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "gripmock.labels" . | nindent 4 }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.service.type }}
   ports:
     - port: 4770
       targetPort: 4770

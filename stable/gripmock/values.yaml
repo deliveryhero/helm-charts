@@ -33,6 +33,8 @@ fullnameOverride: ""
 
 podAnnotations: {}
 
+service:
+  type: ClusterIP
 
 ingress:
   enabled: false
