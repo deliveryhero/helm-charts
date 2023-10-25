@@ -1,25 +1,30 @@
 {{- if .Values.frontend.enabled -}}
 {{- $fullName := include "toxiproxy.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1
+{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: "{{ $fullName }}-frontend"
+  name: {{ $fullName }}-frontend
   labels:
     component: frontend
 {{ include "toxiproxy.labels" . | indent 4 }}
-  {{- with .Values.ingress.annotations }}
+  {{- with .Values.frontend.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-{{- if .Values.ingress.tls }}
+  {{- if and .Values.frontend.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.frontend.ingress.className }}
+  {{- end }}
+  {{- if .Values.frontend.ingress.tls }}
   tls:
-  {{- range .Values.ingress.tls }}
+  {{- range .Values.frontend.ingress.tls }}
     - hosts:
       {{- range .hosts }}
         - {{ . | quote }}
@@ -28,11 +33,25 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-    - host: {{ .Values.frontend.host }}
+    {{- range .Values.frontend.ingress.hosts }}
+    - host: {{ .host | quote }}
       http:
         paths:
-          - path: /
+          {{- range .paths }}
+          - path: {{ .path }}
+            {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
+            pathType: {{ .pathType }}
+            {{- end }}
             backend:
-              serviceName: {{ $fullName }}-frontend
+              {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+              service:
+                name: {{ $fullName }}-frontend
+                port:
+                  number: {{ $svcPort }}
+              {{- else }}
+              serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
+              {{- end }}
+          {{- end }}
+    {{- end }}
 {{- end }}

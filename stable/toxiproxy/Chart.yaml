@@ -17,8 +17,8 @@ description: |
   helm install toxiproxy deliveryhero/toxiproxy --set toxiproxyConfig=my-toxiproxy-config
   ```
 
-version: "1.3.7"
-appVersion: "2.1.2"
+version: "1.3.8"
+appVersion: "2.7.0"
 home: https://github.com/Shopify/toxiproxy
 sources:
   - https://github.com/Shopify/toxiproxy

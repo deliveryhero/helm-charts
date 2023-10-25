@@ -1,10 +1,11 @@
-toxiproxyConfig: ""
+toxiproxyConfig: ''
 
 replicaCount: 1
 
 image:
-  repository: shopify/toxiproxy
-  tag: 2.1.4
+  # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
+  repository: ghcr.io/shopify/toxiproxy
+  tag: 2.7.0
   pullPolicy: IfNotPresent
 
 init:
@@ -15,16 +16,27 @@ init:
     tag: latest
 
 frontend:
-  repository: buckle/toxiproxy-frontend
   # Whether we want to deploy the charts for the frontend or not
   enabled: false
-  resources: {}
+  repository: buckle/toxiproxy-frontend
+  resources:
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   # Frontend host address to access it
-  host: chart-example-ui.local
+  ingress:
+    annotations: {}
+    className: ''
+    hosts:
+      - host: chart-example-ui.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -37,10 +49,12 @@ serviceAccount:
 pdb:
   enabled: false
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -69,8 +83,9 @@ consumer:
 
 ingress:
   enabled: true
-  className: ""
-  annotations: {}
+  className: ''
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -88,7 +103,8 @@ args:
 
 environment: []
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -100,14 +116,15 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-
 deploymentAnnotations: {}
 
 podAnnotations: {}
 
 extraLabels: {}
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/arch: amd64
+  kubernetes.io/os: linux
 
 tolerations: []
 

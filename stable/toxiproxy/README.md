@@ -1,6 +1,6 @@
 # toxiproxy
 
-![Version: 1.3.7](https://img.shields.io/badge/Version-1.3.7-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.3.8](https://img.shields.io/badge/Version-1.3.8-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
 
@@ -68,13 +68,18 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | environment | list | `[]` |  |
 | extraLabels | object | `{}` |  |
 | frontend.enabled | bool | `false` |  |
-| frontend.host | string | `"chart-example-ui.local"` |  |
+| frontend.ingress.annotations | object | `{}` |  |
+| frontend.ingress.className | string | `""` |  |
+| frontend.ingress.hosts[0].host | string | `"chart-example-ui.local"` |  |
+| frontend.ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| frontend.ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
+| frontend.ingress.tls | list | `[]` |  |
 | frontend.repository | string | `"buckle/toxiproxy-frontend"` |  |
 | frontend.resources | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"shopify/toxiproxy"` |  |
-| image.tag | string | `"2.1.4"` |  |
+| image.repository | string | `"ghcr.io/shopify/toxiproxy"` |  |
+| image.tag | string | `"2.7.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -86,7 +91,8 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
 | init.image.tag | string | `"latest"` | the docker image tag for the init container image |
 | nameOverride | string | `""` |  |
-| nodeSelector | object | `{}` |  |
+| nodeSelector."kubernetes.io/arch" | string | `"amd64"` |  |
+| nodeSelector."kubernetes.io/os" | string | `"linux"` |  |
 | pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
