@@ -1,4 +1,4 @@
-toxiproxyConfig: ""
+toxiproxyConfig: ''
 
 replicaCount: 1
 
@@ -16,15 +16,17 @@ init:
     tag: latest
 
 frontend:
-  enabled: false # Whether we want to deploy the charts for the frontend or not
-  repository: buckle/toxiproxy-frontend 
-  resources: {}
+  # Whether we want to deploy the charts for the frontend or not
+  enabled: false
+  repository: buckle/toxiproxy-frontend
+  resources:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   # Frontend host address to access it
   ingress:
     annotations: {}
-    className: ""
+    className: ''
     hosts:
       - host: chart-example-ui.local
         paths:
@@ -33,8 +35,8 @@ frontend:
     tls: []
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -47,10 +49,12 @@ serviceAccount:
 pdb:
   enabled: false
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -79,8 +83,9 @@ consumer:
 
 ingress:
   enabled: true
-  className: ""
-  annotations: {}
+  className: ''
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -98,7 +103,8 @@ args:
 
 environment: []
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -110,7 +116,6 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-
 deploymentAnnotations: {}
 
 podAnnotations: {}
@@ -118,8 +123,8 @@ podAnnotations: {}
 extraLabels: {}
 
 nodeSelector:
-    kubernetes.io/arch: amd64
-    kubernetes.io/os: linux
+  kubernetes.io/arch: amd64
+  kubernetes.io/os: linux
 
 tolerations: []
 
