@@ -73,8 +73,8 @@ helm install my-release deliveryhero/toxiproxy -f values.yaml
 | frontend.resources | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"shopify/toxiproxy"` |  |
-| image.tag | string | `"2.1.4"` |  |
+| image.repository | string | `"ghcr.io/shopify/toxiproxy"` |  |
+| image.tag | string | `"2.7.0"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |

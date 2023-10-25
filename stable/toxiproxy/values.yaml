@@ -3,8 +3,9 @@ toxiproxyConfig: ""
 replicaCount: 1
 
 image:
-  repository: shopify/toxiproxy
-  tag: 2.1.4
+  # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
+  repository: ghcr.io/shopify/toxiproxy
+  tag: 2.7.0
   pullPolicy: IfNotPresent
 
 init:
@@ -15,12 +16,21 @@ init:
     tag: latest
 
 frontend:
-  repository: buckle/toxiproxy-frontend
-  # Whether we want to deploy the charts for the frontend or not
-  enabled: false
+  enabled: false # Whether we want to deploy the charts for the frontend or not
+  repository: buckle/toxiproxy-frontend 
   resources: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   # Frontend host address to access it
-  host: chart-example-ui.local
+  ingress:
+    annotations: {}
+    className: ""
+    hosts:
+      - host: chart-example-ui.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
 
 imagePullSecrets: []
 nameOverride: ""
@@ -107,7 +117,9 @@ podAnnotations: {}
 
 extraLabels: {}
 
-nodeSelector: {}
+nodeSelector:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
 
 tolerations: []
 
