@@ -10,7 +10,7 @@ cronjob:
 
 image:
   repository: aquasec/kube-bench
-  tag: v0.6.17
+  tag: v0.6.19
   pullPolicy: IfNotPresent
 
 serviceAccount:
