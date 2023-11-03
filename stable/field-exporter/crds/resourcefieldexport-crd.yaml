@@ -1,0 +1,138 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: resourcefieldexports.gdp.deliveryhero.io
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+spec:
+  group: gdp.deliveryhero.io
+  names:
+    kind: ResourceFieldExport
+    listKind: ResourceFieldExportList
+    plural: resourcefieldexports
+    singular: resourcefieldexport
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ResourceFieldExport is the Schema for the resourcefieldexports
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ResourceFieldExportSpec defines the desired state of ResourceFieldExport
+            properties:
+              from:
+                properties:
+                  apiVersion:
+                    description: APIVersion is the group version of the resource
+                    pattern: ^([a-zA-Z0-9.-]+[a-zA-Z0-9-]\/[a-zA-Z0-9]+|[a-zA-Z0-9]+)$
+                    type: string
+                  kind:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - apiVersion
+                - kind
+                - name
+                type: object
+              outputs:
+                items:
+                  properties:
+                    key:
+                      type: string
+                    path:
+                      type: string
+                  required:
+                  - key
+                  - path
+                  type: object
+                type: array
+              requiredFields:
+                properties:
+                  statusConditions:
+                    items:
+                      properties:
+                        status:
+                          type: string
+                        type:
+                          type: string
+                      required:
+                      - status
+                      - type
+                      type: object
+                    type: array
+                type: object
+              to:
+                description: DestinationRef is where the fields should be written.
+                properties:
+                  name:
+                    type: string
+                  type:
+                    description: DestinationType is a ConfigMap or a Secret
+                    enum:
+                    - ConfigMap
+                    - Secret
+                    type: string
+                required:
+                - name
+                - type
+                type: object
+            required:
+            - from
+            - outputs
+            - to
+            type: object
+          status:
+            description: ResourceFieldExportStatus defines the observed state of ResourceFieldExport
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: The last time the condition transitioned from one
+                        status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human-readable message indicating details about
+                        the transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
