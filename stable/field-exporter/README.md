@@ -50,7 +50,7 @@ helm install my-release deliveryhero/field-exporter -f values.yaml
 | controllerManager.manager.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.manager.resources.limits.memory | string | `"128Mi"` |  |
 | controllerManager.manager.resources.requests.cpu | string | `"10m"` |  |
-| controllerManager.manager.resources.requests.memory | string | `"64Mi"` |  |
+| controllerManager.manager.resources.requests.memory | string | `"128Mi"` |  |
 | controllerManager.podLabels | object | `{}` |  |
 | controllerManager.replicas | int | `1` |  |
 | controllerManager.serviceAccount.annotations | object | `{}` |  |
