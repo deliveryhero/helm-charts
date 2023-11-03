@@ -1,0 +1,91 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "field-exporter.fullname" . }}-manager-role
+  labels:
+  {{- include "field-exporter.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - alloydb.cnrm.cloud.google.com
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - gdp.deliveryhero.io
+  resources:
+  - resourcefieldexports
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gdp.deliveryhero.io
+  resources:
+  - resourcefieldexports/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - gdp.deliveryhero.io
+  resources:
+  - resourcefieldexports/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - iam.cnrm.cloud.google.com
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - redis.cnrm.cloud.google.com
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - sql.cnrm.cloud.google.com
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - storage.cnrm.cloud.google.com
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "field-exporter.fullname" . }}-manager-rolebinding
+  labels:
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: field-exporter
+    app.kubernetes.io/part-of: field-exporter
+  {{- include "field-exporter.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: '{{ include "field-exporter.fullname" . }}-manager-role'
+subjects:
+- kind: ServiceAccount
+  name: '{{ include "field-exporter.fullname" . }}-controller-manager'
+  namespace: '{{ .Release.Namespace }}'
