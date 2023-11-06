@@ -1,5 +1,5 @@
+containerName: k8s-event-logger
 image:
-  containerName: k8s-event-logger
   repository: maxrocketinternet/k8s-event-logger
   # image.tag -- Overrides the image tag whose default is the chart appVersion.
   # tag: "2.0"

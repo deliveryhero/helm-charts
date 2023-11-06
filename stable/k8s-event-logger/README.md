@@ -59,9 +59,9 @@ helm install my-release deliveryhero/k8s-event-logger -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
+| containerName | string | `"k8s-event-logger"` |  |
 | env | object | `{}` | A map of environment variables |
 | fullnameOverride | string | `""` |  |
-| image.containerName | string | `"k8s-event-logger"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"maxrocketinternet/k8s-event-logger"` |  |
 | imagePullSecrets | list | `[]` |  |
