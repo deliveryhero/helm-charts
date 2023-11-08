@@ -31,6 +31,7 @@ helm install my-release deliveryhero/<chart>
 - [cortex-gateway](stable/cortex-gateway)
 - [datadog-controller](stable/datadog-controller)
 - [dregsy](stable/dregsy)
+- [field-exporter](stable/field-exporter)
 - [gripmock](stable/gripmock)
 - [hoppscotch](stable/hoppscotch)
 - [k8s-cloudwatch-adapter](stable/k8s-cloudwatch-adapter)
