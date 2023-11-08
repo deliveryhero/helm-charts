@@ -1,7 +1,7 @@
 name: kube-downscaler
 apiVersion: v1
-version: "0.7.3"
-appVersion: 23.2.0
+version: "0.7.4"
+appVersion: 23.2.0-6-gc9b88e8
 description: Scale down Kubernetes deployments after work hours
 keywords:
 - k8s pods scheduler
