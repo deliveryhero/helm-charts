@@ -1,3 +1,4 @@
 * @deliveryhero/helm-chart-admins
-/stable         @deliveryhero/helm-chart-maintainers
-/stable/mlflow  @deliveryhero/helm-chart-maintainers @deliveryhero/dh-logistics-ml-engineering
+/stable                @deliveryhero/helm-chart-maintainers
+/stable/mlflow         @deliveryhero/helm-chart-maintainers @deliveryhero/dh-logistics-ml-engineering
+stable/field-exporter  @deliveryhero/helm-chart-maintainers @deliveryhero/gcp

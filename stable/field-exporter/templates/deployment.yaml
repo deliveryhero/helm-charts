@@ -3,10 +3,6 @@ kind: Deployment
 metadata:
   name: {{ include "field-exporter.fullname" . }}-controller-manager
   labels:
-    app.kubernetes.io/component: manager
-    app.kubernetes.io/created-by: field-exporter
-    app.kubernetes.io/part-of: field-exporter
-    control-plane: controller-manager
   {{- include "field-exporter.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.controllerManager.replicas }}

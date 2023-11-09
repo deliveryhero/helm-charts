@@ -1,8 +1,10 @@
 # field-exporter
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0.2](https://img.shields.io/badge/AppVersion-v1.0.2-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0.2](https://img.shields.io/badge/AppVersion-v1.0.2-informational?style=flat-square)
 
 A chart to install [field-exporter](https://github.com/deliveryhero/field-exporter). This controller is used to fill the gap in [k8s-config-connector](https://github.com/GoogleCloudPlatform/k8s-config-connector) for exporting value from Config Connector managed resources into Secrets and ConfigMaps.
+
+**Homepage:** <https://github.com/deliveryhero/field-exporter>
 
 ## How to install this chart
 
@@ -35,6 +37,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/field-exporter -f values.yaml
 ```
+
+## Source Code
+
+* <https://github.com/deliveryhero/field-exporter>
 
 ## Values
 
