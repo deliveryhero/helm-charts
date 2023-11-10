@@ -15,6 +15,7 @@ rules:
   - list
   - patch
   - update
+  - watch
 - apiGroups:
   - alloydb.cnrm.cloud.google.com
   resources:
