@@ -6,7 +6,7 @@ description: |
   if you are using old installation please use v1 chart
 home: https://www.kubecost.com
 type: application
-version: 2.0.2
+version: 2.0.3
 appVersion: "2.0.0"
 maintainers:
   - name: nyambati

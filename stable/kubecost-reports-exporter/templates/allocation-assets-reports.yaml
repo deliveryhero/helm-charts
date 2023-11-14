@@ -13,6 +13,7 @@ metadata:
 spec:
   schedule: {{ $.Values.schedule | quote }}
   successfulJobsHistoryLimit: {{ $.Values.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ $.Values.failedJobsHistoryLimit }}
   concurrencyPolicy: {{ $.Values.concurrencyPolicy }}
   jobTemplate:
     spec:
