@@ -5,6 +5,7 @@
 schedule: "0 * * * *"
 restartPolicy: OnFailure
 successfulJobsHistoryLimit: 1
+failedJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
 
 image:
