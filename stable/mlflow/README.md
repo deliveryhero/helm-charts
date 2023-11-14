@@ -1,6 +1,6 @@
 # mlflow
 
-![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
 
@@ -89,4 +89,4 @@ helm install my-release deliveryhero/mlflow -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mkuhn | <magdalena.kuhn@deliveryhero.com> | <https://github.com/lena-kuhn> |
+| mkuhn | <no-reply@deliveryhero.com> | <https://github.com/magdalenakuhn17> |
