@@ -1,6 +1,6 @@
 # k8s-resources
 
-![Version: 0.6.5](https://img.shields.io/badge/Version-0.6.5-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.5-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
