@@ -11,7 +11,7 @@ controllerManager:
         - ALL
     image:
       repository: europe-docker.pkg.dev/dp-common-infra-5780/developer-platform-public/deliveryhero/field-exporter
-      tag: v1.0.2
+      tag: v1.0.5
     resources:
       limits:
         cpu: 500m
