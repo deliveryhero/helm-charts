@@ -13,7 +13,7 @@ CronJobs:
           - "-c"
           - "'echo yes'"
     imagePullSecrets:
-      - name : regcred
+      - name: regcred
 
 ConfigMaps:
   - name: example-cm
