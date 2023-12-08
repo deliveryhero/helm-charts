@@ -16,6 +16,8 @@ CronJobs: []
   #         - "sh"
   #         - "-c"
   #         - "'echo yes'"
+  #    imagePullSecrets:
+  #      - name : regcred
 
 # ConfigMaps -- A list ConfigMap to create
 ConfigMaps: []

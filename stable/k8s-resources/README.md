@@ -1,6 +1,8 @@
 # k8s-resources
 
-![Version: 0.6.5](https://img.shields.io/badge/Version-0.6.5-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+
+
+![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.6-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square) 
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
@@ -18,6 +20,7 @@ Currently supports:
 - ScaledObject (KEDA)
 
 Every resource type can have custom labels, annotations or a `fullnameOverride` set. See default [values.yaml](https://github.com/deliveryhero/helm-charts/blob/master/stable/k8s-resources/values.yaml) for examples.
+
 
 **Homepage:** <https://github.com/deliveryhero/helm-charts>
 
@@ -52,6 +55,10 @@ To install with custom values file:
 ```console
 helm install my-release deliveryhero/k8s-resources -f values.yaml
 ```
+
+
+
+
 
 ## Values
 
