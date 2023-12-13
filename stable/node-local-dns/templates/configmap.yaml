@@ -24,7 +24,7 @@ data:
                 {{ .Values.config.commProtocol }}
         }
         prometheus :9253
-        health
+        health :{{ .Values.config.healthPort }}
         }
     in-addr.arpa:53 {
         errors
