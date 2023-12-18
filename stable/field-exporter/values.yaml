@@ -1,8 +1,6 @@
 controllerManager:
   manager:
     args:
-    - --health-probe-bind-address=:8081
-    - --metrics-bind-address=127.0.0.1:8080
     - --leader-elect
     containerSecurityContext:
       allowPrivilegeEscalation: false
@@ -11,7 +9,7 @@ controllerManager:
         - ALL
     image:
       repository: europe-docker.pkg.dev/dp-common-infra-5780/developer-platform-public/deliveryhero/field-exporter
-      tag: v1.1.0
+      tag: v1.3.0
     resources:
       limits:
         cpu: 500m
@@ -31,3 +29,26 @@ metricsService:
     protocol: TCP
     targetPort: https
   type: ClusterIP
+webhookService:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 9443
+  type: ClusterIP
+
+# webhookTLS specifies TLS cert/key for the webhook
+webhookTLS:
+  caCert:
+  cert:
+  key:
+
+# keepTLSSecret specifies whether to reuse existing TLS secret for chart upgrade
+keepTLSSecret: false
+
+# Enable cert-manager
+enableCertManager: false
+
+# cluster contains configurations specific to the kubernetes cluster
+cluster:
+  # Cluster DNS domain (required for requesting TLS certificates)
+  dnsDomain: cluster.local
