@@ -1,0 +1,75 @@
+{{ $tls := fromYaml ( include "field-exporter.webhookCerts" . ) }}
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: {{ include "field-exporter.fullname" . }}-validating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "field-exporter.fullname" . }}-serving-cert
+  labels:
+  {{- include "field-exporter.labels" . | nindent 4 }}
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    {{ if not $.Values.enableCertManager -}}
+    caBundle: {{ $tls.caCert }}
+    {{ end }}
+    service:
+      name: '{{ include "field-exporter.fullname" . }}-webhook-service'
+      namespace: '{{ .Release.Namespace }}'
+      path: /validate-gdp-deliveryhero-io-v1alpha1-resourcefieldexport
+  failurePolicy: Fail
+  name: vresourcefieldexport.kb.io
+  rules:
+  - apiGroups:
+    - gdp.deliveryhero.io
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - resourcefieldexports
+  sideEffects: None
+---
+{{- if .Values.enableCertManager }}
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "field-exporter.fullname" . }}-selfsigned-issuer
+  labels:
+  {{- include "field-exporter.labels" . | nindent 4 }}
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "field-exporter.fullname" . }}-serving-cert
+  labels:
+  {{- include "field-exporter.labels" . | nindent 4 }}
+spec:
+  dnsNames:
+    - '{{ include "field-exporter.fullname" . }}-webhook-service.{{ .Release.Namespace
+    }}.svc'
+    - '{{ include "field-exporter.fullname" . }}-webhook-service.{{ .Release.Namespace
+    }}.svc.{{ .Values.kubernetesClusterDomain }}'
+  issuerRef:
+    kind: Issuer
+    name: '{{ include "field-exporter.fullname" . }}-selfsigned-issuer'
+  secretName: {{ template "field-exporter.webhookCertSecret" . }}
+{{- else }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "field-exporter.webhookCertSecret" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+{{ include "field-exporter.labels" . | indent 4 }}
+type: kubernetes.io/tls
+data:
+  ca.crt: {{ $tls.caCert }}
+  tls.crt: {{ $tls.clientCert }}
+  tls.key: {{ $tls.clientKey }}
+{{- end}}
