@@ -9,7 +9,6 @@ data:
   DB_HOST: {{ .Values.database.host  }}
   DB_DATABASE: {{ .Values.database.name  }}
   DB_USERNAME: {{ .Values.database.username }}
-  DB_DRIVER: {{ .Values.database.driver }}
   DB_PORT: {{ .Values.database.port | quote }}
   APP_ENV: {{ default "production" .Values.env.APP_ENV | quote }}
   APP_URL: {{ .Values.ingress.host }}
