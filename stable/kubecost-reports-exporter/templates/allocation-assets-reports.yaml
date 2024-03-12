@@ -15,8 +15,11 @@ spec:
   successfulJobsHistoryLimit: {{ $.Values.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: {{ $.Values.failedJobsHistoryLimit }}
   concurrencyPolicy: {{ $.Values.concurrencyPolicy }}
+
   jobTemplate:
     spec:
+      activeDeadlineSeconds: {{ $.Values.activeDeadlineSeconds }}
+      ttlSecondsAfterFinished: {{ $.Values.ttlSecondsAfterFinished }}
       template:
         metadata:
           {{- with $.Values.podAnnotations }}
