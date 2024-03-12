@@ -80,6 +80,7 @@ This repository has multiple Github Actions to ensure quality is high, these inc
 
 - [chart-testing](https://github.com/helm/chart-testing): lint and install tests
 - [markdown-lint](https://github.com/avto-dev/markdown-lint): lint all markdown files
+- [pre-commit](https://pre-commit.com/): Auto generate helm docs before commit.
 - [helm-docs](https://github.com/norwoodj/helm-docs): check all chart `README.md` have all values documented
 - [helm-conftest](https://github.com/instrumenta/helm-conftest): Ensures standard labels are present
 
@@ -120,7 +121,13 @@ All commands to be run from the root of this repo.
   To generate chart `README.md` files from the [template](ci/README.md.gotmpl):
 
   ```console
+  <!-- docker -->
   docker run --rm -v "${PWD}:/helm-docs" jnorwood/helm-docs:v1.11.3 --template-files ./ci/README.md.gotmpl
+  <!-- pre-commit -->
+  # install pre-commit https://pre-commit.com/#install
+  $ brew install pre-commit
+  $  pre-commit install
+  $ pre-commit install-hooks
   ```
 
 `helm-conftest`:

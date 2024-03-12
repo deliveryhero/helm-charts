@@ -1,6 +1,6 @@
 # kubecost-reports-exporter
 
-![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.4](https://img.shields.io/badge/Version-2.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for exporting kubernetes cost reports to AWS s3 bucket.
 N/B We have updated chart to use V2 scripts using allocations and assets api.
@@ -48,6 +48,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| activeDeadlineSeconds | int | `20` |  |
 | affinity | object | `{}` |  |
 | concurrencyPolicy | string | `"Forbid"` |  |
 | env | object | `{}` | Extra environment variables |
@@ -77,6 +78,7 @@ helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
 | serviceAccount.name | string | `""` |  |
 | successfulJobsHistoryLimit | int | `1` |  |
 | tolerations | list | `[]` |  |
+| ttlSecondsAfterFinished | int | `0` |  |
 
 ## Maintainers
 
