@@ -41,7 +41,7 @@ spec:
             - --cache.duration={{ .Values.args.cacheDuration | quote }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.args.promPort}}
               protocol: TCP
           livenessProbe:
             httpGet:
