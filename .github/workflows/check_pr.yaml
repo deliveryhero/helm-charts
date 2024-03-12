@@ -1,17 +1,19 @@
 name: "PR Title Checker"
 on:
-  pull_request_target:
+  pull_request:
     types:
       - opened
       - edited
       - synchronize
-      - labeled
-      - unlabeled
 
 jobs:
-  check:
+  check_pr_title:
+    name: check PR title
     runs-on: ubuntu-latest
     steps:
-      - uses: thehanimo/pr-title-checker@v1.4.2
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: deepakputhraya/action-pr-title@master
         with:
-          pass_on_octokit_error: false
+          regex: '^\[stable\/+.+]\s.+'
+          prefix_case_sensitive: false
