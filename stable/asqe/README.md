@@ -55,7 +55,10 @@ helm install my-release deliveryhero/asqe -f values.yaml
 | podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicas | int | `1` |  |
-| resources | object | `{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"100m","memory":"128Mi"}}` | Exporter resource requirements |
+| resources.limits.cpu | string | `"100m"` | cpu limits |
+| resources.limits.memory | string | `"128Mi"` | memory limits |
+| resources.requests.cpu | string | `"100m"` | cpu requests |
+| resources.requests.memory | string | `"128Mi"` | memory requests |
 | securityContext | object | `{}` |  |
 | service.annotations | object | `{"prometheus.io/port":"9092","prometheus.io/scrape":"true"}` | Exporter service annotations |
 | service.type | string | `"ClusterIP"` |  |

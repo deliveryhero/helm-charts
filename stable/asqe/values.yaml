@@ -57,13 +57,16 @@ service:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9092"
 
-# -- Exporter resource requirements
 resources:
   limits:
+    # resources.limits.cpu -- cpu limits
     cpu: 100m
+    # resources.limits.memory -- memory limits
     memory: 128Mi
   requests:
+    # resources.requests.cpu -- cpu requests
     cpu: 100m
+    # resources.requests.memory -- memory requests
     memory: 128Mi
 
 nodeSelector: {}
