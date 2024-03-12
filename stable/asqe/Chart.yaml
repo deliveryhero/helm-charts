@@ -1,6 +1,11 @@
 apiVersion: v2
 name: asqe
 description: |-
+  AWS Service Quotas Exporter for Prometheus. export AWS Service adjustable quotas to Prometheus.
 type: application
 version: 0.1.0
 appVersion: "v1.0.2"
+home: https://github.com/deliveryhero/asqe
+maintainers:
+- name: nyambati
+  email: no-reply@deliveryhero.com

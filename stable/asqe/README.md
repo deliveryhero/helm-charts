@@ -2,6 +2,10 @@
 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.0.2](https://img.shields.io/badge/AppVersion-v1.0.2-informational?style=flat-square)
 
+AWS Service Quotas Exporter for Prometheus. export AWS Service adjustable quotas to Prometheus.
+
+**Homepage:** <https://github.com/deliveryhero/asqe>
+
 ## How to install this chart
 
 Add Delivery Hero public chart repo:
@@ -67,3 +71,8 @@ helm install my-release deliveryhero/asqe -f values.yaml
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| nyambati | <no-reply@deliveryhero.com> |  |
