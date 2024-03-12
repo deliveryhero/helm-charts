@@ -59,4 +59,6 @@ spec:
               - name: KUBECOST_DIAGNOSTICS_URL
                 value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.diagnosticsUrl | quote }}
           restartPolicy: {{ $.Values.restartPolicy }}
+          activeDeadlineSeconds: {{ $.Values.activeDeadlineSeconds }}
+          ttlSecondsAfterFinished: {{ $.Values.ttlSecondsAfterFinished }}
 {{- end }}

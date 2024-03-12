@@ -7,6 +7,8 @@ restartPolicy: OnFailure
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
+activeDeadlineSeconds: 20
+ttlSecondsAfterFinished: 0
 
 image:
   # image.repository -- The container image to use
