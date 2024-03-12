@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "asqe.fullname" . }}
+  labels:
+    {{- include "asqe.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.args.promPort }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "asqe.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,73 @@
+replicas: 1
+
+args:
+  # -- Exporter listen address
+  promAddress: 0.0.0.0
+  # -- Exporter listen port
+  promPort: 9092
+  # -- Exporter cache duration
+  cacheDuration: 300
+  # -- Exporter scrape interval
+  configFile: /etc/asqe/config.yaml
+
+config:
+  # -- Exporter aws service quotas config
+  jobs: []
+    # - serviceCode: eks
+    #   regions: &regions
+    #     - eu-west-1
+    #     - us-east-1
+
+image:
+  # image.repository -- The container image to use
+  repository: asqe
+  # image.pullPolicy -- The image pull policy
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  # image.tag -- The container image tag
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  # -- Exporter service annotations
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9092"
+
+# -- Exporter resource requirements
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
