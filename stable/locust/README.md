@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.5](https://img.shields.io/badge/Version-0.31.5-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
+![Version: 0.31.6](https://img.shields.io/badge/Version-0.31.6-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -65,6 +65,7 @@ helm install my-release deliveryhero/locust -f values.yaml
 | affinity | object | `{}` |  |
 | extraConfigMaps | object | `{}` | Any extra configmaps to mount for the master and worker. Can be used for extra python packages |
 | extraLabels | object | `{}` | Any extra labels to apply to all resources |
+| extraObjects | list | `[]` | Any extra manifests to deploy alongside locust. Can be used for external secret providers |
 | fullnameOverride | string | `""` |  |
 | hostAliases | list | `[]` | List of entries added to the /etc/hosts file on the pod to resolve custom hosts |
 | image.pullPolicy | string | `"IfNotPresent"` |  |

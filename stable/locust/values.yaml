@@ -181,3 +181,15 @@ tolerations: []
 affinity: {}
 # extraLabels -- Any extra labels to apply to all resources
 extraLabels: {}
+
+# extraObjects -- Any extra manifests to deploy alongside locust. Can be used for external secret providers
+extraObjects: []
+  # - apiVersion: "kubernetes-client.io/v1"
+  #   kind: ExternalSecret
+  #   metadata:
+  #     name: locust-secrets
+  #   spec:
+  #     backendType: gcpSecretsManager
+  #     data:
+  #       - key: app-admin-password
+  #         name: adminPassword
