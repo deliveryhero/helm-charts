@@ -1,6 +1,6 @@
 {{- if .Values.HorizontalPodAutoscalers -}}
 {{- range .Values.HorizontalPodAutoscalers }}
-apiVersion: autoscaling/v2beta1
+apiVersion: {{ .apiVersion | default "autoscaling/v2beta1" }}
 kind: HorizontalPodAutoscaler
 metadata:
 {{- if .namespace }}
