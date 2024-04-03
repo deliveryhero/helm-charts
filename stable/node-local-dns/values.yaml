@@ -13,6 +13,9 @@ config:
   # Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
   localDns: "169.254.20.25"
 
+  # Use a custom upstreamsvc for -upstreamsvc
+  customUpstreamsvc: ""
+
   # If true, it will bind 0.0.0.0, otherwise dnsServer and localDns will be used. https://github.com/bottlerocket-os/bottlerocket/issues/3711#issuecomment-1907087528
   bindIp: false
 
