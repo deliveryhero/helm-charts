@@ -126,7 +126,7 @@ All commands to be run from the root of this repo.
 
   Or alternatively install via [pre-commit](https://pre-commit.com/#install):
 
-  ```
+  ```console
   pre-commit install
   pre-commit install-hooks
   ```
