@@ -118,16 +118,17 @@ All commands to be run from the root of this repo.
 
 `helm-docs`:
 
-  To generate chart `README.md` files from the [template](ci/README.md.gotmpl):
+  To generate chart `README.md` files from the [template](ci/README.md.gotmpl), you can run `helm-docs` via docker:
 
   ```console
-  <!-- docker -->
   docker run --rm -v "${PWD}:/helm-docs" jnorwood/helm-docs:v1.11.3 --template-files ./ci/README.md.gotmpl
-  <!-- pre-commit -->
-  # install pre-commit https://pre-commit.com/#install
-  $ brew install pre-commit
-  $  pre-commit install
-  $ pre-commit install-hooks
+  ```
+
+  Or alternatively install via [pre-commit](https://pre-commit.com/#install):
+
+  ```
+  pre-commit install
+  pre-commit install-hooks
   ```
 
 `helm-conftest`:
