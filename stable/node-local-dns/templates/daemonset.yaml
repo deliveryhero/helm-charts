@@ -71,7 +71,11 @@ spec:
           - "-conf"
           - "/etc/Corefile"
           - "-upstreamsvc"
+        {{- if .Values.config.customUpstreamsvc }}
+          - "{{ .Values.config.customUpstreamsvc }}"
+        {{- else }}
           - "{{ include "node-local-dns.fullname" . }}-upstream"
+        {{- end }}
           - "-skipteardown={{ .Values.config.skipTeardown }}"
           - "-setupinterface={{ .Values.config.setupInterface }}"
           - "-setupiptables={{ .Values.config.setupIptables }}"
