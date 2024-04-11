@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![AppVersion: 1.22.23](https://img.shields.io/badge/AppVersion-1.22.23-informational?style=flat-square)
+![Version: 2.0.8](https://img.shields.io/badge/Version-2.0.8-informational?style=flat-square) ![AppVersion: 1.22.23](https://img.shields.io/badge/AppVersion-1.22.23-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -82,7 +82,11 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | serviceMonitor.enabled | bool | `false` |  |
+| serviceMonitor.honorLabels | bool | `false` |  |
 | serviceMonitor.labels | object | `{}` |  |
+| serviceMonitor.metricRelabelings | list | `[]` |  |
+| serviceMonitor.path | string | `"/metrics"` |  |
+| serviceMonitor.relabelings | list | `[]` |  |
 
 ## Maintainers
 
