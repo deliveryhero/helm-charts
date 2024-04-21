@@ -1,0 +1,28 @@
+{{- if and .Values.metrics.enabled (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1") }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prometheus-statsd-exporter.fullname" . }}
+  labels:
+    name: {{ include "prometheus-statsd-exporter.fullname" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  {{- with .Values.metrics.additionalLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "prometheus-statsd-exporter.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  endpoints:
+  - port: frontend
+    {{- if .Values.metrics.scrapeInterval }}
+    interval: {{ .Values.metrics.scrapeInterval }}
+    {{- end }}
+    {{- if .Values.metrics.scrapeTimeout }}
+    scrapeTimeout: {{ .Values.metrics.scrapeTimeout }}
+    {{- end }}
+{{- end }}
