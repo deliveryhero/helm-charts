@@ -53,8 +53,8 @@ helm install my-release deliveryhero/prometheus-statsd-exporter -f values.yaml
 | image.repository | string | `"prom/statsd-exporter"` |  |
 | image.tag | string | `"v0.18.0"` |  |
 | imagePullSecrets | list | `[]` |  |
-| metrics.enabled | bool | `false` |  |
 | metrics.additionalLabels | object | `{}` |  |
+| metrics.enabled | bool | `false` |  |
 | metrics.scrapeInterval | string | `"30s"` |  |
 | metrics.scrapeTimeout | string | `"10s"` |  |
 | nameOverride | string | `""` |  |
