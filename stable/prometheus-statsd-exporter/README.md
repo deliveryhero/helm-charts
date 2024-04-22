@@ -62,6 +62,10 @@ helm install my-release deliveryhero/prometheus-statsd-exporter -f values.yaml
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| metrics.enabled | bool | `false` |  |
+| metrics.additionalLabels | object | `{}` |  |
+| metrics.scrapeInterval | string | `"30s"` |  |
+| metrics.scrapeTimeout | string | `"10s"` |  |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
