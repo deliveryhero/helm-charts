@@ -70,6 +70,8 @@ service:
 serviceMonitor:
   # Enusre that service is created
   enabled: false
+  # additionalLabels: {}
+  # bearerTokenFile: ''
   # relabelings: []
   # metricRelabelings: []
 
