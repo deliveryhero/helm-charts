@@ -5,6 +5,9 @@ metadata:
   name: {{ include "prometheus-locust-exporter.fullname" . }}
   labels:
 {{ include "prometheus-locust-exporter.labels" . | indent 4 }}
+{{- if .Values.serviceMonitor.additionalLabels }}
+{{ toYaml .Values.serviceMonitor.additionalLabels | indent 4 }}
+{{- end }}
 spec:
   selector:
     matchLabels:
@@ -14,6 +17,9 @@ spec:
   - port: metrics
     path: /metrics
     interval: 30s
+    {{- if .Values.serviceMonitor.bearerTokenFile}}
+    bearerTokenFile: {{ .Values.serviceMonitor.bearerTokenFile }}
+    {{- end }}
     {{- if .Values.serviceMonitor.relabelings }}
     relabelings:
     {{- toYaml .Values.serviceMonitor.relabelings | nindent 4 }}
