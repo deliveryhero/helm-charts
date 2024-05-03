@@ -80,4 +80,3 @@ helm install my-release deliveryhero/field-exporter -f values.yaml
 | Name | Email | Url |
 | ---- | ------ | --- |
 | vzholudev | <no-reply@deliveryhero.com> | <https://github.com/vzholudev> |
-| mtahaahmed | <no-reply@deliveryhero.com> | <https://github.com/mtahaahmed> |
