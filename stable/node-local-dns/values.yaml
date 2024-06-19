@@ -22,6 +22,13 @@ config:
   # Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
+  # If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/
+  prefetch:
+    enabled: false
+    amount: 3
+    duration: 30s
+    percentage: 20%
+
   # Port used for the health endpoint
   healthPort: 8080
 
