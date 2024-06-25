@@ -32,7 +32,7 @@ data:
         }
     {{- if .Values.config.noIPv6Lookups }}
         template IN AAAA {
-            rcode NOERROR
+                rcode NOERROR
         }
     {{- end }}
         prometheus :9253
@@ -59,7 +59,7 @@ data:
         }
     {{- if .Values.config.noIPv6Lookups }}
         template IN AAAA {
-            rcode NOERROR
+                rcode NOERROR
         }
     {{- end }}
         prometheus :9253
@@ -85,7 +85,7 @@ data:
         }
     {{- if .Values.config.noIPv6Lookups }}
         template IN AAAA {
-            rcode NOERROR
+                rcode NOERROR
         }
     {{- end }}
         prometheus :9253
@@ -110,7 +110,7 @@ data:
         prometheus :9253
     {{- if .Values.config.noIPv6Lookups }}
         template IN AAAA {
-            rcode NOERROR
+                rcode NOERROR
         }
     {{- end }}
         }
