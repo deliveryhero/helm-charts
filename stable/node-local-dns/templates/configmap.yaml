@@ -30,6 +30,11 @@ data:
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
+    {{- if .Values.config.noIPv6Lookups }}
+        template IN AAAA {
+                rcode NOERROR
+        }
+    {{- end }}
         prometheus :9253
         health :{{ .Values.config.healthPort }}
         }
@@ -52,6 +57,11 @@ data:
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
+    {{- if .Values.config.noIPv6Lookups }}
+        template IN AAAA {
+                rcode NOERROR
+        }
+    {{- end }}
         prometheus :9253
         }
     ip6.arpa:53 {
@@ -73,6 +83,11 @@ data:
         forward . __PILLAR__CLUSTER__DNS__ {
                 {{ .Values.config.commProtocol }}
         }
+    {{- if .Values.config.noIPv6Lookups }}
+        template IN AAAA {
+                rcode NOERROR
+        }
+    {{- end }}
         prometheus :9253
         }
     .:53 {
@@ -93,5 +108,10 @@ data:
     {{- end }}
         forward . __PILLAR__UPSTREAM__SERVERS__
         prometheus :9253
+    {{- if .Values.config.noIPv6Lookups }}
+        template IN AAAA {
+                rcode NOERROR
+        }
+    {{- end }}
         }
     {{ end }}

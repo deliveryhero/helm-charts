@@ -22,6 +22,9 @@ config:
   # Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
+  # If true, return NOERROR when attempting to resolve an IPv6 address
+  noIPv6Lookups: false
+
   # If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/
   prefetch:
     enabled: false
