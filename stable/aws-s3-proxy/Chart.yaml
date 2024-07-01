@@ -6,7 +6,7 @@ description: |
   See here for configuration via environment variables: https://github.com/pottava/aws-s3-proxy#usage
 name: aws-s3-proxy
 home: https://github.com/pottava/aws-s3-proxy
-version: 0.1.4
+version: 0.1.5
 maintainers:
 - name: max-rocket-internet
   email: no-reply@deliveryhero.com

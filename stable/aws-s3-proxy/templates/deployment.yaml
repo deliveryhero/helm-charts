@@ -13,8 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "aws-s3-proxy.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "aws-s3-proxy.labels" . | indent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
