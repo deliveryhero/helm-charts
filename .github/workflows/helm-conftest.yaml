@@ -2,12 +2,15 @@ name: Helm conftest
 on: [pull_request]
 jobs:
   check-charts:
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     name: Run conftest for all charts
     runs-on: ubuntu-latest
     container:
       image: instrumenta/helm-conftest:latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.7
+
       - name: Validate all charts
         run: bash ci/helm-conftest.sh

@@ -8,6 +8,6 @@ jobs:
       image: jnorwood/helm-docs:v1.11.0
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4.1.7
     - name: Check all charts README.md
       run: sh ci/helm-docs.sh
