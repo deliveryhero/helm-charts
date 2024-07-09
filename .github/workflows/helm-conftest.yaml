@@ -2,8 +2,6 @@ name: Helm conftest
 on: [pull_request]
 jobs:
   check-charts:
-    env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     name: Run conftest for all charts
     runs-on: ubuntu-latest
     container:
