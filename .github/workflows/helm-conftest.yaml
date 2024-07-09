@@ -8,6 +8,6 @@ jobs:
       image: instrumenta/helm-conftest:latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.7
       - name: Validate all charts
         run: bash ci/helm-conftest.sh
