@@ -13,7 +13,7 @@ jobs:
       image: alpine/helm:3.9.3
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.7
       - name: Install git
         run: apk add --no-cache git
       - name: Install Helm Push plugin
