@@ -8,7 +8,9 @@ jobs:
       image: instrumenta/helm-conftest:latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v3
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
 
       - name: Validate all charts
         run: bash ci/helm-conftest.sh
