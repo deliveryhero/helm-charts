@@ -5,10 +5,19 @@ jobs:
     name: Run conftest for all charts
     runs-on: ubuntu-latest
     container:
-      image: instrumenta/helm-conftest:latest
+      image: alpine/helm:latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4.1.7
+
+      - name: Install Dependencies
+        run: apk add --no-cache curl
+
+      - name: Install Conftest
+        run: |
+          curl -sSL https://github.com/open-policy-agent/conftest/releases/latest/download/conftest-linux-amd64 -o conftest
+          chmod +x conftest
+          mv conftest /usr/local/bin/
 
       - name: Validate all charts
         run: bash ci/helm-conftest.sh
