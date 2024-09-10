@@ -3,6 +3,7 @@ apiVersion: {{ template "batch.apiVersion" . }}
 kind: CronJob
 metadata:
   name: {{ template "kube-downscaler.fullname" . }}-de-annotate
+  namespace: {{ .Release.Namespace }}
   labels:
 {{ include "kube-downscaler.labels" . | indent 4 }}
     {{- if .Values.extraLabels }}
