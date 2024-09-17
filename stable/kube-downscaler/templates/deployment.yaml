@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "kube-downscaler.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
 {{ include "kube-downscaler.labels" . | indent 4 }}
     {{- if .Values.extraLabels }}

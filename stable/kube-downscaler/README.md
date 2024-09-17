@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.7.4](https://img.shields.io/badge/Version-0.7.4-informational?style=flat-square) ![AppVersion: 23.2.0-6-gc9b88e8](https://img.shields.io/badge/AppVersion-23.2.0--6--gc9b88e8-informational?style=flat-square)
+![Version: 0.7.5](https://img.shields.io/badge/Version-0.7.5-informational?style=flat-square) ![AppVersion: 23.2.0-6-gc9b88e8](https://img.shields.io/badge/AppVersion-23.2.0--6--gc9b88e8-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
