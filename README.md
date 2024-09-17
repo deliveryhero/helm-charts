@@ -93,7 +93,7 @@ Follow these steps:
 1. Fork this repo
 2. Make desired changes to the chart
 3. Bump the chart version
-4. Regenerate the chart `README.md`: `docker run --rm -v "${PWD}:/helm-docs" jnorwood/helm-docs:v1.11.3 --template-files ./ci/README.md.gotmpl`
+4. Regenerate the chart `README.md`. Run from the repo root: `docker run --rm -v "${PWD}:/helm-docs" jnorwood/helm-docs:v1.11.3 --template-files ./ci/README.md.gotmpl`
 5. Commit and push changes
 6. Open 1 pull request per chart you want to change
 7. Set pull request title to `[stable/<chart name>]: <description>`
