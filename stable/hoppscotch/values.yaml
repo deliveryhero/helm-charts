@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: liyasthomas/postwoman
-  tag: v1.9.9
+  repository: hoppscotch/hoppscotch
+  tag: 2024.8.2
   pullPolicy: IfNotPresent
 
 nameOverride: ""
