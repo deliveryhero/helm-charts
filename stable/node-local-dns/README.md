@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.0.14](https://img.shields.io/badge/Version-2.0.14-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
+![Version: 2.1.0](https://img.shields.io/badge/Version-2.1.0-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -49,31 +49,27 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| config.bindIp | bool | `false` |  |
-| config.commProtocol | string | `"force_tcp"` |  |
-| config.customConfig | string | `""` |  |
-| config.customUpstreamsvc | string | `""` |  |
-| config.dnsDomain | string | `"cluster.local"` |  |
-| config.dnsServer | string | `"172.20.0.10"` |  |
-| config.healthPort | int | `8080` |  |
+| config.bindIp | bool | `false` | If false, it will bind 0.0.0.0, otherwise dnsServer and localDns will be used. https://github.com/bottlerocket-os/bottlerocket/issues/3711#issuecomment-1907087528 |
+| config.commProtocol | string | `"force_tcp"` | Set communication protocol. Options are `prefer_udp` or `force_tcp` |
+| config.customConfig | string | `""` | Overrides the generated configuration with specified one. |
+| config.customUpstreamsvc | string | `""` | Use a custom upstreamsvc for -upstreamsvc |
+| config.dnsDomain | string | `"cluster.local"` | Internal k8s DNS domain |
+| config.dnsServer | string | `"172.20.0.10"` | Main coredns service (kube-dns) ip, used on iptables-mode. |
+| config.healthPort | int | `8080` | Port used for the health endpoint |
 | config.localDns | string | `"169.254.20.25"` |  |
-| config.noIPv6Lookups | bool | `false` |  |
-| config.prefetch.amount | int | `3` |  |
-| config.prefetch.duration | string | `"30s"` |  |
-| config.prefetch.enabled | bool | `false` |  |
-| config.prefetch.percentage | string | `"20%"` |  |
+| config.noIPv6Lookups | bool | `false` | If true, return NOERROR when attempting to resolve an IPv6 address |
+| config.prefetch | object | `{"amount":3,"duration":"30s","enabled":false,"percentage":"20%"}` | If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/ |
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
 | config.skipTeardown | bool | `false` |  |
 | daemonsetAnnotations | object | `{}` |  |
 | daemonsetLabels | object | `{}` |  |
-| dashboard.annotations | object | `{}` |  |
-| dashboard.enabled | bool | `false` |  |
-| dashboard.label | string | `"grafana_dashboard"` |  |
-| dashboard.namespace | string | `"kube-system"` |  |
+| dashboard | object | `{"annotations":{},"enabled":false,"label":"grafana_dashboard","namespace":"kube-system"}` | https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md |
+| dashboard.label | string | `"grafana_dashboard"` | label that grafana sidecar is configured to look for |
+| dashboard.namespace | string | `"kube-system"` | namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring" |
 | fullnameOverride | string | `""` |  |
 | image.repository | string | `"registry.k8s.io/dns/k8s-dns-node-cache"` |  |
-| image.tag | string | `""` |  |
+| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | podAnnotations | object | `{}` |  |
@@ -83,15 +79,14 @@ helm install my-release deliveryhero/node-local-dns -f values.yaml
 | resources.requests.cpu | string | `"25m"` |  |
 | resources.requests.memory | string | `"128Mi"` |  |
 | securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  |
-| serviceMonitor.enabled | bool | `false` |  |
-| serviceMonitor.honorLabels | bool | `false` |  |
-| serviceMonitor.labels | object | `{}` |  |
-| serviceMonitor.metricRelabelings | list | `[]` |  |
-| serviceMonitor.path | string | `"/metrics"` |  |
-| serviceMonitor.relabelings | list | `[]` |  |
+| service.annotations | object | `{}` | Annotations to add to the service. |
+| serviceAccount.annotations | object | `{}` | Annotations to add to the service account. |
+| serviceAccount.create | bool | `true` | Specifies whether a service account should be created. |
+| serviceAccount.name | string | `""` | If not set and create is true, a name is generated using the fullname template. |
+| serviceMonitor | object | `{"enabled":false,"honorLabels":false,"labels":{},"metricRelabelings":[],"path":"/metrics","relabelings":[]}` | https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md |
+| serviceMonitor.enabled | bool | `false` | Ensure that servicemonitor is created, this will disable prometheus annotations |
+| serviceMonitor.metricRelabelings | list | `[]` | Metric relabel configs to apply to samples before ingestion. [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs) |
+| serviceMonitor.relabelings | list | `[]` | Relabel configs to apply to samples before ingestion. [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) |
 
 ## Maintainers
 
