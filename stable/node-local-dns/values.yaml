@@ -1,38 +1,38 @@
 image:
   repository: registry.k8s.io/dns/k8s-dns-node-cache
-  # Overrides the image tag whose default is the chart appVersion.
+  # -- Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 config:
-  # Internal k8s DNS domain
+  # -- Internal k8s DNS domain
   dnsDomain: "cluster.local"
 
-  # Main coredns service (kube-dns) ip, used on iptables-mode.
+  # -- Main coredns service (kube-dns) ip, used on iptables-mode.
   dnsServer: "172.20.0.10"
 
-  # Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
+  # -- Virtual IP to be used by ipvs mode, to be used as --cluster-dns, must not collide.
   localDns: "169.254.20.25"
 
-  # Use a custom upstreamsvc for -upstreamsvc
+  # -- Use a custom upstreamsvc for -upstreamsvc
   customUpstreamsvc: ""
 
-  # If false, it will bind 0.0.0.0, otherwise dnsServer and localDns will be used. https://github.com/bottlerocket-os/bottlerocket/issues/3711#issuecomment-1907087528
+  # -- If false, it will bind 0.0.0.0, otherwise dnsServer and localDns will be used. https://github.com/bottlerocket-os/bottlerocket/issues/3711#issuecomment-1907087528
   bindIp: false
 
-  # Set communication protocol. Options are `prefer_udp` or `force_tcp`
+  # -- Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
-  # If true, return NOERROR when attempting to resolve an IPv6 address
+  # -- If true, return NOERROR when attempting to resolve an IPv6 address
   noIPv6Lookups: false
 
-  # If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/
+  # -- If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/
   prefetch:
     enabled: false
     amount: 3
     duration: 30s
     percentage: 20%
 
-  # Port used for the health endpoint
+  # -- Port used for the health endpoint
   healthPort: 8080
 
   setupInterface: true
@@ -41,20 +41,24 @@ config:
 
   skipTeardown: false
 
-  # Overrides the generated configuration with specified one.
+  # -- Overrides the generated configuration with specified one.
   customConfig: ""
 
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # Specifies whether a service account should be created.
+  # -- Specifies whether a service account should be created.
   create: true
-  # Annotations to add to the service account.
+  # -- Annotations to add to the service account.
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template.
+  # -- The name of the service account to use.
+  # -- If not set and create is true, a name is generated using the fullname template.
   name: ""
+
+service:
+  # -- Annotations to add to the service.
+  annotations: {}
 
 podAnnotations: {}
 
@@ -69,9 +73,9 @@ securityContext:
     add:
     - NET_ADMIN
 
-# https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
+# -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
-  # Ensure that servicemonitor is created, this will disable prometheus annotations
+  # -- Ensure that servicemonitor is created, this will disable prometheus annotations
   enabled: false
   labels: {}
   path: /metrics
@@ -82,15 +86,15 @@ serviceMonitor:
   # Fallback to the prometheus default unless specified
   # scrapeTimeout: 30s
 
-  # Metric relabel configs to apply to samples before ingestion.
+  # -- Metric relabel configs to apply to samples before ingestion.
   # [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs)
   metricRelabelings: []
   # - action: keep
   #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
   #   sourceLabels: [__name__]
 
-  ## Relabel configs to apply to samples before ingestion.
-  ## [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config)
+  # -- Relabel configs to apply to samples before ingestion.
+  # [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config)
   relabelings: []
   # - sourceLabels: [__meta_kubernetes_pod_node_name]
   #   separator: ;
@@ -99,12 +103,12 @@ serviceMonitor:
   #   replacement: $1
   #   action: replace
 
-# https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
+# -- https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dashboard:
   enabled: false
-  # namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring"
+  # -- namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring"
   namespace: kube-system
-  # label that grafana sidecar is configured to look for
+  # -- label that grafana sidecar is configured to look for
   label: grafana_dashboard
   annotations: {}
 
