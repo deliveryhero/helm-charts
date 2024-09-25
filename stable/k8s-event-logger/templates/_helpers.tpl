@@ -36,7 +36,6 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "k8s-event-logger.labels" -}}
-app.kubernetes.io/name: {{ include "k8s-event-logger.name" . }}
 helm.sh/chart: {{ include "k8s-event-logger.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
