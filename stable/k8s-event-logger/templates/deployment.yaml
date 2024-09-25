@@ -13,7 +13,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "k8s-event-logger.name" . }}
-      {{- include "k8s-event-logger.labels" . | nindent 4 }}
+      {{- include "k8s-event-logger.labels" . | nindent 6 }}
   template:
     metadata:
 {{- with .Values.podAnnotations }}
