@@ -1,6 +1,6 @@
 # wiremock
 
-![Version: 1.4.1](https://img.shields.io/badge/Version-1.4.1-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
+![Version: 1.4.2](https://img.shields.io/badge/Version-1.4.1-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
 
 A service virtualization tool (some call it mock server) for testing purposes.
 
@@ -163,6 +163,8 @@ helm install my-release deliveryhero/wiremock -f values.yaml
 | resources.requests.memory | string | `"3Gi"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
+| serviceAccount.enabled | bool | `false` | Whether to create a ServiceAccount |
+| serviceAccount.annotations | object | `{}` | Annotations for the ServiceAccount |
 | serviceAnnotations | object | `{}` |  |
 | strategy.type | string | `"RollingUpdate"` |  |
 | tolerations | list | `[]` |  |
