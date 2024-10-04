@@ -15,6 +15,10 @@ consumer:
   # consumer.initVolume -- custom extra volume for the initialization container providing the zip archive.
   initVolume: []
 
+serviceAccount:
+  enabled: false
+  annotations: {}
+
 service:
   type: ClusterIP
   port: 80

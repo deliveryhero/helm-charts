@@ -28,6 +28,9 @@ spec:
 {{ toYaml . | trim | indent 8 }}
 {{- end}}
     spec:
+{{- if .Values.serviceAccount.enabled }}
+      serviceAccount: {{ template "wiremock.fullname" . }}
+{{- end }}
       {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
         {{- toYaml . | indent 8 }}
