@@ -48,6 +48,10 @@ spec:
           - name: {{ $key }}
             value: {{ $value | quote }}
 {{- end }}
+          {{- with .Values.args }}
+          args:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
