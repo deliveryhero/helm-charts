@@ -8,34 +8,34 @@ A Helm chart for simple backstage deployment. This chart deploys a single pod fo
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/backstage-mono
+helm install oci://ghcr.io/deliveryhero/helm-charts/backstage-mono
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/backstage-mono --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/backstage-mono
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/backstage-mono
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/backstage-mono --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/backstage-mono --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/backstage-mono -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/backstage-mono -f values.yaml
 ```
 
 ## Values

@@ -8,34 +8,34 @@ The open source status page system
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/cachet
+helm install oci://ghcr.io/deliveryhero/helm-charts/cachet
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/cachet --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/cachet
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/cachet --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/cachet -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.yaml
 ```
 
 ## Source Code

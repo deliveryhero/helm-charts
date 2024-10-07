@@ -8,34 +8,34 @@ Dregsy lets you sync Docker images between registries, public or private through
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/dregsy
+helm install oci://ghcr.io/deliveryhero/helm-charts/dregsy
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/dregsy --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/dregsy
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/dregsy
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/dregsy --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/dregsy --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/dregsy -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/dregsy -f values.yaml
 ```
 
 ## Source Code

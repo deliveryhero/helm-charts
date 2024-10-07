@@ -12,34 +12,34 @@ A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock ser
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/gripmock
+helm install oci://ghcr.io/deliveryhero/helm-charts/gripmock
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/gripmock --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/gripmock
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/gripmock
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/gripmock --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/gripmock --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/gripmock -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/gripmock -f values.yaml
 ```
 
 ## Values

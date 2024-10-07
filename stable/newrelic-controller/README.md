@@ -8,34 +8,34 @@ A controller for managing New Relic settings
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/newrelic-controller
+helm install oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/newrelic-controller
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/newrelic-controller --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/newrelic-controller -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller -f values.yaml
 ```
 
 ## Source Code

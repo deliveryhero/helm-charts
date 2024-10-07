@@ -10,34 +10,34 @@ if you are using old installation please use v1 chart
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/kubecost-reports-exporter
+helm install oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/kubecost-reports-exporter
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/kubecost-reports-exporter --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/kubecost-reports-exporter -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter -f values.yaml
 ```
 
 ## Source Code

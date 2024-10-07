@@ -24,34 +24,34 @@ labels:
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/labelsmanager-controller
+helm install oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/labelsmanager-controller
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/labelsmanager-controller --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/labelsmanager-controller -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller -f values.yaml
 ```
 
 ## Source Code
