@@ -1,0 +1,53 @@
+name: Helm Publish
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+      - 'stable/**'
+  workflow_dispatch:
+
+env:
+  CHARTS_PATH: stable
+  REGISTRY: "ghcr.io/${{ github.repository }}"
+
+jobs:
+  helm:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.3 # Lock version for now, helm v3.13.0 contains bugs related to oci that will be fixed in v3.13.1. https://github.com/helm/helm/issues/12423
+      - name: Package Helm Charts
+        shell: bash
+        run: |
+          find ${CHARTS_PATH} -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq | xargs --verbose -L 1 helm dep up
+          for d in ${CHARTS_PATH}/*; do
+              if [[ ! -f "${d}/Chart.yaml" ]]; then
+                  echo "${d}/Chart.yaml not found. Skipping."
+                  continue
+              fi
+              echo "$d"
+              helm package "$d" -u
+          done
+          echo "Packing done"
+      - name: Login to GitHub Container Registry
+        shell: bash
+        run: echo "${GITHUB_TOKEN}" | helm registry login ${REGISTRY} --username ${GITHUB_ACTOR} --password-stdin
+        env:
+          REGISTRY: "ghcr.io/${{ github.repository }}"
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Push Helm Charts to Github Container Registry (OCI)
+        shell: bash
+        run: |
+          for f in *.tgz ; do
+              echo "$f"
+              helm push $f oci://${REGISTRY,,}
+          done

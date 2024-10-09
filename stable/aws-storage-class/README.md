@@ -8,34 +8,34 @@ Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
-
-```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-```
-
 A simple install with default values:
 
 ```console
-helm install deliveryhero/aws-storage-class
+helm install oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class
+```
+
+To install a specific version of this chart:
+
+```console
+helm install oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class --version <version>
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/aws-storage-class
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/aws-storage-class --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/aws-storage-class -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class -f values.yaml
 ```
 
 ## Values

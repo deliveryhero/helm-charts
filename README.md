@@ -7,12 +7,8 @@
 ## TLDR
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
-helm search repo deliveryhero
-helm install my-release deliveryhero/<chart>
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/<chart>
 ```
-
-[![adding deliveryhero chart repo](img/add-repo.gif)](#)
 
 ## Chart list
 
