@@ -12,16 +12,16 @@ This approach is the [current recommended method to achieve overprovisioning](ht
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.11
 ```
 
 To install the chart with the release name `my-release`:

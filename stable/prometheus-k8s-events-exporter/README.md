@@ -8,16 +8,16 @@ Exporter for kubernetes events
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version 0.2.1
 ```
 
 To install the chart with the release name `my-release`:

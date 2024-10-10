@@ -8,16 +8,16 @@ A controller for managing New Relic settings
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --version 1.1
 ```
 
 To install the chart with the release name `my-release`:

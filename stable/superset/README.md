@@ -8,16 +8,16 @@ A Helm chart for Apache Superset
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/superset
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/superset
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/superset --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/superset --version 1.1.2
 ```
 
 To install the chart with the release name `my-release`:

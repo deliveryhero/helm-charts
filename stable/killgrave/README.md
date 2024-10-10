@@ -8,16 +8,16 @@ In its more basic setup, this chart requires a `configmap` including all _impost
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/killgrave
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/killgrave
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/killgrave --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/killgrave --version 1.0.1
 ```
 
 To install the chart with the release name `my-release`:

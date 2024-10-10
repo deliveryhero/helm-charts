@@ -8,16 +8,16 @@ Exports sentry project metrics for prometheus.
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter --version 0.1.4
 ```
 
 To install the chart with the release name `my-release`:

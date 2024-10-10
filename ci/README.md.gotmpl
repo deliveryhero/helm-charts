@@ -18,7 +18,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/{{ template 
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }} --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
 ```
 
 To install the chart with the release name `my-release`:
