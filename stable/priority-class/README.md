@@ -8,16 +8,16 @@ A very simple chart that creates priority classes
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/priority-class
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/priority-class
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/priority-class --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/priority-class --version 0.1.1
 ```
 
 To install the chart with the release name `my-release`:

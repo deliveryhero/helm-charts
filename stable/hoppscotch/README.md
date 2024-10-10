@@ -8,16 +8,16 @@ A free, fast and beautiful API request builder
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/hoppscotch
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/hoppscotch
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/hoppscotch --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/hoppscotch --version 0.3.0
 ```
 
 To install the chart with the release name `my-release`:

@@ -23,16 +23,16 @@ Every resource type can have custom labels, annotations or a `fullnameOverride` 
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-resources
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version 0.6.6
 ```
 
 To install the chart with the release name `my-release`:

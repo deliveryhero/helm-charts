@@ -12,16 +12,16 @@ A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock ser
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/gripmock
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/gripmock
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/gripmock --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/gripmock --version 1.1.2
 ```
 
 To install the chart with the release name `my-release`:

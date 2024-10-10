@@ -9,16 +9,16 @@
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }}
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }}
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }} --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
 ```
 
 To install the chart with the release name `my-release`:

@@ -14,16 +14,16 @@ To install the chart a valid api token should be generated from adding a new clu
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/cloudhealth-collector
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cloudhealth-collector
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/cloudhealth-collector --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cloudhealth-collector --version 0.1.6
 ```
 
 To install the chart with the release name `my-release`:

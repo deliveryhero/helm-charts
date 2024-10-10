@@ -10,16 +10,16 @@ if you are using old installation please use v1 chart
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kubecost-reports-exporter --version 2.0.4
 ```
 
 To install the chart with the release name `my-release`:

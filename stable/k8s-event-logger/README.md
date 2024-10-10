@@ -19,16 +19,16 @@ The problem is that these events are simply API objects in Kubernetes and are on
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version 1.1.8
 ```
 
 To install the chart with the release name `my-release`:

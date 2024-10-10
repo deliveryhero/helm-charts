@@ -10,16 +10,16 @@ This is useful when used with [IAM roles for service accounts](https://docs.aws.
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/service-account
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/service-account
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/service-account --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/service-account --version 1.1.0
 ```
 
 To install the chart with the release name `my-release`:

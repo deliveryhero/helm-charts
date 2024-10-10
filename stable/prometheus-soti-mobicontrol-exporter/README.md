@@ -8,16 +8,16 @@ A Helm chart a prometheus exporter for SOTI MobiControl metrics
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-soti-mobicontrol-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-soti-mobicontrol-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-soti-mobicontrol-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-soti-mobicontrol-exporter --version 1.0.2
 ```
 
 To install the chart with the release name `my-release`:

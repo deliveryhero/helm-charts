@@ -8,16 +8,16 @@ This exporter exports AWS service quotas and usage as Prometheus metrics
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/aws-service-quotas-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-quotas-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/aws-service-quotas-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-quotas-exporter --version 0.1.2
 ```
 
 To install the chart with the release name `my-release`:

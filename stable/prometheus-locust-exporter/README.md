@@ -8,16 +8,16 @@ A Helm chart a prometheus exporter locust load test metrics
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version 1.2.2
 ```
 
 To install the chart with the release name `my-release`:

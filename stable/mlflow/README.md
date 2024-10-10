@@ -11,16 +11,16 @@ Contributions for other backends and artifacts store are welcome.
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/mlflow
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/mlflow --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow --version 1.0.9
 ```
 
 To install the chart with the release name `my-release`:

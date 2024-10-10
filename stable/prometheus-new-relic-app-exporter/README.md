@@ -8,16 +8,16 @@ A Helm chart a prometheus exporter for a single New Relic application
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter --version 1.0.0
 ```
 
 To install the chart with the release name `my-release`:

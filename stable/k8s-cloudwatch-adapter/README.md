@@ -8,16 +8,16 @@ An implementation of the Kubernetes Custom Metrics API and External Metrics API 
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter --version 0.2.1
 ```
 
 To install the chart with the release name `my-release`:

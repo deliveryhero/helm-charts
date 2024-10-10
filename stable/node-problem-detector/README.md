@@ -8,16 +8,16 @@ This chart installs a [node-problem-detector](https://github.com/kubernetes/node
 
 ## How to install this chart
 
-A simple install with default values:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector
 ```
 
 To install a specific version of this chart:
 
 ```console
-helm install oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version <version>
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.14
 ```
 
 To install the chart with the release name `my-release`:
