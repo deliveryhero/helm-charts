@@ -116,3 +116,42 @@ Namespaces:
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
+
+ClusterRoles:
+  - name: example-cr-1
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    rules:
+      - apiGroups:
+          - ""
+        resources:
+          - configmaps
+        verbs:
+          - '*'
+  - name: example-cr-2
+    extraLabels:
+      mylabel: myvalue
+
+ClusterRoleBindings:
+  - name: example-crb-1
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    roleRef:
+      kind: ClusterRole
+      name: cluster-admin
+      apiGroup: rbac.authorization.k8s.io
+    subjects:
+      - kind: ServiceAccount
+        name: my-sa
+        namespace: my-ns
+  - name: example-crb-2
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels:
+      mylabel: myvalue
+    roleRef:
+      kind: ClusterRole
+      name: cluster-admin
+      apiGroup: rbac.authorization.k8s.io
