@@ -152,3 +152,32 @@ ScaledObjects: []
   #         cortexOrgID: logistics
   #         threshold: "4"
   #       type: prometheus
+
+# ClusterRoles -- A list ClusterRoles to create
+ClusterRoles: []
+  # - name: example-cr
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   rules:
+  #     - apiGroups:
+  #         - ""
+  #       resources:
+  #         - configmaps
+  #       verbs:
+  #         - '*'
+
+# ClusterRoleBindings -- A list ClusterRoleBindings to create
+ClusterRoleBindings: []
+  # - name: example-crb
+  #   fullnameOverride: ""
+  #   annotations: {}
+  #   extraLabels: {}
+  #   roleRef:
+  #     kind: ClusterRole
+  #     name: cluster-admin
+  #     apiGroup: rbac.authorization.k8s.io
+  #   subjects:
+  #     - kind: ServiceAccount
+  #       name: my-sa
+  #       namespace: my-ns

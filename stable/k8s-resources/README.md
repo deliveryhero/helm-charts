@@ -1,6 +1,6 @@
 # k8s-resources
 
-![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.6-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
@@ -16,6 +16,8 @@ Currently supports:
 - Service
 - ServiceAccount
 - ScaledObject (KEDA)
+- ClusterRole
+- ClusterRoleBinding
 
 Every resource type can have custom labels, annotations or a `fullnameOverride` set. See default [values.yaml](https://github.com/deliveryhero/helm-charts/blob/master/stable/k8s-resources/values.yaml) for examples.
 
@@ -32,7 +34,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resource
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version 0.6.6
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version 0.7.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -57,6 +59,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/k8s-resources -f 
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| ClusterRoleBindings | list | `[]` | A list ClusterRoleBindings to create |
+| ClusterRoles | list | `[]` | A list ClusterRoles to create |
 | ConfigMaps | list | `[]` | A list ConfigMap to create |
 | CronJobs | list | `[]` | A list CronJobs to create |
 | CustomResources | list | `[]` | A list resources to create that are completely custom |
