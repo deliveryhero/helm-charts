@@ -1,5 +1,6 @@
 {{- if .Values.Services -}}
 {{- range .Values.Services }}
+{{- if . | dig "enabled" true }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -27,5 +28,6 @@ spec:
   selector:
 {{- toYaml .selector | nindent 4 }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

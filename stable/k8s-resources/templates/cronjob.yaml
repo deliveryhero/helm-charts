@@ -1,5 +1,6 @@
 {{- if .Values.CronJobs -}}
 {{- range .Values.CronJobs }}
+{{- if . | dig "enabled" true }}
 {{- if semverCompare ">=1.24-0" $.Capabilities.KubeVersion.GitVersion -}}
 apiVersion: batch/v1
 {{- else -}}
@@ -47,5 +48,6 @@ spec:
               {{- toYaml . | nindent 12 }}
             {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

@@ -1,5 +1,6 @@
 {{- if .Values.CustomResources -}}
 {{- range .Values.CustomResources }}
+{{- if . | dig "enabled" true }}
 apiVersion: {{ .apiVersion }}
 kind: {{ .kind }}
 metadata:
@@ -19,5 +20,6 @@ metadata:
 spec:
 {{- toYaml .spec | nindent 2 }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

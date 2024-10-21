@@ -1,5 +1,6 @@
 {{- if .Values.PriorityClasses -}}
 {{- range .Values.PriorityClasses }}
+{{- if . | dig "enabled" true }}
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
 metadata:
@@ -9,5 +10,6 @@ preemptionPolicy: {{ .preemptionPolicy }}
 globalDefault: {{ .globalDefault}}
 description: {{ .description }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

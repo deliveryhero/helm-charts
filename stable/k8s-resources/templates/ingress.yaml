@@ -1,5 +1,6 @@
 {{- if .Values.Ingresses -}}
 {{- range .Values.Ingresses }}
+{{- if . | dig "enabled" true }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -39,5 +40,6 @@ spec:
     {{- toYaml . | nindent 2 }}
   {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

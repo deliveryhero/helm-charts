@@ -12,9 +12,34 @@ CronJobs:
           - "sh"
           - "-c"
           - "'echo yes'"
+  - name: example-cronjob-1
+    enabled: false
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels:
+      app: my-app
+    schedule: 00 19 * * *
+    containers:
+      - name: my-container
+        image: ubuntu:bionic
+        args:
+          - "sh"
+          - "-c"
+          - "'echo yes'"
 
 ConfigMaps:
   - name: example-cm
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    kv_data:
+      key: value
+    multiline_data:
+      key: |
+        line 1
+        line 2
+  - name: example-cm-1
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
@@ -41,6 +66,22 @@ Ingresses:
                   name: example-service
                   port:
                     number: 8080
+  - name: example-ingress-1
+    enabled: false
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    rules:
+      - host: chart-example.local
+        http:
+          paths:
+            - path: /api
+              pathType: Prefix
+              backend:
+                service:
+                  name: example-service
+                  port:
+                    number: 8080
 
 Secrets:
   - name: example-secret
@@ -53,7 +94,18 @@ Secrets:
       key2: value1
     keys:
       key3: dmFsdWUyCg==
+  - name: example-secret-1
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    tplB64Keys:
+      key1: '{{ (index .Values.Secrets 0).name }}'
+    b64Keys:
+      key2: value1
+    keys:
+      key3: dmFsdWUyCg==
   - name: example-secret-2
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
@@ -76,7 +128,19 @@ Services:
       - port: 80
         targetPort: 8080
         protocol: TCP
+  - name: example-service-1
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    type: ClusterIP
+    selector:
+      key2: value2
+    ports:
+      - port: 443
+        targetPort: 443
+        protocol: TCP
   - name: example-service-2
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
@@ -93,7 +157,12 @@ ServiceAccounts:
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
+  - name: example-sa-1
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
   - name: example-sa-2
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
@@ -110,9 +179,26 @@ HorizontalPodAutoscalers:
       apiVersion: apps/v1
       kind: Deployment
       name: my-deployment
+  - name: example-hpa2
+    enabled: false
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: my-deployment
 
 Namespaces:
   - name: production
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels: {}
+  - name: test
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels: {}
@@ -132,6 +218,10 @@ ClusterRoles:
   - name: example-cr-2
     extraLabels:
       mylabel: myvalue
+  - name: example-cr-3
+    enabled: false
+    extraLabels:
+      mylabel: myvalue
 
 ClusterRoleBindings:
   - name: example-crb-1
@@ -147,6 +237,16 @@ ClusterRoleBindings:
         name: my-sa
         namespace: my-ns
   - name: example-crb-2
+    fullnameOverride: ""
+    annotations: {}
+    extraLabels:
+      mylabel: myvalue
+    roleRef:
+      kind: ClusterRole
+      name: cluster-admin
+      apiGroup: rbac.authorization.k8s.io
+  - name: example-crb-3
+    enabled: false
     fullnameOverride: ""
     annotations: {}
     extraLabels:

@@ -1,5 +1,6 @@
 {{- if .Values.ConfigMaps -}}
 {{- range .Values.ConfigMaps }}
+{{- if . | dig "enabled" true }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -31,5 +32,6 @@ data:
 {{- end }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}
