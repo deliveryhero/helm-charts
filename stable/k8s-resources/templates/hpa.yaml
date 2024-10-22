@@ -1,5 +1,6 @@
 {{- if .Values.HorizontalPodAutoscalers -}}
 {{- range .Values.HorizontalPodAutoscalers }}
+{{- if . | dig "enabled" true }}
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -39,5 +40,6 @@ spec:
           averageUtilization: {{ .targetMemoryUtilizationPercentage }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

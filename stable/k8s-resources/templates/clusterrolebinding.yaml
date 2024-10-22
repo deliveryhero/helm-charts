@@ -1,5 +1,6 @@
 {{- if .Values.ClusterRoleBindings -}}
 {{- range .Values.ClusterRoleBindings }}
+{{- if . | dig "enabled" true }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -23,5 +24,6 @@ subjects:
  {{- toYaml . | nindent 2 }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

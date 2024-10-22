@@ -1,5 +1,6 @@
 {{- if .Values.Namespaces -}}
 {{- range .Values.Namespaces }}
+{{- if . | dig "enabled" true }}
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -14,5 +15,6 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

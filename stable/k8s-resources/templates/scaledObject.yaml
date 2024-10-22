@@ -1,5 +1,6 @@
 {{- if .Values.ScaledObjects -}}
 {{- range .Values.ScaledObjects }}
+{{- if . | dig "enabled" true }}
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
@@ -30,5 +31,6 @@ spec:
   {{- with .triggers }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
