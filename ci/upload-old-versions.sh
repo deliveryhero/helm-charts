@@ -24,8 +24,8 @@ while true; do
     export $(echo "$(echo ${chart_env_name})=$current_version")
     rm -f $package_file
   done
-  echo "Moving to previous commit.."
   previous_commit=$(git log --oneline | head -2 | tail -1 | cut -f1 -d' ')
+  echo "Moving to previous commit: $previous_commit ..."
   git reset --hard $previous_commit --quiet
   # sleep 5
   count=$((count + 1))
