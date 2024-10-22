@@ -30,7 +30,7 @@ while true; do
   # sleep 5
   count=$((count + 1))
   echo "=================================================================================="
-  if [ "$count" -gt 3 ]; then
+  if [ "$count" -gt 10 ]; then
     echo "done"
     exit 0
   fi
