@@ -26,4 +26,5 @@ jobs:
           REGISTRY: "ghcr.io/${{ github.repository }}"
           GITHUB_TOKEN: ${{ github.token }}
       - name: Run script
-        shell: ci/upload-old-versions.sh
+        shell: bash
+        run: ci/upload-old-versions.sh
