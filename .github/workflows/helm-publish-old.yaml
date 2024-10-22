@@ -1,0 +1,29 @@
+name: Helm Publish
+
+on:
+  push:
+    branches:
+      - push_old_versions_to_ghcr
+  workflow_dispatch:
+
+jobs:
+  helm:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.3 # Lock version for now, helm v3.13.0 contains bugs related to oci that will be fixed in v3.13.1. https://github.com/helm/helm/issues/12423
+      - name: Login to GitHub Container Registry
+        shell: bash
+        run: echo "${GITHUB_TOKEN}" | helm registry login ${REGISTRY} --username ${GITHUB_ACTOR} --password-stdin
+        env:
+          REGISTRY: "ghcr.io/${{ github.repository }}"
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Run script
+        shell: ci/upload-old-versions.sh
