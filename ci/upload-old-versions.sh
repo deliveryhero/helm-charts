@@ -17,17 +17,16 @@ while true; do
       continue
     fi
     echo "Building and pushing $chart $current_version"
-    # helm dep up "stable/$chart"
+    helm dep up "stable/$chart"
     helm package "stable/$chart" -u
     package_file=$(ls "$chart"*.tgz)
-    echo "Running: helm push $package_file oci://ghcr.io/deliveryhero/helm-charts"
+    helm push $package_file oci://ghcr.io/deliveryhero/helm-charts
     export $(echo "$(echo ${chart_env_name})=$current_version")
     rm -f $package_file
   done
   previous_commit=$(git log --oneline | head -2 | tail -1 | cut -f1 -d' ')
   echo "Moving to previous commit: $previous_commit ..."
   git reset --hard $previous_commit --quiet
-  # sleep 5
   count=$((count + 1))
   echo "=================================================================================="
   if [ "$count" -gt 10 ]; then
