@@ -91,7 +91,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | settings.custom_plugin_monitors | list | `[]` |  |
 | settings.extraArgs | list | `[]` |  |
 | settings.heartBeatPeriod | string | `"5m0s"` | Syncing interval with API server |
-| settings.log_monitors | list | `["/config/kernel-monitor.json", "/config/docker-monitor.json", "/config/readonly-monitor.json"]` | User-specified custom monitor definitions |
+| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json","/config/readonly-monitor.json"]` | User-specified custom monitor definitions |
 | settings.prometheus_address | string | `"0.0.0.0"` | Prometheus exporter address |
 | settings.prometheus_port | int | `20257` | Prometheus exporter port |
 | tolerations[0].effect | string | `"NoSchedule"` |  |
