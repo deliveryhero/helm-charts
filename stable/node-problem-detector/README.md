@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.14](https://img.shields.io/badge/Version-2.3.14-informational?style=flat-square) ![AppVersion: v0.8.19](https://img.shields.io/badge/AppVersion-v0.8.19-informational?style=flat-square)
+![Version: 2.3.15](https://img.shields.io/badge/Version-2.3.15-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.14
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.15
 ```
 
 To install the chart with the release name `my-release`:
@@ -59,7 +59,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | image.digest | string | `""` | the image digest. If given it takes precedence over a given tag. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"registry.k8s.io/node-problem-detector/node-problem-detector"` |  |
-| image.tag | string | `"v0.8.19"` |  |
+| image.tag | string | `"v0.8.20"` |  |
 | imagePullSecrets | list | `[]` |  |
 | labels | object | `{}` |  |
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
@@ -91,7 +91,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | settings.custom_plugin_monitors | list | `[]` |  |
 | settings.extraArgs | list | `[]` |  |
 | settings.heartBeatPeriod | string | `"5m0s"` | Syncing interval with API server |
-| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json"]` | User-specified custom monitor definitions |
+| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json","/config/readonly-monitor.json"]` | User-specified custom monitor definitions |
 | settings.prometheus_address | string | `"0.0.0.0"` | Prometheus exporter address |
 | settings.prometheus_port | int | `20257` | Prometheus exporter port |
 | tolerations[0].effect | string | `"NoSchedule"` |  |
