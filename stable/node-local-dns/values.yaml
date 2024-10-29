@@ -22,6 +22,9 @@ config:
   # -- Set communication protocol. Options are `prefer_udp` or `force_tcp`
   commProtocol: "force_tcp"
 
+  # -- Set boolean to log DNS requests
+  enableLogging: false
+
   # -- If true, return NOERROR when attempting to resolve an IPv6 address
   noIPv6Lookups: false
 

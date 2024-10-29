@@ -12,6 +12,9 @@ data:
     {{- tpl .Values.config.customConfig . | nindent 4}}
     {{- else }}
     {{ .Values.config.dnsDomain }}:53 {
+    {{- if .Values.config.enableLogging }}
+        log
+    {{- end }}
         errors
         cache {
                 success 9984 30
@@ -91,6 +94,9 @@ data:
         prometheus :9253
         }
     .:53 {
+    {{- if .Values.config.enableLogging}}
+        log
+    {{- end }}
         errors
     {{- if .Values.config.prefetch.enabled}}
         cache 30 {
