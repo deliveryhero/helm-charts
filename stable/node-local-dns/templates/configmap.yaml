@@ -12,7 +12,7 @@ data:
     {{- tpl .Values.config.customConfig . | nindent 4}}
     {{- else }}
     {{ .Values.config.dnsDomain }}:53 {
-    {{- if .Values.config.logging.enabled }}
+    {{- if .Values.config.enableLogging }}
         log
     {{- end }}
         errors
@@ -94,7 +94,7 @@ data:
         prometheus :9253
         }
     .:53 {
-    {{- if .Values.config.logging.enabled }}
+    {{- if .Values.config.enableLogging}}
         log
     {{- end }}
         errors
