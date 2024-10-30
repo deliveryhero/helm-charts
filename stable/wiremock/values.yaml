@@ -1,9 +1,11 @@
 consumer:
   # consumer.name -- a name used for resources and settings in this WireMock
   name: example
-  # consumer.hostname -- the public host name for this WireMock
+  # consumer.environment -- environment variables used in the WireMock container
   environment: {}
     # WM_LOGGING_LEVEL: INFO
+  # consumer.environment_secret -- environment variables used in the WireMock container, stored as secrets
+  environment_secret: {}
   # consumer.args_include_default -- whether WireMock arguments for performance test setup should be included
   args_include_default: true
   # consumer.args -- custom WireMock startup arguments.
