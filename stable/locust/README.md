@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.6](https://img.shields.io/badge/Version-0.31.6-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
+![Version: 0.31.7](https://img.shields.io/badge/Version-0.31.7-informational?style=flat-square) ![AppVersion: 2.32.1](https://img.shields.io/badge/AppVersion-2.32.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.6
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.7
 ```
 
 To install the chart with the release name `my-release`:
@@ -120,6 +120,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | securityContext | object | `{}` |  |
 | service.annotations | object | `{}` |  |
 | service.extraLabels | object | `{}` |  |
+| service.loadBalancerIP | string | `""` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 | worker.affinity | object | `{}` | Overwrites affinity from global |
