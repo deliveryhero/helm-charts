@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.7](https://img.shields.io/badge/Version-0.31.7-informational?style=flat-square) ![AppVersion: 2.32.1](https://img.shields.io/badge/AppVersion-2.32.1-informational?style=flat-square)
+![Version: 0.31.8](https://img.shields.io/badge/Version-0.31.8-informational?style=flat-square) ![AppVersion: 2.32.1](https://img.shields.io/badge/AppVersion-2.32.1-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -18,7 +18,7 @@ kubectl create configmap my-loadtest-lib --from-file path/to/your/lib/
 And then install the chart passing the names of those configmaps as values:
 
 ```console
-helm install locust deliveryhero/locust \
+helm install locust oci://ghcr.io/deliveryhero/helm-charts/locust \
   --set loadtest.name=my-loadtest \
   --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
   --set loadtest.locust_lib_configmap=my-loadtest-lib
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.7
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.8
 ```
 
 To install the chart with the release name `my-release`:

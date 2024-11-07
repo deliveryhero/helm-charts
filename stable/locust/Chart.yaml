@@ -1,6 +1,6 @@
 apiVersion: v1
 name: locust
-version: "0.31.7"
+version: "0.31.8"
 appVersion: 2.32.1
 home: https://github.com/locustio/locust
 icon: https://locust.io/static/img/logo.png
@@ -24,7 +24,7 @@ description: |
   And then install the chart passing the names of those configmaps as values:
 
   ```console
-  helm install locust deliveryhero/locust \
+  helm install locust oci://ghcr.io/deliveryhero/helm-charts/locust \
     --set loadtest.name=my-loadtest \
     --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
     --set loadtest.locust_lib_configmap=my-loadtest-lib
