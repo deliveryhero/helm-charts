@@ -70,7 +70,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | hostAliases | list | `[]` | List of entries added to the /etc/hosts file on the pod to resolve custom hosts |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.15.1"` |  |
+| image.tag | string | `"2.32.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
