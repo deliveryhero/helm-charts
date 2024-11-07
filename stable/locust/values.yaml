@@ -38,13 +38,14 @@ loadtest:
 
 image:
   repository: locustio/locust
-  tag: 2.15.1
+  tag: 2.32.1
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   annotations: {}
   extraLabels: {}
+  loadBalancerIP: ""
 
 master:
   # master.image -- A custom docker image including tag
