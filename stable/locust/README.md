@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.8](https://img.shields.io/badge/Version-0.31.8-informational?style=flat-square) ![AppVersion: 2.32.1](https://img.shields.io/badge/AppVersion-2.32.1-informational?style=flat-square)
+![Version: 0.31.9](https://img.shields.io/badge/Version-0.31.9-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.8
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.9
 ```
 
 To install the chart with the release name `my-release`:
@@ -70,7 +70,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | hostAliases | list | `[]` | List of entries added to the /etc/hosts file on the pod to resolve custom hosts |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"locustio/locust"` |  |
-| image.tag | string | `"2.32.1"` |  |
+| image.tag | string | `"2.32.2"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -96,7 +96,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
 | master.affinity | object | `{}` | Overwrites affinity from global |
 | master.args | list | `[]` | Any extra command args for the master |
-| master.auth.enabled | bool | `false` | When enabled, UI basic auth will be enforced with the given username and password |
+| master.auth.enabled | bool | `false` | When enabled using image tag 2.21.0 or later you do not need username or pass word. Older image tags you are required to |
 | master.auth.password | string | `""` |  |
 | master.auth.username | string | `""` |  |
 | master.command[0] | string | `"sh"` |  |

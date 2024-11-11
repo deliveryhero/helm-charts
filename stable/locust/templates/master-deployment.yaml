@@ -62,7 +62,7 @@ spec:
 {{- end }}
 {{- if .Values.master.auth.enabled }}
 {{- if or (semverCompare ">=2.21.0" .Values.image.tag) (semverCompare ">=2.21.0" .Values.master.image.tag) (semverCompare ">=2.21.0" .Values.worker.image.tag)}}
-          - --web-login={{ .Values.master.auth.username }}:{{ .Values.master.auth.password }}
+          - --web-login
 {{ else }}
           - --web-auth={{ .Values.master.auth.username }}:{{ .Values.master.auth.password }}
 {{- end }}

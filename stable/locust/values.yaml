@@ -38,7 +38,7 @@ loadtest:
 
 image:
   repository: locustio/locust
-  tag: 2.32.1
+  tag: 2.32.2
   pullPolicy: IfNotPresent
 
 service:
@@ -79,7 +79,8 @@ master:
   # master.pdb.enabled -- Whether to create a PodDisruptionBudget for the master pod
   pdb:
     enabled: false
-  # master.auth.enabled -- When enabled, UI basic auth will be enforced with the given username and password
+  # master.auth.enabled -- When enabled using image tag 2.21.0 or later you do
+  # not need username or pass word. Older image tags you are required to
   auth:
     enabled: false
     username: ""
