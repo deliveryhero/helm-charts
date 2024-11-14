@@ -1,0 +1,49 @@
+name: Lint
+
+on: [pull_request]
+
+jobs:
+  helm-lint:
+    name: Helm lint all charts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.3 # Lock version for now, helm v3.13.0 contains bugs related to oci that will be fixed in v3.13.1. https://github.com/helm/helm/issues/12423
+      - name: Run helm lint
+        shell: bash
+        run: |
+          helm lint *
+
+  artifacthub-lint:
+    name: Artifacthub lint all charts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Run ah lint
+        shell: bash
+        run: |
+          brew install artifacthub/cmd/ah
+          ah lint
+
+  markdown-lint:
+    name: Lint all markdown files
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4.1.7
+    - name: Run lint
+      uses: avto-dev/markdown-lint@v1.5.0
+      with:
+        args: '**/*.md'
+        config: 'ci/markdown-lint.yaml'
+
+
+https://artifacthub.io/docs/topics/cli/
