@@ -44,6 +44,3 @@ jobs:
       with:
         args: '**/*.md'
         config: 'ci/markdown-lint.yaml'
-
-
-https://artifacthub.io/docs/topics/cli/
