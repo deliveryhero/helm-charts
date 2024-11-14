@@ -16,6 +16,7 @@ jobs:
       - name: Run helm lint
         shell: bash
         run: |
+          cd stable
           helm lint *
 
   artifacthub-lint:
