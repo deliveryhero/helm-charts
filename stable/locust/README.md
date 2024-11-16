@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.31.9](https://img.shields.io/badge/Version-0.31.9-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.0](https://img.shields.io/badge/Version-0.32.0-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.31.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -104,10 +104,29 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.deploymentAnnotations | object | `{}` | Annotations on the deployment for master |
 | master.environment | object | `{}` | environment variables for the master |
 | master.envs_include_default | bool | `true` | Whether to include default environment variables |
+| master.extraPorts | string | `nil` |  |
 | master.image | string | `""` | A custom docker image including tag |
+| master.livenessProbe.enabled | bool | `false` |  |
+| master.livenessProbe.failureThreshold | int | `2` |  |
+| master.livenessProbe.initialDelaySeconds | int | `60` |  |
+| master.livenessProbe.path | string | `"/"` |  |
+| master.livenessProbe.periodSeconds | int | `30` |  |
+| master.livenessProbe.port | int | `8089` |  |
+| master.livenessProbe.scheme | string | `"HTTP"` |  |
+| master.livenessProbe.successThreshold | int | `1` |  |
+| master.livenessProbe.timeoutSeconds | int | `30` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
+| master.readinessProbe.enabled | bool | `true` |  |
+| master.readinessProbe.failureThreshold | int | `2` |  |
+| master.readinessProbe.initialDelaySeconds | int | `5` |  |
+| master.readinessProbe.path | string | `"/"` |  |
+| master.readinessProbe.periodSeconds | int | `30` |  |
+| master.readinessProbe.port | int | `8089` |  |
+| master.readinessProbe.scheme | string | `"HTTP"` |  |
+| master.readinessProbe.successThreshold | int | `1` |  |
+| master.readinessProbe.timeoutSeconds | int | `30` |  |
 | master.replicas | int | `1` | Should be set to either 0 or 1. |
 | master.resources | object | `{}` | resources for the locust master |
 | master.restartPolicy | string | `"Always"` | master pod's restartPolicy. Can be Always, OnFailure, or Never. |
@@ -121,6 +140,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | service.annotations | object | `{}` |  |
 | service.extraLabels | object | `{}` |  |
 | service.loadBalancerIP | string | `""` |  |
+| service.port | int | `8089` |  |
+| service.targetPort | int | `8089` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 | worker.affinity | object | `{}` | Overwrites affinity from global |

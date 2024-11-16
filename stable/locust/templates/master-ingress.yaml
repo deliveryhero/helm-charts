@@ -49,10 +49,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: 8089
+                  number: {{ $.Values.service.port }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: 8089
+              servicePort: {{ $.Values.service.port }}
               {{- end }}
     {{- end }}
   {{- end }}

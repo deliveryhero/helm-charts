@@ -60,6 +60,9 @@ spec:
 {{- if .Values.loadtest.headless }}
           - --headless
 {{- end }}
+{{- if ne (.Values.service.targetPort | toString) "8089" }}
+          - --web-port {{ .Values.service.targetPort }}
+{{- end }}
 {{- if .Values.master.auth.enabled }}
 {{- if or (semverCompare ">=2.21.0" .Values.image.tag) (semverCompare ">=2.21.0" .Values.master.image.tag) (semverCompare ">=2.21.0" .Values.worker.image.tag)}}
           - --web-login
@@ -132,7 +135,7 @@ spec:
 {{- end }}
 {{- end }}
         ports:
-          - containerPort: 8089
+          - containerPort: {{ .Values.service.targetPort }}
             name: loc-master-web
             protocol: TCP
           - containerPort: 5557
@@ -141,24 +144,60 @@ spec:
           - containerPort: 5558
             name: loc-master-p2
             protocol: TCP
+        {{- if .Values.master.extraPorts -}}
+        {{ toYaml .Values.master.extraPorts | nindent 10 }}
+        {{- end }}
+        {{- if .Values.master.readinessProbe.enabled }}
         readinessProbe:
-          initialDelaySeconds: 5
-          periodSeconds: 30
-          timeoutSeconds: 30
-          failureThreshold: 2
-{{- if .Values.loadtest.headless }}
+          {{- if .Values.loadtest.headless }}
           tcpSocket:
             port: 5557
-{{ else }}
+          {{- else if .Values.master.readinessProbe.execCommand }}
+          exec:
+            command:
+            {{- range (.Values.master.readinessProbe.execCommand) }}
+            - {{ . | quote }}
+            {{- end }}
+          {{- else }}
           httpGet:
-            path: /
-            port: 8089
-{{- if .Values.master.auth.enabled }}
+            path: {{ .Values.master.readinessProbe.path | quote }}
+            port: {{ .Values.master.readinessProbe.port }}
+            scheme: {{ .Values.master.readinessProbe.scheme }}
+            {{- if and (.Values.master.auth.enabled) (semverCompare "<=2.20.0" .Values.image.tag) }}
             httpHeaders:
-                - name: Authorization
-                  value: Basic {{ printf "%s:%s" .Values.master.auth.username .Values.master.auth.password | b64enc }}
-{{- end }}
-{{- end }}
+            - name: Authorization
+              value: Basic {{ printf "%s:%s" .Values.master.auth.username .Values.master.auth.password | b64enc }}
+            {{- end }}
+          {{- end }}
+          initialDelaySeconds: {{ .Values.master.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.master.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.master.readinessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.master.readinessProbe.failureThreshold }}
+          successThreshold: {{ .Values.master.readinessProbe.successThreshold }}
+        {{- end }}
+        {{- if .Values.master.livenessProbe.enabled }}
+        livenessProbe:
+          {{- if .Values.loadtest.headless }}
+          tcpSocket:
+            port: 5557
+          {{- else if .Values.master.livenessProbe.execCommand }}
+          exec:
+            command:
+            {{- range (.Values.master.livenessProbe.execCommand) }}
+            - {{ . | quote }}
+            {{- end }}
+          {{- else }}
+          httpGet:
+            path: {{ .Values.master.livenessProbe.path | quote }}
+            port: {{ .Values.master.livenessProbe.port }}
+            scheme: {{ .Values.master.livenessProbe.scheme }}
+          {{- end }}
+          failureThreshold: {{ .Values.master.livenessProbe.failureThreshold }}
+          initialDelaySeconds: {{ .Values.master.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.master.livenessProbe.periodSeconds }}
+          successThreshold: {{ .Values.master.livenessProbe.successThreshold }}
+          timeoutSeconds: {{ .Values.master.livenessProbe.timeoutSeconds }}
+        {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
         {{- if .Values.loadtest.locust_lib_configmap }}
