@@ -147,57 +147,10 @@ spec:
         {{- if .Values.master.extraPorts -}}
         {{ toYaml .Values.master.extraPorts | nindent 10 }}
         {{- end }}
-        {{- if .Values.master.readinessProbe.enabled }}
         readinessProbe:
-          {{- if .Values.loadtest.headless }}
-          tcpSocket:
-            port: 5557
-          {{- else if .Values.master.readinessProbe.execCommand }}
-          exec:
-            command:
-            {{- range (.Values.master.readinessProbe.execCommand) }}
-            - {{ . | quote }}
-            {{- end }}
-          {{- else }}
-          httpGet:
-            path: {{ .Values.master.readinessProbe.path | quote }}
-            port: {{ .Values.master.readinessProbe.port }}
-            scheme: {{ .Values.master.readinessProbe.scheme }}
-            {{- if and (.Values.master.auth.enabled) (semverCompare "<=2.20.0" .Values.image.tag) }}
-            httpHeaders:
-            - name: Authorization
-              value: Basic {{ printf "%s:%s" .Values.master.auth.username .Values.master.auth.password | b64enc }}
-            {{- end }}
-          {{- end }}
-          initialDelaySeconds: {{ .Values.master.readinessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.master.readinessProbe.periodSeconds }}
-          timeoutSeconds: {{ .Values.master.readinessProbe.timeoutSeconds }}
-          failureThreshold: {{ .Values.master.readinessProbe.failureThreshold }}
-          successThreshold: {{ .Values.master.readinessProbe.successThreshold }}
-        {{- end }}
-        {{- if .Values.master.livenessProbe.enabled }}
+          {{- toYaml .Values.master.readinessProbe | nindent 12 }}
         livenessProbe:
-          {{- if .Values.loadtest.headless }}
-          tcpSocket:
-            port: 5557
-          {{- else if .Values.master.livenessProbe.execCommand }}
-          exec:
-            command:
-            {{- range (.Values.master.livenessProbe.execCommand) }}
-            - {{ . | quote }}
-            {{- end }}
-          {{- else }}
-          httpGet:
-            path: {{ .Values.master.livenessProbe.path | quote }}
-            port: {{ .Values.master.livenessProbe.port }}
-            scheme: {{ .Values.master.livenessProbe.scheme }}
-          {{- end }}
-          failureThreshold: {{ .Values.master.livenessProbe.failureThreshold }}
-          initialDelaySeconds: {{ .Values.master.livenessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.master.livenessProbe.periodSeconds }}
-          successThreshold: {{ .Values.master.livenessProbe.successThreshold }}
-          timeoutSeconds: {{ .Values.master.livenessProbe.timeoutSeconds }}
-        {{- end }}
+          {{- toYaml .Values.master.livenessProbe | nindent 12 }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
         {{- if .Values.loadtest.locust_lib_configmap }}

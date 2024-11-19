@@ -95,37 +95,29 @@ master:
     # - containerPort: 8080
     #   name: http-monitoring
 
-  # Used to define custom readinessProbe settings
+  # Used to define readinessProbe for the pod
   readinessProbe:
-    enabled: true
-    # execCommand: []
-    # - /bin/sh
-    # - -c
-    # - /mnt/locust/myreadinessscript.sh
-    path: "/"
-    port: 8089
-    scheme: "HTTP"
     initialDelaySeconds: 5
     periodSeconds: 30
     timeoutSeconds: 30
     failureThreshold: 2
     successThreshold: 1
+    httpGet:
+      path: /
+      port: 8089
+      scheme: HTTP
 
-  # Used to enable a livenessProbe for the pods
-  livenessProbe:
-    enabled: false
-    # execCommand: []
-    # - /bin/sh
-    # - -c
-    # - /mnt/locust/mylivenessscript.sh
-    path: "/"
-    port: 8089
-    scheme: "HTTP"
-    initialDelaySeconds: 60
-    periodSeconds: 30
-    timeoutSeconds: 30
-    failureThreshold: 2
-    successThreshold: 1
+  # Used to define livenessProbe for the pod
+  livenessProbe: {}
+    # initialDelaySeconds: 60
+    # periodSeconds: 30
+    # timeoutSeconds: 30
+    # failureThreshold: 2
+    # successThreshold: 1
+    # httpGet:
+    #   path: /
+    #   port: 8089
+    #   scheme: HTTP
 
   # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
