@@ -106,25 +106,16 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.envs_include_default | bool | `true` | Whether to include default environment variables |
 | master.extraPorts | string | `nil` |  |
 | master.image | string | `""` | A custom docker image including tag |
-| master.livenessProbe.enabled | bool | `false` |  |
-| master.livenessProbe.failureThreshold | int | `2` |  |
-| master.livenessProbe.initialDelaySeconds | int | `60` |  |
-| master.livenessProbe.path | string | `"/"` |  |
-| master.livenessProbe.periodSeconds | int | `30` |  |
-| master.livenessProbe.port | int | `8089` |  |
-| master.livenessProbe.scheme | string | `"HTTP"` |  |
-| master.livenessProbe.successThreshold | int | `1` |  |
-| master.livenessProbe.timeoutSeconds | int | `30` |  |
+| master.livenessProbe | object | `{}` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | master.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the master pod |
-| master.readinessProbe.enabled | bool | `true` |  |
 | master.readinessProbe.failureThreshold | int | `2` |  |
+| master.readinessProbe.httpGet.path | string | `"/"` |  |
+| master.readinessProbe.httpGet.port | int | `8089` |  |
+| master.readinessProbe.httpGet.scheme | string | `"HTTP"` |  |
 | master.readinessProbe.initialDelaySeconds | int | `5` |  |
-| master.readinessProbe.path | string | `"/"` |  |
 | master.readinessProbe.periodSeconds | int | `30` |  |
-| master.readinessProbe.port | int | `8089` |  |
-| master.readinessProbe.scheme | string | `"HTTP"` |  |
 | master.readinessProbe.successThreshold | int | `1` |  |
 | master.readinessProbe.timeoutSeconds | int | `30` |  |
 | master.replicas | int | `1` | Should be set to either 0 or 1. |
