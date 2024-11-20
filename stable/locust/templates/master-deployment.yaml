@@ -147,10 +147,18 @@ spec:
         {{- if .Values.master.extraPorts -}}
         {{ toYaml .Values.master.extraPorts | nindent 10 }}
         {{- end }}
+        {{- if .Values.master.readinessProbe }}
         readinessProbe:
           {{- toYaml .Values.master.readinessProbe | nindent 12 }}
+        {{- end }}
+        {{- if .Values.master.livenessProbe }}
         livenessProbe:
           {{- toYaml .Values.master.livenessProbe | nindent 12 }}
+        {{- end }}
+        {{- if .Values.master.startupProbe }}
+        startupProbe:
+          {{- toYaml .Values.master.startupProbe | nindent 12 }}
+        {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
         {{- if .Values.loadtest.locust_lib_configmap }}

@@ -122,6 +122,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.resources | object | `{}` | resources for the locust master |
 | master.restartPolicy | string | `"Always"` | master pod's restartPolicy. Can be Always, OnFailure, or Never. |
 | master.serviceAccountAnnotations | object | `{}` |  |
+| master.startupProbe | object | `{}` |  |
 | master.strategy.type | string | `"RollingUpdate"` |  |
 | master.tolerations | list | `[]` | Overwrites tolerations from global |
 | nameOverride | string | `""` |  |

@@ -119,6 +119,18 @@ master:
     #   port: 8089
     #   scheme: HTTP
 
+  # Used to define startupProbe for the pod
+  startupProbe: {}
+    # initialDelaySeconds: 60
+    # periodSeconds: 30
+    # timeoutSeconds: 30
+    # failureThreshold: 2
+    # successThreshold: 1
+    # httpGet:
+    #   path: /
+    #   port: 8089
+    #   scheme: HTTP
+
   # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
   # master.nodeSelector -- Overwrites nodeSelector from global
