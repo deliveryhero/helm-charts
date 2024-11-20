@@ -33,8 +33,8 @@ jobs:
       - name: Run chart-testing (lint)
         run: ct lint --validate-maintainers=false --config ci/ct.yaml
 
-      - name: Create kind cluster
-        uses: helm/kind-action@v1.3.0
+      - name: Kind Cluster
+        uses: helm/kind-action@v1.10.0
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
