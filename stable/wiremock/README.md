@@ -1,6 +1,6 @@
 # wiremock
 
-![Version: 1.4.3](https://img.shields.io/badge/Version-1.4.3-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
+![Version: 1.4.4](https://img.shields.io/badge/Version-1.4.4-informational?style=flat-square) ![AppVersion: 2.26.0](https://img.shields.io/badge/AppVersion-2.26.0-informational?style=flat-square)
 
 A service virtualization tool (some call it mock server) for testing purposes.
 
@@ -88,7 +88,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/wiremock
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/wiremock --version 1.4.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/wiremock --version 1.4.4
 ```
 
 To install the chart with the release name `my-release`:

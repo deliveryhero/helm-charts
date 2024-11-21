@@ -81,6 +81,14 @@ spec:
             value: {{ $value | quote }}
 {{- end }}
 
+{{- range $key, $value := .Values.consumer.environment_secret }}
+          - name: {{ $key }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "wiremock.fullname" $ }}
+                key: {{ $key }}
+{{- end }}
+
 {{- if .Values.consumer.args_include_default }}
         args:
           - --disable-banner
