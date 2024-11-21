@@ -86,7 +86,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
 | loadtest.locustCmd | string | `"/opt/venv/bin/locust"` | The command to run Locust |
 | loadtest.locust_host | string | `"https://www.google.com"` | the host you will load test |
-| loadtest.locust_lib_configmap | string | `"example-lib"` | name of a configmap containing your lib (default uses the example lib) |
+| loadtest.locust_lib_configmap | string | `""` | name of a configmap containing your lib (default uses the example lib) |
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
 | loadtest.locust_locustfile_configmap | string | `"example-locustfile"` | name of a configmap containing your locustfile (default uses the example locustfile) |
 | loadtest.locust_locustfile_path | string | `"/mnt/locust"` | the path of the locustfile (without trailing backslash) |

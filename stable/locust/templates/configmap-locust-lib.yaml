@@ -1,3 +1,4 @@
+{{- if .Values.loadtest.locust_lib_configmap }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,3 +7,4 @@ metadata:
 {{ include "locust.labels" . | indent 4 }}
 data:
 {{ ($.Files.Glob (printf "locustfiles/%s/lib/*" .Values.loadtest.name)).AsConfig | indent 2 }}
+{{- end }}
