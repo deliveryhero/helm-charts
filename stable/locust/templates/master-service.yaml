@@ -24,9 +24,12 @@ spec:
     protocol: TCP
     targetPort: 5558
   - name: master-p3
-    port: 8089
+    port: {{ .Values.service.port }}
     protocol: TCP
-    targetPort: 8089
+    targetPort: {{ .Values.service.targetPort }}
+    {{- if and (.Values.service.nodePort) (eq (.Values.service.type | toString) "NodePort") }}
+    nodePort: {{ .Values.service.nodePort }}
+    {{- end }}
   selector:
     component: master
     {{- include "locust.selectorLabels" . | nindent 4 }}
