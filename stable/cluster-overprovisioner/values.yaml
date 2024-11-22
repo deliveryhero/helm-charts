@@ -21,6 +21,9 @@ priorityClassDefault:
   # priorityClassDefault.value -- Priority value of the default priorityClass
   value: 0
 
+# terminationGracePeriodSeconds -- Time for graceful pod termination
+terminationGracePeriodSeconds: 0
+
 image:
   # image.repository -- Image repository
   repository: registry.k8s.io/pause
