@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.1](https://img.shields.io/badge/Version-0.32.1-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.2](https://img.shields.io/badge/Version-0.32.2-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.2
 ```
 
 To install the chart with the release name `my-release`:

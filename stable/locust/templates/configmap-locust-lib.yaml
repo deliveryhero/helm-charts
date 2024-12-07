@@ -1,4 +1,4 @@
-{{- if .Values.loadtest.locust_lib_configmap }}
+{{- if eq .Values.loadtest.locust_lib_configmap "example-lib" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
