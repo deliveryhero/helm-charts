@@ -13,9 +13,9 @@ env:
   REGISTRY: "ghcr.io/${{ github.repository }}"
 
 jobs:
-  helm:
+  package-and-release:
     permissions:
-      contents: read
+      contents: write
       packages: write
     runs-on: ubuntu-latest
     steps:
@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           helm repo index .
-      - name: Update URLs in index.yaml
+      - name: Update URLs in index.yaml with yq
         uses: mikefarah/yq@v4.44.6
         with:
           cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
@@ -64,4 +64,5 @@ jobs:
           add: 'index.yaml'
           committer_name: GitHub Actions
           committer_email: actions@github.com
+          author_email: actions@github.com
           message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
