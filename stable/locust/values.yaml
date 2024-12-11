@@ -46,6 +46,9 @@ service:
   annotations: {}
   extraLabels: {}
   loadBalancerIP: ""
+  port: 8089
+  targetPort: 8089
+  # nodePort: 8089
 
 master:
   # master.image -- A custom docker image including tag
@@ -85,6 +88,49 @@ master:
     enabled: false
     username: ""
     password: ""
+
+  # extraPorts is a list of extra ports. Specified as a YAML list.
+  # This is useful if you need to add additional ports for monitoring.
+  extraPorts: null
+    # - containerPort: 8080
+    #   name: http-monitoring
+
+  # Used to define readinessProbe for the pod
+  readinessProbe:
+    initialDelaySeconds: 5
+    periodSeconds: 30
+    timeoutSeconds: 30
+    failureThreshold: 2
+    successThreshold: 1
+    httpGet:
+      path: /
+      port: 8089
+      scheme: HTTP
+
+  # Used to define livenessProbe for the pod
+  livenessProbe: {}
+    # initialDelaySeconds: 60
+    # periodSeconds: 30
+    # timeoutSeconds: 30
+    # failureThreshold: 2
+    # successThreshold: 1
+    # httpGet:
+    #   path: /
+    #   port: 8089
+    #   scheme: HTTP
+
+  # Used to define startupProbe for the pod
+  startupProbe: {}
+    # initialDelaySeconds: 60
+    # periodSeconds: 30
+    # timeoutSeconds: 30
+    # failureThreshold: 2
+    # successThreshold: 1
+    # httpGet:
+    #   path: /
+    #   port: 8089
+    #   scheme: HTTP
+
   # master.restartPolicy -- master pod's restartPolicy. Can be Always, OnFailure, or Never.
   restartPolicy: Always
   # master.nodeSelector -- Overwrites nodeSelector from global

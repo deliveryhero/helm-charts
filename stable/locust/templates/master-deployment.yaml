@@ -60,6 +60,9 @@ spec:
 {{- if .Values.loadtest.headless }}
           - --headless
 {{- end }}
+{{- if ne (.Values.service.targetPort | toString) "8089" }}
+          - --web-port {{ .Values.service.targetPort }}
+{{- end }}
 {{- if .Values.master.auth.enabled }}
 {{- if or (semverCompare ">=2.21.0" .Values.image.tag) (semverCompare ">=2.21.0" .Values.master.image.tag) (semverCompare ">=2.21.0" .Values.worker.image.tag)}}
           - --web-login
@@ -132,7 +135,7 @@ spec:
 {{- end }}
 {{- end }}
         ports:
-          - containerPort: 8089
+          - containerPort: {{ .Values.service.targetPort }}
             name: loc-master-web
             protocol: TCP
           - containerPort: 5557
@@ -141,24 +144,21 @@ spec:
           - containerPort: 5558
             name: loc-master-p2
             protocol: TCP
+        {{- if .Values.master.extraPorts -}}
+        {{ toYaml .Values.master.extraPorts | nindent 10 }}
+        {{- end }}
+        {{- if .Values.master.readinessProbe }}
         readinessProbe:
-          initialDelaySeconds: 5
-          periodSeconds: 30
-          timeoutSeconds: 30
-          failureThreshold: 2
-{{- if .Values.loadtest.headless }}
-          tcpSocket:
-            port: 5557
-{{ else }}
-          httpGet:
-            path: /
-            port: 8089
-{{- if .Values.master.auth.enabled }}
-            httpHeaders:
-                - name: Authorization
-                  value: Basic {{ printf "%s:%s" .Values.master.auth.username .Values.master.auth.password | b64enc }}
-{{- end }}
-{{- end }}
+          {{- toYaml .Values.master.readinessProbe | nindent 12 }}
+        {{- end }}
+        {{- if .Values.master.livenessProbe }}
+        livenessProbe:
+          {{- toYaml .Values.master.livenessProbe | nindent 12 }}
+        {{- end }}
+        {{- if .Values.master.startupProbe }}
+        startupProbe:
+          {{- toYaml .Values.master.startupProbe | nindent 12 }}
+        {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
         {{- if .Values.loadtest.locust_lib_configmap }}

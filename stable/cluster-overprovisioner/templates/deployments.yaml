@@ -9,6 +9,7 @@
 {{- $chartName := .Chart.Name }}
 {{- $containerSecurityContext := .Values.containerSecurityContext }}
 {{- $podSecurityContext := .Values.podSecurityContext }}
+{{- $terminationGracePeriodSeconds := .Values.terminationGracePeriodSeconds }}
 {{- $priorityClassName := .Values.priorityClassOverprovision.name }}
 {{- $repository := .Values.image.repository }}
 {{- $imageTag := default .Chart.AppVersion .Values.image.tag }}
@@ -94,6 +95,9 @@ spec:
     {{- with .tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with $terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds: {{ $terminationGracePeriodSeconds }}
     {{- end }}
     {{- with .topologySpreadConstraints }}
       topologySpreadConstraints:
