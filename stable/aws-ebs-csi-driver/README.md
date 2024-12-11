@@ -40,6 +40,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-ebs-csi-drive
 
 ## Source Code
 
+* <https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-ebs-csi-driver>
 * <https://github.com/kubernetes-sigs/aws-ebs-csi-driver>
 
 ## Requirements
