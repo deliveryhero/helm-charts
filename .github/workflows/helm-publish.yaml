@@ -42,12 +42,26 @@ jobs:
         shell: bash
         run: echo "${GITHUB_TOKEN}" | helm registry login ${REGISTRY} --username ${GITHUB_ACTOR} --password-stdin
         env:
-          REGISTRY: "ghcr.io/${{ github.repository }}"
           GITHUB_TOKEN: ${{ github.token }}
-      - name: Push Helm Charts to Github Container Registry (OCI)
+      - name: Push Helm Charts to Github Container Registry as OCI packages
         shell: bash
         run: |
           for f in *.tgz ; do
               echo "$f"
               helm push $f oci://${REGISTRY,,}
           done
+      - name: Generate Helm repo index.yaml
+        shell: bash
+        run: |
+          helm repo index .
+      - name: Update URLs in index.yaml
+        uses: mikefarah/yq@v4.44.6
+        with:
+          cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
+      - name: Commit index.yaml to master branch
+        uses: EndBug/add-and-commit@v9.1.4
+        with:
+          add: 'index.yaml'
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
+          message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
