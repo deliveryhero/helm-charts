@@ -67,6 +67,10 @@ podAnnotations: {}
 
 podLabels: {}
 
+configMapAnnotations: {}
+
+configMapLabels: {}
+
 daemonsetAnnotations: {}
 
 daemonsetLabels: {}

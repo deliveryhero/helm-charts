@@ -3,9 +3,15 @@ kind: ConfigMap
 metadata:
   name: {{ include "node-local-dns.fullname" . }}
   namespace: kube-system
+  {{- with .Values.configMapAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   labels:
-    addonmanager.kubernetes.io/mode: Reconcile
     {{- include "node-local-dns.labels" . | nindent 4 }}
+  {{- with .Values.configMapLabels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 data:
   Corefile: |
     {{- if .Values.config.customConfig -}}
