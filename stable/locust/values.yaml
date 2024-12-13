@@ -154,6 +154,20 @@ worker:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 40
+  keda:
+    enabled: false
+    pollingInterval: 15
+    cooldownPeriod: 30
+    # worker.keda,triggers - Allow passing required triggers to scale upon as string template for complex triggering
+    triggers: |
+      # https://keda.sh/docs/latest/scalers/metrics-api/
+      - type: metrics-api
+        metadata:
+          activationTargetValue: "0"
+          targetValue: "50"   # Scale pods based on target users
+          url: "http://{{ template "locust.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ $.Values.service.port }}/stats/requests"
+          format: json
+          valueLocation: 'user_count'
   # worker.resources -- resources for the locust worker
   resources: {}
     # limits:
