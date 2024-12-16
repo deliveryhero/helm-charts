@@ -10,8 +10,11 @@ data:
 
     set -eu
 
-    {{- if .Values.loadtest.pip_packages }}
+    {{- if and .Values.loadtest.enabled .Values.loadtest.pip_packages }}
     pip install {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}
+    {{- end }}
+    {{- if .Values.locustfiles.requirements }}
+    pip install -r {{ .Values.locustfiles.requirements }}
     {{- end }}
 
     exec {{ .Values.loadtest.locustCmd }} $@

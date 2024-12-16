@@ -112,3 +112,78 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
   mountPath: {{ .Values.loadtest.mount_external_secret.mountPath }}
   readOnly: true
 {{- end -}}
+
+{{- define "locust.legacy_image" -}}
+"{{ if .Values.master.image }}{{ .Values.master.image }}{{ else }}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ end }}"
+{{- end }}
+
+{{- define "locust.master_image" -}}
+  {{- if .Values.image }}
+    {{- template "locust.legacy_image" -}}
+  {{- else }}
+    {{- $repository := .Values.images.master.repository | default .Values.images.defaultLocustRepository -}}
+    {{- $tag := .Values.images.master.tag | default .Values.defaultLocustTag -}}
+    {{- printf "%s:%s" $repository $tag -}}
+  {{- end }}
+{{- end }}
+
+{{- define "locust.worker_image" -}}
+{{- if .Values.image }}
+    {{- template "locust.legacy_image" -}}
+  {{- else }}
+    {{- $repository := .Values.images.worker.repository | default .Values.images.defaultLocustRepository -}}
+    {{- $tag := .Values.images.worker.tag | default .Values.defaultLocustTag -}}
+    {{- printf "%s:%s" $repository $tag -}}
+  {{- end }}
+{{- end }}
+
+{{- define "git_sync_image" -}}
+  {{- printf "%s:%s" .Values.images.gitSync.repository .Values.images.gitSync.tag }}
+{{- end }}
+
+{{/*  Git sync container */}}
+{{- define "git_sync_container" }}
+- name: {{ .Values.locustfiles.gitSync.containerName }}{{ if .is_init }}-init{{ end }}
+  image: {{ template "git_sync_image" . }}
+  imagePullPolicy: {{ .Values.images.gitSync.pullPolicy }}
+  env:
+    - name: GITSYNC_REF
+      value: {{ .Values.locustfiles.gitSync.ref | quote }}
+    - name: GITSYNC_REPO
+      value: {{ .Values.locustfiles.gitSync.repo | quote }}
+    - name: GITSYNC_DEPTH
+      value: {{ .Values.locustfiles.gitSync.depth | quote }}
+    - name: GITSYNC_ROOT
+      value: "/git"
+    - name: GITSYNC_LINK
+      value: "repo"
+    - name: GITSYNC_ADD_USER
+      value: "true"
+    - name: GITSYNC_PERIOD
+      value: {{ .Values.locustfiles.gitSync.period | quote }}
+    - name: GITSYNC_MAX_FAILURES
+      value: {{ .Values.locustfiles.gitSync.maxFailures | quote }}
+    {{- if .is_init }}
+    - name: GITSYNC_ONE_TIME
+      value: "true"
+    {{- end }}
+    {{- with .Values.locustfiles.gitSync.env }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  resources: {{ toYaml .Values.locustfiles.gitSync.resources | nindent 4 }}
+  volumeMounts:
+  - name: locustfiles
+    mountPath: /git
+  {{- if .Values.locustfiles.gitSync.extraVolumeMounts }}
+    {{- tpl (toYaml .Values.locustfiles.gitSync.extraVolumeMounts) . | nindent 2 }}
+  {{- end }}
+  {{- if and .Values.locustfiles.gitSync.containerLifecycleHooks (not .is_init) }}
+  lifecycle: {{- tpl (toYaml .Values.locustfiles.gitSync.containerLifecycleHooks) . | nindent 4 }}
+  {{- end }}
+{{- end }}
+
+{{- define "locust.locustfiles_mount" -}}
+- name: locustfiles
+  mountPath: {{ .Values.locustfiles.mountPath }}
+  readOnly: {{ .Values.locustfiles.gitSync.enabled | ternary "True" "False" }}
+{{- end }}

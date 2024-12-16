@@ -45,11 +45,18 @@ spec:
 {{- if .Values.hostAliases }}
       hostAliases: {{- .Values.hostAliases | toYaml | nindent 8 }}
 {{- end }}
+      initContainers:
+        {{- if .Values.locustfiles.gitSync.enabled }}
+          {{- include "git_sync_container" (dict "Values" .Values "is_init" "true" "Template" .Template) | nindent 8 }}
+        {{- end }}
       containers:
+      {{- if .Values.locustfiles.gitSync.enabled }}
+        {{- include "git_sync_container" . | nindent 8 }}
+      {{- end }}
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
-        image: "{{ if .Values.worker.image }}{{ .Values.worker.image }}{{ else }}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ end }}"
+        image: {{ template "locust.worker_image" }}
 {{- with .Values.worker.command }}
         command:
         {{- toYaml . | nindent 8 }}
@@ -70,6 +77,9 @@ spec:
           {{- if .Values.loadtest.locust_lib_configmap }}
           - name: lib
             mountPath: "{{ .Values.loadtest.locust_locustfile_path }}/lib"
+          {{- end }}
+          {{- if .Values.locustfiles.gitSync.enabled }}
+            {{- include "locust.locustfiles_mount" . | nindent 12 }}
           {{- end }}
           - name: config
             mountPath: /config
@@ -132,6 +142,10 @@ spec:
         - name: locustfile
           configMap:
             name: {{ .Values.loadtest.locust_locustfile_configmap }}
+        {{- end }}
+        {{- if .Values.dags.gitSync.enabled }}
+        - name: locustfiles
+          emptyDir:
         {{- end }}
         - name: config
           configMap:
