@@ -48,12 +48,7 @@ spec:
       hostNetwork: {{ .Values.config.setupIptables }}
       dnsPolicy: Default  # Don't use cluster DNS.
       tolerations:
-      - key: "CriticalAddonsOnly"
-        operator: "Exists"
-      - effect: "NoExecute"
-        operator: "Exists"
-      - effect: "NoSchedule"
-        operator: "Exists"
+      {{- toYaml .Values.tolerations | nindent 8 }}
       containers:
       - name: node-cache
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
