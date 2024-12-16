@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.3](https://img.shields.io/badge/Version-0.32.3-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.33.0](https://img.shields.io/badge/Version-0.33.0-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.33.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -72,6 +72,17 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | image.repository | string | `"locustio/locust"` |  |
 | image.tag | string | `"2.32.2"` |  |
 | imagePullSecrets | list | `[]` |  |
+| images.defaultLocustRepository | string | `"locustio/locust"` |  |
+| images.defaultLocustTag | string | `"2.32.2"` |  |
+| images.gitSync.pullPolicy | string | `"IfNotPresent"` |  |
+| images.gitSync.repository | string | `"registry.k8s.io/git-sync/git-sync"` |  |
+| images.gitSync.tag | string | `"v4.1.0"` |  |
+| images.master.pullPolicy | string | `"IfNotPresent"` |  |
+| images.master.repository | string | `nil` |  |
+| images.master.tag | string | `nil` |  |
+| images.worker.pullPolicy | string | `"IfNotPresent"` |  |
+| images.worker.repository | string | `nil` |  |
+| images.worker.tag | string | `nil` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
@@ -79,6 +90,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | ingress.hosts[0].path | string | `"/"` |  |
 | ingress.hosts[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
+| loadtest.enabled | bool | `true` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
 | loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]` |
 | loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
@@ -94,6 +106,24 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
+| locustfiles.gitSync.containerLifecycleHooks | object | `{}` |  |
+| locustfiles.gitSync.containerName | string | `"git-sync"` |  |
+| locustfiles.gitSync.depth | int | `1` |  |
+| locustfiles.gitSync.enabled | bool | `false` |  |
+| locustfiles.gitSync.env | list | `[]` |  |
+| locustfiles.gitSync.envFrom | string | `nil` |  |
+| locustfiles.gitSync.extraVolumeMounts | list | `[]` |  |
+| locustfiles.gitSync.maxFailures | int | `0` |  |
+| locustfiles.gitSync.period | string | `"5s"` |  |
+| locustfiles.gitSync.ref | string | `"main"` |  |
+| locustfiles.gitSync.repo | string | `nil` |  |
+| locustfiles.gitSync.resources | object | `{}` |  |
+| locustfiles.gitSync.securityContext | object | `{}` |  |
+| locustfiles.gitSync.securityContexts.container | object | `{}` |  |
+| locustfiles.gitSync.subPath | string | `"locustfiles"` |  |
+| locustfiles.gitSync.uid | int | `65533` |  |
+| locustfiles.mountPath | string | `"/mnt/locust"` |  |
+| locustfiles.requirements | string | `nil` |  |
 | master.affinity | object | `{}` | Overwrites affinity from global |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.auth.enabled | bool | `false` | When enabled using image tag 2.21.0 or later you do not need username or pass word. Older image tags you are required to |
