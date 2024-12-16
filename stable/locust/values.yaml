@@ -1,4 +1,5 @@
 loadtest:
+  enabled: true
   # loadtest.name -- a name used for resources and settings in this load test
   name: example
   # loadtest.locust_locustfile -- the name of the locustfile
@@ -36,10 +37,91 @@ loadtest:
   # loadtest.locustCmd -- The command to run Locust
   locustCmd: "/opt/venv/bin/locust"
 
+locustfiles:
+  mountPath: "/mnt/locust"
+  requirements: ~
+  gitSync:
+    enabled: false
+    repo: ~
+    ref: main
+    depth: 1
+    # the number of consecutive failures allowed before aborting
+    maxFailures: 0
+    # subpath within the repo where locustfiles are located
+    # should be "" if files are at repo root
+    subPath: "locustfiles"
+    # interval between git sync attempts in seconds
+    # Go-style duration string (e.g. "100ms" or "0.1s" = 100ms).
+    period: 5s
+    # add variables from secret into gitSync containers, such proxy-config
+    envFrom: ~
+    # envFrom: |
+    #   - secretRef:
+    #       name: 'proxy-config'
+
+    containerName: git-sync
+    uid: 65533
+
+    # When not set, the values defined in the global securityContext will be used
+    securityContext: {}
+    #  runAsUser: 65533
+    #  runAsGroup: 0
+
+    securityContexts:
+      container: {}
+
+    # container level lifecycle hooks
+    containerLifecycleHooks: {}
+
+    # Mount additional volumes into git-sync. It can be templated like in the following example:
+    #   extraVolumeMounts:
+    #     - name: my-templated-extra-volume
+    #       mountPath: "{{ .Values.my_custom_path }}"
+    #       readOnly: true
+    extraVolumeMounts: []
+    env: []
+    # Supported env vars for gitsync can be found at https://github.com/kubernetes/git-sync
+    # - name: ""
+    #   value: ""
+
+    # Configuration for empty dir volume
+    # emptyDirConfig:
+    #   sizeLimit: 1Gi
+    #   medium: Memory
+
+    resources: {}
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+
 image:
   repository: locustio/locust
   tag: 2.32.2
   pullPolicy: IfNotPresent
+
+images:
+  defaultLocustRepository: locustio/locust
+  defaultLocustTag: 2.32.2
+
+  master:
+    repository: ~
+    tag: ~
+    pullPolicy: IfNotPresent
+
+  worker:
+    repository: ~
+    tag: ~
+    pullPolicy: IfNotPresent
+
+  gitSync:
+    repository: registry.k8s.io/git-sync/git-sync
+    tag: v4.1.0
+    pullPolicy: IfNotPresent
+
 
 service:
   type: ClusterIP
