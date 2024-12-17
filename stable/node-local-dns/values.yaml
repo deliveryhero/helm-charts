@@ -78,7 +78,7 @@ daemonsetLabels: {}
 securityContext:
   capabilities:
     add:
-    - NET_ADMIN
+      - NET_ADMIN
 
 # -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
@@ -133,3 +133,11 @@ imagePullSecrets: []
 
 prometheusScraping:
   enabled: true
+
+tolerations:
+  - key: "CriticalAddonsOnly"
+    operator: "Exists"
+  - effect: "NoExecute"
+    operator: "Exists"
+  - effect: "NoSchedule"
+    operator: "Exists"
