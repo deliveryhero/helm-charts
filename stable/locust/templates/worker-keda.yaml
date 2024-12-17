@@ -1,0 +1,27 @@
+{{- if .Values.worker.keda.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ template "locust.fullname" . }}
+  labels:
+{{ include "locust.labels" . | indent 4 }}
+    component: "worker"
+{{- with .Values.worker.keda.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+{{- end }}
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    apiVersion: apps/v1
+    name: {{ template "locust.fullname" . }}-worker
+  pollingInterval: {{ .Values.worker.keda.pollingInterval }}
+  cooldownPeriod: {{ .Values.worker.keda.cooldownPeriod }}
+  minReplicaCount: {{ .Values.worker.hpa.minReplicas }}
+  maxReplicaCount: {{ .Values.worker.hpa.maxReplicas }}
+  fallback:
+    failureThreshold: {{ .Values.worker.keda.failureThreshold | default 3 }}
+    replicas: {{ .Values.worker.keda.fallbackReplicas | default .Values.worker.hpa.minReplicas }} 
+  triggers:
+    {{-  tpl .Values.worker.keda.triggers . | nindent 4}}
+{{- end }}
