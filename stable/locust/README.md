@@ -6,7 +6,11 @@ A chart to install Locust, a scalable load testing tool written in Python.
 
 This chart will setup everything required to run a full distributed locust environment with any amount of workers.
 
-This chart will also create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
+Locust requires locust files to execute load testing, and this chart provides different ways to populate locust files.
+
+## Kubernetes ConfigMap
+
+This chart can create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
 
 By default it will install using an example locustfile and lib from [stable/locust/locustfiles/example](https://github.com/deliveryhero/helm-charts/tree/master/stable/locust/locustfiles/example). When you want to provide your own locustfile, you will need to create 2 configmaps using the structure from that example:
 
@@ -22,6 +26,28 @@ helm install locust oci://ghcr.io/deliveryhero/helm-charts/locust \
   --set loadtest.name=my-loadtest \
   --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
   --set loadtest.locust_lib_configmap=my-loadtest-lib
+```
+
+## Git Sync
+
+Another way to fetch locust files in the pods is to continously track a git repository containing the files.
+
+While activating this feature, you also have to disable the default ConfigMap-based provisioning, through a custom `values.yaml` file:
+
+```yaml
+loadtest:
+  enabled = false
+locustfiles:
+  gitSync:
+    enabled = true
+```
+
+Then configure the gitSync process to fetch the right repository and the right files:
+
+```yaml
+locustfiles:
+  gitSync:
+    repo: https://github.com/username/reponame.git
 ```
 
 **Homepage:** <https://github.com/locustio/locust>
@@ -72,17 +98,17 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | image.repository | string | `"locustio/locust"` |  |
 | image.tag | string | `"2.32.2"` |  |
 | imagePullSecrets | list | `[]` |  |
-| images.defaultLocustRepository | string | `"locustio/locust"` |  |
-| images.defaultLocustTag | string | `"2.32.2"` |  |
+| images.defaultLocustRepository | string | `"locustio/locust"` | default image used by locust containers (master and workers) |
+| images.defaultLocustTag | string | `"2.32.2"` | default tag used by locust containers (master and workers) |
 | images.gitSync.pullPolicy | string | `"IfNotPresent"` |  |
-| images.gitSync.repository | string | `"registry.k8s.io/git-sync/git-sync"` |  |
-| images.gitSync.tag | string | `"v4.1.0"` |  |
+| images.gitSync.repository | string | `"registry.k8s.io/git-sync/git-sync"` | image used by gitSync container |
+| images.gitSync.tag | string | `"v4.1.0"` | tag used by gitSync container |
 | images.master.pullPolicy | string | `"IfNotPresent"` |  |
-| images.master.repository | string | `nil` |  |
-| images.master.tag | string | `nil` |  |
+| images.master.repository | string | `nil` | image used by locust master container |
+| images.master.tag | string | `nil` | tag used by locust master container |
 | images.worker.pullPolicy | string | `"IfNotPresent"` |  |
-| images.worker.repository | string | `nil` |  |
-| images.worker.tag | string | `nil` |  |
+| images.worker.repository | string | `nil` | image used by locust worker containers |
+| images.worker.tag | string | `nil` | tag used by locust worker containers |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
@@ -109,21 +135,21 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | locustfiles.gitSync.containerLifecycleHooks | object | `{}` |  |
 | locustfiles.gitSync.containerName | string | `"git-sync"` |  |
 | locustfiles.gitSync.depth | int | `1` |  |
-| locustfiles.gitSync.enabled | bool | `false` |  |
+| locustfiles.gitSync.enabled | bool | `false` | Enable the Git Sync feature (mutually exclusive with loadtest.enabled) |
 | locustfiles.gitSync.env | list | `[]` |  |
-| locustfiles.gitSync.envFrom | string | `nil` |  |
+| locustfiles.gitSync.envFrom | string | `nil` | add variables from secret into gitSync containers, such proxy-config |
 | locustfiles.gitSync.extraVolumeMounts | list | `[]` |  |
-| locustfiles.gitSync.maxFailures | int | `0` |  |
+| locustfiles.gitSync.maxFailures | int | `0` | the number of consecutive failures allowed before aborting |
 | locustfiles.gitSync.period | string | `"5s"` |  |
-| locustfiles.gitSync.ref | string | `"main"` |  |
-| locustfiles.gitSync.repo | string | `nil` |  |
+| locustfiles.gitSync.ref | string | `"main"` | Git reference to pull |
+| locustfiles.gitSync.repo | string | `nil` | Git repository to synchronize |
 | locustfiles.gitSync.resources | object | `{}` |  |
 | locustfiles.gitSync.securityContext | object | `{}` |  |
 | locustfiles.gitSync.securityContexts.container | object | `{}` |  |
-| locustfiles.gitSync.subPath | string | `"locustfiles"` |  |
+| locustfiles.gitSync.subPath | string | `"locustfiles"` | subpath within the repo where locustfiles are located, should be "" if files are at repo root |
 | locustfiles.gitSync.uid | int | `65533` |  |
-| locustfiles.mountPath | string | `"/mnt/locust"` |  |
-| locustfiles.requirements | string | `nil` |  |
+| locustfiles.mountPath | string | `"/mnt/locust"` | the path of the locustfiles (without trailing backslash) |
+| locustfiles.requirements | string | `nil` | Path to a file containing requirements to install |
 | master.affinity | object | `{}` | Overwrites affinity from global |
 | master.args | list | `[]` | Any extra command args for the master |
 | master.auth.enabled | bool | `false` | When enabled using image tag 2.21.0 or later you do not need username or pass word. Older image tags you are required to |

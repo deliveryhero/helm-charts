@@ -45,16 +45,16 @@ spec:
 {{- end }}
       initContainers:
         {{- if .Values.locustfiles.gitSync.enabled }}
-          {{- include "git_sync_container" (dict "Values" .Values "is_init" "true" "Template" .Template) | nindent 8 }}
+          {{- include "git_sync_container" (dict "Values" .Values "is_init" "true" "Template" .Template) | nindent 6 }}
         {{- end }}
       containers:
       {{- if .Values.locustfiles.gitSync.enabled }}
-        {{- include "git_sync_container" . | nindent 8 }}
+        {{- include "git_sync_container" . | nindent 6 }}
       {{- end }}
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
-        image: {{ template "locust.master_image" }}
+        image: {{ template "locust.master_image" . }}
 {{- with .Values.master.command }}
         command:
         {{- toYaml . | nindent 8 }}
@@ -83,20 +83,22 @@ spec:
 {{- if .Values.loadtest.excludeTags }}
           - --exclude-tags {{ .Values.loadtest.excludeTags }}
 {{- end }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        imagePullPolicy: {{ template "locust.master_pull_policy" . }}
         resources:
 {{ toYaml .Values.master.resources | indent 10 }}
         volumeMounts:
-          {{- if .Values.loadtest.locust_locustfile_configmap}}
+          {{- if .Values.loadtest.enabled }}
+            {{- if .Values.loadtest.locust_locustfile_configmap}}
           - name: locustfile
             mountPath: "{{ .Values.loadtest.locust_locustfile_path }}"
-          {{- end }}
-          {{- if .Values.loadtest.locust_lib_configmap }}
+            {{- end }}
+            {{- if .Values.loadtest.locust_lib_configmap }}
           - name: lib
             mountPath: "{{ .Values.loadtest.locust_locustfile_path }}/lib"
+            {{- end }}
           {{- end }}
           {{- if .Values.locustfiles.gitSync.enabled }}
-            {{- include "locust.locustfiles_mount" . | nindent 12 }}
+            {{- include "locust.locustfiles_mount" . | nindent 10 }}
           {{- end }}
           - name: config
             mountPath: /config
@@ -117,7 +119,11 @@ spec:
           - name: LOCUST_LOGLEVEL
             value: "{{ .Values.master.logLevel }}"
           - name: LOCUST_LOCUSTFILE
+            {{- if .Values.loadtest.enabled }}
             value: "{{ .Values.loadtest.locust_locustfile_path }}/{{ .Values.loadtest.locust_locustfile }}"
+            {{- else if .Values.locustfiles.gitSync.enabled }}
+            value: "{{ .Values.locustfiles.mountPath }}/repo/{{ .Values.locustfiles.gitSync.subPath }}/"
+            {{- end }}
 {{- end }}
 {{- range $key, $value := .Values.loadtest.environment }}
           - name: {{ $key }}
@@ -171,19 +177,21 @@ spec:
         {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
-        {{- if .Values.loadtest.locust_lib_configmap }}
+        {{- if .Values.loadtest.enabled }}
+          {{- if .Values.loadtest.locust_lib_configmap }}
         - name: lib
           configMap:
             name: {{ .Values.loadtest.locust_lib_configmap }}
-        {{- end }}
-        {{- if .Values.loadtest.locust_locustfile_configmap }}
+          {{- end }}
+          {{- if .Values.loadtest.locust_locustfile_configmap }}
         - name: locustfile
           configMap:
             name: {{ .Values.loadtest.locust_locustfile_configmap }}
+          {{- end }}
         {{- end }}
-        {{- if .Values.dags.gitSync.enabled }}
+        {{- if .Values.locustfiles.gitSync.enabled }}
         - name: locustfiles
-          emptyDir:
+          emptyDir: {}
         {{- end }}
         - name: config
           configMap:

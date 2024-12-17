@@ -122,8 +122,16 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
     {{- template "locust.legacy_image" -}}
   {{- else }}
     {{- $repository := .Values.images.master.repository | default .Values.images.defaultLocustRepository -}}
-    {{- $tag := .Values.images.master.tag | default .Values.defaultLocustTag -}}
+    {{- $tag := .Values.images.master.tag | default .Values.images.defaultLocustTag -}}
     {{- printf "%s:%s" $repository $tag -}}
+  {{- end }}
+{{- end }}
+
+{{- define "locust.master_pull_policy" -}}
+{{- if .Values.image }}
+    {{- .Values.image.pullPolicy -}}
+  {{- else }}
+    {{- .Values.images.master.pullPolicy -}}
   {{- end }}
 {{- end }}
 
@@ -132,10 +140,19 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
     {{- template "locust.legacy_image" -}}
   {{- else }}
     {{- $repository := .Values.images.worker.repository | default .Values.images.defaultLocustRepository -}}
-    {{- $tag := .Values.images.worker.tag | default .Values.defaultLocustTag -}}
+    {{- $tag := .Values.images.worker.tag | default .Values.images.defaultLocustTag -}}
     {{- printf "%s:%s" $repository $tag -}}
   {{- end }}
 {{- end }}
+
+{{- define "locust.worker_pull_policy" -}}
+{{- if .Values.image }}
+    {{- .Values.image.pullPolicy -}}
+  {{- else }}
+    {{- .Values.images.worker.pullPolicy -}}
+  {{- end }}
+{{- end }}
+
 
 {{- define "git_sync_image" -}}
   {{- printf "%s:%s" .Values.images.gitSync.repository .Values.images.gitSync.tag }}
@@ -182,7 +199,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- end }}
 {{- end }}
 
-{{- define "locust.locustfiles_mount" -}}
+{{- define "locust.locustfiles_mount" }}
 - name: locustfiles
   mountPath: {{ .Values.locustfiles.mountPath }}
   readOnly: {{ .Values.locustfiles.gitSync.enabled | ternary "True" "False" }}
