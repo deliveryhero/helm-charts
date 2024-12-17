@@ -38,22 +38,27 @@ loadtest:
   locustCmd: "/opt/venv/bin/locust"
 
 locustfiles:
+  # locustfiles.mountPath -- the path of the locustfiles (without trailing backslash)
   mountPath: "/mnt/locust"
+  # locustfiles.requirements -- Path to a file containing requirements to install
   requirements: ~
   gitSync:
+    # locustfiles.gitSync.enabled -- Enable the Git Sync feature (mutually exclusive with loadtest.enabled)
     enabled: false
+    # locustfiles.gitSync.repo -- Git repository to synchronize
     repo: ~
+    # locustfiles.gitSync.ref -- Git reference to pull
     ref: main
     depth: 1
-    # the number of consecutive failures allowed before aborting
+    # locustfiles.gitSync.maxFailures -- the number of consecutive failures allowed before aborting
     maxFailures: 0
-    # subpath within the repo where locustfiles are located
+    # locustfiles.gitSync.subPath -- subpath within the repo where locustfiles are located,
     # should be "" if files are at repo root
     subPath: "locustfiles"
-    # interval between git sync attempts in seconds
+    # locustfiles.gitSync.period - interval between git sync attempts in seconds
     # Go-style duration string (e.g. "100ms" or "0.1s" = 100ms).
     period: 5s
-    # add variables from secret into gitSync containers, such proxy-config
+    # locustfiles.gitSync.envFrom -- add variables from secret into gitSync containers, such proxy-config
     envFrom: ~
     # envFrom: |
     #   - secretRef:
@@ -104,21 +109,29 @@ image:
   pullPolicy: IfNotPresent
 
 images:
+  # images.defaultLocustRepository -- default image used by locust containers (master and workers)
   defaultLocustRepository: locustio/locust
+  # images.defaultLocustTag -- default tag used by locust containers (master and workers)
   defaultLocustTag: 2.32.2
 
   master:
+    # images.master.repository -- image used by locust master container
     repository: ~
+    # images.master.tag -- tag used by locust master container
     tag: ~
     pullPolicy: IfNotPresent
 
   worker:
+    # images.worker.repository -- image used by locust worker containers
     repository: ~
+    # images.worker.tag -- tag used by locust worker containers
     tag: ~
     pullPolicy: IfNotPresent
 
   gitSync:
+    # images.gitSync.repository -- image used by gitSync container
     repository: registry.k8s.io/git-sync/git-sync
+    # images.gitSync.tag -- tag used by gitSync container
     tag: v4.1.0
     pullPolicy: IfNotPresent
 

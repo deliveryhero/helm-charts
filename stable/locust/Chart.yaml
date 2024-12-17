@@ -12,7 +12,11 @@ description: |
 
   This chart will setup everything required to run a full distributed locust environment with any amount of workers.
 
-  This chart will also create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
+  Locust requires locust files to execute load testing, and this chart provides different ways to populate locust files.
+
+  ## Kubernetes ConfigMap
+
+  This chart can create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.
 
   By default it will install using an example locustfile and lib from [stable/locust/locustfiles/example](https://github.com/deliveryhero/helm-charts/tree/master/stable/locust/locustfiles/example). When you want to provide your own locustfile, you will need to create 2 configmaps using the structure from that example:
 
@@ -28,4 +32,26 @@ description: |
     --set loadtest.name=my-loadtest \
     --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
     --set loadtest.locust_lib_configmap=my-loadtest-lib
+  ```
+
+  ## Git Sync
+
+  Another way to fetch locust files in the pods is to continously track a git repository containing the files.
+
+  While activating this feature, you also have to disable the default ConfigMap-based provisioning, through a custom `values.yaml` file:
+
+  ```yaml
+  loadtest:
+    enabled = false
+  locustfiles:
+    gitSync:
+      enabled = true
+  ```
+
+  Then configure the gitSync process to fetch the right repository and the right files:
+
+  ```yaml
+  locustfiles:
+    gitSync:
+      repo: https://github.com/username/reponame.git
   ```
