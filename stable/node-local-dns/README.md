@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.1.1](https://img.shields.io/badge/Version-2.1.1-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
+![Version: 2.1.3](https://img.shields.io/badge/Version-2.1.3-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.3
 ```
 
 To install the chart with the release name `my-release`:
@@ -63,6 +63,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
 | config.skipTeardown | bool | `false` |  |
+| configMapAnnotations | object | `{}` |  |
+| configMapLabels | object | `{}` |  |
 | daemonsetAnnotations | object | `{}` |  |
 | daemonsetLabels | object | `{}` |  |
 | dashboard | object | `{"annotations":{},"enabled":false,"label":"grafana_dashboard","namespace":"kube-system"}` | https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md |
@@ -88,6 +90,12 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | serviceMonitor.enabled | bool | `false` | Ensure that servicemonitor is created, this will disable prometheus annotations |
 | serviceMonitor.metricRelabelings | list | `[]` | Metric relabel configs to apply to samples before ingestion. [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs) |
 | serviceMonitor.relabelings | list | `[]` | Relabel configs to apply to samples before ingestion. [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) |
+| tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
+| tolerations[0].operator | string | `"Exists"` |  |
+| tolerations[1].effect | string | `"NoExecute"` |  |
+| tolerations[1].operator | string | `"Exists"` |  |
+| tolerations[2].effect | string | `"NoSchedule"` |  |
+| tolerations[2].operator | string | `"Exists"` |  |
 
 ## Maintainers
 
