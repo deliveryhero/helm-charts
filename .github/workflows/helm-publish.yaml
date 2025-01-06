@@ -53,16 +53,21 @@ jobs:
       - name: Generate Helm repo index.yaml
         shell: bash
         run: |
-          helm repo index .
+          helm repo index --merge .
       - name: Update URLs in index.yaml with yq
         uses: mikefarah/yq@v4.44.6
         with:
           cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
-      - name: Commit index.yaml to master branch
-        uses: EndBug/add-and-commit@v9.1.4
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
         with:
-          add: 'index.yaml'
-          committer_name: GitHub Actions
-          committer_email: actions@github.com
-          author_email: actions@github.com
-          message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
+          commit-message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
+          branch: update-index
+          delete-branch: true
+          title: "[stable/index] Updating index.yaml for $GITHUB_REF"
+          add-paths: |
+            index.yaml
+          labels: |
+            index
+            automated pr
