@@ -52,8 +52,7 @@ jobs:
           done
       - name: Generate Helm repo index.yaml
         shell: bash
-        run: |
-          helm repo index --merge .
+        run: helm repo index . --merge index.yaml
       - name: Update URLs in index.yaml with yq
         uses: mikefarah/yq@v4.44.6
         with:
