@@ -1,6 +1,6 @@
 # aws-s3-proxy
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
 Reverse proxy for AWS S3 with basic authentication.
 
@@ -19,7 +19,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy --version 0.1.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy --version 0.1.6
 ```
 
 To install the chart with the release name `my-release`:
