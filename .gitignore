@@ -18,3 +18,5 @@ __pycache__
 .vscode/
 
 *.tgz
+*.prov
+passphrase.txt
