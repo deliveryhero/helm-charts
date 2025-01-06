@@ -65,7 +65,7 @@ jobs:
           commit-message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
           branch: update-index
           delete-branch: true
-          title: '[index] Updating for $GITHUB_REF'
+          title: '[stable/index] Updating index.yaml for $GITHUB_REF'
           add-paths: |
             index.yaml
           labels: |
