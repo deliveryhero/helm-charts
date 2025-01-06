@@ -18,3 +18,7 @@ maintainers:
   email: no-reply@deliveryhero.com
 - name: javad-hajiani
   email: no-reply@deliveryhero.com
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-service-events-exporter
