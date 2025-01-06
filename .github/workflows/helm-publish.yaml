@@ -53,7 +53,7 @@ jobs:
       - name: Generate Helm repo index.yaml
         shell: bash
         run: |
-          helm repo index .
+          helm repo index --merge .
       - name: Update URLs in index.yaml with yq
         uses: mikefarah/yq@v4.44.6
         with:
@@ -65,4 +65,5 @@ jobs:
           committer_name: GitHub Actions
           committer_email: actions@github.com
           author_email: actions@github.com
+          author_name: GitHub Actions
           message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
