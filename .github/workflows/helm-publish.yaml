@@ -29,11 +29,13 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - name: Save GPG passphrase
+      - name: Save GPG passphrase and legacy keyring
         run: |
           cat << EOF > passphrase.txt
           ${{ secrets.GPG_PASSPHRASE }}
           EOF
+          gpg -o ~/.gnupg/pubring.gpg --export ${{ steps.import_gpg.outputs.keyid }}
+          gpg  --batch --pinentry-mode loopback --passphrase $(cat passphrase.txt) -o ~/.gnupg/secring.gpg --export-secret-keys ${{ steps.import_gpg.outputs.keyid }}
       - name: Package Helm Charts
         shell: bash
         run: |
@@ -44,7 +46,7 @@ jobs:
                   continue
               fi
               echo "$d"
-              helm package --sign "$d" -u --key ${{ steps.import_gpg.outputs.name }} --passphrase-file passphrase.txt
+              helm package --sign "$d" -u --key ${{ steps.import_gpg.outputs.name }} --passphrase-file passphrase.txt --keyring ~/.gnupg/secring.gpg
           done
           rm passphrase.txt
           echo "Packing done"
