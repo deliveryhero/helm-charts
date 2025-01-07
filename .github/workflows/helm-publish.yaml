@@ -46,7 +46,7 @@ jobs:
                   continue
               fi
               echo "Packaging chart: $d"
-              helm package --sign "$d" -u --key ${{ steps.import_gpg.outputs.name }} --passphrase-file passphrase.txt --keyring ~/.gnupg/secring.gpg
+              helm package --sign "$d" -u --key "${{ steps.import_gpg.outputs.name }}" --passphrase-file passphrase.txt --keyring ~/.gnupg/secring.gpg
           done
           rm passphrase.txt
           echo "Packing done"
