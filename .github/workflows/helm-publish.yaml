@@ -3,7 +3,7 @@ name: Helm Publish
 on:
   push:
     branches:
-    - master
+      - master
     paths:
       - 'stable/**'
   workflow_dispatch:
@@ -25,7 +25,18 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
         with:
-          version: v3.12.3 # Lock version for now, helm v3.13.0 contains bugs related to oci that will be fixed in v3.13.1. https://github.com/helm/helm/issues/12423
+          version: v3.16.4
+     - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+     -  name: Save GPG passphrase
+        run: |
+          cat << EOF > passphrase.txt
+          ${{ secrets.GPG_PASSPHRASE }}
+          EOF
       - name: Package Helm Charts
         shell: bash
         run: |
@@ -36,8 +47,9 @@ jobs:
                   continue
               fi
               echo "$d"
-              helm package "$d" -u
+              helm package --sign "$d" -u --key ${{ steps.import_gpg.outputs.name }} --passphrase-file passphrase.txt
           done
+          rm passphrase.txt
           echo "Packing done"
       - name: Login to GitHub Container Registry
         shell: bash
@@ -51,6 +63,14 @@ jobs:
               echo "$f"
               helm push $f oci://${REGISTRY,,}
           done
+      - name: Upload the Chart to Rekor
+        shell: bash
+        run: |
+          helm plugin install https://github.com/sigstore/helm-sigstore
+          for f in *.tgz ; do
+              echo "$f"
+              helm sigstore upload "$d"
+          done
       - name: Generate Helm repo index.yaml
         shell: bash
         run: helm repo index . --merge index.yaml
@@ -62,10 +82,10 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "$GITHUB_ACTION is updating index.yaml for $GITHUB_REF"
+          commit-message: "Updating index.yaml for ${{ github.ref }}"
           branch: update-index
           delete-branch: true
-          title: "[stable/index] Updating index.yaml for $GITHUB_REF"
+          title: "[stable/index] Updating index.yaml for ${{ github.ref }}"
           add-paths: |
             index.yaml
           labels: |
