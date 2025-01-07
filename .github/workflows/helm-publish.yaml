@@ -67,8 +67,8 @@ jobs:
         run: |
           helm plugin install https://github.com/sigstore/helm-sigstore
           for f in *.tgz ; do
-              echo "$f"
-              helm sigstore upload "$d"
+              echo "Running sigstore upload for chart: $f"
+              helm sigstore upload "$f"
           done
       - name: Generate Helm repo index.yaml
         shell: bash
