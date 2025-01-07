@@ -1,5 +1,4 @@
 name: Helm Publish
-
 on:
   push:
     branches:
@@ -7,11 +6,9 @@ on:
     paths:
       - 'stable/**'
   workflow_dispatch:
-
 env:
   CHARTS_PATH: stable
   REGISTRY: "ghcr.io/${{ github.repository }}"
-
 jobs:
   package-and-release:
     permissions:
@@ -26,13 +23,13 @@ jobs:
         uses: azure/setup-helm@v4
         with:
           version: v3.16.4
-     - name: Import GPG key
+      - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-     -  name: Save GPG passphrase
+      - name: Save GPG passphrase
         run: |
           cat << EOF > passphrase.txt
           ${{ secrets.GPG_PASSPHRASE }}
