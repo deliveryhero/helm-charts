@@ -1,9 +1,8 @@
 apiVersion: v1
 name: wiremock
-version: "1.4.4"
+version: "1.4.5"
 appVersion: "2.26.0"
 home: http://wiremock.org/
-icon: http://wiremock.org/images/wiremock-concept-icon-01.png
 sources:
   - https://github.com/tomakehurst/wiremock
   - https://github.com/rodolpheche/wiremock-docker
