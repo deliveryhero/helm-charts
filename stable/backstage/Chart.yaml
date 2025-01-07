@@ -6,7 +6,7 @@ home: https://github.com/backstage/backstage
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.1.13
+version: 0.1.14
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
@@ -21,3 +21,8 @@ maintainers:
   email: no-reply@deliveryhero.com
 - name: nyambati
   email: no-reply@deliveryhero.com
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/backstage
