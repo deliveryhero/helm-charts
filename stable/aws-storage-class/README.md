@@ -1,6 +1,6 @@
 # aws-storage-class
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square)
 
 Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/storage-class/aws/default.yaml
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-storage-
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class --version 0.1.7
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-storage-class --version 0.1.8
 ```
 
 To install the chart with the release name `my-release`:
