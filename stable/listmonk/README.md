@@ -1,6 +1,6 @@
 # listmonk
 
-![Version: 0.1.10](https://img.shields.io/badge/Version-0.1.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
+![Version: 0.1.11](https://img.shields.io/badge/Version-0.1.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
 
 A Helm chart for listmonk application
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk --version 0.1.10
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk --version 0.1.11
 ```
 
 To install the chart with the release name `my-release`:
@@ -41,6 +41,12 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/listmonk -f value
 ## Source Code
 
 * <https://github.com/knadh/listmonk>
+
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | postgresql | 11.6.26 |
 
 ## Values
 
