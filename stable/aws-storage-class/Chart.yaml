@@ -6,3 +6,7 @@ home: https://github.com/deliveryhero/helm-charts
 maintainers:
 - name: max-rocket-internet
   email: no-reply@deliveryhero.com
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-storage-class
