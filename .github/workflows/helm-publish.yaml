@@ -45,7 +45,7 @@ jobs:
                   echo "${d}/Chart.yaml not found. Skipping."
                   continue
               fi
-              echo "$d"
+              echo "Packaging chart: $d"
               helm package --sign "$d" -u --key "${{ steps.import_gpg.outputs.name }}" --passphrase-file passphrase.txt --keyring ~/.gnupg/secring.gpg
           done
           rm passphrase.txt

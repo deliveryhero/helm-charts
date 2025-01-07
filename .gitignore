@@ -20,3 +20,6 @@ __pycache__
 *.tgz
 *.prov
 passphrase.txt
+
+requirements.lock
+Chart.lock
