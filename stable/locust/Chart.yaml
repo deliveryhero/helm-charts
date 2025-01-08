@@ -1,12 +1,12 @@
-apiVersion: v1
+apiVersion: v2
 name: locust
-version: "0.32.3"
+version: 0.32.4
 appVersion: 2.32.2
 home: https://github.com/locustio/locust
 icon: https://locust.io/static/img/logo.png
 maintainers:
 - name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  url: https://github.com/max-rocket-internet
 description: |
   A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -29,3 +29,8 @@ description: |
     --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \
     --set loadtest.locust_lib_configmap=my-loadtest-lib
   ```
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/locust

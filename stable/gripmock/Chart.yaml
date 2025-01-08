@@ -9,8 +9,13 @@ description: |
   >
   > Version v1.11.1-beta release is available by overriding the `image.tag` in your `values.yaml` file. This version supports **NO** declaration of `go_package`.
 type: application
-version: 1.1.2
+version: 1.1.3
 appVersion: "1.10.1"
 maintainers:
   - name: MarceloAplanalp
     email: marcelo.aplanalp@deliveryhero.com
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/gripmock

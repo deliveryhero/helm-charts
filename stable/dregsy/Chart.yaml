@@ -3,11 +3,16 @@ name: dregsy
 description: |-
   Dregsy lets you sync Docker images between registries, public or private through defined sync tasks can be invoked as one-off or periodic task.
 type: application
-version: 0.1.4
+version: 0.1.5
 appVersion: "0.4.3"
 home: https://github.com/xelalexv/dregsy
 sources:
   - https://github.com/xelalexv/dregsy
 maintainers:
   - name: nyambati
-    email: no-reply@deliveryhero.com
+    url: https://github.com/nyambati
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/dregsy

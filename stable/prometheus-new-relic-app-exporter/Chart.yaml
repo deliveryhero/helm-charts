@@ -1,11 +1,16 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "0.0.2"
 description: A Helm chart a prometheus exporter for a single New Relic application
 name: prometheus-new-relic-app-exporter
-version: 1.0.0
+version: 1.0.1
 home: https://github.com/previousnext/newrelic-exporter
 sources:
   - https://github.com/previousnext/newrelic-exporter
 maintainers:
 - name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  url: https://github.com/max-rocket-internet
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-new-relic-app-exporter

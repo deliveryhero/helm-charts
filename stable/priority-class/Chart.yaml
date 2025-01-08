@@ -1,9 +1,14 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "1.0"
 description: A very simple chart that creates priority classes
 name: priority-class
-version: 0.1.1
+version: 0.1.2
 home: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 maintainers:
 - name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  url: https://github.com/max-rocket-internet
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/priority-class

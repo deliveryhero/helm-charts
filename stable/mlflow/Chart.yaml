@@ -6,13 +6,12 @@ description: |
   This Helm chart is using Postgresql as backend and S3 as artifact store.
   Contributions for other backends and artifacts store are welcome.
 type: application
-version: 1.0.9
+version: 1.0.10
 home: https://www.mlflow.org/
 icon: https://www.mlflow.org/docs/latest/_static/MLflow-logo-final-black.png
 appVersion: "1.9.1"
 maintainers:
 - name: mkuhn
-  email: no-reply@deliveryhero.com
   url: https://github.com/magdalenakuhn17
 engine: gotpl
 keywords:
@@ -22,3 +21,8 @@ keywords:
 - machinelearning
 sources:
 - https://github.com/mlflow
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/mlflow

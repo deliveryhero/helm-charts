@@ -5,7 +5,7 @@ description: |
 
 type: application
 
-version: 0.2.1
+version: 0.2.2
 
 appVersion: "0.6.0"
 
@@ -14,4 +14,9 @@ sources:
   - https://github.com/danielfm/aws-limits-exporter
 maintainers:
 - name: javad-hajiani
-  email: no-reply@deliveryhero.com
+  url: https://github.com/javad-hajiani
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-aws-limits-exporter

@@ -1,11 +1,16 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "0.6"
 description: A Helm chart a prometheus exporter for SOTI MobiControl metrics
 name: prometheus-soti-mobicontrol-exporter
-version: 1.0.2
+version: 1.0.3
 home: https://github.com/max-rocket-internet/soti-mobicontrol-exporter
 sources:
   - https://github.com/max-rocket-internet/soti-mobicontrol-exporter
 maintainers:
 - name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  url: https://github.com/max-rocket-internet
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-soti-mobicontrol-exporter

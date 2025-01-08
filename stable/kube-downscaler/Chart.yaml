@@ -1,6 +1,6 @@
 name: kube-downscaler
-apiVersion: v1
-version: "0.7.5"
+apiVersion: v2
+version: 0.7.6
 appVersion: 23.2.0-6-gc9b88e8
 description: Scale down Kubernetes deployments after work hours
 keywords:
@@ -13,3 +13,8 @@ home: https://codeberg.org/hjacobs/kube-downscaler
 maintainers:
 - name: hjacobs
   url: https://codeberg.org/hjacobs
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/kube-downscaler

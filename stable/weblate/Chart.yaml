@@ -2,13 +2,13 @@ apiVersion: v2
 appVersion: "4.2-1"
 description: Free web-based translation management system.
 name: weblate
-version: 0.3.1
+version: 0.3.2
 home: https://weblate.org
 sources:
   - https://github.com/WeblateOrg/weblate
 maintainers:
 - name: sietevecesmal
-  email: no-reply@deliveryhero.com
+  url: https://github.com/sietevecesmal
 
 dependencies:
 - name: postgresql

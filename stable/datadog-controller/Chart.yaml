@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: datadog-controller
 description: |
   This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) to allow [Datadog Monitors](https://docs.datadoghq.com/monitors/) to be created, updated or deleted from custom resources in Kubernetes.
@@ -18,12 +18,12 @@ description: |
     type: "query alert"
     message: Service my-service has a high error rate on env:stg
   ```
-version: "1.1"
+version: 1.2
 appVersion: "0.1"
 home: https://github.com/max-rocket-internet/datadog-controller
 maintainers:
 - name: max-rocket-internet
-  email: max.williams@deliveryhero.com
+  email: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 keywords:
@@ -32,3 +32,8 @@ keywords:
 - controller
 sources:
 - https://github.com/max-rocket-internet/datadog-controller
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/datadog-controller

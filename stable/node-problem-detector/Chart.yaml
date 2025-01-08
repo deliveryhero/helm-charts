@@ -1,6 +1,6 @@
-apiVersion: v1
+apiVersion: v2
 name: node-problem-detector
-version: "2.3.15"
+version: 2.3.16
 appVersion: v0.8.20
 home: https://github.com/kubernetes/node-problem-detector
 description: |
@@ -16,5 +16,11 @@ sources:
 - https://kubernetes.io/docs/concepts/architecture/nodes/#condition
 maintainers:
 - name: max-rocket-internet
-  email: no-reply@deliveryhero.com
+  url: https://github.com/max-rocket-internet
+
 engine: gotpl
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/node-problem-detector

@@ -1,11 +1,16 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "2024.8.2"
 description: A free, fast and beautiful API request builder
 name: hoppscotch
-version: 0.3.0
+version: 0.3.1
 home: https://github.com/hoppscotch/hoppscotch
 sources:
   - https://github.com/hoppscotch/hoppscotch
 maintainers:
 - name: javad-hajiani
-  email: no-reply@deliveryhero.com
+  url: https://github.com/javad-hajiani
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/hoppscotch
