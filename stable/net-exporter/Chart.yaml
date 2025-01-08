@@ -6,11 +6,9 @@ version: 1.10.5
 appVersion: "1.10.3"
 annotations:
   config.giantswarm.io/version: 1.x.x
-maintainers:
-- name: pciang
-  url: https://github.com/pciang
-
-annotations:
   artifacthub.io/links: |
     - name: Helm chart source
       url: https://github.com/deliveryhero/helm-charts/tree/master/stable/net-exporter
+maintainers:
+- name: pciang
+  url: https://github.com/pciang
