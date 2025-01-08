@@ -43,6 +43,12 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 * <https://github.com/CachetHQ/Docker>
 * <https://github.com/CachetHQ/Cachet>
 
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | postgresql | 11.6.26 |
+
 ## Values
 
 | Key | Type | Default | Description |

@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "0.8"
 description: A controller for managing New Relic settings
 name: newrelic-controller
-version: 1.2
+version: "1.2"
 home: https://github.com/max-rocket-internet/newrelic-controller
 sources:
   - https://github.com/max-rocket-internet/newrelic-controller

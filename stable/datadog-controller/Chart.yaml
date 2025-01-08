@@ -18,12 +18,12 @@ description: |
     type: "query alert"
     message: Service my-service has a high error rate on env:stg
   ```
-version: 1.2
+version: "1.2"
 appVersion: "0.1"
 home: https://github.com/max-rocket-internet/datadog-controller
 maintainers:
 - name: max-rocket-internet
-  email: https://github.com/max-rocket-internet
+  url: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 keywords:

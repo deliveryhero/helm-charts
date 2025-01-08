@@ -8,7 +8,7 @@ description: |
 name: rds-downscaler
 maintainers:
 - name: max-rocket-internet
-  email: https://github.com/max-rocket-internet
+  url: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 home: https://github.com/deliveryhero/helm-charts

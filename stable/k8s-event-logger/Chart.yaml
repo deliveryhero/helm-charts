@@ -18,7 +18,7 @@ home: https://github.com/max-rocket-internet/k8s-event-logger
 name: k8s-event-logger
 maintainers:
 - name: max-rocket-internet
-  email: https://github.com/max-rocket-internet
+  url: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 keywords:

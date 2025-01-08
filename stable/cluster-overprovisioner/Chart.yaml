@@ -11,7 +11,7 @@ home: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler
 version: 0.7.13
 maintainers:
   - name: max-rocket-internet
-    email: https://github.com/max-rocket-internet
+    url: https://github.com/max-rocket-internet
   - name: mmingorance-dh
     email: miguel.mingorance@deliveryhero.com
 engine: gotpl

@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: "1.0"
-version: 1.1
+version: "1.1"
 description: |
   For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:
 
@@ -11,7 +11,7 @@ description: |
 name: pg-repack-scheduler
 maintainers:
 - name: max-rocket-internet
-  email: https://github.com/max-rocket-internet
+  url: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 home: https://github.com/deliveryhero/helm-charts

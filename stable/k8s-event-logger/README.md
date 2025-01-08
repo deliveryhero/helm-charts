@@ -88,7 +88,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger 
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <https://github.com/max-rocket-internet> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
 
 ## Chart source and versions
 
