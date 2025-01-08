@@ -1,6 +1,6 @@
 # net-exporter
 
-![Version: 1.10.4](https://img.shields.io/badge/Version-1.10.4-informational?style=flat-square) ![AppVersion: 1.10.3](https://img.shields.io/badge/AppVersion-1.10.3-informational?style=flat-square)
+![Version: 1.10.5](https://img.shields.io/badge/Version-1.10.5-informational?style=flat-square) ![AppVersion: 1.10.3](https://img.shields.io/badge/AppVersion-1.10.3-informational?style=flat-square)
 
 Helm chart for net-exporter.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/net-exporter
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/net-exporter --version 1.10.4
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/net-exporter --version 1.10.5
 ```
 
 To install the chart with the release name `my-release`:
