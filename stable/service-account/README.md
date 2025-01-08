@@ -1,6 +1,6 @@
 # service-account
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square)
 
 Creates a ServiceAccount, ClusterRoleBinding and a ClusterRole with some provided rules.
 
@@ -19,7 +19,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/service-acco
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/service-account --version 1.1.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/service-account --version 1.1.1
 ```
 
 To install the chart with the release name `my-release`:
@@ -53,4 +53,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/service-account -
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/service-account](https://github.com/deliveryhero/helm-charts/tree/master/stable/service-account)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/service-account](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fservice-account)

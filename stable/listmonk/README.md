@@ -1,6 +1,6 @@
 # listmonk
 
-![Version: 0.1.11](https://img.shields.io/badge/Version-0.1.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
+![Version: 0.1.12](https://img.shields.io/badge/Version-0.1.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.1.0](https://img.shields.io/badge/AppVersion-v2.1.0-informational?style=flat-square)
 
 A Helm chart for listmonk application
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk --version 0.1.11
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/listmonk --version 0.1.12
 ```
 
 To install the chart with the release name `my-release`:
@@ -99,4 +99,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/listmonk -f value
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | <no-reply@deliveryhero.com> |  |
+| javad-hajiani |  | <https://github.com/javad-hajiani> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/listmonk](https://github.com/deliveryhero/helm-charts/tree/master/stable/listmonk)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/listmonk](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Flistmonk)

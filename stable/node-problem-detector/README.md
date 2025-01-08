@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.15](https://img.shields.io/badge/Version-2.3.15-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
+![Version: 2.3.16](https://img.shields.io/badge/Version-2.3.16-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.15
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.16
 ```
 
 To install the chart with the release name `my-release`:
@@ -103,4 +103,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/node-problem-detector](https://github.com/deliveryhero/helm-charts/tree/master/stable/node-problem-detector)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/node-problem-detector](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fnode-problem-detector)

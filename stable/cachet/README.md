@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.3.5](https://img.shields.io/badge/Version-1.3.5-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet --version 1.3.4
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet --version 1.3.5
 ```
 
 To install the chart with the release name `my-release`:
@@ -104,4 +104,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | <no-reply@deliveryhero.com> |  |
+| nyambati |  | <https://github.com/nyambati> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/cachet](https://github.com/deliveryhero/helm-charts/tree/master/stable/cachet)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/cachet](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fcachet)

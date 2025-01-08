@@ -1,6 +1,6 @@
 # killgrave
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.1](https://img.shields.io/badge/AppVersion-0.4.1-informational?style=flat-square)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.1](https://img.shields.io/badge/AppVersion-0.4.1-informational?style=flat-square)
 
 A chart to install [killgrave](https://github.com/friendsofgo/killgrave), a simulator for HTTP-based APIs.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/killgrave
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/killgrave --version 1.0.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/killgrave --version 1.0.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -73,3 +73,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/killgrave -f valu
 | Name | Email | Url |
 | ---- | ------ | --- |
 | MarceloAplanalp | <marcelo.aplanalp@deliveryhero.com> |  |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/killgrave](https://github.com/deliveryhero/helm-charts/tree/master/stable/killgrave)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/killgrave](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fkillgrave)

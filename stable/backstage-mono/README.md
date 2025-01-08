@@ -1,6 +1,6 @@
 # backstage-mono
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for simple backstage deployment. This chart deploys a single pod for both backstage frontend and backend.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage-mo
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage-mono --version 0.1.2
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage-mono --version 0.1.3
 ```
 
 To install the chart with the release name `my-release`:
@@ -66,4 +66,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/backstage-mono -f
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | <no-reply@deliveryhero.com> |  |
+| goelankitt |  | <https://github.com/goelankitt> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/backstage-mono](https://github.com/deliveryhero/helm-charts/tree/master/stable/backstage-mono)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/backstage-mono](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fbackstage-mono)

@@ -1,6 +1,6 @@
 # aws-s3-proxy
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
 Reverse proxy for AWS S3 with basic authentication.
 
@@ -19,7 +19,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy --version 0.1.6
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy --version 0.1.7
 ```
 
 To install the chart with the release name `my-release`:
@@ -75,4 +75,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-s3-proxy -f v
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/aws-s3-proxy](https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-s3-proxy)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/aws-s3-proxy](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Faws-s3-proxy)

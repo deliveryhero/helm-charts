@@ -6,7 +6,7 @@ description: |
   if you are using old installation please use v1 chart
 home: https://www.kubecost.com
 type: application
-version: 2.0.4
+version: 2.0.5
 appVersion: "2.0.0"
 maintainers:
   - name: nyambati
@@ -17,3 +17,8 @@ keywords:
   - exporter
 sources:
   - https://www.kubecost.com
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/kubecost-reports-exporter

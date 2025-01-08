@@ -1,6 +1,6 @@
 # postgres-controller
 
-![Version: 1.3](https://img.shields.io/badge/Version-1.3-informational?style=flat-square) ![AppVersion: 0.5](https://img.shields.io/badge/AppVersion-0.5-informational?style=flat-square)
+![Version: 1.4](https://img.shields.io/badge/Version-1.4-informational?style=flat-square) ![AppVersion: 0.5](https://img.shields.io/badge/AppVersion-0.5-informational?style=flat-square)
 
 A controller for managing PostgreSQL databases, roles and more
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/postgres-con
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/postgres-controller --version 1.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/postgres-controller --version 1.4
 ```
 
 To install the chart with the release name `my-release`:
@@ -69,4 +69,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/postgres-controll
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/postgres-controller](https://github.com/deliveryhero/helm-charts/tree/master/stable/postgres-controller)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/postgres-controller](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fpostgres-controller)

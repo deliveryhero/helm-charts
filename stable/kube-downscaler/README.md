@@ -1,6 +1,6 @@
 # kube-downscaler
 
-![Version: 0.7.5](https://img.shields.io/badge/Version-0.7.5-informational?style=flat-square) ![AppVersion: 23.2.0-6-gc9b88e8](https://img.shields.io/badge/AppVersion-23.2.0--6--gc9b88e8-informational?style=flat-square)
+![Version: 0.7.6](https://img.shields.io/badge/Version-0.7.6-informational?style=flat-square) ![AppVersion: 23.2.0-6-gc9b88e8](https://img.shields.io/badge/AppVersion-23.2.0--6--gc9b88e8-informational?style=flat-square)
 
 Scale down Kubernetes deployments after work hours
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-downsca
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-downscaler --version 0.7.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-downscaler --version 0.7.6
 ```
 
 To install the chart with the release name `my-release`:
@@ -86,3 +86,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/kube-downscaler -
 | Name | Email | Url |
 | ---- | ------ | --- |
 | hjacobs |  | <https://codeberg.org/hjacobs> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/kube-downscaler](https://github.com/deliveryhero/helm-charts/tree/master/stable/kube-downscaler)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/kube-downscaler](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fkube-downscaler)

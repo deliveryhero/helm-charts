@@ -1,6 +1,6 @@
 # prometheus-new-relic-app-exporter
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 0.0.2](https://img.shields.io/badge/AppVersion-0.0.2-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 0.0.2](https://img.shields.io/badge/AppVersion-0.0.2-informational?style=flat-square)
 
 A Helm chart a prometheus exporter for a single New Relic application
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-n
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter --version 1.0.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-relic-app-exporter --version 1.0.1
 ```
 
 To install the chart with the release name `my-release`:
@@ -82,4 +82,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-new-re
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/prometheus-new-relic-app-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-new-relic-app-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/prometheus-new-relic-app-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fprometheus-new-relic-app-exporter)

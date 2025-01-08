@@ -1,6 +1,6 @@
 # newrelic-controller
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 0.8](https://img.shields.io/badge/AppVersion-0.8-informational?style=flat-square)
+![Version: 1.2](https://img.shields.io/badge/Version-1.2-informational?style=flat-square) ![AppVersion: 0.8](https://img.shields.io/badge/AppVersion-0.8-informational?style=flat-square)
 
 A controller for managing New Relic settings
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/newrelic-con
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --version 1.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/newrelic-controller --version 1.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -66,4 +66,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/newrelic-controll
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/newrelic-controller](https://github.com/deliveryhero/helm-charts/tree/master/stable/newrelic-controller)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/newrelic-controller](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fnewrelic-controller)

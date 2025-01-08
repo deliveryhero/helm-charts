@@ -3,11 +3,11 @@ name: aws-service-quotas-exporter
 description: This exporter exports AWS service quotas and usage as Prometheus metrics
 home: https://github.com/thought-machine/aws-service-quotas-exporter
 type: application
-version: 0.1.3
+version: 0.1.4
 appVersion: "v1.3.2"
 maintainers:
   - name: nyambati
-    email: no-reply@deliveryhero.com
+    url: https://github.com/nyambati
 keywords:
   - aws
   - service

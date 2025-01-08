@@ -19,7 +19,7 @@ description: |
 
     ```
 type: application
-version: 1.0.3
+version: 1.0.4
 appVersion: 1.0.0
 home: https://github.com/deliveryhero/labelsmanager-controller
 maintainers:
@@ -33,3 +33,8 @@ keywords:
 - controller
 sources:
 - https://github.com/deliveryhero/labelsmanager-controller
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/labelsmanager-controller

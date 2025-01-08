@@ -1,6 +1,6 @@
 # pg-repack-scheduler
 
-![Version: 1.0](https://img.shields.io/badge/Version-1.0-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-sc
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-scheduler --version 1.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-scheduler --version 1.1
 ```
 
 To install the chart with the release name `my-release`:
@@ -85,4 +85,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/pg-repack-schedul
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <max.williams@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/pg-repack-scheduler](https://github.com/deliveryhero/helm-charts/tree/master/stable/pg-repack-scheduler)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/pg-repack-scheduler](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fpg-repack-scheduler)

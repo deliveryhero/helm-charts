@@ -6,8 +6,22 @@
 
 ## TLDR
 
+Charts are released as OCI packages and can be installed like this:
+
 ```console
 helm install my-release oci://ghcr.io/deliveryhero/helm-charts/<chart>
+```
+
+There is also a Helm charts repository that can be added:
+
+```console
+helm repo add deliveryhero https://raw.githubusercontent.com/deliveryhero/helm-charts/refs/heads/master/
+```
+
+Then charts can also be installed like this:
+
+```console
+helm install my-release deliveryhero/<chart>
 ```
 
 ## Chart list

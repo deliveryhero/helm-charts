@@ -1,6 +1,6 @@
 # mlflow
 
-![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
+![Version: 1.0.10](https://img.shields.io/badge/Version-1.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
 
@@ -20,7 +20,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow --version 1.0.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow --version 1.0.10
 ```
 
 To install the chart with the release name `my-release`:
@@ -89,4 +89,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/mlflow -f values.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mkuhn | <no-reply@deliveryhero.com> | <https://github.com/magdalenakuhn17> |
+| mkuhn |  | <https://github.com/magdalenakuhn17> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/mlflow](https://github.com/deliveryhero/helm-charts/tree/master/stable/mlflow)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/mlflow](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fmlflow)

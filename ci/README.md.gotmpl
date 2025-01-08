@@ -46,3 +46,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/{{ template "char
 {{ template "chart.valuesSection" . }}
 
 {{ template "chart.maintainersSection" . }}
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/{{ template "chart.name" . }}](https://github.com/deliveryhero/helm-charts/tree/master/stable/{{ template "chart.name" . }})
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/{{ template "chart.name" . }}](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2F{{ template "chart.name" . }})

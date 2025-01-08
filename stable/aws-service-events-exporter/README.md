@@ -1,6 +1,6 @@
 # aws-service-events-exporter
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This helm chart exports aws service events to prometheus via aws SQS queue, this include:
 
@@ -20,7 +20,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-events-exporter --version 1.0.6
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-events-exporter --version 1.0.7
 ```
 
 To install the chart with the release name `my-release`:
@@ -79,5 +79,11 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-service-event
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| nyambati | <no-reply@deliveryhero.com> |  |
-| javad-hajiani | <no-reply@deliveryhero.com> |  |
+| nyambati |  | <https://github.com/nyambati> |
+| javad-hajiani |  | <https://github.com/javad-hajiani> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/aws-service-events-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-service-events-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/aws-service-events-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Faws-service-events-exporter)

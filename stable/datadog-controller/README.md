@@ -1,6 +1,6 @@
 # datadog-controller
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 0.1](https://img.shields.io/badge/AppVersion-0.1-informational?style=flat-square)
+![Version: 1.2](https://img.shields.io/badge/Version-1.2-informational?style=flat-square) ![AppVersion: 0.1](https://img.shields.io/badge/AppVersion-0.1-informational?style=flat-square)
 
 This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) to allow [Datadog Monitors](https://docs.datadoghq.com/monitors/) to be created, updated or deleted from custom resources in Kubernetes.
 
@@ -33,7 +33,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/datadog-cont
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/datadog-controller --version 1.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/datadog-controller --version 1.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -95,4 +95,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/datadog-controlle
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <max.williams@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/datadog-controller](https://github.com/deliveryhero/helm-charts/tree/master/stable/datadog-controller)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/datadog-controller](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fdatadog-controller)

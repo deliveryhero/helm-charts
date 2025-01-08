@@ -1,6 +1,6 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "2.1"
-version: "1.1.8"
+version: 1.1.9
 description: |
   This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
@@ -18,7 +18,7 @@ home: https://github.com/max-rocket-internet/k8s-event-logger
 name: k8s-event-logger
 maintainers:
 - name: max-rocket-internet
-  email: max.williams@deliveryhero.com
+  url: https://github.com/max-rocket-internet
 engine: gotpl
 icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
 keywords:
@@ -27,3 +27,8 @@ keywords:
 - Auditing
 sources:
 - https://github.com/max-rocket-internet/k8s-event-logger
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-event-logger

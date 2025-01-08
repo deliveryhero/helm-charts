@@ -3,7 +3,7 @@ name: killgrave
 icon: https://avatars.githubusercontent.com/u/36798605?v=4&s=160
 
 type: application
-version: 1.0.1
+version: 1.0.2
 appVersion: 0.4.1
 maintainers:
   - name: MarceloAplanalp
@@ -12,3 +12,9 @@ description: |
   A chart to install [killgrave](https://github.com/friendsofgo/killgrave), a simulator for HTTP-based APIs.
 
   In its more basic setup, this chart requires a `configmap` including all _imposters_ (the definition of a request-response pair)
+
+
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/deliveryhero/helm-charts/tree/master/stable/killgrave
