@@ -1,6 +1,6 @@
 # priority-class
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 A very simple chart that creates priority classes
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/priority-cla
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/priority-class --version 0.1.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/priority-class --version 0.1.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -48,4 +48,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/priority-class -f
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/priority-class](https://github.com/deliveryhero/helm-charts/tree/master/stable/priority-class)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/priority-class](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fpriority-class)

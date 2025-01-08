@@ -71,3 +71,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/net-exporter -f v
 | Name | Email | Url |
 | ---- | ------ | --- |
 | pciang |  | <https://github.com/pciang> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/net-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/net-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/net-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fnet-exporter)

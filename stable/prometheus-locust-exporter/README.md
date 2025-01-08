@@ -1,6 +1,6 @@
 # prometheus-locust-exporter
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: v0.4.1](https://img.shields.io/badge/AppVersion-v0.4.1-informational?style=flat-square)
+![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: v0.4.1](https://img.shields.io/badge/AppVersion-v0.4.1-informational?style=flat-square)
 
 A Helm chart a prometheus exporter locust load test metrics
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-l
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version 1.2.2
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version 1.2.3
 ```
 
 To install the chart with the release name `my-release`:
@@ -87,4 +87,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/prometheus-locust-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-locust-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/prometheus-locust-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fprometheus-locust-exporter)

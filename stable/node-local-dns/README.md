@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.1.3](https://img.shields.io/badge/Version-2.1.3-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
+![Version: 2.1.4](https://img.shields.io/badge/Version-2.1.4-informational?style=flat-square) ![AppVersion: 1.23.1](https://img.shields.io/badge/AppVersion-1.23.1-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.4
 ```
 
 To install the chart with the release name `my-release`:
@@ -101,4 +101,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| gabrieladt | <no-reply@deliveryhero.com> |  |
+| gabrieladt |  | <https://github.com/gabrieladt> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/node-local-dns](https://github.com/deliveryhero/helm-charts/tree/master/stable/node-local-dns)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/node-local-dns](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fnode-local-dns)

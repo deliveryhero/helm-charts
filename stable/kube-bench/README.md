@@ -1,6 +1,6 @@
 # kube-bench
 
-![Version: 0.1.16](https://img.shields.io/badge/Version-0.1.16-informational?style=flat-square) ![AppVersion: 0.8.0](https://img.shields.io/badge/AppVersion-0.8.0-informational?style=flat-square)
+![Version: 0.1.17](https://img.shields.io/badge/Version-0.1.17-informational?style=flat-square) ![AppVersion: 0.8.0](https://img.shields.io/badge/AppVersion-0.8.0-informational?style=flat-square)
 
 Helm chart to deploy run kube-bench as a cronjob on aks, gke or eks.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-bench
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-bench --version 0.1.16
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/kube-bench --version 0.1.17
 ```
 
 To install the chart with the release name `my-release`:
@@ -84,4 +84,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/kube-bench -f val
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | <no-reply@deliveryhero.com> |  |
+| goelankitt |  | <https://github.com/goelankitt> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/kube-bench](https://github.com/deliveryhero/helm-charts/tree/master/stable/kube-bench)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/kube-bench](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fkube-bench)

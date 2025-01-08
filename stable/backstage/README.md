@@ -1,6 +1,6 @@
 # backstage
 
-![Version: 0.1.14](https://img.shields.io/badge/Version-0.1.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
+![Version: 0.1.15](https://img.shields.io/badge/Version-0.1.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.1-alpha.23](https://img.shields.io/badge/AppVersion-v0.1.1--alpha.23-informational?style=flat-square)
 
 A Helm chart for Backstage
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage --version 0.1.14
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/backstage --version 0.1.15
 ```
 
 To install the chart with the release name `my-release`:
@@ -186,5 +186,11 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/backstage -f valu
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| javad-hajiani | <no-reply@deliveryhero.com> |  |
-| nyambati | <no-reply@deliveryhero.com> |  |
+| javad-hajiani |  | <https://github.com/javad-hajiani> |
+| nyambati |  | <https://github.com/nyambati> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/backstage](https://github.com/deliveryhero/helm-charts/tree/master/stable/backstage)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/backstage](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fbackstage)

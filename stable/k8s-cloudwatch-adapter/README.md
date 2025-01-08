@@ -1,6 +1,6 @@
 # k8s-cloudwatch-adapter
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
 
 An implementation of the Kubernetes Custom Metrics API and External Metrics API for AWS CloudWatch metrics. This adapter allows you to scale your Kubernetes deployment using the Horizontal Pod Autoscaler (HPA) with metrics from AWS CloudWatch.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwat
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter --version 0.2.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-adapter --version 0.2.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -74,4 +74,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/k8s-cloudwatch-ad
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/k8s-cloudwatch-adapter](https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-cloudwatch-adapter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/k8s-cloudwatch-adapter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fk8s-cloudwatch-adapter)

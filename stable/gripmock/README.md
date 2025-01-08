@@ -1,6 +1,6 @@
 # gripmock
 
-![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
+![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.10.1](https://img.shields.io/badge/AppVersion-1.10.1-informational?style=flat-square)
 
 A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock server for GRPC services. It uses `.proto` file(s) to generate the implementation of gRPC service(s) for you.
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/gripmock
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/gripmock --version 1.1.2
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/gripmock --version 1.1.3
 ```
 
 To install the chart with the release name `my-release`:
@@ -84,3 +84,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/gripmock -f value
 | Name | Email | Url |
 | ---- | ------ | --- |
 | MarceloAplanalp | <marcelo.aplanalp@deliveryhero.com> |  |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/gripmock](https://github.com/deliveryhero/helm-charts/tree/master/stable/gripmock)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/gripmock](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fgripmock)

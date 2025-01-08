@@ -1,6 +1,6 @@
 # prometheus-k8s-events-exporter
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![AppVersion: v1.0.0](https://img.shields.io/badge/AppVersion-v1.0.0-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: v1.0.0](https://img.shields.io/badge/AppVersion-v1.0.0-informational?style=flat-square)
 
 Exporter for kubernetes events
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version 0.2.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version 0.2.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -80,4 +80,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-ev
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/prometheus-k8s-events-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-k8s-events-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/prometheus-k8s-events-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fprometheus-k8s-events-exporter)

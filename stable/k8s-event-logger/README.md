@@ -1,6 +1,6 @@
 # k8s-event-logger
 
-![Version: 1.1.8](https://img.shields.io/badge/Version-1.1.8-informational?style=flat-square) ![AppVersion: 2.1](https://img.shields.io/badge/AppVersion-2.1-informational?style=flat-square)
+![Version: 1.1.9](https://img.shields.io/badge/Version-1.1.9-informational?style=flat-square) ![AppVersion: 2.1](https://img.shields.io/badge/AppVersion-2.1-informational?style=flat-square)
 
 This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
@@ -28,7 +28,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-lo
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version 1.1.8
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version 1.1.9
 ```
 
 To install the chart with the release name `my-release`:
@@ -88,4 +88,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger 
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <max.williams@deliveryhero.com> |  |
+| max-rocket-internet | <https://github.com/max-rocket-internet> |  |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/k8s-event-logger](https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-event-logger)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/k8s-event-logger](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fk8s-event-logger)

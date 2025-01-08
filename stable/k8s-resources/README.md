@@ -1,6 +1,6 @@
 # k8s-resources
 
-![Version: 0.8.0](https://img.shields.io/badge/Version-0.8.0-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.8.1](https://img.shields.io/badge/Version-0.8.1-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Not an application but a Helm chart to create any and many resources in Kubernetes.
 
@@ -34,7 +34,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resource
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version 0.8.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-resources --version 0.8.1
 ```
 
 To install the chart with the release name `my-release`:
@@ -79,4 +79,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/k8s-resources -f 
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/k8s-resources](https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-resources)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/k8s-resources](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fk8s-resources)

@@ -1,6 +1,6 @@
 # weblate
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![AppVersion: 4.2-1](https://img.shields.io/badge/AppVersion-4.2--1-informational?style=flat-square)
 
 Free web-based translation management system.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/weblate
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/weblate --version 0.3.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/weblate --version 0.3.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -119,4 +119,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/weblate -f values
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| sietevecesmal | <no-reply@deliveryhero.com> |  |
+| sietevecesmal |  | <https://github.com/sietevecesmal> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/weblate](https://github.com/deliveryhero/helm-charts/tree/master/stable/weblate)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/weblate](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fweblate)

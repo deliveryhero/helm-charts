@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.7.12](https://img.shields.io/badge/Version-0.7.12-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
+![Version: 0.7.13](https://img.shields.io/badge/Version-0.7.13-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-over
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.12
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.13
 ```
 
 To install the chart with the release name `my-release`:
@@ -92,5 +92,11 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovi
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <max.williams@deliveryhero.com> |  |
+| max-rocket-internet | <https://github.com/max-rocket-internet> |  |
 | mmingorance-dh | <miguel.mingorance@deliveryhero.com> |  |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/cluster-overprovisioner](https://github.com/deliveryhero/helm-charts/tree/master/stable/cluster-overprovisioner)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/cluster-overprovisioner](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fcluster-overprovisioner)

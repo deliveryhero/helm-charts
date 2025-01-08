@@ -1,6 +1,6 @@
 # cortex-gateway
 
-![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.1.0](https://img.shields.io/badge/AppVersion-v1.1.0-informational?style=flat-square)
+![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.1.0](https://img.shields.io/badge/AppVersion-v1.1.0-informational?style=flat-square)
 
 A Helm chart for cortex-gateway
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cortex-gatew
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cortex-gateway --version 0.1.8
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cortex-gateway --version 0.1.9
 ```
 
 To install the chart with the release name `my-release`:
@@ -81,4 +81,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cortex-gateway -f
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| goelankitt | <no-reply@deliveryhero.com> |  |
+| goelankitt |  | <https://github.com/goelankitt> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/cortex-gateway](https://github.com/deliveryhero/helm-charts/tree/master/stable/cortex-gateway)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/cortex-gateway](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fcortex-gateway)

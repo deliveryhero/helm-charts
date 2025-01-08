@@ -1,6 +1,6 @@
 # prometheus-aws-costs-exporter
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 Exporter for AWS Cost Explorer daily costs
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-a
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-aws-costs-exporter --version 0.1.4
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-aws-costs-exporter --version 0.1.5
 ```
 
 To install the chart with the release name `my-release`:
@@ -75,4 +75,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-aws-co
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/prometheus-aws-costs-exporter](https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-aws-costs-exporter)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/prometheus-aws-costs-exporter](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fprometheus-aws-costs-exporter)

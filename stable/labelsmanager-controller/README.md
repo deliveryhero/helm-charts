@@ -1,6 +1,6 @@
 # labelsmanager-controller
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) that injects required default labels into pods on creation.
 
@@ -33,7 +33,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/labelsmanage
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller --version 1.0.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-controller --version 1.0.4
 ```
 
 To install the chart with the release name `my-release`:
@@ -89,3 +89,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/labelsmanager-con
 | Name | Email | Url |
 | ---- | ------ | --- |
 | nyambati | <thomas.nyambati@deliveryhero.com> |  |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/labelsmanager-controller](https://github.com/deliveryhero/helm-charts/tree/master/stable/labelsmanager-controller)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/labelsmanager-controller](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Flabelsmanager-controller)
