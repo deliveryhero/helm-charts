@@ -25,6 +25,15 @@ spec:
 {{ toYaml .Values.podLabels | trim | indent 8 }}
         {{- end }}
     spec:
+      {{- if .Values.extraInitContainers }}
+      initContainers:
+        {{- /*
+             tpl is used if you want the user to be able to use template functions or .Values references
+             inside their extraInitContainers definitions. If you prefer, you can omit tpl:
+             e.g. toYaml .Values.extraInitContainers | nindent 8
+        */}}
+        {{- tpl (toYaml .Values.extraInitContainers) . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
