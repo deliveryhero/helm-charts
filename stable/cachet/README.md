@@ -1,6 +1,6 @@
 # cachet
 
-![Version: 1.3.5](https://img.shields.io/badge/Version-1.3.5-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
+![Version: 1.3.6](https://img.shields.io/badge/Version-1.3.6-informational?style=flat-square) ![AppVersion: 2.3.15](https://img.shields.io/badge/AppVersion-2.3.15-informational?style=flat-square)
 
 The open source status page system
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet --version 1.3.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cachet --version 1.3.6
 ```
 
 To install the chart with the release name `my-release`:
@@ -89,6 +89,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
 | podSecurityContext | list | `[]` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
@@ -99,6 +100,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | test.enabled | bool | `true` |  |
+| tolerations | list | `[]` |  |
 
 ## Maintainers
 
