@@ -2,14 +2,14 @@ apiVersion: v2
 appVersion: "2.3.15"
 description: The open source status page system
 name: cachet
-version: 1.3.5
+version: 1.3.6
 home: https://cachethq.io/
 sources:
   - https://github.com/CachetHQ/Docker
   - https://github.com/CachetHQ/Cachet
 maintainers:
-- name: nyambati
-  url: https://github.com/nyambati
+  - name: nyambati
+    url: https://github.com/nyambati
 
 annotations:
   artifacthub.io/links: |
@@ -17,7 +17,7 @@ annotations:
       url: https://github.com/deliveryhero/helm-charts/tree/master/stable/cachet
 
 dependencies:
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.6.26
-  condition: postgresql.enabled
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.6.26
+    condition: postgresql.enabled
