@@ -39,10 +39,12 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-podSecurityContext: []
+podSecurityContext:
+  []
   # seccompProfile: RuntimeDefault
 
-securityContext: []
+securityContext:
+  []
   # allowPrivilegeEscalation: false
   # capabilities:
   #   drop:
@@ -88,3 +90,7 @@ test:
   enabled: true
 
 extraLabels: {}
+
+nodeSelector: {}
+
+tolerations: []

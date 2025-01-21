@@ -89,6 +89,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 | ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
 | podSecurityContext | list | `[]` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"100m"` |  |
@@ -99,6 +100,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cachet -f values.
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | test.enabled | bool | `true` |  |
+| tolerations | list | `[]` |  |
 
 ## Maintainers
 
