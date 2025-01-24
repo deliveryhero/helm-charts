@@ -76,6 +76,7 @@ rbac:
 # not recommended, but may be useful for certain use cases.
 hostNetwork: false
 hostPID: false
+dnsPolicy: "ClusterFirst"
 
 volume:
   localtime:
