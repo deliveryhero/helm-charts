@@ -49,6 +49,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
+| dnsPolicy | string | `"ClusterFirst"` |  |
 | env | string | `nil` |  |
 | extraContainers | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
