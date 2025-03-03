@@ -49,6 +49,10 @@ spec:
       dnsPolicy: Default  # Don't use cluster DNS.
       tolerations:
       {{- toYaml .Values.tolerations | nindent 8 }}
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
       - name: node-cache
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

@@ -75,6 +75,8 @@ daemonsetAnnotations: {}
 
 daemonsetLabels: {}
 
+initContainers: []
+
 securityContext:
   capabilities:
     add:
