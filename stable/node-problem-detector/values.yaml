@@ -119,6 +119,8 @@ metrics:
   annotations: {}
   serviceMonitor:
     enabled: false
+    attachMetadata:
+      node: false
     additionalLabels: {}
     additionalRelabelings: []
     metricRelabelings: []
