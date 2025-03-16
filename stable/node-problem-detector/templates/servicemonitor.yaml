@@ -19,6 +19,8 @@ spec:
   namespaceSelector:
     matchNames:
     - {{ .Release.Namespace }}
+  attachMetadata:
+    node: {{ .Values.metrics.serviceMonitor.attachMetadata.node }}
   endpoints:
   - port: exporter
     path: /metrics
