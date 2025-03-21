@@ -1,6 +1,6 @@
 # hoppscotch
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![AppVersion: 2024.8.2](https://img.shields.io/badge/AppVersion-2024.8.2-informational?style=flat-square)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![AppVersion: 2024.8.2](https://img.shields.io/badge/AppVersion-2024.8.2-informational?style=flat-square)
 
 A free, fast and beautiful API request builder
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/hoppscotch
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/hoppscotch --version 0.3.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/hoppscotch --version 0.3.2
 ```
 
 To install the chart with the release name `my-release`:
