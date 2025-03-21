@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "2024.8.2"
 description: A free, fast and beautiful API request builder
 name: hoppscotch
-version: 0.3.1
+version: 0.3.2
 home: https://github.com/hoppscotch/hoppscotch
 sources:
   - https://github.com/hoppscotch/hoppscotch
