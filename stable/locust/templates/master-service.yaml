@@ -5,6 +5,9 @@ metadata:
   labels:
 {{ include "locust.labels" . | indent 4 }}
     component: "master"
+    {{- if .Values.service.extraLabels }}
+    {{- toYaml .Values.service.extraLabels | nindent 4 }}
+    {{- end }}
   {{- with .Values.service.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
