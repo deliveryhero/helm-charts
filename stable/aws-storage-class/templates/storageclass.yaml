@@ -1,4 +1,4 @@
-{{ range $k,$v:= .Values.storage_classes }}
+{{- range $k, $v := .Values.storage_classes }}
 {{- $sc_name := $k }}
 ---
 apiVersion: storage.k8s.io/v1
@@ -7,18 +7,21 @@ metadata:
   name: {{ kebabcase $sc_name }}
   annotations:
     storageclass.kubernetes.io/is-default-class: {{ default "false" .default | quote }}
-provisioner: {{ default "ebs.csi.aws.com" .provisioner  | quote }}
+provisioner: {{ default "ebs.csi.aws.com" .provisioner | quote }}
 parameters:
   type: {{ .type }}
   encrypted: "true"
-{{ if eq "gp2" .type }}
-  fsType: {{ default "ext4" .fsType  | quote }}
-{{ end }}
-{{ if eq "io1" .type }}
-  iopsPerGB: {{ default "10" .iopsPerGB  | quote }}
-{{ end }}
-{{ if or (empty .provisioner) (eq "ebs.csi.aws.com" .provisioner ) }}
-reclaimPolicy: {{ default "Delete" .reclaimPolicy  | quote }}
-{{ end }}
+{{- if eq "gp2" .type }}
+  fsType: {{ default "ext4" .fsType | quote }}
+{{- end }}
+{{- if eq "io1" .type }}
+  iopsPerGB: {{ default "10" .iopsPerGB | quote }}
+{{- end }}
+{{- if or (empty .provisioner) (eq "ebs.csi.aws.com" .provisioner) }}
+reclaimPolicy: {{ default "Delete" .reclaimPolicy | quote }}
+{{- end }}
 volumeBindingMode: {{ .volumeBindingMode }}
+{{- if hasKey $v "allowVolumeExpansion" }}
+allowVolumeExpansion: {{ .allowVolumeExpansion }}
+{{- end }}
 {{ end }}
