@@ -1,0 +1,210 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "properties": {
+        "storage_classes": {
+            "properties": {
+                "ebs_gp2": {
+                    "properties": {
+                        "allowVolumeExpansion": {
+                            "description": "Enables resizing of volumes",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "default": {
+                            "description": "Whether this is the default storage class",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "provisioner": {
+                            "description": "CSI provisioner name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "type": {
+                            "description": "EBS volume type",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "volumeBindingMode": {
+                            "description": "Volume binding mode",
+                            "enum": [
+                                "Immediate",
+                                "WaitForFirstConsumer"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "ebs_gp3": {
+                    "properties": {
+                        "allowVolumeExpansion": {
+                            "description": "Enables resizing of volumes",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "default": {
+                            "description": "Whether this is the default storage class",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "provisioner": {
+                            "description": "CSI provisioner name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "type": {
+                            "description": "EBS volume type",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "volumeBindingMode": {
+                            "description": "Volume binding mode",
+                            "enum": [
+                                "Immediate",
+                                "WaitForFirstConsumer"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "ebs_io1_10": {
+                    "properties": {
+                        "allowVolumeExpansion": {
+                            "description": "Enables resizing of volumes",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "default": {
+                            "description": "Whether this is the default storage class",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "provisioner": {
+                            "description": "CSI provisioner name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "reclaimPolicy": {
+                            "description": "Reclaim policy for volumes",
+                            "enum": [
+                                "Delete",
+                                "Retain"
+                            ],
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "EBS volume type",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "volumeBindingMode": {
+                            "description": "Volume binding mode",
+                            "enum": [
+                                "Immediate",
+                                "WaitForFirstConsumer"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "ebs_io1_20": {
+                    "properties": {
+                        "allowVolumeExpansion": {
+                            "description": "Enables resizing of volumes",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "default": {
+                            "description": "Whether this is the default storage class",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "iopsPerGB": {
+                            "description": "Optional, specific to io1",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "provisioner": {
+                            "description": "CSI provisioner name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "type": {
+                            "description": "EBS volume type",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "volumeBindingMode": {
+                            "description": "Volume binding mode",
+                            "enum": [
+                                "Immediate",
+                                "WaitForFirstConsumer"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "gp2": {
+                    "properties": {
+                        "default": {
+                            "description": "Whether this is the default storage class",
+                            "type": [
+                                "boolean"
+                            ]
+                        },
+                        "fsType": {
+                            "description": "Filesystem type (optional, for gp2)",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "provisioner": {
+                            "description": "Legacy in-tree provisioner",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "type": {
+                            "description": "EBS volume type",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "volumeBindingMode": {
+                            "description": "Volume binding mode",
+                            "enum": [
+                                "Immediate",
+                                "WaitForFirstConsumer"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

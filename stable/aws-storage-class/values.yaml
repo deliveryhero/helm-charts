@@ -1,29 +1,37 @@
 storage_classes:
   gp2:
-    default: false
-    volumeBindingMode: WaitForFirstConsumer
-    provisioner: "kubernetes.io/aws-ebs"
-    type: "gp2"
-    fsType: "ext4"
+    default: false                           # @schema type:boolean; description: Whether this is the default storage class
+    volumeBindingMode: WaitForFirstConsumer  # @schema enum:[Immediate, WaitForFirstConsumer]; description: Volume binding mode
+    provisioner: "kubernetes.io/aws-ebs"     # @schema type:string; description: Legacy in-tree provisioner
+    type: "gp2"                              # @schema type:string; description: EBS volume type
+    fsType: "ext4"                           # @schema type:string; description: Filesystem type (optional, for gp2)
+
   ebs_gp2:
-    default: false
-    type: "gp2"
-    volumeBindingMode: WaitForFirstConsumer
-    provisioner: "ebs.csi.aws.com"
+    default: false                           # @schema type:boolean; description: Whether this is the default storage class
+    volumeBindingMode: WaitForFirstConsumer  # @schema enum:[Immediate, WaitForFirstConsumer]; description: Volume binding mode
+    provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
+    type: "gp2"                              # @schema type:string; description: EBS volume type
+    allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+
   ebs_gp3:
-    default: false
-    type: "gp3"
-    volumeBindingMode: WaitForFirstConsumer
-    provisioner: "ebs.csi.aws.com"
+    default: false                           # @schema type:boolean; description: Whether this is the default storage class
+    volumeBindingMode: WaitForFirstConsumer  # @schema enum:[Immediate, WaitForFirstConsumer]; description: Volume binding mode
+    provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
+    type: "gp3"                              # @schema type:string; description: EBS volume type
+    allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+
   ebs_io1_10:
-    default: false
-    volumeBindingMode: WaitForFirstConsumer
-    provisioner: "ebs.csi.aws.com"
-    type: "io1"
-    reclaimPolicy: "Retain"
+    default: false                           # @schema type:boolean; description: Whether this is the default storage class
+    volumeBindingMode: WaitForFirstConsumer  # @schema enum:[Immediate, WaitForFirstConsumer]; description: Volume binding mode
+    provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
+    type: "io1"                              # @schema type:string; description: EBS volume type
+    reclaimPolicy: "Retain"                  # @schema enum:["Delete", "Retain"]; description: Reclaim policy for volumes
+    allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+
   ebs_io1_20:
-    default: false
-    volumeBindingMode: WaitForFirstConsumer
-    provisioner: "ebs.csi.aws.com"
-    type: "io1"
-    iopsPerGB: 20
+    default: false                           # @schema type:boolean; description: Whether this is the default storage class
+    volumeBindingMode: WaitForFirstConsumer  # @schema enum:[Immediate, WaitForFirstConsumer]; description: Volume binding mode
+    provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
+    type: "io1"                              # @schema type:string; description: EBS volume type
+    iopsPerGB: 20                            # @schema type:integer; description: Optional, specific to io1
+    allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
