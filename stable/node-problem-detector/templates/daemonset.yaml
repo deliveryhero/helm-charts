@@ -110,10 +110,12 @@ spec:
         - name: log
           hostPath:
             path: {{ default "/var/log/" .Values.logDir.host }}
+        {{- if ((.Values.volume).localtime).enabled }}
         - name: localtime
           hostPath:
             path: /etc/localtime
             type: {{ default "FileOrCreate" .Values.volume.localtime.type }}
+        {{- end }}
         - name: custom-config
           configMap:
             name: {{ include "node-problem-detector.customConfig" . }}
