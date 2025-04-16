@@ -77,9 +77,11 @@ spec:
             - name: log
               mountPath: {{ default (default "/var/log/" .Values.logDir.host) .Values.logDir.pod }}
               readOnly: true
+            {{- if ((.Values.volume).localtime).enabled }}
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
+            {{- end }}
             - name: custom-config
               mountPath: /custom-config
               readOnly: true
