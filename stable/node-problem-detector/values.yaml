@@ -80,6 +80,7 @@ dnsPolicy: "ClusterFirst"
 
 volume:
   localtime:
+    enabled: true
     type: "FileOrCreate"
 
 priorityClassName: system-node-critical
