@@ -176,6 +176,7 @@ worker:
     # requests:
     #   cpu: 500m
     #   memory: 256Mi
+  ports: {}
   serviceAccountAnnotations: {}
   # worker.deploymentAnnotations -- Annotations on the deployment for workers
   deploymentAnnotations: {}
