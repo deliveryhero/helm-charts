@@ -62,6 +62,8 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.worker.resources | indent 10 }}
+        ports:
+{{ toYaml .Values.worker.ports | indent 10 }}
         volumeMounts:
           {{- if .Values.loadtest.locust_locustfile_configmap}}
           - name: locustfile
