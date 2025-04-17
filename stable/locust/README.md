@@ -155,9 +155,9 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | worker.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | worker.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the worker pods |
+| worker.ports | object | `{}` | ports for the locust worker |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
-| worker.ports | object | `{}` | ports for the locust worker |
 | worker.restartPolicy | string | `"Always"` | worker pod's restartPolicy. Can be Always, OnFailure, or Never. |
 | worker.serviceAccountAnnotations | object | `{}` |  |
 | worker.strategy.type | string | `"RollingUpdate"` |  |
