@@ -176,6 +176,7 @@ worker:
     # requests:
     #   cpu: 500m
     #   memory: 256Mi
+  # worker.ports -- ports for the locust worker
   ports: {}
   serviceAccountAnnotations: {}
   # worker.deploymentAnnotations -- Annotations on the deployment for workers
