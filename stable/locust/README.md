@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.5](https://img.shields.io/badge/Version-0.32.5-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.6](https://img.shields.io/badge/Version-0.32.6-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.6
 ```
 
 To install the chart with the release name `my-release`:
@@ -155,6 +155,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | worker.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
 | worker.pdb.enabled | bool | `false` | Whether to create a PodDisruptionBudget for the worker pods |
+| worker.ports | object | `{}` | ports for the locust worker |
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.restartPolicy | string | `"Always"` | worker pod's restartPolicy. Can be Always, OnFailure, or Never. |
