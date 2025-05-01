@@ -8,7 +8,7 @@ description: |
   This approach is the [current recommended method to achieve overprovisioning](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-can-i-configure-overprovisioning-with-cluster-autoscaler).
 name: cluster-overprovisioner
 home: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler
-version: 0.7.13
+version: 0.7.14
 maintainers:
   - name: max-rocket-internet
     url: https://github.com/max-rocket-internet

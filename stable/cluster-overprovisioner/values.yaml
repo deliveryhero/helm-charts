@@ -51,6 +51,9 @@ nameOverride: ""
 # fullnameOverride -- Override the fullname of the chart
 fullnameOverride: ""
 
+# Apply extra labels to common labels.
+extraLabels: {}
+
 # deployments -- Define optional additional deployments - A default deployment is included by default
 # @default -- []
 deployments:
@@ -80,7 +83,7 @@ deployments:
     tolerations: []
     # deployments[0].affinity -- Default Deployment - Map of node/pod affinities
     affinity: {}
-    # deployments[0].labels -- Default Deployment - Optional labels tolerations
+    # deployments[0].labels -- Default Deployment - Optional labels
     labels: {}
     # deployments[0].topologySpreadConstraints -- Default Deployment - Optional topology spread constraints
     topologySpreadConstraints:
