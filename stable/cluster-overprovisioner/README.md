@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.7.13](https://img.shields.io/badge/Version-0.7.13-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
+![Version: 0.7.14](https://img.shields.io/badge/Version-0.7.14-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-over
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.13
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.14
 ```
 
 To install the chart with the release name `my-release`:
@@ -69,6 +69,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovi
 | deployments[0].schedulerName | string | `""` | Default Deployment - Override the scheduler for overprovision pods |
 | deployments[0].tolerations | list | `[]` | Default Deployment - Optional deployment tolerations |
 | deployments[0].topologySpreadConstraints | list | `[]` | Default Deployment - Optional topology spread constraints |
+| extraLabels | object | `{}` | Apply extra labels to common labels |
 | fullnameOverride | string | `""` | Override the fullname of the chart |
 | image.args | list | `[]` | Override container args |
 | image.command | list | `[]` | Override container command |
