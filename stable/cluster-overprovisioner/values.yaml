@@ -51,7 +51,7 @@ nameOverride: ""
 # fullnameOverride -- Override the fullname of the chart
 fullnameOverride: ""
 
-# Apply extra labels to common labels.
+# extraLabels -- Apply extra labels to common labels.
 extraLabels: {}
 
 # deployments -- Define optional additional deployments - A default deployment is included by default
