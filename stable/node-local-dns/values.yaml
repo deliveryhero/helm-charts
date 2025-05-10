@@ -112,6 +112,8 @@ serviceMonitor:
   #   replacement: $1
   #   action: replace
 
+  prometheusNamespace: kube-system
+
 # -- https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dashboard:
   enabled: false
