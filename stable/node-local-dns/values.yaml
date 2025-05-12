@@ -111,6 +111,12 @@ serviceMonitor:
   #   targetLabel: nodename
   #   replacement: $1
   #   action: replace
+  #
+
+  # -- The service monitor name prefix which align with the prometheus operator name, eg.: `kube-prometheus-stack`
+  namePrefix: ""
+  # -- The namespace of prometheus where the service monitor should be deployed
+  prometheusNamespace: kube-system
 
 # -- https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dashboard:
