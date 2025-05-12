@@ -26,16 +26,16 @@ spec:
         {{- toYaml .Values.podLabels | nindent 8 }}
       {{- end }}
         k8s-app: {{ include "node-local-dns.name" . }}
-      {{- if or .Values.podAnnotations (not .Values.serviceMonitor.enabled) }}
+      {{- if or .Values.podAnnotations .Values.prometheusScraping.enabled }}
       annotations:
-      {{- end }}
-         {{- if and (not .Values.serviceMonitor.enabled) .Values.prometheusScraping.enabled }}
+        {{- if and (not .Values.serviceMonitor.enabled) .Values.prometheusScraping.enabled }}
         prometheus.io/port: "9253"
         prometheus.io/scrape: "true"
         {{- end }}
         {{- if .Values.podAnnotations }}
           {{- toYaml .Values.podAnnotations | nindent 8 }}
         {{- end }}
+      {{ - end }}
     spec:
       {{- if .Values.affinity }}
       affinity: {{- toYaml .Values.affinity | nindent 8 }}
