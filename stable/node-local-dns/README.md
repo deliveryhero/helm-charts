@@ -65,6 +65,8 @@ This helm chart works for both kube-proxy setups (iptables or ipvs).
 | serviceMonitor.enabled | bool | `false` | Ensure that servicemonitor is created, this will disable prometheus annotations |
 | serviceMonitor.metricRelabelings | list | `[]` | Metric relabel configs to apply to samples before ingestion. [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs) |
 | serviceMonitor.relabelings | list | `[]` | Relabel configs to apply to samples before ingestion. [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) |
+| serviceMonitor.namePrefix | string | `""` | The service monitor name prefix which align with the prometheus operator name, eg.: `kube-prometheus-stack`
+| serviceMonitor.prometheusNamespace | string | `"kube-system"` | The namespace of prometheus where the service monitor should be deployed|
 | tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | tolerations[0].operator | string | `"Exists"` |  |
 | tolerations[1].effect | string | `"NoExecute"` |  |

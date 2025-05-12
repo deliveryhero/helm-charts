@@ -85,7 +85,7 @@ securityContext:
 # -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
   # -- Ensure that servicemonitor is created, this will disable prometheus annotations
-  enabled: false
+  enabled: true
   labels: {}
   path: /metrics
   honorLabels: false
@@ -112,6 +112,7 @@ serviceMonitor:
   #   replacement: $1
   #   action: replace
 
+  namePrefix: ""
   prometheusNamespace: kube-system
 
 # -- https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
@@ -136,7 +137,7 @@ imagePullSecrets: []
 # - name: "image-pull-secret"
 
 prometheusScraping:
-  enabled: true
+  enabled: false
 
 tolerations:
   - key: "CriticalAddonsOnly"

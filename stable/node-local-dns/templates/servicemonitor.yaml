@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "node-local-dns.fullname" . }}
+  name: {{ if .Values.serviceMonitor.namePrefix }}{{ .Values.serviceMonitor.namePrefix }}-{{ end }}{{ include "node-local-dns.fullname" . }}
   namespace: {{ .Values.serviceMonitor.prometheusNamespace}}
   {{- if .Values.serviceMonitor.labels }}
   labels:
