@@ -61,12 +61,12 @@ This helm chart works for both kube-proxy setups (iptables or ipvs).
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account. |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created. |
 | serviceAccount.name | string | `""` | If not set and create is true, a name is generated using the fullname template. |
-| serviceMonitor | object | `{"enabled":false,"honorLabels":false,"labels":{},"metricRelabelings":[],"path":"/metrics","prometheusNamespace":"kube-system","relabelings":[]}` | https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md |
+| serviceMonitor | object | `{"enabled":false,"honorLabels":false,"labels":{},"metricRelabelings":[],"namePrefix":"","path":"/metrics","prometheusNamespace":"kube-system","relabelings":[]}` | https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md |
 | serviceMonitor.enabled | bool | `false` | Ensure that servicemonitor is created, this will disable prometheus annotations |
 | serviceMonitor.metricRelabelings | list | `[]` | Metric relabel configs to apply to samples before ingestion. [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs) |
 | serviceMonitor.relabelings | list | `[]` | Relabel configs to apply to samples before ingestion. [Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) |
-| serviceMonitor.namePrefix | string | `""` | The service monitor name prefix which align with the prometheus operator name, eg.: `kube-prometheus-stack`
-| serviceMonitor.prometheusNamespace | string | `"kube-system"` | The namespace of prometheus where the service monitor should be deployed|
+| serviceMonitor.namePrefix | string | `""` | The service monitor name prefix which align with the prometheus operator name, eg.: `kube-prometheus-stack` |
+| serviceMonitor.prometheusNamespace | string | `"kube-system"` | The namespace of prometheus where the service monitor should be deployed |
 | tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | tolerations[0].operator | string | `"Exists"` |  |
 | tolerations[1].effect | string | `"NoExecute"` |  |
