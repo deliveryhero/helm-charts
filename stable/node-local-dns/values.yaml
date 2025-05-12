@@ -85,7 +85,7 @@ securityContext:
 # -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
 serviceMonitor:
   # -- Ensure that servicemonitor is created, this will disable prometheus annotations
-  enabled: true
+  enabled: false
   labels: {}
   path: /metrics
   honorLabels: false
@@ -137,7 +137,7 @@ imagePullSecrets: []
 # - name: "image-pull-secret"
 
 prometheusScraping:
-  enabled: false
+  enabled: true
 
 tolerations:
   - key: "CriticalAddonsOnly"
