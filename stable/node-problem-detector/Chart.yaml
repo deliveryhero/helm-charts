@@ -1,6 +1,6 @@
 apiVersion: v2
 name: node-problem-detector
-version: 2.3.20
+version: 2.3.21
 appVersion: v0.8.20
 home: https://github.com/kubernetes/node-problem-detector
 description: |

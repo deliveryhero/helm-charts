@@ -77,6 +77,11 @@ rbac:
 hostNetwork: false
 hostPID: false
 dnsPolicy: "ClusterFirst"
+dnsConfig: {}
+  # options:
+  #   - name: ndots
+  #     value: "2"
+  #   - name: edns0
 
 volume:
   localtime:
