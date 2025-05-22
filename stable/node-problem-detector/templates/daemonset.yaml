@@ -38,6 +38,9 @@ spec:
         {{- toYaml .Values.annotations | nindent 8 }}
         {{- end }}
     spec:
+      {{- is .Values.dnsConfig }}
+      dnsConfig: {{ toYaml .Values.dnsConfig | nindent 8 }}
+      {{- end }}
       serviceAccountName: {{ template "node-problem-detector.serviceAccountName" . }}
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
