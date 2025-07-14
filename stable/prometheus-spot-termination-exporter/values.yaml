@@ -2,6 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+initContainer:
+  image:
+    repository: "scottcrossen/kube-node-labels"
+    tag: "1.1.0"
+    imagePullPolicy: IfNotPresent
+
 image:
   repository: "banzaicloud/spot-termination-exporter"
   tag: "0.0.1"
