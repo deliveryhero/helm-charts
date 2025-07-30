@@ -47,6 +47,9 @@ config:
   # -- Overrides the generated configuration with specified one.
   customConfig: ""
 
+  # -- Port used for DNS traffic
+  port: 53
+
 nameOverride: ""
 fullnameOverride: ""
 
