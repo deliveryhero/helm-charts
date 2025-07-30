@@ -83,10 +83,10 @@ spec:
           {{- toYaml .Values.securityContext | nindent 10 }}
         {{- end }}
         ports:
-        - containerPort: 53
+        - containerPort: {{ .Values.config.port }}
           name: dns
           protocol: UDP
-        - containerPort: 53
+        - containerPort: {{ .Values.config.port }}
           name: dns-tcp
           protocol: TCP
         - containerPort: 9253
