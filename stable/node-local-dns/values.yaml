@@ -78,6 +78,15 @@ daemonsetAnnotations: {}
 
 daemonsetLabels: {}
 
+# -- DaemonSet update strategy configuration
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 10%
+    # Optional, can be set to a integer value rather than a percentage
+    # maxUnavailable: 1
+    # maxSurge: 1
+
 initContainers: []
 
 securityContext:
