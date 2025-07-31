@@ -44,6 +44,7 @@ spec:
       {{- end }}
       hostNetwork: {{ .Values.hostNetwork }}
       hostPID: {{ .Values.hostPID }}
+      hostUsers: {{ .Values.hostUsers }}
       dnsPolicy: {{ .Values.dnsPolicy }}
       {{- if .Values.dnsConfig }}
       dnsConfig: {{ toYaml .Values.dnsConfig | nindent 8 }}

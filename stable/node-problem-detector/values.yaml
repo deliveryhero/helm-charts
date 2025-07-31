@@ -76,6 +76,11 @@ rbac:
 # not recommended, but may be useful for certain use cases.
 hostNetwork: false
 hostPID: false
+# hostUsers -- Use host user namespace (true) or create pod user namespace (false)
+# Set to false to enable user namespaces for enhanced security isolation
+# Default is true (uses host user namespace).
+# See [Use a User Namespace With a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/).
+hostUsers: true
 dnsPolicy: "ClusterFirst"
 dnsConfig: {}
   # options:
