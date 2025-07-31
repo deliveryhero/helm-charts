@@ -85,7 +85,7 @@ updateStrategy:
     maxUnavailable: 10%
     # Optional, can be set to a integer value rather than a percentage
     # maxUnavailable: 1
-    # maxSurge: 1
+    # maxSurge: 0
 
 initContainers: []
 
