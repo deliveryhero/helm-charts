@@ -68,7 +68,6 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | configMapLabels | object | `{}` |  |
 | daemonsetAnnotations | object | `{}` |  |
 | daemonsetLabels | object | `{}` |  |
-| updateStrategy | object | `{"rollingUpdate":{"maxUnavailable":"10%"},"type":"RollingUpdate"}` | DaemonSet update strategy configuration |
 | dashboard | object | `{"annotations":{},"enabled":false,"label":"grafana_dashboard","namespace":"kube-system"}` | https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md |
 | dashboard.label | string | `"grafana_dashboard"` | label that grafana sidecar is configured to look for |
 | dashboard.namespace | string | `"kube-system"` | namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring" |
@@ -101,6 +100,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | tolerations[1].operator | string | `"Exists"` |  |
 | tolerations[2].effect | string | `"NoSchedule"` |  |
 | tolerations[2].operator | string | `"Exists"` |  |
+| updateStrategy | object | `{"rollingUpdate":{"maxUnavailable":"10%"},"type":"RollingUpdate"}` | DaemonSet update strategy configuration |
 
 ## Maintainers
 
