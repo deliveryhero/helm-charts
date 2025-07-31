@@ -1,6 +1,6 @@
 apiVersion: v2
 name: node-local-dns
-version: 2.1.9
+version: 2.1.10
 appVersion: 1.26.4
 maintainers:
   - name: gabrieladt
