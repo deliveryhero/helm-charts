@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.1.9](https://img.shields.io/badge/Version-2.1.9-informational?style=flat-square) ![AppVersion: 1.26.4](https://img.shields.io/badge/AppVersion-1.26.4-informational?style=flat-square)
+![Version: 2.1.10](https://img.shields.io/badge/Version-2.1.10-informational?style=flat-square) ![AppVersion: 1.26.4](https://img.shields.io/badge/AppVersion-1.26.4-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.10
 ```
 
 To install the chart with the release name `my-release`:
@@ -100,6 +100,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | tolerations[1].operator | string | `"Exists"` |  |
 | tolerations[2].effect | string | `"NoSchedule"` |  |
 | tolerations[2].operator | string | `"Exists"` |  |
+| updateStrategy | object | `{"rollingUpdate":{"maxUnavailable":"10%"},"type":"RollingUpdate"}` | DaemonSet update strategy configuration |
 
 ## Maintainers
 
