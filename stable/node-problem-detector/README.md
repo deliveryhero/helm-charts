@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.21](https://img.shields.io/badge/Version-2.3.21-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
+![Version: 2.3.22](https://img.shields.io/badge/Version-2.3.22-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.21
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.22
 ```
 
 To install the chart with the release name `my-release`:
@@ -58,6 +58,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | fullnameOverride | string | `""` |  |
 | hostNetwork | bool | `false` | Run pod on host network Flag to run Node Problem Detector on the host's network. This is typically not recommended, but may be useful for certain use cases. |
 | hostPID | bool | `false` |  |
+| hostUsers | bool | `true` | Use host user namespace (true) or create pod user namespace (false) Set to false to enable user namespaces for enhanced security isolation Default is true (uses host user namespace). See [Use a User Namespace With a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/). |
 | image.digest | string | `""` | the image digest. If given it takes precedence over a given tag. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"registry.k8s.io/node-problem-detector/node-problem-detector"` |  |
