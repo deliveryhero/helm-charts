@@ -2,12 +2,18 @@
 {{- range $PriorityClass := .Values.PriorityClasses }}
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
-description: A high priority class to be used for important pods
+description: {{ default "A high priority class to be used for important pods" $PriorityClass.description | quote }}
 metadata:
   name: {{ $PriorityClass.name }}
   labels:
 {{ include "priority-class.labels" $ | indent 4 }}
 value: {{ $PriorityClass.value }}
+{{- if hasKey $PriorityClass "preemptionPolicy" }}
+preemptionPolicy: {{ $PriorityClass.preemptionPolicy }}
+{{- end }}
+{{- if hasKey $PriorityClass "globalDefault" }}
+globalDefault: {{ $PriorityClass.globalDefault }}
+{{- end }}
 ---
 {{- end }}
 {{- end }}
