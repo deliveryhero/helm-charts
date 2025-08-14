@@ -1,5 +1,10 @@
 # PriorityClasses -- A list of PriorityClass to create
 PriorityClasses:
+  - name: high-priority-nonpreempting
+    value: 10000
+    preemptionPolicy: Never
+    globalDefault: false
+    description: "This priority class will not cause other pods to be preempted."
   - name: high
     value: 1000
   - name: medium
