@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: v1.0.0
 description: Exporter for kubernetes events
 name: prometheus-k8s-events-exporter
-version: 0.2.2
+version: 0.2.3
 home: https://github.com/caicloud/event_exporter
 sources:
   - https://github.com/caicloud/event_exporter
