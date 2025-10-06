@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version 0.2.2
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-k8s-events-exporter --version 0.2.3
 ```
 
 To install the chart with the release name `my-release`:
