@@ -44,6 +44,16 @@ config:
 
   skipTeardown: false
 
+  # -- Add extra server blocks to the generated configuration.
+  # extraServerBlocks: |
+  #   # Custom block for a private zone
+  #   corp.local:53 {
+  #     errors
+  #     cache 60
+  #     other_plugins . . .
+  #   }
+  extraServerBlocks: ""
+
   # -- Overrides the generated configuration with specified one.
   customConfig: ""
 
