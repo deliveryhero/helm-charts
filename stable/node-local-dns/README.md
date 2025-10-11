@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.1.10](https://img.shields.io/badge/Version-2.1.10-informational?style=flat-square) ![AppVersion: 1.26.4](https://img.shields.io/badge/AppVersion-1.26.4-informational?style=flat-square)
+![Version: 2.2.10](https://img.shields.io/badge/Version-2.2.10-informational?style=flat-square) ![AppVersion: 1.26.4](https://img.shields.io/badge/AppVersion-1.26.4-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.1.10
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.2.10
 ```
 
 To install the chart with the release name `my-release`:
@@ -56,6 +56,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | config.dnsDomain | string | `"cluster.local"` | Internal k8s DNS domain |
 | config.dnsServer | string | `"172.20.0.10"` | Main coredns service (kube-dns) ip, used on iptables-mode. |
 | config.enableLogging | bool | `false` | Set boolean to log DNS requests |
+| config.extraServerBlocks | string | `""` | Add extra server blocks to the generated configuration. |
 | config.healthPort | int | `8080` | Port used for the health endpoint |
 | config.localDns | string | `"169.254.20.25"` |  |
 | config.noIPv6Lookups | bool | `false` | If true, return NOERROR when attempting to resolve an IPv6 address |
