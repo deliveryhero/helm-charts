@@ -126,4 +126,7 @@ data:
         }
     {{- end }}
         }
+    {{- end }}
+    {{- if and .Values.config.extraServerBlocks (not .Values.config.customConfig) }}
+    {{- .Values.config.extraServerBlocks | nindent 4 -}}
     {{ end }}
