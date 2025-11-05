@@ -57,6 +57,8 @@ master:
   logLevel: INFO
   # master.replicas -- Should be set to either 0 or 1.
   replicas: 1
+  # master.revisionHistoryLimit -- Number of old ReplicaSets to retain to allow rollback
+  revisionHistoryLimit: 10
   # master.resources -- resources for the locust master
   resources: {}
     # limits:
@@ -146,6 +148,8 @@ worker:
   # worker.logLevel -- Log level. Can be INFO or DEBUG
   logLevel: INFO
   replicas: 1
+  # worker.revisionHistoryLimit -- Number of old ReplicaSets to retain to allow rollback
+  revisionHistoryLimit: 10
   # worker.pdb.enabled -- Whether to create a PodDisruptionBudget for the worker pods
   pdb:
     enabled: false

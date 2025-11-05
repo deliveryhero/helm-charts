@@ -17,6 +17,7 @@ spec:
 {{- if not .Values.worker.hpa.enabled }}
   replicas: {{ .Values.worker.replicas }}
 {{- end }}
+  revisionHistoryLimit: {{ .Values.worker.revisionHistoryLimit }}
 {{- with .Values.worker.strategy }}
   strategy:
 {{ toYaml . | trim | indent 4 }}
