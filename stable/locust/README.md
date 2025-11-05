@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.6](https://img.shields.io/badge/Version-0.32.6-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.7](https://img.shields.io/badge/Version-0.32.7-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.6
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.7
 ```
 
 To install the chart with the release name `my-release`:
@@ -121,6 +121,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.replicas | int | `1` | Should be set to either 0 or 1. |
 | master.resources | object | `{}` | resources for the locust master |
 | master.restartPolicy | string | `"Always"` | master pod's restartPolicy. Can be Always, OnFailure, or Never. |
+| master.revisionHistoryLimit | int | `10` | Number of old ReplicaSets to retain to allow rollback |
 | master.serviceAccountAnnotations | object | `{}` |  |
 | master.startupProbe | object | `{}` |  |
 | master.strategy.type | string | `"RollingUpdate"` |  |
@@ -159,6 +160,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.replicas | int | `1` |  |
 | worker.resources | object | `{}` | resources for the locust worker |
 | worker.restartPolicy | string | `"Always"` | worker pod's restartPolicy. Can be Always, OnFailure, or Never. |
+| worker.revisionHistoryLimit | int | `10` | Number of old ReplicaSets to retain to allow rollback |
 | worker.serviceAccountAnnotations | object | `{}` |  |
 | worker.strategy.type | string | `"RollingUpdate"` |  |
 | worker.tolerations | list | `[]` | Overwrites tolerations from global |
