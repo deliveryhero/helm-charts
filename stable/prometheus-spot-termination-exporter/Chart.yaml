@@ -1,14 +1,14 @@
 apiVersion: v2
-appVersion: "0.0.2"
+appVersion: "0.3.0"
 description: Spot instance termination exporter for Prometheus
 name: prometheus-spot-termination-exporter
-version: 0.2.12
+version: 0.2.13
 home: https://github.com/banzaicloud/spot-termination-exporter
 sources:
   - https://github.com/banzaicloud/spot-termination-exporter
 maintainers:
-- name: sietevecesmal
-  url: https://github.com/sietevecesmal
+  - name: sietevecesmal
+    url: https://github.com/sietevecesmal
 
 annotations:
   artifacthub.io/links: |
