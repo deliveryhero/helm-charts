@@ -1,12 +1,6 @@
 # prometheus-spot-termination-exporter
 
-<<<<<<< HEAD
-![Version: 0.2.14](https://img.shields.io/badge/Version-0.2.14-informational?style=flat-square) ![AppVersion: 0.0.2](https://img.shields.io/badge/AppVersion-0.0.2-informational?style=flat-square)
-||||||| parent of 88f2942 ([stable/prometheus-spot-termination-exporter] update chart to be more flexible)
-![Version: 0.2.12](https://img.shields.io/badge/Version-0.2.12-informational?style=flat-square) ![AppVersion: 0.0.2](https://img.shields.io/badge/AppVersion-0.0.2-informational?style=flat-square)
-=======
-![Version: 0.2.13](https://img.shields.io/badge/Version-0.2.13-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
->>>>>>> 88f2942 ([stable/prometheus-spot-termination-exporter] update chart to be more flexible)
+![Version: 0.2.15](https://img.shields.io/badge/Version-0.2.15-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Spot instance termination exporter for Prometheus
 
@@ -23,13 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-s
 To install a specific version of this chart:
 
 ```console
-<<<<<<< HEAD
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.14
-||||||| parent of 88f2942 ([stable/prometheus-spot-termination-exporter] update chart to be more flexible)
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.12
-=======
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.13
->>>>>>> 88f2942 ([stable/prometheus-spot-termination-exporter] update chart to be more flexible)
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.15
 ```
 
 To install the chart with the release name `my-release`:
@@ -59,8 +47,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | env | list | `[]` |  |
-| extraArgs | string | `nil` |  |
-| extraVolumeMounts | list | `[]` |  |
+| extraArgs | list | `[]` |  |
 | image.imagePullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"banzaicloud/spot-termination-exporter"` |  |
 | image.tag | string | `"0.0.1"` |  |
@@ -83,6 +70,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 | readinessProbe.periodSeconds | int | `5` |  |
 | readinessProbe.timeoutSeconds | int | `3` |  |
 | resources | object | `{}` |  |
+| volumeMounts | list | `[]` |  |
+| volumes | list | `[]` |  |
 
 ## Maintainers
 
