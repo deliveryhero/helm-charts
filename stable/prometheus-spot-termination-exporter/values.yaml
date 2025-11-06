@@ -2,12 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-initContainer:
-  image:
-    repository: "scottcrossen/kube-node-labels"
-    tag: "1.1.0"
-    imagePullPolicy: IfNotPresent
-
 image:
   repository: "banzaicloud/spot-termination-exporter"
   tag: "0.0.1"
@@ -18,15 +12,15 @@ prometheus:
   metricsPath: "/metrics"
 
 metadataEndpoint: "http://169.254.169.254/latest/meta-data/"
-
 port: 9189
-
 logLevel: "debug"
+
+extraArgs: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # resources, suchs as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #   cpu: 100m
@@ -51,5 +45,27 @@ readinessProbe:
   timeoutSeconds: 3
   periodSeconds: 5
 
+initContainers: []
+  # - name: init
+  #   image: "scottcrossen/kube-node-labels:1.1.0"
+  #   imagePullPolicy: IfNotPresent
+  #   env:
+  #     - name: NODE
+  #       valueFrom:
+  #         fieldRef:
+  #           fieldPath: spec.nodeName
+  #     - name: OUTPUT_DIR
+  #       value: /output
+  #   volumeMounts:
+  #     - name: node-data
+  #       mountPath: /output
+
+volumes: []
+  # - name: node-data
+  #   emptyDir: {}
+volumeMounts: []
+
+env: []
+
 nodeSelector:
-  node.kubernetes.io/lifecycle: spot
+  eks.amazonaws.com/capacityType: SPOT
