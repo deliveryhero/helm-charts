@@ -25,6 +25,7 @@ spec:
 {{- with .Values.volumes }}
       volumes:
 {{ toYaml . | nindent 8 }}
+{{- end }}
 {{- with .Values.initContainers }}
       initContainers:
 {{ toYaml . | nindent 6 }}
@@ -38,9 +39,9 @@ spec:
           - -metrics-path={{ .Values.prometheus.metricsPath }}
           - -metadata-endpoint={{ .Values.metadataEndpoint }}
           - -log-level={{ .Values.logLevel }}
-{{- range $arg := .Values.extraArgs }}
+        {{- range $arg := .Values.extraArgs }}
           - {{$arg}}
-{{- end }}
+        {{- end }}
         env:
           - name: NODE_NAME
             valueFrom:
