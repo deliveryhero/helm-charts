@@ -1,6 +1,6 @@
 # prometheus-spot-termination-exporter
 
-![Version: 0.2.14](https://img.shields.io/badge/Version-0.2.14-informational?style=flat-square) ![AppVersion: 0.0.2](https://img.shields.io/badge/AppVersion-0.0.2-informational?style=flat-square)
+![Version: 0.2.15](https://img.shields.io/badge/Version-0.2.15-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Spot instance termination exporter for Prometheus
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-s
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.14
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.15
 ```
 
 To install the chart with the release name `my-release`:
@@ -46,12 +46,12 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| env | list | `[]` |  |
+| extraArgs | list | `[]` |  |
 | image.imagePullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"banzaicloud/spot-termination-exporter"` |  |
 | image.tag | string | `"0.0.1"` |  |
-| initContainer.image.imagePullPolicy | string | `"IfNotPresent"` |  |
-| initContainer.image.repository | string | `"scottcrossen/kube-node-labels"` |  |
-| initContainer.image.tag | string | `"1.1.0"` |  |
+| initContainers | list | `[]` |  |
 | livenessProbe.failureThreshold | int | `6` |  |
 | livenessProbe.httpGet.path | string | `"/"` |  |
 | livenessProbe.httpGet.port | string | `"http"` |  |
@@ -59,7 +59,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 | livenessProbe.timeoutSeconds | int | `5` |  |
 | logLevel | string | `"debug"` |  |
 | metadataEndpoint | string | `"http://169.254.169.254/latest/meta-data/"` |  |
-| nodeSelector."node.kubernetes.io/lifecycle" | string | `"spot"` |  |
+| nodeSelector."eks.amazonaws.com/capacityType" | string | `"SPOT"` |  |
 | port | int | `9189` |  |
 | prometheus.metricsPath | string | `"/metrics"` |  |
 | prometheus.scrape | string | `"true"` |  |
@@ -70,6 +70,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 | readinessProbe.periodSeconds | int | `5` |  |
 | readinessProbe.timeoutSeconds | int | `3` |  |
 | resources | object | `{}` |  |
+| volumeMounts | list | `[]` |  |
+| volumes | list | `[]` |  |
 
 ## Maintainers
 

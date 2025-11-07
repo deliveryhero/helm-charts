@@ -20,40 +20,33 @@ spec:
         prometheus.io/scrape: "{{ .Values.prometheus.scrape }}"
         prometheus.io/port: "{{ .Values.port }}"
         prometheus.io/path: "{{ .Values.prometheus.metricsPath }}"
-
     spec:
       serviceAccount: {{ include "prometheus-spot-termination-exporter.fullname" . }}
+{{- with .Values.volumes }}
       volumes:
-      - name: node-data
-        emptyDir: {}
+{{ toYaml . | nindent 8 }}
+{{- end }}
+{{- with .Values.initContainers }}
       initContainers:
-      - name: init
-        image: "{{ .Values.initContainer.image.repository }}:{{ .Values.initContainer.image.tag }}"
-        imagePullPolicy: {{ .Values.initContainer.image.imagePullPolicy | quote }}
-        env:
-        - name: NODE
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
-        - name: OUTPUT_DIR
-          value: /output
-        volumeMounts:
-        - name: node-data
-          mountPath: /output
+{{ toYaml . | nindent 6 }}
+{{- end }}
       containers:
       - name: spot-termination-exporter
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.imagePullPolicy | quote }}
-        command:
-        - "/bin/sh"
-        - "-ecx"
-        - |
-          spot-termination-exporter \
-          --bind-addr :{{ .Values.port }} \
-          --metrics-path {{ .Values.prometheus.metricsPath }} \
-          --metadata-endpoint {{ .Values.metadataEndpoint }} \
-          --log-level {{ .Values.logLevel }} \
-          --extra-labels node_group=$(/node-data/label.sh node-group)
+        args:
+          - -bind-addr=:{{ .Values.port }}
+          - -metrics-path={{ .Values.prometheus.metricsPath }}
+          - -metadata-endpoint={{ .Values.metadataEndpoint }}
+          - -log-level={{ .Values.logLevel }}
+        {{- range $arg := .Values.extraArgs }}
+          - {{$arg}}
+        {{- end }}
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
         ports:
         - name: http
           containerPort: {{ .Values.port }}
@@ -74,10 +67,10 @@ spec:
           initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-
+{{- with .Values.volumeMounts }}
         volumeMounts:
-        - name: node-data
-          mountPath: /node-data
+{{ toYaml . | nindent 8 }}
+{{- end }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
