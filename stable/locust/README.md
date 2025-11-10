@@ -105,6 +105,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.environment | object | `{}` | environment variables for the master |
 | master.envs_include_default | bool | `true` | Whether to include default environment variables |
 | master.extraPorts | string | `nil` |  |
+| master.extraVolumeMounts | list | `[]` |  |
+| master.extraVolumes | list | `[]` |  |
 | master.image | string | `""` | A custom docker image including tag |
 | master.livenessProbe | object | `{}` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
