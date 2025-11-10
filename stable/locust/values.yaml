@@ -141,6 +141,27 @@ master:
   tolerations: []
   # master.affinity -- Overwrites affinity from global
   affinity: {}
+  
+  # Extra volumes for the master pod
+  extraVolumes: []
+  # - name: data-volume
+  #   persistentVolumeClaim:
+  #     claimName: my-pvc
+  # - name: temp-volume
+  #   emptyDir: {}
+  # - name: host-volume
+  #   hostPath:
+  #     path: /data/locust
+  #     type: Directory
+  
+  # Extra volume mounts for the master container
+  extraVolumeMounts: []
+  # - name: data-volume
+  #   mountPath: /app/data
+  # - name: temp-volume
+  #   mountPath: /tmp/locust
+  # - name: host-volume
+  #   mountPath: /mnt/host-dat
 
 worker:
   # worker.image -- A custom docker image including tag
