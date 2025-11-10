@@ -97,6 +97,9 @@ spec:
             mountPath: {{ $value }}
 {{- end }}
 {{- end }}
+{{- if .Values.master.extraVolumeMounts }}
+{{- toYaml .Values.master.extraVolumeMounts | nindent 10 }}
+{{- end }}
 {{- if .Values.loadtest.mount_external_secret }}
 {{- include "locust.external_secret.volumemount" . | nindent 10 }}
 {{- end}}
@@ -181,6 +184,9 @@ spec:
           configMap:
             name: {{ $key }}
 {{- end }}
+{{- end }}
+{{- if .Values.master.extraVolumes }}
+{{- toYaml .Values.master.extraVolumes | nindent 8 }}
 {{- end }}
 {{- if .Values.loadtest.mount_external_secret }}
 {{- include "locust.external_secret.volume" . | nindent 8 }}
