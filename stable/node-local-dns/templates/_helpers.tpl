@@ -37,11 +37,10 @@ Common labels
 {{- define "node-local-dns.labels" -}}
 helm.sh/chart: {{ include "node-local-dns.chart" . }}
 {{ include "node-local-dns.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/component: "node-local-dns"
-app.kubernetes.io/created-by: "node-local-dns"
-app.kubernetes.io/part-of: "node-local-dns"
 {{- end }}
 
 {{/*
@@ -50,7 +49,6 @@ Selector labels
 {{- define "node-local-dns.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "node-local-dns.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-k8s-app: {{ include "node-local-dns.fullname" . }}
 {{- end }}
 
 {{/*
