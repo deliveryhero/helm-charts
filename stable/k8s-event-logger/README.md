@@ -1,6 +1,6 @@
 # k8s-event-logger
 
-![Version: 1.1.9](https://img.shields.io/badge/Version-1.1.9-informational?style=flat-square) ![AppVersion: 2.4](https://img.shields.io/badge/AppVersion-2.4-informational?style=flat-square)
+![Version: 1.1.10](https://img.shields.io/badge/Version-1.1.10-informational?style=flat-square) ![AppVersion: 2.4](https://img.shields.io/badge/AppVersion-2.4-informational?style=flat-square)
 
 This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).
 
@@ -28,7 +28,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-lo
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version 1.1.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/k8s-event-logger --version 1.1.10
 ```
 
 To install the chart with the release name `my-release`:
