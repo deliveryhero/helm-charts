@@ -17,5 +17,5 @@ spec:
     protocol: TCP
     targetPort: 53
   selector:
-    k8s-app: kube-dns
+    {{- include "node-local-dns.selectorLabels" . | nindent 4 }}
 {{- end -}}
