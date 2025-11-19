@@ -65,6 +65,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
 | config.skipTeardown | bool | `false` |  |
+| config.upstreamServiceSelector | object | `{"k8s-app":"kube-dns"}` | Use a custom upstream service selector |
 | configMapAnnotations | object | `{}` |  |
 | configMapLabels | object | `{}` |  |
 | daemonsetAnnotations | object | `{}` |  |
