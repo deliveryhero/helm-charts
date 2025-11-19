@@ -17,5 +17,7 @@ spec:
     protocol: TCP
     targetPort: 53
   selector:
-    {{- include "node-local-dns.selectorLabels" . | nindent 4 }}
+    {{- with .Values.config.upstreamServiceSelector }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 {{- end -}}
