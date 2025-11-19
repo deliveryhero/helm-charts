@@ -15,4 +15,4 @@ spec:
       port: 9253
       targetPort: 9253
   selector:
-    k8s-app: {{ include "node-local-dns.fullname" . }}
+    {{- include "node-local-dns.selectorLabels" . | nindent 4 }}

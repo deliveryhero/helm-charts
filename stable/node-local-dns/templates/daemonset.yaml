@@ -19,14 +19,14 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      k8s-app: {{ include "node-local-dns.name" . }}
+      {{- include "node-local-dns.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-      {{- if .Values.podLabels }}
-        {{- toYaml .Values.podLabels | nindent 8 }}
-      {{- end }}
-        k8s-app: {{ include "node-local-dns.name" . }}
+        {{- include "node-local-dns.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- if or .Values.podAnnotations .Values.prometheusScraping.enabled }}
       annotations:
         {{- if and (not .Values.serviceMonitor.enabled) .Values.prometheusScraping.enabled }}

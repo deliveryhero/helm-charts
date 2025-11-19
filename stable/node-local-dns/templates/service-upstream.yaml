@@ -17,5 +17,7 @@ spec:
     protocol: TCP
     targetPort: 53
   selector:
-    k8s-app: kube-dns
+    {{- with .Values.config.upstreamServiceSelector }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 {{- end -}}
