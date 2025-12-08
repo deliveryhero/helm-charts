@@ -17,6 +17,11 @@ parameters:
 {{- if eq "io1" .type }}
   iopsPerGB: {{ default "10" .iopsPerGB | quote }}
 {{- end }}
+{{- if hasKey $v "volumeTags" }}
+  {{- range $tagKey, $tagValue := .volumeTags }}
+  tagSpecification_{{ $tagKey }}: "{{ $tagKey }}={{ $tagValue }}"
+  {{- end }}
+{{- end }}
 {{- if or (empty .provisioner) (eq "ebs.csi.aws.com" .provisioner) }}
 reclaimPolicy: {{ default "Delete" .reclaimPolicy | quote }}
 {{- end }}

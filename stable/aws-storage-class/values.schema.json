@@ -36,6 +36,10 @@
                                 "WaitForFirstConsumer"
                             ],
                             "type": "string"
+                        },
+                        "volumeTags": {
+                            "description": "Tags to apply to created volumes",
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -73,6 +77,10 @@
                                 "WaitForFirstConsumer"
                             ],
                             "type": "string"
+                        },
+                        "volumeTags": {
+                            "description": "Tags to apply to created volumes",
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -118,6 +126,10 @@
                                 "WaitForFirstConsumer"
                             ],
                             "type": "string"
+                        },
+                        "volumeTags": {
+                            "description": "Tags to apply to created volumes",
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -161,6 +173,10 @@
                                 "WaitForFirstConsumer"
                             ],
                             "type": "string"
+                        },
+                        "volumeTags": {
+                            "description": "Tags to apply to created volumes",
+                            "type": "object"
                         }
                     },
                     "type": "object"
