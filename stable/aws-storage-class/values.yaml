@@ -12,6 +12,8 @@ storage_classes:
     provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
     type: "gp2"                              # @schema type:string; description: EBS volume type
     allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+    volumeTags: {}                           # @schema type:object; description: Tags to apply to created volumes
+      # environment: "production"
 
   ebs_gp3:
     default: false                           # @schema type:boolean; description: Whether this is the default storage class
@@ -19,6 +21,8 @@ storage_classes:
     provisioner: "ebs.csi.aws.com"           # @schema type:string; description: CSI provisioner name
     type: "gp3"                              # @schema type:string; description: EBS volume type
     allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+    volumeTags: {}                           # @schema type:object; description: Tags to apply to created volumes
+      # Snapshot: "true"
 
   ebs_io1_10:
     default: false                           # @schema type:boolean; description: Whether this is the default storage class
@@ -27,6 +31,8 @@ storage_classes:
     type: "io1"                              # @schema type:string; description: EBS volume type
     reclaimPolicy: "Retain"                  # @schema enum:["Delete", "Retain"]; description: Reclaim policy for volumes
     allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+    volumeTags: {}                           # @schema type:object; description: Tags to apply to created volumes
+      # pvcnamespace: '{{ .PVCNamespace }}'
 
   ebs_io1_20:
     default: false                           # @schema type:boolean; description: Whether this is the default storage class
@@ -35,3 +41,5 @@ storage_classes:
     type: "io1"                              # @schema type:string; description: EBS volume type
     iopsPerGB: 20                            # @schema type:integer; description: Optional, specific to io1
     allowVolumeExpansion: true               # @schema type:boolean; description: Enables resizing of volumes
+    volumeTags: {}                           # @schema type:object; description: Tags to apply to created volumes
+      # foo: bar
