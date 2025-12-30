@@ -29,4 +29,7 @@ rules:
   - create
   - patch
   - update
+{{ if .Values.rbac.clusterRole.extraRules -}}
+{{- toYaml .Values.rbac.clusterRole.extraRules | trim -}}
+{{- end -}}
 {{- end -}}

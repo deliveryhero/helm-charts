@@ -83,6 +83,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | priorityClassName | string | `"system-node-critical"` |  |
+| rbac.clusterRole.extraRules | list | `[]` |  |
 | rbac.create | bool | `true` |  |
 | rbac.pspEnabled | bool | `false` |  |
 | resources | object | `{}` |  |
