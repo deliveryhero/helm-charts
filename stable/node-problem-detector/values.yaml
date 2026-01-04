@@ -69,6 +69,8 @@ fullnameOverride: ""
 
 rbac:
   create: true
+  clusterRole:
+    extraRules: []
   pspEnabled: false
 
 # hostNetwork -- Run pod on host network
