@@ -225,7 +225,26 @@ worker:
   tolerations: []
   # worker.affinity -- Overwrites affinity from global
   affinity: {}
+  # Extra volumes for the worker pod
+  extraVolumes: []
+  # - name: data-volume
+  #   persistentVolumeClaim:
+  #     claimName: my-pvc
+  # - name: temp-volume
+  #   emptyDir: {}
+  # - name: host-volume
+  #   hostPath:
+  #     path: /data/locust
+  #     type: Directory
 
+  # Extra volume mounts for the worker container
+  extraVolumeMounts: []
+  # - name: data-volume
+  #   mountPath: /app/data
+  # - name: temp-volume
+  #   mountPath: /tmp/locust
+  # - name: host-volume
+  #   mountPath: /mnt/host-dat
 
 nameOverride: ""
 fullnameOverride: ""
