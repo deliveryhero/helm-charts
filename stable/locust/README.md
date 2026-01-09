@@ -146,6 +146,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.deploymentAnnotations | object | `{}` | Annotations on the deployment for workers |
 | worker.environment | object | `{}` | environment variables for the workers |
 | worker.envs_include_default | bool | `true` | Whether to include default environment variables |
+| worker.extraVolumeMounts | list | `[]` |  |
+| worker.extraVolumes | list | `[]` |  |
 | worker.hpa.enabled | bool | `false` |  |
 | worker.hpa.maxReplicas | int | `100` |  |
 | worker.hpa.minReplicas | int | `1` |  |
