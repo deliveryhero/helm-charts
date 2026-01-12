@@ -13,6 +13,12 @@ loadtest:
   locust_host: https://www.google.com
   # loadtest.pip_packages -- a list of extra python pip packages to install
   pip_packages: []
+   # loadtest.pip_requirementsfile_configmap -- name of a configmap containing your extra python pip packages
+  pip_requirementsfile_configmap: ""
+  # loadtest.locust_requirementsfile_path -- the path of the requirements file (without trailing backslash)
+  locust_requirementsfile_path: "/packages"
+  # loadtest.pip_requirements_file -- the name of the pip requirements file
+  pip_requirementsfile: "requirements.txt"
   # loadtest.environment -- environment variables used in the load test for both master and workers
   environment: {}
     # VAR: VALUE
