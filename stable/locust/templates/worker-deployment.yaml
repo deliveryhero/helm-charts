@@ -76,6 +76,10 @@ spec:
           - name: lib
             mountPath: "{{ .Values.loadtest.locust_locustfile_path }}/lib"
           {{- end }}
+          {{- if .Values.loadtest.pip_requirementsfile_configmap }}
+          - name: packages
+            mountPath: "{{ .Values.loadtest.locust_requirementsfile_path }}"
+          {{- end }}
           - name: config
             mountPath: /config
 {{- if .Values.extraConfigMaps }}
@@ -140,6 +144,11 @@ spec:
         - name: locustfile
           configMap:
             name: {{ .Values.loadtest.locust_locustfile_configmap }}
+        {{- end }}
+        {{- if .Values.loadtest.pip_requirementsfile_configmap }}
+        - name: packages
+          configMap:
+            name: {{ .Values.loadtest.pip_requirementsfile_configmap }}
         {{- end }}
         - name: config
           configMap:
