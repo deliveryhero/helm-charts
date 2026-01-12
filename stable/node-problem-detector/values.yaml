@@ -57,7 +57,7 @@ logDir:
 
 image:
   repository: registry.k8s.io/node-problem-detector/node-problem-detector
-  tag: v0.8.20
+  tag: v1.35.1
   # image.digest -- the image digest. If given it takes precedence over a given tag.
   digest: ""
   pullPolicy: IfNotPresent
@@ -101,6 +101,14 @@ securityContext:
   privileged: true
 
 resources: {}
+
+# resizePolicy -- Container resize policy for in-place vertical scaling
+# See https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/
+resizePolicy: []
+  # - resourceName: cpu
+  #   restartPolicy: NotRequired
+  # - resourceName: memory
+  #   restartPolicy: RestartContainer
 
 annotations: {}
 
