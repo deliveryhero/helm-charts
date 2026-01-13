@@ -7,9 +7,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-ebs-csi-driver
       apiVersion: v2
       appVersion: 1.16.1
-      created: "2026-01-12T08:13:26.283997815Z"
+      created: "2026-01-13T08:37:31.840837292Z"
       description: A Helm chart for AWS EBS CSI Driver
-      digest: 5739ef6f7a3b4963b747a0d688aa553da71b122d8c9a214ca76dd8997a0c7548
+      digest: c9bb94f1abb0576feb36b099f87a2279ab4eebdd59034230f5c58a3036d592ad
       home: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
       keywords:
         - aws
@@ -104,9 +104,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-s3-proxy
       apiVersion: v2
       appVersion: "2.0"
-      created: "2026-01-12T08:13:26.284333351Z"
+      created: "2026-01-13T08:37:31.841165936Z"
       description: 'Reverse proxy for AWS S3 with basic authentication.  See here for configuration via environment variables: https://github.com/pottava/aws-s3-proxy#usage '
-      digest: 60785b5697657f547873d7fb5c81bbc7d417ad949afdf3df136140ee5a350b1d
+      digest: 47c945b23877c275353415ab728a175eb3c3abe752450b51b4692b178e5c493e
       home: https://github.com/pottava/aws-s3-proxy
       maintainers:
         - name: max-rocket-internet
@@ -204,9 +204,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-service-events-exporter
       apiVersion: v2
       appVersion: 1.0.0
-      created: "2026-01-12T08:13:26.284677823Z"
+      created: "2026-01-13T08:37:31.841477302Z"
       description: 'This helm chart exports aws service events to prometheus via aws SQS queue, this include:  - [RDS events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html) - [Elasticache events](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ECEvents.Viewing.html) '
-      digest: b8bd00be3a07e7d37511b4daac8e27c5e22b25c971b5c17bd963f9b689548b4c
+      digest: 9257899f83ba1bea692f44799e9bb6b020ebb6d86316b9b3795ceaff1ad0ba4f
       home: https://github.com/deliveryhero/aws-service-events-exporter
       maintainers:
         - name: nyambati
@@ -347,9 +347,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-service-quotas-exporter
       apiVersion: v2
       appVersion: v1.3.2
-      created: "2026-01-12T08:13:26.285031142Z"
+      created: "2026-01-13T08:37:31.841821249Z"
       description: This exporter exports AWS service quotas and usage as Prometheus metrics
-      digest: 6a618f5aedfedc2d8bfa7e355aeb069ad44ea7e446221e315ce27a20ee811c4e
+      digest: 08ab8fc04f75e856ed918811d9f7fd86d2891b3e4b69991b3fab53cd568ebf2e
       home: https://github.com/thought-machine/aws-service-quotas-exporter
       keywords:
         - aws
@@ -460,9 +460,9 @@ entries:
           - name: Helm chart source
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/aws-storage-class
       apiVersion: v2
-      created: "2026-01-12T08:13:26.28532504Z"
+      created: "2026-01-13T08:37:31.842095521Z"
       description: 'Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/storage-class/aws/default.yaml'
-      digest: 80381e1130ef23f10d3b441059ee6836399df3574448f0366e6bd46ebc664c8b
+      digest: 6eaaace7e3e214884ff2458feb2ad89e8937c525176ff9feeb0f4d9309d05e42
       home: https://github.com/deliveryhero/helm-charts
       maintainers:
         - name: max-rocket-internet
@@ -610,9 +610,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/backstage
       apiVersion: v2
       appVersion: v0.1.1-alpha.23
-      created: "2026-01-12T08:13:26.286262638Z"
+      created: "2026-01-13T08:37:31.842984668Z"
       description: A Helm chart for Backstage
-      digest: 629b54d3993d2ebde40fe821521d4cdb23d96dea709c01571d47ad9d8b10fe7a
+      digest: d7f0eec1fb594e3223920ebefe3009b182d4c4fa625e41d0d86ace2bde40b64a
       home: https://github.com/backstage/backstage
       maintainers:
         - name: javad-hajiani
@@ -909,9 +909,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/backstage-mono
       apiVersion: v2
       appVersion: 0.0.1
-      created: "2026-01-12T08:13:26.286566745Z"
+      created: "2026-01-13T08:37:31.843267731Z"
       description: A Helm chart for simple backstage deployment. This chart deploys a single pod for both backstage frontend and backend.
-      digest: 2720f445a443e61130495c1befc491841f564282cdb17aa323b2ea592c822a8d
+      digest: b5bca5ba56b3b349aba3f6ba0043f87589a761a0d0dae19434ec52e303520367
       home: https://github.com/backstage/backstage
       maintainers:
         - name: goelankitt
@@ -974,14 +974,14 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/cachet
       apiVersion: v2
       appVersion: 2.3.15
-      created: "2026-01-12T08:13:26.290730605Z"
+      created: "2026-01-13T08:37:31.847498785Z"
       dependencies:
         - condition: postgresql.enabled
           name: postgresql
           repository: https://charts.bitnami.com/bitnami
           version: 11.6.26
       description: The open source status page system
-      digest: 4ad0abd234a250b1f00a4c21d5568276eb5deae352462ec3e30050d444c969d3
+      digest: 2105d54f403e801f2794f69024d4f306ac0577828641a3d2868aa40678a54483
       home: https://cachethq.io/
       maintainers:
         - name: nyambati
@@ -1210,9 +1210,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/cloudhealth-collector
       apiVersion: v2
       appVersion: "957"
-      created: "2026-01-12T08:13:26.291085527Z"
+      created: "2026-01-13T08:37:31.847857452Z"
       description: 'Deploys a k8s pod to collect data and generate reports based or resources usages, costs and other possibilities. Please check more about it on: https://www.cloudhealthtech.com/solutions/containers  Chart based on its official k8s resources: https://s3.amazonaws.com/cloudhealth-public/containers/kubernetes-collector-pod-template.yaml  A Cloudhealth account is required.  To install the chart a valid api token should be generated from adding a new cluster: https://apps.cloudhealthtech.com/containers_clusters '
-      digest: 2228ba22b0ccf637cb4a2643d3489c6afb6f99f0157345b6b2956eb06f384c33
+      digest: a91f8a175f1c9b6ed7ccde86e648ddc3690db0f79bf8f5ee2134103975394c01
       home: https://github.com/deliveryhero/helm-charts
       maintainers:
         - name: max-rocket-internet
@@ -1335,9 +1335,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/cluster-overprovisioner
       apiVersion: v2
       appVersion: "3.9"
-      created: "2026-01-12T08:13:26.291578035Z"
+      created: "2026-01-13T08:37:31.84830915Z"
       description: 'This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.  It works by creating a deployment that creates pods of a lower than default `PriorityClass`. These pods request resources from the cluster but don''t actually consume any resources. These pods are then evicted allowing other normal pods to be created while also triggering a scale-up by the [cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler).  This approach is the [current recommended method to achieve overprovisioning](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-can-i-configure-overprovisioning-with-cluster-autoscaler). '
-      digest: 8db4a6a07dd1c9fbf28c034d73f50e5e8c0712eeda505776a7542d041a027efb
+      digest: b7ca92e4b7464392da3589cfad57771f3cea47f8ecbdf6a5e04d5d29b0e3fe7e
       home: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -1819,9 +1819,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/cortex-gateway
       apiVersion: v2
       appVersion: v1.1.0
-      created: "2026-01-12T08:13:26.291899845Z"
+      created: "2026-01-13T08:37:31.848617646Z"
       description: A Helm chart for cortex-gateway
-      digest: 5a8b70ba1b22d72aa29989de0dd0afa42094ff28a05d645126be3fe6367182f0
+      digest: d757277dd54b9b8bc8a36d79828a8b0c2a83ebd8bfc943298888f0f5f9e416de
       home: https://github.com/rewe-digital/cortex-gateway
       maintainers:
         - name: goelankitt
@@ -1936,9 +1936,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/datadog-controller
       apiVersion: v2
       appVersion: "0.1"
-      created: "2026-01-12T08:13:26.292330248Z"
+      created: "2026-01-13T08:37:31.849022353Z"
       description: 'This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) to allow [Datadog Monitors](https://docs.datadoghq.com/monitors/) to be created, updated or deleted from custom resources in Kubernetes.  You will need to set `datadog.client_api_key` and `datadog.client_app_key` when installing the chart. These keys can be found at https://app.datadoghq.eu/account/settings#api or https://app.datadoghq.com/account/settings#api  Here''s an example `DatadogMonitor` resource:  ```yaml apiVersion: datadoghq.com/v1beta1 kind: DatadogMonitor metadata:   name: apm-error-rate-example spec:   name: my-service error rate   query: "avg(last_5m):sum:trace.http.request.errors{env:stg,service:my-service} / sum:trace.http.request.hits{env:stg,service:my-service} > 1"   type: "query alert"   message: Service my-service has a high error rate on env:stg ``` '
-      digest: c07bdfa94b5233c82bc8d4fad33af019e42de7b3608da13f6b5d1374e8a32cd8
+      digest: ed65d495f625e66a396f61f24b615ead202dc06163f498e78e4db7254e7eaad1
       home: https://github.com/max-rocket-internet/datadog-controller
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -2001,9 +2001,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/dregsy
       apiVersion: v2
       appVersion: 0.4.3
-      created: "2026-01-12T08:13:26.292750221Z"
+      created: "2026-01-13T08:37:31.84939184Z"
       description: Dregsy lets you sync Docker images between registries, public or private through defined sync tasks can be invoked as one-off or periodic task.
-      digest: 7aec0389022bb93ec4b0750602e40dd22ab998b92cf3bd9a740a3f64d6c254cd
+      digest: 209e49e441828807822c515d87509b0c285d1c2dfb2d366de55aaf432d2f8510
       home: https://github.com/xelalexv/dregsy
       maintainers:
         - name: nyambati
@@ -2102,9 +2102,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/field-exporter
       apiVersion: v2
       appVersion: v1.3.1
-      created: "2026-01-12T08:13:26.293177027Z"
+      created: "2026-01-13T08:37:31.849782999Z"
       description: 'A chart to install [field-exporter](https://github.com/deliveryhero/field-exporter). This controller is used to fill the gap in [k8s-config-connector](https://github.com/GoogleCloudPlatform/k8s-config-connector) for exporting value from Config Connector managed resources into Secrets and ConfigMaps. '
-      digest: f2f939994a84ee922314b8202db68605a4d93ffefe6c364c6a58e1555063f6d1
+      digest: 6ebc0dc546e42914c0f7bf4b4103c22a75eb136fe981a3e546bea8b83ac83e53
       home: https://github.com/deliveryhero/field-exporter
       maintainers:
         - name: vzholudev
@@ -2279,9 +2279,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/gripmock
       apiVersion: v2
       appVersion: 1.10.1
-      created: "2026-01-12T08:13:26.293585629Z"
+      created: "2026-01-13T08:37:31.850142671Z"
       description: 'A chart to install [gripmock](https://github.com/tokopedia/gripmock). A mock server for GRPC services. It uses `.proto` file(s) to generate the implementation of gRPC service(s) for you.  > **Note:** > > The latest version (v1.10 - default) of gripmock is requiring `go_package` declaration in the `.proto` file. This is due to the latest update of `protoc` plugin that is used by gripmock is making the `go_package` declaration mandatory. > > Version v1.11.1-beta release is available by overriding the `image.tag` in your `values.yaml` file. This version supports **NO** declaration of `go_package`. '
-      digest: 24f81769377f5112088ba444e56ec107a0f2deb8030b0d79e691c7ab160fa251
+      digest: 5cc19103557ba3cbe1864b4121986a93ee482e47ea7f9c30154a8e8cf823c05a
       maintainers:
         - email: marcelo.aplanalp@deliveryhero.com
           name: MarceloAplanalp
@@ -2349,9 +2349,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/hoppscotch
       apiVersion: v2
       appVersion: 2024.8.2
-      created: "2026-01-12T08:13:26.293847377Z"
+      created: "2026-01-13T08:37:31.850375511Z"
       description: A free, fast and beautiful API request builder
-      digest: d158dff741c1aa59d90f6174f958b786ec4deedf21858a41ccc2a7880b8e3d33
+      digest: 43c2af614f2c1bda9f10782c7f480387222d21c0ac37b661869151fe351d57d5
       home: https://github.com/hoppscotch/hoppscotch
       maintainers:
         - name: javad-hajiani
@@ -2448,9 +2448,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-cloudwatch-adapter
       apiVersion: v2
       appVersion: 0.9.0
-      created: "2026-01-12T08:13:26.294173855Z"
+      created: "2026-01-13T08:37:31.850684037Z"
       description: 'An implementation of the Kubernetes Custom Metrics API and External Metrics API for AWS CloudWatch metrics. This adapter allows you to scale your Kubernetes deployment using the Horizontal Pod Autoscaler (HPA) with metrics from AWS CloudWatch. '
-      digest: cdd272704497e5aa9d4dd8a02198499e30e5441b1c64b65243d5f0c72d91517e
+      digest: d4e6dc1dc575e98213a86e97d8196e46f622c22f7cac3831e7f98a0071715c26
       home: https://github.com/awslabs/k8s-cloudwatch-adapter
       maintainers:
         - name: max-rocket-internet
@@ -2528,9 +2528,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-event-logger
       apiVersion: v2
       appVersion: "2.4"
-      created: "2026-01-12T08:13:26.294783612Z"
+      created: "2026-01-13T08:37:31.851298467Z"
       description: 'This chart runs a pod that simply watches Kubernetes Events and logs them to stdout in JSON to be collected and stored by your logging solution, e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).  https://github.com/max-rocket-internet/k8s-event-logger  Events in Kubernetes log very important information. If are trying to understand what happened in the past then these events show clearly what your Kubernetes cluster was thinking and doing. Some examples:  - Pod events like failed probes, crashes, scheduling related information like `TriggeredScaleUp` or `FailedScheduling` - HorizontalPodAutoscaler events like scaling up and down - Deployment events like scaling in and out of ReplicaSets - Ingress events like create and update  The problem is that these events are simply API objects in Kubernetes and are only stored for about 1 hour. Without some way of storing these events, debugging a problem in the past very tricky. '
-      digest: 456f667166ddc17ef16fea76cbd4da8895314defd76879dbe9a467812775ed0c
+      digest: ea187122d2b84828d3b8af2502163cd7a127eaba7b3f4ea94f28c4410f93303d
       home: https://github.com/max-rocket-internet/k8s-event-logger
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -2757,9 +2757,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/k8s-resources
       apiVersion: v2
       appVersion: 0.0.1
-      created: "2026-01-12T08:13:26.295655808Z"
+      created: "2026-01-13T08:37:31.851684604Z"
       description: 'Not an application but a Helm chart to create any and many resources in Kubernetes.  Currently supports:  - CronJob - ConfigMap - Custom resources from CustomResourceDefinition - HorizontalPodAutoscaler - Ingress - Namespace - Secret - Service - ServiceAccount - ScaledObject (KEDA) - ClusterRole - ClusterRoleBinding  Every resource type can have custom labels, annotations or a `fullnameOverride` set. See default [values.yaml](https://github.com/deliveryhero/helm-charts/blob/master/stable/k8s-resources/values.yaml) for examples. '
-      digest: e597d59d5195dbee5d4cd8094149237be0225ba8884c05ab7c77e84ee5f443fe
+      digest: 613a2cedb7e0adee0780e4e64cf5672dfd0ef86e487bdb400de580959162a1e5
       home: https://github.com/deliveryhero/helm-charts
       maintainers:
         - name: max-rocket-internet
@@ -3013,9 +3013,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/killgrave
       apiVersion: v2
       appVersion: 0.4.1
-      created: "2026-01-12T08:13:26.29621683Z"
+      created: "2026-01-13T08:37:31.852000479Z"
       description: 'A chart to install [killgrave](https://github.com/friendsofgo/killgrave), a simulator for HTTP-based APIs.  In its more basic setup, this chart requires a `configmap` including all _imposters_ (the definition of a request-response pair) '
-      digest: c649105e9f2209b68677686af6109ead49e8e497acd01dd1796b1ba893856801
+      digest: 14de8b44380d2e16aee404bd44055cc7829e9c0288bd414bc9be3e4e2677c9c5
       icon: https://avatars.githubusercontent.com/u/36798605?v=4&s=160
       maintainers:
         - email: marcelo.aplanalp@deliveryhero.com
@@ -3060,9 +3060,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/kube-bench
       apiVersion: v2
       appVersion: 0.8.0
-      created: "2026-01-12T08:13:26.296564468Z"
+      created: "2026-01-13T08:37:31.852282068Z"
       description: Helm chart to deploy run kube-bench as a cronjob on aks, gke or eks.
-      digest: 2cae2944e468b57186a7c93fa32245866f90b20da1c6dbb45efbe74daa616f79
+      digest: 3b90ed3248e1004cc97763ee5134f685157f85cb947b79e594cc22d30b60d016
       home: https://github.com/aquasecurity/kube-bench
       icon: https://raw.githubusercontent.com/aquasecurity/kube-bench/0d1bd2bbd95608957be024c12d03a0510325e5e2/docs/images/kube-bench.png
       maintainers:
@@ -3347,9 +3347,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/kube-downscaler
       apiVersion: v2
       appVersion: 23.2.0-6-gc9b88e8
-      created: "2026-01-12T08:13:26.297191467Z"
+      created: "2026-01-13T08:37:31.853543473Z"
       description: Scale down Kubernetes deployments after work hours
-      digest: 769703afb2dacb03bc9f8aa644a8ac40e296ea0eddcd8cb8557198e8e115e1f7
+      digest: 43073474b6151b2f4b12b84dfe09d5d4e7a6df64ee5fec163da6fb180c132e91
       home: https://codeberg.org/hjacobs/kube-downscaler
       keywords:
         - k8s pods scheduler
@@ -3749,9 +3749,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/kubecost-reports-exporter
       apiVersion: v2
       appVersion: 2.0.0
-      created: "2026-01-12T08:13:26.297521211Z"
+      created: "2026-01-13T08:37:31.853900635Z"
       description: 'Helm chart for exporting kubernetes cost reports to AWS s3 bucket. N/B We have updated chart to use V2 scripts using allocations and assets api. if you are using old installation please use v1 chart '
-      digest: e17cd5b17d071198d57bf8f61297d5292216d57f0106b12fb93c4d32b84d8856
+      digest: fe28bb4299cf3696e6ffdf0f89f6381111163fb7000eb858fd113abca5542907
       home: https://www.kubecost.com
       keywords:
         - kubecost
@@ -4077,9 +4077,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/labelsmanager-controller
       apiVersion: v2
       appVersion: 1.0.0
-      created: "2026-01-12T08:13:26.297854092Z"
+      created: "2026-01-13T08:37:31.854203993Z"
       description: 'This is a simple [Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/) that injects required default labels into pods on creation.  Here''s an example `Labels` resource:  ```yaml apiVersion: labels.deliveryhero.com/v1beta1 kind: Labels metadata: name: labels-sample spec: priority: 1 # labels with highest priority takes precendence labels:     country: DE     env: stg     region: eu  ``` '
-      digest: 2e7d559ca835119beee3fefc8c3d5ada2806bbb8c2d80f352a6ab06950873ba9
+      digest: c11ff41af386571fb28a1c5d98f41034f733d40eebd656094005d36ca5353825
       home: https://github.com/deliveryhero/labelsmanager-controller
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -4187,14 +4187,14 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/listmonk
       apiVersion: v2
       appVersion: v2.1.0
-      created: "2026-01-12T08:13:26.301380387Z"
+      created: "2026-01-13T08:37:31.857758615Z"
       dependencies:
         - condition: postgresql.enable
           name: postgresql
           repository: https://charts.bitnami.com/bitnami
           version: 11.6.26
       description: A Helm chart for listmonk application
-      digest: 958074ed4f0796857502dd1e1d56a95b9e95735650d74190d356a8cf87de65af
+      digest: ea8d110b3a649d8c276b486478ee25f079e40d00175ad4ffbc5cb25bc759400b
       home: https://github.com/knadh/listmonk
       maintainers:
         - name: javad-hajiani
@@ -4463,6 +4463,24 @@ entries:
         - oci://ghcr.io/deliveryhero/helm-charts/listmonk:0.1.0
       version: 0.1.0
   locust:
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/locust
+      apiVersion: v2
+      appVersion: 2.32.2
+      created: "2026-01-13T08:37:31.858627458Z"
+      description: 'A chart to install Locust, a scalable load testing tool written in Python.  This chart will setup everything required to run a full distributed locust environment with any amount of workers.  This chart will also create configmaps for storing the locust files in Kubernetes, this way there is no need to build custom docker images.  By default it will install using an example locustfile and lib from [stable/locust/locustfiles/example](https://github.com/deliveryhero/helm-charts/tree/master/stable/locust/locustfiles/example). When you want to provide your own locustfile, you will need to create 2 configmaps using the structure from that example:  ```console kubectl create configmap my-loadtest-locustfile --from-file path/to/your/main.py kubectl create configmap my-loadtest-lib --from-file path/to/your/lib/ ```  And then install the chart passing the names of those configmaps as values:  ```console helm install locust oci://ghcr.io/deliveryhero/helm-charts/locust \   --set loadtest.name=my-loadtest \   --set loadtest.locust_locustfile_configmap=my-loadtest-locustfile \   --set loadtest.locust_lib_configmap=my-loadtest-lib ``` '
+      digest: 9cef34c0f062b4d705342758a8ca0d32f53a29ae885b8e4ecc908ecf4d14e44b
+      home: https://github.com/locustio/locust
+      icon: https://locust.io/static/img/logo.png
+      maintainers:
+        - name: max-rocket-internet
+          url: https://github.com/max-rocket-internet
+      name: locust
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/locust:0.32.11
+      version: 0.32.11
     - annotations:
         artifacthub.io/links: |
           - name: Helm chart source
@@ -5406,9 +5424,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/metabase
       apiVersion: v2
       appVersion: v0.45.2
-      created: "2026-01-12T08:13:26.303341015Z"
+      created: "2026-01-13T08:37:31.859061547Z"
       description: The easy, open source way for everyone in your company to ask questions and learn from data.
-      digest: 360e8512c278fc0263486279d4b59fe3e018eb44efdfc1d69047dec5099f00cb
+      digest: de60a881eedd8d4f4ceefacbce39fa8bcc2f542f29fac75ef5faada3962f0e4d
       home: http://www.metabase.com/
       icon: http://www.metabase.com/images/logo.svg
       maintainers:
@@ -5555,9 +5573,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/mlflow
       apiVersion: v2
       appVersion: 1.9.1
-      created: "2026-01-12T08:13:26.303734409Z"
+      created: "2026-01-13T08:37:31.859392078Z"
       description: 'A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.  This Helm chart is using Postgresql as backend and S3 as artifact store. Contributions for other backends and artifacts store are welcome. '
-      digest: cad50e38771e8daecf519619f48d145a687ac1089b61b429ddaffb13b1c4308e
+      digest: 3fc7fe841fe9ce4d724914d826b0e2c51cb0c6361c3ac175aa514009cc764844
       home: https://www.mlflow.org/
       icon: https://www.mlflow.org/docs/latest/_static/MLflow-logo-final-black.png
       keywords:
@@ -5813,9 +5831,9 @@ entries:
         config.giantswarm.io/version: 1.x.x
       apiVersion: v1
       appVersion: 1.10.3
-      created: "2026-01-12T08:13:26.304034138Z"
+      created: "2026-01-13T08:37:31.860209094Z"
       description: Helm chart for net-exporter.
-      digest: e875e25dcefc1fb1eab1987edea11f41e1770e2ab20318aed450de2c06bd239d
+      digest: aa1118336e3ce14865be6da3062e8f146983854f1983c8e93e3429cd16427c04
       home: https://github.com/giantswarm/net-exporter
       maintainers:
         - name: pciang
@@ -5861,9 +5879,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/newrelic-controller
       apiVersion: v2
       appVersion: "0.8"
-      created: "2026-01-12T08:13:26.304313739Z"
+      created: "2026-01-13T08:37:31.860748571Z"
       description: A controller for managing New Relic settings
-      digest: b658413ccc1f64917998f4008d939e7778b8d1405e4626063540b13562e905c4
+      digest: 8ab528a94b88f4a16766c8ad8ffb6341b589af8d3d5e6b209cca8bc58553d68f
       home: https://github.com/max-rocket-internet/newrelic-controller
       maintainers:
         - name: max-rocket-internet
@@ -5911,9 +5929,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/node-local-dns
       apiVersion: v2
       appVersion: 1.26.4
-      created: "2026-01-12T08:13:26.304929236Z"
+      created: "2026-01-13T08:37:31.86135551Z"
       description: 'A chart to install node-local-dns.  NodeLocal DNSCache improves Cluster DNS performance by running a DNS caching agent on cluster nodes as a DaemonSet.  In today''s architecture, Pods in ''ClusterFirst'' DNS mode reach out to a kube-dns serviceIP for DNS queries. This is translated to a kube-dns/CoreDNS endpoint via iptables rules added by kube-proxy. With this new architecture, Pods will reach out to the DNS caching agent running on the same node, thereby avoiding iptables DNAT rules and connection tracking. The local caching agent will query kube-dns service for cache misses of cluster hostnames ("cluster.local" suffix by default).  Further documentation is [here](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/)  This helm chart works for both kube-proxy setups (iptables or ipvs). '
-      digest: 3c4ebe98909977ecdb0c5f02fffb64b3f40393dfb28efcefc29210b7bfff424e
+      digest: e803c88fc220a64c45a403fb3c5676926cbad4ae0c6b08cdbfec49cb100d7e6e
       icon: https://miro.medium.com/max/641/1*q3vcbyVXcvaRnFLEQEHrXw.png
       maintainers:
         - name: gabrieladt
@@ -6480,9 +6498,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/node-problem-detector
       apiVersion: v2
       appVersion: v1.35.1
-      created: "2026-01-12T08:13:26.305508767Z"
+      created: "2026-01-13T08:37:31.861965152Z"
       description: 'This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver. '
-      digest: 83921ae8cce4963af81c8af2e9853c0c21d583d4f6e203e9d50a126875add632
+      digest: c1de8df5d4704a51decca39d28a21b7ebf769ee54f7276ab32968029bcb3db08
       home: https://github.com/kubernetes/node-problem-detector
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -7639,9 +7657,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/pg-repack-scheduler
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.30595557Z"
+      created: "2026-01-13T08:37:31.86238577Z"
       description: 'For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:  ```console kubectl create job pg-repack --from=cronjob/pg-repack-scheduler ``` '
-      digest: 1d74b11206c97ef34fcbe81591ea472543fea763632b11fe13faa550c8c5f5c6
+      digest: 7dc6f158bc6403ba6b6ed84a67339f4844ab09dc99760028b806283c2436ec1b
       home: https://github.com/deliveryhero/helm-charts
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -7682,9 +7700,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/postgres-controller
       apiVersion: v2
       appVersion: "0.5"
-      created: "2026-01-12T08:13:26.306251672Z"
+      created: "2026-01-13T08:37:31.862712288Z"
       description: A controller for managing PostgreSQL databases, roles and more
-      digest: d8856e695e0c4fbe414018ccb5bb818014ac02f620a84e23a215836e01ce5b7d
+      digest: a53b126caa5e5a27270f08932ca5323644e59cde788d3315349f71746dbb0376
       home: https://github.com/max-rocket-internet/postgres-controller
       maintainers:
         - name: max-rocket-internet
@@ -7763,9 +7781,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/priority-class
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.306443129Z"
+      created: "2026-01-13T08:37:31.862888886Z"
       description: A very simple chart that creates priority classes
-      digest: d2d56922c16dfbcab843785545f4f9b0d731a1b67e4f69c9be543661cfc92b00
+      digest: 69fc24cecdcaba18b925036627d0f43653d5059386fc86f1a017e2a574bfcc82
       home: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
       maintainers:
         - name: max-rocket-internet
@@ -7811,9 +7829,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-aws-costs-exporter
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.306733992Z"
+      created: "2026-01-13T08:37:31.863140003Z"
       description: Exporter for AWS Cost Explorer daily costs
-      digest: 9a29aa5a6d7a9a4923ce9680cffa2cb1794032776a974374140e373d6c85e2ee
+      digest: f0895915e58899d3e98995f1db8053ee5cb5e9704520481293a7348ea4c49535
       home: https://github.com/nachomillangarcia/prometheus_aws_cost_exporter
       maintainers:
         - name: max-rocket-internet
@@ -7876,9 +7894,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-aws-health-exporter
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.307005458Z"
+      created: "2026-01-13T08:37:31.863394186Z"
       description: AWS Health API Exporter for Prometheus
-      digest: 72a4a39e9564333caec3441430e940fcd09982b2d5a33838851e24bab061b7a9
+      digest: f3d2456d5662ab55831b8b8e51508886b1137b73d899ab765b8ce4dd45f2fb6d
       home: https://github.com/Jimdo/aws-health-exporter
       maintainers:
         - name: max-rocket-internet
@@ -7960,9 +7978,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-aws-limits-exporter
       apiVersion: v2
       appVersion: 0.6.0
-      created: "2026-01-12T08:13:26.307324653Z"
+      created: "2026-01-13T08:37:31.863707825Z"
       description: 'This helmchart provides a Prometheus metrics endpoint that exposes AWS usage and limits as reported by the AWS Trusted Advisor API. '
-      digest: abbd0b03802a5aed21407ba2499ebc26837d8e21d7e903ae2487bf3e392b6083
+      digest: 4cd5233275e9514d9c4b5f08ae1292859ed05a46054d32a5a4e702b0e8a48e7e
       home: https://github.com/danielfm/aws-limits-exporter
       maintainers:
         - name: javad-hajiani
@@ -8093,9 +8111,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-cloudflare-exporter
       apiVersion: v2
       appVersion: 1.2.0
-      created: "2026-01-12T08:13:26.307615675Z"
+      created: "2026-01-13T08:37:31.863959021Z"
       description: Cloudflare metrics exporter
-      digest: 455d05aab8e12f94903a44ff490c716a099a94e8bef2a8bd4e702e87ff2defca
+      digest: 25250ed55bb44b6b8b726f383e000d748f290622751d0a1d1d8a032c29b1c9c3
       home: https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
       maintainers:
         - name: javad-hajiani
@@ -8159,9 +8177,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-k8s-events-exporter
       apiVersion: v2
       appVersion: v1.0.0
-      created: "2026-01-12T08:13:26.307927767Z"
+      created: "2026-01-13T08:37:31.86424018Z"
       description: Exporter for kubernetes events
-      digest: 47fa471edda3c0d075034a3139e8bf5d3cf5985647b75f94ae64c341bdb46434
+      digest: 248d7597a0d2be3fbc25b67320c60f7a1f4f84f24496a192637ce80827a584a1
       home: https://github.com/caicloud/event_exporter
       maintainers:
         - name: max-rocket-internet
@@ -8258,9 +8276,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-locust-exporter
       apiVersion: v2
       appVersion: v0.4.1
-      created: "2026-01-12T08:13:26.308246131Z"
+      created: "2026-01-13T08:37:31.864541052Z"
       description: A Helm chart a prometheus exporter locust load test metrics
-      digest: d7ddc2faf6717ac13f6285e10f3fe83f53686e1e6d7e8c25b362c1b5faec067b
+      digest: 419e0e7ba61a5b369394cf9d5936cf82aef40f381202d1d3ffbdcb70db0e300c
       home: https://github.com/ContainerSolutions/locust_exporter
       maintainers:
         - name: max-rocket-internet
@@ -8368,9 +8386,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-new-relic-app-exporter
       apiVersion: v2
       appVersion: 0.0.2
-      created: "2026-01-12T08:13:26.309048046Z"
+      created: "2026-01-13T08:37:31.864839175Z"
       description: A Helm chart a prometheus exporter for a single New Relic application
-      digest: 7352a242287c797ebd87fda25986d5fae9b487adb5fc5459e4662c2516d7f7d5
+      digest: e582195ff1863997410a5063943ac857836803598674278c7cacdb720d6efe7d
       home: https://github.com/previousnext/newrelic-exporter
       maintainers:
         - name: max-rocket-internet
@@ -8403,9 +8421,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-new-relic-exporter
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.309612875Z"
+      created: "2026-01-13T08:37:31.865082201Z"
       description: Prometheus exporter for New Relic data. Requires a New Relic account.
-      digest: 61202b4a87a61f92becd15a1318bd6bd6e091f7a3c7a3fcd66087e6364962c86
+      digest: 483ef441df06a529ba787951e09741603659dbfd17c6f8ff99e51be7308b06a3
       home: https://github.com/jfindley/newrelic_exporter
       maintainers:
         - name: max-rocket-internet
@@ -8453,9 +8471,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-sentry-exporter
       apiVersion: v2
       appVersion: 0.5.0
-      created: "2026-01-12T08:13:26.309892095Z"
+      created: "2026-01-13T08:37:31.865309314Z"
       description: Exports sentry project metrics for prometheus.
-      digest: c9188dda15cc672043c82882abebc5b6128cf142b73e56daa125a0443db34c9f
+      digest: 56db2a8357a3afd55c9ffa9a0168d8fb37903d6a82fafe1f4f1e68bce3f80edf
       home: https://github.com/ujamii/prometheus-sentry-exporter
       maintainers:
         - name: max-rocket-internet
@@ -8518,9 +8536,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-soti-mobicontrol-exporter
       apiVersion: v2
       appVersion: "0.6"
-      created: "2026-01-12T08:13:26.310462269Z"
+      created: "2026-01-13T08:37:31.866588186Z"
       description: A Helm chart a prometheus exporter for SOTI MobiControl metrics
-      digest: 090358320c2da684a7827752d1c3e5babcf3f4cdfd18a29fd0af4255ba11b4f5
+      digest: 045cd527db0db1457fd10470f4172dfb03da894ab159f7e4c7461260586a0a9d
       home: https://github.com/max-rocket-internet/soti-mobicontrol-exporter
       maintainers:
         - name: max-rocket-internet
@@ -8553,9 +8571,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-spot-termination-exporter
       apiVersion: v2
       appVersion: 0.0.1
-      created: "2026-01-12T08:13:26.310796782Z"
+      created: "2026-01-13T08:37:31.866999178Z"
       description: Spot instance termination exporter for Prometheus
-      digest: 951321009736db35f16a26776eb7e0d10d1dce8b7bf9bc7094b0335dd9965e35
+      digest: 00a3c03c235ced37917771a16cb4e853591fdafc3f88942ad87b164546c48190
       home: https://github.com/banzaicloud/spot-termination-exporter
       maintainers:
         - name: sietevecesmal
@@ -8705,9 +8723,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-statsd-exporter
       apiVersion: v2
       appVersion: v0.18.0
-      created: "2026-01-12T08:13:26.311085981Z"
+      created: "2026-01-13T08:37:31.867295826Z"
       description: StatsD to Prometheus metrics exporter
-      digest: c70d4127fb5cbd19f84a665f35046af10b0b8349a050f76bb7533c6a594b77b0
+      digest: 872150bab60884fbb835bdc4defce496fe746f5a22423a3cc5141355ce788ed5
       home: https://github.com/prometheus/statsd_exporter
       maintainers:
         - name: max-rocket-internet
@@ -8770,9 +8788,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/rds-downscaler
       apiVersion: v2
       appVersion: "1.0"
-      created: "2026-01-12T08:13:26.311388676Z"
+      created: "2026-01-13T08:37:31.867635053Z"
       description: 'A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.  It will filter RDS instances/clusters by tag key and value or a particular cluster specified with cluster identifier. '
-      digest: b2a1ede138c4ac47b57bc4f7df1aec52a6d9af25d8e1033ed446c958a12c5fe6
+      digest: 80bfa6851c04d80beb3c393bf44ccac48c1ed66b7d67744babf37381b3d73f71
       home: https://github.com/deliveryhero/helm-charts
       icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
       keywords:
@@ -8859,9 +8877,9 @@ entries:
           - name: Helm chart source
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/service-account
       apiVersion: v2
-      created: "2026-01-12T08:13:26.311585583Z"
+      created: "2026-01-13T08:37:31.86781905Z"
       description: 'Creates a ServiceAccount, ClusterRoleBinding and a ClusterRole with some provided rules.  This is useful when used with [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) '
-      digest: eff2c48a573eb2c9a6d4b6b74350985802e075f9e9ca9c4af9d918d014978c70
+      digest: c272d8ec57dcd5d9f7edf17f63d130c0501256f6247ad159718cd82e0e36a375
       home: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
       maintainers:
         - name: max-rocket-internet
@@ -8913,9 +8931,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/superset
       apiVersion: v2
       appVersion: latest
-      created: "2026-01-12T08:13:26.312204447Z"
+      created: "2026-01-13T08:37:31.868424539Z"
       description: A Helm chart for Apache Superset
-      digest: cae6fddb23d4cad193d5a7e53bbae343d396a52b801d708c913e68550dea685a
+      digest: 8661dda8b8f57a8e942653b7c0cdd416830163dbbf4f7f17de75525336f63b11
       home: https://superset.apache.org/
       keywords:
         - apache
@@ -9289,9 +9307,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/toxiproxy
       apiVersion: v2
       appVersion: 2.7.0
-      created: "2026-01-12T08:13:26.312697256Z"
+      created: "2026-01-13T08:37:31.868912878Z"
       description: 'A TCP proxy to simulate network and system conditions for chaos and resiliency testing.  By default the chart will install toxiproxy with blank configuration. You can add [toxics](https://github.com/Shopify/toxiproxy#toxics) to the running configuration using the [API](https://github.com/Shopify/toxiproxy#http-api).  For large configurations it is easier to store your toxics in a JSON file, in a `ConfigMap` and pass this to the chart to be used by toxiproxy:  ```console kubectl create configmap my-toxiproxy-config --from-file path/to/your/toxiproxy.json ```  And then install the chart passing the name of the `ConfigMap` as a value:  ```console helm install toxiproxy deliveryhero/toxiproxy --set toxiproxyConfig=my-toxiproxy-config ``` '
-      digest: 627662953dac053cb3bd4df88b55f80fe6ceca21e9fd1bb8ff13887f514c1eb8
+      digest: 17a4085f4d0b5341190c04e5b9caf41a3de9ebede36b1f8cc8fc9957a638f8bc
       home: https://github.com/Shopify/toxiproxy
       maintainers:
         - name: nreymundo
@@ -9499,7 +9517,7 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/weblate
       apiVersion: v2
       appVersion: 4.2-1
-      created: "2026-01-12T08:13:26.320754295Z"
+      created: "2026-01-13T08:37:31.876928699Z"
       dependencies:
         - condition: postgresql.enabled
           name: postgresql
@@ -9510,7 +9528,7 @@ entries:
           repository: https://charts.bitnami.com/bitnami
           version: 17.0.10
       description: Free web-based translation management system.
-      digest: a035e408617b9de3fd47fc4834d7bbfb4a4897794684f213eed0b584f303ee2d
+      digest: 93a54fa6da3d4ce16f05022eb185be80a466da8f2c69e4e874086147300b8f8e
       home: https://weblate.org
       maintainers:
         - name: sietevecesmal
@@ -9724,9 +9742,9 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/wiremock
       apiVersion: v2
       appVersion: 2.26.0
-      created: "2026-01-12T08:13:26.321373199Z"
+      created: "2026-01-13T08:37:31.8775248Z"
       description: 'A service virtualization tool (some call it mock server) for testing purposes.  This is a templated deployment of [WireMock](http://wiremock.org/) for mocking services during test scenario execution for load tests as well as for manual and automated QA purposes.  By default the chart will install WireMock with only a `/status` mapping for readiness probes.  One can utilize it''s HTTP API as well as the file configuration documented in the [Running as a Standalone Process](http://wiremock.org/docs/running-standalone/) described in the "Configuring via JSON over HTTP" and "JSON file configuration" chapters.  The JSON file configuration is the recommended setup and the [stub mappings](http://wiremock.org/docs/stubbing/) should be provided in `ConfigMap`s one per folder.  > :warning: both folders `mappings` and `__files` are optional but each folder requires it''s own `ConfigMap`. The `-mappings` and `-files` suffixes are obligate.  ```console kubectl create configmap my-service1-stubs-mappings --from-file=path/to/your/service1/mappings kubectl create configmap my-service1-stubs-files --from-file=path/to/your/service1/__files  kubectl create configmap my-service2-stubs-mappings --from-file=path/to/your/service2/mappings kubectl create configmap my-service2-stubs-files --from-file=path/to/your/service2/__files ```  Install the chart passing the `stubs` as a value omitting the suffixes as both `mappings` and `__files` folders are handled transparently during initialization depending on their existence.  ```console helm install my-wiremock deliveryhero/wiremock \   --set consumer=my-consumer   --set "consumer.stubs.my-service1-stubs=/mnt/my-service1-stubs" \   --set "consumer.stubs.my-service2-stubs=/mnt/my-service2-stubs" ```  WireMock''s [admin API](http://wiremock.org/docs/api/) is not publicly exposed, but can be accessed using port forwarding.  ```console kubectl port-forward my-wiremock-123456789a-bcdef 8080 ```  The HTTP API can then be accessed using `http://localhost:8080/__admin/docs/` where a swagger UI is availabe.  > :warning: this does not work out for multi instance setups as there is no synchronization of mappings created using the HTTP API between multiple instances.  In case JSON files need to be provided, which are too large for usual `ConfigMap`s, one can define a binary config map with a zip archive that contains the file in question.  ```console gzip large.json kubectl create configmap my-binary-stub --from-file=large.json.gz ```  The resulting archive can be best installed in the wiremock using a `values.yaml` file.  ```yaml consumer:   initContainer:   - name: unzip-large-file     image: busybox:latest     command: ["sh", "-c", "cp /archive/large.json.gz /working/mappings; gunzip /working/mappings/large.json.gz"]     volumeMounts:     - mountPath: /working       name: working     - mountPath: /archive       name: my-binary-stub   initVolume:   - name: my-binary-stub     configMap:       name: my-binary-stub ``` '
-      digest: 3dd66bced9e43e35c9bbb1a85248dac21fd343d530ec42c62621bc1b42b5f705
+      digest: 4056409ccc11141d85090b666c0d61168e0cb8a9b3fd6d4f01669607e8d93398
       home: http://wiremock.org/
       maintainers:
         - name: mshero
@@ -9924,4 +9942,4 @@ entries:
       urls:
         - oci://ghcr.io/deliveryhero/helm-charts/wiremock:1.1.0
       version: 1.1.0
-generated: "2026-01-12T08:13:26.282859303Z"
+generated: "2026-01-13T08:37:31.839631535Z"
