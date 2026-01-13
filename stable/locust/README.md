@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.10](https://img.shields.io/badge/Version-0.32.10-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.11](https://img.shields.io/badge/Version-0.32.11-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.10
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.11
 ```
 
 To install the chart with the release name `my-release`:
@@ -111,6 +111,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.extraVolumeMounts | list | `[]` |  |
 | master.extraVolumes | list | `[]` |  |
 | master.image | string | `""` | A custom docker image including tag |
+| master.initContainers | list | `[]` | Init containers to run before the master container starts Useful for cloning repos, preparing data, or setting up dependencies |
 | master.livenessProbe | object | `{}` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
@@ -156,6 +157,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.hpa.minReplicas | int | `1` |  |
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.image | string | `""` | A custom docker image including tag |
+| worker.initContainers | list | `[]` | Init containers to run before the worker container starts Useful for cloning repos, preparing data, or setting up dependencies |
 | worker.keda.cooldownPeriod | int | `30` |  |
 | worker.keda.enabled | bool | `false` |  |
 | worker.keda.pollingInterval | int | `15` |  |
