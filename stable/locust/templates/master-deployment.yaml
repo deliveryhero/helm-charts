@@ -44,6 +44,10 @@ spec:
 {{- if .Values.hostAliases }}
       hostAliases: {{- .Values.hostAliases | toYaml | nindent 8 }}
 {{- end }}
+{{- if .Values.master.initContainers }}
+      initContainers:
+{{- toYaml .Values.master.initContainers | nindent 6 }}
+{{- end }}
       containers:
       - name: {{ .Chart.Name }}
         securityContext:

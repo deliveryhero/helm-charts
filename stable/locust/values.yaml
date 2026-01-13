@@ -85,6 +85,23 @@ master:
   command:
     - sh
     - /config/docker-entrypoint.sh
+
+  # master.initContainers -- Init containers to run before the master container starts
+  # Useful for cloning repos, preparing data, or setting up dependencies
+  initContainers: []
+  # - name: git-clone
+  #   image: alpine/git:latest
+  #   command:
+  #     - sh
+  #     - -c
+  #   args:
+  #     - |
+  #       git clone --single-branch --branch main https://github.com/your-org/your-repo.git /src-temp &&
+  #       mv /src-temp/* /src/ || true
+  #   volumeMounts:
+  #     - name: src
+  #       mountPath: /src
+
   strategy:
     type: RollingUpdate
   # master.pdb.enabled -- Whether to create a PodDisruptionBudget for the master pod
@@ -221,6 +238,23 @@ worker:
   command:
     - sh
     - /config/docker-entrypoint.sh
+
+  # worker.initContainers -- Init containers to run before the worker container starts
+  # Useful for cloning repos, preparing data, or setting up dependencies
+  initContainers: []
+  # - name: git-clone
+  #   image: alpine/git:latest
+  #   command:
+  #     - sh
+  #     - -c
+  #   args:
+  #     - |
+  #       git clone --single-branch --branch main https://github.com/your-org/your-repo.git /src-temp &&
+  #       mv /src-temp/* /src/ || true
+  #   volumeMounts:
+  #     - name: src
+  #       mountPath: /src
+
   strategy:
     type: RollingUpdate
   # worker.restartPolicy -- worker pod's restartPolicy. Can be Always, OnFailure, or Never.
