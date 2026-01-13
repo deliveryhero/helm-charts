@@ -8,8 +8,8 @@ controllerManager:
         drop:
         - ALL
     image:
-      repository: europe-docker.pkg.dev/dp-common-infra-5780/developer-platform-public/deliveryhero/field-exporter
-      tag: v1.3.1
+      repository: ghcr.io/deliveryhero/field-exporter
+      tag: v1.3.4
     resources:
       limits:
         cpu: 500m
