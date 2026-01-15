@@ -153,6 +153,14 @@ resources:
   limits:
     memory: 128Mi
 
+# -- Resize policy for in-place pod vertical scaling.
+# [Container resize policies](https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/)
+resizePolicy: []
+  # - resourceName: cpu
+  #   restartPolicy: NotRequired
+  # - resourceName: memory
+  #   restartPolicy: RestartContainer
+
 affinity: {}
 
 imagePullSecrets: []
