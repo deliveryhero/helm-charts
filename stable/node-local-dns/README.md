@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.3.0](https://img.shields.io/badge/Version-2.3.0-informational?style=flat-square) ![AppVersion: 1.26.4](https://img.shields.io/badge/AppVersion-1.26.4-informational?style=flat-square)
+![Version: 2.4.0](https://img.shields.io/badge/Version-2.4.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.3.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.4.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -82,6 +82,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | prometheusScraping.enabled | bool | `true` |  |
+| resizePolicy | list | `[]` | Resize policy for in-place pod vertical scaling. [Container resize policies](https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/) |
 | resources.limits.memory | string | `"128Mi"` |  |
 | resources.requests.cpu | string | `"25m"` |  |
 | resources.requests.memory | string | `"128Mi"` |  |
