@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.23](https://img.shields.io/badge/Version-2.3.23-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
+![Version: 2.4.0](https://img.shields.io/badge/Version-2.4.0-informational?style=flat-square) ![AppVersion: v1.35.1](https://img.shields.io/badge/AppVersion-v1.35.1-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.23
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.4.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -62,7 +62,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | image.digest | string | `""` | the image digest. If given it takes precedence over a given tag. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"registry.k8s.io/node-problem-detector/node-problem-detector"` |  |
-| image.tag | string | `"v0.8.20"` |  |
+| image.tag | string | `"v1.35.1"` |  |
 | imagePullSecrets | list | `[]` |  |
 | labels | object | `{}` |  |
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
@@ -86,6 +86,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | rbac.clusterRole.extraRules | list | `[]` |  |
 | rbac.create | bool | `true` |  |
 | rbac.pspEnabled | bool | `false` |  |
+| resizePolicy | list | `[]` | Container resize policy for in-place vertical scaling See https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/ |
 | resources | object | `{}` |  |
 | securityContext.privileged | bool | `true` |  |
 | serviceAccount.annotations | object | `{}` |  |

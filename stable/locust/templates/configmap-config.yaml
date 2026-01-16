@@ -9,6 +9,13 @@ data:
     #!/bin/sh
 
     set -eu
+    
+    if [ -f "{{ .Values.loadtest.locust_requirementsfile_path }}/{{ .Values.loadtest.pip_requirementsfile }}" ]; then
+        echo "Installing pip packages from requirements file: {{ .Values.loadtest.locust_requirementsfile_path }}/{{ .Values.loadtest.pip_requirementsfile }}"
+        pip install --no-cache-dir -r "{{ .Values.loadtest.locust_requirementsfile_path }}/{{ .Values.loadtest.pip_requirementsfile }}"
+    else
+        echo "WARNING: Requirements file not found: {{ .Values.loadtest.locust_requirementsfile_path }}/{{ .Values.loadtest.pip_requirementsfile }}"
+    fi
 
     {{- if .Values.loadtest.pip_packages }}
     pip install {{ range .Values.loadtest.pip_packages }}{{ . }} {{ end }}

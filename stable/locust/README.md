@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.9](https://img.shields.io/badge/Version-0.32.9-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.32.12](https://img.shields.io/badge/Version-0.32.12-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.12
 ```
 
 To install the chart with the release name `my-release`:
@@ -90,9 +90,12 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | loadtest.locust_locustfile | string | `"main.py"` | the name of the locustfile |
 | loadtest.locust_locustfile_configmap | string | `"example-locustfile"` | name of a configmap containing your locustfile (default uses the example locustfile) |
 | loadtest.locust_locustfile_path | string | `"/mnt/locust"` | the path of the locustfile (without trailing backslash) |
+| loadtest.locust_requirementsfile_path | string | `"/packages"` | the path of the requirements file (without trailing backslash) |
 | loadtest.mount_external_secret | object | `{}` | additional mount used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `mountPath: yourMountLocation, files: { secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY] }` |
 | loadtest.name | string | `"example"` | a name used for resources and settings in this load test |
 | loadtest.pip_packages | list | `[]` | a list of extra python pip packages to install |
+| loadtest.pip_requirementsfile | string | `"requirements.txt"` |  |
+| loadtest.pip_requirementsfile_configmap | string | `""` | name of a configmap containing your extra python pip packages |
 | loadtest.tags | string | `""` | whether to run locust with `--tags [TAG [TAG ...]]` options, so only tasks with any matching tags will be executed |
 | master.affinity | object | `{}` | Overwrites affinity from global |
 | master.args | list | `[]` | Any extra command args for the master |
@@ -108,6 +111,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.extraVolumeMounts | list | `[]` |  |
 | master.extraVolumes | list | `[]` |  |
 | master.image | string | `""` | A custom docker image including tag |
+| master.initContainers | list | `[]` | Init containers to run before the master container starts Useful for cloning repos, preparing data, or setting up dependencies |
 | master.livenessProbe | object | `{}` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
@@ -153,6 +157,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | worker.hpa.minReplicas | int | `1` |  |
 | worker.hpa.targetCPUUtilizationPercentage | int | `40` |  |
 | worker.image | string | `""` | A custom docker image including tag |
+| worker.initContainers | list | `[]` | Init containers to run before the worker container starts Useful for cloning repos, preparing data, or setting up dependencies |
 | worker.keda.cooldownPeriod | int | `30` |  |
 | worker.keda.enabled | bool | `false` |  |
 | worker.keda.pollingInterval | int | `15` |  |
