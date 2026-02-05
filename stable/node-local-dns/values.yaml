@@ -54,8 +54,13 @@ config:
   # -- Overrides the generated configuration with specified one.
   customConfig: ""
 
-  # -- Port used for DNS traffic
-  port: 53
+  port:
+    # -- Port used for DNS traffic
+    number: 53
+    # -- Port name used for TCP DNS traffic
+    tcp: dns-tcp
+    # -- Port name used for UDP DNS traffic
+    udp: dns
 
 nameOverride: ""
 fullnameOverride: ""
