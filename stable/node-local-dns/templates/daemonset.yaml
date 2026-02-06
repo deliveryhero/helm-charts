@@ -87,11 +87,11 @@ spec:
           {{- toYaml .Values.securityContext | nindent 10 }}
         {{- end }}
         ports:
-        - containerPort: {{ .Values.config.port }}
-          name: dns
+        - containerPort: {{ .Values.config.port.number }}
+          name: {{ .Values.config.port.udp}}
           protocol: UDP
-        - containerPort: {{ .Values.config.port }}
-          name: dns-tcp
+        - containerPort: {{ .Values.config.port.number }}
+          name: {{ .Values.config.port.tcp}}
           protocol: TCP
         - containerPort: 9253
           name: metrics

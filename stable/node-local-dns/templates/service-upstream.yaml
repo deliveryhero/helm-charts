@@ -8,11 +8,11 @@ metadata:
     {{- include "node-local-dns.labels" . | nindent 4 }}
 spec:
   ports:
-  - name: dns
+  - name: {{ .Values.config.port.udp }}
     port: 53
     protocol: UDP
     targetPort: 53
-  - name: dns-tcp
+  - name: {{ .Values.config.port.tcp }}
     port: 53
     protocol: TCP
     targetPort: 53
