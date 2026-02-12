@@ -62,6 +62,9 @@ config:
     # -- Port name used for UDP DNS traffic
     udp: dns
 
+  # -- Overrides the upstream servers used for default server block
+  upstreamServers: "__PILLAR__UPSTREAM__SERVERS__"
+
 nameOverride: ""
 fullnameOverride: ""
 
