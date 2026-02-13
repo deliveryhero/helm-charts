@@ -118,7 +118,11 @@ data:
     {{- else }}
         bind 0.0.0.0
     {{- end }}
-        forward . {{ .Values.config.upstreamServers }}
+        forward . {{ .Values.config.upstreamServers }} {
+        {{- range .Values.config.upstreamForwardConfig }}
+          {{ . }}
+        {{- end }}
+        }
         prometheus :9253
     {{- if .Values.config.noIPv6Lookups }}
         template IN AAAA {

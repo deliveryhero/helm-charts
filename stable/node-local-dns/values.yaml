@@ -65,6 +65,9 @@ config:
   # -- Overrides the upstream servers used for default server block
   upstreamServers: "__PILLAR__UPSTREAM__SERVERS__"
 
+  # -- Allows for configuration of upstream server forwarding for the default server block
+  upstreamForwardConfig: {}
+
 nameOverride: ""
 fullnameOverride: ""
 

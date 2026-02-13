@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
+![Version: 2.7.0](https://img.shields.io/badge/Version-2.7.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.6.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.7.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -67,6 +67,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
 | config.skipTeardown | bool | `false` |  |
+| config.upstreamForwardConfig | object | `{}` | Allows for configuration of upstream server forwarding for the default server block |
 | config.upstreamServers | string | `"__PILLAR__UPSTREAM__SERVERS__"` | Overrides the upstream servers used for default server block |
 | config.upstreamServiceSelector | object | `{"k8s-app":"kube-dns"}` | Use a custom upstream service selector |
 | configMapAnnotations | object | `{}` |  |
