@@ -9,7 +9,7 @@ controllerManager:
         - ALL
     image:
       repository: ghcr.io/deliveryhero/field-exporter
-      tag: v1.3.4
+      tag: v1.4.0
     resources:
       limits:
         cpu: 500m
@@ -42,7 +42,7 @@ webhookTLS:
   cert:
   key:
 
-# keepTLSSecret specifies whether to reuse existing TLS secret for chart upgrade
+    # keepTLSSecret specifies whether to reuse existing TLS secret for chart upgrade
 keepTLSSecret: false
 
 # Enable cert-manager

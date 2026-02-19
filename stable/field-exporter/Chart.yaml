@@ -4,16 +4,16 @@ description: |
   A chart to install [field-exporter](https://github.com/deliveryhero/field-exporter). This controller is used to fill the gap in [k8s-config-connector](https://github.com/GoogleCloudPlatform/k8s-config-connector) for exporting value from Config Connector managed resources into Secrets and ConfigMaps.
 
 type: application
-version: 1.3.4
-appVersion: "v1.3.4"
+version: 1.4.0
+appVersion: "v1.4.0"
 home: https://github.com/deliveryhero/field-exporter
 sources:
-  - https://github.com/deliveryhero/field-exporter
+- https://github.com/deliveryhero/field-exporter
 maintainers:
-  - name: vzholudev
-    url: https://github.com/vzholudev
-  - name: mtahaahmed
-    url: https://github.com/mtahaahmed
+- name: vzholudev
+  url: https://github.com/vzholudev
+- name: mtahaahmed
+  url: https://github.com/mtahaahmed
 
 annotations:
   artifacthub.io/links: |

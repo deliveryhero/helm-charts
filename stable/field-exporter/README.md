@@ -1,6 +1,6 @@
 # field-exporter
 
-![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.4](https://img.shields.io/badge/AppVersion-v1.3.4-informational?style=flat-square)
+![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.4.0](https://img.shields.io/badge/AppVersion-v1.4.0-informational?style=flat-square)
 
 A chart to install [field-exporter](https://github.com/deliveryhero/field-exporter). This controller is used to fill the gap in [k8s-config-connector](https://github.com/GoogleCloudPlatform/k8s-config-connector) for exporting value from Config Connector managed resources into Secrets and ConfigMaps.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/field-export
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/field-exporter --version 1.3.4
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/field-exporter --version 1.4.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -51,7 +51,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/field-exporter -f
 | controllerManager.manager.containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
 | controllerManager.manager.containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | controllerManager.manager.image.repository | string | `"ghcr.io/deliveryhero/field-exporter"` |  |
-| controllerManager.manager.image.tag | string | `"v1.3.4"` |  |
+| controllerManager.manager.image.tag | string | `"v1.4.0"` |  |
 | controllerManager.manager.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.manager.resources.limits.memory | string | `"128Mi"` |  |
 | controllerManager.manager.resources.requests.cpu | string | `"10m"` |  |
