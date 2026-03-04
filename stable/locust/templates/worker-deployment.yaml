@@ -137,6 +137,13 @@ spec:
 {{- end }}
 {{- end }}
 {{- end }}
+{{- if .Values.loadtest.environment_load_from_secrets }}
+        envFrom:
+{{- range $name := .Values.loadtest.environment_load_from_secrets }}
+        - secretRef:
+            name: {{ $name }}
+{{- end }}
+{{- end }}
       restartPolicy: {{ .Values.worker.restartPolicy }}
       volumes:
         {{- if .Values.loadtest.locust_lib_configmap }}
