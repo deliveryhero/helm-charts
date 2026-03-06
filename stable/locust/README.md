@@ -1,6 +1,6 @@
 # locust
 
-![Version: 0.32.12](https://img.shields.io/badge/Version-0.32.12-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
+![Version: 0.33.0](https://img.shields.io/badge/Version-0.33.0-informational?style=flat-square) ![AppVersion: 2.32.2](https://img.shields.io/badge/AppVersion-2.32.2-informational?style=flat-square)
 
 A chart to install Locust, a scalable load testing tool written in Python.
 
@@ -37,7 +37,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.32.12
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/locust --version 0.33.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -81,6 +81,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | ingress.tls | list | `[]` |  |
 | loadtest.environment | object | `{}` | environment variables used in the load test for both master and workers |
 | loadtest.environment_external_secret | object | `{}` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. Each secret contains a list of values in it. Usage: `secret_name: [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY]` |
+| loadtest.environment_load_from_secrets | list | `[]` | environment variables used in the load test for both master and workers, stored in secrets created outside this chart. All variables from each secret are loaded. Usage: `[secret_name1, secret_name2]` |
 | loadtest.environment_secret | object | `{}` | environment variables used in the load test for both master and workers, stored as secrets |
 | loadtest.excludeTags | string | `""` | whether to run locust with `--exclude-tags [TAG [TAG ...]]` options, so only tasks with no matching tags will be executed |
 | loadtest.headless | bool | `false` | whether to run locust with headless settings |
