@@ -113,7 +113,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/locust -f values.
 | master.extraVolumes | list | `[]` |  |
 | master.image | string | `""` | A custom docker image including tag |
 | master.initContainers | list | `[]` | Init containers to run before the master container starts Useful for cloning repos, preparing data, or setting up dependencies |
-| master.lifecycle | object | `{}` | Automated to execute a command before the main container process receives the SIGTERM  |
+| master.lifecycle | object | `{}` | Automated to execute a command before the main container process receives the SIGTERM |
 | master.livenessProbe | object | `{}` |  |
 | master.logLevel | string | `"INFO"` | Log level. Can be INFO or DEBUG |
 | master.nodeSelector | object | `{}` | Overwrites nodeSelector from global |
