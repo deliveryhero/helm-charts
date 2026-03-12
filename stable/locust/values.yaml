@@ -70,12 +70,12 @@ master:
   revisionHistoryLimit: 10
   # master.terminationGracePeriodSeconds -- Give your pod more time to shut down by increasing its terminationGracePeriodSeconds
   terminationGracePeriodSeconds: 30
-  # master.lifecycle -- Automated to execute a command before the main container process receives the SIGTERM 
+  # master.lifecycle -- Automated to execute a command before the main container process receives the SIGTERM
   lifecycle: {}
   #   preStop:
   #     exec:
   #       command: ["/bin/sh", "-c", "sleep 60"] # Wait for 60 seconds
-  
+
   # master.resources -- resources for the locust master
   resources: {}
     # limits:
