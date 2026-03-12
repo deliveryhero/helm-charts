@@ -71,7 +71,7 @@ spec:
       securityContext:
         runAsNonRoot: true
       serviceAccountName: {{ include "field-exporter.fullname" . }}-controller-manager
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 30
       volumes:
       - name: cert
         secret:
