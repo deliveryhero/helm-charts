@@ -41,6 +41,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       serviceAccountName: {{ template "locust.fullname" . }}-master
+      terminationGracePeriodSeconds: {{ .Values.master.terminationGracePeriodSeconds }}
 {{- if .Values.hostAliases }}
       hostAliases: {{- .Values.hostAliases | toYaml | nindent 8 }}
 {{- end }}
@@ -177,6 +178,10 @@ spec:
         {{- if .Values.master.startupProbe }}
         startupProbe:
           {{- toYaml .Values.master.startupProbe | nindent 12 }}
+        {{- end }}
+        {{- if .Values.master.lifecycle }}
+        lifecycle:
+          {{- toYaml .Values.master.lifecycle | nindent 12 }}
         {{- end }}
       restartPolicy: {{ .Values.master.restartPolicy }}
       volumes:
