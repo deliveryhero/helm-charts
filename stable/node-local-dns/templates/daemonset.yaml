@@ -98,10 +98,25 @@ spec:
           protocol: TCP
         livenessProbe:
           httpGet:
-            path: /health
-            port: {{ .Values.config.healthPort }}
-          initialDelaySeconds: 60
-          timeoutSeconds: 5
+            path: {{ .Values.livenessProbe.httpGet.path | quote }}
+            port: {{ default .Values.config.healthPort .Values.livenessProbe.httpGet.port }}
+            {{- with .Values.livenessProbe.httpGet.host }}
+            host: {{ . | quote }}
+            {{- end }}
+            {{- with .Values.livenessProbe.httpGet.scheme }}
+            scheme: {{ . }}
+            {{- end }}
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          {{- with .Values.livenessProbe.periodSeconds }}
+          periodSeconds: {{ . }}
+          {{- end }}
+          {{- with .Values.livenessProbe.successThreshold }}
+          successThreshold: {{ . }}
+          {{- end }}
+          {{- with .Values.livenessProbe.failureThreshold }}
+          failureThreshold: {{ . }}
+          {{- end }}
         volumeMounts:
         - mountPath: /run/xtables.lock
           name: xtables-lock
