@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/name: {{ include "k8s-event-logger.name" . }}
     {{- include "k8s-event-logger.labels" . | nindent 4 }}
 rules:
-- apiGroups: [""]
+- apiGroups: ["", "events.k8s.io"]
   resources: ["events"]
   verbs: ["get", "list", "watch"]
