@@ -1,5 +1,6 @@
 # containerSecurityContext -- Container security context object
 containerSecurityContext:
+  # containerSecurityContext.allowPrivilegeEscalation -- prevents the process from gaining additional privileges at runtime
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
   runAsNonRoot: true
