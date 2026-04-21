@@ -48,6 +48,24 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovi
 * <https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler>
 * <https://github.com/kubernetes/kubernetes/tree/master/build/pause>
 
+## Security
+
+The chart ships with hardened security defaults for both the pod and container level, following least-privilege principles.
+
+**Container security context** (`containerSecurityContext`):
+
+- `allowPrivilegeEscalation: false` — prevents the process from gaining additional privileges at runtime
+- `readOnlyRootFilesystem: true` — the container filesystem is mounted read-only
+- `runAsNonRoot: true` / `runAsUser: 65534` — container runs as the unprivileged `nobody` user
+- `capabilities.drop: [ALL]` — all Linux capabilities are dropped
+- `seccompProfile.type: RuntimeDefault` — syscall filtering via the container runtime's default seccomp profile
+
+**Pod security context** (`podSecurityContext`):
+
+- `runAsNonRoot: true` / `runAsUser: 65534` — enforced at pod level as an additional guard
+- `fsGroup: 65534` — volume ownership is set to `nobody`
+- `seccompProfile.type: RuntimeDefault` — seccomp applied at the pod level
+
 ## Values
 
 | Key | Type | Default | Description |

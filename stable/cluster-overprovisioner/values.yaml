@@ -1,11 +1,24 @@
 # containerSecurityContext -- Container security context object
-containerSecurityContext: {}
-# allowPrivilegeEscalation: false
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65534
+  runAsGroup: 65534
+  capabilities:
+    drop:
+      - ALL
+  seccompProfile:
+    type: RuntimeDefault
 
 # podSecurityContext -- Pod security context object
 podSecurityContext:
-  {}
-  # fsGroup: 2000
+  runAsNonRoot: true
+  runAsUser: 65534
+  runAsGroup: 65534
+  fsGroup: 65534
+  seccompProfile:
+    type: RuntimeDefault
 
 priorityClassOverprovision:
   # priorityClassOverprovision.name -- Name of the overprovision priorityClass
@@ -107,5 +120,6 @@ serviceAccount:
   name:
   # serviceAccount.annotations -- Additional Service Account annotations
   annotations: {}
-  # serviceAccount.automountServiceAccountToken -- Automount API credentials for a Service Account
-  automountServiceAccountToken: true
+  # serviceAccount.automountServiceAccountToken -- Automount API credentials for a Service Account.
+  # Disabled by default: pause pods make no Kubernetes API calls, so mounting a token is unnecessary and increases attack surface.
+  automountServiceAccountToken: false
