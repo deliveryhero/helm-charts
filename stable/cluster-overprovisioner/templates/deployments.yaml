@@ -57,14 +57,17 @@ spec:
     spec:
       serviceAccountName: {{ $serviceAccountName }}
       priorityClassName: {{ $priorityClassName }}
+      {{- with $podSecurityContext }}
       securityContext:
-        {{- toYaml $podSecurityContext | nindent 8 }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ $chartName }}
           image: "{{ $repository }}:{{ $imageTag }}"
           imagePullPolicy: {{ $pullPolicy }}
-          {{- if $containerSecurityContext }}
-          securityContext: {{ toYaml $containerSecurityContext | nindent 12 }}
+          {{- with $containerSecurityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           resources:
             {{- toYaml .resources | nindent 12 }}
