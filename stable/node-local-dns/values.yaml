@@ -68,6 +68,26 @@ config:
   # -- Allows for configuration of upstream server forwarding for the default server block
   upstreamForwardConfig: {}
 
+# -- Liveness probe configuration for the node-cache container.
+livenessProbe:
+  httpGet:
+    # -- Host used for the liveness probe HTTP request. Leave empty to use the pod IP.
+    host: ""
+    # -- Path used for the liveness probe HTTP request.
+    path: /health
+    # -- Port used for the liveness probe HTTP request. Defaults to config.healthPort when unset.
+    port:
+    # -- Scheme used for the liveness probe HTTP request.
+    scheme: HTTP
+  initialDelaySeconds: 60
+  timeoutSeconds: 5
+  # -- How often in seconds to perform the probe.
+  periodSeconds:
+  # -- Minimum consecutive successes for the probe to be considered successful after having failed.
+  successThreshold:
+  # -- When a probe fails, Kubernetes will try failureThreshold times before giving up.
+  failureThreshold:
+
 nameOverride: ""
 fullnameOverride: ""
 

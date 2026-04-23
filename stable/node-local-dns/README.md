@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.7.0](https://img.shields.io/badge/Version-2.7.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
+![Version: 2.7.1](https://img.shields.io/badge/Version-2.7.1-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.7.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.7.1
 ```
 
 To install the chart with the release name `my-release`:
@@ -82,6 +82,16 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | initContainers | list | `[]` |  |
+| livenessProbe | object | `{"failureThreshold":null,"httpGet":{"host":"","path":"/health","port":null,"scheme":"HTTP"},"initialDelaySeconds":60,"periodSeconds":null,"successThreshold":null,"timeoutSeconds":5}` | Liveness probe configuration for the node-cache container. |
+| livenessProbe.failureThreshold | string | `nil` | When a probe fails, Kubernetes will try failureThreshold times before giving up. |
+| livenessProbe.httpGet.host | string | `""` | Host used for the liveness probe HTTP request. Leave empty to use the pod IP. |
+| livenessProbe.httpGet.path | string | `"/health"` | Path used for the liveness probe HTTP request. |
+| livenessProbe.httpGet.port | string | `nil` | Port used for the liveness probe HTTP request. Defaults to config.healthPort when unset. |
+| livenessProbe.httpGet.scheme | string | `"HTTP"` | Scheme used for the liveness probe HTTP request. |
+| livenessProbe.initialDelaySeconds | int | `60` |  |
+| livenessProbe.periodSeconds | string | `nil` | How often in seconds to perform the probe. |
+| livenessProbe.successThreshold | string | `nil` | Minimum consecutive successes for the probe to be considered successful after having failed. |
+| livenessProbe.timeoutSeconds | int | `5` |  |
 | nameOverride | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
