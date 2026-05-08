@@ -1,6 +1,6 @@
 # cluster-overprovisioner
 
-![Version: 0.7.14](https://img.shields.io/badge/Version-0.7.14-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
+![Version: 0.7.15](https://img.shields.io/badge/Version-0.7.15-informational?style=flat-square) ![AppVersion: 3.9](https://img.shields.io/badge/AppVersion-3.9-informational?style=flat-square)
 
 This chart provide a buffer for cluster autoscaling to allow overprovisioning of cluster nodes. This is desired when you have work loads that need to scale up quickly without waiting for the new cluster nodes to be created and join the cluster.
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-over
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.14
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/cluster-overprovisioner --version 0.7.15
 ```
 
 To install the chart with the release name `my-release`:
@@ -70,7 +70,8 @@ The chart ships with hardened security defaults for both the pod and container l
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| containerSecurityContext | object | `{}` | Container security context object |
+| containerSecurityContext | object | `{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsGroup":65534,"runAsNonRoot":true,"runAsUser":65534,"seccompProfile":{"type":"RuntimeDefault"}}` | Container security context object |
+| containerSecurityContext.allowPrivilegeEscalation | bool | `false` | prevents the process from gaining additional privileges at runtime |
 | deployments | list | [] | Define optional additional deployments - A default deployment is included by default |
 | deployments[0].affinity | object | `{}` | Default Deployment - Map of node/pod affinities |
 | deployments[0].annotations | object | `{}` | Default Deployment - Annotations to add to the deployment |
@@ -95,14 +96,14 @@ The chart ships with hardened security defaults for both the pod and container l
 | image.repository | string | `"registry.k8s.io/pause"` | Image repository |
 | image.tag | string | `.Chart.AppVersion` | Image tag |
 | nameOverride | string | `""` | Override the name of the chart |
-| podSecurityContext | object | `{}` | Pod security context object |
+| podSecurityContext | object | `{"fsGroup":65534,"runAsGroup":65534,"runAsNonRoot":true,"runAsUser":65534,"seccompProfile":{"type":"RuntimeDefault"}}` | Pod security context object |
 | priorityClassDefault.enabled | bool | `true` | If true, enable default priorityClass |
 | priorityClassDefault.name | string | `"default"` | Name of the default priorityClass |
 | priorityClassDefault.value | int | `0` | Priority value of the default priorityClass |
 | priorityClassOverprovision.name | string | `"overprovisioning"` | Name of the overprovision priorityClass |
 | priorityClassOverprovision.value | int | `-1` | Priority value of the overprovision priorityClass |
 | serviceAccount.annotations | object | `{}` | Additional Service Account annotations |
-| serviceAccount.automountServiceAccountToken | bool | `true` | Automount API credentials for a Service Account |
+| serviceAccount.automountServiceAccountToken | bool | `false` | Automount API credentials for a Service Account. Disabled by default: pause pods make no Kubernetes API calls, so mounting a token is unnecessary and increases attack surface. |
 | serviceAccount.create | bool | `true` | Determine whether a Service Account should be created or it should reuse an exiting one |
 | serviceAccount.name | string | `nil` | The name of the ServiceAccount to use. If not set and create is `true`, a name is generated using the fullname template |
 | terminationGracePeriodSeconds | int | `0` | Time for graceful pod termination |
