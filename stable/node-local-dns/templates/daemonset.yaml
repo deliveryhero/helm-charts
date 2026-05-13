@@ -102,6 +102,10 @@ spec:
             port: {{ .Values.config.healthPort }}
           initialDelaySeconds: 60
           timeoutSeconds: 5
+        {{- with .Values.lifecycle }}
+        lifecycle:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         volumeMounts:
         - mountPath: /run/xtables.lock
           name: xtables-lock

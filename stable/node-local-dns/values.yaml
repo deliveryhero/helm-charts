@@ -164,6 +164,12 @@ resources:
   limits:
     memory: 128Mi
 
+# -- Container lifecycle hooks for the node-cache pod.
+lifecycle: {}
+  # preStop:
+  #   exec:
+  #     command: ["/bin/sh", "-c", "sleep 30"]
+
 # -- Resize policy for in-place pod vertical scaling.
 # [Container resize policies](https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/)
 resizePolicy: []

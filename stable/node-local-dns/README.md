@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.7.0](https://img.shields.io/badge/Version-2.7.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
+![Version: 2.8.0](https://img.shields.io/badge/Version-2.8.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.7.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.8.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -82,6 +82,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | initContainers | list | `[]` |  |
+| lifecycle | object | `{}` | Container lifecycle hooks for the node-cache pod. |
 | nameOverride | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
