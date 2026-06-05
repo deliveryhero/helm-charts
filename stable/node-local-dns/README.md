@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.8.0
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.0
 ```
 
 To install the chart with the release name `my-release`:
