@@ -32,6 +32,9 @@ config:
   # -- If true, return NOERROR when attempting to resolve an IPv6 address
   noIPv6Lookups: false
 
+  # -- Cache TTL in seconds for DNS records. https://coredns.io/plugins/cache/
+  cacheTTL: 30
+
   # -- If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/
   prefetch:
     enabled: false

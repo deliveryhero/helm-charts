@@ -50,11 +50,11 @@ data:
     in-addr.arpa:53 {
         errors
     {{- if .Values.config.prefetch.enabled}}
-        cache 30 {
+        cache {{ .Values.config.cacheTTL }} {
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
         }
     {{- else }}
-        cache 30
+        cache {{ .Values.config.cacheTTL }}
     {{- end }}
         reload
         loop
@@ -76,11 +76,11 @@ data:
     ip6.arpa:53 {
         errors
     {{- if .Values.config.prefetch.enabled}}
-        cache 30 {
+        cache {{ .Values.config.cacheTTL }} {
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
         }
     {{- else }}
-        cache 30
+        cache {{ .Values.config.cacheTTL }}
     {{- end }}
         reload
         loop
@@ -105,11 +105,11 @@ data:
     {{- end }}
         errors
     {{- if .Values.config.prefetch.enabled}}
-        cache 30 {
+        cache {{ .Values.config.cacheTTL }} {
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
         }
     {{- else }}
-        cache 30
+        cache {{ .Values.config.cacheTTL }}
     {{- end }}
         reload
         loop
