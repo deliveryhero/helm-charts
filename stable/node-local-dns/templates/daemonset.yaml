@@ -82,9 +82,9 @@ spec:
           - "-skipteardown={{ .Values.config.skipTeardown }}"
           - "-setupinterface={{ .Values.config.setupInterface }}"
           - "-setupiptables={{ .Values.config.setupIptables }}"
-        {{- if .Values.config.setupIptables }}
+        {{- with .Values.securityContext }}
         securityContext:
-          {{- toYaml .Values.securityContext | nindent 10 }}
+          {{- toYaml . | nindent 10 }}
         {{- end }}
         ports:
         - containerPort: {{ .Values.config.port.number }}
