@@ -1,0 +1,62 @@
+{{- if .Values.hooks.preDelete.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "node-local-dns.fullname" . }}-cleanup
+  namespace: kube-system
+  labels:
+    {{- include "node-local-dns.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: {{ .Values.hooks.preDelete.backoffLimit }}
+  activeDeadlineSeconds: {{ .Values.hooks.preDelete.activeDeadlineSeconds }}
+  template:
+    metadata:
+      labels:
+        {{- include "node-local-dns.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: cleanup
+    spec:
+      serviceAccountName: {{ include "node-local-dns.fullname" . }}-cleanup
+      restartPolicy: Never
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: cleanup
+          image: "{{ .Values.hooks.preDelete.image.repository }}:{{ .Values.hooks.preDelete.image.tag }}"
+          imagePullPolicy: {{ .Values.hooks.preDelete.image.pullPolicy }}
+          {{- with .Values.hooks.preDelete.resources }}
+          resources: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -eu
+
+              DS="{{ include "node-local-dns.fullname" . }}"
+              NS="kube-system"
+              # Match DaemonSet pods only; exclude this Job's own pod.
+              SELECTOR="app.kubernetes.io/name={{ include "node-local-dns.name" . }},app.kubernetes.io/instance={{ .Release.Name }},app.kubernetes.io/component!=cleanup"
+
+              echo "[cleanup] looking for daemonset ${DS} in ${NS}"
+              if ! kubectl -n "${NS}" get daemonset "${DS}" >/dev/null 2>&1; then
+                echo "[cleanup] daemonset ${DS} not found, nothing to do"
+                exit 0
+              fi
+
+              echo "[cleanup] gracefully deleting daemonset ${DS} (no --force, teardown must run)"
+              kubectl -n "${NS}" delete daemonset "${DS}" --wait=false
+
+              echo "[cleanup] waiting for pods (${SELECTOR}) to terminate"
+              kubectl -n "${NS}" wait --for=delete pod -l "${SELECTOR}" --timeout=-1s
+
+              echo "[cleanup] all node-local-dns pods terminated; safe for Helm to remove dependent resources"
+{{- end }}

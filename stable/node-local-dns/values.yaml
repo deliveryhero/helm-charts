@@ -74,6 +74,29 @@ config:
 nameOverride: ""
 fullnameOverride: ""
 
+# Lifecycle hooks for the chart
+hooks:
+  # -- Gracefully delete the DaemonSet and wait for its pods to terminate before Helm removes its dependencies on uninstall
+  # @default -- See below
+  preDelete:
+    # -- Enable the pre-delete hook
+    enabled: false
+    image:
+      repository: alpine/k8s
+      # -- Pin to a version compatible with your cluster
+      tag: "1.34.9"
+      pullPolicy: IfNotPresent
+    # -- Job deadline in seconds
+    activeDeadlineSeconds: 180
+    # -- Number of retries before the hook Job is marked failed
+    backoffLimit: 1
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        memory: 64Mi
+
 serviceAccount:
   # -- Specifies whether a service account should be created.
   create: true

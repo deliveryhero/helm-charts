@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.9.1](https://img.shields.io/badge/Version-2.9.1-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
+![Version: 2.10.0](https://img.shields.io/badge/Version-2.10.0-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.10.0
 ```
 
 To install the chart with the release name `my-release`:
@@ -79,6 +79,11 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | dashboard.label | string | `"grafana_dashboard"` | label that grafana sidecar is configured to look for |
 | dashboard.namespace | string | `"kube-system"` | namespace where grafana sidecar is configured to look for dashboards. e.g. "monitoring" |
 | fullnameOverride | string | `""` |  |
+| hooks.preDelete | object | See below | Gracefully delete the DaemonSet and wait for its pods to terminate before Helm removes its dependencies on uninstall |
+| hooks.preDelete.activeDeadlineSeconds | int | `180` | Job deadline in seconds |
+| hooks.preDelete.backoffLimit | int | `1` | Number of retries before the hook Job is marked failed |
+| hooks.preDelete.enabled | bool | `false` | Enable the pre-delete hook |
+| hooks.preDelete.image.tag | string | `"1.34.9"` | Pin to a version compatible with your cluster |
 | image.repository | string | `"registry.k8s.io/dns/k8s-dns-node-cache"` |  |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
