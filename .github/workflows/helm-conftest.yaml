@@ -8,7 +8,7 @@ jobs:
       image: alpine/helm:latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v7.0.0
 
       - name: Install Dependencies
         run: apk add --no-cache curl tar yq
