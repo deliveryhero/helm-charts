@@ -5,7 +5,7 @@ jobs:
     name: Check all docs
     runs-on: ubuntu-latest
     container:
-      image: jnorwood/helm-docs:v1.11.0
+      image: jnorwood/helm-docs:v1.14.2
     steps:
     - name: Checkout
       uses: actions/checkout@v7.0.0
