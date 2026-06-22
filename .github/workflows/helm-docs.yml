@@ -7,7 +7,7 @@ jobs:
     container:
       image: jnorwood/helm-docs:v1.11.0
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4.1.7
+    - name: Checkout
+      uses: actions/checkout@v7.0.0
     - name: Check all charts README.md
       run: sh ci/helm-docs.sh
