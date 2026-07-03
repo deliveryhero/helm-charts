@@ -45,7 +45,7 @@ config:
   # -- If enabled, coredns will serve stale cache entries while fetching fresh ones in the background. https://coredns.io/plugins/cache/
   serveStale:
     enabled: false
-    duration: ""
+    duration: "1h"
     mode: verify
 
   # -- Port used for the health endpoint

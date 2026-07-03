@@ -65,6 +65,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | config.port.tcp | string | `"dns-tcp"` | Port name used for TCP DNS traffic |
 | config.port.udp | string | `"dns"` | Port name used for UDP DNS traffic |
 | config.prefetch | object | `{"amount":3,"duration":"30s","enabled":false,"percentage":"20%"}` | If enabled, coredns will prefetch popular items when they are about to be expunged from the cache. https://coredns.io/plugins/cache/ |
+| config.serveStale | object | `{"duration":"1h","enabled":false,"mode":"verify"}` | If enabled, coredns will serve stale cache entries while fetching fresh ones in the background. https://coredns.io/plugins/cache/ |
 | config.setupInterface | bool | `true` |  |
 | config.setupIptables | bool | `true` |  |
 | config.skipTeardown | bool | `false` |  |
