@@ -28,6 +28,9 @@ data:
             {{- if .Values.config.prefetch.enabled}}
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
             {{- end }}
+            {{- if .Values.config.serveStale.enabled}}
+                serve_stale {{ if .Values.config.serveStale.duration }}{{ .Values.config.serveStale.duration }} {{ end }}{{ .Values.config.serveStale.mode }}
+            {{- end }}
         }
         reload
         loop
@@ -49,9 +52,14 @@ data:
         }
     in-addr.arpa:53 {
         errors
-    {{- if .Values.config.prefetch.enabled}}
+    {{- if or .Values.config.prefetch.enabled .Values.config.serveStale.enabled}}
         cache {{ .Values.config.cacheTTL }} {
+            {{- if .Values.config.prefetch.enabled}}
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
+            {{- end }}
+            {{- if .Values.config.serveStale.enabled}}
+                serve_stale {{ if .Values.config.serveStale.duration }}{{ .Values.config.serveStale.duration }} {{ end }}{{ .Values.config.serveStale.mode }}
+            {{- end }}
         }
     {{- else }}
         cache {{ .Values.config.cacheTTL }}
@@ -75,9 +83,14 @@ data:
         }
     ip6.arpa:53 {
         errors
-    {{- if .Values.config.prefetch.enabled}}
+    {{- if or .Values.config.prefetch.enabled .Values.config.serveStale.enabled}}
         cache {{ .Values.config.cacheTTL }} {
+            {{- if .Values.config.prefetch.enabled}}
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
+            {{- end }}
+            {{- if .Values.config.serveStale.enabled}}
+                serve_stale {{ if .Values.config.serveStale.duration }}{{ .Values.config.serveStale.duration }} {{ end }}{{ .Values.config.serveStale.mode }}
+            {{- end }}
         }
     {{- else }}
         cache {{ .Values.config.cacheTTL }}
@@ -104,9 +117,14 @@ data:
         log
     {{- end }}
         errors
-    {{- if .Values.config.prefetch.enabled}}
+    {{- if or .Values.config.prefetch.enabled .Values.config.serveStale.enabled}}
         cache {{ .Values.config.cacheTTL }} {
+            {{- if .Values.config.prefetch.enabled}}
                 prefetch {{ .Values.config.prefetch.amount }} {{ .Values.config.prefetch.duration }} {{ .Values.config.prefetch.percentage }}
+            {{- end }}
+            {{- if .Values.config.serveStale.enabled}}
+                serve_stale {{ if .Values.config.serveStale.duration }}{{ .Values.config.serveStale.duration }} {{ end }}{{ .Values.config.serveStale.mode }}
+            {{- end }}
         }
     {{- else }}
         cache {{ .Values.config.cacheTTL }}

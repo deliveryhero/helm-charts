@@ -42,6 +42,12 @@ config:
     duration: 30s
     percentage: 20%
 
+  # -- If enabled, coredns will serve stale cache entries while fetching fresh ones in the background. https://coredns.io/plugins/cache/
+  serveStale:
+    enabled: false
+    duration: "1h"
+    mode: verify
+
   # -- Port used for the health endpoint
   healthPort: 8080
 
