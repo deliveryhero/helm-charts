@@ -7,6 +7,7 @@ metadata:
 spec:
   schedule: {{ quote .Values.cronjob.schedule }}
   concurrencyPolicy: "{{ .Values.concurrencyPolicy }}"
+  startingDeadlineSeconds: {{ .Values.cronjob.startingDeadlineSeconds }}
   jobTemplate:
     spec:
       backoffLimit: 0
@@ -18,7 +19,7 @@ spec:
         {{- end }}
         spec:
           {{- if .Values.serviceAccount.create }}
-          serviceAccountName: kube-bench
+          serviceAccountName: {{ template "kube-bench.fullname" . }}
           {{- end }}
           hostPID: true
           restartPolicy: Never
@@ -27,6 +28,21 @@ spec:
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command: {{ template "cronjob.command" . }}
+              {{- with .Values.resources }}
+              resources: {{ toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.securityContext }}
+              securityContext: {{ toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.livenessProbe }}
+              livenessProbe: {{ toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.readinessProbe }}
+              readinessProbe: {{ toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.volumeMounts }}
+              volumeMounts: {{ toYaml . | nindent 16 }}
+              {{- end }}
               resources: {{ toYaml .Values.resources | nindent 16 }}
               {{- with .Values.volumeMounts }}
               volumeMounts: {{ toYaml . | nindent 16 }}
