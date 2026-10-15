@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v7.0.0
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c
       - name: Run ah lint
         shell: bash
         run: |
