@@ -101,6 +101,14 @@ spec:
               name: exporter
           resources:
           {{- toYaml .Values.resources | nindent 12 }}
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.resizePolicy }}
           resizePolicy:
           {{- toYaml . | nindent 12 }}
