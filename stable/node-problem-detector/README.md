@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.4.1](https://img.shields.io/badge/Version-2.4.1-informational?style=flat-square) ![AppVersion: v1.35.1](https://img.shields.io/badge/AppVersion-v1.35.1-informational?style=flat-square)
+![Version: 2.4.2](https://img.shields.io/badge/Version-2.4.2-informational?style=flat-square) ![AppVersion: v1.35.1](https://img.shields.io/badge/AppVersion-v1.35.1-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.4.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.4.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -66,6 +66,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | imagePullSecrets | list | `[]` |  |
 | initContainers | list | `[]` |  |
 | labels | object | `{}` |  |
+| livenessProbe | object | `{}` | Liveness probe for the node-problem-detector container |
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
 | logDir.pod | string | `""` | log directory in pod (volume mount), use logDir.host if empty |
 | maxUnavailable | int | `1` | The max pods unavailable during an update |
@@ -87,6 +88,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-dete
 | rbac.clusterRole.extraRules | list | `[]` |  |
 | rbac.create | bool | `true` |  |
 | rbac.pspEnabled | bool | `false` |  |
+| readinessProbe | object | `{}` | Readiness probe for the node-problem-detector container |
 | resizePolicy | list | `[]` | Container resize policy for in-place vertical scaling See https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/ |
 | resources | object | `{}` |  |
 | securityContext.privileged | bool | `true` |  |

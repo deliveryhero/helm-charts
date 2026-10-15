@@ -102,6 +102,21 @@ securityContext:
 
 resources: {}
 
+# livenessProbe -- Liveness probe for the node-problem-detector container
+livenessProbe: {}
+  # httpGet:
+  #   path: /metrics
+  #   port: exporter
+  # initialDelaySeconds: 10
+  # periodSeconds: 30
+
+# readinessProbe -- Readiness probe for the node-problem-detector container
+readinessProbe: {}
+  # httpGet:
+  #   path: /metrics
+  #   port: exporter
+  # periodSeconds: 10
+
 # resizePolicy -- Container resize policy for in-place vertical scaling
 # See https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/
 resizePolicy: []
