@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.9.2](https://img.shields.io/badge/Version-2.9.2-informational?style=flat-square) ![AppVersion: 1.26.7](https://img.shields.io/badge/AppVersion-1.26.7-informational?style=flat-square)
+![Version: 2.9.3](https://img.shields.io/badge/Version-2.9.3-informational?style=flat-square) ![AppVersion: 1.27.1](https://img.shields.io/badge/AppVersion-1.27.1-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.2
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.3
 ```
 
 To install the chart with the release name `my-release`:
