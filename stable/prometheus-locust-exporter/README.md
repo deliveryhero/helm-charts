@@ -1,6 +1,6 @@
 # prometheus-locust-exporter
 
-![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: v0.4.1](https://img.shields.io/badge/AppVersion-v0.4.1-informational?style=flat-square)
+![Version: 1.2.4](https://img.shields.io/badge/Version-1.2.4-informational?style=flat-square) ![AppVersion: v0.4.1](https://img.shields.io/badge/AppVersion-v0.4.1-informational?style=flat-square)
 
 A Helm chart a prometheus exporter locust load test metrics
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-l
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version 1.2.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-locust-exporter --version 1.2.4
 ```
 
 To install the chart with the release name `my-release`:

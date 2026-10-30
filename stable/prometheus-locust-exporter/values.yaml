@@ -60,15 +60,15 @@ podAnnotations:
 
 service:
   create: false
-  # Enusre podAnnotations is set to {} before adding service.annotations
+  # Ensure podAnnotations is set to {} before adding service.annotations
   # annotations:
   #   prometheus.io_scrape: "true"
   #   prometheus.io/path: "/metrics"
   #   prometheus.io/port: "9646"
 
-# https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
+# https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/developer/getting-started.md
 serviceMonitor:
-  # Enusre that service is created
+  # Ensure that service is created
   enabled: false
   # additionalLabels: {}
   # bearerTokenFile: ''
