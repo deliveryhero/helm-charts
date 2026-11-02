@@ -121,7 +121,7 @@ securityContext:
     add:
       - NET_ADMIN
 
-# -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md
+# -- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/developer/getting-started.md
 serviceMonitor:
   # -- Ensure that servicemonitor is created, this will disable prometheus annotations
   enabled: false
