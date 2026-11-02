@@ -40,9 +40,9 @@ spec:
           {{- end }}
           {{- if .Values.ssl.enabled }}
           - name: MB_JETTY_SSL
-            value: true
+            value: "true"
           - name: MB_JETTY_SSL_Port
-            value: {{ .Values.ssl.port | quote }}
+            value: {{ .Values.ssl.port | default 8443 | quote }}
           - name: MB_JETTY_SSL_Keystore
             valueFrom:
               secretKeyRef:

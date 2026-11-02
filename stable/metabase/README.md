@@ -1,6 +1,6 @@
 # metabase
 
-![Version: 0.14.4](https://img.shields.io/badge/Version-0.14.4-informational?style=flat-square) ![AppVersion: v0.45.2](https://img.shields.io/badge/AppVersion-v0.45.2-informational?style=flat-square)
+![Version: 0.14.5](https://img.shields.io/badge/Version-0.14.5-informational?style=flat-square) ![AppVersion: v0.45.2](https://img.shields.io/badge/AppVersion-v0.45.2-informational?style=flat-square)
 
 The easy, open source way for everyone in your company to ask questions and learn from data.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/metabase
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/metabase --version 0.14.4
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/metabase --version 0.14.5
 ```
 
 To install the chart with the release name `my-release`:
