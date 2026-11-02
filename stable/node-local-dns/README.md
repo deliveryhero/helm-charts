@@ -1,6 +1,6 @@
 # node-local-dns
 
-![Version: 2.9.3](https://img.shields.io/badge/Version-2.9.3-informational?style=flat-square) ![AppVersion: 1.27.1](https://img.shields.io/badge/AppVersion-1.27.1-informational?style=flat-square)
+![Version: 2.9.4](https://img.shields.io/badge/Version-2.9.4-informational?style=flat-square) ![AppVersion: 1.27.1](https://img.shields.io/badge/AppVersion-1.27.1-informational?style=flat-square)
 
 A chart to install node-local-dns.
 
@@ -23,7 +23,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-d
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-local-dns --version 2.9.4
 ```
 
 To install the chart with the release name `my-release`:
@@ -98,7 +98,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-local-dns -f
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account. |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created. |
 | serviceAccount.name | string | `""` | If not set and create is true, a name is generated using the fullname template. |
-| serviceMonitor | object | `{"enabled":false,"honorLabels":false,"labels":{},"metricRelabelings":[],"namePrefix":"","path":"/metrics","prometheusNamespace":"kube-system","relabelings":[]}` | https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md |
+| serviceMonitor | object | `{"enabled":false,"honorLabels":false,"labels":{},"metricRelabelings":[],"namePrefix":"","path":"/metrics","prometheusNamespace":"kube-system","relabelings":[]}` | https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/developer/getting-started.md |
 | serviceMonitor.enabled | bool | `false` | Ensure that servicemonitor is created, this will disable prometheus annotations |
 | serviceMonitor.metricRelabelings | list | `[]` | Metric relabel configs to apply to samples before ingestion. [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs) |
 | serviceMonitor.namePrefix | string | `""` | The service monitor name prefix which align with the prometheus operator name, eg.: `kube-prometheus-stack` |
