@@ -36,7 +36,7 @@ spec:
           {{- end }}
           securityContext:
             {{- toYaml $.Values.podSecurityContext | nindent 12 }}
-          serviceAccountName: {{ $.Values.serviceAccountName }}
+          serviceAccountName: {{ include "kubecost-reports-exporter.serviceAccountName" $ }}
           containers:
           - name: {{ $.Chart.Name }}
             securityContext:
@@ -61,5 +61,21 @@ spec:
                 value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.assetsCostUrl | quote }}
               - name: KUBECOST_DIAGNOSTICS_URL
                 value: {{ required "Kubecost reports url is a required value" $.Values.kubecost.diagnosticsUrl | quote }}
+            {{- with $.Values.resources }}
+            resources:
+              {{- toYaml . | nindent 14 }}
+            {{- end }}
           restartPolicy: {{ $.Values.restartPolicy }}
+          {{- with $.Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with $.Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with $.Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
