@@ -41,8 +41,17 @@ kubernetes.io/cluster-service: "true"
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{- with (include "dregsy.podLabels" .) }}
+{{ . }}
+{{- end }}
+{{- end }}
+
+{{/*
+Pod labels. podLables is the old misspelled key, still accepted.
+*/}}
+{{- define "dregsy.podLabels" -}}
+{{- with (.Values.podLabels | default .Values.podLables) }}
+{{- toYaml . }}
 {{- end }}
 {{- end }}
 
