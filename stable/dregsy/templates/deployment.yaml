@@ -22,6 +22,9 @@ spec:
       {{- end }}
       labels:
         {{- include "dregsy.selectorLabels" . | nindent 8 }}
+        {{- with (include "dregsy.podLabels" .) }}
+        {{- . | nindent 8 }}
+        {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
