@@ -1,6 +1,6 @@
 # rds-downscaler
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.
 
@@ -19,7 +19,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/rds-downscal
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/rds-downscaler --version 1.0.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/rds-downscaler --version 1.0.6
 ```
 
 To install the chart with the release name `my-release`:
