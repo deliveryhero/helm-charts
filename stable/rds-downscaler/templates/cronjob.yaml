@@ -18,16 +18,15 @@ spec:
           labels:
             app.kubernetes.io/name: {{ include "rds-downscaler.name" . }}
             app.kubernetes.io/instance: {{ .Release.Name }}
-    {{- if .Values.podLabels }}
-    {{ toYaml .Values.podLabels | indent 10 }}
-    {{- end }}
+            {{- with .Values.podLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
         spec:
-          serviceAccount: {{ .Values.service_account_name }}
-          serviceAccountName: {{ .Values.service_account_name }}
+          serviceAccountName: {{ include "rds-downscaler.serviceAccountName" . }}
           restartPolicy: Never
         {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
-            {{- toYaml . | nindent 8 }}
+            {{- toYaml . | nindent 12 }}
         {{- end }}
           containers:
             - name: app

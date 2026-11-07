@@ -9300,6 +9300,27 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/rds-downscaler
       apiVersion: v2
       appVersion: "1.0"
+      created: "2026-11-06T13:52:31.221451278Z"
+      description: 'A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.  It will filter RDS instances/clusters by tag key and value or a particular cluster specified with cluster identifier. '
+      digest: 0d3479a1c7e348c61cacde8bab1b40ed8cbd3911fcb326b10d1293e0d2240949
+      home: https://github.com/deliveryhero/helm-charts
+      icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
+      keywords:
+        - scaling
+        - cost saving
+      maintainers:
+        - name: max-rocket-internet
+          url: https://github.com/max-rocket-internet
+      name: rds-downscaler
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/rds-downscaler:1.0.6
+      version: 1.0.6
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/rds-downscaler
+      apiVersion: v2
+      appVersion: "1.0"
       created: "2026-11-06T08:50:33.991057951Z"
       description: 'A small python script that runs on a cron schedule and periodically downscales AWS RDS instances.  It will filter RDS instances/clusters by tag key and value or a particular cluster specified with cluster identifier. '
       digest: a3d23348619b84a0860e97715ab2aaf30ce4526cd7785ccc5a6202d6c93575c7
@@ -10454,4 +10475,4 @@ entries:
       urls:
         - oci://ghcr.io/deliveryhero/helm-charts/wiremock:1.1.0
       version: 1.1.0
-generated: "2026-11-06T08:50:33.968151235Z"
+generated: "2026-11-06T13:52:31.221021055Z"

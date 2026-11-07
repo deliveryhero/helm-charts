@@ -38,26 +38,47 @@ jobs:
           EOF
           gpg -o ~/.gnupg/pubring.gpg --export ${{ steps.import_gpg.outputs.keyid }}
           gpg  --batch --pinentry-mode loopback --passphrase $(cat passphrase.txt) -o ~/.gnupg/secring.gpg --export-secret-keys ${{ steps.import_gpg.outputs.keyid }}
-      - name: Package Helm Charts
+      - name: Package new chart versions
+        id: package
         shell: bash
         run: |
-          find ${CHARTS_PATH} -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq | xargs --verbose -L 1 helm dep up
-          for d in ${CHARTS_PATH}/*; do
+          set -euo pipefail
+          # Only package charts whose name+version is not already in index.yaml.
+          # Repackaging an existing version produces a new tarball (fresh file
+          # mtimes => new digest, new "created" timestamp) which would overwrite
+          # the existing index entry and the already published OCI tag.
+          packaged=0
+          for d in "${CHARTS_PATH}"/*; do
               if [[ ! -f "${d}/Chart.yaml" ]]; then
                   echo "${d}/Chart.yaml not found. Skipping."
                   continue
               fi
-              echo "Packaging chart: $d"
+              name="$(yq '.name' "${d}/Chart.yaml")"
+              version="$(yq '.version' "${d}/Chart.yaml")"
+              if NAME="$name" VERSION="$version" yq -e '.entries[strenv(NAME)][] | select(.version == strenv(VERSION))' index.yaml > /dev/null 2>&1; then
+                  echo "Chart ${name}-${version} already in index.yaml. Skipping."
+                  continue
+              fi
+              echo "Packaging chart: ${name}-${version} from ${d}"
+              helm dep up "$d"
               helm package --sign "$d" -u --key "${{ steps.import_gpg.outputs.name }}" --passphrase-file passphrase.txt --keyring ~/.gnupg/secring.gpg
+              packaged=$((packaged + 1))
           done
           rm passphrase.txt
-          echo "Packing done"
+          echo "Packaged ${packaged} chart(s)"
+          if [[ "$packaged" -gt 0 ]]; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Login to GitHub Container Registry
+        if: steps.package.outputs.changed == 'true'
         shell: bash
         run: echo "${GITHUB_TOKEN}" | helm registry login ${REGISTRY} --username ${GITHUB_ACTOR} --password-stdin
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Push Helm Charts to Github Container Registry as OCI packages
+        if: steps.package.outputs.changed == 'true'
         shell: bash
         run: |
           for f in *.tgz ; do
@@ -65,6 +86,7 @@ jobs:
               helm push $f oci://${REGISTRY,,}
           done
       - name: Upload the Chart to Rekor
+        if: steps.package.outputs.changed == 'true'
         shell: bash
         run: |
           helm plugin install https://github.com/sigstore/helm-sigstore
@@ -73,13 +95,16 @@ jobs:
               helm sigstore upload "$f"
           done
       - name: Generate Helm repo index.yaml
+        if: steps.package.outputs.changed == 'true'
         shell: bash
         run: helm repo index . --merge index.yaml
       - name: Update URLs in index.yaml with yq
+        if: steps.package.outputs.changed == 'true'
         uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         with:
           cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
       - name: Create Pull Request
+        if: steps.package.outputs.changed == 'true'
         id: cpr
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
