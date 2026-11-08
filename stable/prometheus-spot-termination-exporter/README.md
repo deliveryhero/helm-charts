@@ -1,6 +1,6 @@
 # prometheus-spot-termination-exporter
 
-![Version: 0.2.15](https://img.shields.io/badge/Version-0.2.15-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.16](https://img.shields.io/badge/Version-0.2.16-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 Spot instance termination exporter for Prometheus
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-s
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.15
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter --version 0.2.16
 ```
 
 To install the chart with the release name `my-release`:
@@ -46,7 +46,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| env | list | `[]` |  |
+| env | list | `[]` | Extra environment variables for the exporter container |
 | extraArgs | list | `[]` |  |
 | image.imagePullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"banzaicloud/spot-termination-exporter"` |  |
@@ -63,7 +63,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-t
 | port | int | `9189` |  |
 | prometheus.metricsPath | string | `"/metrics"` |  |
 | prometheus.scrape | string | `"true"` |  |
-| readinessProbe.httpGet.httpHeaders | string | `nil` |  |
+| readinessProbe.httpGet.httpHeaders | list | `[]` | Custom headers for the readiness probe request, e.g. `[{name: X-Probe, value: "1"}]` |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
 | readinessProbe.initialDelaySeconds | int | `30` |  |
