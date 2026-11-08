@@ -17,6 +17,10 @@ spec:
         {{- include "mlflow.selectorLabels" . | nindent 8 }}
     spec:
       {{ if .Values.serviceAccount.create }}serviceAccountName: {{ include "mlflow.fullname" . | quote }}{{ end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       securityContext:
         runAsUser: 0
       containers:

@@ -1,6 +1,6 @@
 # mlflow
 
-![Version: 1.0.10](https://img.shields.io/badge/Version-1.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
+![Version: 1.0.11](https://img.shields.io/badge/Version-1.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.9.1](https://img.shields.io/badge/AppVersion-1.9.1-informational?style=flat-square)
 
 A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.
 
@@ -20,7 +20,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow --version 1.0.10
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/mlflow --version 1.0.11
 ```
 
 To install the chart with the release name `my-release`:
