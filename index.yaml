@@ -5844,6 +5844,32 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/mlflow
       apiVersion: v2
       appVersion: 1.9.1
+      created: "2026-11-09T12:16:50.179428161Z"
+      description: 'A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.  This Helm chart is using Postgresql as backend and S3 as artifact store. Contributions for other backends and artifacts store are welcome. '
+      digest: f428b1f4bbc98b9b829f72d505a54779e05e4b4eb36a059d382a7b84ed0a518b
+      home: https://www.mlflow.org/
+      icon: https://www.mlflow.org/docs/latest/_static/MLflow-logo-final-black.png
+      keywords:
+        - mlflow
+        - mlops
+        - datascience
+        - machinelearning
+      maintainers:
+        - name: mkuhn
+          url: https://github.com/magdalenakuhn17
+      name: mlflow
+      sources:
+        - https://github.com/mlflow
+      type: application
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/mlflow:1.0.11
+      version: 1.0.11
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/mlflow
+      apiVersion: v2
+      appVersion: 1.9.1
       created: "2026-11-06T08:50:33.984945826Z"
       description: 'A Helm chart to install MLflow tracking, a tool to track Machine Learning experiments.  This Helm chart is using Postgresql as backend and S3 as artifact store. Contributions for other backends and artifacts store are welcome. '
       digest: 6a78d4150f69e84e8789c0a21fa65e3d112bf2d52db0a635a3a09ed99234cddd
@@ -8150,6 +8176,29 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/pg-repack-scheduler
       apiVersion: v2
       appVersion: "1.0"
+      created: "2026-11-09T12:16:50.179943101Z"
+      description: 'For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:  ```console kubectl create job pg-repack --from=cronjob/pg-repack-scheduler ``` '
+      digest: b6ce40dc0f273f19f7de1c0a712e4ec34a4fa3071509006b6d6f67760aefbd71
+      home: https://github.com/deliveryhero/helm-charts
+      icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
+      keywords:
+        - scaling
+        - cost saving
+      maintainers:
+        - name: max-rocket-internet
+          url: https://github.com/max-rocket-internet
+      name: pg-repack-scheduler
+      sources:
+        - https://github.com/reorg/pg_repack
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/pg-repack-scheduler:1.2
+      version: "1.2"
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/pg-repack-scheduler
+      apiVersion: v2
+      appVersion: "1.0"
       created: "2026-11-06T08:50:33.987444014Z"
       description: 'For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:  ```console kubectl create job pg-repack --from=cronjob/pg-repack-scheduler ``` '
       digest: a9aea688224c0ee4d8d426497a1eb80851c1acd0d318e70a412a7b00c13bb9c7
@@ -9077,6 +9126,25 @@ entries:
         - oci://ghcr.io/deliveryhero/helm-charts/prometheus-soti-mobicontrol-exporter:1.0.2
       version: 1.0.2
   prometheus-spot-termination-exporter:
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-spot-termination-exporter
+      apiVersion: v2
+      appVersion: 0.0.1
+      created: "2026-11-09T12:16:50.180271114Z"
+      description: Spot instance termination exporter for Prometheus
+      digest: 8c4ab2ee449a566f6b2bd64177af8ff7f6661af95f920576bd06507f38cf9fae
+      home: https://github.com/banzaicloud/spot-termination-exporter
+      maintainers:
+        - name: sietevecesmal
+          url: https://github.com/sietevecesmal
+      name: prometheus-spot-termination-exporter
+      sources:
+        - https://github.com/banzaicloud/spot-termination-exporter
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/prometheus-spot-termination-exporter:0.2.16
+      version: 0.2.16
     - annotations:
         artifacthub.io/links: |
           - name: Helm chart source
@@ -10475,4 +10543,4 @@ entries:
       urls:
         - oci://ghcr.io/deliveryhero/helm-charts/wiremock:1.1.0
       version: 1.1.0
-generated: "2026-11-06T13:52:31.221021055Z"
+generated: "2026-11-09T12:16:50.178879416Z"
