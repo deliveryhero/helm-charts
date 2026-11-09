@@ -1,6 +1,6 @@
 # pg-repack-scheduler
 
-![Version: 1.1](https://img.shields.io/badge/Version-1.1-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
+![Version: 1.2](https://img.shields.io/badge/Version-1.2-informational?style=flat-square) ![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square)
 
 For running [pg_repack](https://github.com/reorg/pg_repack) as a `Job` or `CronJob`. By default the `CronJob` is disabled but a new `Job` can be created adhoc like this:
 
@@ -21,7 +21,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-sc
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-scheduler --version 1.1
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/pg-repack-scheduler --version 1.2
 ```
 
 To install the chart with the release name `my-release`:
@@ -79,6 +79,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/pg-repack-schedul
 | schedule.hour | string | `"04"` | Cron schedule hour of the downscale job |
 | schedule.minute | string | `"00"` | Cron schedule minute of the downscale job |
 | schedule.suspend | bool | `true` | Whether to suspend (disable) the cronjob |
+| serviceAccountName | string | `""` | Name of an existing ServiceAccount for the job pods. Uses the namespace default when empty |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
