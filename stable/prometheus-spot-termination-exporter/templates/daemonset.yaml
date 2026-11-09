@@ -47,6 +47,9 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+          {{- with .Values.env }}
+          {{- toYaml . | nindent 10 }}
+          {{- end }}
         ports:
         - name: http
           containerPort: {{ .Values.port }}
@@ -63,7 +66,10 @@ spec:
           httpGet:
             path: {{ .Values.readinessProbe.httpGet.path }}
             port: {{ .Values.readinessProbe.httpGet.port }}
-            httpHeaders: {{ .Values.readinessProbe.httpGet.httpHeaders }}
+            {{- with .Values.readinessProbe.httpGet.httpHeaders }}
+            httpHeaders:
+              {{- toYaml . | nindent 14 }}
+            {{- end }}
           initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
