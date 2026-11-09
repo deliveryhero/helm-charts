@@ -8653,6 +8653,25 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-cloudflare-exporter
       apiVersion: v2
       appVersion: 1.2.0
+      created: "2026-11-09T12:39:53.249765308Z"
+      description: Cloudflare metrics exporter
+      digest: e01ac0b9849b8f7f14ee2c44075cd829bb2a31850ca0841d567583d7d4df3012
+      home: https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
+      maintainers:
+        - name: javad-hajiani
+          url: https://github.com/javad-hajiani
+      name: prometheus-cloudflare-exporter
+      sources:
+        - https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/prometheus-cloudflare-exporter:0.0.3
+      version: 0.0.3
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/prometheus-cloudflare-exporter
+      apiVersion: v2
+      appVersion: 1.2.0
       created: "2026-11-06T08:50:33.988759807Z"
       description: Cloudflare metrics exporter
       digest: 345dc217a4e2add4a53a1c7ca32a31107c4b9e9cf33fb1191f78f90a31a6e144
@@ -10543,4 +10562,4 @@ entries:
       urls:
         - oci://ghcr.io/deliveryhero/helm-charts/wiremock:1.1.0
       version: 1.1.0
-generated: "2026-11-09T12:16:50.178879416Z"
+generated: "2026-11-09T12:39:53.249286658Z"
