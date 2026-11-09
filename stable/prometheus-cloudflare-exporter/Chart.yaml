@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: 1.2.0
 description: Cloudflare metrics exporter
 name: prometheus-cloudflare-exporter
-version: 0.0.2
+version: 0.0.3
 home: https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
 sources:
   - https://github.com/wehkamp/docker-prometheus-cloudflare-exporter
