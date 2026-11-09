@@ -39,6 +39,9 @@ resources:
     cpu: 500m
     memory: 128Mi
 
+# serviceAccountName -- Name of an existing ServiceAccount for the job pods. Uses the namespace default when empty
+serviceAccountName: ""
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
