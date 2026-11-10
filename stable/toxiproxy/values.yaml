@@ -45,6 +45,12 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
+# initContainer -- Extra init containers for the toxiproxy pod, added after the built-in `copy-mappings` one
+initContainer: []
+
+# initVolume -- Extra volumes for the toxiproxy pod, e.g. for the extra init containers
+initVolume: []
+
 # pdb.enabled -- Whether to create a PodDisruptionBudget
 pdb:
   enabled: false
@@ -53,6 +59,7 @@ podSecurityContext:
   {}
   # fsGroup: 2000
 
+# securityContext -- Security context of the toxiproxy container
 securityContext:
   {}
   # capabilities:

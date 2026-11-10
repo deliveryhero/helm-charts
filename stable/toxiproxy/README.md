@@ -1,6 +1,6 @@
 # toxiproxy
 
-![Version: 1.3.9](https://img.shields.io/badge/Version-1.3.9-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 1.3.10](https://img.shields.io/badge/Version-1.3.10-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
 
@@ -31,7 +31,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy --version 1.3.9
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy --version 1.3.10
 ```
 
 To install the chart with the release name `my-release`:
@@ -90,6 +90,8 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/toxiproxy -f valu
 | ingress.tls | list | `[]` |  |
 | init.image.repository | string | `"busybox"` | the docker repository and image to be used for the init container. |
 | init.image.tag | string | `"latest"` | the docker image tag for the init container image |
+| initContainer | list | `[]` | Extra init containers for the toxiproxy pod, added after the built-in `copy-mappings` one |
+| initVolume | list | `[]` | Extra volumes for the toxiproxy pod, e.g. for the extra init containers |
 | nameOverride | string | `""` |  |
 | nodeSelector."kubernetes.io/arch" | string | `"amd64"` |  |
 | nodeSelector."kubernetes.io/os" | string | `"linux"` |  |
@@ -98,7 +100,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/toxiproxy -f valu
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` |  |
+| securityContext | object | `{}` | Security context of the toxiproxy container |
 | service.configJsonPath | string | `"/home/toxiproxy/proxies/config.json"` |  |
 | service.listeningAddress | string | `"0.0.0.0"` |  |
 | service.listeningPort | int | `8474` |  |

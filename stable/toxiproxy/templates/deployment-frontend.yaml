@@ -31,9 +31,6 @@ spec:
       serviceAccountName: {{ template "toxiproxy.serviceAccountName" . }}
       securityContext:
 {{- toYaml .Values.podSecurityContext | nindent 8 }}
-{{- if .Values.initContainer }}
-{{ toYaml .Values.initContainer | indent 6 }}
-{{- end }}
       containers:
       - name: toxiproxy-frontend
         resources:
