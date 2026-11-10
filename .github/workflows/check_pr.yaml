@@ -6,14 +6,17 @@ on:
       - edited
       - synchronize
 
+permissions:
+  contents: read
+
 jobs:
   check_pr_title:
     name: check PR title
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7.0.0
-      - uses: deepakputhraya/action-pr-title@master
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: deepakputhraya/action-pr-title@077bddd7bdabd0d2b1b25ed0754c7e62e184d7ee # master
         with:
           regex: '^\[stable\/+.+].*'
           prefix_case_sensitive: false

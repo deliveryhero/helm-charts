@@ -6,6 +6,8 @@ on:
     paths:
       - 'stable/**'
   workflow_dispatch:
+permissions:
+  contents: read
 env:
   CHARTS_PATH: stable
   REGISTRY: "ghcr.io/${{ github.repository }}"
@@ -18,14 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Install Helm
-        uses: azure/setup-helm@v5.0.0
+        uses: azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 # v5.0.0
         with:
           version: v3.16.4
       - name: Import GPG key
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@v7.0.0
+        uses: crazy-max/ghaction-import-gpg@2dc316deee8e90f13e1a351ab510b4d5bc0c82cd # v7.0.0
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -98,13 +100,13 @@ jobs:
         run: helm repo index . --merge index.yaml
       - name: Update URLs in index.yaml with yq
         if: steps.package.outputs.changed == 'true'
-        uses: mikefarah/yq@v4.53.3
+        uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         with:
           cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
       - name: Create Pull Request
         if: steps.package.outputs.changed == 'true'
         id: cpr
-        uses: peter-evans/create-pull-request@v8.1.1
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           commit-message: "Updating index.yaml for ${{ github.ref }}"
           branch: update-index
