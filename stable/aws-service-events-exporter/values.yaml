@@ -13,7 +13,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-# serviceAccountName -- service account to be used by the containers
+# serviceAccountName -- Name of an existing service account for the pods. Same as `serviceAccount.name`, which takes precedence when both are set
 serviceAccountName: ""
 
 podAnnotations:
@@ -51,6 +51,9 @@ env: {}
 extraLabels: {}
 
 serviceAccount:
+  # serviceAccount.create -- Create a service account for the pods
   create: false
+  # serviceAccount.name -- Service account name. Defaults to the fullname when `create` is true and to `default` otherwise
   name: ""
+  # serviceAccount.annotations -- Annotations for the created service account, e.g. an IRSA role ARN
   annotations: {}

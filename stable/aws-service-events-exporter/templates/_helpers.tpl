@@ -57,9 +57,10 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "aws-service-events-exporter.serviceAccountName" -}}
+{{- $name := coalesce .Values.serviceAccount.name .Values.serviceAccountName }}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "aws-service-events-exporter.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "aws-service-events-exporter.fullname" .) $name }}
 {{- else }}
-{{- default "default" .Values.serviceAccount.name }}
+{{- default "default" $name }}
 {{- end }}
 {{- end }}
