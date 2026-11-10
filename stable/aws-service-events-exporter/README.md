@@ -1,6 +1,6 @@
 # aws-service-events-exporter
 
-![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 This helm chart exports aws service events to prometheus via aws SQS queue, this include:
 
@@ -20,7 +20,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-events-exporter --version 1.0.7
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/aws-service-events-exporter --version 1.0.8
 ```
 
 To install the chart with the release name `my-release`:
@@ -69,10 +69,10 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/aws-service-event
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.create | bool | `false` |  |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `false` |  |
-| serviceAccount.name | string | `""` |  |
-| serviceAccountName | string | `""` | service account to be used by the containers |
+| serviceAccount.annotations | object | `{}` | Annotations for the created service account, e.g. an IRSA role ARN |
+| serviceAccount.create | bool | `false` | Create a service account for the pods |
+| serviceAccount.name | string | `""` | Service account name. Defaults to the fullname when `create` is true and to `default` otherwise |
+| serviceAccountName | string | `""` | Name of an existing service account for the pods. Same as `serviceAccount.name`, which takes precedence when both are set |
 | tolerations | list | `[]` |  |
 
 ## Maintainers
