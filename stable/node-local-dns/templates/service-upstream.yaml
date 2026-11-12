@@ -20,4 +20,7 @@ spec:
     {{- with .Values.config.upstreamServiceSelector }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
+  {{- with .Values.config.upstreamServiceTrafficDistribution }}
+  trafficDistribution: {{ . }}
+  {{- end }}
 {{- end -}}
