@@ -9,7 +9,7 @@ controllerManager:
         - ALL
     image:
       repository: ghcr.io/deliveryhero/field-exporter
-      tag: v1.4.0
+      tag: v1.4.1
     resources:
       limits:
         cpu: 500m
