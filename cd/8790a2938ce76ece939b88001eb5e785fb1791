@@ -1,0 +1,23 @@
+stable/field-exporter/Chart.yaml
+  s_fb4ef5a6649565::t_2d709b79cf5dc5 7-8
+stable/field-exporter/README.md
+  s_fb4ef5a6649565::t_7025c5a2ce3d2e 3,20,54
+stable/field-exporter/values.yaml
+  s_fb4ef5a6649565::t_78ed4fc1520b5e 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd8790a2938ce76ece939b88001eb5e785fb1791",
+  "prompts": {},
+  "sessions": {
+    "s_fb4ef5a6649565": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10e711be-777b-48d7-960e-963b970c751f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "jijinp <jijin.puthuvakkattil@deliveryhero.com>"
+    }
+  }
+}
