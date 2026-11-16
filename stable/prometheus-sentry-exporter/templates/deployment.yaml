@@ -38,9 +38,9 @@ spec:
             - {{ . | quote }}
             {{- end }}
           {{- end }}
-          {{- if .Values.env }}
+          {{- with .Values.environment }}
           env:
-            {{- range $key, $value := .Values.environment }}
+            {{- range $key, $value := . }}
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
