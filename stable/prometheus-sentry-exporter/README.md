@@ -1,6 +1,6 @@
 # prometheus-sentry-exporter
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
 
 Exports sentry project metrics for prometheus.
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-s
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter --version 0.1.5
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/prometheus-sentry-exporter --version 0.1.6
 ```
 
 To install the chart with the release name `my-release`:
