@@ -33,7 +33,7 @@ spec:
 {{- end }}
       {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | indent 8 }}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       initContainers:
       - name: copy-stubs
