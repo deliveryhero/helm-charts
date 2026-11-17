@@ -9631,6 +9631,29 @@ entries:
             url: https://github.com/deliveryhero/helm-charts/tree/master/stable/superset
       apiVersion: v2
       appVersion: latest
+      created: "2026-11-17T08:00:57.063126084Z"
+      description: A Helm chart for Apache Superset
+      digest: 29d056523be42a2a3848f69e991f238a0b5e4bfb97dd56adf9efcb82a17cd11e
+      home: https://superset.apache.org/
+      keywords:
+        - apache
+        - supertest
+      maintainers:
+        - email: thomas.nyambati@deliveryhero.com
+          name: nyambati
+      name: superset
+      sources:
+        - https://github.com/apache/superset
+      type: application
+      urls:
+        - oci://ghcr.io/deliveryhero/helm-charts/superset:1.1.4
+      version: 1.1.4
+    - annotations:
+        artifacthub.io/links: |
+          - name: Helm chart source
+            url: https://github.com/deliveryhero/helm-charts/tree/master/stable/superset
+      apiVersion: v2
+      appVersion: latest
       created: "2026-11-06T08:50:33.991806977Z"
       description: A Helm chart for Apache Superset
       digest: 3537d394a848a6e0861229eb8d9381fd047b03ab94ad7f5b8c5eabf24a25a4ad
@@ -10682,4 +10705,4 @@ entries:
       urls:
         - oci://ghcr.io/deliveryhero/helm-charts/wiremock:1.1.0
       version: 1.1.0
-generated: "2026-11-16T08:30:18.143356451Z"
+generated: "2026-11-17T08:00:57.062451663Z"
