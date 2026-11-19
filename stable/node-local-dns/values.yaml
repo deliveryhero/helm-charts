@@ -20,6 +20,9 @@ config:
   upstreamServiceSelector:
     k8s-app: kube-dns
 
+  # -- Configure upstream service traffic distribution. https://kubernetes.io/docs/concepts/services-networking/service/#traffic-distribution
+  upstreamServiceTrafficDistribution: ""
+
   # -- If false, it will bind 0.0.0.0, otherwise dnsServer and localDns will be used. https://github.com/bottlerocket-os/bottlerocket/issues/3711#issuecomment-1907087528
   bindIp: false
 
