@@ -1,6 +1,6 @@
 # toxiproxy
 
-![Version: 1.3.10](https://img.shields.io/badge/Version-1.3.10-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 1.3.11](https://img.shields.io/badge/Version-1.3.11-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 A TCP proxy to simulate network and system conditions for chaos and resiliency testing.
 
@@ -31,7 +31,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy --version 1.3.10
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/toxiproxy --version 1.3.11
 ```
 
 To install the chart with the release name `my-release`:
