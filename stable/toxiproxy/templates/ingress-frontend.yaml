@@ -14,12 +14,12 @@ metadata:
   labels:
     component: frontend
 {{ include "toxiproxy.labels" . | indent 4 }}
-  {{- with .Values.frontend.annotations }}
+  {{- with (.Values.frontend.ingress.annotations | default .Values.frontend.annotations) }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and .Values.frontend.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  {{- if and .Values.frontend.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
   ingressClassName: {{ .Values.frontend.ingress.className }}
   {{- end }}
   {{- if .Values.frontend.ingress.tls }}

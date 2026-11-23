@@ -4,9 +4,11 @@ kind: Service
 metadata:
   name: {{ include "prometheus-cloudflare-exporter.fullname" . }}
   labels:
-    {{ include "prometheus-cloudflare-exporter.labels" . | indent 4 }}
+    {{- include "prometheus-cloudflare-exporter.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
   annotations:
-    {{- toYaml .Values.service.annotations | nindent 8 }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:

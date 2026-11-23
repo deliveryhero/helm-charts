@@ -1,6 +1,6 @@
 # superset
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for Apache Superset
 
@@ -17,7 +17,7 @@ helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/superset
 To install a specific version of this chart:
 
 ```console
-helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/superset --version 1.1.3
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/superset --version 1.1.4
 ```
 
 To install the chart with the release name `my-release`:
@@ -129,6 +129,7 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/superset -f value
 | superset.worker.autoscaling.enabled | bool | `false` |  |
 | superset.worker.autoscaling.maxReplicas | int | `10` |  |
 | superset.worker.autoscaling.minReplicas | int | `1` |  |
+| superset.worker.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.worker.command[0] | string | `"celery"` |  |
 | superset.worker.command[1] | string | `"--app=superset.tasks.celery_app:app"` |  |
 | superset.worker.command[2] | string | `"worker"` |  |
@@ -136,7 +137,6 @@ helm install my-release oci://ghcr.io/deliveryhero/helm-charts/superset -f value
 | superset.worker.podAnnotations | object | `{}` |  |
 | superset.worker.replicas | int | `1` |  |
 | superset.worker.resources | object | `{}` |  |
-| superset.worker.targetCPUUtilizationPercentage | int | `80` |  |
 | superset.worker.tolerations | list | `[]` |  |
 
 ## Maintainers

@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install Helm
-        uses: azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5.0.1
+        uses: azure/setup-helm@2f5e7bc67f1f9972ab16657bb795f36d8f04de0e # v5.1.0
         with:
           version: v3.16.4
       - name: Import GPG key
@@ -100,13 +100,13 @@ jobs:
         run: helm repo index . --merge index.yaml
       - name: Update URLs in index.yaml with yq
         if: steps.package.outputs.changed == 'true'
-        uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
+        uses: mikefarah/yq@f2944b823f84906a127dbd29e4c2a3e60c4e550e # v4.54.3
         with:
           cmd: yq eval -i '. |= .entries[][] |= .urls[0] = "oci://" + env(REGISTRY) + "/" + .name + ":" + .version' index.yaml
       - name: Create Pull Request
         if: steps.package.outputs.changed == 'true'
         id: cpr
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
         with:
           commit-message: "Updating index.yaml for ${{ github.ref }}"
           branch: update-index
