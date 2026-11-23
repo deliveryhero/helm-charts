@@ -54,6 +54,25 @@ fullnameOverride: ""
 # extraLabels -- Apply extra labels to common labels
 extraLabels: {}
 
+# extraObjects -- Extra Kubernetes manifests to deploy alongside the overprovisioning deployments. Rendered with `tpl`, so they can reference release values and chart helpers
+extraObjects: []
+  # - apiVersion: keda.sh/v1alpha1
+  #   kind: ScaledObject
+  #   metadata:
+  #     name: '{{ include "cluster-overprovisioner.fullname" . }}-default'
+  #   spec:
+  #     scaleTargetRef:
+  #       name: '{{ include "cluster-overprovisioner.fullname" . }}-default'
+  #     minReplicaCount: 0
+  #     maxReplicaCount: 3
+  #     triggers:
+  #       - type: cron
+  #         metadata:
+  #           timezone: Europe/Paris
+  #           start: 0 8 * * 1-5
+  #           end: 0 20 * * 1-5
+  #           desiredReplicas: "3"
+
 # deployments -- Define optional additional deployments - A default deployment is included by default
 # @default -- []
 deployments:

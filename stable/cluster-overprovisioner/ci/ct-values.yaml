@@ -18,3 +18,11 @@ deployments:
     tolerations: []
     affinity: {}
     labels: {}
+
+extraObjects:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: '{{ include "cluster-overprovisioner.fullname" . }}-ci'
+    data:
+      release: '{{ .Release.Name }}'
